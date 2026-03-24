@@ -115,7 +115,7 @@ function Header() {
           className="flex items-center gap-2.5 font-serif text-lg md:text-xl font-semibold text-charcoal tracking-tight"
         >
           <Image src="/logo.svg" alt="" width={28} height={28} className="w-7 h-7" />
-          I&rsquo;m Frustrated<span className="text-coral">.</span>org
+          I&rsquo;m Frustrated <em className="not-italic font-light italic text-coral/80">dot</em> Org
         </a>
 
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
@@ -408,7 +408,7 @@ function Footer() {
               className="flex items-center gap-2.5 font-serif text-xl font-semibold text-warm-white tracking-tight"
             >
               <Image src="/logo.svg" alt="" width={28} height={28} className="w-7 h-7" />
-              I&rsquo;m Frustrated<span className="text-coral">.</span>org
+              I&rsquo;m Frustrated <em className="not-italic font-light italic text-coral/80">dot</em> Org
             </a>
             <p className="font-serif italic text-white/40 text-sm mt-2">
               Friends who are also lawyers.
@@ -445,7 +445,7 @@ function Footer() {
 
         <div className="mt-12 pt-8 border-t border-white/[0.06] text-center">
           <p className="text-white/25 text-xs">
-            &copy; {new Date().getFullYear()} I&rsquo;m Frustrated dot Org. All
+            &copy; {new Date().getFullYear()} I&rsquo;m Frustrated <em className="italic">dot</em> Org. All
             rights reserved.
           </p>
         </div>
