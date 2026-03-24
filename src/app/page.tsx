@@ -222,6 +222,11 @@ function Mission() {
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
+        <p className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-charcoal tracking-tight mb-12">
+          I&rsquo;m Frustrated<br />
+          <em className="italic font-light text-coral/80">dot</em>{" "}
+          Org<span className="text-coral">.</span>
+        </p>
         <p className="text-coral text-sm font-semibold uppercase tracking-[0.2em] mb-6">
           What We Do
         </p>
