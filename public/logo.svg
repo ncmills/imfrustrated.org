@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <!-- Speech bubble -->
+  <rect x="4" y="4" width="32" height="24" rx="6" fill="#E8664A"/>
+  <polygon points="10,28 10,36 18,28" fill="#E8664A"/>
+  <!-- Frustrated brows -->
+  <line x1="13" y1="13" x2="17" y2="15" stroke="#FEFCFA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="27" y1="13" x2="23" y2="15" stroke="#FEFCFA" stroke-width="2" stroke-linecap="round"/>
+  <!-- Eyes -->
+  <circle cx="15" cy="19" r="1.5" fill="#FEFCFA"/>
+  <circle cx="25" cy="19" r="1.5" fill="#FEFCFA"/>
+  <!-- Flat mouth -->
+  <line x1="15" y1="24" x2="25" y2="24" stroke="#FEFCFA" stroke-width="2" stroke-linecap="round"/>
+</svg>

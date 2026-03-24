@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
   description:
     "Talk to a real attorney before you hire one. We're the friends who happen to be lawyers — free, honest legal guidance to help you figure out your next step.",
+  icons: {
+    icon: "/logo.svg",
+    apple: "/logo.svg",
+  },
   openGraph: {
     title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
     description:

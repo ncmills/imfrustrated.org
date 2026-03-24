@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 /* ─── Intersection Observer hook ─── */
 function useInView(threshold = 0.15) {
@@ -111,8 +112,9 @@ function Header() {
       <div className="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
         <a
           href="#top"
-          className="font-serif text-lg md:text-xl font-semibold text-charcoal tracking-tight"
+          className="flex items-center gap-2.5 font-serif text-lg md:text-xl font-semibold text-charcoal tracking-tight"
         >
+          <Image src="/logo.svg" alt="" width={28} height={28} className="w-7 h-7" />
           I&rsquo;m Frustrated<span className="text-coral">.</span>org
         </a>
 
@@ -403,8 +405,9 @@ function Footer() {
           <div className="text-center md:text-left">
             <a
               href="#top"
-              className="font-serif text-xl font-semibold text-warm-white tracking-tight"
+              className="flex items-center gap-2.5 font-serif text-xl font-semibold text-warm-white tracking-tight"
             >
+              <Image src="/logo.svg" alt="" width={28} height={28} className="w-7 h-7" />
               I&rsquo;m Frustrated<span className="text-coral">.</span>org
             </a>
             <p className="font-serif italic text-white/40 text-sm mt-2">
