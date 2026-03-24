@@ -453,6 +453,12 @@ function Footer() {
             &copy; {new Date().getFullYear()} I&rsquo;m Frustrated <em className="italic">dot</em> Org. All
             rights reserved.
           </p>
+          <p className="text-white/20 text-[0.65rem] leading-relaxed mt-4 max-w-2xl mx-auto">
+            Disclaimer: I&rsquo;m Frustrated dot Org is not a law firm and does not provide legal representation.
+            The information and guidance provided through our services are for informational purposes only and
+            should not be construed as legal advice. No attorney-client relationship is formed through your
+            use of this service. For legal representation, please consult a licensed attorney in your jurisdiction.
+          </p>
         </div>
       </div>
     </footer>
