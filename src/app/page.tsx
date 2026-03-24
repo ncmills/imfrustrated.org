@@ -173,8 +173,8 @@ function Hero() {
         </div>
 
         <p className="animate-fade-in-up delay-200 mt-8 text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed">
-          Talk to a real attorney before you hire one.
-          <br className="hidden sm:block" /> Free. Honest. No strings attached.
+          Ring an attorney friend to get their take on your issue
+          <br className="hidden sm:block" /> and how best to proceed. Because everyone needs a friend who is a lawyer.
         </p>
 
         <div className="animate-fade-in-up delay-400 mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
