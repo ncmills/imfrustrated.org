@@ -43,6 +43,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${playfair.variable} ${dmSans.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "I'm Frustrated dot Org",
+            "url": "https://imfrustrated.org",
+            "sameAs": [
+              "https://idonthaveawill.com",
+              "https://whatpeptidesdo.com",
+              "https://tourdefore.com",
+              "https://doppelwriter.com"
+            ]
+          }) }}
+        />
         <PostHogProvider>
           {children}
         </PostHogProvider>
