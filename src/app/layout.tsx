@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
   description:
     "Talk to a real attorney before you hire one. We're the friends who happen to be lawyers — free, honest legal guidance to help you figure out your next step.",
+  metadataBase: new URL("https://imfrustrated.org"),
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/logo.svg",
     apple: "/logo.svg",
@@ -42,6 +46,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className={`${playfair.variable} ${dmSans.variable}`}>
         <script
           type="application/ld+json"
@@ -55,6 +63,76 @@ export default function RootLayout({
               "https://whatpeptidesdo.com",
               "https://tourdefore.com",
               "https://doppelwriter.com"
+            ]
+          }) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LegalService",
+            "name": "I'm Frustrated dot Org",
+            "description": "Free legal guidance and referrals from volunteer attorneys. We help people understand their legal situation before hiring a lawyer.",
+            "url": "https://imfrustrated.org",
+            "email": "nicc@imfrustrated.org",
+            "areaServed": "US",
+            "priceRange": "Free",
+            "serviceType": "Legal Guidance and Referrals",
+            "nonprofitStatus": "Nonprofit",
+            "sameAs": [
+              "https://idonthaveawill.com",
+              "https://whatpeptidesdo.com",
+              "https://tourdefore.com",
+              "https://doppelwriter.com"
+            ]
+          }) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does I'm Frustrated dot Org do?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We're a group of practicing attorneys who volunteer our time to give people a real, informed perspective on their legal situation before they spend a dime on representation. We provide free, honest legal guidance to help you figure out your next step."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is I'm Frustrated dot Org a law firm?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. I'm Frustrated dot Org is not a law firm and does not provide legal representation. No attorney-client relationship is formed through our service. We provide informational guidance only."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much does it cost to get legal guidance?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our service is completely free. There is no commitment, no invoice, and no judgment — just an honest conversation with someone who understands the law and wants to help."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does the process work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It's simple: (1) You tell us what's going on in plain English. (2) We explain where you stand legally, what your options are, and what questions to ask. (3) You decide what's next — whether that's hiring a lawyer or handling it yourself, you'll be informed."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I get in touch?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Email us at nicc@imfrustrated.org. We'll get back to you and set up a conversation."
+                }
+              }
             ]
           }) }}
         />
