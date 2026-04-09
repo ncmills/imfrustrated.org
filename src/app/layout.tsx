@@ -46,10 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
+      <head />
       <body className={`${playfair.variable} ${dmSans.variable}`}>
         <script
           type="application/ld+json"
@@ -58,12 +55,6 @@ export default function RootLayout({
             "@type": "WebSite",
             "name": "I'm Frustrated dot Org",
             "url": "https://imfrustrated.org",
-            "sameAs": [
-              "https://idonthaveawill.com",
-              "https://whatpeptidesdo.com",
-              "https://tourdefore.com",
-              "https://doppelwriter.com"
-            ]
           }) }}
         />
         <script
@@ -74,17 +65,11 @@ export default function RootLayout({
             "name": "I'm Frustrated dot Org",
             "description": "Free legal guidance and referrals from volunteer attorneys. We help people understand their legal situation before hiring a lawyer.",
             "url": "https://imfrustrated.org",
-            "email": "nicc@imfrustrated.org",
+            "email": "info@imfrustrated.org",
             "areaServed": "US",
             "priceRange": "Free",
             "serviceType": "Legal Guidance and Referrals",
-            "nonprofitStatus": "Nonprofit",
-            "sameAs": [
-              "https://idonthaveawill.com",
-              "https://whatpeptidesdo.com",
-              "https://tourdefore.com",
-              "https://doppelwriter.com"
-            ]
+            "nonprofitStatus": "Nonprofit"
           }) }}
         />
         <script
@@ -130,7 +115,7 @@ export default function RootLayout({
                 "name": "How do I get in touch?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Email us at nicc@imfrustrated.org. We'll get back to you and set up a conversation."
+                  "text": "Email us at info@imfrustrated.org. We'll get back to you and set up a conversation."
                 }
               }
             ]
