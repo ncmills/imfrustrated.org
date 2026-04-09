@@ -36,6 +36,21 @@ export const metadata: Metadata = {
     url: "https://imfrustrated.org",
     siteName: "I'm Frustrated dot Org",
     type: "website",
+    images: [
+      {
+        url: "/logo.svg",
+        width: 512,
+        height: 512,
+        alt: "I'm Frustrated dot Org — free legal guidance from volunteer attorneys",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
+    description:
+      "Talk to a real attorney before you hire one. Free, honest legal guidance to help you figure out your next step.",
+    images: ["/logo.svg"],
   },
 };
 
@@ -121,18 +136,29 @@ export default function RootLayout({
             ]
           }) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "I'm Frustrated dot Org",
+            "url": "https://imfrustrated.org",
+            "email": "info@imfrustrated.org",
+            "nonprofitStatus": "Nonprofit501c3"
+          }) }}
+        />
         <PostHogProvider>
           {children}
         </PostHogProvider>
         <footer className="py-4 text-center">
           <p className="text-[10px] text-gray-400/30">
-            <a href="https://whatpeptidesdo.com" className="hover:text-gray-400/50 transition-colors">whatpeptidesdo.com</a>
+            <a href="https://whatpeptidesdo.com" rel="nofollow" className="hover:text-gray-400/50 transition-colors">whatpeptidesdo.com</a>
             {" · "}
-            <a href="https://idonthaveawill.com" className="hover:text-gray-400/50 transition-colors">idonthaveawill.com</a>
+            <a href="https://idonthaveawill.com" rel="nofollow" className="hover:text-gray-400/50 transition-colors">idonthaveawill.com</a>
             {" · "}
-            <a href="https://doppelwriter.com" className="hover:text-gray-400/50 transition-colors">doppelwriter.com</a>
+            <a href="https://doppelwriter.com" rel="nofollow" className="hover:text-gray-400/50 transition-colors">doppelwriter.com</a>
             {" · "}
-            <a href="https://tourdefore.com" className="hover:text-gray-400/50 transition-colors">tourdefore.com</a>
+            <a href="https://tourdefore.com" rel="nofollow" className="hover:text-gray-400/50 transition-colors">tourdefore.com</a>
           </p>
         </footer>
         <Analytics />

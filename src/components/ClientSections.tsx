@@ -46,7 +46,7 @@ export function Header() {
           className="flex items-center gap-2.5 font-serif text-lg md:text-xl font-semibold text-charcoal tracking-tight"
         >
           I&rsquo;m Frustrated{" "}
-          <Image src="/logo.svg" alt="I'm Frustrated dot Org logo" width={28} height={28} className="w-7 h-7 inline-block align-middle" />
+          <Image src="/logo.svg" alt="I'm Frustrated dot Org — home" width={28} height={28} className="w-7 h-7 inline-block align-middle" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted">

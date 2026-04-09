@@ -136,7 +136,7 @@ export default function Home() {
           <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10 text-center">
             <p className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-charcoal tracking-tight mb-12">
               I&rsquo;m Frustrated
-              <Image src="/logo.svg" alt="I'm Frustrated dot Org logo" width={80} height={80} className="inline-block align-middle w-16 sm:w-20 md:w-24 lg:w-28 h-auto mx-2" />
+              <Image src="/logo.svg" alt="Dot Org symbol representing free legal guidance" width={80} height={80} className="inline-block align-middle w-16 sm:w-20 md:w-24 lg:w-28 h-auto mx-2" />
             </p>
             <p className="text-coral text-sm font-semibold uppercase tracking-[0.2em] mb-6">
               What We Do
@@ -285,7 +285,7 @@ export default function Home() {
                 className="flex items-center gap-2.5 font-serif text-xl font-semibold text-warm-white tracking-tight"
               >
                 I&rsquo;m Frustrated{" "}
-                <Image src="/logo.svg" alt="I'm Frustrated dot Org logo" width={28} height={28} className="w-7 h-7 inline-block align-middle" />
+                <Image src="/logo.svg" alt="I'm Frustrated dot Org — back to top" width={28} height={28} className="w-7 h-7 inline-block align-middle" />
               </a>
               <p className="font-serif italic text-white/40 text-sm mt-2">
                 Friends who are also lawyers.
@@ -311,11 +311,11 @@ export default function Home() {
           <div className="mt-12 pt-8 border-t border-white/[0.06] text-center">
             <p className="text-white/25 text-xs">
               &copy; {new Date().getFullYear()} I&rsquo;m Frustrated{" "}
-              <Image src="/logo.svg" alt="I'm Frustrated dot Org logo" width={16} height={16} className="w-4 h-4 inline-block align-middle" />.
+              <Image src="/logo.svg" alt="dot Org" width={16} height={16} className="w-4 h-4 inline-block align-middle" />.
               All rights reserved.
             </p>
             <p className="text-white/20 text-[0.65rem] leading-relaxed mt-4 max-w-2xl mx-auto">
-              Disclaimer: I&rsquo;m Frustrated <Image src="/logo.svg" alt="I'm Frustrated dot Org logo" width={12} height={12} className="w-3 h-3 inline-block align-middle" /> is not a law firm and does not provide legal representation.
+              Disclaimer: I&rsquo;m Frustrated <Image src="/logo.svg" alt="dot Org" width={12} height={12} className="w-3 h-3 inline-block align-middle" /> is not a law firm and does not provide legal representation.
               The information and guidance provided through our services are for informational purposes only and
               should not be construed as legal advice. No attorney-client relationship is formed through your
               use of this service. For legal representation, please consult a licensed attorney in your jurisdiction.
