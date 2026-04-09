@@ -36,21 +36,13 @@ export const metadata: Metadata = {
     url: "https://imfrustrated.org",
     siteName: "I'm Frustrated dot Org",
     type: "website",
-    images: [
-      {
-        url: "/logo.svg",
-        width: 512,
-        height: 512,
-        alt: "I'm Frustrated dot Org — free legal guidance from volunteer attorneys",
-      },
-    ],
+    locale: "en_US",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
     description:
       "Talk to a real attorney before you hire one. Free, honest legal guidance to help you figure out your next step.",
-    images: ["/logo.svg"],
   },
 };
 
