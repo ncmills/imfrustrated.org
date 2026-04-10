@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Header, FadeInSection } from "@/components/ClientSections";
+import IntakeForm from "@/components/IntakeForm";
 
 /* ─── Data ─── */
 const testimonials = [
@@ -245,32 +246,21 @@ export default function Home() {
           className="relative py-28 md:py-36 bg-cream noise-overlay overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-coral/[0.04] rounded-full blur-[120px] -translate-x-1/3 -translate-y-1/3" />
-          <FadeInSection className="relative z-10 max-w-2xl mx-auto px-6 md:px-10 text-center">
-            <p className="text-coral text-sm font-semibold uppercase tracking-[0.2em] mb-4">
-              Get In Touch
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal leading-tight">
-              Frustrated? <br className="hidden sm:block" />
-              Let&rsquo;s talk it out<span className="text-coral">.</span>
-            </h2>
-            <p className="text-muted text-lg leading-relaxed mt-6 mb-10">
-              No commitment, no invoice, no judgment. Just an honest conversation
-              with someone who understands the law and actually wants to help.
-            </p>
-            <a
-              href="mailto:info@imfrustrated.org"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-coral text-white text-base font-medium rounded-full hover:bg-coral-dark hover:shadow-xl hover:shadow-coral/20 transition-all duration-300 group"
-            >
-              <svg
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                className="w-5 h-5 group-hover:scale-110 transition-transform"
-              >
-                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-              </svg>
-              info@imfrustrated.org
-            </a>
+          <FadeInSection className="relative z-10 max-w-2xl mx-auto px-6 md:px-10">
+            <div className="text-center mb-10">
+              <p className="text-coral text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+                Get In Touch
+              </p>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal leading-tight">
+                Frustrated? <br className="hidden sm:block" />
+                Let&rsquo;s talk it out<span className="text-coral">.</span>
+              </h2>
+              <p className="text-muted text-lg leading-relaxed mt-6">
+                No commitment, no invoice, no judgment. Just an honest conversation
+                with someone who understands the law and actually wants to help.
+              </p>
+            </div>
+            <IntakeForm />
           </FadeInSection>
         </section>
       </main>
