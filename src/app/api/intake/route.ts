@@ -94,7 +94,7 @@ export async function POST(request: Request) {
   if (process.env.RESEND_API_KEY) {
     try {
       const resend = new Resend(process.env.RESEND_API_KEY.trim());
-      await resend.emails.send({
+      const { data: sent, error: sendErr } = await resend.emails.send({
         from: "I'm Frustrated <info@imfrustrated.org>",
         to: "info@imfrustrated.org",
         replyTo: email,
@@ -109,6 +109,12 @@ export async function POST(request: Request) {
           ${message ? `<h3 style="font-family:sans-serif;margin-top:24px;">Message</h3><p style="font-family:sans-serif;white-space:pre-wrap;">${message.replace(/[<>&]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c] || c))}</p>` : ""}
         `,
       });
+      if (sendErr) {
+        throw new Error(`Resend error: ${(sendErr as { name?: string }).name || "unknown"} — ${sendErr.message || String(sendErr)}`);
+      }
+      if (!sent?.id) {
+        throw new Error("Resend returned no id");
+      }
     } catch (err) {
       console.error("[intake] Resend notification failed:", err);
     }
