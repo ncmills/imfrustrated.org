@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -56,6 +57,9 @@ export function Header() {
           <a href="#how-it-works" className="hover:text-coral transition-colors duration-300">
             How It Works
           </a>
+          <Link href="/free-tools" className="hover:text-coral transition-colors duration-300">
+            Free Tools
+          </Link>
           <a href="#testimonials" className="hover:text-coral transition-colors duration-300">
             Testimonials
           </a>

@@ -145,8 +145,9 @@ export default function HowItWorksPage() {
             >
               info@imfrustrated.org
             </a>
-            <div className="mt-12 flex justify-center gap-6 text-sm">
+            <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap">
               <Link href="/about" className="text-muted hover:text-coral">About us</Link>
+              <Link href="/free-tools" className="text-muted hover:text-coral">Free tools</Link>
               <Link href="/faq" className="text-muted hover:text-coral">FAQ</Link>
               <Link href="/" className="text-muted hover:text-coral">Home</Link>
             </div>

@@ -136,7 +136,8 @@ export default function RootLayout({
             "name": "I'm Frustrated dot Org",
             "url": "https://imfrustrated.org",
             "email": "info@imfrustrated.org",
-            "nonprofitStatus": "Nonprofit501c3"
+            "nonprofitStatus": "Nonprofit501c3",
+            "sameAs": ["https://idonthaveawill.com"]
           }) }}
         />
         <PostHogProvider>

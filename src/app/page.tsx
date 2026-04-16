@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Header, FadeInSection } from "@/components/ClientSections";
 import IntakeForm from "@/components/IntakeForm";
 
@@ -199,6 +200,84 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Free Tools */}
+        <section id="tools" className="relative py-28 md:py-36 bg-cream noise-overlay overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-coral/[0.04] rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3" />
+          <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10">
+            <FadeInSection className="text-center mb-14">
+              <p className="text-coral text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+                Free Tools
+              </p>
+              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-charcoal">
+                More than a conversation<span className="text-coral">.</span>
+              </h2>
+              <p className="text-muted text-lg leading-relaxed mt-6 max-w-2xl mx-auto">
+                Sometimes you don&rsquo;t need advice. You need the thing itself. Here are the free tools we&rsquo;ve built for people who&rsquo;d rather just handle it.
+              </p>
+            </FadeInSection>
+
+            <FadeInSection>
+              <a
+                href="https://idonthaveawill.com"
+                target="_blank"
+                rel="noopener"
+                className="group block bg-warm-white border border-border/60 rounded-2xl p-8 md:p-12 hover:border-coral/40 hover:shadow-xl hover:shadow-coral/[0.06] transition-all duration-500"
+              >
+                <div className="grid md:grid-cols-[auto,1fr,auto] items-center gap-8">
+                  <div className="text-coral group-hover:scale-110 transition-transform duration-300">
+                    <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 6h18l8 8v28a2 2 0 01-2 2H12a2 2 0 01-2-2V8a2 2 0 012-2z" />
+                      <path d="M30 6v8h8" />
+                      <path d="M16 32l5 5 11-11" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+
+                  <div>
+                    <p className="text-coral text-xs font-semibold uppercase tracking-[0.2em] mb-2">
+                      Free Will Generator
+                    </p>
+                    <h3 className="font-serif text-2xl md:text-3xl font-semibold text-charcoal mb-3">
+                      I Don&rsquo;t Have a Will
+                    </h3>
+                    <p className="text-muted text-[0.95rem] md:text-base leading-relaxed">
+                      A free self-help tool to draft a simple will in about ten minutes. Covers all 50 US states and DC. No account, no fees, no data stored — everything happens in your browser.
+                    </p>
+                    <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted">
+                      <span className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-coral" />
+                        50 states + DC
+                      </span>
+                      <span className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-coral" />
+                        About 10 minutes
+                      </span>
+                      <span className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-coral" />
+                        Stays on your device
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="md:justify-self-end">
+                    <span className="inline-flex items-center gap-2 px-6 py-3 bg-coral text-white text-sm font-medium rounded-full group-hover:bg-coral-dark transition-colors duration-300">
+                      Open the tool
+                      <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300">
+                        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </FadeInSection>
+
+            <FadeInSection className="text-center mt-10">
+              <Link href="/free-tools" className="text-sm text-muted hover:text-coral transition-colors duration-300">
+                See all free tools →
+              </Link>
+            </FadeInSection>
+          </div>
+        </section>
+
         {/* Testimonials */}
         <section
           id="testimonials"
@@ -289,6 +368,9 @@ export default function Home() {
               <a href="#how-it-works" className="hover:text-coral transition-colors duration-300">
                 How It Works
               </a>
+              <Link href="/free-tools" className="hover:text-coral transition-colors duration-300">
+                Free Tools
+              </Link>
               <a href="#testimonials" className="hover:text-coral transition-colors duration-300">
                 Testimonials
               </a>

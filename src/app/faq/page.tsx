@@ -53,6 +53,11 @@ const FAQS: { question: string; answer: string }[] = [
       "Anything that has you frustrated with a system or a person and you don't know what to do next. Common ones: landlord-tenant disputes, small business questions, contract confusion, denial letters from insurance or government agencies, family law situations that haven't escalated yet, estate planning questions, employment issues, and consumer disputes. If we can't help with your specific issue, we'll tell you and try to point you in the right direction.",
   },
   {
+    question: "Can you help me write a will or plan my estate?",
+    answer:
+      "Yes, in two different ways depending on what you need. If your situation is simple — a basic will leaving things to obvious people, no contested family dynamics, no special-needs beneficiaries, no complicated business interests — we built a free self-help tool at idonthaveawill.com that lets you draft a state-specific will in about ten minutes, entirely in your browser. No account, no fees, no data stored. If your situation is more complicated than that, email us and a volunteer attorney with estate planning experience will help you think through what you actually need before you go pay an estate planning specialist.",
+  },
+  {
     question: "How fast will I hear back?",
     answer:
       "Usually within a few days. Volunteers have day jobs, so we don't promise an immediate response — but we try to get to every email within a week. If your situation is genuinely time-sensitive (a court date, an eviction notice, a contract deadline), say so in your first email and we'll triage accordingly.",
@@ -147,8 +152,9 @@ export default function FaqPage() {
             >
               info@imfrustrated.org
             </a>
-            <div className="mt-12 flex justify-center gap-6 text-sm">
+            <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap">
               <Link href="/how-it-works" className="text-muted hover:text-coral">How it works</Link>
+              <Link href="/free-tools" className="text-muted hover:text-coral">Free tools</Link>
               <Link href="/about" className="text-muted hover:text-coral">About us</Link>
               <Link href="/" className="text-muted hover:text-coral">Home</Link>
             </div>

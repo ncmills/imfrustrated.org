@@ -106,7 +106,7 @@ export default function Image() {
               letterSpacing: "-0.02em",
             }}
           >
-            I'm Frustrated
+            I&rsquo;m Frustrated
           </span>
           <span
             style={{
