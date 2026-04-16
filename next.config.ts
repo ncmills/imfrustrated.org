@@ -1,6 +1,23 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.imfrustrated.org" }],
+        destination: "https://imfrustrated.org/:path*",
+        permanent: true,
+      },
+      // Historical typo URLs (e.g. `/what-we-do1`) got indexed from
+      // external link mangling. Collapse the family onto the real page.
+      {
+        source: "/what-we-do:rest*",
+        destination: "/how-it-works",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
