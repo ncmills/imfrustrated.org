@@ -11,11 +11,9 @@ const nextConfig: NextConfig = {
       },
       // Historical typo URLs (e.g. `/what-we-do1`) got indexed from
       // external link mangling. Collapse the family onto the real page.
-      {
-        source: "/what-we-do:rest*",
-        destination: "/how-it-works",
-        permanent: true,
-      },
+      { source: "/what-we-do", destination: "/how-it-works", permanent: true },
+      { source: "/what-we-do1", destination: "/how-it-works", permanent: true },
+      { source: "/what-we-do/:rest*", destination: "/how-it-works", permanent: true },
     ];
   },
   async headers() {
