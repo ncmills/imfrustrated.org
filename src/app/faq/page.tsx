@@ -97,66 +97,89 @@ export default function FaqPage() {
     ],
   };
 
+  const pad2 = (n: number) => String(n).padStart(2, "0");
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <Header />
       <main>
-        <section className="relative py-24 md:py-32 bg-cream noise-overlay">
+        {/* Hero */}
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-24 bg-paper">
           <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
-            <nav className="text-xs text-muted mb-6">
-              <Link href="/" className="hover:text-forest">Home</Link>
-              <span className="mx-2">/</span>
-              <span>FAQ</span>
+            <nav className="text-[0.7rem] uppercase tracking-[0.22em] text-muted-warm mb-8 font-medium">
+              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
+              <span className="mx-3 text-rule">/</span>
+              <span className="text-amber">FAQ</span>
             </nav>
-            <p className="text-coral text-sm font-semibold uppercase tracking-[0.2em] mb-4">FAQ</p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-charcoal leading-tight tracking-tight mb-8">
-              Honest answers to the things <br /> people ask first<span className="text-coral">.</span>
+            <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">FAQ</p>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.75rem] font-semibold text-ink leading-[1.05] tracking-[-0.02em] mb-8">
+              Honest answers to the things <br className="hidden sm:block" /> people ask first<span className="text-amber">.</span>
             </h1>
             <div className="decorative-rule mb-10" />
-            <p className="text-muted text-lg leading-relaxed">
-              Below are the questions we get most often. If your question isn&rsquo;t here, just email <a href="mailto:info@imfrustrated.org" className="text-coral hover:underline">info@imfrustrated.org</a> and ask.
+            <p className="text-muted-warm text-lg leading-relaxed">
+              Below are the questions we get most often. If your question isn&rsquo;t here, just email{" "}
+              <a
+                href="mailto:info@imfrustrated.org"
+                className="text-forest underline decoration-amber/70 decoration-[1.5px] underline-offset-[5px] hover:text-amber transition-colors"
+              >
+                info@imfrustrated.org
+              </a>
+              {" "}and ask.
+            </p>
+            <p className="script text-2xl md:text-3xl mt-8 -rotate-1">
+              we read every one.
             </p>
           </FadeInSection>
         </section>
 
-        <section className="py-16 md:py-24 bg-warm-white">
-          <div className="max-w-3xl mx-auto px-6 md:px-10 space-y-10">
+        {/* Q&A list */}
+        <section className="py-16 md:py-24 bg-paper-deep">
+          <div className="max-w-3xl mx-auto px-6 md:px-10">
             {FAQS.map((faq, i) => (
               <FadeInSection key={i}>
-                <div>
-                  <h2 className="font-serif text-xl md:text-2xl font-semibold text-charcoal mb-3">
-                    {faq.question}
-                  </h2>
-                  <p className="text-muted text-base md:text-lg leading-relaxed">
+                <article className="py-10 md:py-12 border-b border-rule last:border-b-0 first:pt-0">
+                  <div className="grid grid-cols-[auto,1fr] gap-x-5 md:gap-x-8 items-baseline">
+                    <span
+                      className="font-mono text-[0.8rem] text-amber tracking-widest select-none"
+                      aria-hidden="true"
+                    >
+                      {pad2(i + 1)}
+                    </span>
+                    <h2 className="font-serif text-xl md:text-[1.6rem] font-semibold text-ink leading-snug tracking-[-0.01em]">
+                      {faq.question}
+                    </h2>
+                  </div>
+                  <p className="text-muted-warm text-base md:text-lg leading-[1.7] mt-5 pl-0 md:pl-16">
                     {faq.answer}
                   </p>
-                </div>
+                </article>
               </FadeInSection>
             ))}
           </div>
         </section>
 
-        <section className="py-24 md:py-32 bg-cream">
+        {/* CTA */}
+        <section className="py-24 md:py-32 bg-paper">
           <FadeInSection className="max-w-2xl mx-auto px-6 md:px-10 text-center">
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-charcoal leading-snug mb-6">
-              Still have a question<span className="text-coral">?</span>
+            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink leading-snug mb-5 tracking-[-0.01em]">
+              Still have a question<span className="text-amber">?</span>
             </h2>
-            <p className="text-muted text-lg leading-relaxed mb-8">
-              Just ask. There&rsquo;s no form, no funnel, no signup. Email is the best way to reach us.
+            <p className="script text-2xl md:text-3xl mb-7 -rotate-1">
+              just ask. no form required.
             </p>
-            <a
-              href="mailto:info@imfrustrated.org"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-forest text-paper text-base font-medium rounded-full hover:bg-forest-deep transition-all duration-300"
-            >
+            <p className="text-muted-warm text-lg leading-relaxed mb-8">
+              There&rsquo;s no form, no funnel, no signup. Email is the best way to reach us.
+            </p>
+            <a href="mailto:info@imfrustrated.org" className="btn-forest">
               info@imfrustrated.org
             </a>
-            <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap">
-              <Link href="/how-it-works" className="text-muted hover:text-forest">How it works</Link>
-              <Link href="/free-tools" className="text-muted hover:text-forest">Free tools</Link>
-              <Link href="/about" className="text-muted hover:text-forest">About us</Link>
-              <Link href="/" className="text-muted hover:text-forest">Home</Link>
+            <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-muted-warm">
+              <Link href="/how-it-works" className="hover:text-forest transition-colors">How it works</Link>
+              <Link href="/free-tools" className="hover:text-forest transition-colors">Free tools</Link>
+              <Link href="/about" className="hover:text-forest transition-colors">About us</Link>
+              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
             </div>
           </FadeInSection>
         </section>
