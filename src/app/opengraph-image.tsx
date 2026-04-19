@@ -17,21 +17,22 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#1A1A1A",
+          background:
+            "linear-gradient(180deg, #faf6ef 0%, #f0e9dc 100%)",
           position: "relative",
+          padding: "80px",
         }}
       >
-        {/* Coral glow */}
         <div
           style={{
             position: "absolute",
-            top: -100,
-            right: -100,
-            width: 500,
-            height: 500,
+            top: -120,
+            right: -120,
+            width: 520,
+            height: 520,
             borderRadius: "50%",
-            background: "rgba(232, 102, 74, 0.12)",
-            filter: "blur(80px)",
+            background: "rgba(45, 74, 62, 0.08)",
+            filter: "blur(90px)",
           }}
         />
         <div
@@ -39,118 +40,99 @@ export default function Image() {
             position: "absolute",
             bottom: -100,
             left: -100,
-            width: 400,
-            height: 400,
+            width: 420,
+            height: 420,
             borderRadius: "50%",
-            background: "rgba(232, 102, 74, 0.08)",
-            filter: "blur(60px)",
+            background: "rgba(192, 138, 62, 0.12)",
+            filter: "blur(80px)",
           }}
         />
 
-        {/* Logo - speech bubble */}
+        {/* Glyph */}
         <svg
-          width="80"
-          height="80"
-          viewBox="0 0 40 40"
+          width="88"
+          height="88"
+          viewBox="0 0 48 48"
           fill="none"
-          style={{ marginBottom: 24 }}
+          style={{ marginBottom: 32 }}
         >
-          <rect x="4" y="4" width="32" height="24" rx="6" fill="#E8664A" />
-          <polygon points="10,28 10,36 18,28" fill="#E8664A" />
-          <line
-            x1="13"
-            y1="13"
-            x2="17"
-            y2="15"
-            stroke="#FEFCFA"
-            strokeWidth="2"
-            strokeLinecap="round"
+          <path
+            d="M24 5.5c10.493 0 19 7.387 19 16.5 0 9.113-8.507 16.5-19 16.5-1.866 0-3.668-.234-5.372-.67L9.6 42.5l2.658-8.02C8.136 31.44 5 26.98 5 22 5 12.887 13.507 5.5 24 5.5Z"
+            fill="#2d4a3e"
           />
-          <line
-            x1="27"
-            y1="13"
-            x2="23"
-            y2="15"
-            stroke="#FEFCFA"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-          <circle cx="15" cy="19" r="1.5" fill="#FEFCFA" />
-          <circle cx="25" cy="19" r="1.5" fill="#FEFCFA" />
-          <line
-            x1="15"
-            y1="24"
-            x2="25"
-            y2="24"
-            stroke="#FEFCFA"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
+          <circle cx="24" cy="21.5" r="3.2" fill="#c08a3e" />
         </svg>
 
-        {/* Title */}
+        {/* Wordmark */}
         <div
           style={{
             display: "flex",
             alignItems: "baseline",
-            gap: 12,
-            marginBottom: 16,
+            gap: 8,
+            marginBottom: 18,
           }}
         >
           <span
             style={{
-              fontSize: 64,
-              fontWeight: 700,
-              color: "#FEFCFA",
-              fontFamily: "serif",
-              letterSpacing: "-0.02em",
+              fontSize: 80,
+              fontWeight: 600,
+              color: "#1f1a14",
+              fontFamily: "Georgia, serif",
+              letterSpacing: "-0.025em",
             }}
           >
             I&rsquo;m Frustrated
           </span>
           <span
             style={{
-              fontSize: 64,
-              fontWeight: 700,
-              color: "#E8664A",
-              fontFamily: "serif",
+              fontSize: 44,
+              fontWeight: 500,
+              color: "#c08a3e",
+              fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+              position: "relative",
+              top: 10,
+              letterSpacing: "-0.01em",
             }}
           >
             .org
           </span>
         </div>
 
-        {/* Divider */}
+        {/* Rule */}
         <div
           style={{
             width: 60,
             height: 2,
-            backgroundColor: "#E8664A",
-            marginBottom: 20,
+            backgroundColor: "#c08a3e",
+            marginBottom: 26,
           }}
         />
 
         {/* Tagline */}
         <span
           style={{
-            fontSize: 28,
-            color: "rgba(254, 252, 250, 0.6)",
-            fontFamily: "sans-serif",
+            fontSize: 36,
+            color: "#3a3128",
+            fontFamily: "Georgia, serif",
+            fontWeight: 500,
+            letterSpacing: "-0.01em",
+            textAlign: "center",
           }}
         >
-          Friends who are also lawyers.
+          Friends who are also lawyers<span style={{ color: "#c08a3e" }}>.</span>
         </span>
 
         {/* Subtitle */}
         <span
           style={{
-            fontSize: 20,
-            color: "rgba(254, 252, 250, 0.35)",
+            fontSize: 22,
+            color: "#6b5d4a",
             fontFamily: "sans-serif",
-            marginTop: 12,
+            marginTop: 14,
+            textAlign: "center",
           }}
         >
-          Free legal guidance to help you figure out your next step.
+          The conversation you have before you hire a lawyer.
         </span>
       </div>
     ),

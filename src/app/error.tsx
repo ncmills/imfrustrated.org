@@ -12,7 +12,7 @@ export default function Error({ reset }: { error: Error; reset: () => void }) {
         </p>
         <button
           onClick={reset}
-          className="inline-flex items-center gap-2 px-8 py-3.5 bg-coral text-white text-sm font-medium rounded-full hover:bg-coral-dark transition-colors duration-300"
+          className="inline-flex items-center gap-2 px-8 py-3.5 bg-forest text-paper text-sm font-medium rounded-full hover:bg-forest-deep transition-colors duration-300"
         >
           Try Again
         </button>

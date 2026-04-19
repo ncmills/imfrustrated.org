@@ -1,19 +1,36 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Source_Serif_4, Inter, Caveat, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import PostHogProvider from "@/components/PostHogProvider";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -54,7 +71,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className={`${playfair.variable} ${dmSans.variable}`}>
+      <body
+        className={`${sourceSerif.variable} ${inter.variable} ${caveat.variable} ${jetbrains.variable}`}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -144,14 +163,14 @@ export default function RootLayout({
           {children}
         </PostHogProvider>
         <footer className="py-4 text-center">
-          <p className="text-[10px] text-gray-400/30">
-            <a href="https://whatpeptidesdo.com" rel="nofollow" className="hover:text-gray-400/50 transition-colors">whatpeptidesdo.com</a>
+          <p className="text-[10px] text-muted-warm/40">
+            <a href="https://whatpeptidesdo.com" rel="nofollow" className="hover:text-muted-warm transition-colors">whatpeptidesdo.com</a>
             {" · "}
-            <a href="https://idonthaveawill.com" rel="nofollow" className="hover:text-gray-400/50 transition-colors">idonthaveawill.com</a>
+            <a href="https://idonthaveawill.com" rel="nofollow" className="hover:text-muted-warm transition-colors">idonthaveawill.com</a>
             {" · "}
-            <a href="https://doppelwriter.com" rel="nofollow" className="hover:text-gray-400/50 transition-colors">doppelwriter.com</a>
+            <a href="https://doppelwriter.com" rel="nofollow" className="hover:text-muted-warm transition-colors">doppelwriter.com</a>
             {" · "}
-            <a href="https://tourdefore.com" rel="nofollow" className="hover:text-gray-400/50 transition-colors">tourdefore.com</a>
+            <a href="https://tourdefore.com" rel="nofollow" className="hover:text-muted-warm transition-colors">tourdefore.com</a>
           </p>
         </footer>
         <Analytics />

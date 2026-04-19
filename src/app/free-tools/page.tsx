@@ -70,7 +70,7 @@ export default function FreeToolsPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-warm-white via-transparent to-cream opacity-40" />
           <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
             <nav className="text-xs text-muted mb-6">
-              <Link href="/" className="hover:text-coral">Home</Link>
+              <Link href="/" className="hover:text-forest">Home</Link>
               <span className="mx-2">/</span>
               <span>Free Tools</span>
             </nav>
@@ -137,7 +137,7 @@ export default function FreeToolsPage() {
                   ))}
                 </ul>
 
-                <span className="inline-flex items-center gap-2 px-8 py-3.5 bg-coral text-white text-sm font-medium rounded-full group-hover:bg-coral-dark transition-colors duration-300">
+                <span className="inline-flex items-center gap-2 px-8 py-3.5 bg-forest text-paper text-sm font-medium rounded-full group-hover:bg-forest-deep transition-colors duration-300">
                   Open the tool at idonthaveawill.com
                   <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300">
                     <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
@@ -164,7 +164,7 @@ export default function FreeToolsPage() {
             </p>
             <a
               href="mailto:info@imfrustrated.org?subject=Free%20tool%20idea"
-              className="inline-flex items-center gap-2 px-8 py-3.5 border border-border text-charcoal text-sm font-medium rounded-full hover:border-coral hover:text-coral transition-colors duration-300"
+              className="inline-flex items-center gap-2 px-8 py-3.5 border border-border text-charcoal text-sm font-medium rounded-full hover:border-coral hover:text-forest transition-colors duration-300"
             >
               Send us an idea
             </a>
@@ -179,15 +179,15 @@ export default function FreeToolsPage() {
             </p>
             <a
               href="mailto:info@imfrustrated.org"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-coral text-white text-base font-medium rounded-full hover:bg-coral-dark transition-all duration-300"
+              className="inline-flex items-center gap-3 px-10 py-4 bg-forest text-paper text-base font-medium rounded-full hover:bg-forest-deep transition-all duration-300"
             >
               info@imfrustrated.org
             </a>
             <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap">
-              <Link href="/how-it-works" className="text-muted hover:text-coral">How it works</Link>
-              <Link href="/about" className="text-muted hover:text-coral">About us</Link>
-              <Link href="/faq" className="text-muted hover:text-coral">FAQ</Link>
-              <Link href="/" className="text-muted hover:text-coral">Home</Link>
+              <Link href="/how-it-works" className="text-muted hover:text-forest">How it works</Link>
+              <Link href="/about" className="text-muted hover:text-forest">About us</Link>
+              <Link href="/faq" className="text-muted hover:text-forest">FAQ</Link>
+              <Link href="/" className="text-muted hover:text-forest">Home</Link>
             </div>
           </FadeInSection>
         </section>

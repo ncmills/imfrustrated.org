@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Header, FadeInSection } from "@/components/ClientSections";
+import { Header, FadeInSection, Wordmark } from "@/components/ClientSections";
 import IntakeForm from "@/components/IntakeForm";
 
 /* ─── Data ─── */
@@ -33,128 +32,108 @@ const testimonials = [
 
 const howItWorks = [
   {
+    numeral: "I",
     title: "You Talk, We Listen",
     description:
       "Tell us what's going on — plain English, no legalese required. We'll hear you out the way a friend would, except this friend went to law school.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10" stroke="currentColor" strokeWidth="1.5">
-        <path d="M8 32V16a2 2 0 012-2h20a2 2 0 012 2v12a2 2 0 01-2 2H16l-8 6z" />
-        <circle cx="16" cy="22" r="1.5" fill="currentColor" />
-        <circle cx="22" cy="22" r="1.5" fill="currentColor" />
-        <circle cx="28" cy="22" r="1.5" fill="currentColor" />
-      </svg>
-    ),
   },
   {
+    numeral: "II",
     title: "We Break It Down",
     description:
       "We'll explain where you stand legally, what your options look like, and what questions you should be asking — so you can walk into any next step informed.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="24" cy="24" r="16" />
-        <path d="M24 16v8l6 4" />
-      </svg>
-    ),
   },
   {
+    numeral: "III",
     title: "You Decide What's Next",
     description:
       "Maybe you need to hire a lawyer. Maybe you don't. Either way, you'll know what you're dealing with and won't get taken for a ride.",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10" stroke="currentColor" strokeWidth="1.5">
-        <path d="M12 24l8 8 16-16" />
-        <rect x="6" y="6" width="36" height="36" rx="4" />
-      </svg>
-    ),
   },
 ];
 
-/* ─── Page (Server Component) ─── */
 export default function Home() {
   return (
     <>
       <Header />
-      <main>
-        {/* Hero */}
+      <main className="relative">
+        {/* ─── Hero ─── */}
         <section
           id="top"
-          className="relative min-h-[100vh] flex items-center justify-center noise-overlay overflow-hidden"
+          className="relative min-h-[100vh] flex items-center justify-center overflow-hidden"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-cream via-warm-white to-cream" />
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-coral/[0.04] rounded-full blur-[120px] -translate-y-1/3 translate-x-1/4" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-coral/[0.06] rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4" />
+          <div className="absolute inset-0 bg-gradient-to-b from-paper-lift via-paper to-paper" />
+          <div className="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full bg-forest/[0.05] blur-[140px]" />
+          <div className="absolute bottom-0 -left-32 w-[420px] h-[420px] rounded-full bg-amber/[0.08] blur-[120px]" />
 
-          <div className="absolute inset-0 max-w-6xl mx-auto px-10 hidden lg:block">
-            <div className="absolute top-0 bottom-0 left-10 w-px bg-border/40" />
-            <div className="absolute top-0 bottom-0 right-10 w-px bg-border/40" />
+          {/* Side rules */}
+          <div className="absolute inset-0 max-w-6xl mx-auto px-10 hidden lg:block pointer-events-none">
+            <div className="absolute top-0 bottom-0 left-10 w-px bg-rule/60" />
+            <div className="absolute top-0 bottom-0 right-10 w-px bg-rule/60" />
           </div>
 
-          <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-10 text-center">
+          <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-10 text-center pt-28 pb-16">
             <div className="animate-fade-in-up">
-              <div className="decorative-rule mx-auto mb-8" />
-              <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-charcoal leading-[1.05] tracking-tight">
+              <h1 className="font-serif text-[3.25rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-semibold text-ink leading-[1.02] tracking-[-0.028em]">
                 Friends who are
                 <br />
-                also lawyers<span className="text-coral">.</span>
+                also lawyers<span className="text-amber">.</span>
               </h1>
+              <p className="script text-[1.75rem] sm:text-3xl md:text-4xl mt-6 -rotate-1">
+                the conversation you have
+                <br className="sm:hidden" /> before you hire a lawyer
+              </p>
             </div>
 
-            <p className="animate-fade-in-up delay-200 mt-8 text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed">
-              Ring an attorney friend to get their take on your issue
-              <br className="hidden sm:block" /> and how best to proceed. Because everyone needs a friend who is a lawyer.
-            </p>
+            <div className="animate-fade-in-up delay-200">
+              <div className="decorative-rule mx-auto my-10" />
+              <p className="text-muted-warm text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                Ring an attorney friend to get their take on your issue
+                <br className="hidden sm:block" /> and how best to proceed. Because everyone needs a friend who is a lawyer.
+              </p>
+            </div>
 
             <div className="animate-fade-in-up delay-400 mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="#mission"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-charcoal text-warm-white text-sm font-medium rounded-full hover:bg-coral transition-colors duration-300"
-              >
-                Learn More
+              <a href="#contact" className="btn-forest">
+                Get In Touch
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                  <path
-                    fillRule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
+                  <path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" />
                 </svg>
               </a>
-              <a
-                href="mailto:info@imfrustrated.org"
-                className="inline-flex items-center gap-2 px-8 py-3.5 border border-border text-charcoal text-sm font-medium rounded-full hover:border-coral hover:text-coral transition-colors duration-300"
-              >
-                Get In Touch
+              <a href="#mission" className="btn-ghost">
+                Learn More
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
               </a>
             </div>
           </div>
 
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-fade-in delay-700">
-            <div className="w-px h-12 bg-gradient-to-b from-transparent via-coral/40 to-coral/10 mx-auto" />
+            <div className="w-px h-12 bg-gradient-to-b from-transparent via-amber/40 to-amber/10 mx-auto" />
           </div>
         </section>
 
-        {/* Mission */}
-        <section id="mission" className="relative py-28 md:py-36 bg-cream noise-overlay">
-          <div className="absolute inset-0 bg-gradient-to-b from-warm-white via-transparent to-warm-white opacity-40" />
+        {/* ─── Mission ─── */}
+        <section id="mission" className="relative py-28 md:py-36 bg-paper">
           <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10 text-center">
-            <p className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-charcoal tracking-tight mb-12">
-              I&rsquo;m Frustrated
-              <Image src="/logo.svg" alt="Dot Org symbol representing free legal guidance" width={80} height={80} className="inline-block align-middle w-16 sm:w-20 md:w-24 lg:w-28 h-auto mx-2" />
-            </p>
-            <p className="text-coral text-sm font-semibold uppercase tracking-[0.2em] mb-6">
+            <div className="mb-10 flex justify-center">
+              <Wordmark size="lg" />
+            </div>
+            <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-6">
               What We Do
             </p>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] font-semibold text-charcoal leading-snug">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] font-semibold text-ink leading-snug tracking-[-0.01em]">
               The conversation you have before
-              you hire a lawyer.
+              <br className="hidden sm:block" /> you hire a lawyer.
             </h2>
             <div className="decorative-rule mx-auto my-10" />
-            <p className="text-muted text-lg md:text-xl leading-relaxed">
+            <p className="text-muted-warm text-lg md:text-xl leading-relaxed">
               Legal problems are stressful enough without walking into them blind.
               We&rsquo;re a group of practicing attorneys who volunteer our time to give
               people a real, informed perspective on their situation — before they
               spend a dime on representation.
             </p>
-            <p className="text-muted text-base md:text-lg leading-relaxed mt-6">
+            <p className="text-muted-warm text-base md:text-lg leading-relaxed mt-6">
               We don&rsquo;t represent you. We won&rsquo;t be your lawyers. What we
               will do is sit down with you, hear you out, and help you understand
               what you&rsquo;re actually dealing with — the way a friend who happens
@@ -165,53 +144,68 @@ export default function Home() {
           </FadeInSection>
         </section>
 
-        {/* How It Works */}
-        <section id="how-it-works" className="py-28 md:py-36 bg-warm-white">
-          <div className="max-w-6xl mx-auto px-6 md:px-10">
-            <FadeInSection className="text-center mb-16">
-              <p className="text-coral text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+        {/* ─── How It Works — as numbered chapters ─── */}
+        <section id="how-it-works" className="relative py-28 md:py-36 bg-paper-deep">
+          <div className="max-w-5xl mx-auto px-6 md:px-10">
+            <FadeInSection className="text-center mb-20">
+              <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">
                 How It Works
               </p>
-              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-charcoal">
-                Simple as calling a friend<span className="text-coral">.</span>
+              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink tracking-[-0.01em]">
+                Simple as calling a friend<span className="text-amber">.</span>
               </h2>
             </FadeInSection>
 
-            <FadeInSection>
-              <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-                {howItWorks.map((step) => (
-                  <div
-                    key={step.title}
-                    className="group relative bg-cream/60 border border-border/60 rounded-2xl p-8 md:p-10 hover:border-coral/30 hover:shadow-lg hover:shadow-coral/[0.04] transition-all duration-500"
-                  >
-                    <div className="text-coral mb-6 group-hover:scale-110 transition-transform duration-300">
-                      {step.icon}
+            <div className="space-y-16 md:space-y-20">
+              {howItWorks.map((step, i) => (
+                <FadeInSection key={step.title}>
+                  <article className="grid md:grid-cols-[auto,1fr] gap-x-10 md:gap-x-14 gap-y-4 items-start">
+                    <div
+                      className="chapter-numeral relative"
+                      aria-hidden="true"
+                    >
+                      {step.numeral}
+                      <span className="absolute -bottom-2 left-0 h-[2px] w-10 bg-amber" />
                     </div>
-                    <h3 className="font-serif text-xl font-semibold text-charcoal mb-3">
-                      {step.title}
-                    </h3>
-                    <p className="text-muted text-[0.95rem] leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </FadeInSection>
+                    <div className="md:pt-4">
+                      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-amber mb-3">
+                        Chapter {step.numeral}
+                      </p>
+                      <h3 className="font-serif text-2xl md:text-[1.85rem] font-semibold text-ink mb-4 tracking-[-0.01em]">
+                        {step.title}
+                      </h3>
+                      <p className="text-muted-warm text-lg leading-[1.65] max-w-prose">
+                        {step.description}
+                      </p>
+                    </div>
+                  </article>
+                  {i < howItWorks.length - 1 && (
+                    <div className="mt-16 md:mt-20 flex items-center gap-4" aria-hidden="true">
+                      <span className="h-px flex-1 bg-rule" />
+                      <svg viewBox="0 0 20 20" className="w-3 h-3 text-amber" fill="currentColor">
+                        <circle cx="10" cy="10" r="4" />
+                      </svg>
+                      <span className="h-px flex-1 bg-rule" />
+                    </div>
+                  )}
+                </FadeInSection>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* Free Tools */}
-        <section id="tools" className="relative py-28 md:py-36 bg-cream noise-overlay overflow-hidden">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-coral/[0.04] rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3" />
+        {/* ─── Free Tools (preserved card, restyled to palette) ─── */}
+        <section id="tools" className="relative py-28 md:py-36 bg-paper overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber/[0.05] rounded-full blur-[140px] translate-x-1/3 -translate-y-1/3" />
           <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10">
             <FadeInSection className="text-center mb-14">
-              <p className="text-coral text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+              <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">
                 Free Tools
               </p>
-              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-charcoal">
-                More than a conversation<span className="text-coral">.</span>
+              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink tracking-[-0.01em]">
+                More than a conversation<span className="text-amber">.</span>
               </h2>
-              <p className="text-muted text-lg leading-relaxed mt-6 max-w-2xl mx-auto">
+              <p className="text-muted-warm text-lg leading-relaxed mt-6 max-w-2xl mx-auto">
                 Sometimes you don&rsquo;t need advice. You need the thing itself. Here are the free tools we&rsquo;ve built for people who&rsquo;d rather just handle it.
               </p>
             </FadeInSection>
@@ -221,10 +215,10 @@ export default function Home() {
                 href="https://idonthaveawill.com"
                 target="_blank"
                 rel="noopener"
-                className="group block bg-warm-white border border-border/60 rounded-2xl p-8 md:p-12 hover:border-coral/40 hover:shadow-xl hover:shadow-coral/[0.06] transition-all duration-500"
+                className="group block bg-paper-lift border border-rule rounded-[6px] p-8 md:p-12 hover:border-forest/40 transition-all duration-500 hover:shadow-[0_24px_48px_-28px_rgba(45,74,62,0.35)]"
               >
                 <div className="grid md:grid-cols-[auto,1fr,auto] items-center gap-8">
-                  <div className="text-coral group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-forest group-hover:text-amber transition-colors duration-300">
                     <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12" stroke="currentColor" strokeWidth="1.5">
                       <path d="M12 6h18l8 8v28a2 2 0 01-2 2H12a2 2 0 01-2-2V8a2 2 0 012-2z" />
                       <path d="M30 6v8h8" />
@@ -233,33 +227,33 @@ export default function Home() {
                   </div>
 
                   <div>
-                    <p className="text-coral text-xs font-semibold uppercase tracking-[0.2em] mb-2">
+                    <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-2">
                       Free Will Generator
                     </p>
-                    <h3 className="font-serif text-2xl md:text-3xl font-semibold text-charcoal mb-3">
+                    <h3 className="font-serif text-2xl md:text-3xl font-semibold text-ink mb-3 tracking-[-0.01em]">
                       I Don&rsquo;t Have a Will
                     </h3>
-                    <p className="text-muted text-[0.95rem] md:text-base leading-relaxed">
+                    <p className="text-muted-warm text-[0.95rem] md:text-base leading-relaxed">
                       A free self-help tool to draft a simple will in about ten minutes. Covers all 50 US states and DC. No account, no fees, no data stored — everything happens in your browser.
                     </p>
-                    <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted">
+                    <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-warm">
                       <span className="flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-coral" />
+                        <span className="w-1 h-1 rounded-full bg-amber" />
                         50 states + DC
                       </span>
                       <span className="flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-coral" />
+                        <span className="w-1 h-1 rounded-full bg-amber" />
                         About 10 minutes
                       </span>
                       <span className="flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-coral" />
+                        <span className="w-1 h-1 rounded-full bg-amber" />
                         Stays on your device
                       </span>
                     </div>
                   </div>
 
                   <div className="md:justify-self-end">
-                    <span className="inline-flex items-center gap-2 px-6 py-3 bg-coral text-white text-sm font-medium rounded-full group-hover:bg-coral-dark transition-colors duration-300">
+                    <span className="inline-flex items-center gap-2 px-6 py-3 bg-forest text-paper text-sm font-medium rounded-full group-hover:bg-forest-deep transition-colors duration-300">
                       Open the tool
                       <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300">
                         <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
@@ -271,70 +265,79 @@ export default function Home() {
             </FadeInSection>
 
             <FadeInSection className="text-center mt-10">
-              <Link href="/free-tools" className="text-sm text-muted hover:text-coral transition-colors duration-300">
+              <Link href="/free-tools" className="text-sm text-muted-warm hover:text-forest transition-colors duration-300">
                 See all free tools →
               </Link>
             </FadeInSection>
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* ─── Testimonials — newspaper pull-quotes ─── */}
         <section
           id="testimonials"
-          className="relative py-28 md:py-36 bg-charcoal noise-overlay overflow-hidden"
+          className="relative py-28 md:py-36 bg-paper-deep overflow-hidden"
         >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-coral/[0.05] rounded-full blur-[150px]" />
-
           <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10">
-            <FadeInSection className="text-center mb-16" threshold={0.05}>
-              <p className="text-coral text-sm font-semibold uppercase tracking-[0.2em] mb-4">
-                Testimonials
+            <FadeInSection className="text-center mb-20" threshold={0.05}>
+              <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">
+                In Their Own Words
               </p>
-              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-warm-white">
-                From frustration to resolution<span className="text-coral">.</span>
+              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink tracking-[-0.01em]">
+                From frustration to resolution<span className="text-amber">.</span>
               </h2>
             </FadeInSection>
 
             <FadeInSection threshold={0.05}>
-              <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-                {testimonials.map((t) => (
-                  <div
-                    key={t.name}
-                    className="relative bg-white/[0.05] border border-white/[0.08] backdrop-blur-sm rounded-2xl p-8 md:p-10 hover:bg-white/[0.08] transition-all duration-500"
-                  >
-                    <div className="quote-mark">&ldquo;</div>
-                    <blockquote className="relative z-10 text-white/80 text-[0.95rem] leading-relaxed mb-6 pl-4">
-                      &ldquo;{t.text}&rdquo;
-                    </blockquote>
-                    <div className="flex items-center gap-3 pl-4">
-                      <div className="w-8 h-px bg-coral/60" />
-                      <span className="text-coral-light text-sm font-medium">
-                        {t.name}
-                      </span>
-                    </div>
-                  </div>
-                ))}
+              <div className="grid md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-14 md:gap-y-20">
+                {testimonials.map((t, i) => {
+                  // alternate sizes for visual rhythm
+                  const isLarge = i === 0 || i === 4;
+                  const isSmall = i === 3;
+                  const textSize = isLarge
+                    ? "text-[1.5rem] md:text-[1.8rem] leading-[1.35]"
+                    : isSmall
+                    ? "text-lg md:text-[1.2rem] leading-[1.5]"
+                    : "text-[1.2rem] md:text-[1.35rem] leading-[1.45]";
+                  // slight column offset on every other card for editorial rhythm
+                  const offset = i % 2 === 1 ? "md:pt-16" : "";
+                  return (
+                    <figure
+                      key={t.name}
+                      className={`pullquote ${offset}`}
+                    >
+                      <span className="pullquote__open" aria-hidden="true">&ldquo;</span>
+                      <blockquote className={`pullquote__body ${textSize}`}>
+                        {t.text}
+                      </blockquote>
+                      <figcaption className="pullquote__byline">
+                        <span>{t.name}</span>
+                      </figcaption>
+                    </figure>
+                  );
+                })}
               </div>
             </FadeInSection>
           </div>
         </section>
 
-        {/* Contact */}
+        {/* ─── Contact — the letter ─── */}
         <section
           id="contact"
-          className="relative py-28 md:py-36 bg-cream noise-overlay overflow-hidden"
+          className="relative py-28 md:py-36 bg-paper-deep overflow-hidden"
         >
-          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-coral/[0.04] rounded-full blur-[120px] -translate-x-1/3 -translate-y-1/3" />
+          {/* Horizontal rule separating from testimonials */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-rule" />
+
           <FadeInSection className="relative z-10 max-w-2xl mx-auto px-6 md:px-10">
-            <div className="text-center mb-10">
-              <p className="text-coral text-sm font-semibold uppercase tracking-[0.2em] mb-4">
+            <div className="text-center mb-12">
+              <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">
                 Get In Touch
               </p>
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal leading-tight">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-ink leading-tight tracking-[-0.015em]">
                 Frustrated? <br className="hidden sm:block" />
-                Let&rsquo;s talk it out<span className="text-coral">.</span>
+                Let&rsquo;s talk it out<span className="text-amber">.</span>
               </h2>
-              <p className="text-muted text-lg leading-relaxed mt-6">
+              <p className="text-muted-warm text-lg leading-relaxed mt-6 max-w-lg mx-auto">
                 No commitment, no invoice, no judgment. Just an honest conversation
                 with someone who understands the law and actually wants to help.
               </p>
@@ -344,50 +347,47 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-charcoal border-t border-white/[0.06]">
+      {/* ─── Footer ─── */}
+      <footer className="bg-ink relative">
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-12 md:py-16">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">
-              <a
-                href="#top"
-                className="flex items-center gap-2.5 font-serif text-xl font-semibold text-warm-white tracking-tight"
-              >
-                I&rsquo;m Frustrated{" "}
-                <Image src="/logo.svg" alt="I'm Frustrated dot Org — back to top" width={28} height={28} className="w-7 h-7 inline-block align-middle" />
+              <a href="#top" className="inline-block">
+                <Wordmark size="md" color="paper" />
               </a>
-              <p className="font-serif italic text-white/40 text-sm mt-2">
+              <p className="font-serif italic text-paper/50 text-sm mt-3">
                 Friends who are also lawyers.
               </p>
             </div>
 
-            <div className="flex items-center gap-8 text-sm text-white/40">
-              <a href="#mission" className="hover:text-coral transition-colors duration-300">
+            <div className="flex items-center gap-8 text-sm text-paper/50">
+              <a href="#mission" className="hover:text-amber transition-colors duration-300">
                 What We Do
               </a>
-              <a href="#how-it-works" className="hover:text-coral transition-colors duration-300">
+              <a href="#how-it-works" className="hover:text-amber transition-colors duration-300">
                 How It Works
               </a>
-              <Link href="/free-tools" className="hover:text-coral transition-colors duration-300">
+              <Link href="/free-tools" className="hover:text-amber transition-colors duration-300">
                 Free Tools
               </Link>
-              <a href="#testimonials" className="hover:text-coral transition-colors duration-300">
+              <a href="#testimonials" className="hover:text-amber transition-colors duration-300">
                 Testimonials
               </a>
-              <a href="mailto:info@imfrustrated.org" className="hover:text-coral transition-colors duration-300">
+              <a href="mailto:info@imfrustrated.org" className="hover:text-amber transition-colors duration-300">
                 Contact
               </a>
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-white/[0.06] text-center">
-            <p className="text-white/25 text-xs">
-              &copy; {new Date().getFullYear()} I&rsquo;m Frustrated{" "}
-              <Image src="/logo.svg" alt="dot Org" width={16} height={16} className="w-4 h-4 inline-block align-middle" />.
-              All rights reserved.
+          <div className="mt-12 pt-8 border-t border-paper/[0.08] text-center">
+            <p className="text-paper/30 text-xs">
+              &copy; {new Date().getFullYear()} I&rsquo;m Frustrated
+              <span className="ml-1 font-mono text-amber">.org</span>. All rights reserved.
             </p>
-            <p className="text-white/20 text-[0.65rem] leading-relaxed mt-4 max-w-2xl mx-auto">
-              Disclaimer: I&rsquo;m Frustrated <Image src="/logo.svg" alt="dot Org" width={12} height={12} className="w-3 h-3 inline-block align-middle" /> is not a law firm and does not provide legal representation.
+            <p className="text-paper/25 text-[0.7rem] leading-relaxed mt-4 max-w-2xl mx-auto">
+              Disclaimer: I&rsquo;m Frustrated
+              <span className="mx-1 font-mono text-amber/80">.org</span>
+              is not a law firm and does not provide legal representation.
               The information and guidance provided through our services are for informational purposes only and
               should not be construed as legal advice. No attorney-client relationship is formed through your
               use of this service. For legal representation, please consult a licensed attorney in your jurisdiction.

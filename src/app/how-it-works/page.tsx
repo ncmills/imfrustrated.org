@@ -64,7 +64,7 @@ export default function HowItWorksPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-warm-white via-transparent to-cream opacity-40" />
           <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
             <nav className="text-xs text-muted mb-6">
-              <Link href="/" className="hover:text-coral">Home</Link>
+              <Link href="/" className="hover:text-forest">Home</Link>
               <span className="mx-2">/</span>
               <span>How It Works</span>
             </nav>
@@ -141,15 +141,15 @@ export default function HowItWorksPage() {
             </p>
             <a
               href="mailto:info@imfrustrated.org"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-coral text-white text-base font-medium rounded-full hover:bg-coral-dark transition-all duration-300"
+              className="inline-flex items-center gap-3 px-10 py-4 bg-forest text-paper text-base font-medium rounded-full hover:bg-forest-deep transition-all duration-300"
             >
               info@imfrustrated.org
             </a>
             <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap">
-              <Link href="/about" className="text-muted hover:text-coral">About us</Link>
-              <Link href="/free-tools" className="text-muted hover:text-coral">Free tools</Link>
-              <Link href="/faq" className="text-muted hover:text-coral">FAQ</Link>
-              <Link href="/" className="text-muted hover:text-coral">Home</Link>
+              <Link href="/about" className="text-muted hover:text-forest">About us</Link>
+              <Link href="/free-tools" className="text-muted hover:text-forest">Free tools</Link>
+              <Link href="/faq" className="text-muted hover:text-forest">FAQ</Link>
+              <Link href="/" className="text-muted hover:text-forest">Home</Link>
             </div>
           </FadeInSection>
         </section>
