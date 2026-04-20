@@ -159,8 +159,9 @@ export default function RootLayout({
             "sameAs": ["https://idonthaveawill.com"]
           }) }}
         />
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <PostHogProvider>
-          {children}
+          <div id="main-content">{children}</div>
         </PostHogProvider>
         <footer className="py-4 text-center">
           <p className="text-[10px] text-muted-warm/40">
