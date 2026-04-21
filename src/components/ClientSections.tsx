@@ -24,8 +24,7 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
-/* Horizontal lockup: glyph + wordmark.
-   "I'm Frustrated" is Source Serif 4 Semibold; ".org" is JetBrains Mono at 60% with a lowered baseline. */
+/* Site logo: the speech-bubble glyph used in the browser favicon. */
 export function Wordmark({
   size = "md",
   color = "ink",
@@ -33,20 +32,15 @@ export function Wordmark({
   size?: "sm" | "md" | "lg";
   color?: "ink" | "paper";
 }) {
-  const sizes = {
-    sm: "text-[1.05rem]",
-    md: "text-xl",
-    lg: "text-2xl md:text-3xl",
-  } as const;
   const glyphSize = {
-    sm: "h-5 w-5",
-    md: "h-6 w-6",
-    lg: "h-8 w-8 md:h-9 md:w-9",
+    sm: "h-6 w-6",
+    md: "h-8 w-8",
+    lg: "h-10 w-10 md:h-12 md:w-12",
   } as const;
-  const nameColor = color === "paper" ? "text-paper" : "text-ink";
+  const bubbleFill = color === "paper" ? "#faf6ef" : "#2d4a3e";
 
   return (
-    <span className="inline-flex items-center gap-2.5">
+    <span className="inline-flex items-center">
       <svg
         viewBox="0 0 48 48"
         fill="none"
@@ -56,14 +50,20 @@ export function Wordmark({
       >
         <path
           d="M24 5.5c10.493 0 19 7.387 19 16.5 0 9.113-8.507 16.5-19 16.5-1.866 0-3.668-.234-5.372-.67L9.6 42.5l2.658-8.02C8.136 31.44 5 26.98 5 22 5 12.887 13.507 5.5 24 5.5Z"
-          fill="#2d4a3e"
+          fill={bubbleFill}
         />
-        <circle cx="24" cy="21.5" r="3.2" fill="#c08a3e" />
+        <path d="M13.5 16 L20 20" stroke="#c08a3e" strokeWidth="2.8" strokeLinecap="round" />
+        <path d="M34.5 16 L28 20" stroke="#c08a3e" strokeWidth="2.8" strokeLinecap="round" />
+        <circle cx="18" cy="24" r="1.8" fill="#c08a3e" />
+        <circle cx="30" cy="24" r="1.8" fill="#c08a3e" />
+        <path
+          d="M18.5 32 Q24 28 29.5 32"
+          stroke="#c08a3e"
+          strokeWidth="2.4"
+          strokeLinecap="round"
+          fill="none"
+        />
       </svg>
-      <span className={`wordmark ${sizes[size]} ${nameColor}`}>
-        <span className="wordmark__name">I&rsquo;m Frustrated</span>
-        <span className="wordmark__tld">.org</span>
-      </span>
     </span>
   );
 }

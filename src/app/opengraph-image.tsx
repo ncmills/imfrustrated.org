@@ -50,8 +50,8 @@ export default function Image() {
 
         {/* Glyph */}
         <svg
-          width="88"
-          height="88"
+          width="120"
+          height="120"
           viewBox="0 0 48 48"
           fill="none"
           style={{ marginBottom: 32 }}
@@ -60,7 +60,17 @@ export default function Image() {
             d="M24 5.5c10.493 0 19 7.387 19 16.5 0 9.113-8.507 16.5-19 16.5-1.866 0-3.668-.234-5.372-.67L9.6 42.5l2.658-8.02C8.136 31.44 5 26.98 5 22 5 12.887 13.507 5.5 24 5.5Z"
             fill="#2d4a3e"
           />
-          <circle cx="24" cy="21.5" r="3.2" fill="#c08a3e" />
+          <path d="M13.5 16 L20 20" stroke="#c08a3e" strokeWidth="2.8" strokeLinecap="round" />
+          <path d="M34.5 16 L28 20" stroke="#c08a3e" strokeWidth="2.8" strokeLinecap="round" />
+          <circle cx="18" cy="24" r="1.8" fill="#c08a3e" />
+          <circle cx="30" cy="24" r="1.8" fill="#c08a3e" />
+          <path
+            d="M18.5 32 Q24 28 29.5 32"
+            stroke="#c08a3e"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+            fill="none"
+          />
         </svg>
 
         {/* Wordmark */}
