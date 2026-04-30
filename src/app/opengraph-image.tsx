@@ -6,7 +6,16 @@ export const alt =
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function Image() {
+export default async function Image() {
+  const [sourceSerifSemiBold, jetBrainsMonoMedium] = await Promise.all([
+    fetch(new URL("./_fonts/SourceSerif4-SemiBold.ttf", import.meta.url)).then(
+      (r) => r.arrayBuffer()
+    ),
+    fetch(new URL("./_fonts/JetBrainsMono-Medium.ttf", import.meta.url)).then(
+      (r) => r.arrayBuffer()
+    ),
+  ]);
+
   return new ImageResponse(
     (
       <div
@@ -21,6 +30,7 @@ export default function Image() {
             "linear-gradient(180deg, #faf6ef 0%, #f0e9dc 100%)",
           position: "relative",
           padding: "80px",
+          fontFamily: "Source Serif 4",
         }}
       >
         <div
@@ -87,7 +97,7 @@ export default function Image() {
               fontSize: 80,
               fontWeight: 600,
               color: "#1f1a14",
-              fontFamily: "Georgia, serif",
+              fontFamily: "Source Serif 4",
               letterSpacing: "-0.025em",
             }}
           >
@@ -98,7 +108,7 @@ export default function Image() {
               fontSize: 44,
               fontWeight: 500,
               color: "#c08a3e",
-              fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+              fontFamily: "JetBrains Mono",
               position: "relative",
               top: 10,
               letterSpacing: "-0.01em",
@@ -123,8 +133,8 @@ export default function Image() {
           style={{
             fontSize: 36,
             color: "#3a3128",
-            fontFamily: "Georgia, serif",
-            fontWeight: 500,
+            fontFamily: "Source Serif 4",
+            fontWeight: 600,
             letterSpacing: "-0.01em",
             textAlign: "center",
           }}
@@ -137,15 +147,33 @@ export default function Image() {
           style={{
             fontSize: 22,
             color: "#6b5d4a",
-            fontFamily: "sans-serif",
+            fontFamily: "Source Serif 4",
+            fontWeight: 600,
             marginTop: 14,
             textAlign: "center",
+            opacity: 0.85,
           }}
         >
           The conversation you have before you hire a lawyer.
         </span>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        {
+          name: "Source Serif 4",
+          data: sourceSerifSemiBold,
+          weight: 600,
+          style: "normal",
+        },
+        {
+          name: "JetBrains Mono",
+          data: jetBrainsMonoMedium,
+          weight: 500,
+          style: "normal",
+        },
+      ],
+    }
   );
 }

@@ -78,14 +78,24 @@ export default function Home() {
                 <br />
                 also lawyers<span className="text-amber">.</span>
               </h1>
-              <p className="script text-[1.75rem] sm:text-3xl md:text-4xl mt-6 -rotate-1">
-                the conversation you have
-                <br className="sm:hidden" /> before you hire a lawyer
-              </p>
+              <span className="hero-script-wrap">
+                <p className="script text-[1.75rem] sm:text-3xl md:text-4xl mt-6 -rotate-1">
+                  the conversation you have
+                  <br className="sm:hidden" /> before you hire a lawyer
+                </p>
+                <svg
+                  className="hero-script-underline"
+                  viewBox="0 0 320 16"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path d="M2 11 C 60 4, 120 14, 180 8 C 240 3, 280 12, 318 7" />
+                </svg>
+              </span>
             </div>
 
             <div className="animate-fade-in-up delay-200">
-              <div className="decorative-rule mx-auto my-10" />
+              <div className="hero-amber-rule mx-auto my-10" />
               <p className="text-muted-warm text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
                 Ring an attorney friend to get their take on your issue
                 <br className="hidden sm:block" /> and how best to proceed. Because everyone needs a friend who is a lawyer.
@@ -117,7 +127,7 @@ export default function Home() {
         <section id="mission" className="relative py-28 md:py-36 bg-paper">
           <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10 text-center">
             <div className="mb-10 flex justify-center">
-              <Wordmark size="lg" />
+              <Wordmark size="lg" behavior="hero" />
             </div>
             <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-6">
               What We Do
