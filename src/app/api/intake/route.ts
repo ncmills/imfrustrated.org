@@ -39,6 +39,7 @@ interface IntakeBody {
   state?: string;
   issueType?: string;
   message?: string;
+  website?: string; // honeypot — must be empty for humans
 }
 
 export async function POST(request: Request) {
@@ -57,6 +58,12 @@ export async function POST(request: Request) {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
+
+  // Honeypot: bots fill the hidden `website` field. Pretend success, drop the message.
+  if (typeof body.website === "string" && body.website.trim().length > 0) {
+    console.log("[intake] honeypot triggered — dropped silently", { ip });
+    return NextResponse.json({ ok: true });
   }
 
   const email = (body.email ?? "").trim().toLowerCase();

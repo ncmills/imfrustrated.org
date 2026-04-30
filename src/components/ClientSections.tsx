@@ -24,13 +24,19 @@ function useInView(threshold = 0.15) {
   return { ref, visible };
 }
 
-/* Site logo: the speech-bubble glyph used in the browser favicon. */
+/* Site logo: the speech-bubble glyph used in the browser favicon.
+ * `behavior` toggles motion personas — geometry stays in sync with /public/glyph.svg
+ * for static and header/hero personas; "success" softens brows + flips the frown
+ * to a gentle smile to read as relief. CSS keyframes live in globals.css under
+ * `.wordmark-glyph--*` and respect prefers-reduced-motion. */
 export function Wordmark({
   size = "md",
   color = "ink",
+  behavior = "static",
 }: {
   size?: "sm" | "md" | "lg";
   color?: "ink" | "paper";
+  behavior?: "static" | "header" | "hero" | "success";
 }) {
   const glyphSize = {
     sm: "h-6 w-6",
@@ -38,9 +44,18 @@ export function Wordmark({
     lg: "h-10 w-10 md:h-12 md:w-12",
   } as const;
   const bubbleFill = color === "paper" ? "#faf6ef" : "#2d4a3e";
+  const accent = "#c08a3e";
+
+  const relieved = behavior === "success";
+  const browLeft = relieved ? "M13.5 18 L20 19" : "M13.5 16 L20 20";
+  const browRight = relieved ? "M34.5 18 L28 19" : "M34.5 16 L28 20";
+  const mouth = relieved
+    ? "M18.5 30 Q24 33.5 29.5 30"
+    : "M18.5 32 Q24 28 29.5 32";
+  const eyeRadius = relieved ? 2 : 1.8;
 
   return (
-    <span className="inline-flex items-center">
+    <span className={`wordmark-glyph wordmark-glyph--${behavior} inline-flex items-center`}>
       <svg
         viewBox="0 0 48 48"
         fill="none"
@@ -49,16 +64,18 @@ export function Wordmark({
         aria-hidden="true"
       >
         <path
+          className="wm-bubble"
           d="M24 5.5c10.493 0 19 7.387 19 16.5 0 9.113-8.507 16.5-19 16.5-1.866 0-3.668-.234-5.372-.67L9.6 42.5l2.658-8.02C8.136 31.44 5 26.98 5 22 5 12.887 13.507 5.5 24 5.5Z"
           fill={bubbleFill}
         />
-        <path d="M13.5 16 L20 20" stroke="#c08a3e" strokeWidth="2.8" strokeLinecap="round" />
-        <path d="M34.5 16 L28 20" stroke="#c08a3e" strokeWidth="2.8" strokeLinecap="round" />
-        <circle cx="18" cy="24" r="1.8" fill="#c08a3e" />
-        <circle cx="30" cy="24" r="1.8" fill="#c08a3e" />
+        <path className="wm-brow wm-brow--l" d={browLeft} stroke={accent} strokeWidth="2.8" strokeLinecap="round" />
+        <path className="wm-brow wm-brow--r" d={browRight} stroke={accent} strokeWidth="2.8" strokeLinecap="round" />
+        <circle className="wm-eye wm-eye--l" cx="18" cy="24" r={eyeRadius} fill={accent} />
+        <circle className="wm-eye wm-eye--r" cx="30" cy="24" r={eyeRadius} fill={accent} />
         <path
-          d="M18.5 32 Q24 28 29.5 32"
-          stroke="#c08a3e"
+          className="wm-mouth"
+          d={mouth}
+          stroke={accent}
           strokeWidth="2.4"
           strokeLinecap="round"
           fill="none"
@@ -86,7 +103,7 @@ export function Header() {
     >
       <div className="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
         <a href="#top" className="shrink-0" aria-label="I'm Frustrated dot Org — home">
-          <Wordmark size="md" />
+          <Wordmark size="md" behavior="header" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8 text-[0.9rem] font-medium text-muted-warm">
@@ -139,6 +156,77 @@ export function FadeInSection({
       data-visible={visible}
     >
       {children}
+    </div>
+  );
+}
+
+/* Hero atmosphere — oversized glyph at low opacity drifting behind the homepage hero,
+ * breathes (~2.5px max) toward the cursor. Touch / no-cursor / reduced-motion = still. */
+export function HeroAtmosphere() {
+  const svgRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf: number | null = null;
+    let targetX = 0,
+      targetY = 0,
+      currentX = 0,
+      currentY = 0;
+
+    function loop() {
+      currentX += (targetX - currentX) * 0.05;
+      currentY += (targetY - currentY) * 0.05;
+      const el = svgRef.current;
+      if (el) {
+        el.style.setProperty("--hero-cursor-x", currentX.toFixed(2) + "px");
+        el.style.setProperty("--hero-cursor-y", currentY.toFixed(2) + "px");
+      }
+      if (
+        Math.abs(targetX - currentX) > 0.05 ||
+        Math.abs(targetY - currentY) > 0.05
+      ) {
+        raf = requestAnimationFrame(loop);
+      } else {
+        raf = null;
+      }
+    }
+
+    function onMove(e: MouseEvent) {
+      const nx = (e.clientX / window.innerWidth - 0.5) * 2;
+      const ny = (e.clientY / window.innerHeight - 0.5) * 2;
+      targetX = nx * 2.5;
+      targetY = ny * 2.5;
+      if (!raf) raf = requestAnimationFrame(loop);
+    }
+
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <div className="hero-atmosphere" aria-hidden="true">
+      <svg ref={svgRef} viewBox="0 0 48 48" fill="none">
+        <path
+          d="M24 5.5c10.493 0 19 7.387 19 16.5 0 9.113-8.507 16.5-19 16.5-1.866 0-3.668-.234-5.372-.67L9.6 42.5l2.658-8.02C8.136 31.44 5 26.98 5 22 5 12.887 13.507 5.5 24 5.5Z"
+          fill="#2d4a3e"
+          opacity="0.035"
+        />
+        <path d="M13.5 16 L20 20" stroke="#c08a3e" strokeWidth="2.8" strokeLinecap="round" opacity="0.07" />
+        <path d="M34.5 16 L28 20" stroke="#c08a3e" strokeWidth="2.8" strokeLinecap="round" opacity="0.07" />
+        <circle cx="18" cy="24" r="1.8" fill="#c08a3e" opacity="0.07" />
+        <circle cx="30" cy="24" r="1.8" fill="#c08a3e" opacity="0.07" />
+        <path
+          d="M18.5 32 Q24 28 29.5 32"
+          stroke="#c08a3e"
+          strokeWidth="2.4"
+          strokeLinecap="round"
+          fill="none"
+          opacity="0.07"
+        />
+      </svg>
     </div>
   );
 }

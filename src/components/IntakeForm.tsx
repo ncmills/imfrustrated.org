@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import posthog from "posthog-js";
+import { Wordmark } from "./ClientSections";
 
 const US_STATES = [
   "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA",
@@ -27,6 +28,7 @@ export default function IntakeForm() {
   const [state, setState] = useState("");
   const [issueType, setIssueType] = useState("");
   const [message, setMessage] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -39,7 +41,7 @@ export default function IntakeForm() {
       const res = await fetch("/api/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, state, issueType, message }),
+        body: JSON.stringify({ email, state, issueType, message, website: honeypot }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -57,12 +59,23 @@ export default function IntakeForm() {
 
   if (status === "success") {
     return (
-      <div className="letter-card text-center">
-        <p className="font-serif text-3xl text-ink font-semibold mb-3">Got it.</p>
-        <p className="text-muted-warm leading-relaxed">
-          We&rsquo;ll read every word and reply within a day or two — no automated nonsense.
+      <div className="letter-card letter-card--reply text-left">
+        <div className="reply-glyph" aria-hidden="true">
+          <Wordmark size="md" behavior="success" />
+        </div>
+        <p className="script text-[2rem] md:text-[2.25rem] leading-tight mb-3">
+          Dear friend,
         </p>
-        <p className="script text-2xl mt-5">Thanks for writing.</p>
+        <p className="font-serif italic text-ink text-lg md:text-xl leading-[1.55]">
+          Thanks for writing. We&rsquo;ll read every word and reply within a day or two — no automated nonsense.
+        </p>
+        <p className="script text-[2rem] md:text-[2.25rem] leading-tight mt-7 -rotate-1">
+          Talk soon,
+        </p>
+        <p className="text-muted-warm text-sm mt-2">
+          — the volunteer attorneys at I&rsquo;m Frustrated
+          <span className="font-mono text-amber ml-1">.org</span>
+        </p>
       </div>
     );
   }
@@ -123,15 +136,33 @@ export default function IntakeForm() {
 
         <div>
           <label className="letter-label">What&rsquo;s going on?</label>
-          <textarea
-            rows={5}
-            maxLength={2000}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="A few sentences is enough. The more we know, the better we can point you in the right direction."
-            className="letter-textarea"
-          />
+          <div className="textarea-wrap">
+            <textarea
+              rows={5}
+              maxLength={2000}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="A few sentences is enough. The more we know, the better we can point you in the right direction."
+              className="letter-textarea"
+            />
+            <span className="textarea-ink" aria-hidden="true" />
+          </div>
         </div>
+      </div>
+
+      {/* Honeypot — humans can't see it; bots fill it; server drops silently. */}
+      <div className="honeypot" aria-hidden="true">
+        <label>
+          Website
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+          />
+        </label>
       </div>
 
       <div className="mt-8 flex flex-col items-center gap-3">
@@ -142,7 +173,7 @@ export default function IntakeForm() {
         >
           {status === "loading" ? "Sending…" : "Send it"}
           {status !== "loading" && (
-            <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 send-arrow">
               <path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" />
             </svg>
           )}
