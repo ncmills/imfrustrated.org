@@ -160,6 +160,77 @@ export function FadeInSection({
   );
 }
 
+/* Hero atmosphere — oversized glyph at low opacity drifting behind the homepage hero,
+ * breathes (~2.5px max) toward the cursor. Touch / no-cursor / reduced-motion = still. */
+export function HeroAtmosphere() {
+  const svgRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf: number | null = null;
+    let targetX = 0,
+      targetY = 0,
+      currentX = 0,
+      currentY = 0;
+
+    function loop() {
+      currentX += (targetX - currentX) * 0.05;
+      currentY += (targetY - currentY) * 0.05;
+      const el = svgRef.current;
+      if (el) {
+        el.style.setProperty("--hero-cursor-x", currentX.toFixed(2) + "px");
+        el.style.setProperty("--hero-cursor-y", currentY.toFixed(2) + "px");
+      }
+      if (
+        Math.abs(targetX - currentX) > 0.05 ||
+        Math.abs(targetY - currentY) > 0.05
+      ) {
+        raf = requestAnimationFrame(loop);
+      } else {
+        raf = null;
+      }
+    }
+
+    function onMove(e: MouseEvent) {
+      const nx = (e.clientX / window.innerWidth - 0.5) * 2;
+      const ny = (e.clientY / window.innerHeight - 0.5) * 2;
+      targetX = nx * 2.5;
+      targetY = ny * 2.5;
+      if (!raf) raf = requestAnimationFrame(loop);
+    }
+
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <div className="hero-atmosphere" aria-hidden="true">
+      <svg ref={svgRef} viewBox="0 0 48 48" fill="none">
+        <path
+          d="M24 5.5c10.493 0 19 7.387 19 16.5 0 9.113-8.507 16.5-19 16.5-1.866 0-3.668-.234-5.372-.67L9.6 42.5l2.658-8.02C8.136 31.44 5 26.98 5 22 5 12.887 13.507 5.5 24 5.5Z"
+          fill="#2d4a3e"
+          opacity="0.035"
+        />
+        <path d="M13.5 16 L20 20" stroke="#c08a3e" strokeWidth="2.8" strokeLinecap="round" opacity="0.07" />
+        <path d="M34.5 16 L28 20" stroke="#c08a3e" strokeWidth="2.8" strokeLinecap="round" opacity="0.07" />
+        <circle cx="18" cy="24" r="1.8" fill="#c08a3e" opacity="0.07" />
+        <circle cx="30" cy="24" r="1.8" fill="#c08a3e" opacity="0.07" />
+        <path
+          d="M18.5 32 Q24 28 29.5 32"
+          stroke="#c08a3e"
+          strokeWidth="2.4"
+          strokeLinecap="round"
+          fill="none"
+          opacity="0.07"
+        />
+      </svg>
+    </div>
+  );
+}
+
 export function StaggeredCards({
   children,
   threshold,

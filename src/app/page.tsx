@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Header, FadeInSection, Wordmark } from "@/components/ClientSections";
+import { Header, FadeInSection, Wordmark, HeroAtmosphere } from "@/components/ClientSections";
 import IntakeForm from "@/components/IntakeForm";
 
 /* ─── Data ─── */
@@ -62,8 +62,11 @@ export default function Home() {
           className="relative min-h-[100vh] flex items-center justify-center overflow-hidden"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-paper-lift via-paper to-paper" />
-          <div className="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full bg-forest/[0.05] blur-[140px]" />
-          <div className="absolute bottom-0 -left-32 w-[420px] h-[420px] rounded-full bg-amber/[0.08] blur-[120px]" />
+          <div className="absolute top-1/3 -right-40 w-[520px] h-[520px] rounded-full bg-forest/[0.04] blur-[140px]" />
+          <div className="absolute bottom-0 -left-32 w-[420px] h-[420px] rounded-full bg-amber/[0.07] blur-[120px]" />
+
+          {/* Atmosphere — oversized glyph behind the headline, breathes with cursor. */}
+          <HeroAtmosphere />
 
           {/* Side rules */}
           <div className="absolute inset-0 max-w-6xl mx-auto px-10 hidden lg:block pointer-events-none">
@@ -72,26 +75,20 @@ export default function Home() {
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-10 text-center pt-28 pb-16">
-            <div className="animate-fade-in-up">
+            <div className="animate-fade-in-up relative">
               <h1 className="font-serif text-[3.25rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-semibold text-ink leading-[1.02] tracking-[-0.028em]">
                 Friends who are
                 <br />
                 also lawyers<span className="text-amber">.</span>
               </h1>
-              <span className="hero-script-wrap">
-                <p className="script text-[1.75rem] sm:text-3xl md:text-4xl mt-6 -rotate-1">
-                  the conversation you have
-                  <br className="sm:hidden" /> before you hire a lawyer
-                </p>
-                <svg
-                  className="hero-script-underline"
-                  viewBox="0 0 320 16"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <path d="M2 11 C 60 4, 120 14, 180 8 C 240 3, 280 12, 318 7" />
-                </svg>
-              </span>
+              {/* Marginalia — sits in the right gutter on lg+, falls under the headline on mobile. */}
+              <p className="hero-script-marginalia script">
+                the conversation
+                <br />
+                you have before
+                <br />
+                you hire a lawyer
+              </p>
             </div>
 
             <div className="animate-fade-in-up delay-200">
