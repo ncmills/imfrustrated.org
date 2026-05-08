@@ -14,6 +14,16 @@ const nextConfig: NextConfig = {
       { source: "/what-we-do", destination: "/how-it-works", permanent: true },
       { source: "/what-we-do1", destination: "/how-it-works", permanent: true },
       { source: "/what-we-do/:rest*", destination: "/how-it-works", permanent: true },
+      // 2026-05-08 GSC orphan-404 cleanup. Google found these URLs via
+      // backlinks/social but they were never built — redirect to closest
+      // relevant page so the GSC 404 backlog clears. /privacy + /terms
+      // remain 404 intentionally (todo: ship real pages — E-E-A-T baseline).
+      { source: "/blog", destination: "/how-it-works", permanent: true },
+      { source: "/blog/:rest*", destination: "/how-it-works", permanent: true },
+      { source: "/contact", destination: "/how-it-works", permanent: true },
+      { source: "/services", destination: "/how-it-works", permanent: true },
+      { source: "/help", destination: "/faq", permanent: true },
+      { source: "/state-resources", destination: "/free-tools", permanent: true },
     ];
   },
   async headers() {
