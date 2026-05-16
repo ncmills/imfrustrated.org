@@ -151,58 +151,8 @@ export default function Home() {
           </FadeInSection>
         </section>
 
-        {/* ─── How It Works — as numbered chapters ─── */}
-        <section id="how-it-works" className="relative py-28 md:py-36 bg-paper-deep">
-          <div className="max-w-5xl mx-auto px-6 md:px-10">
-            <FadeInSection className="text-center mb-20">
-              <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">
-                How It Works
-              </p>
-              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink tracking-[-0.01em]">
-                Simple as calling a friend<span className="text-amber">.</span>
-              </h2>
-            </FadeInSection>
-
-            <div className="space-y-16 md:space-y-20">
-              {howItWorks.map((step, i) => (
-                <FadeInSection key={step.title}>
-                  <article className="grid md:grid-cols-[auto,1fr] gap-x-10 md:gap-x-14 gap-y-4 items-start">
-                    <div
-                      className="chapter-numeral relative"
-                      aria-hidden="true"
-                    >
-                      {step.numeral}
-                      <span className="absolute -bottom-2 left-0 h-[2px] w-10 bg-amber" />
-                    </div>
-                    <div className="md:pt-4">
-                      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-amber mb-3">
-                        Chapter {step.numeral}
-                      </p>
-                      <h3 className="font-serif text-2xl md:text-[1.85rem] font-semibold text-ink mb-4 tracking-[-0.01em]">
-                        {step.title}
-                      </h3>
-                      <p className="text-muted-warm text-lg leading-[1.65] max-w-prose">
-                        {step.description}
-                      </p>
-                    </div>
-                  </article>
-                  {i < howItWorks.length - 1 && (
-                    <div className="mt-16 md:mt-20 flex items-center gap-4" aria-hidden="true">
-                      <span className="h-px flex-1 bg-rule" />
-                      <svg viewBox="0 0 20 20" className="w-3 h-3 text-amber" fill="currentColor">
-                        <circle cx="10" cy="10" r="4" />
-                      </svg>
-                      <span className="h-px flex-1 bg-rule" />
-                    </div>
-                  )}
-                </FadeInSection>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ─── Free Tools (preserved card, restyled to palette) ─── */}
-        <section id="tools" className="relative py-28 md:py-36 bg-paper overflow-hidden">
+        {/* ─── Free Tools + Letters (moved up so visitors see what's available before How It Works) ─── */}
+        <section id="tools" className="relative py-28 md:py-36 bg-paper-deep overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber/[0.05] rounded-full blur-[140px] translate-x-1/3 -translate-y-1/3" />
           <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-10">
             <FadeInSection className="text-center mb-14">
@@ -213,7 +163,7 @@ export default function Home() {
                 More than a conversation<span className="text-amber">.</span>
               </h2>
               <p className="text-muted-warm text-lg leading-relaxed mt-6 max-w-2xl mx-auto">
-                Sometimes you don&rsquo;t need advice. You need the thing itself. Here are the free tools we&rsquo;ve built for people who&rsquo;d rather just handle it.
+                Sometimes you don&rsquo;t need advice. You need the thing itself. Here&rsquo;s what we&rsquo;ve built for people who&rsquo;d rather just handle it themselves.
               </p>
             </FadeInSection>
 
@@ -271,11 +221,114 @@ export default function Home() {
               </a>
             </FadeInSection>
 
+            <FadeInSection>
+              <Link
+                href="/letters"
+                className="group block bg-paper-lift border border-rule rounded-[6px] p-8 md:p-12 mt-6 hover:border-forest/40 transition-all duration-500 hover:shadow-[0_24px_48px_-28px_rgba(45,74,62,0.35)]"
+              >
+                <div className="grid md:grid-cols-[auto,1fr,auto] items-center gap-8">
+                  <div className="text-forest group-hover:text-amber transition-colors duration-300">
+                    <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M8 12h32v28a2 2 0 01-2 2H10a2 2 0 01-2-2V12z" />
+                      <path d="M8 12l16 12 16-12" />
+                      <path d="M16 28h12" strokeLinecap="round" />
+                      <path d="M16 34h16" strokeLinecap="round" />
+                    </svg>
+                  </div>
+
+                  <div>
+                    <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-2">
+                      Free Letter Templates
+                    </p>
+                    <h3 className="font-serif text-2xl md:text-3xl font-semibold text-ink mb-3 tracking-[-0.01em]">
+                      Letters That Get a Response
+                    </h3>
+                    <p className="text-muted-warm text-[0.95rem] md:text-base leading-relaxed">
+                      A growing library of plain-English letter templates that invoke real federal and state statutes — for the moments when you&rsquo;ve tried to resolve something directly and need a little formality to get traction.
+                    </p>
+                    <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-warm">
+                      <span className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-amber" />
+                        Landlord, credit, consumer
+                      </span>
+                      <span className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-amber" />
+                        Verified statute citations
+                      </span>
+                      <span className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-amber" />
+                        Written by attorneys
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="md:justify-self-end">
+                    <span className="inline-flex items-center gap-2 px-6 py-3 bg-forest text-paper text-sm font-medium rounded-full group-hover:bg-forest-deep transition-colors duration-300">
+                      See the library
+                      <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300">
+                        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </FadeInSection>
+
             <FadeInSection className="text-center mt-10">
               <Link href="/free-tools" className="text-sm text-muted-warm hover:text-forest transition-colors duration-300">
                 See all free tools →
               </Link>
             </FadeInSection>
+          </div>
+        </section>
+
+        {/* ─── How It Works — as numbered chapters ─── */}
+        <section id="how-it-works" className="relative py-28 md:py-36 bg-paper">
+          <div className="max-w-5xl mx-auto px-6 md:px-10">
+            <FadeInSection className="text-center mb-20">
+              <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">
+                How It Works
+              </p>
+              <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink tracking-[-0.01em]">
+                Simple as calling a friend<span className="text-amber">.</span>
+              </h2>
+            </FadeInSection>
+
+            <div className="space-y-16 md:space-y-20">
+              {howItWorks.map((step, i) => (
+                <FadeInSection key={step.title}>
+                  <article className="grid md:grid-cols-[auto,1fr] gap-x-10 md:gap-x-14 gap-y-4 items-start">
+                    <div
+                      className="chapter-numeral relative"
+                      aria-hidden="true"
+                    >
+                      {step.numeral}
+                      <span className="absolute -bottom-2 left-0 h-[2px] w-10 bg-amber" />
+                    </div>
+                    <div className="md:pt-4">
+                      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-amber mb-3">
+                        Chapter {step.numeral}
+                      </p>
+                      <h3 className="font-serif text-2xl md:text-[1.85rem] font-semibold text-ink mb-4 tracking-[-0.01em]">
+                        {step.title}
+                      </h3>
+                      <p className="text-muted-warm text-lg leading-[1.65] max-w-prose">
+                        {step.description}
+                      </p>
+                    </div>
+                  </article>
+                  {i < howItWorks.length - 1 && (
+                    <div className="mt-16 md:mt-20 flex items-center gap-4" aria-hidden="true">
+                      <span className="h-px flex-1 bg-rule" />
+                      <svg viewBox="0 0 20 20" className="w-3 h-3 text-amber" fill="currentColor">
+                        <circle cx="10" cy="10" r="4" />
+                      </svg>
+                      <span className="h-px flex-1 bg-rule" />
+                    </div>
+                  )}
+                </FadeInSection>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -367,13 +420,16 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex items-center gap-8 text-sm text-paper/50">
+            <div className="flex items-center gap-8 text-sm text-paper/50 flex-wrap justify-center md:justify-end">
               <a href="#mission" className="hover:text-amber transition-colors duration-300">
                 What We Do
               </a>
               <a href="#how-it-works" className="hover:text-amber transition-colors duration-300">
                 How It Works
               </a>
+              <Link href="/letters" className="hover:text-amber transition-colors duration-300">
+                Letters
+              </Link>
               <Link href="/free-tools" className="hover:text-amber transition-colors duration-300">
                 Free Tools
               </Link>

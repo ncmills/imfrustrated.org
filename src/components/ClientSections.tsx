@@ -113,6 +113,9 @@ export function Header() {
           <a href="#how-it-works" className="hover:text-forest transition-colors duration-300">
             How It Works
           </a>
+          <Link href="/letters" className="hover:text-forest transition-colors duration-300">
+            Letters
+          </Link>
           <Link href="/free-tools" className="hover:text-forest transition-colors duration-300">
             Free Tools
           </Link>
