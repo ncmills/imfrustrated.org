@@ -2,6 +2,8 @@ import type { CategoryMeta, LetterCategory, LetterTemplate } from "./types";
 import { landlordLetters } from "./landlord";
 import { creditCardLetters } from "./credit-card";
 import { consumerLetters } from "./consumer";
+import { neighborLetters } from "./neighbor";
+import { hoaLetters } from "./hoa";
 
 export type { LetterCategory, LetterTemplate, CategoryMeta } from "./types";
 
@@ -9,6 +11,8 @@ const allLetters: LetterTemplate[] = [
   ...landlordLetters,
   ...creditCardLetters,
   ...consumerLetters,
+  ...neighborLetters,
+  ...hoaLetters,
 ];
 
 const slugSet = new Set(allLetters.map((l) => `${l.category}/${l.slug}`));
@@ -56,14 +60,16 @@ export const categoryMeta: Record<LetterCategory, CategoryMeta> = {
   neighbor: {
     slug: "neighbor",
     label: "Neighbor",
-    blurb: "Noise, fences, dogs, parking, and the things that make peace fragile.",
-    hubLede: "Coming soon.",
+    blurb: "Noise, fences, dogs, drainage, secondhand smoke, and the things that make peace fragile.",
+    hubLede:
+      "Neighbor disputes almost always need a written paper trail before anyone — landlord, code enforcement, animal control, small claims judge — takes the situation seriously. These letters create that record, cite the local ordinance or state nuisance doctrine, and tell the other side what happens if they ignore it.",
   },
   hoa: {
     slug: "hoa",
     label: "HOA",
-    blurb: "Fines, parking, paint colors, and the limits of board authority.",
-    hubLede: "Coming soon.",
+    blurb: "Fines, records access, selective enforcement, special assessments, and hardship payment plans.",
+    hubLede:
+      "HOAs have only the authority their CC&Rs and state statute grant them — and every state imposes specific procedural requirements for fines, assessments, records access, and collections. These letters cite the controlling statute and demand the procedure the law already requires.",
   },
   airline: {
     slug: "airline",
