@@ -367,4 +367,681 @@ Enclosures: [Photocopy of government-issued ID; signed third-party directive if 
     ],
     publishedAt: "2026-05-15",
   },
+
+  {
+    slug: "refund-demand-merchant",
+    category: "consumer",
+    title: "Refund Demand Letter to Merchant (Free Template + 30-Day Demand)",
+    metaDescription:
+      "Merchant won't refund you? Free demand letter citing the FTC 30-day shipping rule + your state's consumer-protection statute. Modeled on MA Ch. 93A § 9.",
+    lede:
+      "You bought something, it didn't arrive — or it arrived broken, or wasn't what was advertised, or you returned it and never got refunded. The merchant won't fix it. This is the demand letter that usually does.",
+    body: `[Your Full Name]
+[Mailing Address]
+[City, State ZIP]
+[Phone] [Email]
+
+[Date]
+
+[Merchant Legal Name — not just the DBA]
+[Registered agent or corporate address]
+[City, State ZIP]
+
+Sent via certified mail, return receipt requested
+(Copy also emailed to [merchant customer service / legal] for the record.)
+
+Re: Demand for Refund — Order #[Order Number]
+
+Dear Customer Service / Legal Department:
+
+I am writing to demand a full refund of $[Amount] for the transaction described below, pursuant to my rights under [State] consumer-protection law and applicable federal law.
+
+Purchase facts:
+  • Date of purchase: [Date]
+  • Order number / invoice number: [Number]
+  • Item or service: [Description]
+  • Amount paid: $[Amount]
+  • Payment method: [Credit card / debit card / bank transfer / etc. — relevant because credit card unlocks FCBA dispute separately]
+  • Channel: [Website / mobile app / phone / mail / in-store]
+  • Promised delivery / completion: [Date]
+
+What went wrong:
+  [Pick one or more, with specific facts. Don't be vague.]
+  [ ] Item never shipped or never arrived (last tracking activity: [Date]).
+  [ ] Item arrived damaged or defective. [Describe.]
+  [ ] Item materially not as described. [Describe the gap between what was advertised and what arrived.]
+  [ ] I returned the item within your stated return window and have not received a refund. [Return shipment tracking #, date received by you.]
+  [ ] Service was not performed as agreed. [Describe.]
+
+Prior attempts to resolve:
+  • [Date — channel (email/chat/phone) — name of rep if known — outcome]
+  • [Date — channel — outcome]
+  • [Date — channel — outcome]
+
+Legal basis for the demand:
+
+  1. [If mail/Internet/phone order and shipping deadline missed] Under the FTC Mail, Internet, or Telephone Order Merchandise Rule, 16 C.F.R. § 435.2, you were required to ship by the time stated in your offer or, if no time was stated, within 30 days. You did not. Under § 435.2(b), I have the right to cancel and receive a prompt refund. Under § 435.1, "prompt refund" means within 7 working days by a means at least as fast and reliable as first-class mail, or within one billing cycle if paid by credit card.
+
+  2. [If the item is a consumer product with a written warranty] Under the Magnuson-Moss Warranty Act, 15 U.S.C. § 2310, I am entitled to enforce the warranty obligations and to recover costs and reasonable attorney's fees if I am required to file suit.
+
+  3. Under the implied warranty of merchantability codified at UCC § 2-314 (adopted in [State]), the goods you sold were required to be fit for their ordinary purpose. They were not.
+
+  4. Under [State] consumer-protection law (e.g., Mass. G.L. c. 93A § 2 + § 9; Cal. Civ. Code § 1750 et seq. (CLRA) + Bus. & Prof. Code § 17200 (UCL); Tex. Bus. & Com. Code § 17.46 (DTPA); N.Y. Gen. Bus. Law § 349; Fla. Stat. § 501.204 (FDUTPA); 815 ILCS 505/2 (ICFA)), your refusal to refund constitutes an unfair or deceptive act or practice.
+
+This letter is being sent at least [30 days — required in MA, CA CLRA; or 60 days — required in TX DTPA] before any civil action I may bring, consistent with the pre-suit notice requirements of [Mass. G.L. c. 93A § 9; Cal. Civ. Code § 1782; Tex. Bus. & Com. Code § 17.505].
+
+Demand:
+
+  I demand a full refund of $[Amount] to my original payment method within [30] days of your receipt of this letter, plus a written confirmation that the refund has been issued and the transaction is closed.
+
+If you do not provide a full refund within this period, I reserve the right to pursue all available remedies, including:
+  • Suit for actual damages, statutory multiple damages, and reasonable attorney's fees under [State] consumer-protection statute. (In Massachusetts under Ch. 93A § 9: double or treble damages if the violation is willful or the response inadequate, plus mandatory attorney's fees for a prevailing consumer.)
+  • Chargeback dispute under the Fair Credit Billing Act, 15 U.S.C. § 1666, with my credit card issuer.
+  • Complaints to my state Attorney General's consumer protection division, the FTC at ReportFraud.ftc.gov, and the Better Business Bureau.
+
+Please send the refund or your written response to the address above.
+
+Sincerely,
+
+[Your Signature]
+[Your Printed Name]
+
+Enclosures: [order confirmation; receipts; correspondence with merchant; return shipment tracking; photos of damaged item if applicable]`,
+    howToUse: [
+      "Send by certified mail with return receipt requested to the merchant's registered-agent or corporate address (look it up on the secretary of state's business search if you don't have it). Email a copy too, but the certified mail is what proves the date for the statutory deadline.",
+      "Use Massachusetts G.L. c. 93A § 9 as your template even if you don't live in Massachusetts. The 30-day demand framework is the cleanest pre-suit consumer-protection regime in the country, and the structure — demand, deadline, multiple damages on inadequate response — translates well to other states' UDAP statutes.",
+      "Pick the specific defect (didn't ship / damaged / not as described / return not refunded / service not performed) and be specific. Vague \"I want my money back\" letters work less often than concrete \"I returned the item via FedEx tracking #1234 on [date], you confirmed receipt on [date], it's been 47 days, no refund.\"",
+      "Continue any parallel processes. File a chargeback with your credit card issuer (the FCBA gives you 60 days from the statement showing the charge). File a complaint with the state AG's consumer protection division. File an FTC report at ReportFraud.ftc.gov. These tracks reinforce each other.",
+      "Track the deadline. If you cited 30 days in Massachusetts and the merchant ignores you or makes a low-ball offer, document the failure to respond — that's what triggers double/treble damages and mandatory attorney's fees under Ch. 93A § 9.",
+    ],
+    legalContext: [
+      "Refund demand letters typically stack four bodies of law, each of which independently supports the demand and together create overlapping leverage. The first is your state's UDAP statute (Unfair and Deceptive Acts and Practices) — every state has one. They differ in important ways: damages multipliers (double or treble in Massachusetts, treble in Texas, treble in CA CLRA class actions), attorney's-fee provisions (mandatory in MA, TX, and CA CLRA; discretionary in NY and IL), and pre-suit notice requirements (30 days in MA and CA CLRA; 60 days in TX; none in NY, FL, or IL for general UDAP claims).",
+      "The federal floor is the FTC's Mail, Internet, or Telephone Order Merchandise Rule, codified at 16 C.F.R. Part 435. It applies to any seller soliciting orders by mail, telephone, fax, or Internet — expanded to explicitly cover Internet orders by the 2014 amendments. The Rule requires the seller to ship by the time stated in its offer, or, if no time is stated, within 30 days. If the seller can't, it must offer the buyer the option to either consent to a delay or cancel for a full refund. \"Prompt refund\" under § 435.1 means within 7 working days by a means at least as fast and reliable as first-class mail, or within one billing cycle for credit-card purchases. FTC enforcement carries civil penalties — currently up to approximately $51,744 per violation, updated annually for inflation.",
+      "For written warranties on consumer products, the Magnuson-Moss Warranty Act (15 U.S.C. §§ 2301–2312) is the operative federal statute. It allows a private suit for failure to comply with warranty obligations, requires a successful consumer to be made whole for the breach, and authorizes recovery of costs and reasonable attorney's fees based on actual time expended. If the warrantor has designated an FTC-qualified informal dispute settlement procedure in the warranty, the consumer must first resort to that procedure before commencing an individual civil action — but most warrantors don't have one.",
+      "Massachusetts G.L. c. 93A § 9 is the canonical demand-letter regime in the country. It requires a written 30-day demand identifying the claimant, reasonably describing the unfair or deceptive act, identifying the injury, and demanding relief. The merchant has 30 days to respond with a written tender of settlement. If the merchant ignores the letter or makes a bad-faith low offer, and the violation is later found to be willful or knowing, or the response inadequate, the court must award double or treble damages, plus mandatory attorney's fees. The structure — explicit pre-suit window, demand for tender, multiplier consequence — is the gold standard, and the framing translates well into other states' UDAP regimes even where the procedural rules are different.",
+      "A demand letter sits alongside, not instead of, a chargeback under the Fair Credit Billing Act (covered in the credit-card billing-error letter in this library). For credit-card purchases, you have 60 days from the statement showing the charge to file a written FCBA dispute with your card issuer, and the issuer must investigate while not collecting the disputed amount or reporting it as delinquent. The two tracks reinforce each other: the demand letter to the merchant focuses on getting the underlying refund; the FCBA dispute focuses on reversing the charge with the issuer.",
+    ],
+    stateNotes: [
+      {
+        state: "Massachusetts",
+        note: "G.L. c. 93A § 9. 30-day written demand required before suit. Actual damages or $25 minimum. Double or treble damages if violation willful/knowing or response inadequate. Reasonable attorney's fees and costs mandatory for prevailing consumer. The cleanest demand-letter regime in the country.",
+      },
+      {
+        state: "California",
+        note: "Civ. Code § 1782 (CLRA): 30-day notice required by certified mail for damages claims. Bus. & Prof. Code § 17200 (UCL): no pre-suit notice for injunctive relief. CLRA: actual damages, $1,000 minimum in class actions, punitives, $5,000 enhancement per elder/disabled victim. Mandatory attorney's fees for prevailing consumer under § 1780.",
+      },
+      {
+        state: "Texas",
+        note: "Bus. & Com. Code § 17.50 (DTPA). 60-day written pre-suit notice required under § 17.505. Economic damages; up to 3x for \"knowingly,\" up to 3x mental-anguish for \"intentionally.\" Mandatory court costs and reasonable attorney's fees for prevailing consumer.",
+      },
+      {
+        state: "New York",
+        note: "Gen. Bus. Law § 349 (deceptive acts), § 350 (false advertising). No pre-suit notice required. Actual damages or $50 minimum (§ 349); $500 minimum (§ 350). Discretionary treble up to $1,000 (§ 349) or up to $10,000 (§ 350) for willful/knowing. Discretionary attorney's fees.",
+      },
+      {
+        state: "Florida",
+        note: "Fla. Stat. § 501.211 (FDUTPA). No general pre-suit notice required for consumer private action. Actual damages; no punitives or consequential damages allowed under FDUTPA. Attorney's fees and court costs to prevailing party post-judgment per § 501.2105.",
+      },
+      {
+        state: "Illinois",
+        note: "815 ILCS 505 (Illinois Consumer Fraud Act). No pre-suit notice required. Actual damages; punitive damages available. Discretionary attorney's fees and costs under § 505/10a(c).",
+      },
+    ],
+    ifThisDoesntWork:
+      "If the merchant ignores the 30-day demand or sends an inadequate response, your options stack. File a chargeback with your credit-card issuer under the FCBA (15 U.S.C. § 1666, within 60 days of the statement showing the charge). File complaints with your state Attorney General's consumer protection division, the FTC at ReportFraud.ftc.gov, and the Better Business Bureau. For larger amounts ($500+), small claims court is a strong next move — filing fees usually $30–$80, no lawyer required, and several state UDAP statutes (MA, TX, CA CLRA) award attorney's fees plus multiple damages to a prevailing consumer. For very large amounts or pattern-of-conduct cases, contact a consumer-protection attorney; multiplier-damages and mandatory-fee statutes make contingency arrangements common.",
+    relatedSlugs: [
+      "billing-error-dispute",
+      "subscription-cancellation",
+      "gym-membership-cancellation",
+      "contractor-non-performance",
+      "credit-report-dispute",
+      "debt-validation-request",
+    ],
+    faqs: [
+      {
+        question: "How long does a merchant have to ship something I bought online?",
+        answer:
+          "Under the FTC Mail, Internet, or Telephone Order Merchandise Rule (16 C.F.R. § 435.2), the merchant must ship by the time stated in its offer or, if no time was stated, within 30 days after receiving a properly completed order. If they can't, they must offer you the option to cancel for a full refund.",
+      },
+      {
+        question: "If I cancel, how fast must I get my money back?",
+        answer:
+          "A \"prompt refund\" under 16 C.F.R. § 435.1 means within 7 working days by a method at least as fast and reliable as first-class mail, or within one billing cycle if you paid by credit card.",
+      },
+      {
+        question: "Do I have to send a demand letter before I can sue?",
+        answer:
+          "Depends on your state. Massachusetts (30 days under Ch. 93A § 9), Texas (60 days under DTPA § 17.505), and California's CLRA (30 days under Civ. Code § 1782) all require pre-suit written notice. New York, Florida, and Illinois do not require pre-suit notice for their general UDAP claims. Even where not required, demand letters reset settlement leverage and document the merchant's refusal.",
+      },
+      {
+        question: "Can I get my attorney's fees paid if I win?",
+        answer:
+          "Often yes. Magnuson-Moss (15 U.S.C. § 2310(d)(2)) authorizes prevailing-consumer fees. MA Ch. 93A § 9, TX DTPA § 17.50, CA CLRA § 1780, and FL FDUTPA § 501.2105 all award fees to a prevailing consumer. NY GBL § 349 and IL CFA § 505/10a(c) make fees discretionary.",
+      },
+      {
+        question: "Does the seller's \"no refunds\" policy override these protections?",
+        answer:
+          "No. A merchant cannot contract around the FTC Mail Order Rule's 30-day shipping and refund obligation, around the UCC § 2-314 implied warranty of merchantability without a conspicuous and proper disclaimer, or around a state UDAP statute's prohibition on unfair or deceptive practices.",
+      },
+    ],
+    publishedAt: "2026-05-16",
+  },
+
+  {
+    slug: "subscription-cancellation",
+    category: "consumer",
+    title: "Subscription Cancellation Demand Letter (Free Template + State Auto-Renewal Laws)",
+    metaDescription:
+      "Subscription won't cancel? Free demand letter citing ROSCA + your state's auto-renewal law (CA, NY, IL, OR, VT). Get refunds + stop the charges.",
+    lede:
+      "You tried to cancel a subscription — streaming service, software, magazine, app — and the company keeps charging you. The FTC's click-to-cancel rule was vacated in July 2025, but state auto-renewal laws and ROSCA still have real teeth. This letter invokes them.",
+    body: `[Your Full Name]
+[Mailing Address]
+[City, State ZIP]
+[Phone] [Email]
+
+[Date]
+
+[Company Legal Name]
+[Registered agent or corporate address — look up in your state's business search]
+[City, State ZIP]
+
+Sent via certified mail, return receipt requested
+(Copy also emailed to [company customer service / legal] for the record.)
+
+Re: Demand to Cancel Subscription and Refund Unauthorized Charges — Account [Account Number / Email]
+
+Dear Customer Service / Legal Department:
+
+I am writing to demand (1) immediate cancellation of the above-referenced subscription, (2) a refund of every charge billed after my first cancellation attempt, and (3) written confirmation of the cancellation and refund.
+
+Subscription details:
+  • Account email / username: [Email]
+  • Plan name: [Plan]
+  • Monthly / annual price: $[Amount]
+  • Date of original signup: [Date]
+  • Signup channel: [Website / app / free-trial conversion]
+
+Prior cancellation attempts:
+  • [Date — channel (in-app, chat, phone, email) — rep name / chat ID / ticket # — outcome]
+  • [Date — channel — outcome]
+  • [Date — channel — outcome]
+
+Unauthorized post-attempt charges:
+  • [Date] — $[Amount]
+  • [Date] — $[Amount]
+  • [Date] — $[Amount]
+
+Legal basis for the demand:
+
+  1. ROSCA — The Restore Online Shoppers' Confidence Act, 15 U.S.C. §§ 8401–8405, requires negative-option subscriptions to provide "simple mechanisms" for consumers to stop recurring charges. Your refusal to cancel after my repeated attempts violates ROSCA, which is enforceable by the FTC and state attorneys general with civil penalties of up to approximately $51,744 per violation.
+
+  2. State auto-renewal law — [Pick the cite for the consumer's state:]
+     • California: Bus. & Prof. Code §§ 17600–17606 (as amended by AB 2863, effective July 1, 2025). Online signups must be cancelable exclusively online at will, with no obstructive steps. Cancellation method must be as easy as signup.
+     • New York: Gen. Bus. Law § 527-a. Cancellation must be as easy as the mechanism used to consent. Penalties up to $500 per violation (or $1,000 knowing).
+     • Illinois: Automatic Contract Renewal Act, 815 ILCS 601. Online signups must allow online termination. Violations enforceable under the Illinois Consumer Fraud Act (815 ILCS 505).
+     • Oregon: ORS 646A.295. Toll-free number, email, postal, or other easy mechanism required; unauthorized shipments deemed "unconditional gift."
+     • Connecticut: Conn. Gen. Stat. § 42-126b. Violation = unfair trade practice under CUTPA.
+     • Florida: Fla. Stat. § 501.165. Violation renders the auto-renewal provision void and unenforceable.
+     • Vermont: 9 V.S.A. § 2454a. Per-se Vermont Consumer Protection Act violation; private right of action with actual + exemplary damages + attorney's fees.
+
+  3. FCBA — For any disputed charges paid by credit card, I have the separate right to dispute under the Fair Credit Billing Act, 15 U.S.C. § 1666, with my card issuer within 60 days of the statement on which the charge first appeared.
+
+Demand:
+
+  Within [10] business days of receipt of this letter:
+
+  (a) Immediately cancel the subscription effective today and confirm in writing.
+
+  (b) Refund every charge billed after [date of first cancellation attempt], totaling $[Amount], to my original payment method.
+
+  (c) Confirm in writing that no further charges will be made, that my account has been closed, and that no negative information will be reported to any credit-reporting agency on the basis of this dispute.
+
+If you do not comply within this period, I reserve the right to pursue all available remedies, including:
+  • Filing a chargeback under the FCBA with my credit card issuer.
+  • Filing a complaint with the FTC at ReportFraud.ftc.gov.
+  • Filing a complaint with my state Attorney General's consumer protection division.
+  • Filing a complaint with the CFPB if a financial product is involved.
+  • [In CA, VT, NV, IL via UDAP, CT via CUTPA, OR via UDAP] Filing suit for actual damages, statutory damages, and attorney's fees under [State] consumer-protection law.
+
+Please send the cancellation confirmation and refund to the contact information above.
+
+Sincerely,
+
+[Your Signature]
+[Your Printed Name]
+
+Enclosures: [screenshots of prior cancellation attempts; account statements showing post-attempt charges; chat or email transcripts]`,
+    howToUse: [
+      "Document every cancellation attempt before sending the letter. Screenshots of in-app cancellation flows, copies of chat transcripts, dated emails, and any phone-rep names and ticket numbers are the proof the demand rests on.",
+      "Run a parallel chargeback with your credit card issuer under the FCBA. The card-issuer dispute uses the FCBA's 60-day window from the statement showing the charge; the merchant letter uses your state's auto-renewal law. Both tracks can run in parallel.",
+      "Send to the merchant's registered-agent or corporate address — not the customer-service P.O. box. Look up the merchant on your state's secretary-of-state business search. The certified-mail receipt at the corporate address is what proves they were properly served.",
+      "Don't cite the FTC click-to-cancel rule as binding federal law. The Eighth Circuit vacated it on July 8, 2025 (Custom Communications, Inc. v. FTC). Cite ROSCA and your state's auto-renewal statute instead. The Amazon Prime ($2.5B FTC settlement, Sept 2025) and Adobe ($150M DOJ settlement, March 2026) cases both relied on ROSCA and state law, not on the click-to-cancel rule.",
+      "If you're in a state with a strong private right of action (California, Vermont, Nevada, Illinois via UDAP, Connecticut via CUTPA), explicitly mention the potential for suit including attorney's fees. Companies' legal teams price this risk and tend to settle individual cancellation demands quickly when they see it.",
+    ],
+    legalContext: [
+      "Auto-renewal subscriptions are regulated at two layers. The federal layer is the Restore Online Shoppers' Confidence Act (ROSCA), 15 U.S.C. §§ 8401–8405, which requires online negative-option sellers to provide clear disclosures, obtain express informed consent, and provide \"simple mechanisms\" for consumers to stop recurring charges. ROSCA violations are enforceable by the FTC and state attorneys general, with civil penalties currently up to approximately $51,744 per violation. The state layer is a patchwork of roughly 24 state auto-renewal statutes — California, New York, Illinois, Oregon, Connecticut, Florida, Vermont, Nevada, and others — each with its own combination of cancellation-mechanism, pre-renewal-notice, and consumer-remedy provisions.",
+      "The FTC's expanded Click-to-Cancel rule (16 C.F.R. Part 425), issued October 16, 2024, would have made the \"as easy to cancel as to sign up\" requirement federal across virtually all industries. But the Eighth Circuit vacated the rule on July 8, 2025 in Custom Communications, Inc. v. FTC, on procedural grounds — the FTC failed to conduct a required preliminary regulatory analysis when projected economic impact exceeded $100 million. The vacatur was complete and came days before the rule's July 14, 2025 compliance deadline. The FTC published an Advance Notice of Proposed Rulemaking in March 2026 to restart the process, but as of mid-2026 there is no replacement rule in force. The enforcement floor is still active, though: ROSCA, FTC Act § 5, state auto-renewal laws, and the card-network chargeback rules all continue to operate. The Amazon $2.5 billion Prime settlement in September 2025 (Iliad Flow) and the Adobe $150 million DOJ settlement in March 2026 (hidden ETFs and obstructed cancellation) both rested on ROSCA, not on the vacated rule.",
+      "California is the strongest state regime. Bus. & Prof. Code §§ 17600–17606, amended by AB 2863 effective July 1, 2025, requires that online signups be cancelable exclusively online with no obstructive steps; pre-renewal notice 15–45 days before annual renewal; pre-conversion notice 3–21 days before a free trial converts; and notice 7–30 days before any fee change. New York Gen. Bus. Law § 527-a, amended December 13, 2023, requires the cancellation mechanism to be as easy to use as the signup mechanism, with penalties up to $500 per violation or $1,000 if knowing. Vermont 9 V.S.A. § 2454a is the strongest private-right-of-action state — a violation is a per-se Vermont Consumer Protection Act violation under 9 V.S.A. § 2453, with actual damages, exemplary damages, attorney's fees, and an active class-action plaintiffs' bar.",
+      "For credit-card subscriptions, the FCBA chargeback under 15 U.S.C. § 1666 (covered in this library's separate billing-error letter) is a parallel and independent track. The chargeback gives you the right to dispute the charge with your card issuer within 60 days of the statement on which the charge first appeared, and during the investigation the issuer cannot collect the disputed amount or report it as delinquent. The merchant demand letter and the FCBA chargeback work together — the demand pursues the underlying cancellation and refund; the chargeback pursues reversal of the charge with the issuer.",
+    ],
+    stateNotes: [
+      {
+        state: "California",
+        note: "Bus. & Prof. Code §§ 17600–17606, amended by AB 2863 (eff. July 1, 2025). Online signup = online cancel only, no obstructive steps. Pre-renewal notice 15–45 days; free-trial pre-conversion notice 3–21 days; fee-change notice 7–30 days. Unauthorized shipments deemed unconditional gift. Private right of action under UCL § 17200.",
+      },
+      {
+        state: "New York",
+        note: "Gen. Bus. Law § 527-a, amended Dec 13, 2023. Cancellation must be as easy as the mechanism used to consent. Pre-renewal notice 15–45 days for ≥1-year initial terms renewing ≥6 months. Penalties up to $500 per violation ($1,000 knowing). AG enforcement.",
+      },
+      {
+        state: "Illinois",
+        note: "Automatic Contract Renewal Act, 815 ILCS 601. Online signup must allow online termination. Pre-renewal notice 30–60 days for contracts ≥12 months renewing ≥1 month. Violation = deceptive practice under Illinois Consumer Fraud Act (815 ILCS 505) → actual damages, attorney's fees, injunctive relief.",
+      },
+      {
+        state: "Oregon",
+        note: "ORS 646A.295. Toll-free number, email, postal, or other easy mechanism required; online cancel required for online signups. Unauthorized shipments deemed unconditional gift. UDAP claim under ORS 646.638: actual damages + attorney's fees.",
+      },
+      {
+        state: "Connecticut",
+        note: "Conn. Gen. Stat. § 42-126b. Written cancellation procedure must be disclosed. Pre-renewal notice 15–60 days for initial terms >180 days renewing >31 days. Violation = unfair trade practice under CUTPA: actual + punitive damages, attorney's fees.",
+      },
+      {
+        state: "Florida",
+        note: "Fla. Stat. § 501.165. Cancellation must be allowed in the same manner as acceptance. Pre-renewal notice 30–60 days for ≥12-month terms renewing >1 month. Violation renders the auto-renewal provision void and unenforceable.",
+      },
+      {
+        state: "Vermont",
+        note: "9 V.S.A. § 2454a. Toll-free, email, postal, or other easy mechanism; online signup → online cancel. Pre-renewal notice 30–60 days. Per-se Vermont Consumer Protection Act violation (9 V.S.A. § 2453): actual damages, exemplary damages, attorney's fees, private right of action.",
+      },
+      {
+        state: "Nevada",
+        note: "NRS 598.097–598.0999 (deceptive trade practices). Must obtain consent for renewal on terms other than month-to-month. Pre-renewal notice required. Deceptive trade practice: AG action, civil penalties up to $5,000/violation; private action under NRS 41.600 (actual damages + attorney's fees).",
+      },
+    ],
+    ifThisDoesntWork:
+      "If the company ignores the 10-day demand or sends a refusal, your options stack quickly. File a chargeback with your credit-card issuer under the FCBA (within 60 days of the statement showing the charge). File a complaint with the FTC at ReportFraud.ftc.gov — the FTC has been actively enforcing ROSCA, with major settlements against Amazon ($2.5B in 2025), Adobe ($150M in 2026), and others. File with your state Attorney General's consumer protection division. For consumers in states with strong private rights of action (California, Vermont, Nevada, Illinois, Connecticut, Oregon), consult a consumer-protection attorney — statutory damages plus attorney's fees often make contingency arrangements available.",
+    relatedSlugs: [
+      "refund-demand-merchant",
+      "gym-membership-cancellation",
+      "billing-error-dispute",
+      "contractor-non-performance",
+      "credit-report-dispute",
+      "debt-validation-request",
+    ],
+    faqs: [
+      {
+        question: "Does the FTC's click-to-cancel rule force the company to let me cancel online?",
+        answer:
+          "Not as of 2026. The Eighth Circuit vacated the FTC's Click-to-Cancel rule on July 8, 2025 (Custom Communications v. FTC). But ROSCA (15 U.S.C. § 8403) still requires \"simple mechanisms\" to stop recurring charges, and state auto-renewal laws in California, New York, Illinois, Oregon, Vermont, and others independently require the cancel method to be as easy as signup.",
+      },
+      {
+        question: "How long do I have to chargeback a subscription I never authorized?",
+        answer:
+          "Under the Fair Credit Billing Act (15 U.S.C. § 1666), you have 60 days from the date of the first statement showing the disputed charge to dispute it in writing with your card issuer. See the credit-card billing-error letter in this library for the full chargeback procedure.",
+      },
+      {
+        question: "The company says cancellation is \"pending\" but keeps charging me. What do I do?",
+        answer:
+          "Document every contact (date, channel, rep name, ticket number). Send this written demand citing your state's auto-renewal statute and ROSCA. File a chargeback with your card issuer under the FCBA. File complaints with the FTC at ReportFraud.ftc.gov and your state attorney general.",
+      },
+      {
+        question: "I'm in California. What changed on July 1, 2025?",
+        answer:
+          "AB 2863 amended Bus. & Prof. Code §§ 17600 et seq. Online signups must now be cancelable exclusively online at will with no obstructive steps. Pre-conversion notice for free trials is required 3–21 days before conversion; annual-renewal notice 15–45 days before. Annual reminders are required.",
+      },
+      {
+        question: "Can I sue, or only the AG?",
+        answer:
+          "Depends on the state. California (UCL § 17200), Vermont (9 V.S.A. § 2453), Nevada (NRS 41.600), Connecticut (CUTPA), Illinois (815 ILCS 505), and Oregon (ORS 646.638) all support private actions including attorney's fees. New York § 527-a is primarily AG-enforced but supports actual-damages claims. Federal ROSCA itself has no private right of action — it's FTC/DOJ-enforced.",
+      },
+    ],
+    publishedAt: "2026-05-16",
+  },
+
+  {
+    slug: "gym-membership-cancellation",
+    category: "consumer",
+    title: "Gym Membership Cancellation Letter (Free Template + State Health Club Laws)",
+    metaDescription:
+      "Cancel a gym membership the right way. Free template citing your state's Health Club Services statute (CA, NY, TX, IL, FL, MA, NJ, PA, WA).",
+    lede:
+      "You're trying to cancel a gym membership and they're making it as hard as humanly possible — \"certified mail to a P.O. box,\" \"30-day notice plus a final month,\" \"sorry, you have to come in person.\" Almost 40 states regulate this stuff specifically. This letter cites the rule.",
+    body: `[Your Full Name]
+[Mailing Address]
+[City, State ZIP]
+[Phone] [Email]
+
+[Date]
+
+[Gym Legal Name]
+[Address of the specific club location]
+[City, State ZIP]
+
+Sent via certified mail, return receipt requested
+(Copy also emailed to [gym member services / corporate legal] for the record.)
+
+Re: Cancellation of Membership and Revocation of Recurring Billing — Member [Member Number / Account]
+
+Dear Member Services / Legal Department:
+
+I am writing to give formal written notice of cancellation of my membership at [Club Location], effective [Effective Date], pursuant to [State] Health Club Services / Physical Fitness Services law.
+
+Membership details:
+  • Member name and account number: [Name / Number]
+  • Specific club location: [Address]
+  • Contract execution date: [Date]
+  • Contract term: [Months / months remaining]
+  • Monthly fee: $[Amount]
+  • Payment method on file: [last 4 of card / bank account]
+
+Basis for cancellation: [Pick one or layer multiple, deleting the rest.]
+
+  [Cooling-off period] I am exercising my right to cancel within the [3 / 5 / 7]-day cooling-off period under [Cal. Civ. Code § 1812.85 (5 business days, escalating for higher-cost contracts); N.Y. Gen. Bus. Law § 624 (3 business days); Tex. Occ. Code § 702.307 (3 business days); 815 ILCS 645 (3 business days, 7 calendar for planned facilities); Fla. Stat. § 501.017 (3 days excl. weekends/holidays); Mass. G.L. c. 93 § 81 (3 business days); N.J.S.A. 56:8-42 (3 operating days after contract receipt); 73 P.S. § 2161 et seq. (3 business days)]. The contract was signed on [Date] and this notice is timely.
+
+  [Permanent disability] I am cancelling for permanent disability that materially affects my ability to use the facilities. A physician statement is enclosed.
+
+  [Relocation] I am cancelling because I have relocated more than [25 miles, or 5 driving miles in FL] from this facility and there is no comparable substitute facility within [25 miles] of my new residence. Proof of new address is enclosed.
+
+  [Club closure or material change] I am cancelling because the club [has closed / will close / has moved beyond the statutory mileage / has failed to provide promised services / has substantially reduced services]. Documentation enclosed.
+
+  [Death of member] As [member's executor / spouse], I am cancelling the membership of [Member Name] who died on [Date]. Death certificate enclosed.
+
+Demand:
+
+  Within [10] business days of receipt of this letter:
+
+  (a) Confirm in writing that the membership has been cancelled effective [Effective Date].
+
+  (b) Cease all recurring charges to the payment method on file. This letter constitutes formal revocation of any electronic-funds-transfer or recurring-billing authorization.
+
+  (c) Refund any prepaid fees for the unused portion of the contract within the statutory deadline: [15 days under Mass. G.L. c. 93 § 80; 30 days under N.J.S.A. 56:8-42, WA RCW 19.142.050, Fla. Stat. § 501.017; 40 days under 73 P.S. § 2161 (Pennsylvania); 48 hours for cooling-off under Tex. Occ. Code § 702.307].
+
+  (d) Send written confirmation that no negative information will be reported to any credit-reporting agency on the basis of this cancellation, and that no early-termination fee will be assessed in excess of any statutory cap (e.g., 10% of unused balance or $50 under 815 ILCS 645; 10% of contract price under N.J.S.A. 56:8-42).
+
+If your contract requires cancellation only by certified mail to a specific address, please note that several state statutes (Tex. Occ. Code § 702.304; N.J.S.A. 56:8-42; WA RCW 19.142.040) explicitly permit cancellation by any reasonable means including phone, email, in person, or website. A contract term that purports to require a more burdensome method than the statute is generally unenforceable.
+
+If you do not comply within this period, I reserve the right to:
+  • File a chargeback with my card issuer under the Fair Credit Billing Act (15 U.S.C. § 1666).
+  • File a complaint with my state Attorney General's consumer protection division.
+  • File a complaint with the FTC.
+  • [If applicable] File suit for statutory damages and attorney's fees under [State] Health Club Services Act or under the general state UDAP statute.
+
+I would like to handle this cleanly. Please confirm the cancellation and refund timeline by the deadline above.
+
+Sincerely,
+
+[Your Signature]
+[Your Printed Name]
+
+Enclosures: [physician statement if disability; proof of new address if relocation; death certificate if death cancellation; contract; any prior cancellation attempts]`,
+    howToUse: [
+      "Send to the corporate or legal address, not the club's front desk. Many gym contracts route \"cancellations only to corporate by certified mail\" precisely to make cancellation harder. Look up the gym's registered agent on your state's secretary-of-state business search and send there.",
+      "Send by certified mail with return receipt requested — and email a copy. Pennsylvania expressly requires certified mail; everywhere else, the certified receipt is what proves the statutory clock started.",
+      "Pick exactly one cancellation ground and delete the others before sending. Mixing grounds weakens each of them. If you're within the cooling-off window, use that alone — it's the strongest ground because no proof of cause is required.",
+      "Include the supporting documentation up front: physician statement for disability; lease or utility bill for relocation; death certificate for executor cancellation. Most state statutes permit the gym to require this verification; including it removes the gym's first delay tactic.",
+      "Revoke the EFT / recurring-billing authorization in writing. The letter does this expressly. If the gym continues to charge after revocation, those charges are unauthorized and chargeback-eligible under the FCBA (credit card) or under Regulation E (debit card).",
+    ],
+    legalContext: [
+      "Roughly 40 U.S. states have specific consumer-protection statutes regulating health clubs, health spas, health studios, or physical fitness services contracts — separate from generic consumer-fraud law. The statutes emerged in the 1970s and 1980s after waves of pre-paid gym failures left consumers holding the bag. Common features across statutes: a cooling-off period of 3 to 7 business days after signing (most states 3 business days; California 5; with longer windows for higher-cost contracts); statutory grounds for cancellation after the cooling-off window (permanent disability with physician verification, death, relocation beyond a fixed mileage radius (commonly 25 miles, 5 driving miles in Florida), and club closure or material reduction of services); contract length caps (commonly 36 months in California, Florida, Massachusetts, New Jersey, and Washington); refund timelines ranging from 15 days (Massachusetts) to 40 days (Pennsylvania); and bonding or prepayment caps in many states (New York, Pennsylvania, New Jersey, Massachusetts, Florida) to protect prepayments against insolvency.",
+      "California is among the most consumer-friendly regimes. Civ. Code §§ 1812.80–1812.98 (Health Studio Services Contract Law) provides a 5-business-day cooling-off period that escalates with contract size — 20 days for $1,500–$2,000 contracts, 30 days for $2,001–$2,500, and 45 days above $2,501. Post-cooling-off grounds include death, disability affecting use of the facilities, and relocation more than 25 miles. Contract length capped at 3 years. New York General Business Law Article 30 (§§ 620–631) provides a 3-business-day cooling-off period and caps contracts at 36 months. Texas Occupations Code Chapter 702 (Health Spa Act) caps at 36 months, allows cancellation for relocation more than 25 miles or doctor's order, and requires refunds within 48 hours for cooling-off cancellation or 30 days for partial-refund cancellation. Illinois 815 ILCS 645 (Physical Fitness Services Act) provides 3 business days for existing facilities (7 calendar days for planned/under-construction facilities), caps at 3 years, and limits relocation-cancellation fees to 10% or $50 whichever is less.",
+      "Bed-rock rule across state statutes: cancellation method cannot be made more burdensome than signup. Texas § 702.304, New Jersey § 56:8-42, and Washington RCW 19.142.040 all explicitly permit cancellation by any reasonable means including phone, email, in person, or website. Contract clauses requiring cancellation only by certified mail to a specific P.O. box are routinely unenforceable where the statute allows other methods. California AB 2863 (effective July 1, 2025) goes further and requires the cancellation method to match the signup method (\"click to quit\") — gym memberships are explicitly within scope.",
+      "Early-termination fees that exceed statutory caps are unenforceable. Illinois caps relocation-cancellation fees at the lesser of 10% of unused balance or $50. New Jersey caps fees for death or disability cancellation at 10% of the total contract price. California requires pro-rata refunds only. Fees in excess of those caps can be charged back as unauthorized and disputed under the state's gym statute. Auto-renewal traps are also subject to state auto-renewal laws (California Bus. & Prof. Code §§ 17600–17606; New York Gen. Bus. Law § 527-a) that layer on top of the gym-specific statutes.",
+    ],
+    stateNotes: [
+      {
+        state: "California",
+        note: "Cal. Civ. Code §§ 1812.80–1812.98. 5 business days cooling-off (escalating to 20/30/45 days for higher-cost contracts). Death, disability, relocation >25 miles permit post-cooling-off cancellation. Pro-rata refund of unused portion. 3-year contract cap.",
+      },
+      {
+        state: "New York",
+        note: "N.Y. Gen. Bus. Law §§ 620–631 (Article 30 Health Club Services). 3 business days cooling-off from receipt of signed contract. Death, permanent disability, services not available within 1 year. 36-month contract cap. § 624 specifies the cooling-off mechanics.",
+      },
+      {
+        state: "Texas",
+        note: "Tex. Occ. Code Ch. 702 (Health Spa Act). 3 business days for full refund (§ 702.307). Relocation >25 miles, doctor's order for >3 months, spa going out of business permit post-cooling-off. Refund: 48 hours cooling-off; 30 days otherwise. 36-month contract cap (§ 702.303).",
+      },
+      {
+        state: "Illinois",
+        note: "815 ILCS 645 (Physical Fitness Services Act). 3 business days for existing facilities; 7 calendar days for planned facilities. Relocation >25 miles permits cancellation (cancellation fee capped at lesser of 10% or $50). 30-day refund. 3-year contract cap.",
+      },
+      {
+        state: "Florida",
+        note: "Fla. Stat. §§ 501.012–.019 (esp. § 501.017). 3 days cooling-off, excluding weekends/holidays. Death, physical inability (physician cert), or studio relocation >5 driving miles without equal-quality substitute within 30 days. 30-day refund. 36-month cap, renewable annually.",
+      },
+      {
+        state: "Massachusetts",
+        note: "M.G.L. c. 93 §§ 78–88. 3 business days cooling-off (§ 81). Death or disability (§ 82); closure or relocation. 15-day refund after notice. 36-month cap (§ 80). Mass.gov consumer guide is the authoritative summary.",
+      },
+      {
+        state: "New Jersey",
+        note: "N.J.S.A. 56:8-39 et seq. (§ 56:8-42). 3 operating days cooling-off after buyer receives contract copy. Death/disability, relocation, closure. Club may retain up to 10% of contract price as expenses for death/disability cancellation. 30-day refund. 3-year cap. Telephone and online cancellation now expressly permitted (NJ Ch. 241 of 2023).",
+      },
+      {
+        state: "Pennsylvania",
+        note: "73 P.S. § 2161 et seq. (Health Club Act, Act 87 of 1989). 3 business days cooling-off by certified mail RRR or in person. Death/permanent disability; closure >30 days without comparable facility within 10 miles. 40-day refund including initiation fees. Statutory bonding/registration regime.",
+      },
+      {
+        state: "Washington",
+        note: "RCW 19.142.005–.080 (Health Studio Services). 3 business days cooling-off (§ 19.142.040(9)). Death/total disability, relocation >25 miles, permanent closure without substitute, any-reason 30-day cancel if contract >1 year. 30-day refund (§ 19.142.050). 36-month cap.",
+      },
+    ],
+    ifThisDoesntWork:
+      "If the gym ignores the letter or sends a refusal, your options stack. File a chargeback with your card issuer under the FCBA (within 60 days of the statement showing the charge). File a complaint with your state Attorney General's consumer protection division — gym-cancellation complaints are high-volume and AGs take them seriously. For continued unauthorized charges, file a complaint with the FTC at ReportFraud.ftc.gov and with the BBB. Pennsylvania Attorney General has historically enforced the Health Club Act aggressively after large-scale closures; other state AGs do similar. For larger or pattern-of-conduct cases, consult a consumer-protection attorney; many state Health Club Services Acts provide private rights of action with attorney's fees.",
+    relatedSlugs: [
+      "subscription-cancellation",
+      "refund-demand-merchant",
+      "billing-error-dispute",
+      "contractor-non-performance",
+      "credit-report-dispute",
+      "debt-validation-request",
+    ],
+    faqs: [
+      {
+        question: "My gym contract says I have to cancel by certified mail to a P.O. box. Is that enforceable?",
+        answer:
+          "Often not. Texas Occ. Code § 702.304, N.J.S.A. 56:8-42, and Washington RCW 19.142.040 expressly permit cancellation by any reasonable means including phone, email, in person, or website. Contract clauses requiring a more burdensome method than the statute are generally unenforceable. California AB 2863 (effective July 1, 2025) goes further — cancellation method must match the signup method.",
+      },
+      {
+        question: "How long do I have to cancel without giving a reason?",
+        answer:
+          "The cooling-off period under your state's statute — most commonly 3 business days. California: 5 business days for the standard contract, longer for higher-cost contracts. Illinois: 7 calendar days for planned/under-construction facilities. Pennsylvania, New York, Texas, Florida, Massachusetts, New Jersey: 3 business days.",
+      },
+      {
+        question: "Can I cancel if I move?",
+        answer:
+          "In most states, yes, if your new residence is more than 25 miles from the facility and there is no comparable substitute facility nearby. Florida uses a 5-driving-mile rule. Documentation: lease, utility bill, military orders, or other proof of new address.",
+      },
+      {
+        question: "What if I get injured and can't use the gym?",
+        answer:
+          "Almost every state allows cancellation for permanent disability that materially affects your ability to use the facilities. Most permit the gym to require a physician statement. The statement should say you cannot use a substantial portion of the services and that the condition is expected to last at least three months.",
+      },
+      {
+        question: "Does the FTC click-to-cancel rule require gyms to let me cancel online?",
+        answer:
+          "Not as of 2026. The Eighth Circuit vacated the FTC's Click-to-Cancel rule on July 8, 2025. State gym statutes and state auto-renewal laws are unaffected. In California, AB 2863 effective July 1, 2025 requires the cancellation method to match the signup method, which covers online cancellation for online signups.",
+      },
+    ],
+    publishedAt: "2026-05-16",
+  },
+
+  {
+    slug: "contractor-non-performance",
+    category: "consumer",
+    title: "Contractor Non-Performance Demand Letter (Free Template + State Home Improvement Laws)",
+    metaDescription:
+      "Contractor took your deposit and ghosted? Free demand letter citing state Home Improvement statutes (CA, NY, NJ, MD, FL, MA, IL, TX) + UDAP.",
+    lede:
+      "You hired a contractor. They took the deposit. Then they stopped showing up, did defective work, or disappeared entirely. This letter cites the state Home Improvement statute, the state UDAP statute, and (where applicable) the contractor-licensing board — the four-track demand contractors actually respond to.",
+    body: `[Your Full Name]
+[Project Property Address]
+[City, State ZIP]
+[Phone] [Email]
+
+[Date]
+
+[Contractor Legal Name + DBA]
+[License / Registration Number — if any]
+[Business Address]
+[City, State ZIP]
+
+Sent via certified mail, return receipt requested
+(Copy also emailed to [contractor email] for the record.)
+
+Re: Demand for Performance or Refund — [Project Description], [Property Address]
+
+Dear [Contractor Name]:
+
+I am writing to demand (1) completion of the contracted work or, in the alternative, (2) refund of the specified portion of payments already made, pursuant to our contract and the [State] consumer-protection regime governing home improvement contractors.
+
+Contract recitation:
+  • Contract date: [Date]
+  • Scope of work (per contract): [Brief, quote contract language]
+  • Total contract price: $[Amount]
+  • Payment schedule (per contract): [Summary]
+
+Payment history:
+  • [Date] — $[Amount] — [milestone / phase]
+  • [Date] — $[Amount] — [milestone / phase]
+  • [Date] — $[Amount] — [milestone / phase]
+  • Total paid to date: $[Total]
+
+Specific factual breach:
+  [Pick all that apply. Be specific with dates.]
+  • Work not done: [Describe scope completed vs. scope contracted; date of last activity on site]
+  • Work done defectively: [Itemize defects; reference plans/spec/code as applicable]
+  • Permits not pulled: [Required permits per local code; date deposit taken vs. permit deadline]
+  • Materials paid for but not delivered: [Itemize]
+  • Communication: [Last response from contractor; dates of unanswered calls/emails]
+
+License / registration status: [Verified [Date] at [state board URL]. Status: [Active / Expired / Unregistered]. Screenshot enclosed.]
+
+Legal basis:
+
+  1. [If contractor licensed/registered] Your conduct violates [State] Home Improvement statute:
+     • California: Bus. & Prof. Code §§ 7159 (contract requirements), 7107 (abandonment), 7113 (failure to complete in accordance with contract). Deposit cap: $1,000 or 10% of contract price, whichever is less.
+     • New York: Gen. Bus. Law Art. 36-A (§§ 770–776). All pre-completion payments must be deposited in a NY trust account within 5 business days or be bonded (Lien Law § 71-a).
+     • New Jersey: N.J.S.A. 56:8-1 et seq. (Consumer Fraud Act) + N.J.A.C. 13:45A-16 (Home Improvement Practices). Any HIP violation = per-se CFA violation = treble damages + attorney's fees.
+     • Maryland: Md. Code Bus. Reg. Title 8 (MHIC). Deposit cap: 1/3 of contract price. MHIC Guaranty Fund pays up to $30,000 per claim.
+     • Florida: Fla. Stat. §§ 489.126, 489.129, 489.140–.144. Taking >10% deposit and failing to pull permits within 30 days or start work within 90 days of permit issuance can be criminal. Recovery Fund up to $50,000/claim.
+     • Massachusetts: G.L. c. 142A + c. 93A § 9 (UDAP). Deposit cap: 1/3 of contract price or special-order materials cost, whichever greater. HIC Guaranty Fund up to $25,000.
+     • Illinois: Home Repair & Remodeling Act, 815 ILCS 513 + Consumer Fraud Act, 815 ILCS 505. Written contract required for work >$1,000; must deliver "Home Repair: Know Your Consumer Rights" pamphlet.
+     • Texas: Bus. & Com. Code § 17.41 (DTPA) + Property Code Ch. 27 (RCLA). 60-day pre-suit notice required under DTPA § 17.505 and RCLA § 27.004.
+
+  2. [If contractor unlicensed] California Bus. & Prof. Code § 7031 bars an unlicensed contractor from suing for any compensation and entitles the consumer to recover all sums paid by disgorgement (1-year statute of limitations from completion). New Jersey: unregistered contractor = per-se CFA violation = treble damages + attorney's fees. Maryland: unlicensed contract is void + criminal misdemeanor. Florida: unlicensed contracting under § 489.127 is a misdemeanor (felony if state of emergency).
+
+  3. State UDAP — Independently, your refusal to perform constitutes an unfair or deceptive act under [Mass. G.L. c. 93A § 2; NJ CFA N.J.S.A. 56:8-2; Tex. Bus. & Com. Code § 17.46; Cal. Bus. & Prof. Code § 17200; N.Y. Gen. Bus. Law § 349; Fla. Stat. § 501.204; 815 ILCS 505/2].
+
+Demand:
+
+  Within [14] days of receipt of this letter, either:
+
+  (a) Return to the project and complete the contracted scope of work by [Date Certain], with daily on-site presence and documented progress; OR
+
+  (b) Refund $[Amount, calculated as Total Paid minus reasonable value of work actually completed and minus the value of any materials installed], plus reimbursement for any payments I make to a substitute contractor to complete work that was within the original contract scope.
+
+If you choose neither, I will pursue all remedies available, including:
+
+  • Complaint to [State licensing board: CSLB in CA, NJ DCA Verify HIC, MHIC in MD, DBPR in FL, Mass HIC Program] including a request for restitution and license discipline.
+  • [If applicable to state] Claim against the state Recovery / Guaranty Fund — up to $50,000 (FL CILB Recovery Fund), $30,000 (MD MHIC Guaranty Fund), $25,000 (Mass HIC Guaranty Fund).
+  • Civil suit for breach of contract + statutory consumer-fraud claim with multiple damages and attorney's fees.
+  • [In FL] Referral to local State Attorney for prosecution under Fla. Stat. § 489.126 if applicable.
+  • Defense of any mechanic's lien you may attempt to record against the property, including a petition to discharge and a counterclaim for willful exaggeration / slander of title (N.Y. Lien Law §§ 39, 39-a; analogous remedies in other states). Any mechanic's lien recorded by an unlicensed contractor is typically invalid (CA Civ. Code § 8400).
+  • FTC complaint at ReportFraud.ftc.gov.
+
+Please send your response in writing to the address above.
+
+Sincerely,
+
+[Your Signature]
+[Your Printed Name]
+
+Enclosures: [signed contract; payment records; license verification screenshot; photos of completed / incomplete / defective work; any prior communications]`,
+    howToUse: [
+      "Verify the license BEFORE sending the letter. Every state with a licensing regime publishes a free license-lookup. CA: CSLB Check a License. NJ: NJ DCA Verify HIC. MD: MHIC. FL: MyFloridaLicense. MA: Mass.gov HIC Lookup. Screenshot the result and attach — if the contractor was unlicensed at the time of contract, your remedies expand dramatically (CA § 7031 disgorgement; NJ CFA per-se violation; MD void contract; FL criminal exposure).",
+      "Send to the contractor's registered legal address (look up the registered agent on your state's secretary-of-state business search) — not just the job-site phone number. The certified-mail receipt at the proper legal address is what proves service for any subsequent state-board complaint or suit.",
+      "Be specific about the breach. \"Work not done\" is weaker than \"As of [Date], the framing was complete but no drywall, electrical, or plumbing rough-in had been performed despite Milestone 3 being paid on [Date].\" Specificity matters for state-board complaints, UDAP claims, and any small-claims action.",
+      "Calibrate the deadline to your state's pre-suit notice rule. Massachusetts Ch. 93A § 9 requires 30 days. Texas DTPA § 17.505 and RCLA § 27.004 require 60 days. If you might sue under those statutes, the demand must give the statutory minimum or you forfeit enhanced damages.",
+      "Pre-empt any mechanic's lien retaliation. Contractors who are about to be challenged sometimes file an inflated mechanic's lien on the property. The letter explicitly warns of the willful-exaggeration counterclaim (N.Y. Lien Law § 39-a is the model statute) and notes that liens by unlicensed contractors are typically invalid. The warning often deters the lien filing.",
+    ],
+    legalContext: [
+      "A consumer whose contractor took a deposit and then abandoned, stalled, or did defective work generally has overlapping claims under four legal regimes, and a well-drafted demand letter invokes all of them. The first is straight breach of contract — failure to perform, anticipatory repudiation, and recovery of consequential damages plus the cost to complete with another contractor. The second is the state's Home Improvement statute — most populous states have specific consumer-protection acts that require a written contract over a dollar threshold, cap deposits, require licensing or registration display, and treat any violation as a per-se deceptive practice (New Jersey is the strongest example: any HIP violation triggers automatic treble damages and attorney's fees under the Consumer Fraud Act). The third is the state's general UDAP statute (Mass. Ch. 93A, NJ CFA, IL CFA, TX DTPA, CA CLRA, FL FDUTPA, NY GBL § 349, MD CPA) — several require pre-suit demand letters with statutory deadlines, and most provide multiple damages and attorney's fees. The fourth is the state contractor-licensing board — every state with a licensing regime accepts consumer complaints, and most can order restitution, suspend or revoke the license, or trigger payouts from a Guaranty or Recovery Fund.",
+      "Deposit caps are the single most-violated provision. California Bus. & Prof. Code § 7159(d) caps deposits at $1,000 or 10% of the contract price, whichever is less — and the cap must appear in 12-point bold type in the contract. Maryland and Massachusetts cap at 1/3 of contract price. New York doesn't have a flat cap, but all pre-completion payments must be deposited in a New York trust or escrow account within 5 business days or be bonded. Florida prohibits taking more than 10% if the contractor fails to pull permits within 30 days or start work within 90 days of permit issuance — and serial offenders can be charged criminally. Consumers whose contractor exceeded the cap have a leverage point even before getting to the breach claim.",
+      "Verifying the license is the highest-leverage pre-letter step. If the contractor was unlicensed at the time of contract, statutory remedies expand dramatically. California's Bus. & Prof. Code § 7031 is the most powerful disgorgement statute in the country: an unlicensed contractor is barred from suing for any compensation, and the consumer can recover all sums paid (1-year statute of limitations from completion). New Jersey treats an unregistered contractor as a per-se Consumer Fraud Act violation, automatically triggering treble damages and attorney's fees. Maryland makes an unlicensed home-improvement contract void and the unlicensed contracting a criminal misdemeanor. Florida classifies unlicensed contracting as a misdemeanor (felony if in a state of emergency); the Construction Industry Recovery Fund is unavailable to unlicensed contractors.",
+      "Mechanic's liens are a common retaliation tactic and a serious consumer problem because they cloud title and can block a sale or refinance even if facially invalid. Every state allows the homeowner to bond around a lien — typically by recording a surety bond of 150% of the lien amount (e.g., NY Lien Law § 37) — and to petition to discharge a lien that is facially defective, late-filed, or unverified. New York's Lien Law §§ 39 and 39-a void the entire lien if any portion was willfully exaggerated and entitle the owner to bond premium plus interest plus reasonable attorney's fees plus the exaggerated amount. California, Massachusetts, and other states have analogous slander-of-title or abuse-of-process claims. Mechanic's liens by unlicensed contractors are typically invalid by operation of statute (e.g., CA Civ. Code § 8400 incorporates the § 7031 licensing requirement).",
+    ],
+    stateNotes: [
+      {
+        state: "California",
+        note: "Bus. & Prof. Code §§ 7159, 7031 (disgorgement), 7107 (abandonment), 7113 (failure to complete). Deposit cap: $1,000 OR 10% of contract, whichever LESS (12-pt bold required). CSLB Check a License + complaint. Unlicensed contractor: § 7031 disgorgement of all sums paid.",
+      },
+      {
+        state: "New York",
+        note: "Gen. Bus. Law Art. 36-A (§§ 770–776); Lien Law § 71-a (escrow). Contracts >$500. No flat deposit cap but all pre-completion payments must go into NY trust/escrow within 5 business days or be bonded. No statewide license — verify with local jurisdiction (NYC DCWP, Suffolk, Nassau, Westchester, etc.).",
+      },
+      {
+        state: "New Jersey",
+        note: "Consumer Fraud Act N.J.S.A. 56:8-1 + N.J.A.C. 13:45A-16 (Home Improvement Practices) + Contractor Registration Act (compliance bond $10k–$50k as of April 2025). Contracts >$500. Any unwritten contract = per-se CFA violation = TREBLE damages + attorney's fees.",
+      },
+      {
+        state: "Maryland",
+        note: "Md. Code Bus. Reg. Title 8 (MHIC) + CL § 13-301 (Consumer Protection Act). Deposit cap: 1/3 of contract price. MHIC License Search. MHIC Guaranty Fund pays up to $30,000 per claim after final order. Unlicensed contract void + criminal misdemeanor.",
+      },
+      {
+        state: "Florida",
+        note: "Fla. Stat. §§ 489.126 (permits 30/90 days), 489.129 (license discipline), 489.140–.144 (Construction Industry Recovery Fund $50,000/claim, $250,000/licensee). Unlicensed contracting under § 489.127: misdemeanor (felony in emergency); Recovery Fund unavailable.",
+      },
+      {
+        state: "Massachusetts",
+        note: "G.L. c. 142A + c. 93A § 9 (UDAP — 30-day demand letter required). Contracts ≥$1,000. Deposit cap: 1/3 of contract OR actual cost of special-order materials. HIC Guaranty Fund up to $25,000 (registration required).",
+      },
+      {
+        state: "Illinois",
+        note: "Home Repair & Remodeling Act, 815 ILCS 513 + Consumer Fraud Act, 815 ILCS 505. Contracts >$1,000 must be written + signed; must deliver \"Home Repair: Know Your Consumer Rights\" pamphlet. No statewide license (roofing licensed by IDFPR). IL AG Consumer Complaint.",
+      },
+      {
+        state: "Texas",
+        note: "Bus. & Com. Code § 17.41 (DTPA) — 60-day pre-suit notice required under § 17.505. Property Code Ch. 27 (RCLA) — 60-day pre-suit notice under § 27.004; contractor gets up to 3 inspections within 35-day window. No statewide GC license; verify TDLR licensed trades.",
+      },
+    ],
+    ifThisDoesntWork:
+      "If the contractor doesn't respond or refuses, the four-track escalation is real and effective. Track 1: state licensing board complaint (CSLB, MHIC, DBPR, Mass HIC, NJ DCA). Track 2: state Recovery / Guaranty Fund claim — Florida CILB Fund up to $50,000, Maryland MHIC Guaranty Fund up to $30,000, Massachusetts HIC Guaranty Fund up to $25,000 — typically requires a final judgment or order first. Track 3: civil suit for breach + UDAP — Massachusetts Ch. 93A § 9 awards mandatory attorney's fees and up to treble damages for inadequate response to the 30-day demand; New Jersey CFA awards treble damages and attorney's fees for any HIP violation. Track 4: criminal referral where the conduct involved deposit theft (Florida § 489.126; California serial-offender provisions; most state AGs). For mechanic's lien retaliation, file a petition to discharge and counterclaim for willful exaggeration (NY Lien Law § 39-a is the model). Many consumer-protection attorneys take contractor cases on contingency because of the attorney's-fee provisions.",
+    relatedSlugs: [
+      "refund-demand-merchant",
+      "subscription-cancellation",
+      "gym-membership-cancellation",
+      "billing-error-dispute",
+      "credit-report-dispute",
+      "debt-validation-request",
+    ],
+    faqs: [
+      {
+        question: "My contractor cashed my deposit and never showed up. Is that just breach of contract, or a crime?",
+        answer:
+          "Often both. In Florida, taking more than 10% deposit and failing to pull permits within 30 days or start work within 90 days of permit issuance can be a misdemeanor or felony depending on amount (Fla. Stat. § 489.126). In California, abandonment without legal excuse violates Bus. & Prof. Code § 7107 and is grounds for license discipline. Most states' AGs also treat \"deposit and run\" as criminal theft above a threshold.",
+      },
+      {
+        question: "How much can a contractor legally take up front?",
+        answer:
+          "Varies sharply by state. California caps at $1,000 or 10% of contract, whichever is LESS. Maryland and Massachusetts cap at 1/3. New York has no flat cap but pre-completion funds must sit in a trust account. Florida doesn't cap the amount directly but ties the deposit to permit-pulling deadlines.",
+      },
+      {
+        question: "The contractor is licensed but ghosting me. Will the licensing board get my money back?",
+        answer:
+          "Sometimes, indirectly. CSLB, MHIC, and DBPR can pressure restitution as a condition of keeping the license. Florida CILB and Massachusetts OCABR have Recovery / Guaranty Funds (up to $50,000 FL, $25,000 MA, $30,000 MD) but only after you obtain a judgment or final order. CSLB explicitly says it cannot guarantee a refund — consumers whose primary goal is restitution should pursue damages through the courts as well.",
+      },
+      {
+        question: "Do I have to send a demand letter before I sue?",
+        answer:
+          "Almost always yes if you want enhanced UDAP damages. Massachusetts Ch. 93A § 9 requires a 30-day demand; failure to send forfeits multiple damages and fees. Texas DTPA requires 60-day demand under Bus. & Com. Code § 17.505; TX RCLA also requires 60-day pre-suit notice under Property Code § 27.004. Even where not strictly required, demand letters reset settlement leverage and document the contractor's refusal.",
+      },
+      {
+        question: "Can I cancel the contract if I just changed my mind?",
+        answer:
+          "If the contract was signed in your home (not at the contractor's office), the FTC Cooling-Off Rule (16 C.F.R. Part 429) gives you 3 business days to cancel any sale of $25 or more. California, New York, and many states layer additional 3-day (or 5-day for seniors in CA) rights for home-solicitation sales. Cancellation notice must be postmarked by midnight of the third business day.",
+      },
+    ],
+    publishedAt: "2026-05-16",
+  },
 ];
