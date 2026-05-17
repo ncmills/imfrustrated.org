@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { Header, FadeInSection } from "@/components/ClientSections";
 import { getAllLetters, getAvailableCategories } from "@/data/letters";
@@ -23,6 +24,82 @@ export const metadata: Metadata = {
       "Free, plain-English letter templates that invoke real statutes — security deposits, billing errors, debt validation, medical records, credit-report disputes.",
   },
 };
+
+const categoryIconPaths: Record<string, ReactNode> = {
+  landlord: (
+    <>
+      <path d="M6 22V12L24 6l18 6v10" />
+      <path d="M10 22v18a2 2 0 002 2h24a2 2 0 002-2V22" />
+      <path d="M20 42v-10h8v10" />
+    </>
+  ),
+  "credit-card": (
+    <>
+      <rect x="6" y="12" width="36" height="24" rx="2" />
+      <path d="M6 20h36" />
+      <path d="M12 30h6" strokeLinecap="round" />
+    </>
+  ),
+  consumer: (
+    <>
+      <path d="M10 8h28l-2 22a2 2 0 01-2 2H14a2 2 0 01-2-2L10 8z" />
+      <path d="M6 8h4" strokeLinecap="round" />
+      <path d="M18 38a2 2 0 100 4 2 2 0 000-4z" />
+      <path d="M32 38a2 2 0 100 4 2 2 0 000-4z" />
+    </>
+  ),
+  neighbor: (
+    <>
+      <path d="M4 22l8-8 8 8v18H4V22z" />
+      <path d="M28 22l8-8 8 8v18H28V22z" />
+      <path d="M20 40h8" strokeLinecap="round" />
+    </>
+  ),
+  hoa: (
+    <>
+      <path d="M8 42V14l8-6 8 6v28" />
+      <path d="M24 42V22l8-6 8 6v20" />
+      <path d="M14 22h4M14 30h4M30 30h4" strokeLinecap="round" />
+    </>
+  ),
+  airline: (
+    <>
+      <path d="M6 28l14-4 8-14 4 2-4 14 14 4-2 4-14-4-4 8-4-2 2-8-14 4z" strokeLinejoin="round" />
+    </>
+  ),
+  hotel: (
+    <>
+      <path d="M6 36V14" strokeLinecap="round" />
+      <path d="M6 22h28a8 8 0 018 8v6" />
+      <path d="M6 36h36" strokeLinecap="round" />
+      <circle cx="14" cy="18" r="3" />
+    </>
+  ),
+  employer: (
+    <>
+      <rect x="6" y="14" width="36" height="24" rx="2" />
+      <path d="M18 14V10a2 2 0 012-2h8a2 2 0 012 2v4" />
+      <path d="M6 24h36" />
+    </>
+  ),
+};
+
+function CategoryIcon({ slug }: { slug: string }) {
+  const paths = categoryIconPaths[slug];
+  if (!paths) return null;
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      className="w-10 h-10 mb-5 text-forest group-hover:text-amber transition-colors duration-300"
+      aria-hidden="true"
+    >
+      {paths}
+    </svg>
+  );
+}
 
 export default function LettersHubPage() {
   const letters = getAllLetters();
@@ -97,8 +174,9 @@ export default function LettersHubPage() {
                   <FadeInSection key={cat.slug}>
                     <Link
                       href={`/letters/${cat.slug}`}
-                      className="block bg-paper-lift border border-rule rounded-[6px] p-7 h-full hover:border-forest/40 transition-all duration-500 hover:shadow-[0_18px_36px_-24px_rgba(45,74,62,0.25)]"
+                      className="group block bg-paper-lift border border-rule rounded-[6px] p-7 h-full hover:border-forest/40 transition-all duration-500 hover:shadow-[0_18px_36px_-24px_rgba(45,74,62,0.25)]"
                     >
+                      <CategoryIcon slug={cat.slug} />
                       <p className="text-amber text-[0.68rem] font-semibold uppercase tracking-[0.28em] mb-3">
                         {count} {count === 1 ? "letter" : "letters"}
                       </p>
