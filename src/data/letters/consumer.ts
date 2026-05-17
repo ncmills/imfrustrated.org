@@ -1044,4 +1044,110 @@ Enclosures: [signed contract; payment records; license verification screenshot; 
     ],
     publishedAt: "2026-05-16",
   },
+
+  {
+    slug: "goodwill-late-payment-removal",
+    category: "consumer",
+    title: "Goodwill Late-Payment Removal Letter to Creditor (Free Template)",
+    metaDescription:
+      "Asking the creditor to remove an accurate late-payment mark as a one-time courtesy. Free goodwill letter — distinct from an FCRA dispute. Politeness + history = sometimes yes.",
+    lede:
+      "The late payment really was late. You're not disputing accuracy. You're asking the creditor to delete an accurate negative mark as a one-time courtesy, based on an otherwise spotless history. This letter is that ask.",
+    body: `[Your Full Name]
+[Address]
+[City, State ZIP]
+
+[Date]
+
+[Creditor Name — Credit Bureau Reporting / Consumer Relations Department]
+[Customer Service Address]
+
+Sent via certified mail or through the creditor's secure-message portal
+
+Re: Goodwill Adjustment Request — Account [Last 4]
+
+To Whom It May Concern:
+
+I am writing to ask, as a courtesy, that you consider removing the late-payment notation reported for the [Month / Year] statement on my account ending [Last 4].
+
+Brief context:
+  [One short, honest paragraph. One of:
+  — Medical event with date.
+  — Job loss / income disruption with date.
+  — Autopay failure after card reissue (date).
+  — Family emergency with date.
+  — Deployment.
+  — Address change confusion.]
+
+I want to be clear: I am NOT disputing the accuracy of this report under the FCRA. I acknowledge the payment was late. I am asking, as a one-time courtesy, that you consider removing it.
+
+Account history:
+  • Account opened: [Year]
+  • Length of relationship: [Years] years
+  • Payment history before the late: [N] consecutive on-time payments
+  • Payment history since: [Consistent on-time]
+  • Account standing: current, in good standing
+
+I would appreciate it if you could request removal of the [Month / Year] late-payment mark with all three nationwide consumer reporting agencies (Equifax, Experian, TransUnion). Please confirm in writing.
+
+Thank you for considering this request.
+
+Sincerely,
+
+[Your Signature]
+[Your Printed Name]
+[Phone] [Email]`,
+    howToUse: [
+      "Acknowledge the late was real — explicitly. This is the line that separates the goodwill letter from an FCRA accuracy dispute. Don't claim the late was inaccurate; that's a different instrument (the credit-report-dispute letter in this library) sent to the credit bureau, not the creditor.",
+      "Keep it short, polite, one page. The letter works because of the relationship — long-standing customer, otherwise clean, brief honest reason — not because of legal pressure. Threats and demands actively make the request less likely to succeed.",
+      "Send to the creditor's credit-bureau-reporting team or consumer relations, NOT to general customer service. The team that handles bureau reporting is the one that can request a deletion.",
+      "Don't threaten litigation, CFPB complaint, or regulatory action. Goodwill is a relationship ask, not a leverage play. There's no statutory right to goodwill removal of an accurate late — and § 1681s-2(a) duties aren't privately enforceable, so threats don't create leverage anyway.",
+      "Don't make this a recurring ask. One letter, one creditor, one event. Re-asking the same creditor for the same late after a no usually doesn't work and burns the relationship.",
+    ],
+    legalContext: [
+      "A goodwill letter is not a statutory demand. It is a polite, voluntary request to the original creditor (the \"furnisher\" of information to the credit bureaus) asking them to remove an accurate late-payment mark from your credit report as a one-time courtesy. The load-bearing distinction is honesty: the late payment really was late. You are not claiming the creditor reported anything wrong. You are asking the creditor to exercise discretion and delete an accurate negative line item.",
+      "The CFPB is blunt on the underlying legal reality: \"You generally cannot have negative information removed from your credit report if it is accurate.\" \"Beware of anyone who claims that they can remove information from your credit report that's current, accurate, and negative. It's probably a credit repair scam.\" So the goodwill letter doesn't pretend otherwise — it asks anyway, politely, on the merits of the relationship. Creditors have no legal obligation to say yes; some large issuers (Chase, for example) have a stated policy against goodwill adjustments because of their FCRA reporting-compliance posture. But many smaller banks, credit unions, mortgage servicers, and medical providers will quietly do it, especially for a first-time, isolated late.",
+      "What CAN be removed under FCRA is only inaccurate information, and the procedure is different. 15 U.S.C. § 1681s-2(a) sets furnisher accuracy duties — a creditor can't knowingly furnish information it has reasonable cause to believe is inaccurate. But § 1681s-2(a) is NOT privately enforceable; the statute reserves enforcement exclusively to federal regulators and state officials. 15 U.S.C. § 1681i is the procedure consumers actually use: notify the credit bureau in writing of the inaccuracy. The bureau must investigate within 30 days (45 if you supply additional info), forward the dispute to the furnisher within 5 business days, and delete or correct anything that can't be verified. Furnisher liability to consumers attaches under § 1681s-2(b) — once the bureau hands the dispute to the furnisher and the furnisher fails to conduct a reasonable investigation. If your late was inaccurate, use the credit-report-dispute letter in this library — not this one.",
+      "Why goodwill works when it works: creditor discretion exists (nothing in the FCRA forbids a creditor from voluntarily updating or removing an item they previously reported); relationship retention (a long-standing, otherwise-current customer is worth keeping; a goodwill adjustment is cheap retention); and pattern-recognition (the classic profile that gets goodwill granted is one late, years of clean payments, a plausible one-time reason — medical event, autopay glitch, deployment, address change — and a customer who asks once, politely, in writing). Smaller banks, credit unions, and medical creditors say yes more often than the largest national issuers. Your mileage will vary by issuer policy.",
+    ],
+    stateNotes: undefined,
+    ifThisDoesntWork:
+      "If the creditor says no, you're mostly out of legal levers for an accurate late — that's the honest answer. The legitimate options: ask once more after time passes if circumstances change; focus on building positive history that outweighs the late in scoring; wait for the seven-year clock. Don't pay anyone who promises they can force removal of an accurate item — CFPB explicitly flags this as a credit-repair scam pattern. If the late was actually inaccurate (you paid on time, or it wasn't your account, or it's a duplicate, or it stemmed from identity theft), switch to the credit-report-dispute letter and file with the credit bureau under § 1681i. Different instrument, different remedy.",
+    relatedSlugs: [
+      "credit-report-dispute",
+      "credit-card-fee-waiver",
+      "bank-fee-waiver",
+      "chargeback-escalation",
+      "account-closure",
+      "debt-validation-request",
+    ],
+    faqs: [
+      {
+        question: "Does the creditor have to remove the late if I ask nicely?",
+        answer:
+          "No. There is no statutory right to goodwill removal of an accurate late. The creditor's accuracy duties under FCRA § 1681s-2(a) are enforced only by federal and state regulators, not by consumers — and even those duties run to accuracy, not to whether to keep reporting accurate negatives. Removal is purely discretionary.",
+      },
+      {
+        question: "How long would the late stay if I do nothing?",
+        answer:
+          "Generally up to seven years from the original delinquency date, per FCRA. Time is the only guaranteed cure for an accurate late.",
+      },
+      {
+        question: "What if the late wasn't actually my fault?",
+        answer:
+          "That's a dispute, not a goodwill ask. File a written dispute with the credit bureau under 15 U.S.C. § 1681i (and optionally with the furnisher directly under Reg V). The bureau has 30 days to investigate; if the furnisher can't verify, it comes off. See the credit-report-dispute letter in this library.",
+      },
+      {
+        question: "Should I send it to the credit bureau or to the creditor?",
+        answer:
+          "The creditor. Bureaus don't grant goodwill — they only respond to accuracy disputes. The furnisher (your bank, lender, card issuer) is the only party that can voluntarily ask the bureaus to remove the line.",
+      },
+      {
+        question: "Big bank said no. Now what?",
+        answer:
+          "You're mostly out of legal levers for an accurate late. Options: ask once more after time passes if circumstances change; focus on building positive history that outweighs the late in scoring; wait for the seven-year clock. Don't pay anyone who promises they can force removal of an accurate item.",
+      },
+    ],
+    publishedAt: "2026-05-16",
+  },
 ];
