@@ -156,7 +156,40 @@ export default function RootLayout({
             "url": "https://imfrustrated.org",
             "email": "info@imfrustrated.org",
             "nonprofitStatus": "Nonprofit501c3",
-            "sameAs": ["https://idonthaveawill.com"]
+            "sameAs": ["https://idonthaveawill.com"],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Free Legal Resources",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Free Conversation with a Volunteer Attorney",
+                    "url": "https://imfrustrated.org/how-it-works",
+                    "description": "Email info@imfrustrated.org to talk through your situation with a volunteer attorney. No commitment, no invoice."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "CreativeWork",
+                    "name": "Free Letter Templates",
+                    "url": "https://imfrustrated.org/letters",
+                    "description": "Plain-English letter templates citing real federal and state statutes — security deposits, billing errors, debt validation, medical records, and more."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "WebApplication",
+                    "name": "I Don't Have a Will",
+                    "url": "https://idonthaveawill.com",
+                    "description": "Free self-help will generator covering all 50 US states + DC. Runs entirely in the browser."
+                  }
+                }
+              ]
+            }
           }) }}
         />
         <a href="#main-content" className="skip-link">Skip to content</a>

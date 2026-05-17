@@ -56,6 +56,18 @@ export default function FreeToolsPage() {
           url: "https://imfrustrated.org",
         },
       },
+      {
+        "@type": "CollectionPage",
+        name: "Letter Templates",
+        url: "https://imfrustrated.org/letters",
+        description:
+          "A free, attorney-written library of plain-English letter templates that invoke real federal and state statutes — security deposits, billing errors, debt validation, medical records, credit-report disputes, and more.",
+        provider: {
+          "@type": "NGO",
+          name: "I'm Frustrated dot Org",
+          url: "https://imfrustrated.org",
+        },
+      },
     ],
   };
 
@@ -155,6 +167,75 @@ export default function FreeToolsPage() {
                   <span className="text-forest">info@imfrustrated.org</span> for a free conversation first.
                 </p>
               </a>
+            </FadeInSection>
+          </div>
+        </section>
+
+        {/* Featured library — Letters */}
+        <section className="py-12 md:py-16 bg-paper-deep">
+          <div className="max-w-4xl mx-auto px-6 md:px-10">
+            <FadeInSection className="mb-10 text-center">
+              <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-3">Featured Library — No. 02</p>
+              <div className="decorative-rule mx-auto" />
+            </FadeInSection>
+
+            <FadeInSection>
+              <Link
+                href="/letters"
+                className="group block letter-card hover:border-forest/40 transition-all duration-500"
+              >
+                <div className="flex items-start gap-6 mb-6">
+                  <div className="text-forest group-hover:text-amber transition-colors duration-300 shrink-0">
+                    <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M8 12h32v28a2 2 0 01-2 2H10a2 2 0 01-2-2V12z" />
+                      <path d="M8 12l16 12 16-12" />
+                      <path d="M16 28h12" strokeLinecap="round" />
+                      <path d="M16 34h16" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-2">
+                      Free Letter Library
+                    </p>
+                    <h2 className="font-serif text-2xl md:text-[2rem] font-semibold text-ink tracking-[-0.01em]">
+                      Letters That Get a Response
+                    </h2>
+                  </div>
+                </div>
+
+                <p className="text-muted-warm text-base md:text-lg leading-[1.7] mb-6">
+                  Most legal problems don&rsquo;t need a lawyer. They need a clear, properly written letter — one that quotes the statute, sets the deadline, and tells the other side what happens if they ignore it. We&rsquo;ve written a library of them. Security deposits, billing-error disputes, debt validation, medical records, credit-report errors. Every citation verified. Free to copy, customize, send.
+                </p>
+
+                <ul className="space-y-3 mb-8">
+                  {[
+                    "Verified statute citations — federal and state",
+                    "Written by practicing attorneys, free to use",
+                    "Plain-English explanations of what the law actually says",
+                    "State-by-state notes where the law varies",
+                    "No account, no upsell, no catch",
+                  ].map((line) => (
+                    <li key={line} className="flex items-start gap-3 text-muted-warm text-[0.95rem] md:text-base leading-relaxed">
+                      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-amber shrink-0 mt-1" stroke="currentColor" strokeWidth="2">
+                        <path d="M5 10l3.5 3.5L15 7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <span className="btn-forest">
+                  Browse the library
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </span>
+
+                <p className="text-muted-warm/80 text-xs mt-8 leading-relaxed">
+                  Each template is for informational use only — not legal advice. For situations that are urgent, complicated, or high-stakes, email{" "}
+                  <span className="text-forest">info@imfrustrated.org</span> for a free conversation with a volunteer attorney before you send.
+                </p>
+              </Link>
             </FadeInSection>
           </div>
         </section>

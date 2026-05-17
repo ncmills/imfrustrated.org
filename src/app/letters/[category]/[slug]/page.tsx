@@ -73,6 +73,20 @@ export default async function LetterPage({
     mainEntityOfPage: url,
   };
 
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How to use the ${letter.title}`,
+    description: letter.lede,
+    totalTime: "PT15M",
+    step: letter.howToUse.map((text, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: `Step ${i + 1}`,
+      text,
+    })),
+  };
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -102,6 +116,7 @@ export default async function LetterPage({
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <Header />
@@ -127,12 +142,30 @@ export default async function LetterPage({
               {letter.title}
             </h1>
             <div className="decorative-rule mb-8" />
-            <p className="text-muted-warm text-lg leading-relaxed">{letter.lede}</p>
+            <p className="text-muted-warm text-lg leading-relaxed mb-6">{letter.lede}</p>
+            <p className="text-muted-warm/70 text-xs uppercase tracking-[0.22em]">
+              <time dateTime={letter.updatedAt ?? letter.publishedAt}>
+                {letter.updatedAt ? "Updated" : "Published"}{" "}
+                {new Date(letter.updatedAt ?? letter.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+              </time>
+              <span className="mx-3 text-rule">·</span>
+              <a href="#letter" className="hover:text-forest transition-colors">Jump to letter</a>
+              <span className="mx-3 text-rule">·</span>
+              <a href="#how-to-use" className="hover:text-forest transition-colors">How to use</a>
+              {letter.stateNotes && letter.stateNotes.length > 0 && (
+                <>
+                  <span className="mx-3 text-rule">·</span>
+                  <a href="#state-notes" className="hover:text-forest transition-colors">State notes</a>
+                </>
+              )}
+              <span className="mx-3 text-rule">·</span>
+              <a href="#faq" className="hover:text-forest transition-colors">FAQ</a>
+            </p>
           </FadeInSection>
         </section>
 
         {/* The letter */}
-        <section className="py-12 md:py-16 bg-paper-deep">
+        <section id="letter" className="py-12 md:py-16 bg-paper-deep">
           <div className="max-w-3xl mx-auto px-6 md:px-10">
             <FadeInSection className="mb-8">
               <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-3">The letter</p>
@@ -158,7 +191,7 @@ export default async function LetterPage({
         </section>
 
         {/* How to use it */}
-        <section className="py-16 md:py-20 bg-paper">
+        <section id="how-to-use" className="py-16 md:py-20 bg-paper">
           <div className="max-w-3xl mx-auto px-6 md:px-10">
             <FadeInSection className="mb-8">
               <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-3">How to use it</p>
@@ -180,7 +213,7 @@ export default async function LetterPage({
         </section>
 
         {/* What the law says */}
-        <section className="py-16 md:py-20 bg-paper-deep">
+        <section id="legal-context" className="py-16 md:py-20 bg-paper-deep">
           <div className="max-w-3xl mx-auto px-6 md:px-10">
             <FadeInSection className="mb-8">
               <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-3">What the law actually says</p>
@@ -202,7 +235,7 @@ export default async function LetterPage({
 
         {/* State notes */}
         {letter.stateNotes && letter.stateNotes.length > 0 && (
-          <section className="py-16 md:py-20 bg-paper">
+          <section id="state-notes" className="py-16 md:py-20 bg-paper">
             <div className="max-w-3xl mx-auto px-6 md:px-10">
               <FadeInSection className="mb-8">
                 <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-3">State variations</p>
@@ -228,7 +261,7 @@ export default async function LetterPage({
         )}
 
         {/* If this doesn't work */}
-        <section className="py-16 md:py-20 bg-paper-deep">
+        <section id="escalation" className="py-16 md:py-20 bg-paper-deep">
           <div className="max-w-3xl mx-auto px-6 md:px-10">
             <FadeInSection className="mb-6">
               <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-3">If this doesn&rsquo;t work</p>
@@ -245,7 +278,7 @@ export default async function LetterPage({
         </section>
 
         {/* FAQs */}
-        <section className="py-16 md:py-20 bg-paper">
+        <section id="faq" className="py-16 md:py-20 bg-paper">
           <div className="max-w-3xl mx-auto px-6 md:px-10">
             <FadeInSection className="mb-8">
               <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-3">Questions people ask</p>
@@ -270,7 +303,7 @@ export default async function LetterPage({
 
         {/* Related letters */}
         {related.length > 0 && (
-          <section className="py-16 md:py-20 bg-paper-deep">
+          <section id="related" className="py-16 md:py-20 bg-paper-deep">
             <div className="max-w-4xl mx-auto px-6 md:px-10">
               <FadeInSection className="mb-8 text-center">
                 <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-3">Related templates</p>
