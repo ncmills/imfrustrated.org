@@ -87,6 +87,38 @@ export default async function LetterPage({
     })),
   };
 
+  const legalDocumentSchema = {
+    "@context": "https://schema.org",
+    "@type": "LegalDocument",
+    name: letter.title,
+    description: letter.metaDescription,
+    url,
+    datePublished: letter.publishedAt,
+    dateModified: letter.updatedAt ?? letter.publishedAt,
+    inLanguage: "en-US",
+    creator: { "@type": "Organization", name: "I'm Frustrated dot Org", url: "https://imfrustrated.org" },
+    isAccessibleForFree: true,
+    audience: {
+      "@type": "Audience",
+      audienceType: "Individual consumers seeking pre-litigation self-help",
+    },
+    about: {
+      "@type": "Thing",
+      name: meta.label,
+      description: meta.blurb,
+    },
+  };
+
+  const speakableSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    url,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "#how-to-use", "#faq"],
+    },
+  };
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -116,7 +148,9 @@ export default async function LetterPage({
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(legalDocumentSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <Header />
