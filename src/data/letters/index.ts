@@ -6,6 +6,7 @@ import { neighborLetters } from "./neighbor";
 import { hoaLetters } from "./hoa";
 import { airlineLetters } from "./airline";
 import { hotelLetters } from "./hotel";
+import { employerLetters } from "./employer";
 
 export type { LetterCategory, LetterTemplate, CategoryMeta } from "./types";
 
@@ -17,6 +18,7 @@ const allLetters: LetterTemplate[] = [
   ...hoaLetters,
   ...airlineLetters,
   ...hotelLetters,
+  ...employerLetters,
 ];
 
 const slugSet = new Set(allLetters.map((l) => `${l.category}/${l.slug}`));
@@ -58,8 +60,9 @@ export const categoryMeta: Record<LetterCategory, CategoryMeta> = {
   employer: {
     slug: "employer",
     label: "Employer",
-    blurb: "Wage and hour, leave, harassment, accommodations, and life at work.",
-    hubLede: "Coming soon.",
+    blurb: "Unpaid PTO at separation, business-expense reimbursement, and the basics of what your employer owes you.",
+    hubLede:
+      "When the employment ends, what you're owed depends on your state — sometimes statute, sometimes contract. These letters cite the specific statute (CA Lab. Code § 227.3 + § 2802 are the most powerful) or the employer's own written policy where state law doesn't reach.",
   },
   neighbor: {
     slug: "neighbor",
