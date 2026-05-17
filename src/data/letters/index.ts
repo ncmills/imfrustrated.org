@@ -4,6 +4,8 @@ import { creditCardLetters } from "./credit-card";
 import { consumerLetters } from "./consumer";
 import { neighborLetters } from "./neighbor";
 import { hoaLetters } from "./hoa";
+import { airlineLetters } from "./airline";
+import { hotelLetters } from "./hotel";
 
 export type { LetterCategory, LetterTemplate, CategoryMeta } from "./types";
 
@@ -13,6 +15,8 @@ const allLetters: LetterTemplate[] = [
   ...consumerLetters,
   ...neighborLetters,
   ...hoaLetters,
+  ...airlineLetters,
+  ...hotelLetters,
 ];
 
 const slugSet = new Set(allLetters.map((l) => `${l.category}/${l.slug}`));
@@ -74,14 +78,16 @@ export const categoryMeta: Record<LetterCategory, CategoryMeta> = {
   airline: {
     slug: "airline",
     label: "Airline",
-    blurb: "Delays, cancellations, luggage, and getting what the rules already say you're owed.",
-    hubLede: "Coming soon.",
+    blurb: "Cancellations, tarmac delays, lost luggage, bumping, and vouchers when cash was owed.",
+    hubLede:
+      "U.S. airline passenger rights are governed by federal regulations — 14 CFR Parts 250, 254, 259, and 260 — that the airlines know cold but most travelers don't. These letters cite the specific rule, the specific number, and the specific deadline.",
   },
   hotel: {
     slug: "hotel",
     label: "Hotel",
-    blurb: "Overcharges, room conditions, and disputes that the front desk can't resolve.",
-    hubLede: "Coming soon.",
+    blurb: "Resort fees, double-charges, rooms not as advertised, and overcharges the front desk dismissed.",
+    hubLede:
+      "The FTC's Junk Fees Rule took effect May 12, 2025 and state Attorneys General have been winning resort-fee cases since 2019. These letters cite both — plus the Fair Credit Billing Act chargeback that resolves most disputes regardless of what the hotel says.",
   },
   "credit-card": {
     slug: "credit-card",
