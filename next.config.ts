@@ -24,6 +24,9 @@ const nextConfig: NextConfig = {
       { source: "/services", destination: "/how-it-works", permanent: true },
       { source: "/help", destination: "/faq", permanent: true },
       { source: "/state-resources", destination: "/free-tools", permanent: true },
+      // /letters already renders the full all-letters list. The intuitive
+      // "all" sub-path used to 404; collapse it onto the canonical hub.
+      { source: "/letters/all", destination: "/letters", permanent: true },
     ];
   },
   async headers() {

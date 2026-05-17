@@ -99,19 +99,25 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="animate-fade-in-up delay-400 mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="animate-fade-in-up delay-400 mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap">
               <a href="#contact" className="btn-forest">
                 Get In Touch
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                   <path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" />
                 </svg>
               </a>
-              <a href="#mission" className="btn-ghost">
-                Learn More
+              <a href="#how-it-works" className="btn-ghost">
+                How It Works
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </a>
+              <Link href="/free-tools" className="btn-ghost">
+                Free Tools
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+              </Link>
             </div>
           </div>
 
