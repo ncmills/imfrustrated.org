@@ -7,7 +7,14 @@ export const metadata: Metadata = {
   title: "Letter Templates That Get You What You're Owed | I'm Frustrated dot Org",
   description:
     "Free, plain-English letter templates that invoke real statutes — security deposits, billing errors, debt validation, medical records, credit-report disputes. Written by attorneys, free to use.",
-  alternates: { canonical: "https://imfrustrated.org/letters" },
+  alternates: {
+    canonical: "https://imfrustrated.org/letters",
+    types: {
+      "application/rss+xml": [
+        { url: "https://imfrustrated.org/letters/rss.xml", title: "Letter Templates RSS Feed" },
+      ],
+    },
+  },
   openGraph: {
     type: "article",
     url: "https://imfrustrated.org/letters",
