@@ -32,7 +32,7 @@ const sections = [
     marker: "§ II",
     title: "Where it goes",
     paragraphs: [
-      "Intake submissions are written to a Supabase database hosted in the United States and emailed to info@imfrustrated.org via Resend, a transactional email provider. From there a volunteer attorney reads your message and writes back. Nothing else happens with it. Your email is not added to a marketing list, not sold, not syndicated to lead-gen partners, not handed to legal-marketing firms. There is no marketing list.",
+      "Intake submissions are written to a Supabase database and emailed to info@imfrustrated.org via Resend, a transactional email provider. From there a volunteer attorney reads your message and writes back. Nothing else happens with it. Your email is not added to a marketing list, not sold, not syndicated to lead-gen partners, not handed to legal-marketing firms. There is no marketing list.",
       "PostHog and Vercel each receive the analytics events described above. Both providers have their own privacy disclosures and act as processors for us — we control what is sent and we do not authorize them to sell or share what they collect.",
     ],
   },
