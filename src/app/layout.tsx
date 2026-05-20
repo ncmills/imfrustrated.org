@@ -196,7 +196,12 @@ export default function RootLayout({
         <PostHogProvider>
           <div id="main-content">{children}</div>
         </PostHogProvider>
-        <footer className="py-4 text-center">
+        <footer className="py-4 text-center space-y-2">
+          <p className="text-[10px] text-muted-warm/40">
+            <a href="/privacy" className="hover:text-muted-warm transition-colors">Privacy</a>
+            {" · "}
+            <a href="/terms" className="hover:text-muted-warm transition-colors">Terms</a>
+          </p>
           <p className="text-[10px] text-muted-warm/40">
             <a href="https://whatpeptidesdo.com" rel="nofollow" className="hover:text-muted-warm transition-colors">whatpeptidesdo.com</a>
             {" · "}

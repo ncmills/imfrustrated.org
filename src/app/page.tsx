@@ -449,6 +449,15 @@ export default function Home() {
           </div>
 
           <div className="mt-12 pt-8 border-t border-paper/[0.08] text-center">
+            <div className="flex items-center justify-center gap-5 text-xs text-paper/40 mb-4">
+              <Link href="/privacy" className="hover:text-amber transition-colors duration-300">
+                Privacy
+              </Link>
+              <span className="text-paper/20" aria-hidden>·</span>
+              <Link href="/terms" className="hover:text-amber transition-colors duration-300">
+                Terms
+              </Link>
+            </div>
             <p className="text-paper/30 text-xs">
               &copy; {new Date().getFullYear()} I&rsquo;m Frustrated
               <span className="ml-1 font-mono text-amber">.org</span>. All rights reserved.
