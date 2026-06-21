@@ -1,29 +1,29 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Inter, Caveat, JetBrains_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Serif, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import PostHogProvider from "@/components/PostHogProvider";
 import "./globals.css";
 
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const hanken = Hanken_Grotesk({
+  variable: "--font-hanken",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   display: "swap",
 });
 
-const caveat = Caveat({
-  variable: "--font-caveat",
+const instrument = Instrument_Serif({
+  variable: "--font-instrument",
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: ["400"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -72,7 +72,7 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body
-        className={`${sourceSerif.variable} ${inter.variable} ${caveat.variable} ${jetbrains.variable}`}
+        className={`${bricolage.variable} ${hanken.variable} ${instrument.variable} ${jetbrains.variable}`}
       >
         <script
           type="application/ld+json"

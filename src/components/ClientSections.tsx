@@ -97,43 +97,35 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "header-blur bg-paper/85 border-b border-rule shadow-[0_1px_0_rgba(31,26,20,0.04)]"
+          ? "header-blur bg-paper/85 border-b border-rule shadow-[0_1px_0_rgba(38,48,43,0.04)]"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
         <Link href="/" className="shrink-0" aria-label="I'm Frustrated dot Org — home">
-          <Wordmark size="md" behavior="header" />
+          <Logo />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 text-[0.9rem] font-medium text-muted-warm">
-          <a href="#mission" className="hover:text-forest transition-colors duration-300">
-            What We Do
+        <nav className="hidden md:flex items-center gap-7 text-[0.92rem] font-medium text-sage-2">
+          <a href="#tools" className="hover:text-sage transition-colors duration-300">
+            Free tools
           </a>
-          <a href="#how-it-works" className="hover:text-forest transition-colors duration-300">
-            How It Works
+          <a href="#how" className="hover:text-sage transition-colors duration-300">
+            How it works
           </a>
-          <Link href="/letters" className="hover:text-forest transition-colors duration-300">
+          <Link href="/letters" className="hover:text-sage transition-colors duration-300">
             Letters
           </Link>
-          <Link href="/free-tools" className="hover:text-forest transition-colors duration-300">
-            Free Tools
+          <Link href="/about" className="hover:text-sage transition-colors duration-300">
+            About
           </Link>
-          <a href="#testimonials" className="hover:text-forest transition-colors duration-300">
-            Testimonials
-          </a>
         </nav>
 
         <a
-          href="mailto:info@imfrustrated.org"
-          aria-label="Email info@imfrustrated.org"
-          className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 bg-forest text-paper text-[0.85rem] font-medium rounded-full hover:bg-forest-deep transition-colors duration-300"
+          href="#contact"
+          className="mag inline-flex items-center gap-2 px-5 py-2.5 bg-sage text-bg text-[0.88rem] font-semibold rounded-full hover:bg-evergreen transition-colors duration-300"
         >
-          <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-          </svg>
-          <span className="hidden sm:inline">Email Us</span>
+          Talk to us
         </a>
       </div>
     </header>
@@ -232,6 +224,141 @@ export function HeroAtmosphere() {
       </svg>
     </div>
   );
+}
+
+/* ─── The Aside logo ───────────────────────────────────────────────
+ * A speech bubble that draws itself on load (and on hover), with a
+ * "frustrated" zig-zag inside that settles into a calm line — the brand
+ * idea (agitation → resolution) in one mark. No face, no "F".
+ * `color="paper"` variant is for dark (sage) surfaces. */
+export function Logo({
+  color = "ink",
+  className = "",
+}: {
+  color?: "ink" | "paper";
+  className?: string;
+}) {
+  const bubble = color === "paper" ? "#f6f3ec" : "#33453d";
+  const line = color === "paper" ? "#e0a98f" : "#c8775a";
+  const text = color === "paper" ? "#f6f3ec" : "#33453d";
+
+  return (
+    <span className={`logo-aside inline-flex items-center gap-2.5 ${className}`}>
+      <svg width="38" height="35" viewBox="0 0 44 40" fill="none" aria-hidden="true" className="shrink-0">
+        <path
+          className="la-bubble"
+          d="M6 4 H38 a4 4 0 0 1 4 4 V26 a4 4 0 0 1 -4 4 H20 l-8 7 v-7 H6 a4 4 0 0 1 -4 -4 V8 a4 4 0 0 1 4 -4 Z"
+          fill="none"
+          stroke={bubble}
+          strokeWidth="2.6"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M11 17 L16 13 L22 21 L28 13 L33 17"
+          fill="none"
+          stroke={line}
+          strokeWidth="2.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <animate
+            attributeName="d"
+            begin="0.7s"
+            dur="1s"
+            fill="freeze"
+            calcMode="spline"
+            keyTimes="0;1"
+            keySplines="0.2 0.7 0.2 1"
+            values="M11 17 L16 13 L22 21 L28 13 L33 17; M11 17 L16 16 L22 18 L28 16 L33 17"
+          />
+        </path>
+      </svg>
+      <span
+        className="font-disp font-bold text-[1.3rem] tracking-[-0.02em] leading-none"
+        style={{ color: text }}
+      >
+        I&rsquo;m&nbsp;Frustrated<span style={{ color: "#c8775a" }}>.org</span>
+      </span>
+    </span>
+  );
+}
+
+/* Scroll-reveal wrapper — fades + lifts children into view once. */
+export function Reveal({
+  children,
+  className = "",
+  delay,
+  threshold,
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: 1 | 2 | 3 | 4;
+  threshold?: number;
+}) {
+  const { ref, visible } = useInView(threshold ?? 0.18);
+  return (
+    <div
+      ref={ref}
+      className={`reveal ${delay ? `rd${delay}` : ""} ${visible ? "in" : ""} ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* Page-level micro-interactions: magnetic buttons (.mag), tilt+spotlight
+ * cards (.tool-card), cursor-reactive ambient blobs (.amb i), and the
+ * single-select dispute chips (.chip). Honors reduced-motion. */
+export function Interactions() {
+  useEffect(() => {
+    const ac = new AbortController();
+    const { signal } = ac;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!reduce) {
+      document.querySelectorAll<HTMLElement>(".mag").forEach((b) => {
+        b.addEventListener("mousemove", (e: MouseEvent) => {
+          const r = b.getBoundingClientRect();
+          b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.22}px,${(e.clientY - r.top - r.height / 2) * 0.3}px)`;
+        }, { signal });
+        b.addEventListener("mouseleave", () => { b.style.transform = ""; }, { signal });
+      });
+
+      document.querySelectorAll<HTMLElement>(".tool-card").forEach((c) => {
+        c.addEventListener("mousemove", (e: MouseEvent) => {
+          const r = c.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width;
+          const py = (e.clientY - r.top) / r.height;
+          c.style.transform = `perspective(800px) rotateY(${(px - 0.5) * 6}deg) rotateX(${(0.5 - py) * 6}deg) translateY(-4px)`;
+          c.style.setProperty("--mx", px * 100 + "%");
+          c.style.setProperty("--my", py * 100 + "%");
+        }, { signal });
+        c.addEventListener("mouseleave", () => { c.style.transform = ""; }, { signal });
+      });
+
+      const blobs = document.querySelectorAll<HTMLElement>(".amb i");
+      window.addEventListener("mousemove", (e: MouseEvent) => {
+        const x = e.clientX / window.innerWidth - 0.5;
+        const y = e.clientY / window.innerHeight - 0.5;
+        blobs.forEach((b, i) => {
+          const f = (i + 1) * 16;
+          b.style.transform = `translate(${x * f}px,${y * f}px)`;
+        });
+      }, { signal });
+    }
+
+    const chips = Array.from(document.querySelectorAll<HTMLElement>(".chip"));
+    chips.forEach((c) =>
+      c.addEventListener("click", () => {
+        chips.forEach((o) => o.classList.remove("on"));
+        c.classList.add("on");
+      }, { signal })
+    );
+
+    return () => ac.abort();
+  }, []);
+
+  return null;
 }
 
 export function StaggeredCards({
