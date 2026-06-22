@@ -11,9 +11,13 @@ As of 2026-04-10 this project is connected to GitHub via the Vercel GitHub App. 
 - **Do NOT run `vercel --prod` manually** unless a build is stuck or Nick explicitly asks.
 - PRs automatically get preview URLs.
 
+## Design system — "Breathing Room" (redesigned 2026-06-21)
+
+The site was redesigned from the old "warm editorial" look to **Breathing Room**: calm deep-sage green (`--color-sage #33453d`) + warm terracotta "clay" accent (`--color-clay #c8775a`) over a warm off-white background (`--color-bg #f6f3ec`). Fonts: **Bricolage Grotesque** (display, `font-disp`), **Instrument Serif** (italic accent, `font-accent`), **Hanken Grotesk** (body). Tokens live in `src/app/globals.css` (legacy names like `paper/ink/forest/amber/font-serif` are aliased to the new palette/fonts, so old class usage still works). Logo is **"The Aside"** — an animated speech bubble (`<Logo>` in `ClientSections.tsx`), replacing the old face glyph. Shared components: `Header`, `SiteFooter`, `Logo`, `Reveal`, `Interactions` (magnetic buttons `.mag`, tilt cards `.tool-card`, ambient blobs `.amb`, dispute chips `.chip`). A mirror of the system lives in the Claude app at claude.ai/design → "I'm Frustrated .org — Breathing Room" (keep in sync via DesignSync if components change).
+
 ## Site surfaces
 
-- `/` — homepage. Sections in order: Hero → Mission → **Free Tools (IDHAW + Letters cards)** → How It Works → Testimonials → Contact. Don't reorder without reason; the order is deliberate.
+- `/` — homepage. Sections in order: Hero (DIY message + dispute chips) → **Free Tools (IDHAW + Letters cards)** → How It Works (3 rings) → Pull-quote → Contact (sage panel + intake form). The 6-testimonial section was folded to a single pull-quote in the redesign.
 - `/how-it-works` — three-chapter explainer for the volunteer-attorney conversation.
 - `/free-tools` — featured library page for IDHAW (No. 01) and Letters (No. 02). Add new tools as new featured cards here.
 - `/letters` + `/letters/[category]` + `/letters/[category]/[slug]` — the programmatic SEO letter-template library (added May 2026). See "Letter library" below.
