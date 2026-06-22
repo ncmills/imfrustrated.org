@@ -86,21 +86,20 @@ export default async function Image({
           </span>
         </div>
 
-        <span
+        <div
           style={{
-            fontSize: 96,
+            display: "flex",
+            fontSize: 80,
             fontWeight: 700,
             color: "#33453d",
             fontFamily: "Bricolage Grotesque",
             letterSpacing: "-0.022em",
-            lineHeight: 1.02,
-            maxWidth: 1040,
+            lineHeight: 1.04,
+            maxWidth: 1000,
           }}
         >
-          {label} letters that
-          <br />
-          get a response<span style={{ color: "#c8775a" }}>.</span>
-        </span>
+          {label} letters that get a response.
+        </div>
 
         <div style={{ display: "flex", marginTop: 28 }}>
           <span
