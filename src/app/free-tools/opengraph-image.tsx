@@ -68,22 +68,22 @@ export default async function Image() {
           Free Tools
         </span>
 
-        <span
+        <div
           style={{
-            fontSize: 76,
+            display: "flex",
+            maxWidth: 860,
+            fontSize: 68,
             fontWeight: 700,
             color: "#33453d",
             fontFamily: "Bricolage Grotesque",
             letterSpacing: "-0.035em",
             textAlign: "center",
-            lineHeight: 1.05,
-            maxWidth: 980,
+            lineHeight: 1.08,
+            padding: "0 40px",
           }}
         >
-          Free legal tools, built for the
-          <br />
-          people we serve<span style={{ color: "#c8775a" }}>.</span>
-        </span>
+          Free legal tools, built for the people we serve.
+        </div>
 
         <div
           style={{
