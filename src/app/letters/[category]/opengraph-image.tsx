@@ -17,6 +17,11 @@ export default async function Image({
   const label = meta?.label ?? "Letters";
   const count = letters.length;
 
+  const [bricolage, hanken] = await Promise.all([
+    fetch(new URL("../../_fonts/Bricolage.ttf", import.meta.url)).then((r) => r.arrayBuffer()),
+    fetch(new URL("../../_fonts/Hanken.ttf", import.meta.url)).then((r) => r.arrayBuffer()),
+  ]);
+
   return new ImageResponse(
     (
       <div
@@ -25,9 +30,10 @@ export default async function Image({
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          backgroundColor: "#faf6ef",
+          background: "linear-gradient(180deg, #f6f3ec 0%, #eef1e9 100%)",
           position: "relative",
           padding: "80px 80px",
+          fontFamily: "Hanken Grotesk",
         }}
       >
         <div
@@ -38,8 +44,9 @@ export default async function Image({
             width: 520,
             height: 520,
             borderRadius: "50%",
-            background: "rgba(45, 74, 62, 0.06)",
+            background: "rgba(217, 227, 214, 0.6)",
             filter: "blur(140px)",
+            display: "flex",
           }}
         />
         <div
@@ -50,8 +57,9 @@ export default async function Image({
             width: 420,
             height: 420,
             borderRadius: "50%",
-            background: "rgba(192, 138, 62, 0.09)",
+            background: "rgba(240, 216, 203, 0.55)",
             filter: "blur(120px)",
+            display: "flex",
           }}
         />
 
@@ -63,13 +71,13 @@ export default async function Image({
             marginBottom: 36,
           }}
         >
-          <span style={{ width: 36, height: 2, backgroundColor: "#c08a3e" }} />
+          <span style={{ width: 36, height: 2, backgroundColor: "#c8775a", display: "flex" }} />
           <span
             style={{
               fontSize: 20,
-              color: "#c08a3e",
-              fontFamily: "sans-serif",
-              fontWeight: 600,
+              color: "#c8775a",
+              fontFamily: "Hanken Grotesk",
+              fontWeight: 500,
               letterSpacing: "0.32em",
               textTransform: "uppercase",
             }}
@@ -81,9 +89,9 @@ export default async function Image({
         <span
           style={{
             fontSize: 96,
-            fontWeight: 600,
-            color: "#1f1a14",
-            fontFamily: "serif",
+            fontWeight: 700,
+            color: "#33453d",
+            fontFamily: "Bricolage Grotesque",
             letterSpacing: "-0.022em",
             lineHeight: 1.02,
             maxWidth: 1040,
@@ -91,16 +99,16 @@ export default async function Image({
         >
           {label} letters that
           <br />
-          get a response<span style={{ color: "#c08a3e" }}>.</span>
+          get a response<span style={{ color: "#c8775a" }}>.</span>
         </span>
 
         <div style={{ display: "flex", marginTop: 28 }}>
           <span
             style={{
               fontSize: 26,
-              color: "#6b5d4a",
-              fontFamily: "sans-serif",
-              fontStyle: "italic",
+              color: "#5c6b62",
+              fontFamily: "Hanken Grotesk",
+              fontWeight: 500,
             }}
           >
             {count} {count === 1 ? "template" : "templates"} · free · attorney-written
@@ -114,40 +122,33 @@ export default async function Image({
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderTop: "1px solid #d9d2c2",
+            borderTop: "1px solid #dfdacd",
             paddingTop: 28,
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <svg width="56" height="56" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M24 5.5c10.493 0 19 7.387 19 16.5 0 9.113-8.507 16.5-19 16.5-1.866 0-3.668-.234-5.372-.67L9.6 42.5l2.658-8.02C8.136 31.44 5 26.98 5 22 5 12.887 13.507 5.5 24 5.5Z"
-                fill="#2d4a3e"
-              />
-              <path d="M13.5 16 L20 20" stroke="#c08a3e" strokeWidth="2.8" strokeLinecap="round" />
-              <path d="M34.5 16 L28 20" stroke="#c08a3e" strokeWidth="2.8" strokeLinecap="round" />
-              <circle cx="18" cy="24" r="1.8" fill="#c08a3e" />
-              <circle cx="30" cy="24" r="1.8" fill="#c08a3e" />
-              <path d="M18.5 32 Q24 28 29.5 32" stroke="#c08a3e" strokeWidth="2.4" strokeLinecap="round" fill="none" />
+            <svg width="56" height="52" viewBox="0 0 48 44" fill="none">
+              <path d="M8 7 H40 a5 5 0 0 1 5 5 V29 a5 5 0 0 1 -5 5 H21 l-8 7 v-7 H8 a5 5 0 0 1 -5 -5 V12 a5 5 0 0 1 5 -5 Z" fill="#33453d" />
+              <path d="M13 20.5 L20 18 L27 22.5 L34 18 L40 20.5" fill="none" stroke="#e0a98f" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <span
                 style={{
                   fontSize: 28,
-                  fontWeight: 600,
-                  color: "#1f1a14",
-                  fontFamily: "serif",
+                  fontWeight: 700,
+                  color: "#33453d",
+                  fontFamily: "Bricolage Grotesque",
                   letterSpacing: "-0.018em",
                 }}
               >
-                I&rsquo;m Frustrated<span style={{ color: "#c08a3e", fontFamily: "monospace", fontSize: 16, marginLeft: 4 }}>.org</span>
+                I&rsquo;m Frustrated<span style={{ color: "#c8775a", fontFamily: "Bricolage Grotesque", fontSize: 16, marginLeft: 4 }}>.org</span>
               </span>
               <span
                 style={{
                   fontSize: 16,
-                  color: "#6b5d4a",
-                  fontFamily: "sans-serif",
-                  fontStyle: "italic",
+                  color: "#5c6b62",
+                  fontFamily: "Hanken Grotesk",
+                  fontWeight: 500,
                 }}
               >
                 Friends who are also lawyers.
@@ -155,12 +156,18 @@ export default async function Image({
             </div>
           </div>
 
-          <span style={{ fontSize: 18, color: "#6b5d4a", fontFamily: "monospace" }}>
+          <span style={{ fontSize: 18, color: "#5c6b62", fontFamily: "Hanken Grotesk", fontWeight: 500 }}>
             imfrustrated.org/letters/{category}
           </span>
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        { name: "Bricolage Grotesque", data: bricolage, weight: 700, style: "normal" },
+        { name: "Hanken Grotesk", data: hanken, weight: 500, style: "normal" },
+      ],
+    }
   );
 }
