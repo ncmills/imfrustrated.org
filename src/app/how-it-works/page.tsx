@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header, FadeInSection } from "@/components/ClientSections";
+import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 
 export const metadata: Metadata = {
   title: "How It Works | I'm Frustrated dot Org",
@@ -19,6 +19,8 @@ export const metadata: Metadata = {
 const chapters = [
   {
     numeral: "I",
+    n: "1",
+    eyebrow: "you talk",
     title: "You talk, we listen",
     paragraphs: [
       "You start by emailing info@imfrustrated.org and telling us what's going on. Plain English. No legal jargon. Treat it like you're writing to a friend. Tell us what happened, who's involved, what worries you, what you're hoping for, and any deadlines or court dates you're aware of.",
@@ -27,6 +29,8 @@ const chapters = [
   },
   {
     numeral: "II",
+    n: "2",
+    eyebrow: "we read",
     title: "We break it down",
     paragraphs: [
       "A volunteer attorney with relevant experience reviews your situation and writes back. We'll explain where you actually stand legally, what your realistic options look like, and what questions you should be asking before you take any next step. If we think you have a strong case, we'll say so. If we think the situation is more complicated than you realize, we'll say that too.",
@@ -35,6 +39,8 @@ const chapters = [
   },
   {
     numeral: "III",
+    n: "3",
+    eyebrow: "you decide",
     title: "You decide what's next",
     paragraphs: [
       "Once you have a clearer picture, the choice is yours. Some people walk away realizing they don't need a lawyer at all — the situation can be handled with a well-written letter, a phone call, or simply waiting it out. Some people walk away realizing they need to hire a specialist immediately, and they're now equipped with the right vocabulary and the right questions to interview attorneys.",
@@ -85,110 +91,125 @@ export default function HowItWorksPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
       <Header />
-      <main>
-        {/* Hero */}
-        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-paper">
-          <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
-            <nav className="text-[0.7rem] uppercase tracking-[0.22em] text-muted-warm mb-8 font-medium">
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
+      <Interactions />
+
+      <main className="relative">
+        {/* ─── Hero ─── */}
+        <section className="relative max-w-3xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-12 md:pb-16 text-center">
+          <Reveal delay={1}>
+            <nav className="text-[0.72rem] uppercase tracking-[0.2em] text-sage-2 mb-7 font-semibold">
+              <Link href="/" className="hover:text-clay transition-colors duration-300">Home</Link>
               <span className="mx-3 text-rule">/</span>
-              <span className="text-amber">How It Works</span>
+              <span className="text-clay">How It Works</span>
             </nav>
-            <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">How It Works</p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.75rem] font-semibold text-ink leading-[1.05] tracking-[-0.02em] mb-8">
-              The conversation you have <br className="hidden sm:block" /> before you hire a lawyer<span className="text-amber">.</span>
+          </Reveal>
+          <Reveal delay={2}>
+            <p className="font-accent italic text-xl text-clay">it&rsquo;s simpler than you think</p>
+            <h1 className="font-disp font-semibold text-sage text-[2.4rem] sm:text-5xl md:text-6xl leading-[1.04] tracking-[-0.03em] mt-2">
+              The conversation you have
+              <br className="hidden sm:block" /> before you hire a lawyer.
             </h1>
-            <div className="decorative-rule mb-10" />
-            <p className="text-muted-warm text-lg leading-relaxed mb-6">
-              Most legal problems start with one bad assumption: that you need to hire a lawyer to know whether you need to hire a lawyer. You don&rsquo;t. Before you spend a dollar on representation, you should have a clear, honest conversation with someone who actually understands the law and isn&rsquo;t billing you by the minute.
+          </Reveal>
+          <Reveal delay={3}>
+            <p className="text-sage-2 text-lg md:text-xl leading-[1.6] max-w-2xl mx-auto mt-7">
+              Most legal problems start with one bad assumption: that you need to hire a lawyer to know
+              whether you need to hire a lawyer. You don&rsquo;t. Before you spend a dollar on
+              representation, you should have a clear, honest conversation with someone who actually
+              understands the law and isn&rsquo;t billing you by the minute.
             </p>
-            <p className="text-muted-warm text-lg leading-relaxed">
-              That&rsquo;s what I&rsquo;m Frustrated dot Org is. We&rsquo;re a group of practicing attorneys who volunteer time to give people a real, informed perspective on their situation — the way a friend who happens to be a lawyer would, over a cup of coffee. There&rsquo;s no fee, no contract, and no judgment. Here&rsquo;s exactly how it works.
+          </Reveal>
+          <Reveal delay={4}>
+            <p className="text-sage-2 text-lg leading-[1.6] max-w-2xl mx-auto mt-5">
+              That&rsquo;s what I&rsquo;m Frustrated dot Org is. We&rsquo;re a group of practicing
+              attorneys who volunteer time to give people a real, informed perspective on their situation —
+              the way a friend who happens to be a lawyer would, over a cup of coffee. There&rsquo;s no
+              fee, no contract, and no judgment. Here&rsquo;s exactly how it works.
             </p>
-            <p className="script text-2xl md:text-3xl mt-8 -rotate-1">three chapters, one coffee.</p>
-          </FadeInSection>
+          </Reveal>
         </section>
 
-        {/* Chapters */}
-        <section className="py-20 md:py-28 bg-paper-deep">
-          <div className="max-w-4xl mx-auto px-6 md:px-10">
-            <div className="space-y-16 md:space-y-20">
-              {chapters.map((c, i) => (
-                <FadeInSection key={c.numeral}>
-                  <article className="grid md:grid-cols-[auto,1fr] gap-x-10 md:gap-x-14 gap-y-4 items-start">
-                    <div className="chapter-numeral relative" aria-hidden="true">
-                      {c.numeral}
-                      <span className="absolute -bottom-2 left-0 h-[2px] w-10 bg-amber" />
-                    </div>
-                    <div className="md:pt-4">
-                      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-amber mb-3">
-                        Chapter {c.numeral}
-                      </p>
-                      <h2 className="font-serif text-2xl md:text-[1.85rem] font-semibold text-ink mb-5 tracking-[-0.01em]">
-                        {c.title}
-                      </h2>
-                      <div className="space-y-4">
-                        {c.paragraphs.map((p, j) => (
-                          <p key={j} className="text-muted-warm text-base md:text-lg leading-[1.65]">
-                            {i === 0 && j === 0 ? (
-                              <>
-                                You start by emailing{" "}
-                                <a href="mailto:info@imfrustrated.org" className="text-forest underline decoration-amber/70 decoration-[1.5px] underline-offset-[5px] hover:text-amber transition-colors">
-                                  info@imfrustrated.org
-                                </a>
-                                {" "}and telling us what&rsquo;s going on. Plain English. No legal jargon. Treat it like you&rsquo;re writing to a friend. Tell us what happened, who&rsquo;s involved, what worries you, what you&rsquo;re hoping for, and any deadlines or court dates you&rsquo;re aware of.
-                              </>
-                            ) : (
-                              p
-                            )}
-                          </p>
-                        ))}
+        {/* ─── Chapters ─── */}
+        <section className="relative max-w-5xl mx-auto px-6 md:px-8 py-12 md:py-16">
+          <Reveal>
+            <div className="bg-bg-2 rounded-[32px] px-7 md:px-12 py-14 md:py-16">
+              <div className="space-y-14 md:space-y-16">
+                {chapters.map((c) => (
+                  <Reveal key={c.numeral}>
+                    <article className="grid md:grid-cols-[auto,1fr] gap-x-8 md:gap-x-12 gap-y-5 items-start">
+                      <div className="relative w-16 h-16 shrink-0" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" className="step-ring absolute inset-0 w-full h-full">
+                          <circle cx="32" cy="32" r="31" />
+                        </svg>
+                        <span className="absolute inset-0 grid place-items-center font-accent italic text-2xl text-clay">{c.numeral}</span>
                       </div>
-                    </div>
-                  </article>
-                  {i < chapters.length - 1 && (
-                    <div className="mt-16 md:mt-20 flex items-center gap-4" aria-hidden="true">
-                      <span className="h-px flex-1 bg-rule" />
-                      <svg viewBox="0 0 20 20" className="w-3 h-3 text-amber" fill="currentColor">
-                        <circle cx="10" cy="10" r="4" />
-                      </svg>
-                      <span className="h-px flex-1 bg-rule" />
-                    </div>
-                  )}
-                </FadeInSection>
-              ))}
+                      <div>
+                        <p className="font-accent italic text-lg text-clay mb-1">{c.eyebrow}</p>
+                        <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.85rem] tracking-[-0.02em] mb-4">
+                          {c.title}
+                        </h2>
+                        <div className="space-y-4">
+                          {c.paragraphs.map((p, j) => (
+                            <p key={j} className="text-sage-2 text-base md:text-lg leading-[1.65]">
+                              {c.numeral === "I" && j === 0 ? (
+                                <>
+                                  You start by emailing{" "}
+                                  <a href="mailto:info@imfrustrated.org" className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300">
+                                    info@imfrustrated.org
+                                  </a>
+                                  {" "}and telling us what&rsquo;s going on. Plain English. No legal jargon.
+                                  Treat it like you&rsquo;re writing to a friend. Tell us what happened,
+                                  who&rsquo;s involved, what worries you, what you&rsquo;re hoping for, and
+                                  any deadlines or court dates you&rsquo;re aware of.
+                                </>
+                              ) : (
+                                p
+                              )}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                    </article>
+                  </Reveal>
+                ))}
+              </div>
             </div>
-          </div>
+          </Reveal>
         </section>
 
-        {/* CTA */}
-        <section className="py-24 md:py-32 bg-paper">
-          <FadeInSection className="max-w-2xl mx-auto px-6 md:px-10 text-center">
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink leading-snug mb-5 tracking-[-0.01em]">
-              Ready to talk it out<span className="text-amber">?</span>
-            </h2>
-            <p className="script text-2xl md:text-3xl mb-7 -rotate-1">
-              chapter one starts with an email.
-            </p>
-            <p className="text-muted-warm text-lg leading-relaxed mb-8">
-              No commitment, no invoice, no judgment. Just an honest conversation with someone who understands the law and actually wants to help.
-            </p>
-            <a
-              href="mailto:info@imfrustrated.org"
-              className="btn-forest"
-            >
-              info@imfrustrated.org
-            </a>
-            <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-muted-warm">
-              <Link href="/about" className="hover:text-forest transition-colors">About us</Link>
-              <Link href="/free-tools" className="hover:text-forest transition-colors">Free tools</Link>
-              <Link href="/faq" className="hover:text-forest transition-colors">FAQ</Link>
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
+        {/* ─── CTA ─── */}
+        <section id="contact" className="relative max-w-5xl mx-auto px-6 md:px-8 pb-24">
+          <Reveal>
+            <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16 text-center">
+              <div className="max-w-xl mx-auto">
+                <p className="font-accent italic text-xl text-clay-soft">chapter one starts with an email</p>
+                <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight mt-1.5">
+                  Ready to talk it out?
+                </h2>
+                <p className="text-[#cdd6cd] text-lg leading-relaxed mt-4 mb-8">
+                  No commitment, no invoice, no judgment. Just an honest conversation with someone who
+                  understands the law and actually wants to help.
+                </p>
+                <a href="mailto:info@imfrustrated.org" className="btn-clay mag">
+                  info@imfrustrated.org
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar" aria-hidden="true">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
+                <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
+                  <Link href="/about" className="hover:text-clay-soft transition-colors duration-300">About us</Link>
+                  <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>
+                  <Link href="/faq" className="hover:text-clay-soft transition-colors duration-300">FAQ</Link>
+                  <Link href="/" className="hover:text-clay-soft transition-colors duration-300">Home</Link>
+                </div>
+              </div>
             </div>
-          </FadeInSection>
+          </Reveal>
         </section>
       </main>
+
+      <SiteFooter />
     </>
   );
 }

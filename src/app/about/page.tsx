@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header, FadeInSection } from "@/components/ClientSections";
+import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
 
 export const metadata: Metadata = {
   title: "About | I'm Frustrated dot Org",
@@ -72,122 +72,118 @@ export default function AboutPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
       <Header />
-      <main>
+      <main className="relative">
         {/* Hero */}
-        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-paper">
-          <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
-            <nav className="text-[0.7rem] uppercase tracking-[0.22em] text-muted-warm mb-8 font-medium">
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
+        <section className="relative max-w-3xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-12 md:pb-16">
+          <Reveal delay={1}>
+            <nav className="text-[0.7rem] uppercase tracking-[0.22em] text-sage-2 mb-8 font-medium">
+              <Link href="/" className="hover:text-sage transition-colors duration-300">Home</Link>
               <span className="mx-3 text-rule">/</span>
-              <span className="text-amber">About</span>
+              <span className="text-clay">About</span>
             </nav>
-            <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">About</p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.75rem] font-semibold text-ink leading-[1.05] tracking-[-0.02em] mb-8">
-              We started this because <br className="hidden sm:block" /> the alternative was worse<span className="text-amber">.</span>
+          </Reveal>
+          <Reveal delay={2}>
+            <p className="font-accent italic text-xl text-clay">about us</p>
+          </Reveal>
+          <Reveal delay={3}>
+            <h1 className="font-disp font-semibold text-sage text-[2.4rem] sm:text-5xl lg:text-[3.75rem] leading-[1.05] tracking-[-0.03em] mt-2 mb-7">
+              We started this because the alternative was worse.
             </h1>
-            <div className="decorative-rule mb-10" />
-            <p className="text-muted-warm text-lg leading-relaxed">
+          </Reveal>
+          <Reveal delay={4}>
+            <p className="text-sage-2 text-lg leading-[1.7] max-w-2xl">
               I&rsquo;m Frustrated dot Org exists for one reason: too many people make irreversible legal decisions because they couldn&rsquo;t afford to ask a question first. Lawyers are expensive. Initial consultations vary. Most people facing a legal problem feel like they have two options — pay a stranger by the hour to hear the same story they&rsquo;re afraid to tell, or do nothing and hope it works out. Both are bad.
             </p>
-            <p className="script text-2xl md:text-3xl mt-8 -rotate-1">
-              we built the third option.
+            <p className="font-accent italic text-clay text-2xl md:text-[1.7rem] mt-7">
+              We built the third option.
             </p>
-          </FadeInSection>
+          </Reveal>
         </section>
 
         {/* Body sections */}
-        <section className="py-20 md:py-28 bg-paper-deep">
-          <div className="max-w-3xl mx-auto px-6 md:px-10 space-y-16 md:space-y-20">
-            {sections.map((s, i) => (
-              <FadeInSection key={s.marker}>
-                <div>
-                  <p className="font-serif text-amber text-lg tracking-[0.1em] mb-3">{s.marker}</p>
-                  <h2 className="font-serif text-2xl md:text-[2rem] font-semibold text-ink mb-6 tracking-[-0.01em]">
+        <section className="relative max-w-3xl mx-auto px-6 md:px-8 py-12 md:py-16">
+          <div className="space-y-6">
+            {sections.map((s) => (
+              <Reveal key={s.marker}>
+                <div className="bg-card border border-rule rounded-2xl p-7 md:p-9">
+                  <p className="font-accent italic text-clay text-lg mb-2">{s.marker}</p>
+                  <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.875rem] tracking-[-0.03em] mb-5">
                     {s.title}
                   </h2>
                   <div className="space-y-4">
                     {s.paragraphs.map((p, j) => (
-                      <p key={j} className="text-muted-warm text-base md:text-lg leading-[1.7]">
+                      <p key={j} className="text-sage-2 text-base md:text-lg leading-[1.7]">
                         {p}
                       </p>
                     ))}
                   </div>
                 </div>
-                {i < sections.length - 1 && (
-                  <div className="mt-16 md:mt-20 flex items-center gap-4" aria-hidden="true">
-                    <span className="h-px flex-1 bg-rule" />
-                    <svg viewBox="0 0 20 20" className="w-2.5 h-2.5 text-amber" fill="currentColor">
-                      <circle cx="10" cy="10" r="4" />
-                    </svg>
-                    <span className="h-px flex-1 bg-rule" />
-                  </div>
-                )}
-              </FadeInSection>
+              </Reveal>
             ))}
 
             {/* Last section — how to reach us (with inline link emphasis) */}
-            <FadeInSection>
-              <div className="flex items-center gap-4 mb-16" aria-hidden="true">
-                <span className="h-px flex-1 bg-rule" />
-                <svg viewBox="0 0 20 20" className="w-2.5 h-2.5 text-amber" fill="currentColor">
-                  <circle cx="10" cy="10" r="4" />
-                </svg>
-                <span className="h-px flex-1 bg-rule" />
+            <Reveal>
+              <div className="bg-card border border-rule rounded-2xl p-7 md:p-9">
+                <p className="font-accent italic text-clay text-lg mb-2">§ IV</p>
+                <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.875rem] tracking-[-0.03em] mb-5">
+                  How to reach us
+                </h2>
+                <p className="text-sage-2 text-base md:text-lg leading-[1.7] mb-4">
+                  Email{" "}
+                  <a
+                    href="mailto:info@imfrustrated.org"
+                    className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300"
+                  >
+                    info@imfrustrated.org
+                  </a>
+                  {" "}with whatever&rsquo;s going on. There&rsquo;s no form, no portal, no triage chatbot. Just write to us the way you&rsquo;d write to a friend who happens to be an attorney, and a real person will read it.
+                </p>
+                <p className="text-sage-2 text-base md:text-lg leading-[1.7]">
+                  If you&rsquo;d like to know more about how the conversation actually goes, see{" "}
+                  <Link href="/how-it-works" className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300">
+                    How It Works
+                  </Link>
+                  . If you have questions before reaching out, see the{" "}
+                  <Link href="/faq" className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300">
+                    FAQ
+                  </Link>
+                  .
+                </p>
               </div>
-              <p className="font-serif text-amber text-lg tracking-[0.1em] mb-3">§ IV</p>
-              <h2 className="font-serif text-2xl md:text-[2rem] font-semibold text-ink mb-6 tracking-[-0.01em]">
-                How to reach us
-              </h2>
-              <p className="text-muted-warm text-base md:text-lg leading-[1.7] mb-4">
-                Email{" "}
-                <a
-                  href="mailto:info@imfrustrated.org"
-                  className="text-forest underline decoration-amber/70 decoration-[1.5px] underline-offset-[5px] hover:text-amber transition-colors"
-                >
-                  info@imfrustrated.org
-                </a>
-                {" "}with whatever&rsquo;s going on. There&rsquo;s no form, no portal, no triage chatbot. Just write to us the way you&rsquo;d write to a friend who happens to be an attorney, and a real person will read it.
-              </p>
-              <p className="text-muted-warm text-base md:text-lg leading-[1.7]">
-                If you&rsquo;d like to know more about how the conversation actually goes, see{" "}
-                <Link href="/how-it-works" className="text-forest underline decoration-amber/70 decoration-[1.5px] underline-offset-[5px] hover:text-amber transition-colors">
-                  How It Works
-                </Link>
-                . If you have questions before reaching out, see the{" "}
-                <Link href="/faq" className="text-forest underline decoration-amber/70 decoration-[1.5px] underline-offset-[5px] hover:text-amber transition-colors">
-                  FAQ
-                </Link>
-                .
-              </p>
-            </FadeInSection>
+            </Reveal>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="py-24 md:py-32 bg-paper">
-          <FadeInSection className="max-w-2xl mx-auto px-6 md:px-10 text-center">
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink leading-snug mb-5 tracking-[-0.01em]">
-              Frustrated<span className="text-amber">?</span>
-            </h2>
-            <p className="script text-2xl md:text-3xl mb-7 -rotate-1">
-              reach out. we read every word.
-            </p>
-            <p className="text-muted-warm text-lg leading-relaxed mb-8">
-              The first conversation is the most important one, and it&rsquo;s the one we exist for.
-            </p>
-            <a href="mailto:info@imfrustrated.org" className="btn-forest">
-              info@imfrustrated.org
-            </a>
-            <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-muted-warm">
-              <Link href="/how-it-works" className="hover:text-forest transition-colors">How it works</Link>
-              <Link href="/free-tools" className="hover:text-forest transition-colors">Free tools</Link>
-              <Link href="/faq" className="hover:text-forest transition-colors">FAQ</Link>
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
+        <section className="relative max-w-5xl mx-auto px-6 md:px-8 pb-24">
+          <Reveal>
+            <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16 text-center">
+              <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight mb-3">
+                Frustrated?
+              </h2>
+              <p className="font-accent italic text-clay-soft text-2xl md:text-[1.7rem] mb-5">
+                Reach out. We read every word.
+              </p>
+              <p className="text-[#cdd6cd] text-lg leading-relaxed max-w-xl mx-auto mb-8">
+                The first conversation is the most important one, and it&rsquo;s the one we exist for.
+              </p>
+              <a href="mailto:info@imfrustrated.org" className="btn-clay">
+                info@imfrustrated.org
+              </a>
+              <div className="mt-10 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
+                <Link href="/how-it-works" className="hover:text-clay-soft transition-colors duration-300">How it works</Link>
+                <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>
+                <Link href="/faq" className="hover:text-clay-soft transition-colors duration-300">FAQ</Link>
+                <Link href="/" className="hover:text-clay-soft transition-colors duration-300">Home</Link>
+              </div>
             </div>
-          </FadeInSection>
+          </Reveal>
         </section>
       </main>
+
+      <SiteFooter />
     </>
   );
 }
