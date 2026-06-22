@@ -7,6 +7,15 @@ const disputes = [
   "Landlord", "Credit card", "HOA", "Airline", "Employer", "Neighbor", "Hotel",
 ];
 
+const testimonials = [
+  { name: "Chloe H.", text: "I'm Frustrated dot Org's attorneys are the epitome of efficient professionals. They are easy to communicate with and quickly come up with solutions. I would not have been able to navigate my landlord situation without them!" },
+  { name: "Riley S. & Isabella H.", text: "Thank you so much for your quick and effective help with our landlord-tenant dispute! We are no longer 'frustrated.'" },
+  { name: "Todd E.", text: "I came to Nick with some half-baked research. With professionalism and excitement he educated me, helping me form my LLC the proper way. It helps that he's as excited for you as you are for finally taking the step!" },
+  { name: "Sidnee L.", text: "I was completely overwhelmed by licensing a new LLC, but Nick made the process palatable and easy. As a freelancer in creative industries, legal jargon often goes over my head. His confidence handling the pieces I was unsure about put me at ease — highly recommend working with him and his team." },
+  { name: "Johnluke L.", text: "I came to the team with a simple but critical family-law issue and needed a solution ASAP. They stepped up, gave excellent advice, and guided me toward resolution quicker than I thought possible!" },
+  { name: "Stella B.", text: "After another professional gave me advice that turned out to be inaccurate, a colleague recommended I reach out. Their guidance has been invaluable. The team has demonstrated genuine concern for others' wellbeing — if you need advice on a serious legal matter, I'm confident they'll do their absolute best to help." },
+];
+
 const steps = [
   {
     n: "1",
@@ -160,16 +169,24 @@ export default function Home() {
           </Reveal>
         </section>
 
-        {/* ─── Pull-quote ─── */}
-        <section className="relative max-w-3xl mx-auto px-6 md:px-8 py-16 md:py-20 text-center">
+        {/* ─── Testimonials ─── */}
+        <section id="testimonials" className="relative max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-20">
+          <Reveal className="text-center max-w-2xl mx-auto mb-12">
+            <p className="font-accent italic text-xl text-clay">in their own words</p>
+            <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.75rem] tracking-[-0.03em] mt-1.5">
+              From frustration to resolution
+            </h2>
+          </Reveal>
           <Reveal>
-            <p className="font-accent italic text-sage text-[1.7rem] md:text-[2.4rem] leading-[1.3]">
-              &ldquo;I was about to drop two grand on a retainer. They told me to send one
-              letter — the landlord caved in a week.&rdquo;
-            </p>
-            <p className="text-clay font-semibold text-sm tracking-[0.04em] mt-6 uppercase">
-              Renee K. · Security-deposit dispute
-            </p>
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-5">
+              {testimonials.map((t) => (
+                <figure key={t.name} className="break-inside-avoid mb-5 bg-card border border-rule rounded-2xl p-6">
+                  <span className="font-accent text-clay text-4xl leading-none block -mb-2" style={{ fontStyle: "italic" }} aria-hidden>&ldquo;</span>
+                  <blockquote className="text-sage-2 leading-relaxed">{t.text}</blockquote>
+                  <figcaption className="text-clay font-semibold text-xs tracking-[0.08em] uppercase mt-4">{t.name}</figcaption>
+                </figure>
+              ))}
+            </div>
           </Reveal>
         </section>
 
