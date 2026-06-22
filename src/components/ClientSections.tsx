@@ -306,6 +306,47 @@ export function Reveal({
   );
 }
 
+/* Shared site footer — evergreen, used on every page for consistency. */
+export function SiteFooter() {
+  return (
+    <footer className="relative bg-evergreen mt-8">
+      <div className="max-w-6xl mx-auto px-6 md:px-10 py-14">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="text-center md:text-left">
+            <Link href="/" className="inline-block"><Logo color="paper" /></Link>
+            <p className="font-accent italic text-bg/55 text-sm mt-3">Friends who are also lawyers.</p>
+          </div>
+          <div className="flex items-center gap-7 text-sm text-bg/55 flex-wrap justify-center md:justify-end">
+            <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>
+            <Link href="/how-it-works" className="hover:text-clay-soft transition-colors duration-300">How it works</Link>
+            <Link href="/letters" className="hover:text-clay-soft transition-colors duration-300">Letters</Link>
+            <Link href="/about" className="hover:text-clay-soft transition-colors duration-300">About</Link>
+            <a href="mailto:info@imfrustrated.org" className="hover:text-clay-soft transition-colors duration-300">Contact</a>
+          </div>
+        </div>
+        <div className="mt-12 pt-8 border-t border-bg/10 text-center">
+          <div className="flex items-center justify-center gap-5 text-xs text-bg/45 mb-4">
+            <Link href="/privacy" className="hover:text-clay-soft transition-colors duration-300">Privacy</Link>
+            <span className="text-bg/25" aria-hidden>·</span>
+            <Link href="/terms" className="hover:text-clay-soft transition-colors duration-300">Terms</Link>
+          </div>
+          <p className="text-bg/40 text-xs">
+            &copy; {new Date().getFullYear()} I&rsquo;m Frustrated<span className="text-clay-soft ml-0.5">.org</span>. All rights reserved.
+          </p>
+          <p className="text-bg/30 text-[0.7rem] leading-relaxed mt-4 max-w-2xl mx-auto">
+            Disclaimer: I&rsquo;m Frustrated<span className="text-clay-soft mx-0.5">.org</span>
+            is not a law firm and does not provide legal representation. The information and
+            guidance provided through our services are for informational purposes only and
+            should not be construed as legal advice. No attorney-client relationship is formed
+            through your use of this service. For legal representation, please consult a
+            licensed attorney in your jurisdiction.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 /* Page-level micro-interactions: magnetic buttons (.mag), tilt+spotlight
  * cards (.tool-card), cursor-reactive ambient blobs (.amb i), and the
  * single-select dispute chips (.chip). Honors reduced-motion. */

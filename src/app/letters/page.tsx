@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { Header, FadeInSection } from "@/components/ClientSections";
+import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 import { getAllLetters, getAvailableCategories } from "@/data/letters";
 
 export const metadata: Metadata = {
@@ -93,7 +93,7 @@ function CategoryIcon({ slug }: { slug: string }) {
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
-      className="w-10 h-10 mb-5 text-forest group-hover:text-amber transition-colors duration-300"
+      className="w-10 h-10 mb-5 text-sage group-hover:text-clay transition-colors duration-300"
       aria-hidden="true"
     >
       {paths}
@@ -134,120 +134,142 @@ export default function LettersHubPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+      <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
       <Header />
-      <main>
+      <Interactions />
+      <main className="relative">
         {/* Hero */}
-        <section className="relative pt-32 pb-20 md:pt-40 md:pb-24 bg-paper">
-          <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
-            <nav className="text-[0.7rem] uppercase tracking-[0.22em] text-muted-warm mb-8 font-medium">
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
-              <span className="mx-3 text-rule">/</span>
-              <span className="text-amber">Letters</span>
+        <section className="relative max-w-3xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-14">
+          <Reveal>
+            <nav className="text-sm font-medium text-sage-2 mb-7">
+              <Link href="/" className="hover:text-clay transition-colors duration-300">Home</Link>
+              <span className="mx-2.5 text-rule">/</span>
+              <span className="text-clay">Letters</span>
             </nav>
-            <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">Free Letter Templates</p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.75rem] font-semibold text-ink leading-[1.05] tracking-[-0.02em] mb-8">
-              The letter is <br className="hidden sm:block" /> usually enough<span className="text-amber">.</span>
+          </Reveal>
+          <Reveal delay={1}>
+            <span className="eyebrow"><span className="pulse" />Free letter templates</span>
+          </Reveal>
+          <Reveal delay={2}>
+            <h1 className="font-disp font-semibold text-sage text-[2.7rem] md:text-6xl lg:text-[4rem] leading-[1.04] tracking-[-0.03em] mt-7">
+              The letter is <br className="hidden sm:block" />usually{" "}
+              <em className="font-accent not-italic text-clay" style={{ fontStyle: "italic" }}>enough.</em>
             </h1>
-            <div className="decorative-rule mb-10" />
-            <p className="text-muted-warm text-lg leading-relaxed mb-6">
+          </Reveal>
+          <Reveal delay={3}>
+            <p className="text-sage-2 text-lg leading-[1.6] mt-7">
               Most legal problems don&rsquo;t need a lawyer. They need a clear, properly written letter — one that quotes the statute, sets the deadline, and tells the other side what happens if they ignore it. Sent by certified mail, that letter resolves a surprising number of disputes within a week.
             </p>
-            <p className="text-muted-warm text-lg leading-relaxed">
+          </Reveal>
+          <Reveal delay={3}>
+            <p className="text-sage-2 text-lg leading-[1.6] mt-5">
               Below is a free library of plain-English templates that invoke real federal and state statutes. Every citation is verified. Every template was written by an attorney. Take them, customize them, send them. No account, no upsell, no catch.
             </p>
-            <p className="script text-2xl md:text-3xl mt-8 -rotate-1">friends who went to law school, written down.</p>
-          </FadeInSection>
+            <p className="font-accent italic text-xl text-clay mt-7">friends who went to law school, written down.</p>
+          </Reveal>
         </section>
 
         {/* Categories */}
-        <section className="py-20 md:py-28 bg-paper-deep">
-          <div className="max-w-5xl mx-auto px-6 md:px-10">
-            <FadeInSection className="mb-12 text-center">
-              <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-3">Categories</p>
-              <div className="decorative-rule mx-auto" />
-            </FadeInSection>
+        <section className="relative max-w-5xl mx-auto px-6 md:px-8 py-14 md:py-16">
+          <Reveal className="text-center max-w-2xl mx-auto mb-10">
+            <p className="font-accent italic text-xl text-clay">by situation</p>
+            <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.5rem] tracking-[-0.03em] mt-1.5">
+              Browse by category
+            </h2>
+          </Reveal>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {categories.map((cat) => {
-                const count = letters.filter((l) => l.category === cat.slug).length;
-                return (
-                  <FadeInSection key={cat.slug}>
-                    <Link
-                      href={`/letters/${cat.slug}`}
-                      className="group block bg-paper-lift border border-rule rounded-[6px] p-7 h-full hover:border-forest/40 transition-all duration-500 hover:shadow-[0_18px_36px_-24px_rgba(45,74,62,0.25)]"
-                    >
-                      <CategoryIcon slug={cat.slug} />
-                      <p className="text-amber text-[0.68rem] font-semibold uppercase tracking-[0.28em] mb-3">
-                        {count} {count === 1 ? "letter" : "letters"}
-                      </p>
-                      <h2 className="font-serif text-2xl font-semibold text-ink tracking-[-0.01em] mb-3">
-                        {cat.label}
-                      </h2>
-                      <p className="text-muted-warm text-[0.95rem] leading-relaxed">{cat.blurb}</p>
-                      <p className="text-forest text-sm mt-5 font-medium">See letters →</p>
-                    </Link>
-                  </FadeInSection>
-                );
-              })}
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {categories.map((cat, i) => {
+              const count = letters.filter((l) => l.category === cat.slug).length;
+              return (
+                <Reveal key={cat.slug} delay={((i % 3) + 1) as 1 | 2 | 3}>
+                  <Link
+                    href={`/letters/${cat.slug}`}
+                    className="tool-card group block p-7 h-full"
+                  >
+                    <CategoryIcon slug={cat.slug} />
+                    <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">
+                      {count} {count === 1 ? "letter" : "letters"}
+                    </p>
+                    <h2 className="font-disp font-semibold text-sage text-2xl tracking-[-0.02em]">
+                      {cat.label}
+                    </h2>
+                    <p className="text-sage-2 mt-2.5 leading-relaxed">{cat.blurb}</p>
+                    <span className="inline-flex items-center gap-2 mt-5 font-semibold text-[0.95rem] text-clay">
+                      See letters
+                      <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar group-hover:translate-x-1 transition-transform duration-300">
+                        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                  </Link>
+                </Reveal>
+              );
+            })}
           </div>
         </section>
 
         {/* All letters */}
-        <section className="py-20 md:py-28 bg-paper">
-          <div className="max-w-4xl mx-auto px-6 md:px-10">
-            <FadeInSection className="mb-12 text-center">
-              <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-3">All Letters</p>
-              <div className="decorative-rule mx-auto" />
-            </FadeInSection>
+        <section className="relative max-w-4xl mx-auto px-6 md:px-8 py-14 md:py-16">
+          <Reveal className="text-center max-w-2xl mx-auto mb-10">
+            <p className="font-accent italic text-xl text-clay">every template</p>
+            <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.5rem] tracking-[-0.03em] mt-1.5">
+              All letters
+            </h2>
+          </Reveal>
 
-            <FadeInSection>
-              <ul className="space-y-1">
-                {letters.map((l) => (
-                  <li key={`${l.category}/${l.slug}`}>
-                    <Link
-                      href={`/letters/${l.category}/${l.slug}`}
-                      className="group block py-5 border-b border-rule/70 hover:border-forest/40 transition-colors"
-                    >
-                      <p className="text-amber text-[0.65rem] font-semibold uppercase tracking-[0.28em] mb-1">
-                        {l.category.replace(/-/g, " ")}
-                      </p>
-                      <p className="font-serif text-lg md:text-xl text-ink group-hover:text-forest transition-colors">
-                        {l.title}
-                      </p>
-                      <p className="text-muted-warm text-sm mt-1 leading-relaxed max-w-prose">
-                        {l.metaDescription}
-                      </p>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </FadeInSection>
-          </div>
+          <Reveal>
+            <ul className="divide-y divide-rule">
+              {letters.map((l) => (
+                <li key={`${l.category}/${l.slug}`}>
+                  <Link
+                    href={`/letters/${l.category}/${l.slug}`}
+                    className="group block py-5"
+                  >
+                    <p className="text-clay text-[0.7rem] font-semibold uppercase tracking-[0.2em] mb-1">
+                      {l.category.replace(/-/g, " ")}
+                    </p>
+                    <p className="font-disp font-semibold text-sage text-lg md:text-xl tracking-[-0.02em] group-hover:text-clay transition-colors duration-300">
+                      {l.title}
+                    </p>
+                    <p className="text-sage-2 text-sm mt-1 leading-relaxed max-w-prose">
+                      {l.metaDescription}
+                    </p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </section>
 
         {/* CTA */}
-        <section className="py-20 md:py-24 bg-paper-deep">
-          <FadeInSection className="max-w-2xl mx-auto px-6 md:px-10 text-center">
-            <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">If the letter isn&rsquo;t enough</p>
-            <h2 className="font-serif text-2xl md:text-3xl font-semibold text-ink leading-snug mb-5 tracking-[-0.01em]">
-              We can still talk it out<span className="text-amber">.</span>
-            </h2>
-            <p className="text-muted-warm text-lg leading-relaxed mb-8">
-              Send us the situation and a volunteer attorney will write back. No commitment, no invoice, no judgment.
-            </p>
-            <a href="mailto:info@imfrustrated.org" className="btn-forest">
-              info@imfrustrated.org
-            </a>
-            <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-muted-warm">
-              <Link href="/how-it-works" className="hover:text-forest transition-colors">How it works</Link>
-              <Link href="/free-tools" className="hover:text-forest transition-colors">Free tools</Link>
-              <Link href="/about" className="hover:text-forest transition-colors">About us</Link>
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
+        <section className="relative max-w-5xl mx-auto px-6 md:px-8 pb-24">
+          <Reveal>
+            <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16 text-center">
+              <p className="font-accent italic text-xl text-clay-soft">if the letter isn&rsquo;t enough</p>
+              <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight mt-1.5">
+                We can still talk it out.
+              </h2>
+              <p className="text-[#cdd6cd] text-lg leading-relaxed mt-4 max-w-xl mx-auto mb-9">
+                Send us the situation and a volunteer attorney will write back. No commitment, no invoice, no judgment.
+              </p>
+              <a href="mailto:info@imfrustrated.org" className="btn-clay mag">
+                info@imfrustrated.org
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+              </a>
+              <div className="mt-11 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
+                <Link href="/how-it-works" className="hover:text-clay-soft transition-colors duration-300">How it works</Link>
+                <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>
+                <Link href="/about" className="hover:text-clay-soft transition-colors duration-300">About us</Link>
+                <Link href="/" className="hover:text-clay-soft transition-colors duration-300">Home</Link>
+              </div>
             </div>
-          </FadeInSection>
+          </Reveal>
         </section>
       </main>
+
+      <SiteFooter />
     </>
   );
 }

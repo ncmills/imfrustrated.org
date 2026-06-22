@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header, FadeInSection } from "@/components/ClientSections";
+import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 
 export const metadata: Metadata = {
   title: "Free Tools | I'm Frustrated dot Org",
@@ -71,7 +71,7 @@ export default function FreeToolsPage() {
     ],
   };
 
-  const features = [
+  const willFeatures = [
     "Free forever — no account, no upsell, no premium tier",
     "Covers all 50 US states and DC, with state-specific signing, witness, and notary requirements",
     "Privacy-first — your data never leaves your browser",
@@ -79,202 +79,184 @@ export default function FreeToolsPage() {
     "Download as Word or PDF when you’re done",
   ];
 
+  const letterFeatures = [
+    "Verified statute citations — federal and state",
+    "Written by practicing attorneys, free to use",
+    "Plain-English explanations of what the law actually says",
+    "State-by-state notes where the law varies",
+    "No account, no upsell, no catch",
+  ];
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+      <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
       <Header />
-      <main>
-        {/* Hero */}
-        <section className="relative pt-32 pb-20 md:pt-40 md:pb-24 bg-paper">
-          <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
-            <nav className="text-[0.7rem] uppercase tracking-[0.22em] text-muted-warm mb-8 font-medium">
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
+      <Interactions />
+
+      <main className="relative">
+        {/* ─── Hero ─── */}
+        <section className="relative max-w-5xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-12 md:pb-16 text-center">
+          <Reveal delay={1}>
+            <nav className="text-[0.72rem] uppercase tracking-[0.2em] text-sage-2 mb-7 font-semibold">
+              <Link href="/" className="hover:text-clay transition-colors duration-300">Home</Link>
               <span className="mx-3 text-rule">/</span>
-              <span className="text-amber">Free Tools</span>
+              <span className="text-clay">Free Tools</span>
             </nav>
-            <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">Free Tools</p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.75rem] font-semibold text-ink leading-[1.05] tracking-[-0.02em] mb-8">
-              Free legal tools, built for <br className="hidden sm:block" /> the people we serve<span className="text-amber">.</span>
+          </Reveal>
+          <Reveal delay={2}>
+            <p className="font-accent italic text-xl text-clay">do it yourself</p>
+            <h1 className="font-disp font-semibold text-sage text-[2.4rem] sm:text-5xl md:text-6xl leading-[1.04] tracking-[-0.03em] mt-2">
+              Free legal tools, built for
+              <br className="hidden sm:block" /> the people we serve.
             </h1>
-            <div className="decorative-rule mb-10" />
-            <p className="text-muted-warm text-lg leading-relaxed mb-6">
-              I&rsquo;m Frustrated dot Org started as a free conversation with a volunteer attorney. But some legal tasks don&rsquo;t need a conversation — they just need a tool. So we&rsquo;re building those too, and giving them away the same way: no fees, no signup, no catch.
+          </Reveal>
+          <Reveal delay={3}>
+            <p className="text-sage-2 text-lg md:text-xl leading-[1.6] max-w-2xl mx-auto mt-7">
+              I&rsquo;m Frustrated dot Org started as a free conversation with a volunteer attorney.
+              But some legal tasks don&rsquo;t need a conversation — they just need a tool. So we&rsquo;re
+              building those too, and giving them away the same way: no fees, no signup, no catch.
             </p>
-            <p className="script text-2xl md:text-3xl mt-6 -rotate-1">
-              below is what&rsquo;s live today.
-            </p>
-          </FadeInSection>
+          </Reveal>
         </section>
 
-        {/* Featured tool — IDHAW */}
-        <section className="py-20 md:py-28 bg-paper-deep">
-          <div className="max-w-4xl mx-auto px-6 md:px-10">
-            <FadeInSection className="mb-10 text-center">
-              <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-3">Featured Tool — No. 01</p>
-              <div className="decorative-rule mx-auto" />
-            </FadeInSection>
+        {/* ─── Featured tools ─── */}
+        <section id="tools" className="relative max-w-5xl mx-auto px-6 md:px-8 py-12 md:py-16">
+          <Reveal className="text-center max-w-2xl mx-auto mb-12">
+            <p className="font-accent italic text-xl text-clay">what&rsquo;s live today</p>
+            <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.75rem] tracking-[-0.03em] mt-1.5">
+              The free tools
+            </h2>
+          </Reveal>
 
-            <FadeInSection>
+          <div className="grid md:grid-cols-2 gap-5">
+            {/* No.01 — IDHAW */}
+            <Reveal delay={1}>
               <a
                 href="https://idonthaveawill.com"
                 target="_blank"
                 rel="noopener"
-                className="group block letter-card hover:border-forest/40 transition-all duration-500"
+                className="tool-card group block p-8 md:p-9 h-full"
               >
-                <div className="flex items-start gap-6 mb-6">
-                  <div className="text-forest group-hover:text-amber transition-colors duration-300 shrink-0">
-                    <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M12 6h18l8 8v28a2 2 0 01-2 2H12a2 2 0 01-2-2V8a2 2 0 012-2z" />
-                      <path d="M30 6v8h8" />
-                      <path d="M16 32l5 5 11-11" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-2">
-                      Free Will Generator
-                    </p>
-                    <h2 className="font-serif text-2xl md:text-[2rem] font-semibold text-ink tracking-[-0.01em]">
-                      I Don&rsquo;t Have a Will
-                    </h2>
-                  </div>
-                </div>
-
-                <p className="text-muted-warm text-base md:text-lg leading-[1.7] mb-6">
-                  A free self-help tool to draft a simple will in about ten minutes. The whole thing runs in your browser — your name, your beneficiaries, your assets — none of it is sent to a server, none of it is stored anywhere. When you&rsquo;re done, download the document and follow the state-specific signing instructions. That&rsquo;s it.
+                <div className="w-12 h-12 rounded-[14px] bg-mist text-sage grid place-items-center font-disp font-bold text-base mb-5">01</div>
+                <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">Free will generator</p>
+                <h3 className="font-disp font-semibold text-sage text-2xl tracking-[-0.02em]">I Don&rsquo;t Have a Will</h3>
+                <p className="text-sage-2 mt-2.5 leading-relaxed">
+                  A free self-help tool to draft a simple will in about ten minutes. The whole thing runs
+                  in your browser — your name, your beneficiaries, your assets — none of it is sent to a
+                  server or stored anywhere. When you&rsquo;re done, download the document and follow the
+                  state-specific signing instructions. That&rsquo;s it.
                 </p>
-
-                <ul className="space-y-3 mb-8">
-                  {features.map((line) => (
-                    <li key={line} className="flex items-start gap-3 text-muted-warm text-[0.95rem] md:text-base leading-relaxed">
-                      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-amber shrink-0 mt-1" stroke="currentColor" strokeWidth="2">
+                <ul className="space-y-2.5 mt-6">
+                  {willFeatures.map((line) => (
+                    <li key={line} className="flex items-start gap-3 text-sage-2 text-[0.95rem] leading-relaxed">
+                      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-clay shrink-0 mt-0.5" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                         <path d="M5 10l3.5 3.5L15 7" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                       <span>{line}</span>
                     </li>
                   ))}
                 </ul>
-
-                <span className="btn-forest">
+                <span className="inline-flex items-center gap-2 mt-6 font-semibold text-[0.95rem] text-clay">
                   Open the tool at idonthaveawill.com
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300">
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true">
                     <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                   </svg>
                 </span>
-
-                <p className="text-muted-warm/80 text-xs mt-8 leading-relaxed">
-                  This tool generates a self-prepared will. It is not legal advice and does not replace consultation with a licensed estate-planning attorney for complex situations (significant assets, blended families, special-needs beneficiaries, business interests, or contested family dynamics). For situations like those, email{" "}
-                  <span className="text-forest">info@imfrustrated.org</span> for a free conversation first.
+                <p className="text-sage-2/80 text-xs mt-7 leading-relaxed">
+                  This tool generates a self-prepared will. It is not legal advice and does not replace
+                  consultation with a licensed estate-planning attorney for complex situations (significant
+                  assets, blended families, special-needs beneficiaries, business interests, or contested
+                  family dynamics). For situations like those, email{" "}
+                  <span className="text-sage">info@imfrustrated.org</span> for a free conversation first.
                 </p>
               </a>
-            </FadeInSection>
-          </div>
-        </section>
+            </Reveal>
 
-        {/* Featured library — Letters */}
-        <section className="py-12 md:py-16 bg-paper-deep">
-          <div className="max-w-4xl mx-auto px-6 md:px-10">
-            <FadeInSection className="mb-10 text-center">
-              <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-3">Featured Library — No. 02</p>
-              <div className="decorative-rule mx-auto" />
-            </FadeInSection>
-
-            <FadeInSection>
-              <Link
-                href="/letters"
-                className="group block letter-card hover:border-forest/40 transition-all duration-500"
-              >
-                <div className="flex items-start gap-6 mb-6">
-                  <div className="text-forest group-hover:text-amber transition-colors duration-300 shrink-0">
-                    <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M8 12h32v28a2 2 0 01-2 2H10a2 2 0 01-2-2V12z" />
-                      <path d="M8 12l16 12 16-12" />
-                      <path d="M16 28h12" strokeLinecap="round" />
-                      <path d="M16 34h16" strokeLinecap="round" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-2">
-                      Free Letter Library
-                    </p>
-                    <h2 className="font-serif text-2xl md:text-[2rem] font-semibold text-ink tracking-[-0.01em]">
-                      Letters That Get a Response
-                    </h2>
-                  </div>
-                </div>
-
-                <p className="text-muted-warm text-base md:text-lg leading-[1.7] mb-6">
-                  Most legal problems don&rsquo;t need a lawyer. They need a clear, properly written letter — one that quotes the statute, sets the deadline, and tells the other side what happens if they ignore it. We&rsquo;ve written a library of them. Security deposits, billing-error disputes, debt validation, medical records, credit-report errors. Every citation verified. Free to copy, customize, send.
+            {/* No.02 — Letters */}
+            <Reveal delay={2}>
+              <Link href="/letters" className="tool-card group block p-8 md:p-9 h-full">
+                <div className="w-12 h-12 rounded-[14px] bg-clay-soft/30 text-clay grid place-items-center font-disp font-bold text-base mb-5">02</div>
+                <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">Free letter library</p>
+                <h3 className="font-disp font-semibold text-sage text-2xl tracking-[-0.02em]">Letters That Get a Response</h3>
+                <p className="text-sage-2 mt-2.5 leading-relaxed">
+                  Most legal problems don&rsquo;t need a lawyer. They need a clear, properly written letter —
+                  one that quotes the statute, sets the deadline, and tells the other side what happens if
+                  they ignore it. We&rsquo;ve written a library of them. Security deposits, billing-error
+                  disputes, debt validation, medical records, credit-report errors. Every citation verified.
+                  Free to copy, customize, send.
                 </p>
-
-                <ul className="space-y-3 mb-8">
-                  {[
-                    "Verified statute citations — federal and state",
-                    "Written by practicing attorneys, free to use",
-                    "Plain-English explanations of what the law actually says",
-                    "State-by-state notes where the law varies",
-                    "No account, no upsell, no catch",
-                  ].map((line) => (
-                    <li key={line} className="flex items-start gap-3 text-muted-warm text-[0.95rem] md:text-base leading-relaxed">
-                      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-amber shrink-0 mt-1" stroke="currentColor" strokeWidth="2">
+                <ul className="space-y-2.5 mt-6">
+                  {letterFeatures.map((line) => (
+                    <li key={line} className="flex items-start gap-3 text-sage-2 text-[0.95rem] leading-relaxed">
+                      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-clay shrink-0 mt-0.5" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                         <path d="M5 10l3.5 3.5L15 7" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                       <span>{line}</span>
                     </li>
                   ))}
                 </ul>
-
-                <span className="btn-forest">
+                <span className="inline-flex items-center gap-2 mt-6 font-semibold text-[0.95rem] text-clay">
                   Browse the library
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300">
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true">
                     <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                   </svg>
                 </span>
-
-                <p className="text-muted-warm/80 text-xs mt-8 leading-relaxed">
-                  Each template is for informational use only — not legal advice. For situations that are urgent, complicated, or high-stakes, email{" "}
-                  <span className="text-forest">info@imfrustrated.org</span> for a free conversation with a volunteer attorney before you send.
+                <p className="text-sage-2/80 text-xs mt-7 leading-relaxed">
+                  Each template is for informational use only — not legal advice. For situations that are
+                  urgent, complicated, or high-stakes, email{" "}
+                  <span className="text-sage">info@imfrustrated.org</span> for a free conversation with a
+                  volunteer attorney before you send.
                 </p>
               </Link>
-            </FadeInSection>
+            </Reveal>
           </div>
         </section>
 
-        {/* More tools coming */}
-        <section className="py-20 md:py-24 bg-paper">
-          <FadeInSection className="max-w-2xl mx-auto px-6 md:px-10 text-center">
-            <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">More on the way</p>
-            <h2 className="font-serif text-2xl md:text-3xl font-semibold text-ink leading-snug mb-5 tracking-[-0.01em]">
-              We&rsquo;re building more tools like this<span className="text-amber">.</span>
-            </h2>
-            <p className="script text-xl md:text-2xl mb-6 -rotate-1">what should we build next?</p>
-            <p className="text-muted-warm text-lg leading-relaxed mb-8">
-              If there&rsquo;s a legal task you wish had a free tool — a letter you wish you didn&rsquo;t have to pay a lawyer to draft, a document you wish you could fill in yourself — tell us. We pick what to build next based on what people actually ask for.
-            </p>
-            <a href="mailto:info@imfrustrated.org?subject=Free%20tool%20idea" className="btn-ghost">
-              Send us an idea
-            </a>
-          </FadeInSection>
+        {/* ─── More on the way ─── */}
+        <section className="relative max-w-5xl mx-auto px-6 md:px-8 py-12 md:py-16">
+          <Reveal>
+            <div className="bg-bg-2 rounded-[32px] px-8 md:px-12 py-14 text-center">
+              <div className="max-w-xl mx-auto">
+                <p className="font-accent italic text-xl text-clay">what should we build next?</p>
+                <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.4rem] tracking-[-0.03em] mt-1.5">
+                  We&rsquo;re building more tools like this.
+                </h2>
+                <p className="text-sage-2 text-lg leading-relaxed mt-5 mb-8">
+                  If there&rsquo;s a legal task you wish had a free tool — a letter you wish you didn&rsquo;t
+                  have to pay a lawyer to draft, a document you wish you could fill in yourself — tell us.
+                  We pick what to build next based on what people actually ask for.
+                </p>
+                <a href="mailto:info@imfrustrated.org?subject=Free%20tool%20idea" className="btn-clay mag">
+                  Send us an idea
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar" aria-hidden="true">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </Reveal>
         </section>
 
-        {/* Cross-links */}
-        <section className="py-16 md:py-20 bg-paper-deep">
-          <FadeInSection className="max-w-2xl mx-auto px-6 md:px-10 text-center">
-            <p className="text-muted-warm text-base leading-relaxed mb-6">
+        {/* ─── Cross-links ─── */}
+        <section className="relative max-w-3xl mx-auto px-6 md:px-8 pb-24 text-center">
+          <Reveal>
+            <p className="text-sage-2 text-base leading-relaxed mb-6">
               Need to actually talk to an attorney? That&rsquo;s our other thing.
             </p>
-            <a href="mailto:info@imfrustrated.org" className="btn-forest">
-              info@imfrustrated.org
-            </a>
-            <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-muted-warm">
-              <Link href="/how-it-works" className="hover:text-forest transition-colors">How it works</Link>
-              <Link href="/about" className="hover:text-forest transition-colors">About us</Link>
-              <Link href="/faq" className="hover:text-forest transition-colors">FAQ</Link>
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
+            <a href="mailto:info@imfrustrated.org" className="btn-soft mag">info@imfrustrated.org</a>
+            <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-sage-2">
+              <Link href="/how-it-works" className="hover:text-clay transition-colors duration-300">How it works</Link>
+              <Link href="/about" className="hover:text-clay transition-colors duration-300">About us</Link>
+              <Link href="/faq" className="hover:text-clay transition-colors duration-300">FAQ</Link>
+              <Link href="/" className="hover:text-clay transition-colors duration-300">Home</Link>
             </div>
-          </FadeInSection>
+          </Reveal>
         </section>
       </main>
+
+      <SiteFooter />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Header, FadeInSection } from "@/components/ClientSections";
+import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 import {
   categoryMeta,
   getAvailableCategories,
@@ -67,73 +67,87 @@ export default async function CategoryHubPage({
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
       <Header />
-      <main>
+      <Interactions />
+      <main className="relative">
         {/* Hero */}
-        <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 bg-paper">
-          <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
-            <nav className="text-[0.7rem] uppercase tracking-[0.22em] text-muted-warm mb-8 font-medium">
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
-              <span className="mx-3 text-rule">/</span>
-              <Link href="/letters" className="hover:text-forest transition-colors">Letters</Link>
-              <span className="mx-3 text-rule">/</span>
-              <span className="text-amber">{meta.label}</span>
+        <section className="relative max-w-3xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-12">
+          <Reveal>
+            <nav className="text-sm font-medium text-sage-2 mb-7">
+              <Link href="/" className="hover:text-clay transition-colors duration-300">Home</Link>
+              <span className="mx-2.5 text-rule">/</span>
+              <Link href="/letters" className="hover:text-clay transition-colors duration-300">Letters</Link>
+              <span className="mx-2.5 text-rule">/</span>
+              <span className="text-clay">{meta.label}</span>
             </nav>
-            <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">
-              {meta.label} Letters
-            </p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.25rem] font-semibold text-ink leading-[1.05] tracking-[-0.02em] mb-8">
-              {meta.label} letters that get a response<span className="text-amber">.</span>
+          </Reveal>
+          <Reveal delay={1}>
+            <span className="eyebrow"><span className="pulse" />{meta.label} letters</span>
+          </Reveal>
+          <Reveal delay={2}>
+            <h1 className="font-disp font-semibold text-sage text-[2.6rem] md:text-5xl lg:text-[3.5rem] leading-[1.05] tracking-[-0.03em] mt-7">
+              {meta.label} letters that get a{" "}
+              <em className="font-accent not-italic text-clay" style={{ fontStyle: "italic" }}>response.</em>
             </h1>
-            <div className="decorative-rule mb-10" />
-            <p className="text-muted-warm text-lg leading-relaxed">{meta.hubLede}</p>
-          </FadeInSection>
+          </Reveal>
+          <Reveal delay={3}>
+            <p className="text-sage-2 text-lg leading-[1.6] mt-7">{meta.hubLede}</p>
+          </Reveal>
         </section>
 
         {/* Letter list */}
-        <section className="py-16 md:py-24 bg-paper-deep">
-          <div className="max-w-4xl mx-auto px-6 md:px-10">
-            <FadeInSection>
-              <ul className="space-y-4">
-                {letters.map((l) => (
-                  <li key={l.slug}>
-                    <Link
-                      href={`/letters/${l.category}/${l.slug}`}
-                      className="group block bg-paper-lift border border-rule rounded-[6px] p-6 md:p-7 hover:border-forest/40 transition-all duration-500 hover:shadow-[0_18px_36px_-24px_rgba(45,74,62,0.25)]"
-                    >
-                      <h2 className="font-serif text-xl md:text-2xl font-semibold text-ink group-hover:text-forest transition-colors tracking-[-0.01em] mb-3">
-                        {l.title}
-                      </h2>
-                      <p className="text-muted-warm text-[0.95rem] leading-relaxed mb-4">
-                        {l.lede}
-                      </p>
-                      <p className="text-forest text-sm font-medium">Read the template →</p>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </FadeInSection>
+        <section className="relative max-w-4xl mx-auto px-6 md:px-8 py-12 md:py-16">
+          <div className="grid gap-5">
+            {letters.map((l, i) => (
+              <Reveal key={l.slug} delay={((i % 3) + 1) as 1 | 2 | 3}>
+                <Link
+                  href={`/letters/${l.category}/${l.slug}`}
+                  className="tool-card group block p-7 md:p-8 h-full"
+                >
+                  <h2 className="font-disp font-semibold text-sage text-xl md:text-2xl tracking-[-0.02em] group-hover:text-clay transition-colors duration-300 mb-3">
+                    {l.title}
+                  </h2>
+                  <p className="text-sage-2 leading-relaxed mb-4">
+                    {l.lede}
+                  </p>
+                  <span className="inline-flex items-center gap-2 font-semibold text-[0.95rem] text-clay">
+                    Read the template
+                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar group-hover:translate-x-1 transition-transform duration-300">
+                      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </section>
 
         {/* CTA */}
-        <section className="py-16 md:py-20 bg-paper">
-          <FadeInSection className="max-w-2xl mx-auto px-6 md:px-10 text-center">
-            <p className="text-muted-warm text-base leading-relaxed mb-6">
-              Need an attorney to look at your specific situation before you send a letter?
-            </p>
-            <a href="mailto:info@imfrustrated.org" className="btn-forest">
-              info@imfrustrated.org
-            </a>
-            <div className="mt-10 flex justify-center gap-6 text-sm flex-wrap text-muted-warm">
-              <Link href="/letters" className="hover:text-forest transition-colors">All letters</Link>
-              <Link href="/how-it-works" className="hover:text-forest transition-colors">How it works</Link>
-              <Link href="/free-tools" className="hover:text-forest transition-colors">Free tools</Link>
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
+        <section className="relative max-w-5xl mx-auto px-6 md:px-8 pb-24">
+          <Reveal>
+            <div className="bg-bg-2 rounded-[32px] px-6 sm:px-10 md:px-14 py-12 md:py-14 text-center">
+              <p className="text-sage-2 text-lg leading-relaxed mb-7 max-w-xl mx-auto">
+                Need an attorney to look at your specific situation before you send a letter?
+              </p>
+              <a href="mailto:info@imfrustrated.org" className="btn-clay mag">
+                info@imfrustrated.org
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+              </a>
+              <div className="mt-10 flex justify-center gap-6 text-sm flex-wrap text-sage-2">
+                <Link href="/letters" className="hover:text-clay transition-colors duration-300">All letters</Link>
+                <Link href="/how-it-works" className="hover:text-clay transition-colors duration-300">How it works</Link>
+                <Link href="/free-tools" className="hover:text-clay transition-colors duration-300">Free tools</Link>
+                <Link href="/" className="hover:text-clay transition-colors duration-300">Home</Link>
+              </div>
             </div>
-          </FadeInSection>
+          </Reveal>
         </section>
       </main>
+
+      <SiteFooter />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header, FadeInSection } from "@/components/ClientSections";
+import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
 
 export const metadata: Metadata = {
   title: "FAQ | I'm Frustrated dot Org",
@@ -103,87 +103,97 @@ export default function FaqPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
       <Header />
-      <main>
+      <main className="relative">
         {/* Hero */}
-        <section className="relative pt-32 pb-20 md:pt-40 md:pb-24 bg-paper">
-          <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
-            <nav className="text-[0.7rem] uppercase tracking-[0.22em] text-muted-warm mb-8 font-medium">
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
+        <section className="relative max-w-3xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-12 md:pb-16">
+          <Reveal delay={1}>
+            <nav className="text-[0.7rem] uppercase tracking-[0.22em] text-sage-2 mb-8 font-medium">
+              <Link href="/" className="hover:text-sage transition-colors duration-300">Home</Link>
               <span className="mx-3 text-rule">/</span>
-              <span className="text-amber">FAQ</span>
+              <span className="text-clay">FAQ</span>
             </nav>
-            <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">FAQ</p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.75rem] font-semibold text-ink leading-[1.05] tracking-[-0.02em] mb-8">
-              Honest answers to the things <br className="hidden sm:block" /> people ask first<span className="text-amber">.</span>
+          </Reveal>
+          <Reveal delay={2}>
+            <p className="font-accent italic text-xl text-clay">questions, answered</p>
+          </Reveal>
+          <Reveal delay={3}>
+            <h1 className="font-disp font-semibold text-sage text-[2.4rem] sm:text-5xl lg:text-[3.75rem] leading-[1.05] tracking-[-0.03em] mt-2 mb-7">
+              Honest answers to the things people ask first.
             </h1>
-            <div className="decorative-rule mb-10" />
-            <p className="text-muted-warm text-lg leading-relaxed">
+          </Reveal>
+          <Reveal delay={4}>
+            <p className="text-sage-2 text-lg leading-[1.7] max-w-2xl">
               Below are the questions we get most often. If your question isn&rsquo;t here, just email{" "}
               <a
                 href="mailto:info@imfrustrated.org"
-                className="text-forest underline decoration-amber/70 decoration-[1.5px] underline-offset-[5px] hover:text-amber transition-colors"
+                className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300"
               >
                 info@imfrustrated.org
               </a>
               {" "}and ask.
             </p>
-            <p className="script text-2xl md:text-3xl mt-8 -rotate-1">
-              we read every one.
+            <p className="font-accent italic text-clay text-2xl md:text-[1.7rem] mt-7">
+              We read every one.
             </p>
-          </FadeInSection>
+          </Reveal>
         </section>
 
         {/* Q&A list */}
-        <section className="py-16 md:py-24 bg-paper-deep">
-          <div className="max-w-3xl mx-auto px-6 md:px-10">
+        <section className="relative max-w-3xl mx-auto px-6 md:px-8 py-12 md:py-16">
+          <div className="space-y-5">
             {FAQS.map((faq, i) => (
-              <FadeInSection key={i}>
-                <article className="py-10 md:py-12 border-b border-rule last:border-b-0 first:pt-0">
-                  <div className="grid grid-cols-[auto,1fr] gap-x-5 md:gap-x-8 items-baseline">
+              <Reveal key={i}>
+                <article className="bg-card border border-rule rounded-2xl p-7 md:p-8">
+                  <div className="grid grid-cols-[auto,1fr] gap-x-5 md:gap-x-6 items-baseline">
                     <span
-                      className="font-mono text-[0.8rem] text-amber tracking-widest select-none"
+                      className="font-accent italic text-[1.4rem] text-clay select-none leading-none"
                       aria-hidden="true"
                     >
                       {pad2(i + 1)}
                     </span>
-                    <h2 className="font-serif text-xl md:text-[1.6rem] font-semibold text-ink leading-snug tracking-[-0.01em]">
+                    <h2 className="font-disp font-semibold text-sage text-xl md:text-[1.5rem] leading-snug tracking-[-0.03em]">
                       {faq.question}
                     </h2>
                   </div>
-                  <p className="text-muted-warm text-base md:text-lg leading-[1.7] mt-5 pl-0 md:pl-16">
+                  <p className="text-sage-2 text-base md:text-lg leading-[1.7] mt-4 md:pl-[3.1rem]">
                     {faq.answer}
                   </p>
                 </article>
-              </FadeInSection>
+              </Reveal>
             ))}
           </div>
         </section>
 
         {/* CTA */}
-        <section className="py-24 md:py-32 bg-paper">
-          <FadeInSection className="max-w-2xl mx-auto px-6 md:px-10 text-center">
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ink leading-snug mb-5 tracking-[-0.01em]">
-              Still have a question<span className="text-amber">?</span>
-            </h2>
-            <p className="script text-2xl md:text-3xl mb-7 -rotate-1">
-              just ask. no form required.
-            </p>
-            <p className="text-muted-warm text-lg leading-relaxed mb-8">
-              There&rsquo;s no form, no funnel, no signup. Email is the best way to reach us.
-            </p>
-            <a href="mailto:info@imfrustrated.org" className="btn-forest">
-              info@imfrustrated.org
-            </a>
-            <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-muted-warm">
-              <Link href="/how-it-works" className="hover:text-forest transition-colors">How it works</Link>
-              <Link href="/free-tools" className="hover:text-forest transition-colors">Free tools</Link>
-              <Link href="/about" className="hover:text-forest transition-colors">About us</Link>
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
+        <section className="relative max-w-5xl mx-auto px-6 md:px-8 pb-24">
+          <Reveal>
+            <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16 text-center">
+              <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight mb-3">
+                Still have a question?
+              </h2>
+              <p className="font-accent italic text-clay-soft text-2xl md:text-[1.7rem] mb-5">
+                Just ask. No form required.
+              </p>
+              <p className="text-[#cdd6cd] text-lg leading-relaxed max-w-xl mx-auto mb-8">
+                There&rsquo;s no form, no funnel, no signup. Email is the best way to reach us.
+              </p>
+              <a href="mailto:info@imfrustrated.org" className="btn-clay">
+                info@imfrustrated.org
+              </a>
+              <div className="mt-10 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
+                <Link href="/how-it-works" className="hover:text-clay-soft transition-colors duration-300">How it works</Link>
+                <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>
+                <Link href="/about" className="hover:text-clay-soft transition-colors duration-300">About us</Link>
+                <Link href="/" className="hover:text-clay-soft transition-colors duration-300">Home</Link>
+              </div>
             </div>
-          </FadeInSection>
+          </Reveal>
         </section>
       </main>
+
+      <SiteFooter />
     </>
   );
 }

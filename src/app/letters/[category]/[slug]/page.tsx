@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Header, FadeInSection } from "@/components/ClientSections";
+import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 import {
   categoryMeta,
   getAllLetters,
@@ -153,245 +153,245 @@ export default async function LetterPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
       <Header />
-      <main>
+      <Interactions />
+      <main className="relative">
         {/* Hero */}
-        <section className="relative pt-32 pb-12 md:pt-40 md:pb-16 bg-paper">
-          <FadeInSection className="relative z-10 max-w-3xl mx-auto px-6 md:px-10">
-            <nav className="text-[0.7rem] uppercase tracking-[0.22em] text-muted-warm mb-8 font-medium">
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
-              <span className="mx-3 text-rule">/</span>
-              <Link href="/letters" className="hover:text-forest transition-colors">Letters</Link>
-              <span className="mx-3 text-rule">/</span>
-              <Link href={`/letters/${letter.category}`} className="hover:text-forest transition-colors">
+        <section className="relative max-w-3xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-10">
+          <Reveal>
+            <nav className="text-sm font-medium text-sage-2 mb-7">
+              <Link href="/" className="hover:text-clay transition-colors duration-300">Home</Link>
+              <span className="mx-2.5 text-rule">/</span>
+              <Link href="/letters" className="hover:text-clay transition-colors duration-300">Letters</Link>
+              <span className="mx-2.5 text-rule">/</span>
+              <Link href={`/letters/${letter.category}`} className="hover:text-clay transition-colors duration-300">
                 {meta.label}
               </Link>
-              <span className="mx-3 text-rule">/</span>
-              <span className="text-amber">Template</span>
+              <span className="mx-2.5 text-rule">/</span>
+              <span className="text-clay">Template</span>
             </nav>
-            <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-4">
-              {meta.label} Letter Template
-            </p>
-            <h1 className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] font-semibold text-ink leading-[1.1] tracking-[-0.02em] mb-8">
+          </Reveal>
+          <Reveal delay={1}>
+            <span className="eyebrow"><span className="pulse" />{meta.label} letter template</span>
+          </Reveal>
+          <Reveal delay={2}>
+            <h1 className="font-disp font-semibold text-sage text-3xl md:text-4xl lg:text-[2.9rem] leading-[1.1] tracking-[-0.03em] mt-7">
               {letter.title}
             </h1>
-            <div className="decorative-rule mb-8" />
-            <p className="text-muted-warm text-lg leading-relaxed mb-6">{letter.lede}</p>
-            <p className="text-muted-warm/70 text-xs uppercase tracking-[0.22em]">
-              <time dateTime={letter.updatedAt ?? letter.publishedAt}>
+          </Reveal>
+          <Reveal delay={3}>
+            <p className="text-sage-2 text-lg leading-[1.6] mt-6 mb-7">{letter.lede}</p>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-sage-2 pt-5 border-t border-rule">
+              <time dateTime={letter.updatedAt ?? letter.publishedAt} className="font-medium text-sage">
                 {letter.updatedAt ? "Updated" : "Published"}{" "}
                 {new Date(letter.updatedAt ?? letter.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
               </time>
-              <span className="mx-3 text-rule">·</span>
-              <a href="#letter" className="hover:text-forest transition-colors">Jump to letter</a>
-              <span className="mx-3 text-rule">·</span>
-              <a href="#how-to-use" className="hover:text-forest transition-colors">How to use</a>
+              <span className="text-rule" aria-hidden>·</span>
+              <a href="#letter" className="hover:text-clay transition-colors duration-300">Jump to letter</a>
+              <span className="text-rule" aria-hidden>·</span>
+              <a href="#how-to-use" className="hover:text-clay transition-colors duration-300">How to use</a>
               {letter.stateNotes && letter.stateNotes.length > 0 && (
                 <>
-                  <span className="mx-3 text-rule">·</span>
-                  <a href="#state-notes" className="hover:text-forest transition-colors">State notes</a>
+                  <span className="text-rule" aria-hidden>·</span>
+                  <a href="#state-notes" className="hover:text-clay transition-colors duration-300">State notes</a>
                 </>
               )}
-              <span className="mx-3 text-rule">·</span>
-              <a href="#faq" className="hover:text-forest transition-colors">FAQ</a>
-            </p>
-          </FadeInSection>
+              <span className="text-rule" aria-hidden>·</span>
+              <a href="#faq" className="hover:text-clay transition-colors duration-300">FAQ</a>
+            </div>
+          </Reveal>
         </section>
 
         {/* The letter */}
-        <section id="letter" className="py-12 md:py-16 bg-paper-deep">
-          <div className="max-w-3xl mx-auto px-6 md:px-10">
-            <FadeInSection className="mb-8">
-              <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-3">The letter</p>
-              <h2 className="font-serif text-2xl md:text-[1.75rem] font-semibold text-ink tracking-[-0.01em]">
-                Copy, customize, send<span className="text-amber">.</span>
-              </h2>
-            </FadeInSection>
-            <FadeInSection>
-              <div className="letter-card">
-                <pre className="font-serif text-[0.95rem] md:text-base leading-[1.7] text-ink whitespace-pre-wrap break-words">
-                  {letter.body}
-                </pre>
-              </div>
-              <p className="text-muted-warm text-xs italic leading-relaxed mt-6 max-w-prose">
-                This template is for informational use only. It is not legal advice and does not create an attorney-client relationship. Square-bracketed placeholders must be replaced with your specific facts. State law and procedural details vary; if your situation is urgent, complicated, or high-stakes, email{" "}
-                <a href="mailto:info@imfrustrated.org" className="text-forest underline decoration-amber/70 decoration-[1.5px] underline-offset-[5px] hover:text-amber transition-colors">
-                  info@imfrustrated.org
-                </a>{" "}
-                for a free conversation with a volunteer attorney before you send it.
-              </p>
-            </FadeInSection>
-          </div>
+        <section id="letter" className="relative max-w-3xl mx-auto px-6 md:px-8 py-12 md:py-14">
+          <Reveal className="mb-7">
+            <p className="font-accent italic text-xl text-clay">the letter</p>
+            <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.85rem] tracking-[-0.03em] mt-1">
+              Copy, customize, send.
+            </h2>
+          </Reveal>
+          <Reveal>
+            <div className="bg-card border border-rule rounded-3xl p-7 md:p-10 shadow-[0_20px_40px_-28px_rgba(45,74,62,0.2)]">
+              <pre className="font-body text-[0.95rem] md:text-base leading-[1.7] text-ink whitespace-pre-wrap break-words">
+                {letter.body}
+              </pre>
+            </div>
+            <p className="text-sage-2 text-xs italic leading-relaxed mt-6 max-w-prose">
+              This template is for informational use only. It is not legal advice and does not create an attorney-client relationship. Square-bracketed placeholders must be replaced with your specific facts. State law and procedural details vary; if your situation is urgent, complicated, or high-stakes, email{" "}
+              <a href="mailto:info@imfrustrated.org" className="text-clay underline decoration-clay/40 decoration-[1.5px] underline-offset-[5px] hover:decoration-clay transition-colors duration-300">
+                info@imfrustrated.org
+              </a>{" "}
+              for a free conversation with a volunteer attorney before you send it.
+            </p>
+          </Reveal>
         </section>
 
         {/* How to use it */}
-        <section id="how-to-use" className="py-16 md:py-20 bg-paper">
-          <div className="max-w-3xl mx-auto px-6 md:px-10">
-            <FadeInSection className="mb-8">
-              <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-3">How to use it</p>
-              <h2 className="font-serif text-2xl md:text-[1.75rem] font-semibold text-ink tracking-[-0.01em]">
-                A few things before you send<span className="text-amber">.</span>
-              </h2>
-            </FadeInSection>
-            <FadeInSection>
-              <ul className="space-y-4">
+        <section id="how-to-use" className="relative max-w-3xl mx-auto px-6 md:px-8 py-12 md:py-14">
+          <Reveal>
+            <div className="bg-bg-2 rounded-[32px] px-7 md:px-12 py-12 md:py-14">
+              <div className="mb-8">
+                <p className="font-accent italic text-xl text-clay">how to use it</p>
+                <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.85rem] tracking-[-0.03em] mt-1">
+                  A few things before you send.
+                </h2>
+              </div>
+              <ul className="space-y-5">
                 {letter.howToUse.map((item, i) => (
-                  <li key={i} className="flex gap-4 text-muted-warm text-base md:text-lg leading-[1.7]">
-                    <span className="font-serif text-amber text-xl shrink-0 leading-[1.5]">{i + 1}.</span>
-                    <span>{item}</span>
+                  <li key={i} className="flex gap-4 text-sage-2 text-base md:text-lg leading-[1.7]">
+                    <span className="shrink-0 w-9 h-9 rounded-full bg-mist text-sage grid place-items-center font-disp font-bold text-base">{i + 1}</span>
+                    <span className="pt-1">{item}</span>
                   </li>
                 ))}
               </ul>
-            </FadeInSection>
-          </div>
+            </div>
+          </Reveal>
         </section>
 
         {/* What the law says */}
-        <section id="legal-context" className="py-16 md:py-20 bg-paper-deep">
-          <div className="max-w-3xl mx-auto px-6 md:px-10">
-            <FadeInSection className="mb-8">
-              <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-3">What the law actually says</p>
-              <h2 className="font-serif text-2xl md:text-[1.75rem] font-semibold text-ink tracking-[-0.01em]">
-                Why this letter works<span className="text-amber">.</span>
-              </h2>
-            </FadeInSection>
-            <FadeInSection>
-              <div className="space-y-5">
-                {letter.legalContext.map((para, i) => (
-                  <p key={i} className="text-muted-warm text-base md:text-lg leading-[1.7]">
-                    {para}
-                  </p>
-                ))}
-              </div>
-            </FadeInSection>
-          </div>
+        <section id="legal-context" className="relative max-w-3xl mx-auto px-6 md:px-8 py-12 md:py-14">
+          <Reveal className="mb-7">
+            <p className="font-accent italic text-xl text-clay">what the law actually says</p>
+            <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.85rem] tracking-[-0.03em] mt-1">
+              Why this letter works.
+            </h2>
+          </Reveal>
+          <Reveal>
+            <div className="space-y-5">
+              {letter.legalContext.map((para, i) => (
+                <p key={i} className="text-sage-2 text-base md:text-lg leading-[1.7]">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </Reveal>
         </section>
 
         {/* State notes */}
         {letter.stateNotes && letter.stateNotes.length > 0 && (
-          <section id="state-notes" className="py-16 md:py-20 bg-paper">
-            <div className="max-w-3xl mx-auto px-6 md:px-10">
-              <FadeInSection className="mb-8">
-                <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-3">State variations</p>
-                <h2 className="font-serif text-2xl md:text-[1.75rem] font-semibold text-ink tracking-[-0.01em]">
-                  What changes by state<span className="text-amber">.</span>
-                </h2>
-                <p className="text-muted-warm text-sm leading-relaxed mt-3">
-                  Not a comprehensive list. Confirm your state&rsquo;s current statute before sending.
-                </p>
-              </FadeInSection>
-              <FadeInSection>
-                <dl className="space-y-5">
-                  {letter.stateNotes.map((s) => (
-                    <div key={s.state} className="border-l-2 border-amber/50 pl-5">
-                      <dt className="font-serif text-lg font-semibold text-ink mb-1">{s.state}</dt>
-                      <dd className="text-muted-warm text-base leading-[1.65]">{s.note}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </FadeInSection>
-            </div>
+          <section id="state-notes" className="relative max-w-3xl mx-auto px-6 md:px-8 py-12 md:py-14">
+            <Reveal className="mb-7">
+              <p className="font-accent italic text-xl text-clay">state variations</p>
+              <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.85rem] tracking-[-0.03em] mt-1">
+                What changes by state.
+              </h2>
+              <p className="text-sage-2 text-sm leading-relaxed mt-3">
+                Not a comprehensive list. Confirm your state&rsquo;s current statute before sending.
+              </p>
+            </Reveal>
+            <Reveal>
+              <dl className="space-y-5">
+                {letter.stateNotes.map((s) => (
+                  <div key={s.state} className="border-l-2 border-clay/50 pl-5">
+                    <dt className="font-disp font-semibold text-sage text-lg mb-1">{s.state}</dt>
+                    <dd className="text-sage-2 text-base leading-[1.65]">{s.note}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
           </section>
         )}
 
         {/* If this doesn't work */}
-        <section id="escalation" className="py-16 md:py-20 bg-paper-deep">
-          <div className="max-w-3xl mx-auto px-6 md:px-10">
-            <FadeInSection className="mb-6">
-              <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-3">If this doesn&rsquo;t work</p>
-              <h2 className="font-serif text-2xl md:text-[1.75rem] font-semibold text-ink tracking-[-0.01em]">
-                Your next move<span className="text-amber">.</span>
-              </h2>
-            </FadeInSection>
-            <FadeInSection>
-              <p className="text-muted-warm text-base md:text-lg leading-[1.7]">
-                {letter.ifThisDoesntWork}
-              </p>
-            </FadeInSection>
-          </div>
+        <section id="escalation" className="relative max-w-3xl mx-auto px-6 md:px-8 py-12 md:py-14">
+          <Reveal className="mb-6">
+            <p className="font-accent italic text-xl text-clay">if this doesn&rsquo;t work</p>
+            <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.85rem] tracking-[-0.03em] mt-1">
+              Your next move.
+            </h2>
+          </Reveal>
+          <Reveal>
+            <p className="text-sage-2 text-base md:text-lg leading-[1.7]">
+              {letter.ifThisDoesntWork}
+            </p>
+          </Reveal>
         </section>
 
         {/* FAQs */}
-        <section id="faq" className="py-16 md:py-20 bg-paper">
-          <div className="max-w-3xl mx-auto px-6 md:px-10">
-            <FadeInSection className="mb-8">
-              <p className="text-amber text-[0.7rem] font-semibold uppercase tracking-[0.28em] mb-3">Questions people ask</p>
-              <h2 className="font-serif text-2xl md:text-[1.75rem] font-semibold text-ink tracking-[-0.01em]">
-                FAQ<span className="text-amber">.</span>
-              </h2>
-            </FadeInSection>
-            <FadeInSection>
-              <div className="space-y-7">
-                {letter.faqs.map((f, i) => (
-                  <div key={i}>
-                    <h3 className="font-serif text-lg md:text-xl font-semibold text-ink tracking-[-0.005em] mb-2">
-                      {f.question}
-                    </h3>
-                    <p className="text-muted-warm text-base leading-[1.7]">{f.answer}</p>
-                  </div>
-                ))}
-              </div>
-            </FadeInSection>
-          </div>
+        <section id="faq" className="relative max-w-3xl mx-auto px-6 md:px-8 py-12 md:py-14">
+          <Reveal className="mb-8">
+            <p className="font-accent italic text-xl text-clay">questions people ask</p>
+            <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.85rem] tracking-[-0.03em] mt-1">
+              FAQ.
+            </h2>
+          </Reveal>
+          <Reveal>
+            <div className="space-y-4">
+              {letter.faqs.map((f, i) => (
+                <div key={i} className="bg-card border border-rule rounded-2xl p-6">
+                  <h3 className="font-disp font-semibold text-sage text-lg md:text-xl tracking-[-0.02em] mb-2">
+                    {f.question}
+                  </h3>
+                  <p className="text-sage-2 text-base leading-[1.7]">{f.answer}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </section>
 
         {/* Related letters */}
         {related.length > 0 && (
-          <section id="related" className="py-16 md:py-20 bg-paper-deep">
-            <div className="max-w-4xl mx-auto px-6 md:px-10">
-              <FadeInSection className="mb-8 text-center">
-                <p className="text-amber text-[0.72rem] font-semibold uppercase tracking-[0.3em] mb-3">Related templates</p>
-                <h2 className="font-serif text-2xl md:text-3xl font-semibold text-ink tracking-[-0.01em]">
-                  Other letters in this library<span className="text-amber">.</span>
-                </h2>
-              </FadeInSection>
-              <FadeInSection>
-                <ul className="grid md:grid-cols-2 gap-4">
-                  {related.map((r) => (
-                    <li key={`${r.category}/${r.slug}`}>
-                      <Link
-                        href={`/letters/${r.category}/${r.slug}`}
-                        className="group block bg-paper-lift border border-rule rounded-[6px] p-5 h-full hover:border-forest/40 transition-all duration-500"
-                      >
-                        <p className="text-amber text-[0.65rem] font-semibold uppercase tracking-[0.28em] mb-2">
-                          {r.category.replace(/-/g, " ")}
-                        </p>
-                        <p className="font-serif text-base md:text-lg text-ink group-hover:text-forest transition-colors leading-snug">
-                          {r.title}
-                        </p>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </FadeInSection>
-            </div>
+          <section id="related" className="relative max-w-4xl mx-auto px-6 md:px-8 py-12 md:py-14">
+            <Reveal className="mb-8 text-center max-w-2xl mx-auto">
+              <p className="font-accent italic text-xl text-clay">related templates</p>
+              <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.5rem] tracking-[-0.03em] mt-1.5">
+                Other letters in this library
+              </h2>
+            </Reveal>
+            <Reveal>
+              <ul className="grid md:grid-cols-2 gap-5">
+                {related.map((r) => (
+                  <li key={`${r.category}/${r.slug}`}>
+                    <Link
+                      href={`/letters/${r.category}/${r.slug}`}
+                      className="tool-card group block p-6 h-full"
+                    >
+                      <p className="text-clay text-[0.7rem] font-semibold uppercase tracking-[0.2em] mb-2">
+                        {r.category.replace(/-/g, " ")}
+                      </p>
+                      <p className="font-disp font-semibold text-sage text-base md:text-lg tracking-[-0.02em] group-hover:text-clay transition-colors duration-300 leading-snug">
+                        {r.title}
+                      </p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           </section>
         )}
 
         {/* CTA */}
-        <section className="py-16 md:py-20 bg-paper">
-          <FadeInSection className="max-w-2xl mx-auto px-6 md:px-10 text-center">
-            <h2 className="font-serif text-2xl md:text-3xl font-semibold text-ink leading-snug mb-5 tracking-[-0.01em]">
-              Nervous about sending it yourself<span className="text-amber">?</span>
-            </h2>
-            <p className="script text-2xl md:text-3xl mb-6 -rotate-1">we&rsquo;ll read it over with you.</p>
-            <p className="text-muted-warm text-lg leading-relaxed mb-8">
-              Email the situation and a volunteer attorney will respond. No commitment, no invoice, no judgment — just an honest second pair of eyes from someone who actually understands the law.
-            </p>
-            <a href="mailto:info@imfrustrated.org" className="btn-forest">
-              info@imfrustrated.org
-            </a>
-            <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-muted-warm">
-              <Link href={`/letters/${letter.category}`} className="hover:text-forest transition-colors">
-                More {meta.label.toLowerCase()} letters
-              </Link>
-              <Link href="/letters" className="hover:text-forest transition-colors">All letters</Link>
-              <Link href="/free-tools" className="hover:text-forest transition-colors">Free tools</Link>
-              <Link href="/" className="hover:text-forest transition-colors">Home</Link>
+        <section className="relative max-w-5xl mx-auto px-6 md:px-8 py-14 md:py-16 pb-24">
+          <Reveal>
+            <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16 text-center">
+              <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.4rem] tracking-[-0.03em] leading-tight">
+                Nervous about sending it yourself?
+              </h2>
+              <p className="font-accent italic text-clay-soft text-2xl md:text-3xl mt-3">we&rsquo;ll read it over with you.</p>
+              <p className="text-[#cdd6cd] text-lg leading-relaxed mt-5 max-w-xl mx-auto mb-9">
+                Email the situation and a volunteer attorney will respond. No commitment, no invoice, no judgment — just an honest second pair of eyes from someone who actually understands the law.
+              </p>
+              <a href="mailto:info@imfrustrated.org" className="btn-clay mag">
+                info@imfrustrated.org
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+              </a>
+              <div className="mt-11 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
+                <Link href={`/letters/${letter.category}`} className="hover:text-clay-soft transition-colors duration-300">
+                  More {meta.label.toLowerCase()} letters
+                </Link>
+                <Link href="/letters" className="hover:text-clay-soft transition-colors duration-300">All letters</Link>
+                <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>
+                <Link href="/" className="hover:text-clay-soft transition-colors duration-300">Home</Link>
+              </div>
             </div>
-          </FadeInSection>
+          </Reveal>
         </section>
       </main>
+
+      <SiteFooter />
     </>
   );
 }
