@@ -58,6 +58,11 @@ const FAQS: { question: string; answer: string }[] = [
       "Yes, in two different ways depending on what you need. If your situation is simple — a basic will leaving things to obvious people, no contested family dynamics, no special-needs beneficiaries, no complicated business interests — we built a free self-help tool at idonthaveawill.com that lets you draft a state-specific will in about ten minutes, entirely in your browser. No account, no fees, no data stored. If your situation is more complicated than that, email us and a volunteer attorney with estate planning experience will help you think through what you actually need before you go pay an estate planning specialist.",
   },
   {
+    question: "I was denied Social Security disability — can you help?",
+    answer:
+      "Yes, and don't take the denial as the final word — a large share of disability cases that ultimately win are won on appeal. Two ways we can help. First, we built a free research tool at aissdi.com that lets you look up the approval rate of the administrative law judge assigned to your case, your hearing office's wait times, and how your state tends to decide disability claims — all from public SSA data, no account. Knowing your judge's numbers before a hearing tells you a lot about what you're walking into. It's built for claimants representing themselves and for the attorneys who help them. Second, if you want to think through your appeal options before you sign with a representative who takes a cut of your back pay, email us and a volunteer attorney can walk you through it.",
+  },
+  {
     question: "How fast will I hear back?",
     answer:
       "Usually within a few days. Volunteers have day jobs, so we don't promise an immediate response — but we try to get to every email within a week. If your situation is genuinely time-sensitive (a court date, an eviction notice, a contract deadline), say so in your first email and we'll triage accordingly.",

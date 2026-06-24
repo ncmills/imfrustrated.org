@@ -156,7 +156,7 @@ export default function RootLayout({
             "url": "https://imfrustrated.org",
             "email": "info@imfrustrated.org",
             "nonprofitStatus": "Nonprofit501c3",
-            "sameAs": ["https://idonthaveawill.com"],
+            "sameAs": ["https://idonthaveawill.com", "https://aissdi.com"],
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
               "name": "Free Legal Resources",
@@ -187,6 +187,15 @@ export default function RootLayout({
                     "url": "https://idonthaveawill.com",
                     "description": "Free self-help will generator covering all 50 US states + DC. Runs entirely in the browser."
                   }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "WebApplication",
+                    "name": "AISSDI",
+                    "url": "https://aissdi.com",
+                    "description": "Free Social Security disability research — look up any administrative law judge's approval rate, hearing-office wait time, and state DDS trends, all from public SSA data."
+                  }
                 }
               ]
             }
@@ -206,6 +215,8 @@ export default function RootLayout({
             <a href="https://whatpeptidesdo.com" rel="nofollow" className="hover:text-muted-warm transition-colors">whatpeptidesdo.com</a>
             {" · "}
             <a href="https://idonthaveawill.com" rel="nofollow" className="hover:text-muted-warm transition-colors">idonthaveawill.com</a>
+            {" · "}
+            <a href="https://aissdi.com" rel="nofollow" className="hover:text-muted-warm transition-colors">aissdi.com</a>
             {" · "}
             <a href="https://doppelwriter.com" rel="nofollow" className="hover:text-muted-warm transition-colors">doppelwriter.com</a>
             {" · "}

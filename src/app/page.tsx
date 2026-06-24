@@ -93,7 +93,7 @@ export default function Home() {
             </h2>
           </Reveal>
 
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="grid md:grid-cols-3 gap-5">
             <Reveal delay={1}>
               <a
                 href="https://idonthaveawill.com"
@@ -133,6 +133,30 @@ export default function Home() {
                   </svg>
                 </span>
               </Link>
+            </Reveal>
+
+            <Reveal delay={3}>
+              <a
+                href="https://aissdi.com"
+                target="_blank"
+                rel="noopener"
+                className="tool-card group block p-8 md:p-9 h-full"
+              >
+                <div className="w-12 h-12 rounded-[14px] bg-mist text-sage grid place-items-center font-disp font-bold text-base mb-5">03</div>
+                <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">Free disability research</p>
+                <h3 className="font-disp font-semibold text-sage text-2xl tracking-[-0.02em]">A.I. SSDI</h3>
+                <p className="text-sage-2 mt-2.5 leading-relaxed">
+                  Denied Social Security disability? Look up your assigned judge&rsquo;s approval rate,
+                  your hearing office&rsquo;s wait times, and how your state decides — all from public
+                  SSA data, free, no account. Know what you&rsquo;re walking into.
+                </p>
+                <span className="inline-flex items-center gap-2 mt-5 font-semibold text-[0.95rem] text-clay">
+                  Open the tool
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar group-hover:translate-x-1 transition-transform duration-300">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </span>
+              </a>
             </Reveal>
           </div>
 

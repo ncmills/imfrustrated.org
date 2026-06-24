@@ -68,6 +68,21 @@ export default function FreeToolsPage() {
           url: "https://imfrustrated.org",
         },
       },
+      {
+        "@type": "WebApplication",
+        name: "AISSDI",
+        url: "https://aissdi.com",
+        applicationCategory: "LegalApplication",
+        operatingSystem: "Web",
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        description:
+          "A free Social Security disability research tool for claimants and their attorneys. Look up any administrative law judge's approval rate, your hearing office's wait times, and how your state's disability decisions trend — all built from public SSA data. No account required.",
+        provider: {
+          "@type": "NGO",
+          name: "I'm Frustrated dot Org",
+          url: "https://imfrustrated.org",
+        },
+      },
     ],
   };
 
@@ -85,6 +100,14 @@ export default function FreeToolsPage() {
     "Plain-English explanations of what the law actually says",
     "State-by-state notes where the law varies",
     "No account, no upsell, no catch",
+  ];
+
+  const ssdiFeatures = [
+    "Look up any administrative law judge's approval rate before your hearing",
+    "Hearing-office wait times so you know what the timeline really looks like",
+    "State-by-state disability decision trends",
+    "Built entirely from public SSA data, updated quarterly",
+    "Free, no account — useful whether you're representing yourself or working with an attorney",
   ];
 
   return (
@@ -210,6 +233,50 @@ export default function FreeToolsPage() {
                   volunteer attorney before you send.
                 </p>
               </Link>
+            </Reveal>
+
+            {/* No.03 — AISSDI */}
+            <Reveal delay={3}>
+              <a
+                href="https://aissdi.com"
+                target="_blank"
+                rel="noopener"
+                className="tool-card group block p-8 md:p-9 h-full"
+              >
+                <div className="w-12 h-12 rounded-[14px] bg-mist text-sage grid place-items-center font-disp font-bold text-base mb-5">03</div>
+                <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">Free disability research</p>
+                <h3 className="font-disp font-semibold text-sage text-2xl tracking-[-0.02em]">A.I. SSDI</h3>
+                <p className="text-sage-2 mt-2.5 leading-relaxed">
+                  A Social Security disability denial isn&rsquo;t the end of the road — most cases that win,
+                  win on appeal. Before your hearing, look up the approval rate of the administrative law
+                  judge assigned to your case, what your hearing office&rsquo;s wait times actually are, and
+                  how your state decides disability claims. It&rsquo;s all built from public SSA data, and
+                  it&rsquo;s free — for claimants representing themselves and the attorneys who help them.
+                </p>
+                <ul className="space-y-2.5 mt-6">
+                  {ssdiFeatures.map((line) => (
+                    <li key={line} className="flex items-start gap-3 text-sage-2 text-[0.95rem] leading-relaxed">
+                      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-clay shrink-0 mt-0.5" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <path d="M5 10l3.5 3.5L15 7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+                <span className="inline-flex items-center gap-2 mt-6 font-semibold text-[0.95rem] text-clay">
+                  Open the tool at aissdi.com
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </span>
+                <p className="text-sage-2/80 text-xs mt-7 leading-relaxed">
+                  AISSDI provides research and statistics, not legal advice, and using it does not create an
+                  attorney-client relationship. If you&rsquo;ve been denied and want to talk through your
+                  appeal options first, email{" "}
+                  <span className="text-sage">info@imfrustrated.org</span> for a free conversation with a
+                  volunteer attorney.
+                </p>
+              </a>
             </Reveal>
           </div>
         </section>
