@@ -76,7 +76,7 @@ export default function FreeToolsPage() {
         operatingSystem: "Web",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         description:
-          "A free Social Security disability research tool for claimants and their attorneys. Look up any administrative law judge's approval rate, your hearing office's wait times, and how your state's disability decisions trend — all built from public SSA data. No account required.",
+          "Free Social Security disability decision tools for claimants and their attorneys. Estimate the approval odds for a claim like yours, look up any administrative law judge's approval rate and hearing-office wait times, and weigh your appeal options (Appeals Council remand rates) — all built from public SSA data. No account required.",
         provider: {
           "@type": "NGO",
           name: "I'm Frustrated dot Org",
@@ -103,11 +103,11 @@ export default function FreeToolsPage() {
   ];
 
   const ssdiFeatures = [
-    "Look up any administrative law judge's approval rate before your hearing",
-    "Hearing-office wait times so you know what the timeline really looks like",
-    "State-by-state disability decision trends",
+    "Approval-odds estimator — base rates for a claim like yours by condition, state, age, and stage",
+    "Look up any administrative law judge's approval rate and your hearing-office wait times",
+    "Appeal-decision guide — Appeals Council remand rates and the top reasons cases get sent back",
     "Built entirely from public SSA data, updated quarterly",
-    "Free, no account — useful whether you're representing yourself or working with an attorney",
+    "Free, no account — for claimants representing themselves and the attorneys who help them",
   ];
 
   return (
@@ -244,14 +244,14 @@ export default function FreeToolsPage() {
                 className="tool-card group block p-8 md:p-9 h-full"
               >
                 <div className="w-12 h-12 rounded-[14px] bg-mist text-sage grid place-items-center font-disp font-bold text-base mb-5">03</div>
-                <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">Free disability research</p>
+                <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">Free disability tools</p>
                 <h3 className="font-disp font-semibold text-sage text-2xl tracking-[-0.02em]">A.I. SSDI</h3>
                 <p className="text-sage-2 mt-2.5 leading-relaxed">
                   A Social Security disability denial isn&rsquo;t the end of the road — most cases that win,
-                  win on appeal. Before your hearing, look up the approval rate of the administrative law
-                  judge assigned to your case, what your hearing office&rsquo;s wait times actually are, and
-                  how your state decides disability claims. It&rsquo;s all built from public SSA data, and
-                  it&rsquo;s free — for claimants representing themselves and the attorneys who help them.
+                  win on appeal. AISSDI turns public SSA data into plain decision tools: estimate the
+                  approval odds for a claim like yours, look up the administrative law judge assigned to
+                  your hearing, and weigh your appeal paths — Appeals Council or federal court — with the
+                  actual remand rates. Free, no account, for claimants and the attorneys who help them.
                 </p>
                 <ul className="space-y-2.5 mt-6">
                   {ssdiFeatures.map((line) => (

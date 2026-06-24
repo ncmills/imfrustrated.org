@@ -143,12 +143,12 @@ export default function Home() {
                 className="tool-card group block p-8 md:p-9 h-full"
               >
                 <div className="w-12 h-12 rounded-[14px] bg-mist text-sage grid place-items-center font-disp font-bold text-base mb-5">03</div>
-                <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">Free disability research</p>
+                <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">Free disability tools</p>
                 <h3 className="font-disp font-semibold text-sage text-2xl tracking-[-0.02em]">A.I. SSDI</h3>
                 <p className="text-sage-2 mt-2.5 leading-relaxed">
-                  Denied Social Security disability? Look up your assigned judge&rsquo;s approval rate,
-                  your hearing office&rsquo;s wait times, and how your state decides — all from public
-                  SSA data, free, no account. Know what you&rsquo;re walking into.
+                  Denied Social Security disability? Estimate the approval odds for a claim like yours,
+                  look up your assigned judge&rsquo;s approval rate, and weigh your appeal options — all
+                  from public SSA data, free, no account. Know what you&rsquo;re walking into.
                 </p>
                 <span className="inline-flex items-center gap-2 mt-5 font-semibold text-[0.95rem] text-clay">
                   Open the tool

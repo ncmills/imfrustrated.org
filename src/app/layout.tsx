@@ -194,7 +194,7 @@ export default function RootLayout({
                     "@type": "WebApplication",
                     "name": "AISSDI",
                     "url": "https://aissdi.com",
-                    "description": "Free Social Security disability research — look up any administrative law judge's approval rate, hearing-office wait time, and state DDS trends, all from public SSA data."
+                    "description": "Free Social Security disability decision tools — estimate your approval odds, look up any administrative law judge's approval rate and hearing-office wait time, and weigh your appeal options, all from public SSA data."
                   }
                 }
               ]
