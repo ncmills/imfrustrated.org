@@ -35,6 +35,9 @@ export interface LetterTemplate {
   ifThisDoesntWork: string;
   relatedSlugs: string[];
   faqs: LetterFAQ[];
+  // Optional search synonyms / plain-language situation phrases. Powers the
+  // on-site letter search + reinforces SEO. Not rendered as body copy.
+  keywords?: string[];
   publishedAt: string;
   updatedAt?: string;
 }
