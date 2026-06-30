@@ -110,6 +110,13 @@ export default function FreeToolsPage() {
     "Free, no account — for claimants representing themselves and the attorneys who help them",
   ];
 
+  const dwFeatures = [
+    "Learns your writing voice from a short sample",
+    "Rewrites a stiff form letter so it sounds like you",
+    "Good for complaints, disputes, and hard emails",
+    "Free to use — optional upgrade for heavy use",
+  ];
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
@@ -139,7 +146,7 @@ export default function FreeToolsPage() {
             <p className="text-sage-2 text-lg md:text-xl leading-[1.6] max-w-2xl mx-auto mt-7">
               I&rsquo;m Frustrated dot Org started as a free conversation with a volunteer attorney.
               But some legal tasks don&rsquo;t need a conversation — they just need a tool. So we&rsquo;re
-              building those too, and giving them away the same way: no fees, no signup, no catch.
+              building those too — plus a couple more we trust. Free to use, no fine print.
             </p>
           </Reveal>
         </section>
@@ -275,6 +282,48 @@ export default function FreeToolsPage() {
                   appeal options first, email{" "}
                   <span className="text-sage">info@imfrustrated.org</span> for a free conversation with a
                   volunteer attorney.
+                </p>
+              </a>
+            </Reveal>
+
+            {/* No.04 — DoppelWriter (a trusted writing tool; free to use). dofollow. */}
+            <Reveal delay={4}>
+              <a
+                href="https://doppelwriter.com"
+                target="_blank"
+                rel="noopener"
+                className="tool-card group block p-8 md:p-9 h-full"
+              >
+                <div className="w-12 h-12 rounded-[14px] bg-clay-soft/30 text-clay grid place-items-center font-disp font-bold text-base mb-5">04</div>
+                <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">Write it in your voice</p>
+                <h3 className="font-disp font-semibold text-sage text-2xl tracking-[-0.02em]">DoppelWriter</h3>
+                <p className="text-sage-2 mt-2.5 leading-relaxed">
+                  Our letter library gives you the words. DoppelWriter makes them sound like <em>you</em>.
+                  Paste a draft — a complaint, a billing dispute, a hard email you&rsquo;ve been putting off —
+                  and it learns your voice and rewrites it in your own words, so a form letter reads like a
+                  real person wrote it. Free to use; an optional upgrade unlocks heavier use.
+                </p>
+                <ul className="space-y-2.5 mt-6">
+                  {dwFeatures.map((line) => (
+                    <li key={line} className="flex items-start gap-3 text-sage-2 text-[0.95rem] leading-relaxed">
+                      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-clay shrink-0 mt-0.5" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <path d="M5 10l3.5 3.5L15 7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+                <span className="inline-flex items-center gap-2 mt-6 font-semibold text-[0.95rem] text-clay">
+                  Open DoppelWriter at doppelwriter.com
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </span>
+                <p className="text-sage-2/80 text-xs mt-7 leading-relaxed">
+                  DoppelWriter is a separate writing app (free to start, quick signup). It helps you say
+                  things in your own words — it isn&rsquo;t legal advice. For anything urgent or high-stakes,
+                  email{" "}
+                  <span className="text-sage">info@imfrustrated.org</span> first.
                 </p>
               </a>
             </Reveal>
