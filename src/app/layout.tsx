@@ -214,9 +214,9 @@ export default function RootLayout({
           <p className="text-[10px] text-muted-warm/40">
             <a href="https://whatpeptidesdo.com" rel="nofollow" className="hover:text-muted-warm transition-colors">whatpeptidesdo.com</a>
             {" · "}
-            <a href="https://idonthaveawill.com" rel="nofollow" className="hover:text-muted-warm transition-colors">idonthaveawill.com</a>
+            <a href="https://idonthaveawill.com" className="hover:text-muted-warm transition-colors">idonthaveawill.com</a>
             {" · "}
-            <a href="https://aissdi.com" rel="nofollow" className="hover:text-muted-warm transition-colors">aissdi.com</a>
+            <a href="https://aissdi.com" className="hover:text-muted-warm transition-colors">aissdi.com</a>
             {" · "}
             <a href="https://doppelwriter.com" rel="nofollow" className="hover:text-muted-warm transition-colors">doppelwriter.com</a>
             {" · "}
