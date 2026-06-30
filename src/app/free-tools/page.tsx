@@ -117,6 +117,32 @@ export default function FreeToolsPage() {
     "Free to use — optional upgrade for heavy use",
   ];
 
+  // Curated, on-audience deep links into our sister tools' blogs. The index
+  // link covers the full library in one hop; these are the highest-value reads.
+  const aissdiReading: [string, string][] = [
+    ["why-ssdi-claims-get-denied", "Why SSDI claims get denied"],
+    ["ssdi-denied-four-appeal-levels", "Denied? The 4 appeal levels"],
+    ["how-to-apply-for-ssdi", "How to apply for SSDI"],
+    ["ssdi-eligibility-work-credits", "Do I qualify? Work credits & eligibility"],
+    ["ssdi-vs-ssi", "SSDI vs SSI: which are you eligible for?"],
+    ["how-long-does-ssdi-take", "How long does SSDI take?"],
+    ["what-to-expect-disability-hearing", "What to expect at your hearing"],
+    ["ssdi-back-pay-calculation", "How SSDI back pay is calculated"],
+    ["ssdi-reconsideration-approval-rates", "Reconsideration: approval rates"],
+    ["do-you-need-a-disability-lawyer", "Do you need a disability lawyer?"],
+    ["working-while-on-disability-sga-2026", "Working while on disability (2026)"],
+    ["disability-approval-odds-depression-anxiety", "Approval odds: depression & anxiety"],
+    ["disability-back-problems-degenerative-disc", "Disability for back problems"],
+    ["appeals-council-and-federal-court", "After a denial: Appeals Council & federal court"],
+  ];
+  const idhawReading: [string, string][] = [
+    ["do-i-need-a-will-if-i-dont-own-much", "Do I need a will if I don't own much?"],
+    ["what-happens-if-you-die-without-a-will", "What happens if you die without a will?"],
+    ["how-to-write-a-will-for-free", "How to write a will for free"],
+    ["do-i-need-a-lawyer-to-make-a-will", "Do I need a lawyer to make a will?"],
+    ["common-mistakes-that-invalidate-a-will", "Common mistakes that invalidate a will"],
+  ];
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
@@ -326,6 +352,66 @@ export default function FreeToolsPage() {
                   <span className="text-sage">info@imfrustrated.org</span> first.
                 </p>
               </a>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ─── Further reading (sister-site blog discovery) ─── */}
+        <section className="relative max-w-5xl mx-auto px-6 md:px-8 py-12 md:py-16">
+          <Reveal className="text-center max-w-2xl mx-auto mb-10">
+            <p className="font-accent italic text-xl text-clay">go deeper</p>
+            <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.4rem] tracking-[-0.03em] mt-1.5">
+              Further reading from our sister tools
+            </h2>
+            <p className="text-sage-2 mt-4 leading-relaxed">
+              Plain-English guides from the teams behind these tools — Social Security disability and
+              wills, written for people handling it themselves.
+            </p>
+          </Reveal>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+            <Reveal delay={1}>
+              <h3 className="font-disp font-semibold text-sage text-xl flex flex-wrap items-baseline gap-x-3">
+                Disability &amp; SSDI
+                <a href="https://aissdi.com/blog" target="_blank" rel="noopener" className="text-clay text-sm font-normal hover:underline">
+                  the full library →
+                </a>
+              </h3>
+              <ul className="mt-4 space-y-2.5">
+                {aissdiReading.map(([slug, label]) => (
+                  <li key={slug}>
+                    <a
+                      href={`https://aissdi.com/blog/${slug}`}
+                      target="_blank"
+                      rel="noopener"
+                      className="text-sage-2 hover:text-clay transition-colors duration-300 text-[0.95rem] leading-relaxed"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal delay={2}>
+              <h3 className="font-disp font-semibold text-sage text-xl flex flex-wrap items-baseline gap-x-3">
+                Wills &amp; estate planning
+                <a href="https://idonthaveawill.com/blog" target="_blank" rel="noopener" className="text-clay text-sm font-normal hover:underline">
+                  the full library →
+                </a>
+              </h3>
+              <ul className="mt-4 space-y-2.5">
+                {idhawReading.map(([slug, label]) => (
+                  <li key={slug}>
+                    <a
+                      href={`https://idonthaveawill.com/blog/${slug}`}
+                      target="_blank"
+                      rel="noopener"
+                      className="text-sage-2 hover:text-clay transition-colors duration-300 text-[0.95rem] leading-relaxed"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </Reveal>
           </div>
         </section>
