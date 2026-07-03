@@ -70,22 +70,25 @@ export default async function LetterPage({
       name: "I'm Frustrated dot Org",
       url: "https://imfrustrated.org",
     },
-    mainEntityOfPage: url,
+    isAccessibleForFree: true,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
 
-  const howToSchema = {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: `How to use the ${letter.title}`,
-    description: letter.lede,
-    totalTime: "PT15M",
-    step: letter.howToUse.map((text, i) => ({
-      "@type": "HowToStep",
-      position: i + 1,
-      name: `Step ${i + 1}`,
-      text,
-    })),
-  };
+  const howToSchema = letter.howToUse?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: `How to use the ${letter.title}`,
+        description: letter.lede,
+        totalTime: "PT15M",
+        step: letter.howToUse.map((text, i) => ({
+          "@type": "HowToStep",
+          position: i + 1,
+          name: `Step ${i + 1}`,
+          text,
+        })),
+      }
+    : null;
 
   const legalDocumentSchema = {
     "@context": "https://schema.org",
@@ -119,15 +122,17 @@ export default async function LetterPage({
     },
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: letter.faqs.map((f) => ({
-      "@type": "Question",
-      name: f.question,
-      acceptedAnswer: { "@type": "Answer", text: f.answer },
-    })),
-  };
+  const faqSchema = letter.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: letter.faqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }
+    : null;
 
   const breadcrumbs = {
     "@context": "https://schema.org",
@@ -149,9 +154,13 @@ export default async function LetterPage({
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(legalDocumentSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {howToSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
       <Header />
