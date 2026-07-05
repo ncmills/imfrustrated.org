@@ -35,9 +35,9 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
+  title: "I'm Frustrated .org — You Don't Always Need a Lawyer",
   description:
-    "Talk to a real attorney before you hire one. We're the friends who happen to be lawyers — free, honest legal guidance to help you figure out your next step.",
+    "Free tools to resolve disputes yourself — letter templates, a will generator, and SSDI tools. Real attorneys on standby when you need one.",
   metadataBase: new URL("https://imfrustrated.org"),
   alternates: {
     canonical: "/",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     apple: "/logo.svg",
   },
   openGraph: {
-    title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
+    title: "I'm Frustrated .org — You Don't Always Need a Lawyer",
     description:
-      "Talk to a real attorney before you hire one. Free, honest legal guidance to help you figure out your next step.",
+      "Free tools to resolve disputes yourself — letter templates, a will generator, and SSDI tools. Real attorneys on standby when you need one.",
     url: "https://imfrustrated.org",
     siteName: "I'm Frustrated dot Org",
     type: "website",
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
+    title: "I'm Frustrated .org — You Don't Always Need a Lawyer",
     description:
-      "Talk to a real attorney before you hire one. Free, honest legal guidance to help you figure out your next step.",
+      "Free tools to resolve disputes yourself — letter templates, a will generator, and SSDI tools. Real attorneys on standby when you need one.",
   },
 };
 
