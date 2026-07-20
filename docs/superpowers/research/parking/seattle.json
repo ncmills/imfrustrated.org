@@ -1,0 +1,281 @@
+{
+  "slug": "seattle",
+  "city": "Seattle",
+  "state": "WA",
+  "agency": "Seattle Department of Transportation (SDOT) issues most parking citations (parking payment/pay-to-park, time-limit, signage, and other Title 11 parking infractions). Disputes are adjudicated by the Seattle Municipal Court (SMC) — the same court that hears other traffic infractions — under SMC Title 11, Chapter 11.31 (Disposition of Traffic Offenses). Note: this is a different track from the City's Office of Hearing Examiner, which hears citations from other departments (e.g., SDCI land-use, SDOT street-use, Fire Code) but not parking/traffic infractions.",
+  "submitOnlineUrl": "https://forms.office.com/g/5P97pMyVki",
+  "submitMailAddress": "Seattle Municipal Court, PO Box 34987, Seattle, WA 98124-4987",
+  "submitInPerson": "Seattle Municipal Court, 600 5th Avenue, Seattle, WA 98104, Monday-Friday 8 a.m.-5 p.m., closed holidays. Deliver the completed hearing-request portion of the ticket to the court in person, or attend a scheduled contested/mitigation hearing there (2nd or 3rd floor depending on courtroom assignment) or by phone/WebEx video conference.",
+  "howToContest": [
+    "Note your citation number and confirm the violation code, date, time, and location printed on the Notice of Infraction.",
+    "Decide which response you want: a mitigation hearing (you agree the infraction occurred but want to explain circumstances that might reduce the penalty — the Magistrate's decision is final, no appeal) or a contested hearing (you deny committing the infraction, or deny responsibility) — check the corresponding box on the ticket.",
+    "Request the hearing within 30 days of the ticket date (33 days if the notice was mailed to you), using any of three methods: the online Hearing Request Form (generates an email to the court), mailing or delivering the ticket's response portion to Seattle Municipal Court, or calling (206) 684-5600 with your citation number.",
+    "If you requested a contested hearing, the court will first schedule a pre-hearing settlement conference (you may waive it via the waiver form sent with the conference notice and go straight to the contested hearing/trial).",
+    "Gather your evidence (photos, receipts, payment records, sale documents, etc.) and submit it before the hearing by uploading to the Seattle Municipal Court Public Portal or emailing CourtCalendar.SMC@seattle.gov; written-statement hearings require the statement to arrive at least 3 days before the hearing date.",
+    "Attend the hearing (in person, by phone, by video conference, or by written statement if offered for your courtroom). In a contested hearing the City must prove the infraction by a preponderance of the evidence; you may present evidence, subpoena witnesses (including the citing officer), and cross-examine.",
+    "Receive the written decision. A contested-hearing decision may be appealed to King County Superior Court; mitigation-hearing decisions and written-statement decisions are final with no appeal."
+  ],
+  "contestDeadlineDays": 30,
+  "contestDeadlineNote": "SMC 11.31.050.A: 'Any person who receives a notice of traffic infraction shall respond to such notice ... within 30 days of the date of the notice.' The statewide Infraction Rules for Courts of Limited Jurisdiction extend this when the notice itself is mailed: IRLJ 2.1(b)(5) requires the notice to state that a response is due 'within 30 days of the date the notice is personally served or, if the notice is served by mail, within 33 days of the date the notice is mailed.' Seattle Municipal Court's own guidance states the same rule in plain language: 'Hearing requests must be made within 30 days of the date the ticket was issued to you or placed on a vehicle, or 33 days if the ticket was mailed to you.' Source: https://www.seattle.gov/courts/tickets-and-payments/dispute-my-ticket and https://www.courts.wa.gov/court_rules/pdf/IRLJ/CLJ_IRLJ_02_01_00.pdf (IRLJ 2.1(b)(5)).",
+  "penaltyNote": "Parking infractions carry a base monetary penalty set section-by-section in SMC 11.31.121's table (e.g., $65 for Overtime under SMC 11.72.260 or for Pay-to-Park Violations under SMC 11.76.015; $69 for most Posted-Signs/blockface violations under SMC 11.72.330 or for Parking Time Limit under SMC 11.76.020; up to $250 for disabled-parking misuse under SMC 11.72.065/11.23.400), capped at $250 per offense absent a higher penalty specifically provided elsewhere in Title 11 or by state statute (SMC 11.31.120.A). Failing to respond to a Notice of Infraction, failing to appear at a requested hearing, or failing to pay a penalty already imposed adds a flat $25 penalty (SMC 11.31.120.B) and results in notice to the Washington Department of Licensing under RCW 46.20.270, which can block vehicle tab/registration renewal; unpaid tickets can also be referred to collections.",
+  "municipalCodeRefs": [
+    {
+      "label": "SMC 11.31.050 - Response to notice of traffic infraction; contesting determination; hearing; failure to appear (30-day deadline)",
+      "citation": "SMC 11.31.050",
+      "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT3EN_CH11.31DITROF_11.31.050RENOTRINONDEEAAIAP"
+    },
+    {
+      "label": "SMC 11.31.060 - Hearing; contesting determination that infraction committed; appeal",
+      "citation": "SMC 11.31.060",
+      "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT3EN_CH11.31DITROF"
+    },
+    {
+      "label": "SMC 11.31.070 - Hearings; explanation of mitigating circumstances",
+      "citation": "SMC 11.31.070",
+      "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT3EN_CH11.31DITROF"
+    },
+    {
+      "label": "SMC 11.31.080 - Owner responsible for stopping, standing, parking, or alarm violation (rebuttable presumption)",
+      "citation": "SMC 11.31.080",
+      "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT3EN_CH11.31DITROF"
+    },
+    {
+      "label": "SMC 11.31.121 - Monetary penalties, parking infractions (base penalty table)",
+      "citation": "SMC 11.31.121",
+      "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT3EN_CH11.31DITROF"
+    },
+    {
+      "label": "SMC 11.76.005 - Proper payment (pay-to-park)",
+      "citation": "SMC 11.76.005",
+      "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT7STSTPALO_CH11.76PAPADEOP"
+    },
+    {
+      "label": "SMC 11.76.015 - Parking violations on blockfaces, or portions thereof, requiring payment to park",
+      "citation": "SMC 11.76.015",
+      "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT7STSTPALO_CH11.76PAPADEOP"
+    },
+    {
+      "label": "SMC 11.72.330 - Posted signs",
+      "citation": "SMC 11.72.330",
+      "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT7STSTPALO_CH11.72STSTPARE_11.72.330POSI"
+    }
+  ],
+  "recognizedDefenses": [
+    "broken-meter",
+    "obscured-signage",
+    "valid-payment",
+    "wrong-ticket-details",
+    "not-my-vehicle"
+  ],
+  "defenses": [
+    {
+      "slug": "broken-meter",
+      "whenItApplies": "You were ticketed for a pay-to-park / parking-payment violation, but the parking payment device (pay station) on your blockface was out of service or malfunctioning when you tried to pay.",
+      "evidenceChecklist": [
+        "Date- and time-stamped photos of the malfunctioning pay station and any error message it displayed",
+        "A screenshot or transaction confirmation showing you paid via PayByPhone instead (SDOT's official alternate method when a pay station is out of service)",
+        "A record of any report you made to SDOT about the broken pay station - call (206) 684-5260 or email DOT_Paystations@seattle.gov - ideally made at or near the time of the ticket",
+        "Your own contemporaneous notes of the time, location, and what the pay station displayed or failed to do"
+      ],
+      "cityNotes": "Seattle Municipal Court does not publish an itemized 'broken meter' defense list the way some cities do. SDOT's own official guidance is that if a pay station is out of service you should pay via PayByPhone instead, so the practical routes are: (a) show you switched to PayByPhone, (b) report the outage to SDOT so the resulting citation can potentially be voided administratively, or (c) raise the malfunction as evidence at a mitigation or contested hearing under SMC 11.31.050 that you did not violate SMC 11.76.005's proper-payment requirement, or that circumstances justify a reduced penalty.",
+      "codeCite": {
+        "label": "SMC 11.76.005 - Proper payment",
+        "citation": "SMC 11.76.005",
+        "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT7STSTPALO_CH11.76PAPADEOP"
+      },
+      "sources": [
+        {
+          "label": "SDOT - Pay at a Pay Station (out-of-service guidance, PayByPhone alternative, report-a-problem contact)",
+          "url": "https://www.seattle.gov/transportation/projects-and-programs/programs/parking-program/paid-parking-information/pay-at-a-pay-station"
+        },
+        {
+          "label": "SDOT - Pay on Your Phone",
+          "url": "https://www.seattle.gov/transportation/projects-and-programs/programs/parking-program/paid-parking-information/pay-on-your-phone"
+        },
+        {
+          "label": "Seattle Municipal Court - Dispute My Ticket",
+          "url": "https://www.seattle.gov/courts/tickets-and-payments/dispute-my-ticket"
+        }
+      ]
+    },
+    {
+      "slug": "obscured-signage",
+      "whenItApplies": "You were ticketed for violating a restriction (e.g., a posted no-parking/no-stopping zone, a time limit, a restricted parking zone, or pay-to-park signage) but the official sign governing that restriction was missing, knocked down, obscured, or illegible at the time and place of the violation.",
+      "evidenceChecklist": [
+        "Date- and time-stamped photos of the block/curb area showing the sign missing, damaged, obscured by foliage or vehicles, or illegible",
+        "Wide-shot photos establishing your exact location (cross streets, adjacent addresses, curb markings) to corroborate where you were parked",
+        "Any report you filed with SDOT about the missing or damaged sign"
+      ],
+      "cityNotes": "Most SMC Title 11 parking restrictions are expressly defined by reference to official signage: SMC 11.72.330 prohibits stopping, standing, or parking only 'at any place or time where official signs prohibit' it, and the pay-to-park payment requirement in SMC 11.76.005/11.76.015 is likewise tied to a blockface 'controlled by pay-to-park signage.' If the controlling sign was not actually posted or legible, an element of the violation is not established. This can be raised at a contested hearing under SMC 11.31.060, where the City bears the burden of proving the infraction by a preponderance of the evidence.",
+      "codeCite": {
+        "label": "SMC 11.72.330 - Posted signs",
+        "citation": "SMC 11.72.330",
+        "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT7STSTPALO_CH11.72STSTPARE_11.72.330POSI"
+      },
+      "sources": [
+        {
+          "label": "SMC 11.72.330 - Posted signs (Municode)",
+          "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT7STSTPALO_CH11.72STSTPARE_11.72.330POSI"
+        },
+        {
+          "label": "SMC 11.31.060 - Hearing; contesting determination; burden of proof on the City",
+          "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT3EN_CH11.31DITROF"
+        }
+      ]
+    },
+    {
+      "slug": "valid-payment",
+      "whenItApplies": "You paid for parking - at a pay station, via PayByPhone, or by properly displaying a receipt - but were ticketed anyway, e.g., the citation was issued in error, payment wasn't recognized by enforcement equipment, or the ticket misstates the blockface/time you actually paid for.",
+      "evidenceChecklist": [
+        "Payment receipt or PayByPhone transaction confirmation showing date, time, license plate, and location",
+        "Photo of the displayed paper receipt on your dashboard, if applicable",
+        "A side-by-side comparison of the payment record's time/location against the ticket's stated time/location"
+      ],
+      "cityNotes": "SMC 11.76.005 defines proper payment as any one of: (A) valid payment made at a parking payment device, (B) required information (e.g., space or plate number) correctly provided, or (C) required action taken as directed, such as proper display of a receipt. Satisfying any one of these is a defense to a pay-to-park violation charged under SMC 11.76.015. Note SMC 11.76.015.D: payment made on a parking payment device is valid only for the specific blockface, or portion thereof, on which the vehicle is parked - payment at a different block does not count.",
+      "codeCite": {
+        "label": "SMC 11.76.005 - Proper payment",
+        "citation": "SMC 11.76.005",
+        "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT7STSTPALO_CH11.76PAPADEOP"
+      },
+      "sources": [
+        {
+          "label": "SMC 11.76.005 / 11.76.015 - Proper payment; pay-to-park violations (Municode)",
+          "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT7STSTPALO_CH11.76PAPADEOP"
+        }
+      ]
+    },
+    {
+      "slug": "wrong-ticket-details",
+      "whenItApplies": "The Notice of Infraction is missing required information, or a required field - vehicle description, license plate/state, the statutory or ordinance citation, the date, time, or place, or the citing officer's name/number - is incorrect or illegible.",
+      "evidenceChecklist": [
+        "A copy or photo of the actual ticket showing the missing, illegible, or incorrect field(s)",
+        "Your vehicle registration, to compare the correct make, year, model, style, license number, and state against what's on the ticket",
+        "A comparison against IRLJ 2.1(b)'s list of required notice contents to identify exactly which required field is missing or wrong, and whether the error actually affects your ability to understand or contest the charge"
+      ],
+      "cityNotes": "Notice-content requirements come from Washington's statewide Infraction Rules for Courts of Limited Jurisdiction (IRLJ), not a standalone SMC section. IRLJ 2.1(b)(3)-(4) requires (for a parking/standing/stopping infraction) the vehicle make, year, model, style, license number and state; the infraction alleged and its accompanying statutory citation or ordinance number; and the date, time, and place the infraction occurred. Important: unlike some cities, Washington's standard is not strict-liability for any defect. IRLJ 2.1(a) states notices 'are presumed valid and shall not be deemed insufficient by reason of defects or imperfections which do not prejudice substantial rights of the defendant' - so a minor typo alone will usually not get a ticket dismissed. The error has to actually prejudice your ability to know what you're accused of or to defend yourself (e.g., an entirely wrong plate/vehicle, wrong date, or no code section cited at all).",
+      "codeCite": {
+        "label": "IRLJ 2.1 - Notice of Infraction (required contents; presumed validity of defects)",
+        "citation": "IRLJ 2.1",
+        "url": "https://www.courts.wa.gov/court_rules/pdf/IRLJ/CLJ_IRLJ_02_01_00.pdf"
+      },
+      "sources": [
+        {
+          "label": "Washington State Courts - IRLJ 2.1, Notice of Infraction",
+          "url": "https://www.courts.wa.gov/court_rules/pdf/IRLJ/CLJ_IRLJ_02_01_00.pdf"
+        },
+        {
+          "label": "SMC 11.31.040 - Notice of traffic infraction; determination; response",
+          "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT3EN_CH11.31DITROF"
+        }
+      ]
+    },
+    {
+      "slug": "not-my-vehicle",
+      "whenItApplies": "You were not the person responsible for the vehicle at the time of the violation because you had sold the vehicle - and filed a Report of Sale - before the ticket was issued, or you are the victim of identity theft or fraudulent registration.",
+      "evidenceChecklist": [
+        "Sold vehicle: a filed Washington DOL Report of Sale showing a sale date before the ticket's issue date, or (if no Report of Sale was filed) a notarized bill of sale faxed to the court at (206) 684-8726",
+        "Identity theft: the completed 'Information About False Identification Form' and supporting documentation submitted through the Seattle City Attorney's identity-theft process",
+        "For a judgment already entered based on mistaken identity: a completed 'Declaration: Vacate Judgment Due to Mistaken Identity' filed under IRLJ 6.7"
+      ],
+      "cityNotes": "Under RCW 46.63.140 (applied to SMC parking/standing/stopping violations via SMC 11.31.080), proof the vehicle was involved plus proof of registered ownership creates only a rebuttable prima facie presumption that the registered owner was the person who parked it - it is not conclusive. Filing a complete Report of Sale when you sell a vehicle releases you from responsibility for tickets issued after the sale date (RCW 46.12.655), but you remain the registered owner - and presumptively responsible - until the buyer actually titles and registers the vehicle. For a sold-vehicle dispute, contact the court at (206) 684-5600 or email SMC_SoldVehicles@seattle.gov with the plate number/state and ticket number(s); for identity theft, contact the Seattle City Attorney's Criminal Division at (206) 684-7757, and if a judgment already exists use the identity-theft vacate packet under IRLJ 6.7.",
+      "codeCite": {
+        "label": "SMC 11.31.080 - Owner responsible for stopping, standing, parking, or alarm violation (rebuttable presumption)",
+        "citation": "SMC 11.31.080",
+        "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT3EN_CH11.31DITROF"
+      },
+      "sources": [
+        {
+          "label": "Seattle Municipal Court - Bought and Sold Vehicles",
+          "url": "https://www.seattle.gov/courts/tickets-and-payments/bought-and-sold-vehicles"
+        },
+        {
+          "label": "Seattle Municipal Court - Stolen Identity",
+          "url": "https://www.seattle.gov/courts/tickets-and-payments/stolen-identity"
+        },
+        {
+          "label": "RCW 46.63.140 - Presumption regarding stopped, standing, or parked vehicles",
+          "url": "https://app.leg.wa.gov/rcw/default.aspx?cite=46.63.140"
+        },
+        {
+          "label": "RCW 46.12.655 - Report of sale releases seller from liability",
+          "url": "https://app.leg.wa.gov/rcw/default.aspx?cite=46.12.655"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Seattle Municipal Court - Dispute My Ticket",
+      "url": "https://www.seattle.gov/courts/tickets-and-payments/dispute-my-ticket"
+    },
+    {
+      "label": "Seattle Municipal Court - Ticket Response Options",
+      "url": "https://www.seattle.gov/courts/tickets-and-payments/ticket-response-options"
+    },
+    {
+      "label": "Seattle Municipal Court - Hearings By Mail",
+      "url": "https://www.seattle.gov/courts/tickets-and-payments/dispute-my-ticket/hearings-by-mail"
+    },
+    {
+      "label": "Seattle Municipal Court - Attending Your Scheduled Ticket Hearing",
+      "url": "https://www.seattle.gov/courts/tickets-and-payments/dispute-my-ticket/attending-your-scheduled-hearing"
+    },
+    {
+      "label": "Seattle Municipal Court - Frequently Asked Questions",
+      "url": "https://www.seattle.gov/courts/tickets-and-payments/frequently-asked-questions"
+    },
+    {
+      "label": "Seattle Municipal Court - Bought and Sold Vehicles",
+      "url": "https://www.seattle.gov/courts/tickets-and-payments/bought-and-sold-vehicles"
+    },
+    {
+      "label": "Seattle Municipal Court - Stolen Identity",
+      "url": "https://www.seattle.gov/courts/tickets-and-payments/stolen-identity"
+    },
+    {
+      "label": "Seattle Municipal Court - Hearing Request Form",
+      "url": "https://forms.office.com/g/5P97pMyVki"
+    },
+    {
+      "label": "Seattle Municipal Court Public Portal",
+      "url": "https://courtrecords.seattle.gov/portal/home"
+    },
+    {
+      "label": "SDOT - Pay at a Pay Station",
+      "url": "https://www.seattle.gov/transportation/projects-and-programs/programs/parking-program/paid-parking-information/pay-at-a-pay-station"
+    },
+    {
+      "label": "SDOT - Pay on Your Phone",
+      "url": "https://www.seattle.gov/transportation/projects-and-programs/programs/parking-program/paid-parking-information/pay-on-your-phone"
+    },
+    {
+      "label": "SMC Chapter 11.31 - Disposition of Traffic Offenses (Municode)",
+      "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT3EN_CH11.31DITROF"
+    },
+    {
+      "label": "SMC Chapter 11.72 - Stopping, Standing or Parking Restrictions (Municode)",
+      "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT7STSTPALO_CH11.72STSTPARE"
+    },
+    {
+      "label": "SMC Chapter 11.76 - Paid Parking (Municode)",
+      "url": "https://library.municode.com/wa/seattle/codes/municipal_code?nodeId=TIT11VETR_SUBTITLE_ITRCO_PT7STSTPALO_CH11.76PAPADEOP"
+    },
+    {
+      "label": "City of Seattle Ordinance 127141 - 2025 Parking Penalty amendments to SMC 11.31.121",
+      "url": "https://clerk.seattle.gov/~archives/Ordinances/Ord_127141.pdf"
+    },
+    {
+      "label": "Washington State Courts - IRLJ 2.1, Notice of Infraction",
+      "url": "https://www.courts.wa.gov/court_rules/pdf/IRLJ/CLJ_IRLJ_02_01_00.pdf"
+    },
+    {
+      "label": "RCW 46.63.140 - Presumption regarding stopped, standing, or parked vehicles",
+      "url": "https://app.leg.wa.gov/rcw/default.aspx?cite=46.63.140"
+    },
+    {
+      "label": "RCW 46.12.655 - Report of sale releases seller from liability",
+      "url": "https://app.leg.wa.gov/rcw/default.aspx?cite=46.12.655"
+    }
+  ],
+  "verifiedAt": "2026-07-20"
+}

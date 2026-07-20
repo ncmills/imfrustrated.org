@@ -1,0 +1,309 @@
+{
+  "slug": "washington-dc",
+  "city": "Washington",
+  "state": "DC",
+  "agency": "Parking, photo enforcement, and minor moving violation tickets are issued by the DC Department of Public Works (DPW), the District Department of Transportation (DDOT), the Metropolitan Police Department (MPD), and more than a dozen other District and federal agencies (e.g. US Park Police, US Capitol Police, university/hospital special police). All are adjudicated by DC DMV Adjudication Services — an administrative tribunal within the DC Department of Motor Vehicles operating under the District of Columbia Traffic Adjudication Act (D.C. Official Code § 50-2301 et seq.).",
+  "submitOnlineUrl": "https://dmv.dc.gov/service/contest-parking-and-photo-enforcement-tickets",
+  "submitMailAddress": "DC DMV Adjudication Services, ATTN: Mail Adjudication, PO Box 37135, Washington, DC 20013",
+  "submitInPerson": "DC DMV Adjudication Service Center, 955 L'Enfant Plaza SW, Promenade Level – Suite P100, Washington, DC 20024. Walk-in hearings Monday, Tuesday, Thursday, Friday 8:15 a.m.–4:00 p.m.; Wednesday 9:15 a.m.–4:00 p.m.; closed Saturday and Sunday. You must be the registered owner and present your vehicle registration, or bring a signed power-of-attorney form if acting on the owner's behalf. Virtual (video) hearings are also offered as an alternative to appearing in person.",
+  "howToContest": [
+    "Do not pay the ticket. Under D.C. Official Code § 50-2303.05(a)(1), once you pay the fine and/or penalty (in full or in part) you lose the administrative right to contest the ticket.",
+    "Identify which of the seven statutory grounds under D.C. Official Code § 50-2303.05(a)(2) applies to your situation, and gather the evidence that supports it (photos, receipts, police report, medical records, registration documents, etc., as applicable).",
+    "Choose a response method within the deadline: online through DC DMV's adjudication portal (linked from the DC DMV 'Contest Parking and Photo Enforcement Tickets' page), by mail (mark 'Admit with Explanation' on the back of the paper ticket and mail it with your evidence to DC DMV Adjudication Services), or in person/virtually at the Adjudication Service Center.",
+    "Submit a written statement identifying your ground for contest plus all supporting evidence — DC DMV's hearing examiner considers only the evidence submitted with the request, per the hearing and evidence rules at 18 DCMR §§ 3011–3012.",
+    "A hearing examiner reviews the notice of infraction, your answer, and your evidence, and issues a final determination (upholding, reducing, or dismissing the fine) that is mailed to the registered owner, per 18 DCMR § 3013.",
+    "If you disagree with the determination, file a notice of appeal with DC DMV's Traffic Adjudication Appeals Board within 30 calendar days of the final determination, per 18 DCMR § 3014.9(a).",
+    "If you missed the 60-day response window and a 'deemed admission' or default judgment was entered against you, you may still file a Motion to Vacate within 60 calendar days of that determination, showing both excusable neglect (e.g. hospitalization, death in the family, unexpected travel) and a recognized legal defense to the underlying violation."
+  ],
+  "contestDeadlineDays": 30,
+  "contestDeadlineNote": "DC DMV must receive your contest request within 30 calendar days of the date the ticket was issued to avoid an added penalty. You can still respond (pay or contest) through day 60, but a penalty equal to the original fine is added once you're past day 30 — so a contest filed and lost between days 31–60 means you owe double. D.C. Official Code § 50-2303.05(a) requires a respondent to 'answer' (admit, admit with explanation, or deny) 'within 30 days of the date the notice of infraction was issued' or a longer period the Director sets by regulation; failure to answer within 60 days is deemed an admission of liability under § 50-2303.05(f) as implemented via 18 DCMR § 3006. Source: D.C. Official Code § 50-2303.05, https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05; DC DMV 'Understanding the Ticket Timeline,' https://dmv.dc.gov/page/understanding-ticket-timeline; DC DMV 'Contest Parking and Photo Enforcement Tickets,' https://dmv.dc.gov/service/contest-parking-and-photo-enforcement-tickets.",
+  "penaltyNote": "Per DC DMV's published ticket timeline: days 1–30, pay the fine without penalty or contest it. Days 31–60, you may still pay or contest, but if found liable a penalty equal to the original fine is added (the ticket effectively doubles). Day 61, if you have neither paid nor contested, you are deemed liable (a 'deemed admission'). Days 61–120, you may pay the fine-plus-penalty or file a Motion to Vacate (within 60 days of the deemed admission/default judgment, per 18 DCMR § 3006 and the DC DMV Motion to Vacate Default Judgment process) showing excusable neglect and a valid defense. Day 121, unpaid debt is referred to collections. Separately, DC DMV states a vehicle may be booted if it has two or more outstanding parking and/or photo enforcement tickets, even if the vehicle is legally parked at the time it is booted; a booted vehicle that is subsequently towed also incurs towing and impound fees on top of the underlying tickets. Outstanding ticket debt for DC residents can also be intercepted from a DC tax refund and can block issuance/renewal of a DC driver license or vehicle registration. Source: DC DMV 'Understanding the Ticket Timeline,' https://dmv.dc.gov/page/understanding-ticket-timeline; DC DMV 'Failure to Pay a Ticket,' https://dmv.dc.gov/service/failure-pay-ticket; DC DMV 'Motion to Vacate Default Judgment,' https://dmv.dc.gov/page/motion-vacate-default-judgment.",
+  "municipalCodeRefs": [
+    {
+      "label": "D.C. Official Code § 50-2303.05 — Answer (response deadlines and the seven statutory grounds for contesting a parking violation)",
+      "citation": "D.C. Official Code § 50-2303.05",
+      "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+    },
+    {
+      "label": "D.C. Official Code § 50-2303.03 — Notice of infraction (required contents of a parking ticket)",
+      "citation": "D.C. Official Code § 50-2303.03",
+      "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.03"
+    },
+    {
+      "label": "18 DCMR § 3002 — Issuance of Parking Violations Only",
+      "citation": "18 DCMR § 3002",
+      "url": "https://dcregs.dc.gov/Common/DCMR/RuleList.aspx?DownloadFile={9E5397C2-B3F1-4E7F-ACAA-2D6167CA8542}"
+    },
+    {
+      "label": "18 DCMR § 3006 — Answers to Notices of Infraction",
+      "citation": "18 DCMR § 3006",
+      "url": "https://dcregs.dc.gov/Common/DCMR/RuleList.aspx?DownloadFile={0EE5734E-D4B5-4622-B15B-AB7A22D323E3}"
+    },
+    {
+      "label": "18 DCMR § 3008 — Requests for Hearings",
+      "citation": "18 DCMR § 3008",
+      "url": "https://dcregs.dc.gov/Common/DCMR/RuleList.aspx?DownloadFile={AE9581A4-76B1-4AC9-8514-D4E71652A2C0}"
+    },
+    {
+      "label": "18 DCMR § 3011 — Hearing Procedures",
+      "citation": "18 DCMR § 3011",
+      "url": "https://dcregs.dc.gov/Common/DCMR/RuleList.aspx?DownloadFile={365BC214-C276-4178-A9F9-9948E1EC4531}"
+    },
+    {
+      "label": "18 DCMR § 3012 — Rules of Evidence",
+      "citation": "18 DCMR § 3012",
+      "url": "https://dcregs.dc.gov/Common/DCMR/RuleList.aspx?DownloadFile=D032555F-0000-C641-B128-E439EE72A536"
+    },
+    {
+      "label": "18 DCMR § 3013 — Final Determinations",
+      "citation": "18 DCMR § 3013",
+      "url": "https://dcregs.dc.gov/Common/DCMR/RuleList.aspx?DownloadFile={9D90A683-F726-4549-AFCA-6AFCBF99866D}"
+    },
+    {
+      "label": "18 DCMR § 3014 — Appeals (30-day deadline to appeal a final determination to the Appeals Board)",
+      "citation": "18 DCMR § 3014",
+      "url": "https://dcregs.dc.gov/Common/DCMR/RuleList.aspx?DownloadFile={FAEF17A1-A660-495A-A3F8-09E3244EB5A5}"
+    }
+  ],
+  "recognizedDefenses": [
+    "not-my-vehicle",
+    "obscured-signage",
+    "broken-meter",
+    "wrong-ticket-details",
+    "dc-stolen-vehicle-or-plates",
+    "dc-sudden-mechanical-disability",
+    "dc-sudden-medical-emergency"
+  ],
+  "defenses": [
+    {
+      "slug": "not-my-vehicle",
+      "whenItApplies": "You were not the owner or lessee of the cited vehicle at the time of the alleged infraction — e.g., the car was sold, gifted, or transferred before the ticket date.",
+      "evidenceChecklist": [
+        "Bill of sale, title transfer, or lease-termination documents dated before the violation date",
+        "DMV registration record showing a different owner as of the violation date",
+        "Any correspondence showing you notified DC DMV of the transfer"
+      ],
+      "cityNotes": "This is the first of DC DMV's seven statutory grounds ('You were not the owner or lessee of the cited vehicle at the time of the infraction'). It is distinct from the 'stolen vehicle/plates' ground below, which covers theft rather than a legitimate transfer.",
+      "codeCite": {
+        "label": "D.C. Official Code § 50-2303.05(a)(2)(A) — Not the owner or lessee at the time of the infraction",
+        "citation": "D.C. Official Code § 50-2303.05(a)(2)(A)",
+        "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+      },
+      "sources": [
+        {
+          "label": "DC DMV — Legal Defenses to Parking Tickets",
+          "url": "https://dmv.dc.gov/page/legal-defenses-parking-tickets"
+        },
+        {
+          "label": "D.C. Official Code § 50-2303.05 — Answer",
+          "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+        }
+      ]
+    },
+    {
+      "slug": "obscured-signage",
+      "whenItApplies": "You were ticketed for violating a posted parking restriction, but the relevant sign prohibiting or restricting parking was missing or obscured (e.g., knocked down, turned away from view, blocked by foliage or another object) at the time of the violation.",
+      "evidenceChecklist": [
+        "Time- and date-stamped photos of the sign location showing it missing, obscured, or facing away from the parking spot",
+        "Wide-angle photos of the full block showing no visible restriction sign",
+        "Photos corroborated with map/satellite imagery of the location",
+        "A 311 service request or DDOT report about the missing/damaged sign, if filed"
+      ],
+      "cityNotes": "One of DC DMV's seven statutory grounds under § 50-2303.05(a)(2). DC DMV's published defenses list this as 'the relevant signs prohibiting or restricting parking were missing or obscured' — evidence must show the sign itself was absent or unreadable, not merely that you didn't notice it.",
+      "codeCite": {
+        "label": "D.C. Official Code § 50-2303.05(a)(2)(C) — Relevant signs missing or obscured",
+        "citation": "D.C. Official Code § 50-2303.05(a)(2)(C)",
+        "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+      },
+      "sources": [
+        {
+          "label": "DC DMV — Legal Defenses to Parking Tickets",
+          "url": "https://dmv.dc.gov/page/legal-defenses-parking-tickets"
+        },
+        {
+          "label": "D.C. Official Code § 50-2303.05 — Answer",
+          "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+        }
+      ]
+    },
+    {
+      "slug": "broken-meter",
+      "whenItApplies": "You were ticketed for a meter-related violation (e.g., expired or no payment displayed), but the relevant parking meter was inoperable or malfunctioned through no fault of your own.",
+      "evidenceChecklist": [
+        "Time- and date-stamped photos of the malfunctioning meter (blank/error screen, jammed coin slot, non-functioning card reader, etc.)",
+        "A 311 complaint or repair report for the meter, if filed",
+        "Proof you attempted payment (e.g., a failed card-payment notification) at that meter"
+      ],
+      "cityNotes": "One of DC DMV's seven statutory grounds under § 50-2303.05(a)(2): 'the relevant parking meter was inoperable or malfunctioned through no fault of the person who received the ticket.' Unlike NYC, DC's statutory language does not require you to show an attempt to pay at a different, nearby meter — it targets the specific meter you used.",
+      "codeCite": {
+        "label": "D.C. Official Code § 50-2303.05(a)(2)(D) — Parking meter inoperable or malfunctioning",
+        "citation": "D.C. Official Code § 50-2303.05(a)(2)(D)",
+        "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+      },
+      "sources": [
+        {
+          "label": "DC DMV — Legal Defenses to Parking Tickets",
+          "url": "https://dmv.dc.gov/page/legal-defenses-parking-tickets"
+        },
+        {
+          "label": "D.C. Official Code § 50-2303.05 — Answer",
+          "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+        }
+      ]
+    },
+    {
+      "slug": "wrong-ticket-details",
+      "whenItApplies": "The facts alleged on the parking violation notice are inconsistent with each other, or do not support a finding that the specific regulation cited was actually violated — e.g., wrong plate number, a described location or time that doesn't match the cited code section, or a factual description that contradicts the violation charged.",
+      "evidenceChecklist": [
+        "A copy or photo of the actual notice of infraction, showing the inconsistent or unsupported facts",
+        "Your vehicle registration, to compare the correct plate number/description against what's on the ticket",
+        "Any documentation (photos, receipts, GPS/location records) contradicting the specific facts alleged"
+      ],
+      "cityNotes": "One of DC DMV's seven statutory grounds under § 50-2303.05(a)(2): 'the facts alleged on the parking violation notice are inconsistent or do not support a finding that the specified regulation was violated.' This is DC's version of a defective-ticket defense — it turns on the notice's own internal facts, not on a separate 'required elements' checklist the way NYC's does. The required contents of a valid notice of infraction are separately set out at D.C. Official Code § 50-2303.03.",
+      "codeCite": {
+        "label": "D.C. Official Code § 50-2303.05(a)(2)(E) — Facts alleged are inconsistent or do not support the violation",
+        "citation": "D.C. Official Code § 50-2303.05(a)(2)(E)",
+        "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+      },
+      "sources": [
+        {
+          "label": "DC DMV — Legal Defenses to Parking Tickets",
+          "url": "https://dmv.dc.gov/page/legal-defenses-parking-tickets"
+        },
+        {
+          "label": "D.C. Official Code § 50-2303.03 — Notice of infraction",
+          "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.03"
+        }
+      ]
+    },
+    {
+      "slug": "dc-stolen-vehicle-or-plates",
+      "whenItApplies": "The cited vehicle, or its state registration plates, were stolen at the time the violation occurred.",
+      "evidenceChecklist": [
+        "A full police report of the theft, filed before or covering the violation date",
+        "Any insurance claim documentation related to the theft",
+        "Proof the plates/vehicle were reported to DMV as stolen"
+      ],
+      "cityNotes": "DC-specific statutory ground under § 50-2303.05(a)(2); DC DMV's published guidance notes this defense 'requires [a] full police report' as supporting evidence, not merely an assertion that the vehicle was stolen.",
+      "codeCite": {
+        "label": "D.C. Official Code § 50-2303.05(a)(2)(B) — Vehicle or plates stolen at the time of the violation",
+        "citation": "D.C. Official Code § 50-2303.05(a)(2)(B)",
+        "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+      },
+      "sources": [
+        {
+          "label": "DC DMV — Legal Defenses to Parking Tickets",
+          "url": "https://dmv.dc.gov/page/legal-defenses-parking-tickets"
+        },
+        {
+          "label": "D.C. Official Code § 50-2303.05 — Answer",
+          "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+        }
+      ]
+    },
+    {
+      "slug": "dc-sudden-mechanical-disability",
+      "whenItApplies": "Your vehicle suddenly became mechanically disabled while parked or stopped, provided the vehicle was removed as soon as practicable once that became possible.",
+      "evidenceChecklist": [
+        "A tow or repair receipt showing the date/time the disabled vehicle was removed",
+        "Repair-shop documentation describing the sudden mechanical failure",
+        "Any contemporaneous roadside-assistance record or photos showing the vehicle could not immediately be moved"
+      ],
+      "cityNotes": "One of DC DMV's seven statutory grounds under § 50-2303.05(a)(2)(F): the vehicle must have become disabled suddenly (not already illegally parked and then disabled) AND been removed as soon as practicable — both elements must be shown.",
+      "codeCite": {
+        "label": "D.C. Official Code § 50-2303.05(a)(2)(F) — Sudden mechanical disability, vehicle removed as soon as practicable",
+        "citation": "D.C. Official Code § 50-2303.05(a)(2)(F)",
+        "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+      },
+      "sources": [
+        {
+          "label": "DC DMV — Legal Defenses to Parking Tickets",
+          "url": "https://dmv.dc.gov/page/legal-defenses-parking-tickets"
+        },
+        {
+          "label": "D.C. Official Code § 50-2303.05 — Answer",
+          "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+        }
+      ]
+    },
+    {
+      "slug": "dc-sudden-medical-emergency",
+      "whenItApplies": "The vehicle's operator suddenly needed immediate medical assistance, which is why the vehicle was parked or stopped in violation of the regulation.",
+      "evidenceChecklist": [
+        "Medical records, an ambulance/EMS report, or a hospital admission record showing the date and approximate time of the emergency",
+        "Any documentation corroborating that the emergency occurred at or near the ticketed location and time"
+      ],
+      "cityNotes": "One of DC DMV's seven statutory grounds under § 50-2303.05(a)(2)(G). DC DMV's published guidance is explicit that 'proof of medical attention is required' — a bare assertion of a medical emergency, without records, will not support the defense.",
+      "codeCite": {
+        "label": "D.C. Official Code § 50-2303.05(a)(2)(G) — Operator suddenly needed immediate medical assistance",
+        "citation": "D.C. Official Code § 50-2303.05(a)(2)(G)",
+        "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+      },
+      "sources": [
+        {
+          "label": "DC DMV — Legal Defenses to Parking Tickets",
+          "url": "https://dmv.dc.gov/page/legal-defenses-parking-tickets"
+        },
+        {
+          "label": "D.C. Official Code § 50-2303.05 — Answer",
+          "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "DC DMV — Contest Parking and Photo Enforcement Tickets",
+      "url": "https://dmv.dc.gov/service/contest-parking-and-photo-enforcement-tickets"
+    },
+    {
+      "label": "DC DMV — How to Contest a Ticket",
+      "url": "https://dmv.dc.gov/service/how-contest-ticket"
+    },
+    {
+      "label": "DC DMV — Respond to a Ticket",
+      "url": "https://dmv.dc.gov/service/respond-ticket"
+    },
+    {
+      "label": "DC DMV — Admit with an Explanation",
+      "url": "https://dmv.dc.gov/service/admit-explanation"
+    },
+    {
+      "label": "DC DMV — Legal Defenses to Parking Tickets",
+      "url": "https://dmv.dc.gov/page/legal-defenses-parking-tickets"
+    },
+    {
+      "label": "DC DMV — Understanding the Ticket Timeline",
+      "url": "https://dmv.dc.gov/page/understanding-ticket-timeline"
+    },
+    {
+      "label": "DC DMV — Adjudication Services (location, hours, contact)",
+      "url": "https://dmv.dc.gov/page/adjudication-services-00"
+    },
+    {
+      "label": "DC DMV — Motion to Vacate Default Judgment",
+      "url": "https://dmv.dc.gov/page/motion-vacate-default-judgment"
+    },
+    {
+      "label": "DC DMV — Failure to Pay a Ticket",
+      "url": "https://dmv.dc.gov/service/failure-pay-ticket"
+    },
+    {
+      "label": "DC DMV — Ticket Services",
+      "url": "https://dmv.dc.gov/service/ticket-services"
+    },
+    {
+      "label": "D.C. Official Code § 50-2303.05 — Answer",
+      "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.05"
+    },
+    {
+      "label": "D.C. Official Code § 50-2303.03 — Notice of infraction",
+      "url": "https://code.dccouncil.gov/us/dc/council/code/sections/50-2303.03"
+    },
+    {
+      "label": "18 DCMR Chapter 30 — Adjudication and Enforcement (chapter index)",
+      "url": "https://www.dcregs.dc.gov/Gateway/ChapterHome.aspx?ChapterNumber=18-30"
+    }
+  ],
+  "verifiedAt": "2026-07-20"
+}

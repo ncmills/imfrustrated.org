@@ -1,0 +1,236 @@
+{
+  "slug": "los-angeles",
+  "city": "Los Angeles",
+  "state": "CA",
+  "agency": "City of Los Angeles Department of Transportation (LADOT), Parking Violations Bureau — Adjudication Division. LADOT issues citations and conducts the state-mandated two-step administrative process (Initial Review, then Administrative Hearing) under California Vehicle Code §§40200–40230. LADOT's online citation portal and several published pages are hosted on its payment-processing vendor's domain (etimspayments.com) but are the City's own designated Parking Violations Bureau system, linked directly from ladotparking.org. A final decision may be appealed to the Los Angeles Superior Court (CVC §40230).",
+  "submitOnlineUrl": "https://prdwmq.etimspayments.com/pbw/include/vpportal/la/login_page.jsp",
+  "submitMailAddress": "Parking Violations Bureau, P.O. Box 30420, Los Angeles, CA 90030",
+  "submitInPerson": "Any of LADOT's four Public Service Centers (Downtown, Mid-Wilshire, Van Nuys, West Los Angeles), Monday–Friday 9:00 a.m.–5:00 p.m. (see ladotparking.org/contact-us/ for current locations); in-person Administrative Hearings are held at LADOT's Civic Center Parking Adjudication office. You can also request an Initial Review or Hearing by calling the 24-hour Customer Care Hotline at (866) 561-9742.",
+  "howToContest": [
+    "Note your citation number, license plate, and the violation code/date/time/location printed on the ticket, and act within the deadline: 21 calendar days from the date the citation was issued, or 14 calendar days from the mailing date of the first delinquent/overdue notice, whichever applies.",
+    "Do not simply pay the citation if you intend to contest it — per California Vehicle Code §40204, paying the parking penalty without also requesting review closes the case and forfeits your right to contest.",
+    "Request a free Initial Review from LADOT's Parking Violations Bureau by web (PVB Customer Service Portal), telephone, mail, or in person. No payment is required for this step. State your reason(s) for contesting and submit your evidence — LADOT's own Initial Review/RFI Checklist lists exactly what documentation is expected for common grounds (non-ownership, stolen vehicle/plate, broken meter, prior/duplicate payment, disabled vehicle, medical emergency, equipment already corrected, etc.).",
+    "Wait for LADOT to mail its Initial Review decision. If the citation is canceled, you're done. If it's upheld as valid, the decision will explain why and how to request the next step.",
+    "If dissatisfied with the Initial Review, request an Administrative Hearing within 21 calendar days of the mailing date of the Initial Review decision, using the Hearing Request Form (mail, phone, in person; online hearing requests are only available for the in-person option). State law (CVC §40215(b)) requires you to first deposit (pay) the full parking penalty before the hearing is scheduled, unless you qualify for and are granted a Pre-Payment (indigency) Waiver under HUD low-income guidelines.",
+    "Choose an in-person hearing or a hearing by written declaration (by mail); for a written declaration, submit your written reason for contesting plus ALL supporting evidence, since you carry the burden of proving any defense you raise. An independent Hearing Examiner decides based on a preponderance of the evidence and mails a written decision; any refund owed is mailed roughly 30 days after the decision.",
+    "If you disagree with the Hearing Examiner's final decision, you may appeal to the Los Angeles Superior Court within 30 calendar days of the decision being mailed (CVC §40230); the case is heard de novo and a court filing fee applies (refundable by the processing agency if you prevail)."
+  ],
+  "contestDeadlineDays": 21,
+  "contestDeadlineNote": "California Vehicle Code §40215(a), which LADOT applies directly: \"For a period of 21 calendar days from the issuance of a notice of parking violation or 14 calendar days from the mailing of a notice of delinquent parking violation ... a person may request an initial review of the notice by the issuing agency.\" LADOT's own FAQ states it the same way: \"Citations must be contested within 21 days of the date the citation is issued, or 14 days of the date of the first overdue notice.\" The clock starts on the date the citation was physically issued (attached to the vehicle) — or, if you missed that window, on the mailing date of the first delinquent/overdue notice. Once that period lapses you lose the statutory right to an Initial Review, and LADOT states \"There is no appeal,\" except for two narrow late-review exceptions: the vehicle no longer belonged to you when the citation was issued, or extenuating circumstances (e.g., sole registered owner's death or an emergency) prevented timely contest.",
+  "penaltyNote": "Missing the 21-/14-day deadline forfeits your right to contest, and LADOT does not grant payment extensions; late fees are added that \"often double the citation fine,\" with additional collections fees added if it remains unpaid after that. Under CVC §4760, the California DMV must refuse to renew your vehicle registration once LADOT has filed an itemization of unpaid parking penalties with the DMV, until the outstanding penalties and fees are paid in full (with an exception if the citation was issued before you owned the vehicle). Under CVC §22651.7, once a vehicle has 5 or more delinquent parking citations it becomes eligible for immobilization (boot) or tow; LADOT's own FAQ confirms vehicles are not booted or towed with fewer than 5 delinquent citations. Boot removal requires payment of all fines/fees plus a $150 boot fee and proof of current registration; unpaid boot-eligible bills can also lead to a California income-tax-refund intercept. Parking citations are civil, not criminal — LADOT confirms you cannot be arrested for nonpayment, and citations cannot be discharged in bankruptcy.",
+  "municipalCodeRefs": [
+    {
+      "label": "CVC §40215 — Initial review and administrative hearing procedure for parking violations",
+      "citation": "Cal. Veh. Code § 40215",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=40215."
+    },
+    {
+      "label": "CVC §40204 — Effect of paying the parking penalty without contesting",
+      "citation": "Cal. Veh. Code § 40204",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=40204."
+    },
+    {
+      "label": "CVC §40202 — Required content of the Notice of Parking Violation; prima facie evidence",
+      "citation": "Cal. Veh. Code § 40202",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=40202."
+    },
+    {
+      "label": "CVC §40230 — Appeal of the administrative hearing decision to superior court",
+      "citation": "Cal. Veh. Code § 40230",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=40230."
+    },
+    {
+      "label": "CVC §4760 — DMV refusal to renew registration for unpaid parking penalties",
+      "citation": "Cal. Veh. Code § 4760",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=4760."
+    },
+    {
+      "label": "CVC §22651.7 — Immobilization (boot) of vehicles with 5+ delinquent parking citations",
+      "citation": "Cal. Veh. Code § 22651.7",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=22651.7."
+    },
+    {
+      "label": "LAMC §89.60 — Authority for the City's schedule of civil parking penalties",
+      "citation": "L.A. Mun. Code § 89.60",
+      "url": "https://codelibrary.amlegal.com/codes/los_angeles/latest/lamc/0-0-0-172037"
+    }
+  ],
+  "recognizedDefenses": [
+    "broken-meter",
+    "valid-payment",
+    "wrong-ticket-details",
+    "not-my-vehicle",
+    "disabled-vehicle"
+  ],
+  "defenses": [
+    {
+      "slug": "broken-meter",
+      "whenItApplies": "You were cited at a metered or pay-station space, but the specific meter/pay station serving that space was inoperable — it could not accept payment in ANY form (not merely coins-only or card-only). California law lets you park up to the posted time limit in that case, and bars a nonpayment citation. A meter that accepts one payment method but not another (e.g., cards work but coins don't) is NOT considered broken.",
+      "evidenceChecklist": [
+        "Photos of the meter/pay station showing it was inoperable or displaying an error at the time of citation",
+        "A note of exactly which payment methods you attempted and that all failed",
+        "If you paid by credit/debit card at that meter or a nearby one and were still cited, a credit card statement showing the first 6 and last 4 digits of the card used (per LADOT's Initial Review checklist)",
+        "Timestamp/location details tying your evidence to the cited space"
+      ],
+      "cityNotes": "LADOT's own \"Tips to Avoid Parking Citations\" page states this qualification directly: meters/paystations are NOT considered broken unless they cannot accept payment in any form; if one payment method still works, there is no defense. LADOT's Initial Review/RFI Checklist has a dedicated \"METER\" category for payment-issue or still-has-time disputes.",
+      "codeCite": {
+        "label": "CVC §22508.5 — Parking at an inoperable parking meter or pay station",
+        "citation": "Cal. Veh. Code § 22508.5",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=22508.5."
+      },
+      "sources": [
+        {
+          "label": "LADOT — Tips to Avoid Parking Citations (Parking Meters & Paystations)",
+          "url": "https://ladotparking.org/5-tips-avoid-citations/"
+        },
+        {
+          "label": "LADOT Parking Violations Bureau — Initial Review/RFI Checklist (PDF, \"METER\")",
+          "url": "https://ladotparking.org/wp-content/uploads/2018/03/Checklist-final-02092018.pdf"
+        }
+      ]
+    },
+    {
+      "slug": "valid-payment",
+      "whenItApplies": "You were cited for a payment/meter violation, but you had actually already paid — a duplicate/prior payment, a payment that was processed but not reflected on the meter or in LADOT's system, or a stolen/forged payment instrument was used to pay on your behalf.",
+      "evidenceChecklist": [
+        "Legible copies of the front and back of the canceled check(s) or money order(s) used to pay",
+        "A cash receipt obtained at a PVB cashiering (Public Service Center) facility",
+        "A confirmation receipt if payment was submitted via the City's website",
+        "A bank statement showing the funds leaving your account and going to the City",
+        "A credit card statement showing payment to the City of Los Angeles PVB, with the first 6 and last 4 digits visible",
+        "An FTB (Franchise Tax Board) intercept letter, if applicable"
+      ],
+      "cityNotes": "This is LADOT's own published Initial Review checklist category, titled \"PAYMENT (DOUBLE/PRIOR) FORGED OR STOLEN PAYMENT.\" There is no LA-specific statute naming this defense; it falls under the general statutory ground in CVC §40215(a) that the issuing agency must cancel a citation if, after review, it is satisfied \"the violation did not occur.\"",
+      "codeCite": {
+        "label": "CVC §40215(a) — Initial review; cancellation if the violation did not occur",
+        "citation": "Cal. Veh. Code § 40215(a)",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=40215."
+      },
+      "sources": [
+        {
+          "label": "LADOT Parking Violations Bureau — Initial Review/RFI Checklist (PDF, \"Payment (Double/Prior) Forged or Stolen Payment\")",
+          "url": "https://ladotparking.org/wp-content/uploads/2018/03/Checklist-final-02092018.pdf"
+        }
+      ]
+    },
+    {
+      "slug": "wrong-ticket-details",
+      "whenItApplies": "The citation is factually wrong about your vehicle or its compliance — most commonly an equipment/registration citation (missing front plate, expired-looking tabs, no visible registration) issued even though the required plate, tabs, or registration were actually properly displayed on the vehicle at the time. You are disputing that the cited condition existed, not admitting the violation and asking for leniency.",
+      "evidenceChecklist": [
+        "A copy or photo of the citation showing the incorrect/disputed field",
+        "Your current vehicle registration or replacement tabs proving the equipment was valid at the time of the citation",
+        "A dated photograph of the plate/tabs properly affixed to the vehicle",
+        "Proof of correction bearing a law enforcement agency signature, if you have one"
+      ],
+      "cityNotes": "LADOT's Operations & Support FAQ draws this exact distinction: \"If you are disputing the validity of the citation because the required equipment (plates or tabs) were actually on the vehicle and you believe the citation was issued in error, you can file a claim to contest the citation like any other citation\" (as opposed to paying the reduced $10 civil fine for a genuine, since-corrected equipment violation under CVC §40225). LADOT's checklist has matching \"Missing Front Plates\" and \"Display of Tab\" categories for the correction scenario. Los Angeles has no dedicated ordinance requiring dismissal for a defective notice (unlike some cities); the hook is CVC §40202(a)'s list of information a Notice of Parking Violation must contain, combined with the general \"violation did not occur\" dismissal ground in CVC §40215(a).",
+      "codeCite": {
+        "label": "CVC §40202(a) — Required content of the Notice of Parking Violation",
+        "citation": "Cal. Veh. Code § 40202(a)",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=40202."
+      },
+      "sources": [
+        {
+          "label": "LADOT Parking Operations & Support FAQ (\"I received a citation because my car did not have a front license plate or my tabs...\")",
+          "url": "https://ladotparking.org/operations-support/parking-operations-support-faq/"
+        },
+        {
+          "label": "LADOT Parking Violations Bureau — Initial Review/RFI Checklist (PDF, \"Missing Front Plates\" / \"Display of Tab\")",
+          "url": "https://ladotparking.org/wp-content/uploads/2018/03/Checklist-final-02092018.pdf"
+        }
+      ]
+    },
+    {
+      "slug": "not-my-vehicle",
+      "whenItApplies": "You were not the responsible owner at the time of the violation: the vehicle was sold, gifted, donated, or leased/rented to someone else before the citation date; the vehicle or its license plate was stolen; or (for out-of-state plates) the vehicle is misidentified.",
+      "evidenceChecklist": [
+        "Sold/transferred vehicle: DMV Notice of Transfer & Release of Liability, OR a dealer/leasing-company Bill of Sale or Trade-in Agreement (private-party sales not accepted for this route), OR a rental/lease agreement, OR an IRS-approved vehicle donation document from a charity — plus a completed Declaration of Non-Ownership form",
+        "Stolen vehicle: a stolen-and-recovery police report, or a stolen report plus insurance payoff documentation, or a stolen report plus an official police garage tow receipt",
+        "Stolen license plate: a police report documenting the theft, plus valid DMV registration for the replacement plate",
+        "Out-of-state plate mismatch: current vehicle registration"
+      ],
+      "cityNotes": "This maps to several of LADOT's own Initial Review checklist categories (\"Declaration of Non-Ownership,\" \"Stolen Vehicle,\" \"Stolen License Plate,\" \"Not My Car (Out of State Plate Only)\"). It is codified directly: CVC §40215(a) requires cancellation if, after initial review, the issuing agency is satisfied \"the registered owner was not responsible for the violation.\" LADOT's FAQ separately warns that never receiving the citation is NOT itself a defense — notices go to the DMV address of record, so a seller must also complete the DMV's Release of Liability.",
+      "codeCite": {
+        "label": "CVC §40215(a) — Initial review; cancellation if the registered owner was not responsible",
+        "citation": "Cal. Veh. Code § 40215(a)",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=40215."
+      },
+      "sources": [
+        {
+          "label": "LADOT Adjudication Division FAQ (\"I sold my car. Why am I getting citations in the mail?\")",
+          "url": "https://ladotparking.org/adjudication-division/faq/"
+        },
+        {
+          "label": "LADOT Parking Violations Bureau — Initial Review/RFI Checklist (PDF)",
+          "url": "https://ladotparking.org/wp-content/uploads/2018/03/Checklist-final-02092018.pdf"
+        }
+      ]
+    },
+    {
+      "slug": "disabled-vehicle",
+      "whenItApplies": "Your vehicle became mechanically disabled (broke down) at the cited location and could not immediately be moved, resulting in a parking citation while it sat waiting for repair, a tow, or roadside assistance.",
+      "evidenceChecklist": [
+        "Current vehicle registration",
+        "Proof the vehicle was disabled: a tow receipt, a battery-replacement receipt, a roadside-assistance receipt, or a repair receipt"
+      ],
+      "cityNotes": "This is one of LADOT's own published Initial Review checklist categories (\"DISABLED VEHICLE\"), an LA-specific ground not tied to a defense-specific statute; it falls under the \"extenuating circumstances\" dismissal basis in CVC §40215(a).",
+      "codeCite": {
+        "label": "CVC §40215(a) — Initial review; cancellation for extenuating circumstances",
+        "citation": "Cal. Veh. Code § 40215(a)",
+        "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=40215."
+      },
+      "sources": [
+        {
+          "label": "LADOT Parking Violations Bureau — Initial Review/RFI Checklist (PDF, \"Disabled Vehicle\")",
+          "url": "https://ladotparking.org/wp-content/uploads/2018/03/Checklist-final-02092018.pdf"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "LADOT — Contest a Parking Citation",
+      "url": "https://ladotparking.org/adjudication-division/contest-a-parking-citation/"
+    },
+    {
+      "label": "LADOT — Adjudication Division FAQ",
+      "url": "https://ladotparking.org/adjudication-division/faq/"
+    },
+    {
+      "label": "LADOT — Parking Operations & Support FAQ",
+      "url": "https://ladotparking.org/operations-support/parking-operations-support-faq/"
+    },
+    {
+      "label": "City of Los Angeles Parking Violations Bureau — Contest a Citation (three-tier process)",
+      "url": "https://prodpci.etimspayments.com/pbw/include/laopm/contest.htm"
+    },
+    {
+      "label": "City of Los Angeles Parking Violations Bureau — Initial Review Process",
+      "url": "https://prodpci.etimspayments.com/pbw/include/laopm/adminrev.htm"
+    },
+    {
+      "label": "City of Los Angeles Parking Violations Bureau — Customer Service Portal (online citation contest login)",
+      "url": "https://prdwmq.etimspayments.com/pbw/include/vpportal/la/login_page.jsp"
+    },
+    {
+      "label": "LADOT — Administrative Hearing Request Form and Statement of Rights (PDF)",
+      "url": "https://ladotparking.org/wp-content/uploads/2018/04/Administrative-Hearing-Request.pdf"
+    },
+    {
+      "label": "LADOT — Initial Review/RFI Checklist (PDF)",
+      "url": "https://ladotparking.org/wp-content/uploads/2018/03/Checklist-final-02092018.pdf"
+    },
+    {
+      "label": "LADOT (lacity.gov) — Guide to Contest a Citation",
+      "url": "https://ladot.lacity.gov/coronavirus/guide-contest-citation"
+    },
+    {
+      "label": "California Vehicle Code § 40215 (official text, Legislative Information)",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=40215."
+    },
+    {
+      "label": "Los Angeles Municipal Code § 89.60 — Authority (American Legal code library)",
+      "url": "https://codelibrary.amlegal.com/codes/los_angeles/latest/lamc/0-0-0-172037"
+    }
+  ],
+  "verifiedAt": "2026-07-20"
+}

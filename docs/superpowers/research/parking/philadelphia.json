@@ -1,0 +1,312 @@
+{
+  "slug": "philadelphia",
+  "city": "Philadelphia",
+  "state": "PA",
+  "agency": "Philadelphia Parking Authority (PPA) issues on-street parking tickets and, through its Parking Violations Branch (PVB), fields four specific claim types (broken meter, valid kiosk receipt, valid permit/disabled placard, sign discrepancy) before a formal hearing is needed. Formal adjudication of all parking-ticket disputes is conducted by the City of Philadelphia's Bureau of Administrative Adjudication (BAA) — a City agency separate from the PPA, created under Philadelphia Code Chapter 12-2800 (Administrative Adjudication of Parking Violations) and exercising powers vested in the Director of Finance (Code §12-2802), with PPA delegated certain enforcement/administration functions (Code §12-2803). PPA's own site currently states the BAA is overseen by the City's Office of the Chief Administrative Officer.",
+  "submitOnlineUrl": "https://onlineserviceshub.com/ParkingPortal/Philadelphia",
+  "submitMailAddress": "Bureau of Administrative Adjudication, 48 N. 8th Street, Philadelphia, PA 19107 (for the four PVB-specific claim types — broken meter, valid kiosk receipt, valid permit/placard, or sign discrepancy — mail may instead go to: Parking Violations Branch, PO Box 41818, Philadelphia, PA 19101-1818)",
+  "submitInPerson": "In-person hearings at the Bureau of Administrative Adjudication (48 N. 8th Street, Philadelphia, PA 19107, Monday–Friday, expedited hearings begin 8:30 a.m.) are available ONLY for booted or towed vehicles. For a standard (non-boot/tow) parking ticket, you must dispute online or by mail — walk-in in-person hearings are not offered. Source: philapark.org/dispute/ (\"Customer Alert: In-person hearings at BAA are available for booted/towed vehicles only.\").",
+  "howToContest": [
+    "Locate your parking ticket number and confirm the violation code, date, time, and location printed on it. Do not pay a ticket you intend to dispute — the Philadelphia Code and Charter treat payment as an admission of guilt and liability.",
+    "If your claim is one of four specific types — a broken parking meter/kiosk, a valid kiosk payment receipt, a valid permit or disabled placard for that location, or a sign discrepancy — you can raise it directly with PPA's Parking Violations Branch (PVB) by phone (215-222-9100 option 1, or 888-591-3636), email (ppa@philapark.org), or mail (Parking Violations Branch, PO Box 41818, Philadelphia, PA 19101-1818).",
+    "For any other basis for dispute, submit an 'Answer' under Philadelphia Code §12-2806 denying liability and requesting a hearing — either a hearing by mail/electronic submission of written testimony and evidence, or (if eligible under the disability-parking provision) a telephone hearing — within 15 days of the date the ticket was served, to avoid late fees per Code §12-2804(4) and PPA's own guidance.",
+    "Submit online at the City's online parking dispute portal, or by mail to the Bureau of Administrative Adjudication (48 N. 8th Street, Philadelphia, PA 19107) with your written testimony and copies of your evidence (photos, receipts, police reports, etc.) attached.",
+    "While your online or mail submission is pending, a 'suspend' is placed on the ticket — no additional penalties, noticing, or collection activity occur until a Parking Hearing Examiner issues a decision, which typically takes 4–6 weeks for mail/online hearings.",
+    "If you disagree with the Hearing Examiner's decision, you may appeal to a Parking Appeals Panel by serving a written notice of appeal on the Parking Authority within 30 days of the entry of the final determination (Code §12-2808(3)); the appeal is heard by a different hearing examiner and may be conducted in person if you request it in your notice.",
+    "If you disagree with the Parking Appeals Panel's decision, your remaining option is a further appeal to the Philadelphia Court of Common Pleas (a court filing fee applies, borne by the losing party per Code §12-2808(6))."
+  ],
+  "contestDeadlineDays": 15,
+  "contestDeadlineNote": "Philadelphia Code §12-2804(4): \"a person to whom a parking ticket has been served shall answer within fifteen (15) days after the date the ticket was served. Failure to answer within the prescribed period shall result in the imposition of additional fees as set forth in Section 12-2809.\" The City's official guidance states this plainly: \"If you request a hearing within 15 days of receiving a ticket, no late payment fees will be added\" and \"If you request a hearing after 15 days and are later found liable for the ticket, you will be responsible for any related late fees.\" (phila.gov, Dispute a parking ticket). This 15-day window is the deadline to avoid late fees, not an absolute bar on disputing — Philadelphia's outer deadline to dispute a ticket at all is far longer: PPA's FAQ states \"Generally, you have approximately one (1) year from the date of ticket issuance to dispute a parking violation,\" explaining that \"You have one year from the entry of default in which to appeal ... the entry of default is [generally] 4-5 weeks after the issuance date, so in rough terms, you have 13 months from the issuance date. Tickets beyond one year from the entry of default are no longer eligible to be disputed, regardless of the merits of the defense.\" This matches Code §12-2807(4), which allows a default order to \"be vacated by the Parking Hearing Examiner within one (1) year after its entry\" upon written application showing a sufficient defense and excusable neglect. Separately, an appeal of an adverse Hearing Examiner decision (after you did timely contest and lost) must be filed within 30 days of that decision under Code §12-2808(3).",
+  "penaltyNote": "Per Philadelphia Code §12-2809(1): if no answer/payment is made within 15 days of a parking ticket, a Notice of Violation (NOV) is mailed; if that NOV is not answered within 10 days of its date (or within 90 days of the original ticket issuance, if owner information could not be obtained from a state DMV), a $30 late fee is added. A second $35 fee is added if payment is not made within 30 days after a final order of liability, or if the person fails to answer the NOV within 20 days of its issuance, or fails to appear at a required hearing. (For tickets issued through November 22, 2013, the fees were $25 and $30; current $30/$35 fees apply to tickets issued on or after November 23, 2013, per Bill No. 130562.) Under Code §12-2809(5), collection activity generally may not begin more than ten years after a ticket/notice was issued, except against a 'chronic parking violator' — defined as someone owing more than $500 in penalties/costs/fees, or with 3 or more open unpaid tickets, or whose vehicle registration has been suspended/denied under 75 Pa. C.S. §1379. Booted/towed vehicles can only get an in-person BAA hearing (expedited, to arrange release); other disputes are online/mail only. Source: Philadelphia Code §12-2809; philapark.org/dispute/ FAQ (\"WHAT ARE THE LATE PENALTIES?\").",
+  "municipalCodeRefs": [
+    {
+      "label": "§ 12-2801. Legislative Findings.",
+      "citation": "Phila. Code § 12-2801",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286112"
+    },
+    {
+      "label": "§ 12-2802. Powers and Duties of The Director of Finance.",
+      "citation": "Phila. Code § 12-2802",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286119"
+    },
+    {
+      "label": "§ 12-2803. Delegation of Functions, Powers and Duties to The Philadelphia Parking Authority.",
+      "citation": "Phila. Code § 12-2803",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286123"
+    },
+    {
+      "label": "§ 12-2804. Issuance and Service of Parking Tickets (15-day answer deadline).",
+      "citation": "Phila. Code § 12-2804",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286128"
+    },
+    {
+      "label": "§ 12-2805. Notice of Parking Violation.",
+      "citation": "Phila. Code § 12-2805",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286137"
+    },
+    {
+      "label": "§ 12-2806. Answer (deny liability / request hearing options).",
+      "citation": "Phila. Code § 12-2806",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286141"
+    },
+    {
+      "label": "§ 12-2807. Adjudications (hearing procedure, evidence, default vacatur).",
+      "citation": "Phila. Code § 12-2807",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286151"
+    },
+    {
+      "label": "§ 12-2808. Administrative Review (30-day appeal deadline).",
+      "citation": "Phila. Code § 12-2808",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286160"
+    },
+    {
+      "label": "§ 12-2809. Civil Penalties and Costs.",
+      "citation": "Phila. Code § 12-2809",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286168"
+    }
+  ],
+  "recognizedDefenses": [
+    "broken-meter",
+    "obscured-signage",
+    "valid-payment",
+    "not-my-vehicle",
+    "valid-permit",
+    "vehicle-breakdown",
+    "medical-emergency",
+    "death-of-registrant"
+  ],
+  "defenses": [
+    {
+      "slug": "broken-meter",
+      "whenItApplies": "You were ticketed for a meter- or kiosk-related violation (e.g., failure to pay, overtime meter, invalid kiosk receipt), but the specific meter or pay-by-space kiosk you used was defective.",
+      "evidenceChecklist": [
+        "Date- and time-stamped photos of the broken meter or kiosk and any error message it displayed",
+        "A complaint filed with PPA reporting the broken meter/kiosk (by phone at 215-222-9100 option 1, or 888-591-3636, or by email to ppa@philapark.org) to initiate PPA's investigation",
+        "Any partial receipt or transaction record the malfunctioning meter/kiosk produced"
+      ],
+      "cityNotes": "PPA's Parking Violations Branch (PVB) — a distinct front-end channel from the Bureau of Administrative Adjudication (BAA) — specifically handles 'a broken parking meter' as one of four claim types it will investigate directly, separate from the general BAA hearing process used for all other dispute grounds.",
+      "codeCite": {
+        "label": "Phila. Code § 12-2807 — Adjudications (general hearing/evidence procedure)",
+        "citation": "Phila. Code § 12-2807",
+        "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286151"
+      },
+      "sources": [
+        {
+          "label": "PPA — Contesting a Ticket: You've Got Options (PVB claim types)",
+          "url": "https://philapark.org/2017/08/contesting-a-ticket-youve-got-options-2/"
+        },
+        {
+          "label": "PPA — Frequently Asked Questions (broken meter complaint contacts)",
+          "url": "https://philapark.org/faq/"
+        }
+      ]
+    },
+    {
+      "slug": "obscured-signage",
+      "whenItApplies": "You were ticketed for violating a posted sign restriction, but the sign at that location was missing, obscured, damaged, or contradictory ('sign discrepancy').",
+      "evidenceChecklist": [
+        "Photos of the exact spot where you were parked, showing the missing/obscured sign or the contradictory signage",
+        "Photos showing the full block/curb area for context",
+        "Any supporting record (e.g., a 311-style complaint) if you reported the sign issue"
+      ],
+      "cityNotes": "PPA's Parking Violations Branch (PVB) lists 'sign discrepancy' as one of the four specific claim types it fields directly, separate from the general BAA hearing process. Neither PPA's FAQ nor the Philadelphia Code publishes a detailed evidentiary checklist for this ground beyond the general right to 'present evidence, including pictures, tow receipts, etc.' at a BAA hearing.",
+      "codeCite": {
+        "label": "Phila. Code § 12-2807 — Adjudications (general hearing/evidence procedure)",
+        "citation": "Phila. Code § 12-2807",
+        "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286151"
+      },
+      "sources": [
+        {
+          "label": "PPA — Contesting a Ticket: You've Got Options (PVB claim types)",
+          "url": "https://philapark.org/2017/08/contesting-a-ticket-youve-got-options-2/"
+        },
+        {
+          "label": "PPA — Frequently Asked Questions (right to present evidence)",
+          "url": "https://philapark.org/faq/"
+        }
+      ]
+    },
+    {
+      "slug": "valid-payment",
+      "whenItApplies": "You were ticketed for a meter/kiosk payment violation (e.g., 'Not Pay Meter Fee,' 'Overtime Meter,' 'Invalid Receipt – Parking Meter Kiosk'), but you actually held a valid kiosk payment receipt covering the ticketed time.",
+      "evidenceChecklist": [
+        "The physical or photographed parking kiosk receipt showing the paid time window",
+        "A payment-app transaction confirmation, if you paid via a mobile parking app",
+        "Comparison of the receipt's covered time window against the ticket's recorded violation time"
+      ],
+      "cityNotes": "PPA's Parking Violations Branch (PVB) lists 'having a valid kiosk receipt' as one of the four claim types it fields directly. Unlike some cities, Philadelphia's Code does not publish a specific codified affirmative-defense subsection for valid payment — this is PPA operational guidance, adjudicated under the Chapter 12-2800 general hearing procedure.",
+      "codeCite": {
+        "label": "Phila. Code § 12-2807 — Adjudications (general hearing/evidence procedure)",
+        "citation": "Phila. Code § 12-2807",
+        "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286151"
+      },
+      "sources": [
+        {
+          "label": "PPA — Contesting a Ticket: You've Got Options (PVB claim types)",
+          "url": "https://philapark.org/2017/08/contesting-a-ticket-youve-got-options-2/"
+        }
+      ]
+    },
+    {
+      "slug": "not-my-vehicle",
+      "whenItApplies": "Your vehicle or its license plate/tag was stolen at the time the ticket was issued.",
+      "evidenceChecklist": [
+        "A legible copy of the police stolen vehicle/tag report (the report number alone is not sufficient) showing the date and time of the theft",
+        "Documentation of the vehicle/tag's recovery date, if it was recovered by the time of your hearing",
+        "If not yet recovered, documentation showing that as well"
+      ],
+      "cityNotes": "Per PPA's FAQ: \"Generally speaking, no [you are not responsible]... Please keep in mind that regardless of where you live or where the vehicle is registered, the stolen vehicle/tag report is issued by the city or township in which the theft occurred.\" Separately, Code §12-2807(4) limits a related ground — never having received a mailed notice of violation is NOT itself a valid defense unless the vehicle owner can prove a state DMV was notified of a change of address before the violation date.",
+      "codeCite": {
+        "label": "Phila. Code § 12-2807 — Adjudications (default vacatur; notice-of-violation limitations)",
+        "citation": "Phila. Code § 12-2807(4)",
+        "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286151"
+      },
+      "sources": [
+        {
+          "label": "PPA — Dispute a Parking Ticket FAQ (\"IF MY VEHICLE/TAG WAS STOLEN...\")",
+          "url": "https://philapark.org/dispute/"
+        }
+      ]
+    },
+    {
+      "slug": "valid-permit",
+      "whenItApplies": "You were ticketed in a location requiring a residential parking permit or a disabled-parking placard/permit, but you held a valid permit or placard for that specific location at the time of the violation.",
+      "evidenceChecklist": [
+        "A photo showing the permit or placard properly displayed in the vehicle at the time cited",
+        "A copy of the permit or placard itself, matching the vehicle and location",
+        "PPA permit-account records confirming the permit was active and valid for that block/zone on the ticket date"
+      ],
+      "cityNotes": "PPA's Parking Violations Branch (PVB) lists 'possessing a valid permit/disabled placard for the location you were parked' as one of the four claim types it fields directly. The underlying violations this defense answers include Code §12-2709(1) (Parking in Residential District Without Permit) and the disability-parking-space provisions in §12-1117.",
+      "codeCite": {
+        "label": "Phila. Code § 12-2807 — Adjudications (general hearing/evidence procedure)",
+        "citation": "Phila. Code § 12-2807",
+        "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286151"
+      },
+      "sources": [
+        {
+          "label": "PPA — Contesting a Ticket: You've Got Options (PVB claim types)",
+          "url": "https://philapark.org/2017/08/contesting-a-ticket-youve-got-options-2/"
+        }
+      ]
+    },
+    {
+      "slug": "vehicle-breakdown",
+      "whenItApplies": "Your vehicle suddenly and unexpectedly broke down (a mechanical failure) while parked or stopped in a restricted location, and you took reasonably prompt steps to remove it once possible.",
+      "evidenceChecklist": [
+        "A tow or repair-shop receipt showing the date/time of the breakdown and removal",
+        "Documentation of the specific mechanical failure — e.g., a repair record proving a sudden gas-gauge failure, if the issue was running out of gas",
+        "Any contemporaneous evidence that you took timely steps to remove the vehicle from the roadway"
+      ],
+      "cityNotes": "PPA's FAQ: \"Having mechanical issues with your vehicle could be a valid excuse, but it's not necessarily a guarantee you will succeed... running out of gas is unlikely to be a sufficient excuse unless you can prove that a sudden failure of the gas gauge was the reason you had run out of gas.\"",
+      "codeCite": {
+        "label": "Phila. Code § 12-2807 — Adjudications (general hearing/evidence procedure)",
+        "citation": "Phila. Code § 12-2807",
+        "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286151"
+      },
+      "sources": [
+        {
+          "label": "PPA — Dispute a Parking Ticket FAQ (\"MY VEHICLE BROKE DOWN. IS THAT A VALID EXCUSE?\")",
+          "url": "https://philapark.org/dispute/"
+        }
+      ]
+    },
+    {
+      "slug": "medical-emergency",
+      "whenItApplies": "You (or a person in your direct, immediate care) had a medical emergency requiring urgent transport or life-saving care, which caused or prevented compliance with the parking regulation.",
+      "evidenceChecklist": [
+        "Ambulance run sheet or EMS/hospital records documenting the emergency and its timing",
+        "Any documentation showing you were directly involved in the emergency transport or life-saving care (not merely responding afterward)"
+      ],
+      "cityNotes": "PPA's FAQ distinguishes strong from weak cases: a heart attack with ambulance/hospital documentation is 'more likely to succeed'; a known pre-existing condition without reasonable precautions, or rushing to support a loved one without being 'directly involved in emergency transport or life-saving care,' is 'unlikely to succeed.'",
+      "codeCite": {
+        "label": "Phila. Code § 12-2807 — Adjudications (general hearing/evidence procedure)",
+        "citation": "Phila. Code § 12-2807",
+        "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286151"
+      },
+      "sources": [
+        {
+          "label": "PPA — Dispute a Parking Ticket FAQ (\"I HAD A MEDICAL EMERGENCY. IS THAT A VALID EXCUSE?\")",
+          "url": "https://philapark.org/dispute/"
+        }
+      ]
+    },
+    {
+      "slug": "death-of-registrant",
+      "whenItApplies": "The registered owner of the vehicle died, and the ticket concerns a parking violation that occurred before their death.",
+      "evidenceChecklist": [
+        "A copy of the death certificate, submitted along with a written letter of request to the Bureau of Administrative Adjudication"
+      ],
+      "cityNotes": "Per PPA's FAQ, tickets issued before the owner's death may be disputed by someone acting on the late owner's behalf; PPA 'highly recommend[s] presenting a copy of the death certificate with the letter of request.' Nothing happens to outstanding tickets automatically — someone must affirmatively respond. Outstanding tickets will NOT be dismissed if there is a surviving co-owner of the vehicle.",
+      "codeCite": {
+        "label": "Phila. Code § 12-2807 — Adjudications (general hearing/evidence procedure)",
+        "citation": "Phila. Code § 12-2807",
+        "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286151"
+      },
+      "sources": [
+        {
+          "label": "PPA — Dispute a Parking Ticket FAQ (\"THE VEHICLE OWNER IS DECEASED...\")",
+          "url": "https://philapark.org/dispute/"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Philadelphia Parking Authority — Dispute a Parking Ticket (main page + FAQ)",
+      "url": "https://philapark.org/dispute/"
+    },
+    {
+      "label": "Philadelphia Parking Authority — Frequently Asked Questions",
+      "url": "https://philapark.org/faq/"
+    },
+    {
+      "label": "Philadelphia Parking Authority — Contesting a Ticket: You've Got Options",
+      "url": "https://philapark.org/2017/08/contesting-a-ticket-youve-got-options-2/"
+    },
+    {
+      "label": "City of Philadelphia (phila.gov) — Dispute a parking ticket",
+      "url": "https://www.phila.gov/services/cars-parking-transportation/pay-or-dispute-a-ticket/dispute-a-parking-ticket/"
+    },
+    {
+      "label": "City of Philadelphia (phila.gov) — Pay or dispute a ticket (hub)",
+      "url": "https://www.phila.gov/services/cars-parking-transportation/pay-or-dispute-a-ticket/"
+    },
+    {
+      "label": "City of Philadelphia (phila.gov) — Bureau of Administrative Adjudication (BAA) homepage",
+      "url": "https://www.phila.gov/departments/bureau-of-administrative-adjudication/"
+    },
+    {
+      "label": "City of Philadelphia online parking dispute portal",
+      "url": "https://onlineserviceshub.com/ParkingPortal/Philadelphia"
+    },
+    {
+      "label": "Philadelphia Code — Chapter 12-2800, Administrative Adjudication of Parking Violations (table of contents)",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286111"
+    },
+    {
+      "label": "Philadelphia Code § 12-2804 — Issuance and Service of Parking Tickets",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286128"
+    },
+    {
+      "label": "Philadelphia Code § 12-2805 — Notice of Parking Violation",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286137"
+    },
+    {
+      "label": "Philadelphia Code § 12-2806 — Answer",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286141"
+    },
+    {
+      "label": "Philadelphia Code § 12-2807 — Adjudications",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286151"
+    },
+    {
+      "label": "Philadelphia Code § 12-2808 — Administrative Review",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286160"
+    },
+    {
+      "label": "Philadelphia Code § 12-2809 — Civil Penalties and Costs",
+      "url": "https://codelibrary.amlegal.com/codes/philadelphia/latest/philadelphia_pa/0-0-0-286168"
+    }
+  ],
+  "verifiedAt": "2026-07-20"
+}
