@@ -16,7 +16,7 @@
   ],
   "contestDeadlineDays": 30,
   "contestDeadlineNote": "\"To dispute a parking ticket or camera violation, you must request a hearing within 30 days of the date the ticket or camera violation was issued to you to avoid paying late fees.\" The clock starts on the date the ticket was issued (not a later mailing date), and DOF states that contacting anyone other than the Department of Finance does not pause the deadline. Source: NYC DOF Dispute a Ticket FAQs, https://www.nyc.gov/site/finance/vehicles/dispute-a-ticket-faqs.page (also stated on https://www.nyc.gov/site/finance/vehicles/dispute-a-ticket.page: \"you must request a hearing within 30 days after the ticket was issued to avoid paying late penalties\").",
-  "penaltyNote": "If you request a hearing more than 30 days after issuance and are found guilty, you must pay late penalties (per NYC Admin Code §19-211: up to $10 additional for responding after 30 days, up to $20 more after 45 days, and up to $30 more after 75 days, following a required second notice). If DOF does not receive payment or a hearing request, a parking violation goes into default judgment approximately 100 days after issuance (a camera violation goes into judgment approximately 75 days after issuance); judgment adds accrued penalties and interest to the fine, and DOF can send the debt to a collection agency or seize assets. You generally cannot get a hearing on a ticket in judgment once it is more than one year old, absent a 'Request for Hearing After Judgment' showing good cause for not responding sooner. If you have $350 or more in tickets in judgment, your vehicle can be booted and towed (NYC Admin Code §19-212), though DOF sends warning notices first.",
+  "penaltyNote": "If you request a hearing more than 30 days after issuance and are found guilty, you must pay late penalties (per NYC Admin Code §19-211: up to $10 additional for responding after 30 days, up to $20 more after 45 days, and up to $30 more after 75 days, following a required second notice). If DOF does not receive payment or a hearing request, a parking violation goes into default judgment approximately 100 days after issuance (a camera violation goes into judgment approximately 75 days after issuance); judgment adds accrued penalties and interest to the fine, and DOF can send the debt to a collection agency or seize assets. You generally cannot get a hearing on a ticket in judgment once it is more than one year old, absent a 'Request for Hearing After Judgment' showing good cause for not responding sooner. If you have more than $350 in tickets in judgment (NYC Admin Code §19-212 uses \"greater than three hundred fifty dollars\"), your vehicle can be booted and towed (NYC Admin Code §19-212), though DOF sends warning notices first.",
   "municipalCodeRefs": [
     {
       "label": "NYC Admin Code §19-201 — Parking violations bureau created",
@@ -65,7 +65,9 @@
     "valid-payment",
     "wrong-ticket-details",
     "grace-period",
-    "not-my-vehicle"
+    "not-my-vehicle",
+    "disabled-vehicle",
+    "death-of-registrant"
   ],
   "defenses": [
     {
