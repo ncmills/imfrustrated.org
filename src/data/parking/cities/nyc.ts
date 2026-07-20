@@ -92,7 +92,7 @@ const obscured_signage: ParkingDefense = {
   citySlug: "nyc",
   title: "Fight a missing or illegible sign parking ticket in NYC",
   metaDescription:
-    "Free defense-statement letter for a NYC parking ticket where the posted sign was missing, illegible, or ambiguous — mail-ready template for the Parking Violations Bureau.",
+    "Free defense-statement letter for a NYC parking ticket with missing or obscured signage — mail-ready template for the Parking Violations Bureau.",
   whenItApplies:
     "You were ticketed for violating a posted sign restriction, but the sign was missing, illegible, ambiguous, or stated the wrong restriction.",
   body: `To: New York City Department of Finance — Parking Violations Bureau
@@ -105,7 +105,7 @@ I am pleading NOT GUILTY to this violation and respectfully request that it be d
 
 On [DATE], my vehicle was parked at [LOCATION]. At the time, the posted sign governing that spot was [DESCRIBE THE DEFECT — missing entirely, illegible due to damage/fading/obstruction, physically ambiguous about which restriction applied, or stated a restriction different from the one cited on this ticket]. I am not disputing that I did not notice a sign — I am asserting that the sign itself did not properly and legibly convey the restriction I am accused of violating, so I had no way to comply with a rule that was not properly posted.
 
-Under 19 RCNY §39-08, a violation cannot be sustained where the signage the driver was required to obey was not properly, legibly, and unambiguously posted at the location. I ask that this violation be dismissed on that basis.
+Under 19 RCNY §39-08, and consistent with the Department of Finance's own published dispute ground for missing or illegible signage, a violation cannot be sustained where the signage the driver was required to obey was not properly, legibly, and unambiguously posted at the location. I ask that this violation be dismissed on that basis.
 
 Attached: [clear photos of the entire side of the block from corner to corner, photos of the front and back of every sign on that side of the street, photos of the intersection street-name signs to confirm the exact location, and photos showing the property address where I was parked — all date- and time-stamped].
 
@@ -456,7 +456,7 @@ I am pleading NOT GUILTY to this violation and respectfully request that it be d
 
 On [DATE], my vehicle was legally parked at [LOCATION] when it suddenly and unexpectedly became mechanically disabled: [DESCRIBE THE FAILURE — e.g., the engine would not start, a flat tire with no safe way to change it, a transmission failure]. The vehicle was not illegally parked before it became disabled — it was parked lawfully at the time the failure occurred. I had the vehicle removed as quickly as reasonably possible, on [REMOVAL DATE/TIME], by [TOW COMPANY / REPAIR SHOP NAME].
 
-Under 19 RCNY §39-08, a vehicle that becomes suddenly and unexpectedly disabled while lawfully parked, and is thereafter expeditiously removed, is not liable for the resulting violation. I ask that this ticket be dismissed on that basis.
+Under 19 RCNY §39-08, and consistent with the Department of Finance's own published "disabled vehicle" dispute ground, a vehicle that becomes suddenly and unexpectedly disabled while lawfully parked, and is thereafter expeditiously removed, is not liable for the resulting violation. I ask that this ticket be dismissed on that basis.
 
 Attached: [tow or repair receipt showing the date/time the vehicle was removed, repair-shop documentation describing the sudden mechanical failure, and any contemporaneous evidence such as photos or a roadside-assistance record].
 
