@@ -1,9 +1,28 @@
 import type { ParkingCity, ParkingDefense } from "./types";
 export type { ParkingCity, ParkingDefense, ParkingDefenseSlug, CodeRef, SourceRef } from "./types";
 import { nycCity } from "./cities/nyc";
+import { losAngelesCity } from "./cities/los-angeles";
+import { chicagoCity } from "./cities/chicago";
+import { houstonCity } from "./cities/houston";
+import { phoenixCity } from "./cities/phoenix";
+import { philadelphiaCity } from "./cities/philadelphia";
+import { sanFranciscoCity } from "./cities/san-francisco";
+import { seattleCity } from "./cities/seattle";
+import { bostonCity } from "./cities/boston";
+import { washingtonDcCity } from "./cities/washington-dc";
 
-// City imports are added as each city file lands (Task 3, Task 10).
-const allCities: ParkingCity[] = [nycCity];
+const allCities: ParkingCity[] = [
+  nycCity,
+  losAngelesCity,
+  chicagoCity,
+  houstonCity,
+  phoenixCity,
+  philadelphiaCity,
+  sanFranciscoCity,
+  seattleCity,
+  bostonCity,
+  washingtonDcCity,
+];
 
 export function getAllParkingCities(): ParkingCity[] {
   return allCities;

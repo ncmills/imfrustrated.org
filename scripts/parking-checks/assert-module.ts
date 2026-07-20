@@ -22,5 +22,19 @@ check("recognizedDefenses all have a defense record",
   !!nyc && nyc.recognizedDefenses.every((s) => nyc.defenses.some((d) => d.slug === s)));
 check("nyc urls include a leaf", getParkingUrls().some((u) => u.url.startsWith("https://imfrustrated.org/letters/parking/nyc/")));
 
+// Full-roster expectations (Task 10): all 10 cities wired, each internally consistent.
+check("10 cities present", getAllParkingCities().length === 10);
+check("every city has >=1 defense with a cite & sources",
+  getAllParkingCities().every((c) => c.defenses.length >= 1 &&
+    c.defenses.every((d) => !!d.codeCite?.citation && d.sources.length >= 1)));
+check("every recognizedDefense has a defense record",
+  getAllParkingCities().every((c) => c.recognizedDefenses.every((s) => c.defenses.some((d) => d.slug === s))));
+check("every defense record is listed in recognizedDefenses",
+  getAllParkingCities().every((c) => c.defenses.every((d) => c.recognizedDefenses.includes(d.slug))));
+check("all city slugs unique",
+  new Set(getAllParkingCities().map((c) => c.slug)).size === getAllParkingCities().length);
+check("every city has agency + online + deadline + mail",
+  getAllParkingCities().every((c) => !!c.agency && !!c.submitOnlineUrl && c.contestDeadlineDays > 0 && !!c.submitMailAddress));
+
 if (failures) { console.error(`\n${failures} failure(s)`); process.exit(1); }
 console.log("\nAll module assertions passed.");
