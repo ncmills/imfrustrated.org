@@ -70,7 +70,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head />
+      <head>
+        {/* No-JS fallback: scroll-reveal content is opacity:0 until the
+            IntersectionObserver adds `.in`. Without JS that never runs, so
+            force revealed content visible. */}
+        <noscript>
+          <style>{`.reveal{opacity:1 !important;transform:none !important;}`}</style>
+        </noscript>
+      </head>
       <body
         className={`${bricolage.variable} ${hanken.variable} ${instrument.variable} ${jetbrains.variable}`}
       >
