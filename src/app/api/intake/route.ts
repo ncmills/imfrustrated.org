@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import { Resend } from "resend";
 import { supabase } from "@/lib/supabase";
+import { isReservedTestEmail } from "@/lib/email-validation";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -69,6 +70,14 @@ export async function POST(request: Request) {
   const email = (body.email ?? "").trim().toLowerCase();
   if (!EMAIL_REGEX.test(email) || email.length > 254) {
     return NextResponse.json({ error: "Valid email required" }, { status: 400 });
+  }
+
+  // Reject RFC 2606/6761 reserved-test and disposable domains. Acknowledge
+  // normally (don't reveal the filter), but skip persistence + notification so
+  // QA/bot noise never lands in the intake table.
+  if (isReservedTestEmail(email)) {
+    console.log("[intake] reserved/disposable email — dropped silently", { ip });
+    return NextResponse.json({ ok: true });
   }
 
   const state =
