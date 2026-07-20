@@ -221,7 +221,7 @@ export default function LettersHubPage() {
                   Fight it in your city
                 </h2>
                 <p className="text-sage-2 mt-2.5 leading-relaxed">
-                  City-specific dispute statements, verified against local rules — start with NYC.
+                  City-specific dispute statements, verified against local rules — 10 cities and counting.
                 </p>
                 <span className="inline-flex items-center gap-2 mt-5 font-semibold text-[0.95rem] text-clay">
                   See letters

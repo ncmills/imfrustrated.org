@@ -173,6 +173,8 @@ export default async function ParkingDefensePage({
               <span className="text-rule" aria-hidden>·</span>
               <a href="#legal-basis" className="hover:text-clay transition-colors duration-300">Legal basis</a>
               <span className="text-rule" aria-hidden>·</span>
+              <a href="#if-this-doesnt-work" className="hover:text-clay transition-colors duration-300">If this doesn&rsquo;t work</a>
+              <span className="text-rule" aria-hidden>·</span>
               <a href="#faq" className="hover:text-clay transition-colors duration-300">FAQ</a>
             </div>
           </Reveal>
