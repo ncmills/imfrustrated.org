@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllLetters, getAvailableCategories } from "@/data/letters";
+import { getParkingUrls } from "@/data/parking";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://imfrustrated.org";
@@ -30,5 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...core, ...categoryHubs, ...letterPages];
+  const parkingPages: MetadataRoute.Sitemap = getParkingUrls().map((u) => ({
+    url: u.url,
+    lastModified: u.lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...core, ...categoryHubs, ...letterPages, ...parkingPages];
 }
