@@ -82,6 +82,12 @@ const categoryIconPaths: Record<string, ReactNode> = {
       <path d="M6 24h36" />
     </>
   ),
+  parking: (
+    <>
+      <rect x="8" y="9" width="32" height="30" rx="6" />
+      <path d="M19 33V15h7a5.5 5.5 0 010 11h-7" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
 };
 
 function CategoryIcon({ slug }: { slug: string }) {
@@ -207,6 +213,7 @@ export default function LettersHubPage() {
             })}
             <Reveal delay={((categories.length % 3) + 1) as 1 | 2 | 3}>
               <Link href="/letters/parking" className="tool-card group block p-7 h-full">
+                <CategoryIcon slug="parking" />
                 <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">
                   Parking tickets
                 </p>
