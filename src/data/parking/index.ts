@@ -1,10 +1,9 @@
 import type { ParkingCity, ParkingDefense } from "./types";
 export type { ParkingCity, ParkingDefense, ParkingDefenseSlug, CodeRef, SourceRef } from "./types";
+import { nycCity } from "./cities/nyc";
 
 // City imports are added as each city file lands (Task 3, Task 10).
-const allCities: ParkingCity[] = [
-  // ...nycCity  (added in Task 3)
-];
+const allCities: ParkingCity[] = [nycCity];
 
 export function getAllParkingCities(): ParkingCity[] {
   return allCities;
