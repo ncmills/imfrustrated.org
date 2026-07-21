@@ -1,0 +1,231 @@
+{
+  "slug": "san-antonio",
+  "city": "San Antonio",
+  "state": "TX",
+  "agency": "City of San Antonio Municipal Court -- Parking Hearings. Parking citations are civil offenses, not criminal ones (San Antonio, Tex., Code of Ordinances ch. 19, art. VI, div. 3, § 19-225(a): stopping, standing, and parking ordinance violations 'are hereby declared to be civil offenses'). They are contested and adjudicated through the Municipal Court's 'administrative adjudication' process created by § 19-225, before a Parking Hearing Officer appointed by the city manager (§ 19-225(c)), and payment does not appear on your state driving record (sa.gov, Parking Tickets (Citations); § 19-225(a)). NOTE: San Antonio's separate 'Administrative Hearings' track (case numbers prefixed 'AH') also lives under the Municipal Court's 'Parking & Administrative Hearings' menu, but sa.gov's own Administrative Hearings page describes that track as 'an alternative enforcement mechanism ... for the enforcement of certain city codes, usually relating to building codes, the condition of a property, or animal control' -- NOT parking. Do not confuse the two: parking citations use the § 19-225 Parking Hearings process described in this record. SOURCING NOTE: this record was researched with a live Playwright browser against library.municode.com's rendered (JavaScript) Code of Ordinances -- every ordinance citation below was read directly from the live page text (confirmed current as of the site's own 'VERSION: JUL 7, 2026 (CURRENT)' label), including two sections (§ 19-197 and § 19-201) re-opened fresh via their own direct Municode section URLs to confirm the quoted text. No Wayback Machine or cached copy was used.",
+  "submitOnlineUrl": "https://6.municipal.cc/sanantoniocosatx/citationwebportal/",
+  "submitMailAddress": "City of San Antonio Municipal Court, Attn: Parking Hearings, 401 S. Frio St., San Antonio, TX 78207",
+  "submitInPerson": "San Antonio Municipal Court, 401 S. Frio St., San Antonio, TX 78207. Court hours: Monday-Friday, 8 a.m.-4:30 p.m. Parking hearing hours specifically: Monday-Friday, 8-10 a.m. & 1-3 p.m. Paid parking is available in front of the Courthouse ($4, credit or debit cards only, no in/out privileges). A Drop Box (personal check or money order only) and a Magistrate Office are also available 24/7 at the same address for payments (not contests).",
+  "howToContest": [
+    "Locate your citation number and check the printed facts against your vehicle and the actual violation: license plate, vehicle description, violation, date/time, and location. Under § 19-224, the violation notice is required to contain the parking meter or pay station number (if applicable), the state and number of the vehicle's license plate, the nature of the violation, and any other facts necessary to a thorough understanding of the circumstances -- a citation missing or misstating these facts is your evidence for a wrong-ticket-details contest.",
+    "Confirm your case has been created in the court's docketing system before assuming a contest method will be accepted -- sa.gov states 'no action can be taken in any case before the submission of the ticket to the municipal court and the creation of a parking case in the court docketing system,' and the Municipal Court's own FAQ says it can take up to ten business days for a citation to appear online. If a case is created after the hearing date printed on your original ticket, the court mails a summons with a new hearing date to the vehicle's registered owner. Search for your case only through the official court website -- sa.gov's Parking Tickets page warns of fraudulent emails impersonating the Municipal Court over 'delinquent parking violations' that try to collect personal information; do not reply to such emails.",
+    "IMPORTANT -- San Antonio does not offer online contest submission. The city's online system (the 'Search or Pay Your Citation' portal, linked directly from sa.gov's Pay a Ticket or Citation page) is for reviewing and paying a citation and checking case status only; it has no contest, dispute, or hearing-request function. To actually contest a citation you must use one of the two methods below.",
+    "Method 1 -- Appear in person: you must appear at San Antonio Municipal Court (401 S. Frio St.) no later than the hearing date listed on your parking ticket, during parking hearing hours (Monday-Friday, 8-10 a.m. & 1-3 p.m.). Ordinance § 19-225(b) also gives you the right to an earlier 'instanter hearing' before your originally scheduled hearing date, and § 19-225(c) gives hearing officers authority to compel witnesses and documents.",
+    "Method 2 -- Contest by mail: send a letter with your ticket/citation number and any evidence necessary to contest the ticket to City of San Antonio Municipal Court, Attn: Parking Hearings, 401 S. Frio St., San Antonio, TX 78207, before your court date as assigned on your citation or summons.",
+    "Gather and mail (or bring) the specific evidence your situation needs: for a disabled-placard-related ticket, a copy of your valid disabled parking placard or ISA license plate plus the associated driver's license/ID (§ 19-201); for a vehicle that was stolen or sold before the violation date, a Bill of Sale or DMV verification of a Texas Motor Vehicle Transfer Notification (VTR-346), or a police report for a stolen vehicle (rebuts the § 19-225(d) presumption that the registered owner was the operator); for a missing/expired-meter or pay-station ticket, your payment receipt or app confirmation (rebuts the § 19-223 'prima facie evidence' presumption); for a missing-sign ticket, photos showing no sign was posted (§ 19-197).",
+    "IMPORTANT -- failure to appear or otherwise respond by the hearing date is not neutral: ordinance § 19-225(f) states 'the failure of any person charged with an offense to appear at the hearing shall be an admission of liability for the charged offense.' A Parking Hearing Officer reviews your case (your mailed letter and evidence, or your in-person appearance and evidence) and issues a written order stating liability and any fine, cost, or fee (§ 19-225(f)).",
+    "If the hearing officer's order goes against you, you may appeal to a municipal court judge by filing an appeal petition with the court clerk not later than 30 days after the order is filed, along with a $5.00 appeal filing fee (§ 19-225(i)). The appeal hearing must be scheduled within 10 days of filing and reviews the evidence already presented to the hearing officer. Filing an appeal does not stop enforcement/collection unless you also post a bond with the municipal court director (§ 19-225(j)).",
+    "If a parking hearing order is entered against you and goes unpaid, both sa.gov and ordinance § 19-225(g) describe these enforcement mechanisms: a $10 fine imposed after 14 days of non-payment; immobilization (booting, plus a $60 booting fee under § 19-225(m)) of the vehicle if found on public right-of-way, easement, a city-owned parking facility, or other public property; impoundment of the vehicle under the same circumstances if the owner has 3 or more offenses in a calendar year; and the City refusing registration of the vehicle."
+  ],
+  "contestDeadlineDays": 0,
+  "contestDeadlineNote": "SAN ANTONIO DOES NOT USE A FIXED N-DAY CONTEST WINDOW like most other cities in this dataset for the INITIAL contest -- this is a genuine mechanism difference, not a research gap. San Antonio's own Municipal Court page states plainly: 'If you wish to contest a parking ticket, you must appear no later than hearing date listed on the parking ticket,' and the Pay a Ticket or Citation page describes the mail option the same way: 'You may make a request in writing to the Court before your court date as assigned on your citation or summons.' In both cases the deadline is an absolute, ticket-specific calendar date that the court prints directly on the individual citation or mails on a summons -- not a fixed number of days counted from issuance the way NYC's 30 days, Houston's 30 days, or Chicago's 7 days work. No sa.gov page or ordinance section confirmed in this research pass states a standard number of days between issuance and the printed hearing date, so contestDeadlineDays is set to 0 as an explicit non-value/sentinel rather than an invented number -- treat it as 'not applicable; read the hearing date printed on the actual ticket or summons.' Separately, the Municipal Court's own FAQ notes it can take 'up to ten business days' after issuance for a citation to even appear in the court's online search system -- that is a processing-lag figure, not the contest deadline itself. NOTE ON A DIFFERENT, LATER DEADLINE: if you lose at the initial hearing, ordinance § 19-225(i) DOES impose a fixed 30-day window (plus a $5.00 fee) to file an appeal petition with the municipal court clerk after the hearing officer's order is filed -- that fixed-day deadline governs the post-order appeal, not the initial contest, so it is documented in howToContest/penaltyNote rather than overriding this field. Sources: https://www.sa.gov/Directory/Departments/Court/Parking-Administrative-Hearings/Parking-Tickets ; https://www.sa.gov/Directory/Departments/Court/Pay ; https://www.sa.gov/Directory/Departments/Court/Appearances-Procedures/FAQ ; San Antonio, Tex., Code of Ordinances ch. 19, art. VI, § 19-225(b), (i).",
+  "penaltyNote": "Parking-ticket payment in San Antonio is treated as a civil offense and does not appear on your state driving record (sa.gov, Parking Tickets (Citations); ordinance § 19-225(a): stopping, standing, and parking violations 'are hereby declared to be civil offenses'). Maximum fine: the total fine per violation may not exceed $500.00, and all fines/costs/fees are paid into the city treasury general fund (§ 19-225(h)). Failure to appear: ordinance § 19-225(f) makes this explicit -- 'the failure of any person charged with an offense to appear at the hearing shall be an admission of liability for the charged offense' (this is the ordinance itself, not the separate code-compliance/animal-care 'Administrative Hearings' track, which is a different process). Once a parking hearing order is entered and unpaid, both sa.gov and § 19-225(g) list: a $10 fine imposed after 14 days of non-payment; vehicle immobilization (booting) if found on any public street, public right-of-way, public easement, city-owned parking facility, or other public property (plus a $60.00 booting fee per § 19-225(m), waived if the vehicle is towed/impounded within 24 hours to protect it from vandalism or theft); vehicle impoundment under the same location conditions if the registered owner has committed 3 or more offenses in a calendar year; and the City refusing to register the vehicle (also authorized by V.T.C.A. Transportation Code § 702.003, referenced in § 19-225(g)(4)). Appeal: a person found liable may appeal to a municipal court judge within 30 days of the order (plus a $5.00 filing fee), but filing an appeal does not stay enforcement/collection unless a bond is posted (§ 19-225(i)-(j)).",
+  "municipalCodeRefs": [
+    {
+      "label": "San Antonio Code of Ordinances § 19-225 -- Administrative adjudication of stopping, standing and parking violations (establishes the civil-offense/Parking Hearing Officer process, registered-owner presumption, hearing-order enforcement, appeal procedure, and the failure-to-appear rule; read live via Playwright)",
+      "citation": "San Antonio, Tex., Code of Ordinances ch. 19, art. VI, div. 3, § 19-225",
+      "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV3PAME_S19-225ADADSTSTPAVI"
+    },
+    {
+      "label": "San Antonio Code of Ordinances § 19-224 -- Enforcement of regulations (required content of a parking violation notice: meter/pay-station number, plate number, nature of violation, and facts necessary to understand the circumstances; read live via Playwright)",
+      "citation": "San Antonio, Tex., Code of Ordinances ch. 19, art. VI, div. 3, § 19-224",
+      "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV3PAME_S19-224ENRE"
+    },
+    {
+      "label": "San Antonio Code of Ordinances § 19-223 -- Presumptions (an expired meter/pay-station display is only 'prima facie evidence' of a violation, i.e. a rebuttable presumption; read live via Playwright)",
+      "citation": "San Antonio, Tex., Code of Ordinances ch. 19, art. VI, div. 3, § 19-223",
+      "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV3PAME_S19-223PR"
+    },
+    {
+      "label": "San Antonio Code of Ordinances § 19-197 -- Parking time limit signs required except for decal program time limits; prohibited parking signs required (a parking regulation has no effect unless a sign was actually erected at the time of the alleged violation; re-opened fresh via its own direct Municode section URL and confirmed live)",
+      "citation": "San Antonio, Tex., Code of Ordinances ch. 19, art. VI, div. 2, § 19-197",
+      "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV2SPPARE_S19-197PATILISIREEXDEPRTILIPRPASIRE"
+    },
+    {
+      "label": "San Antonio Code of Ordinances ch. 19, art. VI -- Stopping, Standing and Parking (general article; table of contents for all subsections cited in this record)",
+      "citation": "San Antonio, Tex., Code of Ordinances ch. 19, art. VI",
+      "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA"
+    }
+  ],
+  "recognizedDefenses": ["not-my-vehicle", "obscured-signage", "valid-payment", "wrong-ticket-details", "disabled-placard-reduction"],
+  "defenses": [
+    {
+      "slug": "not-my-vehicle",
+      "whenItApplies": "The vehicle named on the parking citation was stolen, or was sold/transferred to someone else, before the date of the violation shown on the ticket -- so you were not the owner (or an authorized operator) of the vehicle at the time it was ticketed.",
+      "evidenceChecklist": [
+        "Sold/transferred vehicle: a Bill of Sale showing the buyer and the buyer's contact information, the seller, a description of the vehicle, and the date of sale",
+        "Sold/transferred vehicle (alternative/additional): verification from the Texas Department of Motor Vehicles that you properly submitted a Texas Motor Vehicle Transfer Notification form (VTR-346)",
+        "Stolen vehicle: the police report related to the theft of the vehicle",
+        "A copy of the parking violation notice/citation you received"
+      ],
+      "cityNotes": "San Antonio's whole parking-hearing process runs on a rebuttable presumption, not conclusive liability: ordinance § 19-225(d) states 'it is presumed that the registered owner of the vehicle that is the subject of the hearing is the person who parked or stopped the vehicle at the time and place of the offense charged' -- meaning proof that you were no longer the owner (or that the vehicle was stolen) at the time of the violation directly rebuts that presumption. sa.gov's Parking Tickets page operationalizes this: for a vehicle 'stolen or sold at the time of the ticket, the case may be closed after a review of supporting documentation,' mailed to the same Attn: Parking Hearings address used for standard mail contests. The Municipal Court's own FAQ confirms the sold-vehicle version in plain language: 'I received a parking violation letter but I sold the vehicle BEFORE the violation date. What can I provide to the court? ... Bill of sale of the vehicle [and] Verification from DMV that vehicle is no longer under your name.'",
+      "codeCite": {
+        "label": "San Antonio Code of Ordinances § 19-225(d) -- Vehicle registered owner presumed to be operator (a rebuttable presumption, not conclusive liability)",
+        "citation": "San Antonio, Tex., Code of Ordinances ch. 19, art. VI, div. 3, § 19-225(d)",
+        "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV3PAME_S19-225ADADSTSTPAVI"
+      },
+      "sources": [
+        {
+          "label": "City of San Antonio -- Parking Tickets (Citations) (\"Vehicle Stolen or Sold\")",
+          "url": "https://www.sa.gov/Directory/Departments/Court/Parking-Administrative-Hearings/Parking-Tickets"
+        },
+        {
+          "label": "City of San Antonio Municipal Court -- Frequently Asked Questions (\"I received a parking violation letter but I sold the vehicle BEFORE the violation date\")",
+          "url": "https://www.sa.gov/Directory/Departments/Court/Appearances-Procedures/FAQ"
+        },
+        {
+          "label": "San Antonio Code of Ordinances § 19-225 -- Administrative adjudication of stopping, standing and parking violations (read live via Playwright)",
+          "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV3PAME_S19-225ADADSTSTPAVI"
+        }
+      ]
+    },
+    {
+      "slug": "obscured-signage",
+      "whenItApplies": "You were ticketed for exceeding a posted time limit, or for a parking prohibition that depends on a posted sign, but no such sign was actually erected/visible at that location at the time of the alleged violation (missing, knocked down, obscured, or never installed).",
+      "evidenceChecklist": [
+        "Photos of the parking location taken as close as possible to the time of the citation, showing the absence of any regulatory sign (or an obscured/illegible/fallen sign)",
+        "A copy of the citation showing the specific violation code and location cited",
+        "Any independent evidence the location lacks signage (e.g., Street View history, prior 311 reports of a missing/damaged sign) if available"
+      ],
+      "cityNotes": "This is a direct, textual ordinance defense, not just city guidance: § 19-197 states that whenever an ordinance prohibits parking or imposes a parking time limit (other than decal-program time limits), the traffic engineer must erect a sign giving notice of it, and 'no such parking regulation shall be given effect unless such sign is erected at the time of the alleged parking violation.' In other words, if the required sign was not actually up at the time you were ticketed, the underlying parking regulation legally has no effect for that citation. Confirmed live via Playwright by re-opening this section's own direct Municode URL fresh (not the article-wide page) and reading the rendered text.",
+      "codeCite": {
+        "label": "San Antonio Code of Ordinances § 19-197 -- Parking time limit signs required except for decal program time limits; prohibited parking signs required",
+        "citation": "San Antonio, Tex., Code of Ordinances ch. 19, art. VI, div. 2, § 19-197",
+        "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV2SPPARE_S19-197PATILISIREEXDEPRTILIPRPASIRE"
+      },
+      "sources": [
+        {
+          "label": "San Antonio Code of Ordinances § 19-197 (re-opened fresh via its own direct Municode section URL and confirmed live via Playwright)",
+          "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV2SPPARE_S19-197PATILISIREEXDEPRTILIPRPASIRE"
+        },
+        {
+          "label": "City of San Antonio -- Parking Tickets (Citations) (general contest process: appear by hearing date, or contest by mail with evidence)",
+          "url": "https://www.sa.gov/Directory/Departments/Court/Parking-Administrative-Hearings/Parking-Tickets"
+        }
+      ]
+    },
+    {
+      "slug": "valid-payment",
+      "whenItApplies": "You were ticketed at an on-street or off-street paid-parking zone (parking meter or pay station) for an expired/unpaid meter or pay-station space, but you did in fact pay for the parking session -- e.g. your receipt, app confirmation, or pay-and-display slip shows valid payment covering the cited time.",
+      "evidenceChecklist": [
+        "Payment receipt or pay-station printout showing the date, time, and duration paid for",
+        "Mobile-app payment confirmation/screenshot (if paid via a parking payment app), showing the space/zone number and paid time window",
+        "A photo of the pay-and-display receipt as it was displayed inside your windshield next to the curb, if applicable",
+        "A copy of the citation showing the meter/pay-station number and cited time"
+      ],
+      "cityNotes": "San Antonio's meter/pay-station enforcement scheme is explicitly built on a rebuttable presumption, not conclusive proof of nonpayment: § 19-223 ('Presumptions') states that an expired display on the meter, pay-by-space station, or pay-and-display receipt 'is prima facie evidence' -- not conclusive evidence -- that the vehicle was parked beyond the paid time or that the operator did not pay. Payment itself is required immediately upon parking under § 19-221(a), and § 19-222 lists the specific violations (parking when the meter/pay station 'does not show paid-for time,' failing to pay immediately, failing to display a pay-station receipt properly, etc.) that a valid payment record directly rebuts. Because the presumption is only prima facie, producing your receipt or app confirmation is exactly the kind of evidence the ordinance contemplates you would submit at your hearing or by mail to overcome it.",
+      "codeCite": {
+        "label": "San Antonio Code of Ordinances § 19-223 -- Presumptions (expired meter/pay-station display is only prima facie evidence of a violation, not conclusive)",
+        "citation": "San Antonio, Tex., Code of Ordinances ch. 19, art. VI, div. 3, § 19-223",
+        "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV3PAME_S19-223PR"
+      },
+      "sources": [
+        {
+          "label": "San Antonio Code of Ordinances § 19-223 -- Presumptions (read live via Playwright)",
+          "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV3PAME_S19-223PR"
+        },
+        {
+          "label": "San Antonio Code of Ordinances § 19-221 -- Operation of meters and pay stations (payment obligation, methods, and pay-and-display procedure; read live via Playwright)",
+          "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV3PAME_S19-221OPMEPAST"
+        },
+        {
+          "label": "City of San Antonio -- Parking Tickets (Citations) (general contest process: appear by hearing date, or contest by mail with evidence)",
+          "url": "https://www.sa.gov/Directory/Departments/Court/Parking-Administrative-Hearings/Parking-Tickets"
+        }
+      ]
+    },
+    {
+      "slug": "wrong-ticket-details",
+      "whenItApplies": "The citation itself contains information that does not match your vehicle or the actual facts of the violation -- e.g., an incorrect license plate, vehicle description, meter/pay-station number, date, time, or location.",
+      "evidenceChecklist": [
+        "A copy or photo of the actual citation showing the incorrect field(s)",
+        "Your vehicle registration or title, to compare the correct plate number and vehicle description against what's on the citation",
+        "Any other evidence contradicting the citation's stated location, date, or time (e.g., photos, receipts, other timestamped records)"
+      ],
+      "cityNotes": "Ordinance § 19-224 sets the required content of a parking violation notice: it 'should contain the number of the parking meter or pay station at which the vehicle is parked, the name of the state and number of the vehicle's license plate; the nature of the violation, and any other facts, a knowledge of which is necessary to a thorough understanding of the circumstances attending such violation.' Separately, § 19-225(e) makes clear the citation/summons is only 'prima facie evidence of the facts contained therein' -- a rebuttable presumption, not conclusive proof -- so a citation that misstates the required facts (wrong plate, wrong meter/pay-station number, wrong location, etc.) can be contested on that basis through San Antonio's general mail-or-appear process: 'contest your parking ticket by mail by sending a letter with the ticket number and any evidence necessary to contest the ticket. A Parking Hearing Officer will review your case and make a ruling.'",
+      "codeCite": {
+        "label": "San Antonio Code of Ordinances § 19-224 -- Enforcement of regulations (required content of a parking violation notice)",
+        "citation": "San Antonio, Tex., Code of Ordinances ch. 19, art. VI, div. 3, § 19-224",
+        "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV3PAME_S19-224ENRE"
+      },
+      "sources": [
+        {
+          "label": "San Antonio Code of Ordinances § 19-224 -- Enforcement of regulations (read live via Playwright)",
+          "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV3PAME_S19-224ENRE"
+        },
+        {
+          "label": "San Antonio Code of Ordinances § 19-225(e) -- citation/summons is prima facie (rebuttable) evidence of the facts it contains (read live via Playwright)",
+          "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV3PAME_S19-225ADADSTSTPAVI"
+        },
+        {
+          "label": "City of San Antonio -- Parking Tickets (Citations) (general contest process: appear by hearing date, or contest by mail with evidence)",
+          "url": "https://www.sa.gov/Directory/Departments/Court/Parking-Administrative-Hearings/Parking-Tickets"
+        }
+      ]
+    },
+    {
+      "slug": "disabled-placard-reduction",
+      "whenItApplies": "You received a ticket for a disabled parking violation, and you are the holder of a valid disabled parking placard or a license plate bearing the International Symbol of Access (ISA) -- you may be eligible for reduced fines or fees rather than paying the full cited amount.",
+      "evidenceChecklist": [
+        "A copy of your valid disabled parking placard, or your license plate with the International Symbol of Access (ISA)",
+        "The driver's license or ID card associated with the placard/plate holder",
+        "A copy of the citation"
+      ],
+      "cityNotes": "Ordinance § 19-201 is the underlying violation section: it restricts disabled-designated spaces to vehicles displaying a valid 'disabled' tag or ISA-plate/temporary ID card (§ 19-201(a)), and its own presumption clause (§ 19-201(c)) makes the absence of a valid tag/plate 'prima facie evidence' (again, rebuttable, not conclusive) that the vehicle was illegally parked. sa.gov's published guidance is narrower than a full dismissal of the underlying citation: a placard/ISA-plate holder ticketed for a disabled parking violation 'may be eligible for reduced fines or fees,' not automatic dismissal, and evidence 'may be submitted by mail' or brought to the municipal court for review by a hearing officer; sa.gov also notes 'having disabled ticket reductions processed' can be completed at the Cashier during published Cashier Hours -- i.e. this can run through the payment/cashier process rather than only a contested hearing.",
+      "codeCite": {
+        "label": "San Antonio Code of Ordinances § 19-201 -- Parking for disabled persons; violations",
+        "citation": "San Antonio, Tex., Code of Ordinances ch. 19, art. VI, div. 2, § 19-201",
+        "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV2SPPARE_S19-201PADIPEVI"
+      },
+      "sources": [
+        {
+          "label": "San Antonio Code of Ordinances § 19-201 (re-opened fresh via its own direct Municode section URL and confirmed live via Playwright)",
+          "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV2SPPARE_S19-201PADIPEVI"
+        },
+        {
+          "label": "City of San Antonio -- Parking Tickets (Citations) (\"Disabled Parking Violations\")",
+          "url": "https://www.sa.gov/Directory/Departments/Court/Parking-Administrative-Hearings/Parking-Tickets"
+        },
+        {
+          "label": "City of San Antonio Municipal Court -- Pay a Ticket or Citation (Cashier note on disabled ticket reductions)",
+          "url": "https://www.sa.gov/Directory/Departments/Court/Pay"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "City of San Antonio -- Parking Tickets (Citations)",
+      "url": "https://www.sa.gov/Directory/Departments/Court/Parking-Administrative-Hearings/Parking-Tickets"
+    },
+    {
+      "label": "City of San Antonio -- Parking & Administrative Hearings (hub page)",
+      "url": "https://www.sa.gov/Directory/Departments/Court/Parking-Administrative-Hearings"
+    },
+    {
+      "label": "City of San Antonio -- Administrative Hearings (code-compliance/animal-care track, cited only to confirm it is distinct from the parking-ticket process)",
+      "url": "https://www.sa.gov/Directory/Departments/Court/Parking-Administrative-Hearings/Administrative-Hearings"
+    },
+    {
+      "label": "City of San Antonio Municipal Court -- Pay a Ticket or Citation",
+      "url": "https://www.sa.gov/Directory/Departments/Court/Pay"
+    },
+    {
+      "label": "City of San Antonio Municipal Court -- Frequently Asked Questions",
+      "url": "https://www.sa.gov/Directory/Departments/Court/Appearances-Procedures/FAQ"
+    },
+    {
+      "label": "San Antonio Municipal Court -- Search or Pay Your Citation (official online portal; payment and case-status only, no online contest function)",
+      "url": "https://6.municipal.cc/sanantoniocosatx/citationwebportal/"
+    },
+    {
+      "label": "San Antonio Code of Ordinances ch. 19, art. VI -- Stopping, Standing and Parking (Municode; read live in full via Playwright, VERSION: JUL 7, 2026 (CURRENT))",
+      "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA"
+    },
+    {
+      "label": "San Antonio Code of Ordinances § 19-225 -- Administrative adjudication of stopping, standing and parking violations (direct section URL, read live via Playwright)",
+      "url": "https://library.municode.com/tx/san_antonio/codes/code_of_ordinances?nodeId=PTIICO_CH19MOVETR_ARTVISTSTPA_DIV3PAME_S19-225ADADSTSTPAVI"
+    }
+  ],
+  "verifiedAt": "2026-07-20"
+}

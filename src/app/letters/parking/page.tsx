@@ -61,7 +61,7 @@ export default function ParkingIndexPage() {
                       Fight a parking ticket in {c.city}
                     </p>
                     <p className="text-sage-2 text-sm mt-2">
-                      {c.recognizedDefenses.length} defenses · {c.contestDeadlineDays}-day window
+                      {c.recognizedDefenses.length} defenses · {c.contestDeadlineDays > 0 ? `${c.contestDeadlineDays}-day window` : "see ticket for date"}
                     </p>
                   </Link>
                 </li>

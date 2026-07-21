@@ -20,7 +20,8 @@ export async function generateMetadata({
   if (!c) return {};
   const url = `https://imfrustrated.org/letters/parking/${c.slug}`;
   const title = `How to Fight a Parking Ticket in ${c.city} | I'm Frustrated dot Org`;
-  const description = `Contest a ${c.city} parking ticket yourself: the exact defense statement, where to submit it (${c.agency}), and your ${c.contestDeadlineDays}-day deadline. Verified against ${c.state} rules.`;
+  const deadlinePhrase = c.contestDeadlineDays > 0 ? `your ${c.contestDeadlineDays}-day deadline` : `your ticket's deadline`;
+  const description = `Contest a ${c.city} parking ticket yourself: the exact defense statement, where to submit it (${c.agency}), and ${deadlinePhrase}. Verified against ${c.state} rules.`;
   return {
     title,
     description,
@@ -158,7 +159,9 @@ export default async function ParkingCityPage({
           <Reveal delay={3}>
             <div className="mt-7 bg-clay/10 border border-clay/30 rounded-2xl px-6 py-5">
               <p className="font-disp font-semibold text-sage text-lg">
-                You have about {c.contestDeadlineDays} days from the date on the ticket.
+                {c.contestDeadlineDays > 0
+                  ? `You have about ${c.contestDeadlineDays} days from the date on the ticket.`
+                  : "Your deadline is the hearing date printed on your ticket."}
               </p>
               <p className="text-sage-2 text-base leading-[1.6] mt-1">{c.contestDeadlineNote}</p>
               <p className="text-sage-2 text-sm mt-2">{c.penaltyNote}</p>
