@@ -10,6 +10,17 @@ import { sanFranciscoCity } from "./cities/san-francisco";
 import { seattleCity } from "./cities/seattle";
 import { bostonCity } from "./cities/boston";
 import { washingtonDcCity } from "./cities/washington-dc";
+import { sanDiegoCity } from "./cities/san-diego";
+import { sanJoseCity } from "./cities/san-jose";
+import { dallasCity } from "./cities/dallas";
+import { austinCity } from "./cities/austin";
+import { denverCity } from "./cities/denver";
+import { portlandCity } from "./cities/portland";
+import { miamiCity } from "./cities/miami";
+import { atlantaCity } from "./cities/atlanta";
+import { minneapolisCity } from "./cities/minneapolis";
+import { lasVegasCity } from "./cities/las-vegas";
+import { baltimoreCity } from "./cities/baltimore";
 
 const allCities: ParkingCity[] = [
   nycCity,
@@ -22,6 +33,17 @@ const allCities: ParkingCity[] = [
   seattleCity,
   bostonCity,
   washingtonDcCity,
+  sanDiegoCity,
+  sanJoseCity,
+  dallasCity,
+  austinCity,
+  denverCity,
+  portlandCity,
+  miamiCity,
+  atlantaCity,
+  minneapolisCity,
+  lasVegasCity,
+  baltimoreCity,
 ];
 
 export function getAllParkingCities(): ParkingCity[] {
