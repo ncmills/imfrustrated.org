@@ -1,0 +1,242 @@
+{
+  "slug": "baltimore",
+  "city": "Baltimore",
+  "state": "MD",
+  "agency": "Baltimore City Department of Finance, Bureau of Revenue Collections, bills and collects parking citations (issued by Baltimore Police, the Department of Transportation, and automated red-light/speed cameras). IMPORTANT — VERIFIED CORRECTION: parking citations are NOT adjudicated by the Baltimore City Environmental Control Board (ECB). The ECB's own page states it adjudicates citations only from the Department of Housing and Community Development, the Health Department, the Department of Transportation (non-parking), the Fire Department, the Department of Public Works, Recreation and Parks, and the Police Department for 'sanitation, environmental, health, safety, and other quality of life issues' — parking is explicitly outside that list and is 'paid through a separate city system.' Contested parking, red-light, and speed-camera citations go to trial before the District Court of Maryland (District 1, Baltimore City) — for parking citations, the Patapsco District Court location; for camera citations, the Wabash District Court location. The City of Baltimore states it 'has no purview over this process' once a trial petition reaches the court.",
+  "submitOnlineUrl": "https://pay.baltimorecity.gov/pftr",
+  "submitMailAddress": "For parking-citation trial petitions (only required by mail if your citation is more than 45 days old, since the online portal will not accept older citations): District Court of Maryland, 700 East Patapsco Avenue, Baltimore, MD 21225. (Red-light/speed camera citation petitions go instead to District Court of Maryland, 5800 Wabash Avenue, Baltimore, MD 21215.) Routine ticket payment by mail goes to a different address: P.O. Box 13327, Baltimore, Maryland 21203.",
+  "submitInPerson": "There is no in-person trial-filing window for parking citations — trial petitions must go through the online portal (citations 45 days old or less) or be submitted directly to the District Court of Maryland by mail (see submitMailAddress). For payment, an administrative-abatement request for a 'material error' on the citation, or a stolen-vehicle abatement request (alternatives to a trial), visit the Bureau of Revenue Collections in person at the Abel Wolman Municipal Building, 200 N. Holliday Street, Baltimore, MD 21202, Monday–Friday 8:30am–4:30pm.",
+  "howToContest": [
+    "Find the citation/issue number (or your vehicle's tag number) printed on the ticket, and confirm the violation code, date, time, and location listed.",
+    "Decide whether to pay or contest. Baltimore City's Department of Finance FAQ states the City itself 'does not have the authority' to reduce or cancel a citation — 'if a motorist disputes a citation, they must request a trial,' citing Baltimore City Code Article 31, §36-1.",
+    "If your citation is 45 days old or less, submit a Parking Fine Trial Request online at pay.baltimorecity.gov/pftr by searching your tag number or citation/issue number, then requesting a trial through that portal.",
+    "If your citation is more than 45 days old, the online portal will not accept it ('We do not accept petitions online for citations older than 45 days'). You must instead submit your trial petition directly to the District Court of Maryland — 700 E. Patapsco Avenue, Baltimore, MD 21225 for parking citations, or 5800 Wabash Avenue, Baltimore, MD 21215 for red-light/speed camera citations — since, per the City, 'petitions to set trial can only be received and processed by District Court of Maryland' at that point.",
+    "If your dispute is a factual/clerical mistake on the citation itself (wrong plate, date, location, etc.) rather than a defense you need a judge to weigh, you can instead call the Bureau of Revenue Collections at 410-396-3000 to request an administrative abatement for 'material error,' authorized under Baltimore City Code Article 31, §36-24(a)(2) — no trial required for this path.",
+    "If the vehicle (or its plates) was stolen at the time of the citation, call 410-396-3000 or email baltimorecitycollections@baltimorecity.gov and provide a full police report of the theft (plus an insurer's total-loss statement if the vehicle was never recovered); the Bureau forwards qualifying citations to the Baltimore City State's Attorney's Office for abatement rather than requiring a trial.",
+    "Gather your supporting evidence (photos, receipts, police reports, maintenance/repair records, etc.) to bring to trial or attach to your abatement request.",
+    "Appear on your assigned trial date at the District Court location shown on your notice. If you cannot attend, mail a written postponement request — with your name, citation number, and a brief explanation — to that same District Court address before the assigned date.",
+    "A District Court of Maryland judge (not a city hearing officer) decides the case at trial. Baltimore City does not publish a separate city-run appeal step for a parking-citation trial decision; normal Maryland District Court procedure applies from that point forward."
+  ],
+  "contestDeadlineDays": 45,
+  "contestDeadlineNote": "Baltimore City Code Article 31, §36-21 and §36-22 do not themselves set a fixed statutory number of days to contest a citation — §36-22(a) instead triggers a formal notice if you neither pay 'by the date specified in the citation' (a date that is set on the individual ticket) nor file a notice of intention to stand trial, and a monthly penalty then begins to accrue if the matter is still unresolved 15 days after that formal notice (§36-22(b)(1)). The one fixed, officially published number is the ONLINE trial-request cutoff: Baltimore's own Parking Fine Trial Request portal states in bold, 'We do not accept petitions online for citations older than 45 days' (source: pay.baltimorecity.gov/pftr, fetched 2026-07-20). Missing the 45-day online window does not end your right to contest — the same page directs you to petition the District Court of Maryland directly, in writing, at 700 E. Patapsco Avenue, Baltimore, MD 21225 for parking citations (5800 Wabash Avenue, Baltimore, MD 21215 for camera citations) — but the City 'has no purview over this process' once you're past the online window, and letting a citation sit long enough to miss the 'date specified in the citation' still risks the formal-notice/penalty sequence under §36-22 and, after 52 days unpaid, an MVA registration hold. Practical takeaway: request your trial online within 45 days of the citation date if at all possible.",
+  "penaltyNote": "If a citation is neither paid by the date specified on the citation nor met with a notice of intention to stand trial, the Department of Finance sends a formal notice to the owner's last known address (Baltimore City Code Art. 31, §36-22(a)). If the citation still isn't resolved within 15 days of that notice, a monthly penalty accrues equal to whichever is LESS: $16 for each month or part of a month the citation remains unsatisfied, or 10 times the fine amount (§36-22(b)(1)) — that monthly penalty pauses under §36-22(b)(2) only while the person is making timely payments on a schedule the Director of Finance has agreed to, though the Department's own vehicle-fines FAQ separately states 'Do you offer a payment plan for parking fines? No,' so confirm current availability directly with the Bureau (410-396-3000) before relying on that provision. Separately, if a citation remains unpaid 52 days after issuance, the City notifies the Maryland Motor Vehicle Administration (MVA), requests a 'jurisdictional hold' on the vehicle's registration, and MVA applies a $30 flag fee (source: baltimorecity.gov Vehicle Fines and Citations FAQ); §36-22(b)(3) separately authorizes an additional $25 penalty when the City requests MVA refuse registration, and the City's citation-payment portal likewise references a $25 registration flag fee that may be added to the amount owed — these may be the same city-assessed fee described two ways or a distinct city vs. state charge; the primary sources do not reconcile the $25 vs. $30 figures, so do not assume they are identical. A vehicle with 3 or more unpaid parking citations that are 30 or more days past the violation date may be booted or impounded by the City (source: pay.baltimorecity.gov/parkingfines). Parking citations are NOT dischargeable in bankruptcy, though collection pauses while a bankruptcy case is pending; red-light/speed camera citations ARE dischargeable (source: baltimorecity.gov Vehicle Fines and Citations FAQ). Under Baltimore City Code Art. 31, §36-23, the Director of Finance may periodically offer amnesty from accumulated PENALTIES (not underlying fines) on parking, stopping, or standing violations; the last such amnesty was in 2018, and by the code's own 10-year moratorium clause 'no further amnesties may be offered' until that period expires.",
+  "municipalCodeRefs": [
+    {
+      "label": "Baltimore City Code Art. 31, §36-1 — In general (fine schedule; the section the City's own FAQ cites for the trial-request process)",
+      "citation": "Baltimore City Code Art. 31, §36-1",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-1"
+    },
+    {
+      "label": "Baltimore City Code Art. 31, §36-21 — Collection of fines (notice of intention to stand trial; District Court transmittal)",
+      "citation": "Baltimore City Code Art. 31, §36-21",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-21"
+    },
+    {
+      "label": "Baltimore City Code Art. 31, §36-22 — Imposition of penalties (formal notice, monthly penalty, MVA registration penalty)",
+      "citation": "Baltimore City Code Art. 31, §36-22",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-22"
+    },
+    {
+      "label": "Baltimore City Code Art. 31, §36-23 — Amnesties (periodic penalty amnesty; 10-year moratorium after the 2018 amnesty)",
+      "citation": "Baltimore City Code Art. 31, §36-23",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-23"
+    },
+    {
+      "label": "Baltimore City Code Art. 31, §36-24 — Powers of Director of Finance (authority to waive fines/penalties for material error in citation preparation)",
+      "citation": "Baltimore City Code Art. 31, §36-24",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-24"
+    }
+  ],
+  "recognizedDefenses": [
+    "not-my-vehicle",
+    "wrong-ticket-details",
+    "valid-payment",
+    "broken-meter",
+    "obscured-signage"
+  ],
+  "defenses": [
+    {
+      "slug": "not-my-vehicle",
+      "whenItApplies": "Your vehicle, or its registration plates, were stolen at the time the citation was issued, so you had no control over the vehicle when the parking violation occurred.",
+      "evidenceChecklist": [
+        "A copy of the full police report documenting the theft, showing the date the vehicle (or plates) was reported stolen",
+        "If the vehicle was never recovered: a total-loss statement from your auto insurance company",
+        "If the vehicle was recovered: documentation of the recovery date, so the City can confirm the citation date falls within the stolen window",
+        "Your contact with the Bureau of Revenue Collections (410-396-3000 or baltimorecitycollections@baltimorecity.gov) submitting the above"
+      ],
+      "cityNotes": "Baltimore's Department of Finance handles this as an administrative abatement, not a District Court trial: per the City's own FAQ, if the violation date falls between the reported-stolen and recovery dates, the Bureau submits the citation(s) to the Baltimore City State's Attorney's Office for abatement and notifies the registered owner by mail once abated. There is no separately numbered 'stolen vehicle' code section — this abatement authority derives from the Director of Finance's general fine-collection and waiver powers under §36-24. Contact the Bureau directly for this scenario rather than filing a District Court trial petition.",
+      "codeCite": {
+        "label": "Baltimore City Code Art. 31, §36-24(a) — Powers of Director of Finance (general fine-collection and abatement authority under which the Bureau processes stolen-vehicle citations)",
+        "citation": "Baltimore City Code Art. 31, §36-24(a)",
+        "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-24"
+      },
+      "sources": [
+        {
+          "label": "Baltimore City Department of Finance — Vehicle Fines and Citations (FAQ: \"What do I do if my car is stolen and I receive parking citations during the time it is missing?\")",
+          "url": "https://www.baltimorecity.gov/finance/our-work/vehicle-fines"
+        },
+        {
+          "label": "Baltimore City Code Art. 31, §36-24 — Powers of Director of Finance",
+          "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-24"
+        }
+      ]
+    },
+    {
+      "slug": "wrong-ticket-details",
+      "whenItApplies": "The citation itself contains a material error — for example the wrong plate number, an incorrect date/time, or a location/violation description that doesn't match your vehicle or the facts.",
+      "evidenceChecklist": [
+        "A copy or photo of the actual citation showing the incorrect detail(s)",
+        "Your vehicle registration, to compare the correct plate number/description against what's on the citation",
+        "Any documentation (photos, receipts, GPS/location records) contradicting the erroneous detail",
+        "A call placed to the Bureau of Revenue Collections at 410-396-3000 to open the abatement request"
+      ],
+      "cityNotes": "Baltimore explicitly separates this from a District Court trial: its FAQ states, 'Yes, we can administratively abate parking and camera citations for material error. Start by calling us at 410-396-3000.' The statutory authority is the Director of Finance's power under §36-24(a)(2) to 'waive all fines, penalties, charges, and costs where there has been a material error in the preparation of the citation.' This is a phone-in administrative review, not a trial — you do not need to use the Parking Fine Trial Request portal for a pure clerical/material error.",
+      "codeCite": {
+        "label": "Baltimore City Code Art. 31, §36-24(a)(2) — Director of Finance may waive fines/penalties for material error in citation preparation",
+        "citation": "Baltimore City Code Art. 31, §36-24(a)(2)",
+        "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-24"
+      },
+      "sources": [
+        {
+          "label": "Baltimore City Department of Finance — Vehicle Fines and Citations (FAQ: \"If I found a mistake on my citation, is there an administrative abatement process...\")",
+          "url": "https://www.baltimorecity.gov/finance/our-work/vehicle-fines"
+        },
+        {
+          "label": "Baltimore City Code Art. 31, §36-24 — Powers of Director of Finance",
+          "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-24"
+        }
+      ]
+    },
+    {
+      "slug": "valid-payment",
+      "whenItApplies": "You were cited for a metered-parking violation (e.g., expired or unpaid meter), but you actually paid the applicable fee for that space at the cited time.",
+      "evidenceChecklist": [
+        "A payment receipt (paper stub, app receipt, or card statement) showing the location, date, and time of payment",
+        "If paid via a mobile parking-payment app: a screenshot or emailed receipt showing the space/zone number and active session time",
+        "Photos of the meter or pay station showing the space number, to match your receipt to the cited location"
+      ],
+      "cityNotes": "Baltimore's metered-parking offense itself is written around nonpayment: Article 31, §7-21 makes it unlawful to park in a metered space '(3) except as otherwise specifically provided in this subtitle, without paying the applicable fee.' Proof that you paid the required fee for the cited space and time directly negates an element of that charge. Baltimore does not publish a separate named 'valid payment' defense the way some cities do — you raise this as your defense at the District Court trial requested through the Parking Fine Trial Request process.",
+      "codeCite": {
+        "label": "Baltimore City Code Art. 31, §7-21 — Unlawful parking (metered space parked in without paying the applicable fee)",
+        "citation": "Baltimore City Code Art. 31, §7-21",
+        "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/7-21"
+      },
+      "sources": [
+        {
+          "label": "Baltimore City Code Art. 31, §7-21 — Unlawful parking",
+          "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/7-21"
+        },
+        {
+          "label": "Parking Fine Trial Request | City of Baltimore (how to request the District Court trial where this defense is raised)",
+          "url": "https://pay.baltimorecity.gov/pftr"
+        }
+      ]
+    },
+    {
+      "slug": "broken-meter",
+      "whenItApplies": "You were cited for a metered-parking violation, but the specific meter you used was out of order or malfunctioning (blank/error display, jammed coin slot, non-functioning card reader, etc.) through no fault of your own.",
+      "evidenceChecklist": [
+        "Time- and date-stamped photos of the malfunctioning meter, including its posted location number (required under §7-10(b) so the City can identify which meter you used)",
+        "A 311 complaint or defective-meter report filed at or near the time of the violation, referencing the meter's location number",
+        "Any record of a failed payment attempt at that meter (declined-card notification, app error message, etc.)"
+      ],
+      "cityNotes": "Baltimore City Code Art. 31, §7-10 puts an affirmative duty on the Director of Transportation to 'keep all parking meters ... in a good operating condition,' and requires each meter to display a location number that 'will serve as a means of identification for reporting defective meters, violations, or other occurrences' (§7-10(b)(2)(ii)). Unlike Washington, DC or New York City, Baltimore does not publish a separately named 'broken meter' affirmative-defense ground — there is no city FAQ page enumerating it. The defense is grounded directly in the code's own maintenance duty and reporting mechanism, and is raised as your defense at the District Court trial you request through the Parking Fine Trial Request portal or by petition to the District Court.",
+      "codeCite": {
+        "label": "Baltimore City Code Art. 31, §7-10 — Maintenance (Director's duty to keep meters in good operating condition; meter location numbers used to report defective meters)",
+        "citation": "Baltimore City Code Art. 31, §7-10",
+        "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/7-10"
+      },
+      "sources": [
+        {
+          "label": "Baltimore City Code Art. 31, §7-10 — Maintenance",
+          "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/7-10"
+        },
+        {
+          "label": "Baltimore City Code Art. 31, §7-21 — Unlawful parking (nonpayment element the broken-meter evidence rebuts)",
+          "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/7-21"
+        }
+      ]
+    },
+    {
+      "slug": "obscured-signage",
+      "whenItApplies": "You were cited for violating a posted parking restriction (e.g., no standing, loading zone, street-cleaning route, snow-emergency route), but the sign establishing that restriction was missing, illegible, or otherwise not properly posted at the time.",
+      "evidenceChecklist": [
+        "Time- and date-stamped photos of the sign location showing it missing, damaged, illegible, or obscured (e.g., by foliage or another object)",
+        "Wide-angle photos of the full block face showing no visible or readable restriction sign",
+        "Photos of nearby cross-street signs to confirm you documented the correct location",
+        "A 311 service request or Department of Transportation report about the missing/damaged sign, if filed"
+      ],
+      "cityNotes": "Baltimore City Code Art. 31, §3-2 makes it unlawful to 'fail, neglect, or refuse to comply with any instruction or direction on any post, standard, sign, or with any directing lines or marks painted in the roadway, or on any curb or pavement, or other device erected by authority of the City for the regulation of traffic or parking.' The offense is defined around an actual sign or device that was erected by the City — evidence that no such sign existed, or that it was unreadable, goes directly to that element. Baltimore does not publish a separate named 'obscured signage' defense page (unlike DC/NYC); this is raised as a defense at the District Court trial requested through the Parking Fine Trial Request process.",
+      "codeCite": {
+        "label": "Baltimore City Code Art. 31, §3-2 — Noncompliance with traffic devices (offense requires an actual sign/device erected by City authority)",
+        "citation": "Baltimore City Code Art. 31, §3-2",
+        "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/3-2"
+      },
+      "sources": [
+        {
+          "label": "Baltimore City Code Art. 31, §3-2 — Noncompliance with traffic devices",
+          "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/3-2"
+        },
+        {
+          "label": "Parking Fine Trial Request | City of Baltimore (how to request the District Court trial where this defense is raised)",
+          "url": "https://pay.baltimorecity.gov/pftr"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Baltimore City Department of Finance — Vehicle Fines and Citations (official FAQ: payment, dispute, trial, abatement, stolen-vehicle, bankruptcy, amnesty)",
+      "url": "https://www.baltimorecity.gov/finance/our-work/vehicle-fines"
+    },
+    {
+      "label": "Parking Fine Trial Request | City of Baltimore (online trial-request portal; 45-day online cutoff; District Court mailing addresses)",
+      "url": "https://pay.baltimorecity.gov/pftr"
+    },
+    {
+      "label": "Vehicle Citations | City of Baltimore (citation lookup/payment portal; boot/impound and registration-flag-fee notices)",
+      "url": "https://pay.baltimorecity.gov/parkingfines"
+    },
+    {
+      "label": "Environmental Control Board | Baltimore City (confirms ECB's jurisdiction covers Housing, Health, DOT, Fire, DPW, Rec & Parks, and Police quality-of-life citations only — NOT parking, which is 'paid through a separate city system')",
+      "url": "https://www.baltimorecity.gov/ecb/welcome-environmental-control-board"
+    },
+    {
+      "label": "Baltimore City Code Art. 31, §36-1 — In general (fine schedule)",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-1"
+    },
+    {
+      "label": "Baltimore City Code Art. 31, §36-21 — Collection of fines",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-21"
+    },
+    {
+      "label": "Baltimore City Code Art. 31, §36-22 — Imposition of penalties",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-22"
+    },
+    {
+      "label": "Baltimore City Code Art. 31, §36-23 — Amnesties",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-23"
+    },
+    {
+      "label": "Baltimore City Code Art. 31, §36-24 — Powers of Director of Finance",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/36-24"
+    },
+    {
+      "label": "Baltimore City Code Art. 31, §7-10 — Maintenance (parking meters)",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/7-10"
+    },
+    {
+      "label": "Baltimore City Code Art. 31, §7-21 — Unlawful parking (metered spaces)",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/7-21"
+    },
+    {
+      "label": "Baltimore City Code Art. 31, §3-2 — Noncompliance with traffic devices",
+      "url": "https://codes.baltimorecity.gov/us/md/cities/baltimore/code/31/3-2"
+    },
+    {
+      "label": "Parking Fine Violation Listing (Article 31 of the Baltimore City Code) — official PDF fine schedule",
+      "url": "https://finance.baltimorecity.gov/sites/default/files/Parking%20Fines%20Listing.pdf"
+    }
+  ],
+  "verifiedAt": "2026-07-20"
+}

@@ -23,7 +23,7 @@ check("recognizedDefenses all have a defense record",
 check("nyc urls include a leaf", getParkingUrls().some((u) => u.url.startsWith("https://imfrustrated.org/letters/parking/nyc/")));
 
 // Full-roster expectations (Task 10): all 10 cities wired, each internally consistent.
-check("10 cities present", getAllParkingCities().length === 10);
+check("21 cities present", getAllParkingCities().length === 21);
 check("every city has >=1 defense with a cite & sources",
   getAllParkingCities().every((c) => c.defenses.length >= 1 &&
     c.defenses.every((d) => !!d.codeCite?.citation && d.sources.length >= 1)));

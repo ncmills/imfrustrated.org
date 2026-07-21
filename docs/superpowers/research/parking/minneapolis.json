@@ -1,0 +1,221 @@
+{
+  "slug": "minneapolis",
+  "city": "Minneapolis",
+  "state": "MN",
+  "agency": "City of Minneapolis Traffic Control (Regulatory Services) issues parking citations, but standard \"payable\" parking tickets are processed and adjudicated by the Hennepin County Violations Bureau & Hearing Office, a unit of Hennepin County District Court (Fourth Judicial District) — not by a City of Minneapolis administrative tribunal. The City's own Traffic Control page states plainly: \"you pay the parking ticket fee to the Hennepin County Violations Bureau,\" and links directly to the Hennepin County Violations Bureau & Hearing Office. Hearing Officers (court staff, not judges) hold informal settlement conferences about a ticket; if unresolved, and unless the right has been waived by not responding within 30 days (most parking tickets are petty misdemeanors under Minn. Stat. § 169.91, subd. 3), a person may request an in-court hearing before a District Court judge. NOTE: a small minority of city-issued parking-related notices are instead \"administrative\" citations settled directly with the City rather than the court — per the court's own guidance, check the ticket itself: \"If the words 'District Court' or 'Violations Bureau' do NOT appear on the ticket, it is probably an 'administrative' ticket\" handled by City of Minneapolis Administrative Hearings instead.",
+  "submitOnlineUrl": "https://webpay.courts.state.mn.us/CourtWebPay/default.aspx",
+  "submitMailAddress": "Payment only (do not mail cash): Minnesota Court Payment Center, P.O. Box 898, Willmar, MN 56201, payable to \"District Court Administration.\" Meter-defect / payment-receipt dispute evidence: Violations Bureau, 300 S. 6th St., Hennepin Co. Govt. Ctr., Minneapolis, MN 55487-0014 (or email 4thcitations@courts.state.mn.us, or fax (612) 348-6268).",
+  "submitInPerson": "Hearing & Fines Management Office / Violations Bureau, Hennepin County Government Center, 300 South 6th Street, Skyway Level (C-Tower, past weapons screening), Minneapolis, MN 55487. Walk-in Hearing Officer meetings are first-come, first-served, Monday-Friday 8:00 a.m.-4:30 p.m. (last appointment 4:15 p.m.); phone (612) 348-6000. Suburban Hennepin County District Court locations (Brookdale, Ridgedale) can also be used to attend a video hearing on-site, though Hearing Officers no longer meet in person at those locations.",
+  "howToContest": [
+    "Locate your citation number (a preprinted number, typically 12 digits, at the top-left corner, right side, and below the barcode of the ticket) and confirm the violation, date, time, and location printed on it. Check whether the ticket itself says \"District Court\" or \"Violations Bureau\" — if neither appears, it is likely a separate \"administrative\" citation handled by City of Minneapolis Administrative Hearings instead of the process below.",
+    "Wait for the citation to be filed with the court (law enforcement typically files within about 7 business days) and look it up on the Minnesota Court Web Payment System (webpay.courts.state.mn.us) to confirm the amount due; a \"No Records Found\" result usually just means it hasn't been entered yet.",
+    "Decide whether to pay or contest within 30 days of the date the citation is entered into the Minnesota Court Information System (MNCIS) — this clock runs from MNCIS entry, not from the date the ticket was issued.",
+    "To contest, call the MN Court Payment Center (Metro (651) 281-3219, outside the metro 1 (800) 657-3611) to schedule a Hearing Officer appointment (a video conference on Zoom, available by appointment or as a same-day walk-in at the Hennepin Co. Government Center). There is no general online dispute-submission form; two situations have dedicated shortcuts instead of a hearing: (a) a defective/malfunctioning electronic pay station — report the meter and ticket numbers directly to the Traffic Violations Bureau at (612) 348-6000, and if confirmed defective the citation is canceled outright; and (b) a valid payment receipt for the same space/date/time — email, fax, or mail a copy of the receipt and citation to the Violations Bureau for review (about 2 business days).",
+    "At the Hearing Officer meeting, bring your driver's license and any evidence supporting your case. This is an informal settlement conference, not a formal evidentiary trial (\"It is not possible to have a trial with evidence at this meeting because a trial can only take place in court with a judge\") — the Hearing Officer can offer a reduced fine, a payment plan, community work service, or a continuance for dismissal; roughly 85-90% of people who meet with a Hearing Officer settle without going to court.",
+    "If you're not satisfied with the Hearing Officer's resolution, you may ask that the case be set for an in-court hearing before a District Court judge — unless you've already waived that right under Minn. Stat. § 169.91, subd. 3 by not responding/appearing within 30 days (most parking violations are petty misdemeanors, and a missed 30-day window is treated as a guilty plea).",
+    "If you miss a scheduled Hearing Officer appointment, call the Court Payment Center before the appointment time to request a continuance; otherwise you must appear as a walk-in at the downtown Minneapolis location, and the citation remains \"open\" (continuing to accrue late-fee and license-suspension risk) until a hearing is held."
+  ],
+  "contestDeadlineDays": 30,
+  "contestDeadlineNote": "Both the Hennepin County Violations Bureau's own \"Contesting and Other Options\" page and the statewide Minnesota Judicial Branch \"Pay Fines FAQs\" page state the same 30-day rule: \"You have 30 days to respond to a citation from the date it was entered into the Minnesota Court Information System (MNCIS).\" This clock starts at MNCIS entry, not at issuance — filing can take up to about 7 business days after the violation date, per the same FAQ (\"the amount due for your citation may be found... after law enforcement files the citation with the court and it is entered into the Minnesota Court Information System (MNCIS), a process which could take up to seven (7) days\"). Separately, because most parking citations are petty misdemeanors, Minn. Stat. § 169.91, subd. 3 requires that a notice to appear for a petty misdemeanor state that a failure to appear is treated as a guilty plea and a waiver of the right to a court hearing (unless the failure was due to circumstances beyond the person's control); the Violations Bureau's own page cites this same statute for its statement that \"this right to a court hearing is waived if the defendant does not appear within 30 days.\" Sources: https://mncourts.gov/find-courts/hennepin/hennepinviolationsbureauandhearingoffice/contesting-and-other-options; https://mncourts.gov/pay-a-fine/faqs; https://www.revisor.mn.gov/statutes/cite/169.91.",
+  "penaltyNote": "Failing to pay, contest, or appear within 30 days of MNCIS entry triggers escalating penalties, per the Hennepin Violations Bureau's own FAQ and the statewide Pay Fines FAQ: a $5 late fee is added after 30 days, and (per the Hennepin-specific page) an additional $25 \"delinquency fee\" after a further 21 days, or (per the statewide FAQ, worded slightly differently) a second $25 penalty after a further 30 days — check your notice for the exact date. Consequences of nonpayment can include driver's license suspension by MN Driver & Vehicle Services, referral of the debt to a collection agency, and, specific to Hennepin County, impoundment of the vehicle once it has 5 or more unpaid traffic or parking citations. Every parking citation carries a $12 state surcharge under Minn. Stat. § 357.021, subd. 6 (plus a $3 Hennepin County law library fee), added on top of the base fine. Paying the fine (including a partial payment) is treated as a guilty plea, but parking citations specifically are never certified to the MN driving record. If a case is later scheduled for a mandatory in-court hearing and the person fails to appear, a bench warrant can be issued for arrest. Sources: https://mncourts.gov/find-courts/hennepin/hennepinviolationsbureauandhearingoffice/contesting-and-other-options; https://mncourts.gov/pay-a-fine/faqs; https://www.revisor.mn.gov/statutes/cite/357.021.",
+  "municipalCodeRefs": [
+    {
+      "label": "Minn. Stat. § 169.34 — Prohibitions; Stopping, Parking (statewide stopping/standing/parking rules, signage-dependent restrictions, owner/lessee liability)",
+      "citation": "Minnesota Statutes § 169.34",
+      "url": "https://www.revisor.mn.gov/statutes/cite/169.34"
+    },
+    {
+      "label": "Minn. Stat. § 169.91, subd. 3 — Arrest; Notice to Appear (petty-misdemeanor 30-day appearance/waiver rule)",
+      "citation": "Minnesota Statutes § 169.91, subdivision 3",
+      "url": "https://www.revisor.mn.gov/statutes/cite/169.91"
+    },
+    {
+      "label": "Minn. Stat. § 357.021, subd. 6 — Surcharges ($12 parking surcharge; $3 county law library fee)",
+      "citation": "Minnesota Statutes § 357.021, subdivision 6",
+      "url": "https://www.revisor.mn.gov/statutes/cite/357.021"
+    },
+    {
+      "label": "Minneapolis Code of Ordinances, Title 18 (Traffic Code), Ch. 478 — Parking; Streets, Art. II — Parking Meters",
+      "citation": "Minneapolis Code of Ordinances § 478 et seq. (Title 18, Ch. 478, Art. II)",
+      "url": "https://library.municode.com/mn/minneapolis/codes/code_of_ordinances/332839?nodeId=MICOOR_TIT18TRCO_CH478PASTST_ARTIIPAME"
+    },
+    {
+      "label": "Minneapolis Code of Ordinances § 478.400 — Charge declared fee (Title 18, Ch. 478, Art. II; Art. II contains no separate codified 'defective/malfunctioning meter' provision — a broken pay station is reported to, and resolved administratively by, the Hennepin County Traffic Violations Bureau, not by a specific code section)",
+      "citation": "Minneapolis Code of Ordinances § 478.400",
+      "url": "https://library.municode.com/mn/minneapolis/codes/code_of_ordinances/332839?nodeId=MICOOR_TIT18TRCO_CH478PASTST_ARTIIPAME_478.400CHDEFE"
+    }
+  ],
+  "recognizedDefenses": [
+    "broken-meter",
+    "valid-payment",
+    "not-my-vehicle",
+    "obscured-signage"
+  ],
+  "defenses": [
+    {
+      "slug": "broken-meter",
+      "whenItApplies": "You were ticketed for a meter/pay-station violation, but the electronic pay station at your space was out of order or malfunctioning at the time.",
+      "evidenceChecklist": [
+        "A date- and time-stamped photo of the malfunctioning pay station, including any error message it displayed",
+        "The citation number and the specific pay-station/space number, ready to report to the Traffic Violations Bureau",
+        "Any 311 report or online meter-problem report you filed, and its reference number if one was given"
+      ],
+      "cityNotes": "Minneapolis's own guidance tells drivers who find a pay station out of order to pay at the next-nearest pay station using their own space number. If you're ticketed anyway, report the meter and citation numbers directly to the Traffic Violations Bureau at (612) 348-6000; if Hennepin County confirms the meter was defective, the citation is canceled outright with no hearing needed. If it is not confirmed defective, you must either pay the fine or request a Hearing Officer appointment to contest it. Pay-station operation is governed by Article II (Parking Meters) of Chapter 478 in Title 18 (Traffic Code) of the Minneapolis Code of Ordinances (§§ 478.300–478.530) — but, confirmed against the live Municode text, Article II contains no separate codified 'defective/malfunctioning meter' provision; the broken-meter path is a purely administrative one run by the Traffic Violations Bureau, not a specific code-based defense.",
+      "codeCite": {
+        "label": "Minneapolis Code of Ordinances Ch. 478, Art. II — Parking Meters (Title 18); no dedicated defective-meter subsection exists — see cityNotes",
+        "citation": "Minneapolis Code of Ordinances Ch. 478, Art. II (Title 18)",
+        "url": "https://library.municode.com/mn/minneapolis/codes/code_of_ordinances/332839?nodeId=MICOOR_TIT18TRCO_CH478PASTST_ARTIIPAME"
+      },
+      "sources": [
+        {
+          "label": "Hennepin County Violations Bureau & Hearing Office — Contesting and Other Options (mncourts.gov)",
+          "url": "https://mncourts.gov/find-courts/hennepin/hennepinviolationsbureauandhearingoffice/contesting-and-other-options"
+        },
+        {
+          "label": "Minnesota Judicial Branch — Pay Fines FAQs (Parking Meters section)",
+          "url": "https://mncourts.gov/pay-a-fine/faqs"
+        },
+        {
+          "label": "City of Minneapolis — Parking Meters",
+          "url": "https://www.minneapolismn.gov/getting-around/parking-driving/street-parking-meters/parking-meters/"
+        }
+      ]
+    },
+    {
+      "slug": "valid-payment",
+      "whenItApplies": "You paid for your space at an electronic parking meter/pay station covering the cited date, time, and space number, but were ticketed anyway.",
+      "evidenceChecklist": [
+        "Your payment receipt (text, email, or printed) showing the correct space number, date, and time",
+        "A copy or photo of the citation itself",
+        "Note: if you accidentally paid for the wrong space number, this is not treated as a valid-payment dispute — you'll need to pay the fine or request a Hearing Officer instead"
+      ],
+      "cityNotes": "Submit a copy of your receipt and the citation to the Hennepin Violations Bureau by email (4thcitations@courts.state.mn.us), fax ((612) 348-6268), or mail (Violations Bureau, 300 S. 6th St., Hennepin Co. Govt. Ctr., Minneapolis, MN 55487-0014); allow about two business days for review. If the receipt matches the citation's space number, date, and time, the charge may be dismissed without a Hearing Officer meeting. This is a distinct, faster track from the broken-meter report and does not require calling the Traffic Violations Bureau first.",
+      "codeCite": {
+        "label": "Minneapolis Code of Ordinances Ch. 478, Art. II — Parking Meters (Title 18, Traffic Code)",
+        "citation": "Minneapolis Code of Ordinances Ch. 478, Art. II (Title 18)",
+        "url": "https://library.municode.com/mn/minneapolis/codes/code_of_ordinances/332839?nodeId=MICOOR_TIT18TRCO_CH478PASTST_ARTIIPAME"
+      },
+      "sources": [
+        {
+          "label": "Minnesota Judicial Branch — Pay Fines FAQs (\"I paid an electronic parking meter... and still received a citation\")",
+          "url": "https://mncourts.gov/pay-a-fine/faqs"
+        },
+        {
+          "label": "Hennepin County Violations Bureau & Hearing Office — Pay a Ticket or Fine",
+          "url": "https://mncourts.gov/find-courts/hennepin/hennepinviolationsbureauandhearingoffice/pay-a-ticket-or-fine"
+        }
+      ]
+    },
+    {
+      "slug": "not-my-vehicle",
+      "whenItApplies": "You were not the owner or lessee of the cited vehicle at the time of the violation — most commonly because you had already sold or transferred the vehicle before the citation date, or because the vehicle was stolen at the time.",
+      "evidenceChecklist": [
+        "For a sold vehicle: title-transfer paperwork or a bill of sale showing the transfer date, and the buyer's name/address if available",
+        "For a stolen vehicle: a police report of the theft filed before the violation date",
+        "Any confirmation from MN Driver & Vehicle Services (DVS) of the title transfer, if available",
+        "The citation number"
+      ],
+      "cityNotes": "Under Minn. Stat. § 169.34, subd. 2, liability for a stopping/standing/parking violation attaches to the vehicle's registered owner or, for a leased vehicle, the lessee — but the owner/lessee may not be fined if the vehicle was stolen at the time of the violation, or if another person is convicted of or pleads guilty to the violation instead. For a vehicle you'd already sold, the Hennepin Violations Bureau's guidance is to get the title transferred at DVS and bring/send that paperwork to the court so your name can be removed from the citation once the sale date is confirmed — you should still act within the 30-day window while sorting out the paperwork rather than let the citation go delinquent.",
+      "codeCite": {
+        "label": "Minn. Stat. § 169.34, subd. 2 — Violation; penalty for owner or lessee",
+        "citation": "Minnesota Statutes § 169.34, subdivision 2",
+        "url": "https://www.revisor.mn.gov/statutes/cite/169.34"
+      },
+      "sources": [
+        {
+          "label": "Minnesota Statutes § 169.34 — Prohibitions; Stopping, Parking",
+          "url": "https://www.revisor.mn.gov/statutes/cite/169.34"
+        },
+        {
+          "label": "Hennepin County Violations Bureau & Hearing Office — Contesting and Other Options (mncourts.gov)",
+          "url": "https://mncourts.gov/find-courts/hennepin/hennepinviolationsbureauandhearingoffice/contesting-and-other-options"
+        }
+      ]
+    },
+    {
+      "slug": "obscured-signage",
+      "whenItApplies": "You were ticketed for violating a posted restriction — a temporary no-parking zone, a bike-lane or restricted-lane sign, or another sign-dependent limit — but the sign was missing, obscured, or not properly posted at the time.",
+      "evidenceChecklist": [
+        "Date- and time-stamped photos of the block where you were ticketed, showing the missing/obscured sign or the absence of any sign",
+        "Photos of the nearest cross-street signs to confirm your exact location",
+        "For a temporary restriction (construction, street sweeping, special event): any evidence the posted notice wasn't in place — Minneapolis requires temporary no-parking signs for these situations",
+        "The citation number"
+      ],
+      "cityNotes": "Several of the standard stopping/standing/parking prohibitions in Minn. Stat. § 169.34, subd. 1 are explicitly signage-dependent — for example, a bike lane is off-limits to parking \"except when posted signs permit parking,\" and one catch-all prohibition applies only \"at any place where official signs prohibit stopping.\" The City's own guidance confirms enforcement is sign-driven: temporary no-parking signs (construction, street cleaning, special events) that don't list specific times \"are in effect 24 hours a day,\" implying the posted sign is what creates the restriction. There is no separate written or online form for a missing/obscured-sign claim in Minneapolis — like other \"not guilty\" contests, it's raised directly with a Hearing Officer at the appointment.",
+      "codeCite": {
+        "label": "Minn. Stat. § 169.34, subd. 1(a) — Prohibitions; Stopping, Parking (signage-dependent restrictions, e.g. bike lanes and \"official signs prohibit stopping\")",
+        "citation": "Minnesota Statutes § 169.34, subdivision 1(a)",
+        "url": "https://www.revisor.mn.gov/statutes/cite/169.34"
+      },
+      "sources": [
+        {
+          "label": "Minnesota Statutes § 169.34 — Prohibitions; Stopping, Parking",
+          "url": "https://www.revisor.mn.gov/statutes/cite/169.34"
+        },
+        {
+          "label": "City of Minneapolis — City Parking Signs",
+          "url": "https://www.minneapolismn.gov/getting-around/parking-driving/street-parking-meters/street-parking-rules/parking-signs/"
+        },
+        {
+          "label": "City of Minneapolis — No Parking",
+          "url": "https://www.minneapolismn.gov/getting-around/parking-driving/street-parking-meters/street-parking-rules/no-parking/"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Hennepin County Violations Bureau & Hearing Office (mncourts.gov)",
+      "url": "https://mncourts.gov/find-courts/hennepin/hennepinviolationsbureauandhearingoffice"
+    },
+    {
+      "label": "Hennepin County Violations Bureau & Hearing Office — Contesting and Other Options",
+      "url": "https://mncourts.gov/find-courts/hennepin/hennepinviolationsbureauandhearingoffice/contesting-and-other-options"
+    },
+    {
+      "label": "Hennepin County Violations Bureau & Hearing Office — Pay a Ticket or Fine",
+      "url": "https://mncourts.gov/find-courts/hennepin/hennepinviolationsbureauandhearingoffice/pay-a-ticket-or-fine"
+    },
+    {
+      "label": "Minnesota Judicial Branch — Pay Fines FAQs",
+      "url": "https://mncourts.gov/pay-a-fine/faqs"
+    },
+    {
+      "label": "Minnesota Court Web Payment System",
+      "url": "https://webpay.courts.state.mn.us/CourtWebPay/default.aspx"
+    },
+    {
+      "label": "City of Minneapolis — Traffic Control",
+      "url": "https://www.minneapolismn.gov/government/departments/reg-services/traffic-control/"
+    },
+    {
+      "label": "City of Minneapolis — Parking Meters",
+      "url": "https://www.minneapolismn.gov/getting-around/parking-driving/street-parking-meters/parking-meters/"
+    },
+    {
+      "label": "City of Minneapolis — City Parking Signs",
+      "url": "https://www.minneapolismn.gov/getting-around/parking-driving/street-parking-meters/street-parking-rules/parking-signs/"
+    },
+    {
+      "label": "City of Minneapolis — No Parking",
+      "url": "https://www.minneapolismn.gov/getting-around/parking-driving/street-parking-meters/street-parking-rules/no-parking/"
+    },
+    {
+      "label": "Minnesota Statutes § 169.34 — Prohibitions; Stopping, Parking",
+      "url": "https://www.revisor.mn.gov/statutes/cite/169.34"
+    },
+    {
+      "label": "Minnesota Statutes § 169.91 — Arrest",
+      "url": "https://www.revisor.mn.gov/statutes/cite/169.91"
+    },
+    {
+      "label": "Minnesota Statutes § 357.021 — Surcharges",
+      "url": "https://www.revisor.mn.gov/statutes/cite/357.021"
+    },
+    {
+      "label": "Minneapolis Code of Ordinances, Title 18, Ch. 478, Art. II — Parking Meters (Municode)",
+      "url": "https://library.municode.com/mn/minneapolis/codes/code_of_ordinances/332839?nodeId=MICOOR_TIT18TRCO_CH478PASTST_ARTIIPAME"
+    }
+  ],
+  "verifiedAt": "2026-07-20"
+}
