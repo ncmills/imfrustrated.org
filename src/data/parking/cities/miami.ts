@@ -26,6 +26,14 @@ const cityHowToContest: string[] = [
 const ifThisDoesntWork =
   "If the court finds you guilty at the hearing, it may impose an additional penalty of up to $100 plus court costs, due at the time of the hearing (Fla. Stat. § 316.1967(4)). Failing to appear for your scheduled hearing can result in a guilty finding as if you had attended, and — without a bond posted — your vehicle or license plate may be subject to impoundment. The record does not describe a further appeal step beyond the County Court hearing itself.";
 
+const disabledParkingHowToSubmit: string[] = [
+  "Confirm your citation is coded as violation 15 (disabled parking space) or 19 (stroller space), and that the vehicle was displaying a valid disabled parking permit or plate and was transporting the permit holder at the time.",
+  "Complete the Miami-Dade Clerk of the Court's \"Affidavit — Disabled Parking Space\" (Form CLK/CT. 264), or \"Affidavit for Disabled Parking at Meter\" (Form CLK/CT. 265) if the citation was issued at a metered disabled space.",
+  "Gather the permit registration showing the permit owner's name, a photocopy of the permit owner's driver's license or state ID, and the $7.50 statutory dismissal fee.",
+  "Submit the signed affidavit, permit registration copy, ID photocopy, and fee directly to the Parking Operations Department — by mail, by email to parkingCT@miamidadeclerk.gov, or in person at any Clerk's Office location — instead of filing a Request for Court Hearing form. No County Court hearing is required for this path.",
+  "The Clerk \"shall dismiss the citation\" upon receipt of valid proof.",
+];
+
 const broken_meter: ParkingDefense = {
   slug: "broken-meter",
   citySlug: "miami",
@@ -352,7 +360,7 @@ Respectfully,
     citation: "Fla. Stat. § 316.1955(1)",
     url: "https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0316/Sections/0316.1955.html",
   },
-  howToSubmit: cityHowToContest,
+  howToSubmit: disabledParkingHowToSubmit,
   ifThisDoesntWork,
   sources: [
     {
