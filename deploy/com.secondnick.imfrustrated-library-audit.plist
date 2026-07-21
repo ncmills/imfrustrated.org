@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- imfrustrated.org library integrity audit. ARM: cp to ~/Library/LaunchAgents/ && launchctl load. Monthly day 8 09:00. -->
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
   <key>Label</key><string>com.secondnick.imfrustrated-library-audit</string>
   <key>ProgramArguments</key><array>
-    <string>/bin/zsh</string><string>-lc</string>
-    <string>export PATH="$HOME/.local/bin:$PATH"; cd $HOME/second-nick/worktrees/imfrustrated-expansion &amp;&amp; git fetch origin main -q &amp;&amp; git reset --hard origin/main -q &amp;&amp; { [ -d node_modules ] || npm ci --no-audit --no-fund; } &amp;&amp; exec npx tsx scripts/library-audit/audit-live.ts --issue --stale-days=180</string>
+    <string>/bin/bash</string><string>-c</string>
+    <string>echo "[$(date)] audit start"; cd "$HOME/second-nick/worktrees/imfrustrated-expansion" &amp;&amp; git fetch origin main -q &amp;&amp; git reset --hard origin/main -q &amp;&amp; { [ -d node_modules ] || npm ci --no-audit --no-fund; } &amp;&amp; npx tsx scripts/library-audit/audit-live.ts --issue --stale-days=180; echo "[$(date)] audit exit $?"</string>
   </array>
-  <key>WorkingDirectory</key><string>$HOME/second-nick/worktrees/imfrustrated-expansion</string>
+  <key>EnvironmentVariables</key><dict><key>PATH</key><string>/Users/bignick/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string></dict>
+  <key>WorkingDirectory</key><string>/Users/bignick/second-nick/worktrees/imfrustrated-expansion</string>
   <key>StartCalendarInterval</key><dict><key>Day</key><integer>8</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
   <key>StandardOutPath</key><string>/Users/bignick/second-nick/logs/imfrustrated-library-audit.log</string>
   <key>StandardErrorPath</key><string>/Users/bignick/second-nick/logs/imfrustrated-library-audit.err</string>
