@@ -1,49 +1,51 @@
+// AUTO-GENERATED registry by scripts/parking-expansion/regen-index.ts.
+// Do NOT hand-edit the imports or allCities list — add a cities/<slug>.ts file and re-run the script.
 import type { ParkingCity, ParkingDefense } from "./types";
 export type { ParkingCity, ParkingDefense, ParkingDefenseSlug, CodeRef, SourceRef } from "./types";
 import { nycCity } from "./cities/nyc";
-import { losAngelesCity } from "./cities/los-angeles";
-import { chicagoCity } from "./cities/chicago";
-import { houstonCity } from "./cities/houston";
-import { phoenixCity } from "./cities/phoenix";
-import { philadelphiaCity } from "./cities/philadelphia";
-import { sanFranciscoCity } from "./cities/san-francisco";
-import { seattleCity } from "./cities/seattle";
-import { bostonCity } from "./cities/boston";
-import { washingtonDcCity } from "./cities/washington-dc";
-import { sanDiegoCity } from "./cities/san-diego";
-import { sanJoseCity } from "./cities/san-jose";
-import { dallasCity } from "./cities/dallas";
-import { austinCity } from "./cities/austin";
-import { denverCity } from "./cities/denver";
-import { portlandCity } from "./cities/portland";
-import { miamiCity } from "./cities/miami";
 import { atlantaCity } from "./cities/atlanta";
-import { minneapolisCity } from "./cities/minneapolis";
-import { lasVegasCity } from "./cities/las-vegas";
+import { austinCity } from "./cities/austin";
 import { baltimoreCity } from "./cities/baltimore";
+import { bostonCity } from "./cities/boston";
+import { chicagoCity } from "./cities/chicago";
+import { dallasCity } from "./cities/dallas";
+import { denverCity } from "./cities/denver";
+import { houstonCity } from "./cities/houston";
+import { lasVegasCity } from "./cities/las-vegas";
+import { losAngelesCity } from "./cities/los-angeles";
+import { miamiCity } from "./cities/miami";
+import { minneapolisCity } from "./cities/minneapolis";
+import { philadelphiaCity } from "./cities/philadelphia";
+import { phoenixCity } from "./cities/phoenix";
+import { portlandCity } from "./cities/portland";
+import { sanDiegoCity } from "./cities/san-diego";
+import { sanFranciscoCity } from "./cities/san-francisco";
+import { sanJoseCity } from "./cities/san-jose";
+import { seattleCity } from "./cities/seattle";
+import { washingtonDcCity } from "./cities/washington-dc";
 
 const allCities: ParkingCity[] = [
   nycCity,
-  losAngelesCity,
-  chicagoCity,
-  houstonCity,
-  phoenixCity,
-  philadelphiaCity,
-  sanFranciscoCity,
-  seattleCity,
-  bostonCity,
-  washingtonDcCity,
-  sanDiegoCity,
-  sanJoseCity,
-  dallasCity,
-  austinCity,
-  denverCity,
-  portlandCity,
-  miamiCity,
   atlantaCity,
-  minneapolisCity,
-  lasVegasCity,
+  austinCity,
   baltimoreCity,
+  bostonCity,
+  chicagoCity,
+  dallasCity,
+  denverCity,
+  houstonCity,
+  lasVegasCity,
+  losAngelesCity,
+  miamiCity,
+  minneapolisCity,
+  philadelphiaCity,
+  phoenixCity,
+  portlandCity,
+  sanDiegoCity,
+  sanFranciscoCity,
+  sanJoseCity,
+  seattleCity,
+  washingtonDcCity,
 ];
 
 export function getAllParkingCities(): ParkingCity[] {
