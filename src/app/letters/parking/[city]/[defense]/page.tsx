@@ -116,9 +116,43 @@ export default async function ParkingDefensePage({
     ],
   };
 
+  const legalDocumentSchema = {
+    "@context": "https://schema.org",
+    "@type": "LegalDocument",
+    name: d.title,
+    description: d.metaDescription,
+    url,
+    datePublished: d.publishedAt,
+    dateModified: d.updatedAt ?? d.publishedAt,
+    inLanguage: "en-US",
+    creator: { "@type": "Organization", name: "I'm Frustrated dot Org", url: "https://imfrustrated.org" },
+    isAccessibleForFree: true,
+    audience: {
+      "@type": "Audience",
+      audienceType: "Individual drivers contesting a parking ticket without a lawyer",
+    },
+    about: {
+      "@type": "Thing",
+      name: `${c.city} parking ticket dispute`,
+      description: d.whenItApplies,
+    },
+  };
+
+  const speakableSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    url,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "#how-to-submit", "#faq"],
+    },
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(legalDocumentSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
       {howToSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       )}
