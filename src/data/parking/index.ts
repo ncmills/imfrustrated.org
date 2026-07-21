@@ -18,6 +18,7 @@ import { minneapolisCity } from "./cities/minneapolis";
 import { philadelphiaCity } from "./cities/philadelphia";
 import { phoenixCity } from "./cities/phoenix";
 import { portlandCity } from "./cities/portland";
+import { sanAntonioCity } from "./cities/san-antonio";
 import { sanDiegoCity } from "./cities/san-diego";
 import { sanFranciscoCity } from "./cities/san-francisco";
 import { sanJoseCity } from "./cities/san-jose";
@@ -41,6 +42,7 @@ const allCities: ParkingCity[] = [
   philadelphiaCity,
   phoenixCity,
   portlandCity,
+  sanAntonioCity,
   sanDiegoCity,
   sanFranciscoCity,
   sanJoseCity,
