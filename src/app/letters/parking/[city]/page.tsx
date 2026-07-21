@@ -181,14 +181,18 @@ export default async function ParkingCityPage({
               </p>
               <p className="text-sage-2">
                 <span className="font-semibold text-sage">Online:</span>{" "}
-                <a
-                  href={c.submitOnlineUrl}
-                  className="text-clay underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {c.submitOnlineUrl}
-                </a>
+                {c.submitOnlineUrl.startsWith("http") ? (
+                  <a
+                    href={c.submitOnlineUrl}
+                    className="text-clay underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {c.submitOnlineUrl}
+                  </a>
+                ) : (
+                  <span>{c.submitOnlineUrl}</span>
+                )}
               </p>
               <p className="text-sage-2">
                 <span className="font-semibold text-sage">By mail:</span> {c.submitMailAddress}
