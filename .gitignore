@@ -42,3 +42,4 @@ next-env.d.ts
 
 # scratch / design exploration — not for prod
 _temp/
+docs/library-audit/
