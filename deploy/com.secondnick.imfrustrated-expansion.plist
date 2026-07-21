@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- imfrustrated.org expansion: parking cities + new letters. Opens PRs, never auto-merges. ARM: cp to ~/Library/LaunchAgents/ && launchctl load. Monthly day 12 09:30. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.secondnick.imfrustrated-expansion</string>
+  <key>ProgramArguments</key><array>
+    <string>/bin/zsh</string><string>-lc</string>
+    <string>export PATH="$HOME/.local/bin:$PATH"; export IMFRUSTRATED_EXPANSION_REPO="$HOME/second-nick/worktrees/imfrustrated-expansion"; cd $HOME/second-nick/worktrees/imfrustrated-expansion &amp;&amp; exec scripts/expansion-run-cron.sh 4 6</string>
+  </array>
+  <key>WorkingDirectory</key><string>$HOME/second-nick/worktrees/imfrustrated-expansion</string>
+  <key>StartCalendarInterval</key><dict><key>Day</key><integer>12</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>30</integer></dict>
+  <key>StandardOutPath</key><string>/Users/bignick/second-nick/logs/imfrustrated-expansion.log</string>
+  <key>StandardErrorPath</key><string>/Users/bignick/second-nick/logs/imfrustrated-expansion.err</string>
+  <key>RunAtLoad</key><false/>
+</dict></plist>
