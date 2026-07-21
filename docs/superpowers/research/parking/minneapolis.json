@@ -40,7 +40,7 @@
       "url": "https://library.municode.com/mn/minneapolis/codes/code_of_ordinances/332839?nodeId=MICOOR_TIT18TRCO_CH478PASTST_ARTIIPAME"
     },
     {
-      "label": "Minneapolis Code of Ordinances § 478.400 — Parking Meters, defective/malfunctioning charging device (Title 18, Ch. 478, Art. II)",
+      "label": "Minneapolis Code of Ordinances § 478.400 — Charge declared fee (Title 18, Ch. 478, Art. II; Art. II contains no separate codified 'defective/malfunctioning meter' provision — a broken pay station is reported to, and resolved administratively by, the Hennepin County Traffic Violations Bureau, not by a specific code section)",
       "citation": "Minneapolis Code of Ordinances § 478.400",
       "url": "https://library.municode.com/mn/minneapolis/codes/code_of_ordinances/332839?nodeId=MICOOR_TIT18TRCO_CH478PASTST_ARTIIPAME_478.400CHDEFE"
     }
@@ -60,11 +60,11 @@
         "The citation number and the specific pay-station/space number, ready to report to the Traffic Violations Bureau",
         "Any 311 report or online meter-problem report you filed, and its reference number if one was given"
       ],
-      "cityNotes": "Minneapolis's own guidance tells drivers who find a pay station out of order to pay at the next-nearest pay station using their own space number. If you're ticketed anyway, report the meter and citation numbers directly to the Traffic Violations Bureau at (612) 348-6000; if Hennepin County confirms the meter was defective, the citation is canceled outright with no hearing needed. If it is not confirmed defective, you must either pay the fine or request a Hearing Officer appointment to contest it. Pay-station operation is governed by Article II (Parking Meters) of Chapter 478 in Title 18 (Traffic Code) of the Minneapolis Code of Ordinances, which includes a section captioned for a defective/malfunctioning charging device.",
+      "cityNotes": "Minneapolis's own guidance tells drivers who find a pay station out of order to pay at the next-nearest pay station using their own space number. If you're ticketed anyway, report the meter and citation numbers directly to the Traffic Violations Bureau at (612) 348-6000; if Hennepin County confirms the meter was defective, the citation is canceled outright with no hearing needed. If it is not confirmed defective, you must either pay the fine or request a Hearing Officer appointment to contest it. Pay-station operation is governed by Article II (Parking Meters) of Chapter 478 in Title 18 (Traffic Code) of the Minneapolis Code of Ordinances (§§ 478.300–478.530) — but, confirmed against the live Municode text, Article II contains no separate codified 'defective/malfunctioning meter' provision; the broken-meter path is a purely administrative one run by the Traffic Violations Bureau, not a specific code-based defense.",
       "codeCite": {
-        "label": "Minneapolis Code of Ordinances § 478.400 — Parking Meters (Title 18, Ch. 478, Art. II)",
-        "citation": "Minneapolis Code of Ordinances § 478.400",
-        "url": "https://library.municode.com/mn/minneapolis/codes/code_of_ordinances/332839?nodeId=MICOOR_TIT18TRCO_CH478PASTST_ARTIIPAME_478.400CHDEFE"
+        "label": "Minneapolis Code of Ordinances Ch. 478, Art. II — Parking Meters (Title 18); no dedicated defective-meter subsection exists — see cityNotes",
+        "citation": "Minneapolis Code of Ordinances Ch. 478, Art. II (Title 18)",
+        "url": "https://library.municode.com/mn/minneapolis/codes/code_of_ordinances/332839?nodeId=MICOOR_TIT18TRCO_CH478PASTST_ARTIIPAME"
       },
       "sources": [
         {

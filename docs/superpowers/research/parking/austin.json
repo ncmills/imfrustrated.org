@@ -76,9 +76,9 @@
       "url": "https://library.municode.com/tx/austin/codes/code_of_ordinances?nodeId=TIT12TRRE_CH12-5STSTPA_ART4IMIMMOVEUNPACI_S12-5-90CIFICOFE"
     },
     {
-      "label": "Austin City Code Sec. 12-3-7 -- Fee Due for Parking Vehicle (payment methods; inoperable-meter rule requiring payment at the nearest pay-and-display station)",
+      "label": "Austin City Code Sec. 12-3-7 -- Fee Due for Parking a Motor Vehicle (payment methods; as rewritten by Ord. No. 20250213-026 eff. 2-24-25, current text has no inoperable-meter/nearest-pay-station subsection -- see broken-meter defense cityNotes)",
       "citation": "Austin, Tex., City Code § 12-3-7",
-      "url": "https://library.municode.com/tx/austin/codes/code_of_ordinances?nodeId=TIT12TRRE_CH12-3MEPASTPA_S12-3-7FEDUPAVE"
+      "url": "https://library.municode.com/tx/austin/codes/code_of_ordinances?nodeId=TIT12TRRE_CH12-3MEPA_S12-3-7FEDUPAMOVE"
     }
   ],
   "recognizedDefenses": [
@@ -120,26 +120,26 @@
     },
     {
       "slug": "broken-meter",
-      "whenItApplies": "You parked at a parking meter, pay-by-space station, or pay station that was inoperable/malfunctioning, and -- as the code requires -- you instead paid at the nearest working pay-and-display station and displayed that receipt in your vehicle, but were cited anyway (Austin's own fine schedule lists this exact scenario as 'Parking - Pay Station Receipt Not Displayed (Malfunctioning meter / pay by space / pay station)').",
+      "whenItApplies": "You parked at a parking meter or pay station that was inoperable/malfunctioning, and you made a good-faith effort to pay -- e.g., by paying at the nearest working meter/station and keeping a receipt, or by reporting the malfunction -- but were cited anyway. NOTE: on re-verification against the live code and the current (07/14/2026) fine schedule, this is no longer a distinctly codified or fine-schedule-listed violation category (see cityNotes) -- treat it as a factual defense argued at a standard hearing, not a citable code subsection.",
       "evidenceChecklist": [
-        "A receipt from the nearest working pay-and-display station showing you paid, timestamped near the citation time",
+        "A receipt from the nearest working meter/pay station showing you paid, timestamped near the citation time",
         "Time- and date-stamped photo(s) of the inoperable meter/pay station you originally tried to use, showing its malfunction and location",
         "A copy of any complaint you emailed to TPWParkingMeters@austintexas.gov reporting the malfunction, if you sent one",
-        "The citation, to confirm it is coded as a malfunctioning-meter/pay-station violation rather than a plain expired-payment violation"
+        "The citation itself, compared against the current fine schedule to confirm exactly how the violation is coded"
       ],
-      "cityNotes": "This is a codified rule, not just guidance: Austin City Code Sec. 12-3-7(G) states 'A person may not park at a paid parking space with an inoperable parking meter unless the person pays at the nearest pay and display station and attaches the receipt to the window as required in Subsection (F).' Austin's own civil fine schedule (Sec. 12-5-90(I)) lists a distinct, lower-tier violation and fine specifically for 'Parking - Pay Station Receipt Not Displayed (Malfunctioning meter)' / '(Malfunctioning pay by space)' / '(Malfunctioning pay station)' ($30 standard / $20 early payment), confirming the City itself distinguishes this scenario from an ordinary unpaid-meter citation. This is distinct from the 'valid-payment' defense above: valid-payment covers proving you paid at the ORIGINAL meter/space; this defense covers the specific situation where that meter was broken and you complied with the code's required workaround of paying at the nearest other pay-and-display station.",
+      "cityNotes": "CORRECTED ON RE-VERIFICATION (2026-07-20 live Municode check): the wave-2 draft of this record quoted an 'inoperable parking meter... pay at the nearest pay and display station' rule as Sec. 12-3-7(G). That subsection does not exist in the current code. Austin City Code Chapter 12-3 was completely rewritten by Ord. No. 20250213-026 (eff. 2-24-25); the live Sec. 12-3-7 ('Fee Due for Parking a Motor Vehicle') now has only Subsections (A)-(C) (general duty to pay, narrow exemptions, accepted payment methods) and contains no inoperable-meter or nearest-pay-station language anywhere in the current Chapter 12-3 (confirmed by reading every section, 12-3-1 through 12-3-11, live). The Austin Municipal Court's Civil Parking FAQs also do not list a malfunctioning-meter question. Until a current, live-confirmed source for a distinct malfunctioning-meter dismissal path is found, treat a broken/malfunctioning meter as a factual argument to raise at a standard contested hearing under Sec. 12-5-55/12-5-61 (citation is only 'rebuttable proof,' preponderance-of-the-evidence standard) rather than as a codified automatic ground -- do not cite a specific Sec. 12-3-7(G) to a hearing officer, as it will not be found in the current code.",
       "codeCite": {
-        "label": "Austin City Code Sec. 12-3-7(G) -- inoperable parking meter: must pay at the nearest pay-and-display station and display the receipt",
-        "citation": "Austin, Tex., City Code § 12-3-7(G)",
-        "url": "https://library.municode.com/tx/austin/codes/code_of_ordinances?nodeId=TIT12TRRE_CH12-3MEPASTPA_S12-3-7FEDUPAVE"
+        "label": "Austin City Code Sec. 12-3-7 -- Fee Due for Parking a Motor Vehicle (current text, Subsections (A)-(C) only; no inoperable-meter subsection exists as of the current code version -- see cityNotes)",
+        "citation": "Austin, Tex., City Code § 12-3-7",
+        "url": "https://library.municode.com/tx/austin/codes/code_of_ordinances?nodeId=TIT12TRRE_CH12-3MEPA_S12-3-7FEDUPAMOVE"
       },
       "sources": [
         {
-          "label": "Austin City Code, Chapter 12-3 -- Metered and Pay Station Parking (Municode)",
-          "url": "https://library.municode.com/tx/austin/codes/code_of_ordinances?nodeId=TIT12TRRE_CH12-3MEPASTPA"
+          "label": "Austin City Code, Chapter 12-3 -- Metered Parking (Municode; §§ 12-3-1 through 12-3-11, current as of Ord. No. 20250213-026)",
+          "url": "https://library.municode.com/tx/austin/codes/code_of_ordinances?nodeId=TIT12TRRE_CH12-3MEPA"
         },
         {
-          "label": "Austin Municipal Court -- Charge Codes and Fine Schedule (lists the 'Malfunctioning meter/pay by space/pay station' violation codes)",
+          "label": "Austin Municipal Court -- Charge Codes and Fine Schedule (current PDF, checked 2026-07-20: does NOT list a 'Malfunctioning meter/pay by space/pay station' violation code -- see cityNotes)",
           "url": "https://www.austintexas.gov/municipal-court/charge-codes-and-fine-schedule-austin-municipal-court"
         }
       ]
@@ -264,8 +264,8 @@
       "url": "https://library.municode.com/tx/austin/codes/code_of_ordinances?nodeId=TIT12TRRE_CH12-5STSTPA"
     },
     {
-      "label": "Austin City Code, Chapter 12-3 -- Metered and Pay Station Parking (Municode)",
-      "url": "https://library.municode.com/tx/austin/codes/code_of_ordinances?nodeId=TIT12TRRE_CH12-3MEPASTPA"
+      "label": "Austin City Code, Chapter 12-3 -- Metered Parking (Municode)",
+      "url": "https://library.municode.com/tx/austin/codes/code_of_ordinances?nodeId=TIT12TRRE_CH12-3MEPA"
     }
   ],
   "verifiedAt": "2026-07-20"
