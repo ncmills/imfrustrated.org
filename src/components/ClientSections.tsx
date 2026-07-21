@@ -107,26 +107,29 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-7 text-[0.92rem] font-medium text-sage-2">
-          <a href="#tools" className="hover:text-sage transition-colors duration-300">
+          <Link href="/free-tools" className="hover:text-sage transition-colors duration-300">
             Free tools
-          </a>
-          <a href="#how" className="hover:text-sage transition-colors duration-300">
-            How it works
-          </a>
+          </Link>
           <Link href="/letters" className="hover:text-sage transition-colors duration-300">
             Letters
+          </Link>
+          <Link href="/how-it-works" className="hover:text-sage transition-colors duration-300">
+            How it works
+          </Link>
+          <Link href="/faq" className="hover:text-sage transition-colors duration-300">
+            FAQ
           </Link>
           <Link href="/about" className="hover:text-sage transition-colors duration-300">
             About
           </Link>
         </nav>
 
-        <a
-          href="#contact"
+        <Link
+          href="/#contact"
           className="mag inline-flex items-center gap-2 px-5 py-2.5 bg-sage text-bg text-[0.88rem] font-semibold rounded-full hover:bg-evergreen transition-colors duration-300"
         >
-          Talk to us
-        </a>
+          Ask an attorney
+        </Link>
       </div>
     </header>
   );
@@ -318,8 +321,9 @@ export function SiteFooter() {
           </div>
           <div className="flex items-center gap-7 text-sm text-bg/55 flex-wrap justify-center md:justify-end">
             <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>
-            <Link href="/how-it-works" className="hover:text-clay-soft transition-colors duration-300">How it works</Link>
             <Link href="/letters" className="hover:text-clay-soft transition-colors duration-300">Letters</Link>
+            <Link href="/how-it-works" className="hover:text-clay-soft transition-colors duration-300">How it works</Link>
+            <Link href="/faq" className="hover:text-clay-soft transition-colors duration-300">FAQ</Link>
             <Link href="/about" className="hover:text-clay-soft transition-colors duration-300">About</Link>
             <a href="mailto:info@imfrustrated.org" className="hover:text-clay-soft transition-colors duration-300">Contact</a>
           </div>
