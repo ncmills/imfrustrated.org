@@ -17,15 +17,18 @@ The `/letters` library grows through the same verified-research pipeline as park
 ## Current coverage (2026-07-20)
 landlord 21 · consumer 18 · employer 10 · airline 6 · credit-card 5 · hoa 5 · neighbor 5 · hotel 4 · **empty categories: insurance, government, school, family** (declared in the union + `categoryMeta` as "Coming soon").
 
+## ⚠️ Dedup lesson (2026-07-20 proof batch)
+The populated categories (landlord/consumer/employer) are **already broad** — 3 of 6 batch-1 topics turned out to be near-duplicates of live letters under different slug spellings (`rent-increase-improper-notice`, `unpaid-overtime-demand`, `warranty-claim-magnuson-moss`). **Before queuing any topic, semantic-dedup against the live slugs** (`grep -rhoE 'slug: "[a-z0-9-]+"' src/data/letters/*.ts`), not just exact-match. **Prioritize the EMPTY categories below** — that's where the real headroom is.
+
 ## Queue
 
-### Batch 1 (existing categories — highest universality)
-- `improper-rent-increase-notice` (landlord) — state notice-period statutes for rent increases
-- `security-deposit-interest-demand` (landlord) — states requiring interest paid on deposits
-- `unauthorized-auto-repair-charges` (consumer) — state auto-repair acts (written estimate/authorization required)
-- `magnuson-moss-warranty-demand` (consumer) — 15 U.S.C. §2301+ federal warranty act
-- `improper-utility-shutoff` (consumer) — state PUC shutoff-protection / winter-moratorium rules
-- `unpaid-overtime-demand` (employer) — FLSA overtime (29 U.S.C. §207)
+### Batch 1 status
+- `unauthorized-auto-repair-charges` (consumer) — ✅ SHIPPED 2026-07-20 (CA/NY/FL/WA repair acts + UDAP)
+- `security-deposit-interest-demand` (landlord) — TODO (genuinely new; 2 research attempts died on API error — retry). IL/Chicago/MA/CT deposit-interest statutes.
+- `improper-utility-shutoff` (consumer) — TODO (genuinely new; research died on API error — retry). State PUC shutoff protections.
+- ~~`improper-rent-increase-notice`~~ — DROP (dup of live `rent-increase-improper-notice`).
+- ~~`magnuson-moss-warranty-demand`~~ — DROP (dup of live `warranty-claim-magnuson-moss`).
+- ~~`unpaid-overtime-demand`~~ — DROP (already live in employer.ts).
 
 ### Batch 2
 - `wage-statement-request` (employer) — state pay-stub/itemized-wage-statement statutes
