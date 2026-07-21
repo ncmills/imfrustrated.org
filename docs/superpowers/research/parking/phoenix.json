@@ -1,0 +1,196 @@
+{
+  "slug": "phoenix",
+  "city": "Phoenix",
+  "state": "AZ",
+  "agency": "City of Phoenix parking enforcement officers (Phoenix Police Department Parking Enforcement Unit and Street Transportation Department parking staff) issue the Notice of Violation (NOV) left on the vehicle's windshield. The Phoenix Municipal Court (Civil Traffic Division) receives pleas and trial/hearing requests, adjudicates unresolved parking citations as civil traffic complaints, and administers the Boot and Tow Program. Phoenix has no separate administrative parking-violations bureau of the NYC-DOF type — parking tickets are civil traffic matters handled directly by Phoenix Municipal Court.",
+  "submitOnlineUrl": "https://www.phoenixcourt.gov/",
+  "submitMailAddress": "Phoenix Municipal Court, PO Box 25650, Phoenix, AZ 85002-5650",
+  "howToContest": [
+    "Read the Notice of Violation (NOV) left on your windshield (or the civil traffic Summons and Complaint, if one has already been mailed to you) to find the Complaint Number (upper left corner), the Charge Number(s) (listed vertically down the left side), the violation, the sanction amount, and any printed court date.",
+    "Decide your plea. To contest the ticket, do not pay it — instead you will enter a plea of \"Not Responsible\" and request a trial/hearing.",
+    "Note the timing: if you pay the sanction OR request a hearing within 21 calendar days of the violation date, Phoenix City Code Section 36-156.02(B) entitles you to a $20 'discounted sanction' if later found responsible; requesting a hearing after day 21 is still allowed, just at the full (non-discounted) sanction amount.",
+    "Submit your \"Not Responsible\" plea and trial/hearing request in writing by mail, fax, or email to the Phoenix Municipal Court — this cannot be done online; phoenixcourt.gov only supports making payments and looking up case information, not filing a plea. Mail: Phoenix Municipal Court, PO Box 25650, Phoenix, AZ 85002-5650. Fax: 602-534-3628. Email: court@phoenix.gov.",
+    "Include in your written request: the Complaint Number, the Charge Number(s) you want included in the hearing, your name, full address, daytime phone number, date of birth, and any interpreter needs for you or witnesses. Call 602-262-6421 to confirm the Court received your request.",
+    "If the citation is not paid or otherwise resolved within 50 calendar days of the NOV date, Phoenix City Code Section 36-156.02(C) requires the City to mail you a civil traffic Summons and Complaint with a set court date (service is complete upon mailing). Once that happens, you must submit your trial/hearing request at least 7 days before that court date, through the same mail/fax/email channels.",
+    "Appear at your scheduled trial/hearing as ordered. A Hearing Officer or Judge (not a prosecutor) will question you, the citing officer, and any witnesses, and will decide based on a preponderance-of-the-evidence standard whether you are 'Responsible' or 'Not Responsible.'",
+    "If found 'Responsible,' you must pay the imposed fine that same day; once a Summons and Complaint has issued, the Court cannot suspend any part of the applicable civil sanction. If you disagree with a citation and ignore it entirely, a civil default judgment can be entered against you for the sanction plus fees."
+  ],
+  "contestDeadlineDays": 21,
+  "contestDeadlineNote": "Phoenix does not use a single fixed 'contest deadline' the way many cities do — it is a graduated, multi-stage structure defined in Phoenix City Code Section 36-156.02 and phoenix.gov's own guidance. (1) 21-day discount window: 'If payment for the parking offense is received by the City of Phoenix Finance Department within 21 calendar days from the date of the violation, a $20 discount is allowed' (phoenix.gov, Information about Parking Tickets), and Phoenix City Code Section 36-156.02(B) extends that same $20 discount to 'any person who ... pays the sanction or requests a hearing during the discounted sanction option period reflected in the notice of violation.' Missing day 21 does NOT forfeit your right to contest — you can still request a hearing later, just without the discount. (2) 50-day summons threshold: 'If payment for the offense is not received by the Finance Department within 50 calendar days of the date of violation, the Phoenix City Code mandates that a Parking Summons and Complaint be issued by the Phoenix Municipal Court' (phoenix.gov), which then carries a fixed court date and, per Section 36-156.02(C), the Court 'shall not suspend any part or all of the imposition or execution of any sanction' once a Summons and Complaint issues. (3) Once a Summons and Complaint / court date exists, Phoenix Municipal Court's FAQ states: 'You may request a trial/hearing in writing by mail, fax, or email to the Court at least 7 days before your court date.' We report 21 as contestDeadlineDays because it is the only deadline the Code explicitly and numerically ties to \"requests a hearing\" (Section 36-156.02(B)); treat 50 days and the 7-days-before-court-date rule as the later, harder stops in the same process.",
+  "penaltyNote": "Civil sanctions for parking violations are set by a schedule in Phoenix City Code Section 36-156.02(A) and generally range from about $31 (e.g., most parking-prohibited, alley, median, parallel/angle parking, meter, and time-limit violations under Section 36-154 and neighboring sections) up to $150-$300 for certain violations (e.g., disabled-parking violations, unpaved-lot parking, oversized vehicles in residential zones), with some sanctions marked as mandatory minimums that a judge cannot reduce. Paying (or requesting a hearing) within 21 calendar days of the violation date qualifies for a $20 discount off the listed sanction plus State penalty assessments (Phoenix City Code Section 36-156.02(B)). If the sanction is not received by the City Treasurer within the time period stated on the Notice of Violation (50 calendar days per phoenix.gov), the City must issue a civil traffic Summons and Complaint by mail; once issued, the Court must impose at least the listed civil sanction and cannot suspend any part of it (Phoenix City Code Section 36-156.02(C)), and failing to pay or appear by the court date can result in a civil default judgment for the sanction plus additional fees, including collection fees. Separately, any registered owner with three or more unpaid, defaulted parking tickets receives a 'pre-boot' notice from the Court and has 21 days from that notice to pay in full or request a hearing to show cause why the vehicle should not be booted; without a timely response the vehicle's plate is placed on a boot-eligibility list, and once booted, if the debt is not resolved by 5:00 p.m. that day the vehicle is towed by 6:00 p.m. to prevent vandalism (phoenix.gov, Boot and Tow).",
+  "municipalCodeRefs": [
+    {
+      "label": "Phoenix City Code 36-156.02 — Payment of sanctions upon receipt of notice of violation; procedure; effect of failure to make payment; court jurisdiction",
+      "citation": "Phoenix City Code § 36-156.02",
+      "url": "https://phoenix.municipal.codes/CC/36-156.02"
+    },
+    {
+      "label": "Phoenix City Code 36-133 — Presumption in reference to illegal parking; joint registration",
+      "citation": "Phoenix City Code § 36-133",
+      "url": "https://phoenix.municipal.codes/CC/36-133"
+    },
+    {
+      "label": "Phoenix City Code 36-154 — Parking meter violations",
+      "citation": "Phoenix City Code § 36-154",
+      "url": "https://phoenix.municipal.codes/CC/36-154"
+    },
+    {
+      "label": "Phoenix City Code 36-146 — Time limit (parking)",
+      "citation": "Phoenix City Code § 36-146",
+      "url": "https://phoenix.municipal.codes/CC/36-146"
+    },
+    {
+      "label": "Phoenix City Code 36-25 — Parking signs required",
+      "citation": "Phoenix City Code § 36-25",
+      "url": "https://phoenix.municipal.codes/CC/36-25"
+    },
+    {
+      "label": "Phoenix City Code 36-10 — Parking violations (citation/complaint procedure)",
+      "citation": "Phoenix City Code § 36-10",
+      "url": "https://phoenix.municipal.codes/CC/36-10"
+    },
+    {
+      "label": "Phoenix City Code 36-7 — Immobilizing and impounding of vehicles (Boot and Tow authority)",
+      "citation": "Phoenix City Code § 36-7",
+      "url": "https://phoenix.municipal.codes/CC/36-7"
+    }
+  ],
+  "recognizedDefenses": [
+    "not-my-vehicle",
+    "valid-payment",
+    "obscured-signage"
+  ],
+  "defenses": [
+    {
+      "slug": "not-my-vehicle",
+      "whenItApplies": "You were not the registered owner of the vehicle at the time of the violation (e.g., it had already been sold, gifted, or transferred), the vehicle was stolen, or you are one of several jointly-registered owners disputing sole responsibility for this particular citation.",
+      "evidenceChecklist": [
+        "Arizona MVD title/registration transfer documentation or a bill of sale showing the vehicle left your ownership before the violation date",
+        "A police report, if the vehicle was reported stolen before or at the time of the citation",
+        "Documentation of who the correct registered owner was as of the violation date, if different from you",
+        "Proof of your specific role among joint registrants, if the vehicle was jointly registered to multiple people"
+      ],
+      "cityNotes": "Phoenix City Code Section 36-133 makes the registered owner (or, for jointly-registered vehicles, all owners jointly and severally) only 'prima facie' — that is, presumptively, not conclusively — responsible for a parking violation. Phoenix Municipal Court does not publish a standalone 'common reasons for dispute' catalog the way some cities do; you rebut this statutory presumption by presenting your evidence at the trial/hearing you request from the Court under the general 'Not Responsible' plea process described in the Municipal Court FAQ.",
+      "codeCite": {
+        "label": "Phoenix City Code 36-133 — Presumption in reference to illegal parking; joint registration",
+        "citation": "Phoenix City Code § 36-133",
+        "url": "https://phoenix.municipal.codes/CC/36-133"
+      },
+      "sources": [
+        {
+          "label": "Phoenix City Code 36-133",
+          "url": "https://phoenix.municipal.codes/CC/36-133"
+        },
+        {
+          "label": "Phoenix Municipal Court FAQ — How do I request a trial/hearing?",
+          "url": "https://www.phoenix.gov/administration/departments/court/faq.html"
+        }
+      ]
+    },
+    {
+      "slug": "valid-payment",
+      "whenItApplies": "You were cited for a metered-parking violation (no payment for a metered space, or parking beyond a sign-posted time limit), but you actually operated and paid the meter or pay station for the cited space and time.",
+      "evidenceChecklist": [
+        "Meter or pay-station payment receipt showing the space number, date, and a paid time window that covers the citation time",
+        "Credit-card or mobile parking-app payment confirmation for the metered space, if no physical receipt was issued",
+        "A time-stamped photo of the meter display showing time remaining, if taken near the time of citation"
+      ],
+      "cityNotes": "Phoenix City Code Section 36-154 defines the meter violation itself as parking in a metered space 'without operating that meter using legal United States coins, credit cards, or other acceptable forms or methods of payment for the corresponding parking time used,' or parking beyond the time limit shown on the meter's accompanying sign. Proof that you did operate/pay the meter for the cited period directly negates that element of the charge. Note the ordinance provides no exception for a meter that was broken or malfunctioning (only an exception for vehicles displaying a State 'Disabled Parking' or 'Purple Heart Medal Recipient' placard, good for up to one hour past meter expiration) — this ground applies only where you can show you actually paid, not merely that the meter was out of order, which is why 'broken-meter' is not listed as a Phoenix-recognized ground here.",
+      "codeCite": {
+        "label": "Phoenix City Code 36-154 — Parking meter violations",
+        "citation": "Phoenix City Code § 36-154",
+        "url": "https://phoenix.municipal.codes/CC/36-154"
+      },
+      "sources": [
+        {
+          "label": "Phoenix City Code 36-154",
+          "url": "https://phoenix.municipal.codes/CC/36-154"
+        },
+        {
+          "label": "Phoenix Municipal Court FAQ — How do I request a trial/hearing?",
+          "url": "https://www.phoenix.gov/administration/departments/court/faq.html"
+        }
+      ]
+    },
+    {
+      "slug": "obscured-signage",
+      "whenItApplies": "You were cited for exceeding a posted time limit or violating another sign-dependent parking restriction, but the sign that would have established or communicated that restriction was missing, illegible, obstructed, or not properly installed at the location where you were parked.",
+      "evidenceChecklist": [
+        "Date- and time-stamped photos of the parking location showing no sign present, or a sign that is illegible, obstructed, or knocked down",
+        "Wide-angle photos of the full block/curb where you parked, to confirm no valid time-limit or restriction sign was visible from your parking spot",
+        "For residential permit-parking areas specifically, photos confirming no permit-parking sign was posted per Section 36-157.2"
+      ],
+      "cityNotes": "Phoenix City Code Section 36-146 defines the time-limit parking offense itself by reference to 'official signs installed to limit such parking,' and Section 36-25 gives the City Traffic Engineer sole authority to 'determine and designate by appropriate signs or markings any parking time limit.' If no such sign was validly in place, there is no time limit in force to have exceeded. Unlike some cities, Phoenix Municipal Court does not publish a dedicated, itemized 'common reasons for dispute' page naming 'obscured signage' as a ground — this defense instead follows from the elements of the underlying sign-dependent parking ordinances themselves, and must be raised and proven with evidence at the trial/hearing you request from the Court.",
+      "codeCite": {
+        "label": "Phoenix City Code 36-146 — Time limit (parking)",
+        "citation": "Phoenix City Code § 36-146",
+        "url": "https://phoenix.municipal.codes/CC/36-146"
+      },
+      "sources": [
+        {
+          "label": "Phoenix City Code 36-146",
+          "url": "https://phoenix.municipal.codes/CC/36-146"
+        },
+        {
+          "label": "Phoenix City Code 36-25 — Parking signs required",
+          "url": "https://phoenix.municipal.codes/CC/36-25"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "City of Phoenix — Information about Parking Tickets Issued in the City of Phoenix",
+      "url": "https://www.phoenix.gov/administration/departments/court/violations/parking-tickets.html"
+    },
+    {
+      "label": "City of Phoenix — Parking and Traffic Violations",
+      "url": "https://www.phoenix.gov/administration/departments/court/violations.html"
+    },
+    {
+      "label": "City of Phoenix — Municipal Court FAQ",
+      "url": "https://www.phoenix.gov/administration/departments/court/faq.html"
+    },
+    {
+      "label": "City of Phoenix — Traffic and Parking Ticket Payment Options",
+      "url": "https://www.phoenix.gov/administration/departments/court/violations/payment-options.html"
+    },
+    {
+      "label": "City of Phoenix — Boot and Tow",
+      "url": "https://www.phoenix.gov/administration/departments/court/violations/boot-tow.html"
+    },
+    {
+      "label": "City of Phoenix — Minor Criminal and Civil Traffic Violations",
+      "url": "https://www.phoenix.gov/administration/departments/court/violations/minor-violations.html"
+    },
+    {
+      "label": "Phoenix Municipal Court self-service portal (phoenixcourt.gov)",
+      "url": "https://www.phoenixcourt.gov/"
+    },
+    {
+      "label": "Phoenix City Code Chapter 36 — Vehicles and Traffic (official code host, Code Publishing Co.)",
+      "url": "https://phoenix.municipal.codes/CC/36"
+    },
+    {
+      "label": "Phoenix City Code 36-156.02",
+      "url": "https://phoenix.municipal.codes/CC/36-156.02"
+    },
+    {
+      "label": "Phoenix City Code 36-133",
+      "url": "https://phoenix.municipal.codes/CC/36-133"
+    },
+    {
+      "label": "Phoenix City Code 36-154",
+      "url": "https://phoenix.municipal.codes/CC/36-154"
+    },
+    {
+      "label": "Phoenix City Code 36-146",
+      "url": "https://phoenix.municipal.codes/CC/36-146"
+    },
+    {
+      "label": "Phoenix City Code 36-25",
+      "url": "https://phoenix.municipal.codes/CC/36-25"
+    }
+  ],
+  "verifiedAt": "2026-07-20"
+}

@@ -1,0 +1,207 @@
+{
+  "slug": "houston",
+  "city": "Houston",
+  "state": "TX",
+  "agency": "City of Houston ParkHouston (Department of Administration & Regulatory Affairs) issues parking citations; they are administratively adjudicated by Adjudication Hearing Officers through the Houston Municipal Courts Department's Parking Adjudication Office, with any appeal decided by the Houston Municipal Court itself. This is a codified administrative-adjudication process (not a criminal trial): Houston Code of Ordinances Ch. 16, Art. IV expressly calls it the 'administrative adjudication process for parking, standing or stopping of vehicle violations,' and gives the person charged the right to an 'instanter' hearing.",
+  "submitOnlineUrl": "https://houstonparking.t2hosted.com/app/index.aspx",
+  "submitMailAddress": "ParkHouston, 2500 Fannin Street, Houston, TX 77002",
+  "submitInPerson": "Parking Adjudication Office, Houston Municipal Courts, 1400 Lubbock St., Houston, TX 77002. Hours: Monday-Friday 8:30 a.m.-10:00 p.m., Saturday 8:00 a.m.-5:00 p.m. (closed 12:00-1:00 p.m. for lunch on Saturdays). You or your attorney may appear in person; no appointment is required.",
+  "howToContest": [
+    "Locate your citation number and check the printed facts against your vehicle: license plate, vehicle description, violation code, date/time, and location.",
+    "Pick a contest method within the applicable window: online through ParkHouston's official portal (houstonparking.t2hosted.com) only within 7 days of the citation's issuance; in person at the Parking Adjudication Office (1400 Lubbock St.) within 30 days of issuance; or, only if you reside outside Harris County (or can show a medical condition preventing an in-person appearance), by mailing/emailing your evidence within 30 days.",
+    "Gather your evidence before you contest -- payment receipts/app confirmations, photos, a disabled placard and ID, sale or title-transfer documents, etc. All testimony and evidence must be submitted at the time the hearing is entered; there is no later opportunity to add more.",
+    "At the hearing, enter a plea of admit, admit with explanation, or deny the alleged infraction, and present your evidence. If you contest online, an online hearing is an official, binding hearing -- you submit written statements and evidence rather than appearing in person.",
+    "The Adjudication Hearing Officer reviews the citation and your evidence and, applying a preponderance-of-the-evidence standard, issues an order finding you liable or not liable and stating any fine, costs, or fees. Hearings are recorded (audio/video), and the record is kept until the appeal deadline passes.",
+    "If you disagree with the decision, file a Notice of Appeal in person, no later than the 30th day after the Hearing Officer's order, with the Parking Management Cashier at Municipal Courts (1400 Lubbock St.). You must pay the fine plus a $15 administrative fee per citation as a bond to appeal; the Municipal Court decides the appeal on the existing hearing record only (no new evidence or oral argument, and you do not have to appear), and the bond/fees are refunded if you win.",
+    "Separately, if you were not the vehicle's registered owner on the violation date (e.g., you had already sold it), you can rebut Houston's presumption that the registered owner is who parked illegally by mailing a notarized Declaration of Non-Ownership form with transfer documentation to Parking Management, P.O. Box 4997, Houston, TX 77002-1526 -- this is a separate track from the standard citation hearing."
+  ],
+  "contestDeadlineDays": 30,
+  "contestDeadlineNote": "You have 30 days from the date a citation is issued to exercise your right to a hearing, whether in person or (if eligible) by mail: Houston Code of Ordinances Sec. 16-64(c) gives the person charged the right to an 'instanter' hearing 'exercised by appearing in person before an adjudication hearing officer within 30 days from the date of issuance of the citation.' The 30-day window for hearings by mail is not itself spelled out in Sec. 16-64(c) -- it comes from the Houston Municipal Courts Department's official 'Parking Citation Hearing Procedures' guidance, which states hearings by mail 'shall be mailed within (30) days of the issuance of the citation' and are available only if the citizen resides outside Harris County, TX (with an exception for a documented medical condition preventing an in-person appearance). ParkHouston's own pages state the in-person rule plainly too: 'You have 30 days from the date the citation was issued to contest your citation.' CONTESTING ONLINE HAS A MUCH SHORTER WINDOW: current ParkHouston guidance states 'You may contest your citation online if it is within seven (7) days from citation issuance' (if the citation prefix is P or V and not yet in the system, that 7-day window runs from when the citation is entered into the system instead). Sec. 16-66(e): failure to appear before an adjudication hearing officer within 30 days of issuance 'shall be considered an admission of liability for the charged offense and a default notice shall be issued on that basis' (the Hearing Procedures guidance restates this as failure to 'contest or pay' within 30 days). NOTE: an unadopted 2023 draft revision to Sec. 16-64.1 (marked 'Draft for Discussion Purposes Only, Not Yet Approved by City Attorney') proposed extending the online-contest window from 7 to 30 days, matching the in-person/mail deadline -- but ParkHouston's live pages as of this record's verification date still state the online window is 7 days, so 7 days is treated as the current operative online deadline pending confirmation the revision was adopted.",
+  "penaltyNote": "If you neither pay nor request a hearing within 30 days of issuance, the citation is deemed an admission of liability (Sec. 16-66(e)) and becomes delinquent -- a delinquent fee is added, and if it remains unpaid after 90 days, an additional 30 percent collection fee is added. A vehicle becomes boot-eligible once it has three or more delinquent citations, or just one delinquent citation for parking in a handicapped zone (violation code APK-21, which itself carries the highest fine in ParkHouston's schedule: $500, rising to $600 if unpaid after 30 days). Fighting an unfavorable hearing decision by appeal to Municipal Court requires paying the fine in full plus a $15 administrative fee per citation as a bond before the appeal is heard (refunded only if the appeal succeeds), and no new evidence or testimony is allowed at that stage.",
+  "municipalCodeRefs": [
+    {
+      "label": "Houston Code of Ordinances Sec. 16-64 -- Parking citations (administrative adjudication process; instanter hearing right; 30-day deadline)",
+      "citation": "Houston, Tex., Code of Ordinances ch. 16, art. IV, § 16-64",
+      "url": "https://library.municode.com/tx/houston/codes/code_of_ordinances?nodeId=COOR_CH16MUCO_ARTIVADPACI"
+    },
+    {
+      "label": "Houston Code of Ordinances Sec. 16-64.1 -- Online adjudication",
+      "citation": "Houston, Tex., Code of Ordinances ch. 16, art. IV, § 16-64.1",
+      "url": "https://library.municode.com/tx/houston/codes/code_of_ordinances?nodeId=COOR_CH16MUCO_ARTIVADPACI"
+    },
+    {
+      "label": "Houston Code of Ordinances Sec. 16-66 -- Hearings (admit/admit-with-explanation/deny plea; preponderance-of-the-evidence standard; hearing officer's order)",
+      "citation": "Houston, Tex., Code of Ordinances ch. 16, art. IV, § 16-66",
+      "url": "https://library.municode.com/tx/houston/codes/code_of_ordinances?nodeId=COOR_CH16MUCO_ARTIVADPACI"
+    },
+    {
+      "label": "Houston Code of Ordinances Sec. 16-67 -- Appeal (Municipal Court reviews under the substantial-evidence rule; no new evidence)",
+      "citation": "Houston, Tex., Code of Ordinances ch. 16, art. IV, § 16-67",
+      "url": "https://library.municode.com/tx/houston/codes/code_of_ordinances?nodeId=COOR_CH16MUCO_ARTIVADPACI"
+    },
+    {
+      "label": "Houston Code of Ordinances Sec. 26-2 -- Definitions (Chapter 26, Parking), including 'Owner,' 'Parking citation,' and 'Meter or pay station'",
+      "citation": "Houston, Tex., Code of Ordinances ch. 26, art. I, div. 1, § 26-2",
+      "url": "https://library.municode.com/tx/houston/codes/code_of_ordinances?nodeId=COOR_CH26PA_ARTIINGE_DIV1PA_S26-2DE"
+    },
+    {
+      "label": "Houston Code of Ordinances Sec. 26-88 -- Parking areas for persons with disabilities",
+      "citation": "Houston, Tex., Code of Ordinances ch. 26, art. II, § 26-88",
+      "url": "https://library.municode.com/tx/houston/codes/code_of_ordinances?nodeId=COOR_CH26PA_ARTIISTSTPAOPVE"
+    }
+  ],
+  "recognizedDefenses": [
+    "valid-payment",
+    "wrong-ticket-details",
+    "not-my-vehicle",
+    "disabled-placard-not-displayed"
+  ],
+  "defenses": [
+    {
+      "slug": "valid-payment",
+      "whenItApplies": "You were cited for an expired-meter or no-payment violation (violation code APK-1, 'Parking meter expired') but you actually purchased or held a valid parking session for your license plate, at that location, at the ticketed time.",
+      "evidenceChecklist": [
+        "Payment receipt or in-app confirmation (e.g., a ParkHouston-accepted parking app) showing your license plate, the meter/zone location, and the paid time window",
+        "A printed meter receipt, if the meter issued one",
+        "Comparison of the citation's issuance time against your payment's start/expiration time to show your session covered that moment",
+        "The citation itself, to confirm the plate number and location match your payment"
+      ],
+      "cityNotes": "ParkHouston's own description of violation code APK-1 defines the offense as there being 'not a valid parking session for the license plate in the system or the meter shows expired' -- so proof you actually held a valid, paid session directly rebuts the citation's factual basis. Houston Code Sec. 16-64(d) reinforces this: a citation 'is a record kept in the ordinary course of business in the city and is rebuttable proof of the facts it contains,' and under Sec. 16-66(c) the hearing officer must find liability by a preponderance of the evidence. IMPORTANT CAVEAT: parking at a broken/nonfunctioning meter is NOT, on its own, a guaranteed or codified defense in Houston -- ParkHouston's FAQ states you 'may legally park' at a nonfunctioning meter by paying through the mobile app instead, but also warns citations 'may still be issued' at a nonfunctioning meter per city ordinance. So the safe evidence to rely on is proof of actual payment (by app or at another meter), not the fact that a meter was broken.",
+      "codeCite": {
+        "label": "Houston Code of Ordinances Sec. 16-64(d) -- citation is rebuttable proof of the facts it contains",
+        "citation": "Houston, Tex., Code of Ordinances ch. 16, art. IV, § 16-64(d)",
+        "url": "https://library.municode.com/tx/houston/codes/code_of_ordinances?nodeId=COOR_CH16MUCO_ARTIVADPACI"
+      },
+      "sources": [
+        {
+          "label": "ParkHouston -- Frequently Asked Questions (nonfunctioning meter guidance)",
+          "url": "https://www.houstontx.gov/parking/faq.html"
+        },
+        {
+          "label": "ParkHouston -- Parking Codes, Regulations and Fine Information (APK-1 'Parking meter expired' description)",
+          "url": "https://www.houstontx.gov/parking/Parking-Regulations-and-Violations.pdf"
+        }
+      ]
+    },
+    {
+      "slug": "wrong-ticket-details",
+      "whenItApplies": "The citation itself contains information that doesn't match your vehicle or the actual facts -- e.g., an incorrect license plate, vehicle description, violation code, date/time, or location.",
+      "evidenceChecklist": [
+        "A copy or photo of the actual citation showing the incorrect field(s)",
+        "Your vehicle registration/title, to compare the correct plate number and vehicle description against what's on the citation",
+        "Any evidence contradicting the citation's stated location, date, or time (e.g., photos, receipts, other timestamped records)"
+      ],
+      "cityNotes": "Houston does not publish a standalone list of 'defective ticket' grounds the way some other cities do. Instead, Houston Code Sec. 16-64(d) provides that the citation 'is a record kept in the ordinary course of business in the city and is rebuttable proof of the facts it contains,' and Sec. 16-66(a) lets the person charged 'admit, admit with explanation, or deny the alleged infraction' at the hearing. In practice, that means an inaccurate citation is contested by denying the infraction and presenting the discrepancy as evidence at the instanter hearing, which the Adjudication Hearing Officer weighs under the preponderance-of-the-evidence standard in Sec. 16-66(c) -- there is no separate automatic-dismissal rule for a defective citation.",
+      "codeCite": {
+        "label": "Houston Code of Ordinances Sec. 16-64(d) -- citation is rebuttable proof of the facts it contains",
+        "citation": "Houston, Tex., Code of Ordinances ch. 16, art. IV, § 16-64(d)",
+        "url": "https://library.municode.com/tx/houston/codes/code_of_ordinances?nodeId=COOR_CH16MUCO_ARTIVADPACI"
+      },
+      "sources": [
+        {
+          "label": "City of Houston Municipal Courts Department -- Parking Citation Hearing Procedures",
+          "url": "https://www.houstontx.gov/parking/citationhearings-eng.pdf"
+        }
+      ]
+    },
+    {
+      "slug": "not-my-vehicle",
+      "whenItApplies": "You were not the registered owner of the vehicle on the date(s) of the violation(s) -- for example, you had already sold or otherwise transferred it -- so Houston's presumption that the registered owner is the person who parked illegally does not apply to you.",
+      "evidenceChecklist": [
+        "The notarized Declaration of Non-Ownership form",
+        "A copy of the bill of sale or purchase/transfer agreement showing the date of transfer",
+        "The new owner's name, driver's license number, and address, if known",
+        "A completed Texas Motor Vehicle Transfer Notification (to update TxDOT's records)",
+        "The citation number(s) being disputed"
+      ],
+      "cityNotes": "Houston handles this as a dedicated, separate process rather than an argument made at the standard citation hearing. The City's own Declaration of Non-Ownership form states: 'Under the City of Houston Code of Ordinances, you, as the registered owner of the vehicle as of the date of the violation(s), are presumed to be the person who parked it illegally. If you did not own the vehicle on that date, complete the declaration below.' The completed, notarized declaration (with transfer documentation attached) must be mailed to Parking Management, P.O. Box 4997, Houston, TX 77002-1526 -- a different address from ParkHouston's general correspondence address.",
+      "codeCite": {
+        "label": "Houston Code of Ordinances Sec. 26-2 -- Definitions ('Owner' means a person, other than a lienholder, having the property interest in or title to a vehicle)",
+        "citation": "Houston, Tex., Code of Ordinances ch. 26, art. I, div. 1, § 26-2",
+        "url": "https://library.municode.com/tx/houston/codes/code_of_ordinances?nodeId=COOR_CH26PA_ARTIINGE_DIV1PA_S26-2DE"
+      },
+      "sources": [
+        {
+          "label": "City of Houston Municipal Courts -- Declaration of Non-Ownership form",
+          "url": "https://www.houstontx.gov/parking/declaration.pdf"
+        },
+        {
+          "label": "ParkHouston -- Frequently Asked Questions ('I received a parking violation notice ... for a vehicle I no longer own')",
+          "url": "https://www.houstontx.gov/parking/faq.html"
+        }
+      ]
+    },
+    {
+      "slug": "disabled-placard-not-displayed",
+      "whenItApplies": "You hold a valid disabled parking placard or plate but simply forgot to hang or display it at the time you were cited for parking in a handicapped zone (violation code APK-21).",
+      "evidenceChecklist": [
+        "A copy of your valid disabled parking placard (front and back) or your disabled-plate registration",
+        "Your driver's license or ID matching the placard holder",
+        "The citation number"
+      ],
+      "cityNotes": "This is a specific, Houston-published allowance beyond the canonical defense list: ParkHouston's FAQ states that within 30 days of the citation issue date, you can contest online or in person and provide a copy of a valid disabled parking placard and ID; residents outside Harris County may instead mail or email their testimony and evidence. This is worth pursuing because APK-21 (handicapped-zone parking without a valid placard/plate) carries ParkHouston's highest published fine -- $500, rising to $600 if unpaid after 30 days. The underlying ordinance (Sec. 26-88) does not itself spell out a 'forgot to display' procedure; that specific after-the-fact allowance comes from ParkHouston's own FAQ guidance, not a distinct code section.",
+      "codeCite": {
+        "label": "Houston Code of Ordinances Sec. 26-88 -- Parking areas for persons with disabilities",
+        "citation": "Houston, Tex., Code of Ordinances ch. 26, art. II, § 26-88",
+        "url": "https://library.municode.com/tx/houston/codes/code_of_ordinances?nodeId=COOR_CH26PA_ARTIISTSTPAOPVE"
+      },
+      "sources": [
+        {
+          "label": "ParkHouston -- Frequently Asked Questions ('I forgot to hang my disabled parking placard...')",
+          "url": "https://www.houstontx.gov/parking/faq.html"
+        },
+        {
+          "label": "ParkHouston -- Parking Codes, Regulations and Fine Information (APK-21 'Parked in a handicapped zone')",
+          "url": "https://www.houstontx.gov/parking/Parking-Regulations-and-Violations.pdf"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "ParkHouston -- Resolve a Citation",
+      "url": "https://www.houstontx.gov/parking/resolve.html"
+    },
+    {
+      "label": "ParkHouston -- Frequently Asked Questions",
+      "url": "https://www.houstontx.gov/parking/faq.html"
+    },
+    {
+      "label": "City of Houston Municipal Courts Department -- Parking Citation Hearing Procedures (PDF)",
+      "url": "https://www.houstontx.gov/parking/citationhearings-eng.pdf"
+    },
+    {
+      "label": "City of Houston Municipal Courts Department -- Parking Citations",
+      "url": "https://www.houstontx.gov/courts/parking_citations.html"
+    },
+    {
+      "label": "ParkHouston -- Parking Permits / Citations",
+      "url": "https://www.houstontx.gov/parking/citations.html"
+    },
+    {
+      "label": "ParkHouston -- Parking Codes, Regulations and Fine Information (PDF)",
+      "url": "https://www.houstontx.gov/parking/Parking-Regulations-and-Violations.pdf"
+    },
+    {
+      "label": "City of Houston Municipal Courts -- Declaration of Non-Ownership form (PDF)",
+      "url": "https://www.houstontx.gov/parking/declaration.pdf"
+    },
+    {
+      "label": "ParkHouston online citation contest/payment portal (T2 Systems)",
+      "url": "https://houstonparking.t2hosted.com/app/index.aspx"
+    },
+    {
+      "label": "Houston Code of Ordinances, Chapter 16 -- Municipal Courts, Article IV: Adjudication of Parking Citations (Municode)",
+      "url": "https://library.municode.com/tx/houston/codes/code_of_ordinances?nodeId=COOR_CH16MUCO_ARTIVADPACI"
+    },
+    {
+      "label": "Houston Code of Ordinances, Chapter 26 -- Parking (Municode)",
+      "url": "https://library.municode.com/tx/houston/codes/code_of_ordinances?nodeId=COOR_CH26PA"
+    },
+    {
+      "label": "City of Houston -- Chapter 26 Parking, proposed revisions (04/27/2023 draft, not yet approved by City Attorney -- used only to cross-verify current, unmodified section text such as Secs. 16-64, 16-66, 16-67, 26-2, 26-88)",
+      "url": "https://www.houstontx.gov/parking/pdf/Chapter-26-Revisions-20230427.pdf"
+    }
+  ],
+  "verifiedAt": "2026-07-20"
+}

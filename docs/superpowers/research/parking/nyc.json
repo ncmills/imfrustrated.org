@@ -1,0 +1,314 @@
+{
+  "slug": "nyc",
+  "city": "New York City",
+  "state": "NY",
+  "agency": "New York City Department of Finance (DOF) — Parking Violations Bureau (PVB). DOF collects and processes parking and camera violation tickets citywide; disputes are adjudicated by the Parking Violations Bureau's own Administrative Law Judges (a DOF tribunal). Note: NYC's Office of Administrative Trials and Hearings (OATH) Hearings Division adjudicates summonses for 25+ other city agencies but does NOT list the Department of Finance or parking violations among its member agencies — parking-ticket hearings are conducted by PVB itself, not OATH.",
+  "submitOnlineUrl": "https://nycserv.nyc.gov/HBWNonCommercial/index.jsp",
+  "submitMailAddress": "NYC Department of Finance, Hearings By Mail Unit, P.O. Box 29021, Cadman Plaza Station, Brooklyn, NY 11202-9021",
+  "submitInPerson": "Any NYC Department of Finance business center — walk-in, first-come first-served, no appointment necessary, Monday–Friday 8:30 a.m.–4:30 p.m. Bring a valid driver's license, vehicle registration, and title or rental agreement. You do not need an attorney. If walk-in hours don't work, you can also schedule an in-person hearing via NYC's appointment system (nyc.gov/site/finance/about/make-an-appointment.page). Note: DOF states that appearing in person does not increase your chances of getting a ticket dismissed, and encourages online, mobile-app, or mail hearings to save time.",
+  "howToContest": [
+    "Locate your ticket's summons number and confirm the violation code, date, time, and location printed on it.",
+    "Choose a dispute method: online hearing (NYC DOF's 'Dispute a Ticket' portal at nycserv.nyc.gov), the Pay or Dispute mobile app, a hearing-by-mail, or an in-person hearing at a DOF business center.",
+    "Before submitting, review NYC DOF's 'Common reasons for ticket disputes' and 'Evidence recommendations' pages and gather supporting evidence (photos, receipts, DMV records, etc.).",
+    "Enter a plea of 'Not Guilty' and submit a written defense statement plus your evidence — online: upload through the portal; by mail: attach copies of evidence to the ticket and your letter and mail to the Hearings By Mail Unit; in person: bring your evidence and identification to a DOF business center.",
+    "Wait for the decision from an Administrative Law Judge: in-person hearings get a decision immediately; online and mail hearings get an emailed or mailed decision, typically within about three weeks.",
+    "If you disagree with the decision, you may appeal within 30 days of the judgment through DOF's 'Appeal a Hearing Decision' process; any refund from a successful dispute is first applied to other outstanding judgment debt you owe."
+  ],
+  "contestDeadlineDays": 30,
+  "contestDeadlineNote": "\"To dispute a parking ticket or camera violation, you must request a hearing within 30 days of the date the ticket or camera violation was issued to you to avoid paying late fees.\" The clock starts on the date the ticket was issued (not a later mailing date), and DOF states that contacting anyone other than the Department of Finance does not pause the deadline. Source: NYC DOF Dispute a Ticket FAQs, https://www.nyc.gov/site/finance/vehicles/dispute-a-ticket-faqs.page (also stated on https://www.nyc.gov/site/finance/vehicles/dispute-a-ticket.page: \"you must request a hearing within 30 days after the ticket was issued to avoid paying late penalties\").",
+  "penaltyNote": "If you request a hearing more than 30 days after issuance and are found guilty, you must pay late penalties (per NYC Admin Code §19-211: up to $10 additional for responding after 30 days, up to $20 more after 45 days, and up to $30 more after 75 days, following a required second notice). If DOF does not receive payment or a hearing request, a parking violation goes into default judgment approximately 100 days after issuance (a camera violation goes into judgment approximately 75 days after issuance); judgment adds accrued penalties and interest to the fine, and DOF can send the debt to a collection agency or seize assets. You generally cannot get a hearing on a ticket in judgment once it is more than one year old, absent a 'Request for Hearing After Judgment' showing good cause for not responding sooner. If you have more than $350 in tickets in judgment (NYC Admin Code §19-212 uses \"greater than three hundred fifty dollars\"), your vehicle can be booted and towed (NYC Admin Code §19-212), though DOF sends warning notices first.",
+  "municipalCodeRefs": [
+    {
+      "label": "NYC Admin Code §19-201 — Parking violations bureau created",
+      "citation": "N.Y.C. Admin. Code § 19-201",
+      "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-128050"
+    },
+    {
+      "label": "NYC Admin Code §19-206 — Hearings (Parking Violations Bureau)",
+      "citation": "N.Y.C. Admin. Code § 19-206",
+      "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-31403"
+    },
+    {
+      "label": "NYC Admin Code §19-207 — Judgments",
+      "citation": "N.Y.C. Admin. Code § 19-207",
+      "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-31412"
+    },
+    {
+      "label": "NYC Admin Code §19-211 — Additional penalties for parking violations",
+      "citation": "N.Y.C. Admin. Code § 19-211",
+      "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-214753"
+    },
+    {
+      "label": "NYC Admin Code §19-212 — Limitation on removal of motor vehicles for parking-judgment debt ($350 boot/tow threshold)",
+      "citation": "N.Y.C. Admin. Code § 19-212",
+      "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-218474"
+    },
+    {
+      "label": "NYC Admin Code §19-213 — Grace period; failure to purchase parking time and cancellation of certain tickets",
+      "citation": "N.Y.C. Admin. Code § 19-213",
+      "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-218350"
+    },
+    {
+      "label": "19 RCNY §39-02 — Notice of Violation (Summons)",
+      "citation": "19 RCNY § 39-02",
+      "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCrules/0-0-0-40806"
+    },
+    {
+      "label": "19 RCNY §39-08 — Hearings (general Parking Violations Bureau hearing procedure)",
+      "citation": "19 RCNY § 39-08",
+      "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCrules/0-0-0-40895"
+    }
+  ],
+  "recognizedDefenses": [
+    "broken-meter",
+    "obscured-signage",
+    "valid-payment",
+    "wrong-ticket-details",
+    "grace-period",
+    "not-my-vehicle",
+    "disabled-vehicle",
+    "death-of-registrant"
+  ],
+  "defenses": [
+    {
+      "slug": "broken-meter",
+      "whenItApplies": "You were ticketed for an expired-meter or failure-to-pay violation, but the meter you used was broken, so you tried to pay at the next-nearest meter on the same block (or within the same municipal lot) and could not complete payment there either.",
+      "evidenceChecklist": [
+        "A statement of your attempt to buy a receipt from the next-nearest muni-meter on the same block or within the same municipal lot",
+        "Proof you tried every payment method the machine accepts (coins, credit card, etc.) and all failed",
+        "Time- and date-stamped photos of the broken meter",
+        "A 311 complaint or repair report for the broken meter, if you filed one"
+      ],
+      "cityNotes": "This is NYC DOF's own published 'broken meter' dispute ground; it specifically requires showing you tried the next-nearest meter on the same block, not just that your particular meter was out of order. No standalone RCNY/Admin Code section is titled 'broken meter' — the closest codified affirmative-defense provision covering meter-payment issues is Admin Code §19-213(c) (failure to purchase parking time); general hearing/evidence procedure is 19 RCNY §39-08.",
+      "codeCite": {
+        "label": "19 RCNY §39-08 — Hearings (general Parking Violations Bureau hearing procedure)",
+        "citation": "19 RCNY § 39-08",
+        "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCrules/0-0-0-40895"
+      },
+      "sources": [
+        {
+          "label": "NYC DOF — Common reasons for ticket disputes (Broken meter)",
+          "url": "https://www.nyc.gov/site/finance/vehicles/common-reasons.page"
+        }
+      ]
+    },
+    {
+      "slug": "obscured-signage",
+      "whenItApplies": "You were ticketed for violating a posted sign restriction, but the sign was missing, illegible, ambiguous, or stated the wrong restriction.",
+      "evidenceChecklist": [
+        "Clear photos of the entire side of the block where you were ticketed, from corner to corner",
+        "Photos of the front and back of every parking sign on that side of the street",
+        "Photos of the street-name signs at the intersection, to confirm the exact location",
+        "Photos showing the property address where you were parked",
+        "Date- and time-stamped photos, corroborated with map or satellite imagery (e.g. Google Maps)"
+      ],
+      "cityNotes": "NYC DOF is explicit that simply not seeing a sign is NOT a defense unless the sign itself was illegible, missing, ambiguous, or wrongly stated — a sign that was merely far away, or that you misunderstood, does not qualify.",
+      "codeCite": {
+        "label": "19 RCNY §39-08 — Hearings (general Parking Violations Bureau hearing procedure)",
+        "citation": "19 RCNY § 39-08",
+        "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCrules/0-0-0-40895"
+      },
+      "sources": [
+        {
+          "label": "NYC DOF — Common reasons for ticket disputes (Signs)",
+          "url": "https://www.nyc.gov/site/finance/vehicles/common-reasons.page"
+        },
+        {
+          "label": "NYC DOF — Common Misconceptions (Sign Violations)",
+          "url": "https://www.nyc.gov/site/finance/vehicles/common-misconceptions.page"
+        }
+      ]
+    },
+    {
+      "slug": "valid-payment",
+      "whenItApplies": "You were ticketed for failing to purchase or display parking time (e.g., an expired- or no-receipt muni-meter violation), but you actually paid for parking at that location at, or within 5 minutes after, the time the violation was recorded.",
+      "evidenceChecklist": [
+        "A valid payment receipt showing muni-meter payment for the ticketed time, or for up to 5 minutes after",
+        "For motorcycles: a digital photograph of the valid payment receipt, submitted through the Bureau's website",
+        "Any other evidence of payment the hearing officer determines is sufficient"
+      ],
+      "cityNotes": "Codified as an explicit affirmative defense, not just DOF guidance: NYC Admin Code §19-213(c) makes it a defense to a 'failure to purchase parking time' ticket that you bought parking time for the ticketed time (or up to 5 minutes later) at that location, evidenced by a valid payment receipt.",
+      "codeCite": {
+        "label": "NYC Admin Code §19-213(c) — Failure to purchase parking time (affirmative defense)",
+        "citation": "N.Y.C. Admin. Code § 19-213(c)",
+        "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-218350"
+      },
+      "sources": [
+        {
+          "label": "NYC Admin Code §19-213 — Grace period; failure to purchase parking time",
+          "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-218350"
+        }
+      ]
+    },
+    {
+      "slug": "wrong-ticket-details",
+      "whenItApplies": "The ticket itself is missing a required element, or a required element is illegible or mis-described — e.g., wrong plate number, wrong vehicle make/body type, wrong date or time, or no citation to the specific rule violated.",
+      "evidenceChecklist": [
+        "A copy or photo of the actual ticket showing the missing, illegible, or incorrect field(s)",
+        "Your vehicle registration or title, to compare the correct plate number, make, model, and body type against what's on the ticket",
+        "Comparison against NYC DOF's published 'Required elements in a ticket' list to identify exactly which required field is missing or wrong"
+      ],
+      "cityNotes": "This is a codified right, not just DOF guidance: 19 RCNY §39-02(a)(3) requires that the violation 'shall be dismissed upon application of the person charged' if any information required to be on the notice of violation is omitted, misdescribed, or illegible.",
+      "codeCite": {
+        "label": "19 RCNY §39-02(a)(3) — Notice of Violation (Summons): dismissal for omitted, misdescribed, or illegible required information",
+        "citation": "19 RCNY § 39-02(a)(3)",
+        "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCrules/0-0-0-40806"
+      },
+      "sources": [
+        {
+          "label": "NYC DOF — Required elements in a ticket",
+          "url": "https://www.nyc.gov/site/finance/vehicles/required-elements-in-a-ticket.page"
+        },
+        {
+          "label": "NYC DOF — Dispute a Ticket FAQs (\"What is a 'defective' ticket?\")",
+          "url": "https://www.nyc.gov/site/finance/vehicles/dispute-a-ticket-faqs.page"
+        }
+      ]
+    },
+    {
+      "slug": "grace-period",
+      "whenItApplies": "You were ticketed for parking longer than the time you purchased, or longer than a posted time-limit sign allows, but the violation was recorded within 5 minutes of your purchased or allowed time expiring.",
+      "evidenceChecklist": [
+        "Your muni-meter or app payment receipt showing the exact expiration time",
+        "The ticket's recorded issuance time, compared against your expiration time, to show it falls within 5 minutes",
+        "Photos of any posted time-limit sign showing the allowed hours, if the violation is a posted-sign time limit rather than a meter"
+      ],
+      "cityNotes": "Codified 5-minute grace period: NYC Admin Code §19-213(b) bars DOF from issuing a notice of violation for exceeding purchased parking time, or a posted time limit, until 5 minutes after the violation occurs.",
+      "codeCite": {
+        "label": "NYC Admin Code §19-213(b) — Grace period",
+        "citation": "N.Y.C. Admin. Code § 19-213(b)",
+        "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-218350"
+      },
+      "sources": [
+        {
+          "label": "NYC Admin Code §19-213 — Grace period; failure to purchase parking time",
+          "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-218350"
+        }
+      ]
+    },
+    {
+      "slug": "not-my-vehicle",
+      "whenItApplies": "The vehicle was stolen, sold/gifted/transferred, or never registered by you (i.e., fraudulently registered in your name) before the ticket was issued, so you were not the owner or operator at the time of the violation.",
+      "evidenceChecklist": [
+        "Stolen vehicle: a police report of the theft filed before the ticket date, plus (if available) insurance cancellation documentation or witness statements",
+        "Transferred vehicle: DMV plate transfer/surrender documentation, canceled or transferred insurance documentation, or proof the vehicle was registered to another party as of the ticket date",
+        "Fraudulent registration: proof you neither registered the ticketed vehicle nor authorized anyone else to do so"
+      ],
+      "cityNotes": "NYC DOF publishes these as three separate but related dispute reasons ('Stolen vehicle,' 'Transferred vehicle,' 'Fraudulent registration') rather than a single 'not my vehicle' ground; each requires documentary proof. DOF explicitly warns that never having received the summons is NOT, by itself, a defense (notices are also mailed to the registrant's address on file with DMV), and advises removing your registration sticker when you transfer a car.",
+      "codeCite": {
+        "label": "NYC Admin Code §19-205 — Liability (defines 'owner'/'operator' whose ownership or permission establishes liability)",
+        "citation": "N.Y.C. Admin. Code § 19-205",
+        "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-31399"
+      },
+      "sources": [
+        {
+          "label": "NYC DOF — Common reasons for ticket disputes (Stolen vehicle / Transferred vehicle / Fraudulent registration)",
+          "url": "https://www.nyc.gov/site/finance/vehicles/common-reasons.page"
+        }
+      ]
+    },
+    {
+      "slug": "disabled-vehicle",
+      "whenItApplies": "Your car suddenly and unexpectedly became mechanically disabled while parked or stopped, and you had it expeditiously removed once that became possible. This defense does not apply if the car was already illegally parked and only then became disabled.",
+      "evidenceChecklist": [
+        "A tow or repair receipt showing the date/time the disabled vehicle was removed",
+        "Repair-shop documentation describing the sudden mechanical failure",
+        "Any contemporaneous evidence (photos, roadside-assistance record) showing the car became disabled and could not immediately be moved"
+      ],
+      "cityNotes": "NYC DOF requires proof both that the car suddenly became disabled AND that it was thereafter expeditiously removed from the location — if the car was parked illegally first and became disabled afterward, the defense will not prevail.",
+      "codeCite": {
+        "label": "19 RCNY §39-08 — Hearings (general Parking Violations Bureau hearing procedure)",
+        "citation": "19 RCNY § 39-08",
+        "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCrules/0-0-0-40895"
+      },
+      "sources": [
+        {
+          "label": "NYC DOF — Common reasons for ticket disputes (Disabled vehicle)",
+          "url": "https://www.nyc.gov/site/finance/vehicles/common-reasons.page"
+        }
+      ]
+    },
+    {
+      "slug": "death-of-registrant",
+      "whenItApplies": "The registered owner of the vehicle died prior to the ticket's issuance, or within 90 days after it was issued.",
+      "evidenceChecklist": [
+        "A certified copy of the death certificate"
+      ],
+      "cityNotes": "NYC DOF calls this 'a total defense to any ticket' when timely proven with a death certificate.",
+      "codeCite": {
+        "label": "19 RCNY §39-08 — Hearings (general Parking Violations Bureau hearing procedure)",
+        "citation": "19 RCNY § 39-08",
+        "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCrules/0-0-0-40895"
+      },
+      "sources": [
+        {
+          "label": "NYC DOF — Common reasons for ticket disputes (Death of the registrant)",
+          "url": "https://www.nyc.gov/site/finance/vehicles/common-reasons.page"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "NYC DOF — Dispute a Ticket",
+      "url": "https://www.nyc.gov/site/finance/vehicles/dispute-a-ticket.page"
+    },
+    {
+      "label": "NYC DOF — Dispute a Ticket Online",
+      "url": "https://www.nyc.gov/site/finance/vehicles/dispute-web.page"
+    },
+    {
+      "label": "NYC DOF — Dispute a Ticket FAQs",
+      "url": "https://www.nyc.gov/site/finance/vehicles/dispute-a-ticket-faqs.page"
+    },
+    {
+      "label": "NYC DOF — Request a Hearing-by-Mail",
+      "url": "https://www.nyc.gov/site/finance/vehicles/dispute-mail.page"
+    },
+    {
+      "label": "NYC DOF — Request an In-Person Hearing",
+      "url": "https://www.nyc.gov/site/finance/vehicles/dispute-person.page"
+    },
+    {
+      "label": "NYC DOF — Common Reasons for Disputing a Ticket",
+      "url": "https://www.nyc.gov/site/finance/vehicles/common-reasons.page"
+    },
+    {
+      "label": "NYC DOF — Required Elements in a Ticket",
+      "url": "https://www.nyc.gov/site/finance/vehicles/required-elements-in-a-ticket.page"
+    },
+    {
+      "label": "NYC DOF — Evidence Recommendations",
+      "url": "https://www.nyc.gov/site/finance/vehicles/evidence-suggestions.page"
+    },
+    {
+      "label": "NYC DOF — Common Misconceptions",
+      "url": "https://www.nyc.gov/site/finance/vehicles/common-misconceptions.page"
+    },
+    {
+      "label": "NYC DOF — Parking Ticket Services",
+      "url": "https://www.nyc.gov/site/finance/vehicles/services.page"
+    },
+    {
+      "label": "NYC DOF — Office of the Parking Summons Advocate Mission Statement",
+      "url": "https://www.nyc.gov/site/finance/vehicles/opsa.page"
+    },
+    {
+      "label": "NYC DOF — Dispute a Ticket online portal (Hearing By Web)",
+      "url": "https://nycserv.nyc.gov/HBWNonCommercial/index.jsp"
+    },
+    {
+      "label": "NYC OATH — About OATH (confirms DOF/parking is not an OATH Hearings Division agency)",
+      "url": "https://www.nyc.gov/site/oath/about/about-oath.page"
+    },
+    {
+      "label": "NYC Admin Code Title 19, Chapter 2 — Parking Violations Bureau (table of contents)",
+      "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-128050"
+    },
+    {
+      "label": "19 RCNY Chapter 39 — Parking Violations (table of contents)",
+      "url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCrules/0-0-0-40773"
+    }
+  ],
+  "verifiedAt": "2026-07-20"
+}

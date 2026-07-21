@@ -1,0 +1,236 @@
+{
+  "slug": "boston",
+  "city": "Boston",
+  "state": "MA",
+  "agency": "City of Boston Office of the Parking Clerk (a division within the Boston Transportation Department). The Parking Clerk collects and mediates disputes of parking-ticket fines and fees, and also serves as (or designates) the \"hearing officer\" who adjudicates formal administrative hearings under M.G.L. c.90 §20A½ — so the same office both issues/processes tickets and adjudicates the resulting dispute. Enforcement/ticketing itself is carried out by Boston Transportation Department traffic officers and the Boston Police Department.",
+  "submitOnlineUrl": "https://www.boston.gov/tickets",
+  "submitMailAddress": "City of Boston, P.O. Box 55800, Boston, MA 02205 (initial ticket dispute/appeal). A separate formal hearing request under the Traffic Rules and Regulations may instead be mailed to: City of Boston, P.O. Box 1626, Boston, MA 02105.",
+  "submitInPerson": "Office of the Parking Clerk, 1 City Hall Square, Room 224, Boston, MA 02201. Office hours Monday–Friday, 8:30 a.m.–4:30 p.m. Administrative hearings are held Monday–Friday, 9 a.m.–4 p.m. Walk-in hearings (without a prior appointment) are generally only available same-day to disabled-veteran/disabled-plate/disabled-placard registered owners, or to owners whose vehicle was towed for a public-safety violation within the last 5 days; otherwise a hearing must be requested first by phone (617-635-4410), email, mail, or in person. A video-call hearing (via OPCVideoChat@boston.gov) is available for out-of-state/out-of-country residents, disability/handicap-placard holders, and people over 65.",
+  "howToContest": [
+    "Read the ticket and note the ticket number, plate/registration number, violation code, date, time, and location.",
+    "Within 21 days of the ticket's issuance, submit a dispute one of three ways: online via the Parking Ticket Appeal Form at boston.gov/tickets; by mail to City of Boston, P.O. Box 55800, Boston, MA 02205; or in person at the Office of the Parking Clerk, Room 224, Boston City Hall. Every method requires your name and mailing address, the nature of your dispute, your plate/registration number and state, the ticket number(s), and any supporting evidence (e.g. photos, receipts).",
+    "Wait for a decision — the Parking Clerk's office typically responds to online and mailed disputes within 7 to 10 business days.",
+    "If the dispute is denied, you must either pay the ticket within 10 days or call 617-635-4410 to request a formal administrative hearing before the expiration of the 21-day deadline from the ticket's issuance date (per the Traffic Rules and Regulations, this same 21-day statutory window under M.G.L. c.90 §20A½ governs the hearing request itself).",
+    "A hearing request can be made in person at Room 224, by phone, by email, or by mail to City of Boston, P.O. Box 1626, Boston, MA 02105, and must include a brief description of the dispute, the plate/registration number, and the ticket number(s).",
+    "The Parking Clerk's office mails written notice of the hearing's date, time, and place. The hearing itself is informal and the rules of evidence do not apply; the hearing officer keeps a record and issues a final written decision.",
+    "While a timely hearing request is pending, the ticket is placed on \"suspended\" status and is not subject to further late penalties, booting, or registration/license non-renewal.",
+    "If you disagree with the hearing officer's final decision, it is subject to judicial review under M.G.L. c.30A §14 (the Massachusetts Administrative Procedure Act)."
+  ],
+  "contestDeadlineDays": 21,
+  "contestDeadlineNote": "\"From the date you receive the ticket, you have 21 days to pay or appeal the ticket\" (Boston.gov, Parking Ticket FAQs). This matches the underlying statute: M.G.L. c.90 §20A½ requires the violation notice to direct the person to appear \"not later than twenty-one days after the date of such violation,\" and the City of Boston Traffic Rules and Regulations (Article IV-B, Section 1, quoting Chapter 190 of the Acts of 1982) states a hearing must be requested \"before the expiration of the twenty-first day from the date of issuance of said parking violation notice.\" Separately, the Traffic Rules and Regulations (Article IV-B, Section 2, ¶2) also allow the Office of the Parking Clerk to schedule a hearing on any request received within 45 days of the first mail notice, and that window can be extended further if the ticket notice was not mailed to the address on file with the RMV or provided by the owner.",
+  "penaltyNote": "Late penalties vary by violation type per the City of Boston Traffic Rules and Regulations Schedule of Fines: a ticket that remains unpaid 21 days after issuance is assessed an additional late fee on top of the base fine (e.g., an extra $11 added to a $35 fine, an extra $8 added to a $25 fine, an extra $5 added to a $15 fine — the schedule runs from $5 to $40 depending on the specific violation). Five or more overdue/unpaid parking tickets place a vehicle on the City's boot list (Boston.gov FAQs); recovering a booted vehicle requires paying the outstanding tickets plus a $90 immobilization charge (Traffic Rules and Regulations, Art. IV §17), with the boot removed within about 90 minutes of payment. If an unpaid ticket is forwarded to the Massachusetts Registry of Motor Vehicles for non-renewal of the registered owner's license or vehicle registration, an additional $20 fee is assessed under M.G.L. c.90 §20A½ (as amended by St.1992, c.153, §22). A parking ticket for which a timely hearing request is pending is placed on \"suspended\" status and is not eligible for further late penalties, booting, or license/registration non-renewal while pending (Traffic Rules and Regulations, Art. IV-B §2(5)).",
+  "municipalCodeRefs": [
+    {
+      "label": "M.G.L. c.90 §20A½ — Cities of Boston and Cambridge; parking violations; appearance; adjudication by mail; hearings",
+      "citation": "Mass. Gen. Laws ch. 90, § 20A½",
+      "url": "https://malegislature.gov/laws/generallaws/parti/titlexiv/chapter90/section20a1~2"
+    },
+    {
+      "label": "M.G.L. c.90 §20A — Notice of parking violation; required contents; procedure",
+      "citation": "Mass. Gen. Laws ch. 90, § 20A",
+      "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXIV/Chapter90/Section20a"
+    },
+    {
+      "label": "City of Boston Traffic Rules and Regulations, Article IV-B — Administrative Hearings",
+      "citation": "City of Boston Traffic Rules and Regulations, Art. IV-B (eff. Mar. 1, 2025)",
+      "url": "https://www.boston.gov/sites/default/files/file/2025/03/City%20of%20Boston%20Traffic%20Rules%20and%20Regulations_03.01.2025.pdf"
+    },
+    {
+      "label": "City of Boston Traffic Rules and Regulations, Article IV, Sections 4–5 — Parking Meters; Multi-Space Meters",
+      "citation": "City of Boston Traffic Rules and Regulations, Art. IV §§ 4–5 (eff. Mar. 1, 2025)",
+      "url": "https://www.boston.gov/sites/default/files/file/2025/03/City%20of%20Boston%20Traffic%20Rules%20and%20Regulations_03.01.2025.pdf"
+    }
+  ],
+  "recognizedDefenses": [
+    "not-my-vehicle",
+    "wrong-ticket-details",
+    "broken-meter",
+    "valid-payment",
+    "disabled-vehicle",
+    "disability-placard-exemption"
+  ],
+  "defenses": [
+    {
+      "slug": "not-my-vehicle",
+      "whenItApplies": "You were not the owner/operator of the ticketed vehicle at the time of the violation — for example, the car had been sold or transferred before the ticket date, it was stolen, or the plate/vehicle details on the ticket simply don't match a vehicle you own.",
+      "evidenceChecklist": [
+        "The ticket number and the plate/registration number, make, and color printed on the ticket, to compare against your own vehicle records",
+        "Proof of sale or transfer of the vehicle dated before the violation (bill of sale, RMV transfer paperwork)",
+        "A police report, if the vehicle was stolen at the time of the violation",
+        "Your current vehicle registration/title, if it shows you are not (or were not) the registered owner"
+      ],
+      "cityNotes": "Boston.gov's Parking Ticket FAQs confirm \"wrong vehicle\" disputes are handled through the same general appeal channel (boston.gov/tickets, mail, or in person) by submitting evidence that the vehicle wasn't yours; there is no separate numbered municipal-code section specific to this ground. Notices and hearing correspondence are directed to the registered owner of record (M.G.L. c.90 §20A½; Traffic Rules and Regulations Art. IV §17), so the dispute is decided on that basis.",
+      "codeCite": {
+        "label": "M.G.L. c.90 §20A½ — Adjudication by mail / hearing procedure (general dispute mechanism)",
+        "citation": "Mass. Gen. Laws ch. 90, § 20A½",
+        "url": "https://malegislature.gov/laws/generallaws/parti/titlexiv/chapter90/section20a1~2"
+      },
+      "sources": [
+        {
+          "label": "Boston.gov — Parking Ticket FAQs",
+          "url": "https://www.boston.gov/departments/parking-clerk/parking-ticket-faqs"
+        },
+        {
+          "label": "Boston.gov — How To Appeal A Parking Ticket",
+          "url": "https://www.boston.gov/departments/parking-clerk/how-appeal-parking-ticket"
+        }
+      ]
+    },
+    {
+      "slug": "wrong-ticket-details",
+      "whenItApplies": "The ticket itself is missing a legally required field, or a required field is illegible or incorrect — e.g. wrong plate number, wrong vehicle make/color, wrong date/time/location, or (for a meter violation) the wrong meter number.",
+      "evidenceChecklist": [
+        "A photo or copy of the actual ticket showing the missing, illegible, or incorrect field(s)",
+        "Your vehicle registration or title, to compare the correct plate number, make, and color against what's on the ticket",
+        "A comparison against the elements M.G.L. c.90 §20A requires on every notice (make, color, registration number and state, date, time, place, specific violation charged, meter number if applicable, and the issuing officer's name/badge and division)"
+      ],
+      "cityNotes": "M.G.L. c.90 §20A specifies exactly what information a Boston parking-violation notice must contain. Boston's general appeal process (boston.gov/tickets, mail, or in person) is the vehicle for raising a defect in the ticket, by describing \"the nature of your dispute\" and attaching evidence; no separate Boston-specific dismissal clause for defective notices was found (unlike some other cities), so this defense rests on showing the notice doesn't meet §20A's required contents.",
+      "codeCite": {
+        "label": "M.G.L. c.90 §20A — Notice of parking violation; required contents",
+        "citation": "Mass. Gen. Laws ch. 90, § 20A",
+        "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXIV/Chapter90/Section20a"
+      },
+      "sources": [
+        {
+          "label": "Boston.gov — How To Appeal A Parking Ticket",
+          "url": "https://www.boston.gov/departments/parking-clerk/how-appeal-parking-ticket"
+        }
+      ]
+    },
+    {
+      "slug": "broken-meter",
+      "whenItApplies": "You were ticketed for a meter-fee violation on a block regulated by multi-space Pay & Display meters, and the nearest meter to your parking space was out of order, unable to accept payment, or unable to issue a receipt — so you paid at the next available multi-space meter on the same block instead.",
+      "evidenceChecklist": [
+        "A timestamped photo or video of the malfunctioning/\"out of order\" meter",
+        "A payment receipt or app record from the next available multi-space meter on the same block, for the ticketed time",
+        "A BOS:311 service request/report of the broken meter, if one was filed"
+      ],
+      "cityNotes": "This defense is narrowly scoped to multi-space Pay & Display meters. The Traffic Rules and Regulations (Art. IV §5, as amended) state: \"When parking on a block regulated by multi-space pay & display meters and the nearest meter is out of order, unable to accept payment and/or issue a receipt, payment shall be made at the next available multi-space meter on the block.\" For traditional single-space meters, Boston's rule runs the opposite way: Art. IV §4(6) states any vehicle parked at a single-space meter displaying \"Out of Order\" \"shall be prohibited, unless otherwise posted\" — parking there at all is its own ticketable violation (\"Meter Violation (Out of Order),\" $25 fine), not an excuse to park for free. So simply claiming \"the meter didn't work\" is not, by itself, a recognized defense for a single-space meter — you must show you paid at the next available meter (multi-space scenario) to prevail.",
+      "codeCite": {
+        "label": "City of Boston Traffic Rules and Regulations, Article IV, Section 5 — Multi-Space Meters, General Regulations (¶2, as amended)",
+        "citation": "City of Boston Traffic Rules and Regulations, Art. IV § 5 (eff. Mar. 1, 2025)",
+        "url": "https://www.boston.gov/sites/default/files/file/2025/03/City%20of%20Boston%20Traffic%20Rules%20and%20Regulations_03.01.2025.pdf"
+      },
+      "sources": [
+        {
+          "label": "City of Boston Traffic Rules and Regulations (full PDF, eff. 3/1/2025)",
+          "url": "https://www.boston.gov/sites/default/files/file/2025/03/City%20of%20Boston%20Traffic%20Rules%20and%20Regulations_03.01.2025.pdf"
+        }
+      ]
+    },
+    {
+      "slug": "valid-payment",
+      "whenItApplies": "You paid for parking — via a muni-meter receipt, Pay-by-Plate, or the ParkBoston app — for the ticketed time and location, but were ticketed anyway (e.g. for \"Meter Fee Unpaid,\" \"Over Meter Limit,\" or \"Not in Metered Space\").",
+      "evidenceChecklist": [
+        "A payment receipt or ParkBoston app transaction/session record showing the date, time, and location matching the ticket",
+        "A photo of the paid receipt as displayed on the curbside window or dashboard, if a Pay & Display receipt was issued",
+        "Confirmation that the plate number used for payment (Pay-by-Plate) matches your vehicle's plate"
+      ],
+      "cityNotes": "The Traffic Rules and Regulations set the underlying payment/receipt-display obligations for both single-space and multi-space meters (Art. IV §§4–5); proof you satisfied that obligation for the ticketed time is the basis for disputing the violation. Boston's general appeal process (boston.gov/tickets, mail, or in person) is the channel for submitting this evidence — there is no separate numbered \"valid payment\" defense section distinct from the underlying payment-method rules.",
+      "codeCite": {
+        "label": "City of Boston Traffic Rules and Regulations, Article IV, Sections 4–5 — Parking Meters; Multi-Space Meters (payment and receipt-display requirements)",
+        "citation": "City of Boston Traffic Rules and Regulations, Art. IV §§ 4–5 (eff. Mar. 1, 2025)",
+        "url": "https://www.boston.gov/sites/default/files/file/2025/03/City%20of%20Boston%20Traffic%20Rules%20and%20Regulations_03.01.2025.pdf"
+      },
+      "sources": [
+        {
+          "label": "Boston.gov — How Do Parking Meters Work?",
+          "url": "https://www.boston.gov/departments/parking-clerk/how-do-parking-meters-work"
+        },
+        {
+          "label": "City of Boston Traffic Rules and Regulations (full PDF, eff. 3/1/2025)",
+          "url": "https://www.boston.gov/sites/default/files/file/2025/03/City%20of%20Boston%20Traffic%20Rules%20and%20Regulations_03.01.2025.pdf"
+        }
+      ]
+    },
+    {
+      "slug": "disabled-vehicle",
+      "whenItApplies": "Your car became mechanically disabled while parked or stopped, and you were ticketed while it sat waiting for or arranging a tow.",
+      "evidenceChecklist": [
+        "A tow receipt that matches the date of the ticket",
+        "The location and plate number matching the ticket",
+        "An email/contact address for the Parking Clerk's office to follow up, as requested on the appeal form"
+      ],
+      "cityNotes": "Boston-specific extra (not one of the six canonical slugs). Boston.gov's Parking Ticket FAQs directly answer \"Why am I getting a ticket when my car was disabled and was waiting for a tow?\" by describing this evidence checklist and directing the appeal through boston.gov/tickets or in person. No separate numbered municipal-code section for this ground was found; it is handled through the same general dispute/appeal mechanism as other grounds.",
+      "codeCite": {
+        "label": "M.G.L. c.90 §20A½ — Adjudication by mail / hearing procedure (general dispute mechanism)",
+        "citation": "Mass. Gen. Laws ch. 90, § 20A½",
+        "url": "https://malegislature.gov/laws/generallaws/parti/titlexiv/chapter90/section20a1~2"
+      },
+      "sources": [
+        {
+          "label": "Boston.gov — Parking Ticket FAQs (\"Why am I getting a ticket when my car was disabled and was waiting for a tow?\")",
+          "url": "https://www.boston.gov/departments/parking-clerk/parking-ticket-faqs"
+        }
+      ]
+    },
+    {
+      "slug": "disability-placard-exemption",
+      "whenItApplies": "You are the registered holder of a disabled-veteran plate, disabled plate, or disability placard, and were ticketed for exceeding a posted meter or parking time limit — those time limits do not apply to you — or you were ticketed while properly parked in a designated accessible (HP-DV) space or at a meter without paying.",
+      "evidenceChecklist": [
+        "A photo showing the valid disability placard displayed on the rearview mirror (or disabled plate on the vehicle) at the time of the ticket",
+        "RMV documentation of the placard or plate registration",
+        "A photo of the ticket and the posted time-limit sign or meter showing the violation charged"
+      ],
+      "cityNotes": "Boston-specific extra. The Traffic Rules and Regulations (Art. IV §4, ¶5) state: \"The time limits imposed by this section shall not apply to disabled veteran/disabled plate/disabled placard vehicles, as defined.\" Boston.gov's Parking Ticket FAQs separately confirm placard holders \"may park in designated accessible spaces (HP-DV), at meters, and over time limits without fees, provided the placard is displayed on the rearview mirror.\"",
+      "codeCite": {
+        "label": "City of Boston Traffic Rules and Regulations, Article IV, Section 4 — Parking Meters, General Regulations (¶5: time-limit exemption for disabled veteran/disabled plate/disabled placard vehicles)",
+        "citation": "City of Boston Traffic Rules and Regulations, Art. IV § 4 (eff. Mar. 1, 2025)",
+        "url": "https://www.boston.gov/sites/default/files/file/2025/03/City%20of%20Boston%20Traffic%20Rules%20and%20Regulations_03.01.2025.pdf"
+      },
+      "sources": [
+        {
+          "label": "Boston.gov — Parking Ticket FAQs (\"Where can I park with my disability placard?\")",
+          "url": "https://www.boston.gov/departments/parking-clerk/parking-ticket-faqs"
+        },
+        {
+          "label": "City of Boston Traffic Rules and Regulations (full PDF, eff. 3/1/2025)",
+          "url": "https://www.boston.gov/sites/default/files/file/2025/03/City%20of%20Boston%20Traffic%20Rules%20and%20Regulations_03.01.2025.pdf"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Boston.gov — Parking Clerk (department landing page)",
+      "url": "https://www.boston.gov/departments/parking-clerk"
+    },
+    {
+      "label": "Boston.gov — How To Appeal A Parking Ticket",
+      "url": "https://www.boston.gov/departments/parking-clerk/how-appeal-parking-ticket"
+    },
+    {
+      "label": "Boston.gov — Parking Ticket FAQs",
+      "url": "https://www.boston.gov/departments/parking-clerk/parking-ticket-faqs"
+    },
+    {
+      "label": "Boston.gov — Parking Ticket Fines and Codes",
+      "url": "https://www.boston.gov/departments/parking-clerk/parking-ticket-fines-and-codes"
+    },
+    {
+      "label": "Boston.gov — How Do Parking Meters Work?",
+      "url": "https://www.boston.gov/departments/parking-clerk/how-do-parking-meters-work"
+    },
+    {
+      "label": "Boston.gov — Parking Ticket Appeal Portal (boston.gov/tickets)",
+      "url": "https://www.boston.gov/tickets"
+    },
+    {
+      "label": "Boston.gov — City of Boston Traffic Rules and Regulations (landing page)",
+      "url": "https://www.boston.gov/departments/transportation/city-boston-traffic-rules-and-regulations"
+    },
+    {
+      "label": "City of Boston Traffic Rules and Regulations (full PDF, eff. 3/1/2025)",
+      "url": "https://www.boston.gov/sites/default/files/file/2025/03/City%20of%20Boston%20Traffic%20Rules%20and%20Regulations_03.01.2025.pdf"
+    },
+    {
+      "label": "Massachusetts Legislature — M.G.L. c.90 §20A½",
+      "url": "https://malegislature.gov/laws/generallaws/parti/titlexiv/chapter90/section20a1~2"
+    },
+    {
+      "label": "Massachusetts Legislature — M.G.L. c.90 §20A",
+      "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXIV/Chapter90/Section20a"
+    }
+  ],
+  "verifiedAt": "2026-07-20"
+}

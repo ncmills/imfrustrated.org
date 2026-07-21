@@ -82,6 +82,12 @@ const categoryIconPaths: Record<string, ReactNode> = {
       <path d="M6 24h36" />
     </>
   ),
+  parking: (
+    <>
+      <rect x="8" y="9" width="32" height="30" rx="6" />
+      <path d="M19 33V15h7a5.5 5.5 0 010 11h-7" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
 };
 
 function CategoryIcon({ slug }: { slug: string }) {
@@ -205,6 +211,26 @@ export default function LettersHubPage() {
                 </Reveal>
               );
             })}
+            <Reveal delay={((categories.length % 3) + 1) as 1 | 2 | 3}>
+              <Link href="/letters/parking" className="tool-card group block p-7 h-full">
+                <CategoryIcon slug="parking" />
+                <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">
+                  Parking tickets
+                </p>
+                <h2 className="font-disp font-semibold text-sage text-2xl tracking-[-0.02em]">
+                  Fight it in your city
+                </h2>
+                <p className="text-sage-2 mt-2.5 leading-relaxed">
+                  City-specific dispute statements, verified against local rules — 10 cities and counting.
+                </p>
+                <span className="inline-flex items-center gap-2 mt-5 font-semibold text-[0.95rem] text-clay">
+                  See letters
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar group-hover:translate-x-1 transition-transform duration-300">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </span>
+              </Link>
+            </Reveal>
           </div>
         </section>
 
