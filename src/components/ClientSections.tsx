@@ -126,7 +126,7 @@ export function Header() {
 
         <Link
           href="/#contact"
-          className="mag inline-flex items-center gap-2 px-5 py-2.5 bg-sage text-bg text-[0.88rem] font-semibold rounded-full hover:bg-evergreen transition-colors duration-300"
+          className="mag hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-sage text-bg text-[0.88rem] font-semibold rounded-full hover:bg-evergreen transition-colors duration-300"
         >
           Ask an attorney
         </Link>
