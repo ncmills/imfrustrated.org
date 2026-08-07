@@ -17,10 +17,13 @@ The site was redesigned from the old "warm editorial" look to **Breathing Room**
 
 ## Site surfaces
 
-- `/` — homepage. Sections in order: Hero (DIY message + dispute chips) → **Free Tools (IDHAW + Letters cards)** → How It Works (3 rings) → Pull-quote → Contact (sage panel + intake form). The 6-testimonial section was folded to a single pull-quote in the redesign.
+- `/` — homepage. Sections in order: Hero (DIY message + dispute chips) → **"Everything IFDO gives you"** → How It Works (3 rings) → Testimonials → Contact (sage panel + intake form). The offerings section numbers all five things IFDO hands a visitor: **01** The Letter Library (featured, with per-category chips), **02** I Don't Have A Will, **03** A.I. SSDI, **04** DoppelWriter, **05** Ask a Volunteer Attorney. Landed 2026-08-07 in `d2ff645` — "rework homepage for immediate clarity (5-second test)".
+  - **The letter total and the per-category counts are DERIVED** from `src/data/letters` (`getAllLetters()` / `getAvailableCategories()` / `getLettersByCategory()`), not typed. Do not hardcode them back: they had already drifted once — the page said "74 letters" with Consumer at 18 when the library held 75 with Consumer at 19.
+  - Testimonials are a 4-quote masonry wall of **real, named** quotes. (An older note here claimed they were folded into a single pull-quote — wrong; `b89f207` restored them as a wall.) Never invent quotes here — see `feedback_no_fabricated_social_proof`.
 - `/how-it-works` — three-chapter explainer for the volunteer-attorney conversation.
-- `/free-tools` — featured library page for IDHAW (No. 01) and Letters (No. 02). Add new tools as new featured cards here.
+- `/free-tools` — featured library page. Currently **four** cards: I Don't Have A Will, Letter Templates, A.I. SSDI, DoppelWriter. Add new tools as new featured cards here, and keep the set in sync with the homepage offerings section.
 - `/letters` + `/letters/[category]` + `/letters/[category]/[slug]` — the programmatic SEO letter-template library (added May 2026). See "Letter library" below.
+- `/letters/parking` + `/letters/parking/[city]` + `/letters/parking/[city]/[defense]` — the parking-ticket library. See "Parking library" below.
 - `/about`, `/faq` — supporting pages.
 
 ## Letter library (`src/data/letters/`)
@@ -30,7 +33,7 @@ The letter library is a programmatic SEO surface: ~150-400 target pages, each in
 **Data layer**
 - `src/data/letters/types.ts` — `LetterTemplate` shape (the source of truth for what a letter is). Fields: `slug`, `category`, `title`, `metaDescription`, `lede`, `body`, `howToUse[]`, `legalContext[]`, `stateNotes[]?`, `ifThisDoesntWork`, `relatedSlugs[]`, `faqs[]`, `publishedAt`, `updatedAt?`.
 - `src/data/letters/index.ts` — aggregates all category files, exports `getAllLetters()`, `getLetter(category, slug)`, `getLettersByCategory(category)`, `getRelatedLetters(letter, max)`, `categoryMeta`, `getAvailableCategories()`.
-- `src/data/letters/<category>.ts` — one file per category. Currently: `landlord.ts`, `credit-card.ts`, `consumer.ts`. To add a new category: create the file, export an array of `LetterTemplate`, add it to `allLetters` in `index.ts`, update its `categoryMeta` entry's `hubLede` from "Coming soon" to real copy.
+- `src/data/letters/<category>.ts` — one file per category. **Eight live categories** as of 2026-08-07: `landlord.ts` (21), `consumer.ts` (19), `employer.ts` (10), `airline.ts` (6), `credit-card.ts` (5), `hoa.ts` (5), `neighbor.ts` (5), `hotel.ts` (4) — **75 letters total**. Those counts are recorded here for orientation only; the site reads them from the data layer, so don't sync anything to this line. To add a new category: create the file, export an array of `LetterTemplate`, add it to `allLetters` in `index.ts`, update its `categoryMeta` entry's `hubLede` from "Coming soon" to real copy.
 
 **Routes (all SSG via `generateStaticParams`)**
 - `src/app/letters/page.tsx` — hub (all letters + categories)
@@ -61,3 +64,26 @@ Friend-at-brunch test: "Could a friend at brunch say 'just send them a letter �
 
 **Statute verification rule**
 Every statute cite must be verified against a primary source (Cornell LII for federal, official state legislature site for state, agency .gov for regulatory). For research-heavy waves, dispatch parallel subagents (the established pattern is one agent per letter, each given an explicit source mandate). Free-handing cites from training memory is forbidden — Nick has explicitly called this out as a discardable artifact.
+
+## Parking library (`src/data/parking/`) — SEPARATE from the letter library
+
+A second programmatic surface, added July 2026 and **fully built**: **22 cities, 114 city-specific defense pages**, all `verifiedAt` 2026-07-20. Check here before "adding parking tickets" — that work is done, including NYC.
+
+**Cities:** nyc, los-angeles, chicago, houston, phoenix, philadelphia, san-antonio, san-diego, dallas, san-jose, austin, seattle, denver, washington-dc, boston, atlanta, miami, portland, las-vegas, baltimore, minneapolis, san-francisco.
+
+**Data layer**
+- `src/data/parking/types.ts` — `ParkingCity`, `ParkingDefense`, `CodeRef`, `SourceRef`. A defense carries `body` (statement with `[PLACEHOLDERS]`), `evidenceChecklist[]`, `codeCite` (label + citation + official URL), `howToSubmit[]`, `sources[]`, and a required `verifiedAt`.
+- `src/data/parking/cities/<slug>.ts` — one file per city, exporting `<camelCase(slug)>City`.
+- `src/data/parking/index.ts` — **AUTO-GENERATED. Do not hand-edit the imports or `allCities`.**
+
+**Routes (SSG):** `/letters/parking` (hub) → `/letters/parking/[city]` → `/letters/parking/[city]/[defense]`, each with its own `opengraph-image.tsx`.
+
+**Adding a city**
+1. Research it to `docs/superpowers/research/parking/<slug>.json` against the city's own official rules (nyc.gov / American Legal / Municode) — one research file per city, 22 on disk today.
+2. Drop `src/data/parking/cities/<slug>.ts`.
+3. `npx tsx scripts/parking-expansion/regen-index.ts` — deterministic, no LLM.
+4. `npm run build`.
+
+Helper scripts live in `scripts/parking-expansion/` (`expand-cities.sh`, `regen-index.ts`, `run-cron.sh`).
+
+**The same statute-verification rule applies** — every `codeCite` and `sources[]` entry must point at the city's official host, and `verifiedAt` must reflect a real check. Municipal parking codes get amended; a stale `verifiedAt` is a signal to re-verify, not decoration.
