@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 import IntakeForm from "@/components/IntakeForm";
+import {
+  getAllLetters,
+  getAvailableCategories,
+  getLettersByCategory,
+} from "@/data/letters";
 
 /* ─── Data ─── */
 
@@ -15,17 +20,19 @@ const disputes: { label: string; slug: string }[] = [
   { label: "Hotel", slug: "hotel" },
 ];
 
-/* The eight live letter categories + real counts (source: src/data/letters). */
-const letterCategories: { label: string; slug: string; n: number }[] = [
-  { label: "Landlord", slug: "landlord", n: 21 },
-  { label: "Consumer", slug: "consumer", n: 18 },
-  { label: "Employer", slug: "employer", n: 10 },
-  { label: "Airline", slug: "airline", n: 6 },
-  { label: "Credit cards", slug: "credit-card", n: 5 },
-  { label: "Neighbor", slug: "neighbor", n: 5 },
-  { label: "HOA", slug: "hoa", n: 5 },
-  { label: "Hotel", slug: "hotel", n: 4 },
-];
+/* Live letter categories + counts, DERIVED from src/data/letters — never hand-typed.
+ * These were hardcoded until 2026-08-07 and had already drifted: the page advertised
+ * "74 letters" with Consumer at 18 when the library actually held 75 with Consumer at
+ * 19. A count that is typed by hand is a count that goes stale the next time someone
+ * drops a template into a category file, and the homepage is the one place a visitor
+ * checks the number against nothing. Reading it from the data layer means adding a
+ * letter updates the badge, the body copy, the CTA and the chips at once. */
+const letterCategories: { label: string; slug: string; n: number }[] =
+  getAvailableCategories()
+    .map((c) => ({ label: c.label, slug: c.slug, n: getLettersByCategory(c.slug).length }))
+    .sort((a, b) => b.n - a.n || a.label.localeCompare(b.label));
+
+const letterCount = getAllLetters().length;
 
 /* Self-help tools (sister sites). Letter Library + Ask-an-attorney are handled
  * separately below so all five offerings sit in one scannable section. */
@@ -164,18 +171,18 @@ export default function Home() {
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-[14px] bg-clay-soft/30 text-clay grid place-items-center font-disp font-bold text-base">01</div>
-                    <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em]">Free letter library&nbsp;·&nbsp;74 letters</p>
+                    <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em]">Free letter library&nbsp;·&nbsp;{letterCount} letters</p>
                   </div>
                   <h3 className="font-disp font-semibold text-sage text-[1.7rem] md:text-3xl tracking-[-0.02em]">
                     <Link href="/letters" className="hover:text-clay transition-colors duration-300">The Letter Library</Link>
                   </h3>
                   <p className="text-sage-2 mt-3 leading-relaxed">
-                    74 ready-to-send letters that quietly cite real statute &mdash; security
+                    {letterCount} ready-to-send letters that quietly cite real statute &mdash; security
                     deposits, billing errors, HOA fines, delayed flights, and more. Every
                     citation verified by an attorney. Fill in the blanks and send. No lawyer required.
                   </p>
                   <Link href="/letters" className="inline-flex items-center gap-2 mt-5 font-semibold text-[0.95rem] text-clay hover:gap-3 transition-all duration-300">
-                    Browse all 74 letters
+                    Browse all {letterCount} letters
                     <Arrow />
                   </Link>
                 </div>
