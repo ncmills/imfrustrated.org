@@ -3,6 +3,11 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 import { getAllLetters, getAvailableCategories } from "@/data/letters";
+/* DERIVED, never hand-typed — same rule the homepage adopted 2026-08-07 after it
+ * advertised "74 letters" against a 75-letter library. This card said "10 cities"
+ * against 22 for the same reason: the fix was applied to letter counts and not to
+ * this one. See the comment block in src/app/page.tsx. */
+import { getAllParkingCities } from "@/data/parking";
 
 export const metadata: Metadata = {
   title: "Letter Templates That Get You What You're Owed | I'm Frustrated dot Org",
@@ -221,7 +226,7 @@ export default function LettersHubPage() {
                   Fight it in your city
                 </h2>
                 <p className="text-sage-2 mt-2.5 leading-relaxed">
-                  City-specific dispute statements, verified against local rules — 10 cities and counting.
+                  City-specific dispute statements, verified against local rules — {getAllParkingCities().length} cities and counting.
                 </p>
                 <span className="inline-flex items-center gap-2 mt-5 font-semibold text-[0.95rem] text-clay">
                   See letters

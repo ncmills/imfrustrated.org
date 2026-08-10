@@ -6,6 +6,7 @@ import {
   getAvailableCategories,
   getLettersByCategory,
 } from "@/data/letters";
+import { getAllParkingCities } from "@/data/parking";
 
 /* ─── Data ─── */
 
@@ -33,6 +34,16 @@ const letterCategories: { label: string; slug: string; n: number }[] =
     .sort((a, b) => b.n - a.n || a.label.localeCompare(b.label));
 
 const letterCount = getAllLetters().length;
+
+/* Parking library counts — DERIVED for the same reason the letter counts are.
+ * The /letters card hardcoded "10 cities" against a 22-city library. */
+const parkingCities = getAllParkingCities();
+const parkingCityCount = parkingCities.length;
+const parkingDefenseCount = parkingCities.reduce((n, c) => n + c.defenses.length, 0);
+/* Biggest-first, so the chips show the cities most people are searching for. */
+const featuredParkingCities = [...parkingCities]
+  .sort((a, b) => b.defenses.length - a.defenses.length || a.city.localeCompare(b.city))
+  .slice(0, 8);
 
 /* Self-help tools (sister sites). Letter Library + Ask-an-attorney are handled
  * separately below so all five offerings sit in one scannable section. */
@@ -193,6 +204,39 @@ export default function Home() {
                       {c.label}&nbsp;<span className="text-clay font-semibold">{c.n}</span>
                     </Link>
                   ))}
+                </div>
+              </div>
+
+              {/* Parking library — the largest content set on the site (137 of 228
+                 sitemap URLs) and, until 2026-08-10, invisible from here: the homepage
+                 did not contain the word "parking" once, and the only way in was a
+                 single card two clicks deep on /letters. Counts derived, never typed. */}
+              <div className="mt-8 pt-7 border-t border-sage/10">
+                <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+                  <div className="flex-1">
+                    <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-1.5">
+                      Also free&nbsp;·&nbsp;{parkingCityCount} cities&nbsp;·&nbsp;{parkingDefenseCount} defenses
+                    </p>
+                    <h4 className="font-disp font-semibold text-sage text-xl tracking-[-0.02em]">
+                      <Link href="/letters/parking" className="hover:text-clay transition-colors duration-300">
+                        Fight a parking ticket in your city
+                      </Link>
+                    </h4>
+                    <p className="text-sage-2 mt-2 leading-relaxed">
+                      City-specific dispute statements checked against each city&rsquo;s own
+                      contest rules and deadlines &mdash; {parkingCityCount} cities so far.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-2.5 md:justify-end md:max-w-[46%]">
+                    {featuredParkingCities.map((c) => (
+                      <Link key={c.slug} href={`/letters/parking/${c.slug}`} className="chip">
+                        {c.city}
+                      </Link>
+                    ))}
+                    <Link href="/letters/parking" className="chip font-semibold text-clay">
+                      All {parkingCityCount} &rarr;
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
