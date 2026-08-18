@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Instrument_Serif, Hanken_Grotesk, JetBrains_Mono }
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import PostHogProvider from "@/components/PostHogProvider";
+import { NetworkFooter } from "@/components/NetworkFooter";
 import { buildOpenGraph } from "@/lib/og";
 import "./globals.css";
 
@@ -164,7 +165,7 @@ export default function RootLayout({
             "url": "https://imfrustrated.org",
             "email": "info@imfrustrated.org",
             "nonprofitStatus": "Nonprofit501c3",
-            "sameAs": ["https://idonthaveawill.com", "https://aissdi.com"],
+            "sameAs": ["https://idonthaveawill.com", "https://aissdi.com", "https://doppelwriter.com"],
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
               "name": "Free Legal Resources",
@@ -219,13 +220,7 @@ export default function RootLayout({
             {" · "}
             <a href="/terms" className="hover:text-muted-warm transition-colors">Terms</a>
           </p>
-          <p className="text-[10px] text-muted-warm/40">
-            <a href="https://aissdi.com" className="hover:text-muted-warm transition-colors">aissdi.com</a>
-            {" · "}
-            <a href="https://idonthaveawill.com" className="hover:text-muted-warm transition-colors">idonthaveawill.com</a>
-            {" · "}
-            <a href="https://doppelwriter.com" className="hover:text-muted-warm transition-colors">doppelwriter.com</a>
-          </p>
+          <NetworkFooter currentDomain="imfrustrated.org" />
         </footer>
         <Analytics />
         <SpeedInsights />
