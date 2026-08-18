@@ -293,7 +293,7 @@ export default async function ParkingCityPage({
         </section>
 
         {/* CTA */}
-        <section className="relative max-w-5xl mx-auto px-6 md:px-8 py-14 md:py-16 pb-24">
+        <section className="relative max-w-6xl mx-auto px-6 md:px-8 py-14 md:py-16 pb-24">
           <Reveal>
             <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16 text-center">
               <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.4rem] tracking-[-0.03em] leading-tight">

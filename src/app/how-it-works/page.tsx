@@ -133,7 +133,7 @@ export default function HowItWorksPage() {
         </section>
 
         {/* ─── Chapters ─── */}
-        <section className="relative max-w-5xl mx-auto px-6 md:px-8 py-12 md:py-16">
+        <section className="relative max-w-6xl mx-auto px-6 md:px-8 py-12 md:py-16">
           <Reveal>
             <div className="bg-bg-2 rounded-[32px] px-7 md:px-12 py-14 md:py-16">
               <div className="space-y-14 md:space-y-16">
@@ -181,7 +181,7 @@ export default function HowItWorksPage() {
         </section>
 
         {/* ─── CTA ─── */}
-        <section id="contact" className="relative max-w-5xl mx-auto px-6 md:px-8 pb-24">
+        <section id="contact" className="relative max-w-6xl mx-auto px-6 md:px-8 pb-24">
           <Reveal>
             <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16 text-center">
               <div className="max-w-xl mx-auto">

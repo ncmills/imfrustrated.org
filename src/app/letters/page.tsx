@@ -184,7 +184,7 @@ export default function LettersHubPage() {
         </section>
 
         {/* Categories */}
-        <section className="relative max-w-5xl mx-auto px-6 md:px-8 py-14 md:py-16">
+        <section className="relative max-w-6xl mx-auto px-6 md:px-8 py-14 md:py-16">
           <Reveal className="text-center max-w-2xl mx-auto mb-10">
             <p className="font-accent italic text-xl text-clay">by situation</p>
             <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.5rem] tracking-[-0.03em] mt-1.5">
@@ -276,7 +276,7 @@ export default function LettersHubPage() {
         </section>
 
         {/* CTA */}
-        <section className="relative max-w-5xl mx-auto px-6 md:px-8 pb-24">
+        <section className="relative max-w-6xl mx-auto px-6 md:px-8 pb-24">
           <Reveal>
             <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16 text-center">
               <p className="font-accent italic text-xl text-clay-soft">if the letter isn&rsquo;t enough</p>

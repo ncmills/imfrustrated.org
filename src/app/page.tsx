@@ -122,7 +122,7 @@ export default function Home() {
 
       <main id="top" className="relative">
         {/* ─── Hero ─── */}
-        <section className="relative max-w-5xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-16 text-center">
+        <section className="relative max-w-6xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-16 text-center">
           <Reveal delay={1}>
             <span className="eyebrow"><span className="pulse" />Free legal tools, built by volunteer attorneys</span>
           </Reveal>
@@ -161,7 +161,7 @@ export default function Home() {
         </section>
 
         {/* ─── Everything IFDO gives you (all five offerings, scannable) ─── */}
-        <section id="offerings" className="relative max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-20">
+        <section id="offerings" className="relative max-w-6xl mx-auto px-6 md:px-8 py-16 md:py-20">
           <Reveal className="text-center max-w-2xl mx-auto mb-12">
             <p className="font-accent italic text-xl text-clay">everything in one place</p>
             <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.75rem] tracking-[-0.03em] mt-1.5">
@@ -295,7 +295,7 @@ export default function Home() {
         </section>
 
         {/* ─── How it works ─── */}
-        <section id="how" className="relative max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-20">
+        <section id="how" className="relative max-w-6xl mx-auto px-6 md:px-8 py-16 md:py-20">
           <Reveal>
             <div className="bg-bg-2 rounded-[32px] px-8 md:px-12 py-14">
               <div className="text-center max-w-xl mx-auto mb-10">
@@ -326,7 +326,7 @@ export default function Home() {
         </section>
 
         {/* ─── Testimonials ─── */}
-        <section id="testimonials" className="relative max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-20">
+        <section id="testimonials" className="relative max-w-6xl mx-auto px-6 md:px-8 py-16 md:py-20">
           <Reveal className="text-center max-w-2xl mx-auto mb-12">
             <p className="font-accent italic text-xl text-clay">in their own words</p>
             <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.75rem] tracking-[-0.03em] mt-1.5">
@@ -347,7 +347,7 @@ export default function Home() {
         </section>
 
         {/* ─── Contact ─── */}
-        <section id="contact" className="relative max-w-5xl mx-auto px-6 md:px-8 pb-24">
+        <section id="contact" className="relative max-w-6xl mx-auto px-6 md:px-8 pb-24">
           <Reveal>
             <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16">
               <div className="text-center max-w-xl mx-auto mb-10">

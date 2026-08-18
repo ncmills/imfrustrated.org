@@ -126,7 +126,7 @@ export default async function CategoryHubPage({
         </section>
 
         {/* CTA */}
-        <section className="relative max-w-5xl mx-auto px-6 md:px-8 pb-24">
+        <section className="relative max-w-6xl mx-auto px-6 md:px-8 pb-24">
           <Reveal>
             <div className="bg-bg-2 rounded-[32px] px-6 sm:px-10 md:px-14 py-12 md:py-14 text-center">
               <p className="text-sage-2 text-lg leading-relaxed mb-7 max-w-xl mx-auto">
