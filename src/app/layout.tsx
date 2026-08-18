@@ -44,8 +44,17 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/logo.svg",
-    apple: "/logo.svg",
+    // `apple` pointed at /logo.svg and iOS IGNORES SVG apple-touch-icons —
+    // "Add to Home Screen" fell back to a screenshot of the page. It has to be
+    // a real PNG, opaque (iOS composites transparency onto black) and 180×180.
+    // `src/app/favicon.ico` is NOT listed here: Next special-cases the root
+    // favicon and emits its link even when `icons` is declared — verified in
+    // the served HTML, where listing it too produced two identical <link>s.
+    // Everything else does need declaring, because an explicit `icons` object
+    // suppresses auto-detection of the other app-dir icon files, and that
+    // suppression is not scoped to `icon` — it drops `apple` as well.
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: buildOpenGraph({
     path: "/",
