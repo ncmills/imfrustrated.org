@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
+import { buildOpenGraph } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Privacy | I'm Frustrated dot Org",
   description:
     "What we collect, where it goes, and what we don't do with it. Plain-English privacy practice for the volunteer attorney intake form, letter library, and analytics.",
   alternates: { canonical: "https://imfrustrated.org/privacy" },
-  openGraph: {
-    type: "article",
-    url: "https://imfrustrated.org/privacy",
+  openGraph: buildOpenGraph({
+    path: "/privacy",
     title: "Privacy | I'm Frustrated dot Org",
     description:
       "What we collect, where it goes, and what we don't do with it.",
-  },
+    // src/app/privacy/ has no colocated opengraph-image file.
+    hasRouteImage: false,
+  }),
 };
 
 const LAST_UPDATED = "May 20, 2026";

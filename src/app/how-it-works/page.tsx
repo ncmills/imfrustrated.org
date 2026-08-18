@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { buildOpenGraph } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "How It Works | I'm Frustrated dot Org",
   description:
     "How I'm Frustrated dot Org connects people with volunteer attorneys for a free, no-pressure conversation before hiring a lawyer. The 3-step process explained.",
   alternates: { canonical: "https://imfrustrated.org/how-it-works" },
-  openGraph: {
-    type: "article",
-    url: "https://imfrustrated.org/how-it-works",
+  openGraph: buildOpenGraph({
+    path: "/how-it-works",
     title: "How It Works | I'm Frustrated dot Org",
     description:
       "How I'm Frustrated dot Org connects people with volunteer attorneys for a free, no-pressure conversation before hiring a lawyer.",
-  },
+    // src/app/how-it-works/ has no colocated opengraph-image file.
+    hasRouteImage: false,
+  }),
 };
 
 const chapters = [

@@ -2,18 +2,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 import { getAllParkingCities } from "@/data/parking";
+import { buildOpenGraph } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "How to Fight a Parking Ticket, City by City | I'm Frustrated dot Org",
   description:
     "Free, city-specific parking-ticket dispute statements — the exact defense to write, where to submit it, and the deadline that matters. Verified against each city's official rules.",
   alternates: { canonical: "https://imfrustrated.org/letters/parking" },
-  openGraph: {
-    type: "article",
-    url: "https://imfrustrated.org/letters/parking",
+  openGraph: buildOpenGraph({
+    path: "/letters/parking",
     title: "How to Fight a Parking Ticket, City by City",
     description: "City-specific parking-ticket dispute statements, verified against each city's official rules.",
-  },
+    // src/app/letters/parking/opengraph-image.tsx exists — omit `images` so it merges in.
+    hasRouteImage: true,
+  }),
 };
 
 export default function ParkingIndexPage() {

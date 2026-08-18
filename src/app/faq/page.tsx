@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
+import { buildOpenGraph } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "FAQ | I'm Frustrated dot Org",
   description:
     "Common questions about I'm Frustrated dot Org — what we do, who we are, what it costs, what we won't do, and when to reach out.",
   alternates: { canonical: "https://imfrustrated.org/faq" },
-  openGraph: {
-    type: "article",
-    url: "https://imfrustrated.org/faq",
+  openGraph: buildOpenGraph({
+    path: "/faq",
     title: "FAQ | I'm Frustrated dot Org",
     description:
       "Common questions about I'm Frustrated dot Org — what we do, who we are, what it costs, what we won't do, and when to reach out.",
-  },
+    // src/app/faq/ has no colocated opengraph-image file.
+    hasRouteImage: false,
+  }),
 };
 
 const FAQS: { question: string; answer: string }[] = [

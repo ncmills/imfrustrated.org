@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 import { getAllParkingCities, getParkingCity } from "@/data/parking";
+import { buildOpenGraph } from "@/lib/og";
 
 type Params = { city: string };
 
@@ -26,7 +27,13 @@ export async function generateMetadata({
     title,
     description,
     alternates: { canonical: url },
-    openGraph: { type: "article", url, title, description },
+    openGraph: buildOpenGraph({
+      path: `/letters/parking/${c.slug}`,
+      title,
+      description,
+      // src/app/letters/parking/[city]/opengraph-image.tsx exists — omit `images` so it merges in.
+      hasRouteImage: true,
+    }),
     twitter: {
       card: "summary_large_image",
       title,

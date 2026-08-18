@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildOpenGraph } from "@/lib/og";
 import Link from "next/link";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 
@@ -7,13 +8,14 @@ export const metadata: Metadata = {
   description:
     "Free legal tools built by I'm Frustrated dot Org for the people we serve. Currently featuring I Don't Have a Will — a free, private, state-specific will generator that runs entirely in your browser.",
   alternates: { canonical: "https://imfrustrated.org/free-tools" },
-  openGraph: {
-    type: "article",
-    url: "https://imfrustrated.org/free-tools",
+  openGraph: buildOpenGraph({
+    path: "/free-tools",
     title: "Free Tools | I'm Frustrated dot Org",
     description:
       "Free legal tools built by I'm Frustrated dot Org for the people we serve. Currently featuring I Don't Have a Will — a free, private, state-specific will generator.",
-  },
+    // src/app/free-tools/opengraph-image.tsx exists — omit `images` so it merges in.
+    hasRouteImage: true,
+  }),
   twitter: {
     card: "summary_large_image",
     title: "Free Tools | I'm Frustrated dot Org",

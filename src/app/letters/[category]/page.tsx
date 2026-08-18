@@ -8,6 +8,7 @@ import {
   getLettersByCategory,
   type LetterCategory,
 } from "@/data/letters";
+import { buildOpenGraph } from "@/lib/og";
 
 type Params = { category: string };
 
@@ -29,12 +30,13 @@ export async function generateMetadata({
     title: `${meta.label} Letter Templates | I'm Frustrated dot Org`,
     description: `Free ${meta.label.toLowerCase()} letter templates that invoke real statutes — written by attorneys, free to use. ${meta.blurb}`,
     alternates: { canonical: `https://imfrustrated.org/letters/${meta.slug}` },
-    openGraph: {
-      type: "article",
-      url: `https://imfrustrated.org/letters/${meta.slug}`,
+    openGraph: buildOpenGraph({
+      path: `/letters/${meta.slug}`,
       title: `${meta.label} Letter Templates | I'm Frustrated dot Org`,
       description: meta.blurb,
-    },
+      // src/app/letters/[category]/opengraph-image.tsx exists — omit `images` so it merges in.
+      hasRouteImage: true,
+    }),
   };
 }
 

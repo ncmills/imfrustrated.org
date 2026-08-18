@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Instrument_Serif, Hanken_Grotesk, JetBrains_Mono }
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import PostHogProvider from "@/components/PostHogProvider";
+import { buildOpenGraph } from "@/lib/og";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -46,15 +47,15 @@ export const metadata: Metadata = {
     icon: "/logo.svg",
     apple: "/logo.svg",
   },
-  openGraph: {
+  openGraph: buildOpenGraph({
+    path: "/",
+    type: "website",
     title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
     description:
       "Talk to a real attorney before you hire one. Free, honest legal guidance to help you figure out your next step.",
-    url: "https://imfrustrated.org",
-    siteName: "I'm Frustrated dot Org",
-    type: "website",
-    locale: "en_US",
-  },
+    // src/app/opengraph-image.tsx exists — omit `images` so it merges in.
+    hasRouteImage: true,
+  }),
   twitter: {
     card: "summary_large_image",
     title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
