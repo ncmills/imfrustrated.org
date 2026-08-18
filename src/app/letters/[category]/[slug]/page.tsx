@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { CopyLetterButton } from "@/components/CopyLetterButton";
 import {
   categoryMeta,
   getAllLetters,
@@ -226,6 +227,7 @@ export default async function LetterPage({
                 {letter.body}
               </pre>
             </div>
+            <CopyLetterButton text={letter.body} label="Copy letter" />
             <p className="text-sage-2 text-xs italic leading-relaxed mt-6 max-w-prose">
               This template is for informational use only. It is not legal advice and does not create an attorney-client relationship. Square-bracketed placeholders must be replaced with your specific facts. State law and procedural details vary; if your situation is urgent, complicated, or high-stakes, email{" "}
               <a href="mailto:info@imfrustrated.org" className="text-clay underline decoration-clay/40 decoration-[1.5px] underline-offset-[5px] hover:decoration-clay transition-colors duration-300">
