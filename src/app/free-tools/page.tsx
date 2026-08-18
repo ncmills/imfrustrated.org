@@ -155,7 +155,7 @@ export default function FreeToolsPage() {
 
       <main className="relative">
         {/* ─── Hero ─── */}
-        <section className="relative max-w-5xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-12 md:pb-16 text-center">
+        <section className="relative max-w-6xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-12 md:pb-16 text-center">
           <Reveal delay={1}>
             <nav className="text-[0.72rem] uppercase tracking-[0.2em] text-sage-2 mb-7 font-semibold">
               <Link href="/" className="hover:text-clay transition-colors duration-300">Home</Link>
@@ -180,7 +180,7 @@ export default function FreeToolsPage() {
         </section>
 
         {/* ─── Featured tools ─── */}
-        <section id="tools" className="relative max-w-5xl mx-auto px-6 md:px-8 py-12 md:py-16">
+        <section id="tools" className="relative max-w-6xl mx-auto px-6 md:px-8 py-12 md:py-16">
           <Reveal className="text-center max-w-2xl mx-auto mb-12">
             <p className="font-accent italic text-xl text-clay">what&rsquo;s live today</p>
             <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.75rem] tracking-[-0.03em] mt-1.5">
@@ -359,7 +359,7 @@ export default function FreeToolsPage() {
         </section>
 
         {/* ─── Further reading (sister-site blog discovery) ─── */}
-        <section className="relative max-w-5xl mx-auto px-6 md:px-8 py-12 md:py-16">
+        <section className="relative max-w-6xl mx-auto px-6 md:px-8 py-12 md:py-16">
           <Reveal className="text-center max-w-2xl mx-auto mb-10">
             <p className="font-accent italic text-xl text-clay">go deeper</p>
             <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.4rem] tracking-[-0.03em] mt-1.5">
@@ -419,7 +419,7 @@ export default function FreeToolsPage() {
         </section>
 
         {/* ─── More on the way ─── */}
-        <section className="relative max-w-5xl mx-auto px-6 md:px-8 py-12 md:py-16">
+        <section className="relative max-w-6xl mx-auto px-6 md:px-8 py-12 md:py-16">
           <Reveal>
             <div className="bg-bg-2 rounded-[32px] px-8 md:px-12 py-14 text-center">
               <div className="max-w-xl mx-auto">
