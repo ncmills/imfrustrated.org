@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
+import { buildOpenGraph } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Terms | I'm Frustrated dot Org",
   description:
     "Plain-English terms of use for I'm Frustrated dot Org: who we are, what the service does, what it doesn't, and the legal posture around the letter library and volunteer attorney intake.",
   alternates: { canonical: "https://imfrustrated.org/terms" },
-  openGraph: {
-    type: "article",
-    url: "https://imfrustrated.org/terms",
+  openGraph: buildOpenGraph({
+    path: "/terms",
     title: "Terms | I'm Frustrated dot Org",
     description:
       "Plain-English terms of use for I'm Frustrated dot Org.",
-  },
+    // src/app/terms/ has no colocated opengraph-image file.
+    hasRouteImage: false,
+  }),
 };
 
 const LAST_UPDATED = "May 20, 2026";

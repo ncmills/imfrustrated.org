@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
+import { buildOpenGraph } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "About | I'm Frustrated dot Org",
   description:
     "I'm Frustrated dot Org is a volunteer attorney network providing free, no-pressure legal conversations. Our mission, our model, and why we don't take fees.",
   alternates: { canonical: "https://imfrustrated.org/about" },
-  openGraph: {
-    type: "article",
-    url: "https://imfrustrated.org/about",
+  openGraph: buildOpenGraph({
+    path: "/about",
     title: "About | I'm Frustrated dot Org",
     description:
       "I'm Frustrated dot Org is a volunteer attorney network providing free, no-pressure legal conversations.",
-  },
+    // src/app/about/ has no colocated opengraph-image file.
+    hasRouteImage: false,
+  }),
 };
 
 const sections = [

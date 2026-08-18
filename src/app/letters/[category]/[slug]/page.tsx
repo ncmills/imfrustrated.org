@@ -9,6 +9,7 @@ import {
   getRelatedLetters,
   type LetterCategory,
 } from "@/data/letters";
+import { buildOpenGraph } from "@/lib/og";
 
 type Params = { category: string; slug: string };
 
@@ -29,12 +30,13 @@ export async function generateMetadata({
     title: `${letter.title} | I'm Frustrated dot Org`,
     description: letter.metaDescription,
     alternates: { canonical: url },
-    openGraph: {
-      type: "article",
-      url,
+    openGraph: buildOpenGraph({
+      path: `/letters/${letter.category}/${letter.slug}`,
       title: letter.title,
       description: letter.metaDescription,
-    },
+      // src/app/letters/[category]/[slug]/opengraph-image.tsx exists — omit `images` so it merges in.
+      hasRouteImage: true,
+    }),
     twitter: {
       card: "summary_large_image",
       title: letter.title,

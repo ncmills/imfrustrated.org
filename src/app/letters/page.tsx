@@ -8,6 +8,7 @@ import { getAllLetters, getAvailableCategories } from "@/data/letters";
  * against 22 for the same reason: the fix was applied to letter counts and not to
  * this one. See the comment block in src/app/page.tsx. */
 import { getAllParkingCities } from "@/data/parking";
+import { buildOpenGraph } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Letter Templates That Get You What You're Owed | I'm Frustrated dot Org",
@@ -21,13 +22,15 @@ export const metadata: Metadata = {
       ],
     },
   },
-  openGraph: {
-    type: "article",
-    url: "https://imfrustrated.org/letters",
+  openGraph: buildOpenGraph({
+    path: "/letters",
     title: "Letter Templates | I'm Frustrated dot Org",
     description:
       "Free, plain-English letter templates that invoke real statutes — security deposits, billing errors, debt validation, medical records, credit-report disputes.",
-  },
+    // src/app/letters/ has NO colocated opengraph-image file — only its children do.
+    // Before this, /letters rendered no og:image at all.
+    hasRouteImage: false,
+  }),
 };
 
 const categoryIconPaths: Record<string, ReactNode> = {
