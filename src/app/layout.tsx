@@ -3,7 +3,6 @@ import { Bricolage_Grotesque, Instrument_Serif, Hanken_Grotesk, JetBrains_Mono }
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import PostHogProvider from "@/components/PostHogProvider";
-import { NetworkFooter } from "@/components/NetworkFooter";
 import { buildOpenGraph } from "@/lib/og";
 import "./globals.css";
 
@@ -214,14 +213,12 @@ export default function RootLayout({
         <PostHogProvider>
           <div id="main-content">{children}</div>
         </PostHogProvider>
-        <footer className="py-4 text-center space-y-2">
-          <p className="text-[10px] text-muted-warm/40">
-            <a href="/privacy" className="hover:text-muted-warm transition-colors">Privacy</a>
-            {" · "}
-            <a href="/terms" className="hover:text-muted-warm transition-colors">Terms</a>
-          </p>
-          <NetworkFooter currentDomain="imfrustrated.org" />
-        </footer>
+        {/* No <footer> here. Every page renders SiteFooter (ClientSections), which
+            carries the brand line, both nav groups, the legal pair and the network
+            strip inside one landmark. This block used to add a SECOND <footer> under
+            it holding a duplicate Privacy/Terms and the cross-site links at 10px /
+            40% opacity — two footers per page, and the whole network outside the
+            one a reader actually reaches. */}
         <Analytics />
         <SpeedInsights />
       </body>

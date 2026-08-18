@@ -5,18 +5,22 @@
  * read as a cross-niche link scheme. Equity funnels UPSTREAM toward the highest-
  * priority site only. Cluster priority: aissdi > idonthaveawill > doppelwriter > imfrustrated.
  * This site (imfrustrated, priority 4) links ONLY to sites above it → aissdi,
- * idonthaveawill, doppelwriter (all three).
+ * idonthaveawill, doppelwriter (all three). Nick reconfirmed the one-way funnel
+ * on 2026-08-18: it is deliberate, and it stays. Never add a Planning-cluster or
+ * Peptide-cluster site here, and never a personal site.
  */
 export interface NetworkSite {
   domain: string; // bare domain, no protocol
   label: string;
+  /** What the site IS. Rendered INSIDE the <a> — this is anchor text, not a tooltip.
+   *  It used to live only in a title= attribute, where it carried no anchor value. */
   tagline: string;
 }
 
 export const NETWORK_SITES: NetworkSite[] = [
-  { domain: "aissdi.com", label: "AISSDI", tagline: "Free SSDI approval-odds & judge lookup tools" },
-  { domain: "idonthaveawill.com", label: "I Don't Have a Will", tagline: "Free will drafting tool" },
-  { domain: "doppelwriter.com", label: "DoppelWriter", tagline: "AI writing tool that learns your voice" },
+  { domain: "aissdi.com", label: "AISSDI", tagline: "free SSDI approval-odds and judge lookup" },
+  { domain: "idonthaveawill.com", label: "I Don't Have a Will", tagline: "free will builder" },
+  { domain: "doppelwriter.com", label: "DoppelWriter", tagline: "AI writing in your own voice" },
 ];
 
 /** Returns sites excluding the current domain (prevents self-linking). */
