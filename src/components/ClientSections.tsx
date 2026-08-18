@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
+import { NetworkFooter } from "@/components/NetworkFooter";
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -314,38 +315,92 @@ export function SiteFooter() {
   return (
     <footer className="relative bg-evergreen mt-8">
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-14">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="text-center md:text-left">
+        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+          <div>
             <Link href="/" className="inline-block"><Logo color="paper" /></Link>
-            <p className="font-accent italic text-bg/55 text-sm mt-3">Friends who are also lawyers.</p>
+            {/* The brand line and the plain-English one-liner both belong here: the
+                first is the voice, the second is what a stranger who landed on a
+                letter page from Google actually needs told. */}
+            <p className="font-accent italic text-bg/70 text-sm mt-3">Friends who are also lawyers.</p>
+            <p className="text-bg/60 text-sm mt-1 max-w-xs leading-relaxed">
+              Free dispute letters and a real attorney to talk to first. We are not a law firm.
+            </p>
           </div>
-          <div className="flex items-center gap-7 text-sm text-bg/55 flex-wrap justify-center md:justify-end">
-            <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>
-            <Link href="/letters" className="hover:text-clay-soft transition-colors duration-300">Letters</Link>
-            <Link href="/how-it-works" className="hover:text-clay-soft transition-colors duration-300">How it works</Link>
-            <Link href="/faq" className="hover:text-clay-soft transition-colors duration-300">FAQ</Link>
-            <Link href="/about" className="hover:text-clay-soft transition-colors duration-300">About</Link>
-            <a href="mailto:info@imfrustrated.org" className="hover:text-clay-soft transition-colors duration-300">Contact</a>
+          {/* Two named groups instead of one undifferentiated row: what you can USE,
+              and who we are. Legal moved out of here and into the bar below, where a
+              reader looks for it. */}
+          <div className="flex flex-wrap gap-x-14 gap-y-8">
+            <div>
+              <p className="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-clay-soft">Start here</p>
+              <ul className="mt-1 flex flex-col">
+                {[
+                  { href: "/letters", label: "The Letter Library" },
+                  { href: "/letters/parking", label: "Parking ticket defenses" },
+                  { href: "/free-tools", label: "Free tools" },
+                  { href: "/#contact", label: "Ask an attorney" },
+                ].map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="inline-flex min-h-[44px] items-center text-sm text-bg/75 hover:text-clay-soft transition-colors duration-300"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-clay-soft">The site</p>
+              <ul className="mt-1 flex flex-col">
+                {[
+                  { href: "/how-it-works", label: "How it works" },
+                  { href: "/faq", label: "FAQ" },
+                  { href: "/about", label: "About" },
+                ].map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="inline-flex min-h-[44px] items-center text-sm text-bg/75 hover:text-clay-soft transition-colors duration-300"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <a
+                    href="mailto:info@imfrustrated.org"
+                    className="inline-flex min-h-[44px] items-center text-sm text-bg/75 hover:text-clay-soft transition-colors duration-300"
+                  >
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-bg/10 text-center">
-          <div className="flex items-center justify-center gap-5 text-xs text-bg/45 mb-4">
-            <Link href="/privacy" className="hover:text-clay-soft transition-colors duration-300">Privacy</Link>
-            <span className="text-bg/25" aria-hidden>·</span>
-            <Link href="/terms" className="hover:text-clay-soft transition-colors duration-300">Terms</Link>
+
+        {/* The cross-site strip lives INSIDE this landmark. It used to be a second
+            bare <footer> mounted in layout.tsx below this one, which put the whole
+            network outside the footer a screen reader lands on and duplicated the
+            Privacy/Terms pair two lines apart. */}
+        <NetworkFooter currentDomain="imfrustrated.org" />
+
+        <div className="mt-10 pt-7 border-t border-bg/12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-bg/60 text-xs">
+            &copy; {new Date().getFullYear()} I&rsquo;m Frustrated<span className="text-clay-soft ml-0.5">.org</span>
+          </p>
+          <div className="flex items-center gap-6 text-xs">
+            <Link href="/privacy" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Privacy</Link>
+            <Link href="/terms" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Terms</Link>
           </div>
-          <p className="text-bg/40 text-xs">
-            &copy; {new Date().getFullYear()} I&rsquo;m Frustrated<span className="text-clay-soft ml-0.5">.org</span>. All rights reserved.
-          </p>
-          <p className="text-bg/30 text-[0.7rem] leading-relaxed mt-4 max-w-2xl mx-auto">
-            Disclaimer: I&rsquo;m Frustrated<span className="text-clay-soft mx-0.5">.org</span>
-            is not a law firm and does not provide legal representation. The information and
-            guidance provided through our services are for informational purposes only and
-            should not be construed as legal advice. No attorney-client relationship is formed
-            through your use of this service. For legal representation, please consult a
-            licensed attorney in your jurisdiction.
-          </p>
         </div>
+        <p className="text-bg/55 text-[0.72rem] leading-relaxed mt-4 max-w-3xl">
+          I&rsquo;m Frustrated<span className="text-clay-soft mx-0.5">.org</span>
+          is not a law firm and does not provide legal representation. Everything here is
+          information, not legal advice, and using it forms no attorney-client relationship.
+          For representation, consult a licensed attorney in your jurisdiction.
+        </p>
       </div>
     </footer>
   );

@@ -1,7 +1,12 @@
 import Link from "next/link";
+import { SiteFooter } from "@/components/ClientSections";
 
 export default function NotFound() {
   return (
+    /* 404 is a page Google sends people to from stale results, so it gets the
+       real footer too — otherwise the one route with no way onward is the one a
+       lost visitor lands on. It used to inherit the thin layout footer. */
+    <>
     <div className="min-h-screen flex items-center justify-center bg-paper">
       <div className="text-center px-6 max-w-md">
         <p className="font-mono text-amber text-sm tracking-[0.3em] mb-4">404</p>
@@ -17,5 +22,7 @@ export default function NotFound() {
         </Link>
       </div>
     </div>
+    <SiteFooter />
+    </>
   );
 }
