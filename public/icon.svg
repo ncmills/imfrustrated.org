@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <title>I'm Frustrated dot Org — the Aside</title>
+  <!-- The same Aside as /logo.svg, on a `paper` #f6f3ec plate. The plate is
+       there for ONE reason: unplated, the sage bubble is #33453d against a
+       dark tab bar at #202124 and all but disappears. On a light tab bar the
+       bubble does the work and the plate is invisible, which is fine — a tile
+       only has to carry the theme where the mark cannot.
+       /logo.svg stays unplated: it is the `Organization` JSON-LD logo and the
+       OG card's mark, and both sit on the site's own paper already. -->
+  <rect width="48" height="48" rx="9" fill="#f6f3ec"/>
+  <g transform="translate(24 24) scale(0.94) translate(-24 -24)">
+    <path d="M8 7 H40 a5 5 0 0 1 5 5 V29 a5 5 0 0 1 -5 5 H21 l-8 7 v-7 H8 a5 5 0 0 1 -5 -5 V12 a5 5 0 0 1 5 -5 Z" fill="#33453d"/>
+    <path d="M13 20.5 L20 18 L27 22.5 L34 18 L40 20.5" fill="none" stroke="#e0a98f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
