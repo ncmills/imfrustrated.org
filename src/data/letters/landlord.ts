@@ -2,6 +2,26 @@ import type { LetterTemplate } from "./types";
 
 // Statutes verified May 2026 against official state legislature sites + state AG guidance.
 // Re-verify before publishing for any state with annual amendments.
+//
+// Cal. Civ. Code § 1950.5 re-verified 2026-08-18 against the current operative text at
+// https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5
+// (as amended by Stats. 2025, Ch. 340, Sec. 1 (AB 414), effective January 1, 2026), cross-checked
+// against the chaptered text of AB 2801 (Stats. 2024, Ch. 280) at
+// https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202320240AB2801
+// AB 2801 inserted a new subdivision (g) (photographs), which re-lettered everything after it:
+// the documentation paragraph moved (g)(2) -> (h)(2) and bad-faith damages moved (l) -> (m).
+// Current mapping used throughout this file:
+//   (e)(2)(A) pre-existing damage / ordinary wear and tear
+//   (f)       tenant's initial (pre-move-out) inspection  [unchanged by AB 2801]
+//   (g)(1)    move-in photos, tenancies beginning on or after Jul 1, 2025
+//   (g)(2)    move-out + after-repair photos, from Apr 1, 2025
+//   (h)(1)    21-calendar-day refund / itemized statement
+//   (h)(2)(A) landlord-performed work: description, time spent, reasonable hourly rate
+//   (h)(2)(B) third-party work: bill, invoice, or receipt
+//   (h)(2)(D) photos taken under (g) must accompany the itemized statement
+//   (h)(4)(A) no (h)(2)/(h)(3) documents required if repair + cleaning deductions total <= $125
+//   (h)(7)    bad-faith noncompliance with (h) forfeits any claim to the security
+//   (m)       bad-faith retention: statutory damages up to 2x the security + actual damages
 
 export const landlordLetters: LetterTemplate[] = [
   {
@@ -48,7 +68,7 @@ I am formally demanding the return of $[Amount Owed] within [7-14] days of the d
 
 I left the property in clean condition, with normal wear and tear excepted. I have photographs and a move-out record from [Date] documenting the condition of the unit.
 
-If I do not receive either the full refund or a fully documented itemized statement within [7-14] days of the date of this letter, I will treat your retention as in bad faith and pursue all remedies available under [State] law. Many states make a tenant who prevails on a wrongful-withholding claim entitled to recover statutory damages — typically two to three times the wrongfully withheld amount — plus reasonable attorney's fees and court costs. (See, e.g., Tex. Prop. Code § 92.109 [3x + attorney's fees]; Mass. G.L. c. 186, § 15B [3x + 5% interest + costs + fees]; Cal. Civ. Code § 1950.5(l) [2x in bad faith].)
+If I do not receive either the full refund or a fully documented itemized statement within [7-14] days of the date of this letter, I will treat your retention as in bad faith and pursue all remedies available under [State] law. Many states make a tenant who prevails on a wrongful-withholding claim entitled to recover statutory damages — typically two to three times the wrongfully withheld amount — plus reasonable attorney's fees and court costs. (See, e.g., Tex. Prop. Code § 92.109 [3x + attorney's fees]; Mass. G.L. c. 186, § 15B [3x + 5% interest + costs + fees]; Cal. Civ. Code § 1950.5(m) [2x in bad faith].)
 
 I would prefer to resolve this without litigation. Please send the refund (or fully documented itemized statement) by check or electronic transfer using the contact information above.
 
@@ -68,13 +88,13 @@ Enclosures: [copy of lease; move-in inspection report (if any); dated move-out p
     legalContext: [
       "Security-deposit law is governed almost entirely at the state level, but the architecture is consistent across the country. After you vacate and provide a forwarding address, your landlord has a fixed window — usually somewhere between 14 and 30 days — to either return your deposit or deliver a written, itemized statement of any deductions, with supporting documentation. Miss the window or pad the deductions and most states impose serious penalties.",
       "\"Normal wear and tear\" is not a deductible expense in any state. Texas codifies the definition directly: deterioration from intended use of the dwelling, including breakage from age, but not from negligence or abuse (Tex. Prop. Code § 92.104). Worn carpet from foot traffic, faded paint, small nail holes from picture hangers, and minor scuffs are wear and tear. Burns, large holes, pet damage, broken fixtures, and unauthorized paint colors are damage. Where a landlord replaces an item, the deduction must usually be prorated by the item's remaining useful life — a seven-year-old carpet with a three-year remaining life can be charged for only three years, not its full replacement cost.",
-      "If your landlord misses the statutory deadline or withholds money without proper documentation, the remedies vary by state but the pattern is consistent: many states either forfeit the landlord's right to keep any portion (New York's General Obligations Law § 7-108, Florida's Fla. Stat. § 83.49, Pennsylvania's 68 P.S. § 250.512, Georgia's O.C.G.A. § 44-7-35) or expose the landlord to two or three times the wrongfully withheld amount plus attorney's fees (Tex. Prop. Code § 92.109; Mass. G.L. c. 186, § 15B; 765 ILCS 710; Ohio Rev. Code § 5321.16; Cal. Civ. Code § 1950.5(l)). The strength of these penalties is one reason a clear written demand letter often produces a refund within days. Landlords who would happily ignore a text message tend to act quickly when they see certified-mail tracking and language quoting their state's specific statute.",
+      "If your landlord misses the statutory deadline or withholds money without proper documentation, the remedies vary by state but the pattern is consistent: many states either forfeit the landlord's right to keep any portion (New York's General Obligations Law § 7-108, Florida's Fla. Stat. § 83.49, Pennsylvania's 68 P.S. § 250.512, Georgia's O.C.G.A. § 44-7-35) or expose the landlord to two or three times the wrongfully withheld amount plus attorney's fees (Tex. Prop. Code § 92.109; Mass. G.L. c. 186, § 15B; 765 ILCS 710; Ohio Rev. Code § 5321.16; Cal. Civ. Code § 1950.5(m)). The strength of these penalties is one reason a clear written demand letter often produces a refund within days. Landlords who would happily ignore a text message tend to act quickly when they see certified-mail tracking and language quoting their state's specific statute.",
       "Two recent California changes are worth flagging because they affect many of the highest-volume rental markets in the country. AB 12, effective July 1, 2024, caps residential security deposits at one month's rent (with a narrow exception for natural-person landlords owning no more than two properties and four total units, who may collect up to two months — except from active-duty service members). AB 2801, phasing in through 2025 and 2026, requires landlords to take photographs of the unit before, immediately after, and following any repairs, and to include those photos with the itemized statement. Tenants in California should expect — and demand — that documentation.",
     ],
     stateNotes: [
       {
         state: "California",
-        note: "Cal. Civ. Code § 1950.5. 21 calendar days to refund or send an itemized statement. Receipts required for any deduction above $125. Bad-faith retention exposes the landlord to up to twice the deposit in statutory damages. AB 12 (eff. 7/1/2024) caps deposit at 1 month's rent; AB 2801 (phased 4/1/2025–4/1/2026) requires landlord move-out photos.",
+        note: "Cal. Civ. Code § 1950.5. 21 calendar days to refund or send an itemized statement (§ 1950.5(h)(1)). Receipts required once repair-and-cleaning deductions exceed $125 (§ 1950.5(h)(2), (h)(4)(A)). Bad-faith retention exposes the landlord to up to twice the deposit in statutory damages. AB 12 (eff. 7/1/2024) caps deposit at 1 month's rent; AB 2801 added the photo regime at § 1950.5(g) — move-out and after-repair photos from 4/1/2025, move-in photos for tenancies beginning on or after 7/1/2025.",
       },
       {
         state: "Texas",
@@ -136,7 +156,7 @@ Enclosures: [copy of lease; move-in inspection report (if any); dated move-out p
       {
         question: "What if my landlord never replies to the demand letter?",
         answer:
-          "Wait until the deadline in your letter passes. Then your strongest next step is small claims court. Filing fees are usually $30–$80, you don't need a lawyer, and in many states the judge can award you additional statutory damages — Texas gives $100 + 3x the wrongfully withheld amount + attorney's fees (Prop. Code § 92.109); Massachusetts gives 3x the full deposit + 5% interest + costs + fees (G.L. c. 186, § 15B); California gives up to 2x the deposit for bad-faith retention (Civ. Code § 1950.5(l)).",
+          "Wait until the deadline in your letter passes. Then your strongest next step is small claims court. Filing fees are usually $30–$80, you don't need a lawyer, and in many states the judge can award you additional statutory damages — Texas gives $100 + 3x the wrongfully withheld amount + attorney's fees (Prop. Code § 92.109); Massachusetts gives 3x the full deposit + 5% interest + costs + fees (G.L. c. 186, § 15B); California gives up to 2x the deposit for bad-faith retention (Civ. Code § 1950.5(m)).",
       },
       {
         question: "Do I need to send the letter by certified mail?",
@@ -150,6 +170,7 @@ Enclosures: [copy of lease; move-in inspection report (if any); dated move-out p
       },
     ],
     publishedAt: "2026-05-15",
+    updatedAt: "2026-08-18",
   },
   {
     slug: "repair-request-formal",
@@ -1101,10 +1122,10 @@ Specific objections:
     Charge: $[Amount]
     Defect in itemization:
     [Pick one or more, deleting the rest:]
-      • No paid invoice or receipt provided, in violation of [Cal. Civ. Code § 1950.5(g)(2) (receipts required for deductions over $125); Mass. G.L. c. 186 § 15B(4) (sworn itemized list with written evidence of cost); RCW 59.18.280 (copies of estimates or invoices required to substantiate damage); 765 ILCS 710/1 (paid receipts must accompany itemized statement)].
+      • No paid invoice or receipt provided, in violation of [Cal. Civ. Code § 1950.5(h)(2), (h)(4)(A) (receipts required once repair-and-cleaning deductions exceed $125); Mass. G.L. c. 186 § 15B(4) (sworn itemized list with written evidence of cost); RCW 59.18.280 (copies of estimates or invoices required to substantiate damage); 765 ILCS 710/1 (paid receipts must accompany itemized statement)].
       • No proration applied for an item beyond its remaining useful life. [If applicable: carpet useful life is generally 5–10 years; flat paint 2–3 years. The landlord may only recover the unused portion.]
       • Charge for normal wear and tear, which is not deductible in any state. [Brief description of why this is wear and tear.]
-      • [California only] No move-in, move-out, or after-repair photos provided, in violation of Civ. Code § 1950.5(f)(3) as amended by AB 2801 (phased Apr 1, 2025 – Apr 1, 2026).
+      • [California only] No move-in, move-out, or after-repair photos provided, in violation of Civ. Code § 1950.5(g) and (h)(2)(D) as added by AB 2801 (photos required from Apr 1, 2025; move-in photos for tenancies beginning on or after Jul 1, 2025).
       • Vague description; landlord did not identify what was repaired, how, or by whom. Texas Prop. Code § 92.104 requires specific itemization, not generic categories.
       • [Florida only] Statement was not delivered by certified mail to my last known address within 30 days of move-out as required by Fla. Stat. § 83.49(3)(a).
 
@@ -1114,19 +1135,19 @@ I am demanding within [10–14] days of the date of this letter:
 
   1. Paid invoices, receipts, or written estimates for each line item, as required by the statute cited above.
 
-  2. For any landlord-performed work: a written description of the work, time spent, and hourly rate (required in California under Civ. Code § 1950.5(g)(2)(B)).
+  2. For any landlord-performed work: a written description of the work, time spent, and hourly rate (required in California under Civ. Code § 1950.5(h)(2)(A)).
 
   3. Proration of any item past useful life, recalculated against remaining useful life rather than replacement cost.
 
   4. Removal of any line item that is wear and tear, or that is not supported by the statutory documentation.
 
-  5. [California only] Date-stamped move-in, move-out, and after-repair photos as required by Civ. Code § 1950.5(f)(3).
+  5. [California only] Date-stamped move-in, move-out, and after-repair photos required by Civ. Code § 1950.5(g), which must accompany the itemized statement under § 1950.5(h)(2)(D).
 
   6. [Massachusetts only] A sworn itemized list under pains and penalties of perjury as required by G.L. c. 186 § 15B(6).
 
 If you fail to provide a compliant itemization within [10–14] days, I intend to treat the retention as bad-faith and pursue all remedies available under [State] law, which include:
 
-  • [California] Up to 2× the deposit in statutory damages under Civ. Code § 1950.5(l), plus actual damages.
+  • [California] Up to 2× the deposit in statutory damages under Civ. Code § 1950.5(m), plus actual damages.
   • [Texas] $100 + 3× the wrongfully withheld amount + reasonable attorney's fees under Prop. Code § 92.109.
   • [New York] Forfeiture of any right to retain; punitive damages up to 2× the deposit for willful violations under Gen. Oblig. Law § 7-108.
   • [Florida] Forfeiture of the right to impose a claim under Fla. Stat. § 83.49(3)(a); prevailing-party attorney's fees.
@@ -1151,7 +1172,7 @@ Enclosures: [copy of the itemized statement received; copy of lease; copy of mov
       "Document your own move-out condition. Pre-move-out walk-through results, dated move-out photos, and any post-move-out video are the evidence that converts an inadequate landlord statement into a bad-faith retention claim.",
     ],
     legalContext: [
-      "Most state security-deposit statutes require not just an itemized statement of deductions but specific documentation supporting each deduction. California Civ. Code § 1950.5(g) requires receipts or invoices for any deduction over $125, plus — for landlord-performed work — a written description of the work, time spent, and hourly rate. AB 2801, phasing in through 2025 and 2026, layers on a photo requirement: date-stamped move-in (for tenancies starting on or after July 1, 2025), move-out (effective April 1, 2025), and after-repair photos must accompany the statement. Massachusetts G.L. c. 186 § 15B(4) requires a sworn itemized list under pains and penalties of perjury, with written evidence of cost. Washington RCW 59.18.280 requires copies of estimates received or invoices paid; charges not substantiated cannot be charged, sent to collections, or reported to tenant-screening agencies. Illinois 765 ILCS 710/1 requires paid receipts (or estimates followed by paid receipts within 30 days).",
+      "Most state security-deposit statutes require not just an itemized statement of deductions but specific documentation supporting each deduction. California Civ. Code § 1950.5(h)(2) and (h)(4)(A) require receipts or invoices once repair-and-cleaning deductions exceed $125, plus — for landlord-performed work — a written description of the work, time spent, and the reasonable hourly rate (§ 1950.5(h)(2)(A)). AB 2801 added a photo regime at § 1950.5(g), now fully in effect: date-stamped move-in photos (for tenancies beginning on or after July 1, 2025) and move-out and after-repair photos (from April 1, 2025), all of which must accompany the itemized statement under § 1950.5(h)(2)(D). Under § 1950.5(h)(7), a landlord who in bad faith fails to comply with that itemization-and-documentation subdivision is not entitled to claim any amount of the deposit. Massachusetts G.L. c. 186 § 15B(4) requires a sworn itemized list under pains and penalties of perjury, with written evidence of cost. Washington RCW 59.18.280 requires copies of estimates received or invoices paid; charges not substantiated cannot be charged, sent to collections, or reported to tenant-screening agencies. Illinois 765 ILCS 710/1 requires paid receipts (or estimates followed by paid receipts within 30 days).",
       "These documentation requirements are the heart of the bad-faith-retention case. A landlord who sends a statement with vague line items and no receipts is essentially conceding the documentation prong; the demand letter just makes that concession explicit and creates the record for a small-claims judge or a tenant attorney to point to later. In states with multiplier damages (CA up to 2×, TX 3×, MA 3×, IL 2×, GA 3×), the multiplier turns a $500 deposit fight into a $1,000–$1,500 recovery plus attorney's fees — often more than enough to justify a small-claims filing.",
       "Wear-and-tear remains non-deductible everywhere. Worn carpet from foot traffic, faded paint, small nail holes, minor scuffs — these are wear and tear regardless of how the landlord characterizes them. Items past their useful life must be prorated; a 7-year-old carpet on a 10-year useful life can be deducted only at 30% of replacement cost. Texas Prop. Code § 92.104 codifies the wear-and-tear definition directly: deterioration from intended use of the dwelling, including breakage from age — not negligence, carelessness, accident, or abuse.",
       "Florida sits in a different posture. Fla. Stat. § 83.49 requires the landlord to send a \"Notice of Intention to Impose Claim on Security Deposit\" by certified mail within 30 days of move-out, in statutorily prescribed form. The tenant has 15 days from receipt to object in writing — and that 15-day objection is what preserves the tenant's rights. If the landlord misses the 30-day notice deadline, they forfeit the right to claim entirely. Florida does not explicitly require receipts in the statute, so the demand letter there leans more on the common-law accounting demand than on a statutory documentation right.",
@@ -1159,7 +1180,7 @@ Enclosures: [copy of the itemized statement received; copy of lease; copy of mov
     stateNotes: [
       {
         state: "California",
-        note: "Civ. Code § 1950.5(g) — receipts required for deductions over $125. Landlord-performed work: written description, hours, hourly rate. AB 2801 photo requirements phase in Apr 1, 2025 (move-out + after-repair) and Jul 1, 2025 (move-in for new tenancies). Bad-faith retention: up to 2× the deposit + actual damages under § 1950.5(l).",
+        note: "Civ. Code § 1950.5(h)(2), (h)(4)(A) — receipts required once repair-and-cleaning deductions exceed $125. Landlord-performed work: written description, hours, hourly rate (§ 1950.5(h)(2)(A)). AB 2801 photo requirements at § 1950.5(g), in effect Apr 1, 2025 (move-out + after-repair) and Jul 1, 2025 (move-in for new tenancies); photos must accompany the statement (§ 1950.5(h)(2)(D)). Bad-faith noncompliance with subdivision (h) forfeits any claim to the deposit (§ 1950.5(h)(7)). Bad-faith retention: up to 2× the deposit + actual damages under § 1950.5(m).",
       },
       {
         state: "Texas",
@@ -1204,7 +1225,7 @@ Enclosures: [copy of the itemized statement received; copy of lease; copy of mov
       {
         question: "My landlord sent a statement but no receipts. Can they keep my deposit?",
         answer:
-          "In California (Civ. Code § 1950.5(g)(2)), deductions over $125 require receipts or invoices. Illinois (765 ILCS 710/1), Massachusetts (G.L. c. 186 § 15B), Washington (RCW 59.18.280), and New York (Gen. Oblig. Law § 7-108) all require supporting documentation. Failure typically forfeits the right to retain the unsupported portion.",
+          "In California (Civ. Code § 1950.5(h)(2), (h)(4)(A)), repair-and-cleaning deductions exceeding $125 require receipts or invoices. Illinois (765 ILCS 710/1), Massachusetts (G.L. c. 186 § 15B), Washington (RCW 59.18.280), and New York (Gen. Oblig. Law § 7-108) all require supporting documentation. Failure typically forfeits the right to retain the unsupported portion.",
       },
       {
         question: "Can the landlord charge me for new carpet after I lived there 7 years?",
@@ -1214,7 +1235,7 @@ Enclosures: [copy of the itemized statement received; copy of lease; copy of mov
       {
         question: "Does California now require move-out photos?",
         answer:
-          "Yes. AB 2801 amended Civ. Code § 1950.5(f)(3) to require date-stamped photos: move-out and after-repair effective April 1, 2025; move-in photos for tenancies starting on or after July 1, 2025. The photos must accompany the itemized statement. Failure forfeits deposit-claim rights for items that should have been photographed.",
+          "Yes. AB 2801 added Civ. Code § 1950.5(g), requiring date-stamped photos: move-out and after-repair effective April 1, 2025; move-in photos for tenancies beginning on or after July 1, 2025. The photos must accompany the itemized statement. Failure forfeits deposit-claim rights for items that should have been photographed.",
       },
       {
         question: "What if I'm in Florida and don't object within 15 days?",
@@ -1228,6 +1249,7 @@ Enclosures: [copy of the itemized statement received; copy of lease; copy of mov
       },
     ],
     publishedAt: "2026-05-16",
+    updatedAt: "2026-08-18",
   },
 
   {
@@ -3014,7 +3036,7 @@ Enclosures: [copy of first demand letter; certified-mail receipt and tracking re
     legalContext: [
       "Security-deposit law is set state by state, but the structure is uniform: after you vacate and give a forwarding address, the landlord has a fixed window — commonly 14 to 45 days — to return the deposit or deliver a written, itemized statement of deductions. The first demand letter exists to put the landlord on that clock. This letter is what you send after the clock runs out. The legal significance of a blown deadline is large: in most states the remedy stops being \"please return my money\" and becomes a statutory penalty. Some states forfeit the landlord's right to keep any portion of the deposit; many expose the landlord to a multiplier of two or three times the wrongfully withheld amount; and almost all of the penalty statutes shift attorney's fees to the tenant who prevails. The missed deadline is the leverage — you no longer have to argue about whether a scuff was wear and tear, because the landlord lost the right to make deductions at all.",
       "The treble-damage states are the strongest, and Massachusetts is the anchor. Under G.L. c. 186, § 15B, a landlord who fails to return the deposit or furnish an itemized list of damages within 30 days after the end of the tenancy forfeits the right to retain any portion of it (§ 15B(6)), and the tenant \"shall be awarded damages in an amount equal to three times the amount of such security deposit ... plus interest at the rate of five per cent ... together with court costs and reasonable attorney's fees\" (§ 15B(7)). Crucially, the Massachusetts treble penalty for these violations is strict liability — the tenant does not have to prove the landlord acted in bad faith. Texas reaches a similar place by presumption: under Prop. Code § 92.109, a landlord who fails to refund or provide a written itemization on or before the 30th day after surrender \"is presumed to have acted in bad faith\" (§ 92.109(d)), and a bad-faith landlord is liable for \"$100, three times the portion of the deposit wrongfully withheld, and the tenant's reasonable attorney's fees\" (§ 92.109(a)). Texas conditions all of this on the tenant having given a written forwarding address (§ 92.107). Maryland's Real Prop. § 8-203 requires the written list of damages within 45 days (failure forfeits the right to withhold under § 8-203(g)) and exposes a landlord who without a reasonable basis fails to return the deposit within 45 days to \"up to threefold of the withheld amount, plus reasonable attorney's fees\" (§ 8-203(e)(4)).",
-      "The double-damage states form the next tier. California Civ. Code § 1950.5 sets a 21-day deadline (§ 1950.5(h)(1)) and provides that bad-faith retention \"may subject the landlord ... to statutory damages of up to twice the amount of the security, in addition to actual damages\" (§ 1950.5(m) — note the subsection was renumbered from (l) by a 2025 amendment effective January 1, 2026). Illinois 765 ILCS 710/1 bars a landlord from withholding any part of the deposit for damage unless an itemized statement with paid receipts is furnished within 30 days, and 765 ILCS 710/2 makes a non-compliant or bad-faith landlord \"liable for an amount equal to twice the amount of the security deposit due, together with court costs and reasonable attorney's fees.\" Illinois removed its old \"5 or more units\" coverage threshold effective January 1, 2024 — the Act now reaches all residential lessors regardless of building size. New Jersey's N.J. Stat. § 46:8-21.1 requires return within 30 days and directs that the court, on a finding for the tenant, \"shall award recovery of double the amount\" wrongfully withheld plus full costs and (in the court's discretion) reasonable attorney's fees. New York straddles forfeiture and multiplier: under Gen. Oblig. Law § 7-108(1-e), a landlord who fails to provide the itemized statement and balance within 14 days \"shall forfeit any right to retain any portion of the deposit,\" and a willful violation carries \"punitive damages of up to twice the amount of the deposit\" (§ 7-108(1-g)).",
+      "The double-damage states form the next tier. California Civ. Code § 1950.5 sets a 21-day deadline (§ 1950.5(h)(1)) and provides that bad-faith retention \"may subject the landlord ... to statutory damages of up to twice the amount of the security, in addition to actual damages\" (§ 1950.5(m) — the bad-faith subdivision was re-lettered from (l) to (m) by AB 2801, Stats. 2024, Ch. 280, which inserted a new photographs subdivision at (g)). Illinois 765 ILCS 710/1 bars a landlord from withholding any part of the deposit for damage unless an itemized statement with paid receipts is furnished within 30 days, and 765 ILCS 710/2 makes a non-compliant or bad-faith landlord \"liable for an amount equal to twice the amount of the security deposit due, together with court costs and reasonable attorney's fees.\" Illinois removed its old \"5 or more units\" coverage threshold effective January 1, 2024 — the Act now reaches all residential lessors regardless of building size. New Jersey's N.J. Stat. § 46:8-21.1 requires return within 30 days and directs that the court, on a finding for the tenant, \"shall award recovery of double the amount\" wrongfully withheld plus full costs and (in the court's discretion) reasonable attorney's fees. New York straddles forfeiture and multiplier: under Gen. Oblig. Law § 7-108(1-e), a landlord who fails to provide the itemized statement and balance within 14 days \"shall forfeit any right to retain any portion of the deposit,\" and a willful violation carries \"punitive damages of up to twice the amount of the deposit\" (§ 7-108(1-g)).",
       "Some states use forfeiture of the claim rather than a damages multiplier, and the everywhere-else default still gives you real leverage. Florida's § 83.49(3) is the model forfeiture statute: a landlord who does not return the deposit within 15 days (no claim) or give written notice by certified mail of intent to impose a claim within 30 days \"forfeits the right to impose a claim upon the security deposit and may not seek a setoff,\" and the prevailing party recovers court costs plus a reasonable attorney's fee. Pennsylvania (68 P.S. § 250.512) and Georgia (O.C.G.A. § 44-7-35) follow comparable forfeiture-plus-multiplier patterns. For any state not specifically listed, the default framing holds: there is almost certainly a deadline (commonly 14 to 45 days) and almost certainly a consequence for blowing it — either forfeiture of the right to keep any portion, or a multiplier (often 1.5x to 3x) plus fees. Look up your state's security-deposit statute and its penalty subsection, plug the number into the letter, and the blown deadline does the work.",
     ],
     stateNotes: [
@@ -3032,7 +3054,7 @@ Enclosures: [copy of first demand letter; certified-mail receipt and tracking re
       },
       {
         state: "California",
-        note: "Civ. Code § 1950.5(h),(m). 21 calendar days to refund or send an itemized statement. Bad-faith retention: statutory damages of up to twice (2x) the deposit, in addition to actual damages. Bad-faith subsection renumbered to (m) by a 2025 amendment effective Jan. 1, 2026 (formerly (l)).",
+        note: "Civ. Code § 1950.5(h),(m). 21 calendar days to refund or send an itemized statement. Bad-faith retention: statutory damages of up to twice (2x) the deposit, in addition to actual damages. Bad-faith subdivision re-lettered from (l) to (m) by AB 2801 (Stats. 2024, Ch. 280), which inserted a new photographs subdivision at (g).",
       },
       {
         state: "Illinois",
