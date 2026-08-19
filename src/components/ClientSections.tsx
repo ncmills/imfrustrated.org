@@ -102,7 +102,7 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
+      <div className="px-6 sm:px-10 lg:px-20 flex items-center justify-between h-16 md:h-20">
         <Link href="/" className="shrink-0" aria-label="I'm Frustrated dot Org — home">
           <Logo />
         </Link>
