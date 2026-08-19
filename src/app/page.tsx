@@ -143,11 +143,20 @@ export default function Home() {
                 </p>
               </Reveal>
               <Reveal delay={4}>
+                {/* GTM scoreboard, 2026-08-18: the primary hero CTA was an
+                    #offerings anchor scroll, not a link to /letters — the
+                    letter library itself. Category chips below already went
+                    to /letters/<category>, but there was no generic /letters
+                    link anywhere in the hero. Legal-tool voice: the reader's
+                    first move should be the tool, not a scroll past it. The
+                    anchor is kept, demoted to secondary, so a reader who
+                    wants the overview before committing still has it. */}
                 <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mt-9">
-                  <a href="#offerings" className="btn-clay mag">
-                    Browse letters &amp; tools
+                  <Link href="/letters" className="btn-clay mag">
+                    Browse the {letterCount}-letter library
                     <Arrow />
-                  </a>
+                  </Link>
+                  <a href="#offerings" className="btn-soft mag">See everything we offer</a>
                   <a href="#contact" className="btn-soft mag">Ask an attorney — free</a>
                 </div>
               </Reveal>
