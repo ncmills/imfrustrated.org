@@ -122,42 +122,83 @@ export default function Home() {
 
       <main id="top" className="relative">
         {/* ─── Hero ─── */}
-        <section className="relative max-w-6xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-16 text-center">
-          <Reveal delay={1}>
-            <span className="eyebrow"><span className="pulse" />Free legal tools, built by volunteer attorneys</span>
-          </Reveal>
-          <Reveal delay={2}>
-            <h1 className="font-disp font-semibold text-sage text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[5rem] leading-[1.03] tracking-[-0.038em] mt-7">
-              Free legal help&mdash;
-              <br />
-              <em className="font-accent text-clay" style={{ fontStyle: "italic" }}>before you pay for a lawyer.</em>
-            </h1>
-          </Reveal>
-          <Reveal delay={3}>
-            <p className="text-sage-2 text-lg md:text-xl leading-[1.6] max-w-2xl mx-auto mt-7">
-              Attorney-written letters, self-help tools, and a real lawyer you can
-              actually ask. All free. Start with the problem you&rsquo;re facing.
-            </p>
-          </Reveal>
-          <Reveal delay={4}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-9">
-              <a href="#offerings" className="btn-clay mag">
-                Browse letters &amp; tools
-                <Arrow />
-              </a>
-              <a href="#contact" className="btn-soft mag">Ask an attorney — free</a>
+        <section className="relative px-6 sm:px-10 lg:px-20 pt-32 md:pt-40 pb-16">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+            {/* Headline block — left (stays centered below lg, matches prior layout) */}
+            <div className="text-center lg:text-left">
+              <Reveal delay={1}>
+                <span className="eyebrow"><span className="pulse" />Free legal tools, built by volunteer attorneys</span>
+              </Reveal>
+              <Reveal delay={2}>
+                <h1 className="font-disp font-semibold text-sage text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[4.4rem] leading-[1.03] tracking-[-0.038em] mt-7">
+                  Free legal help&mdash;
+                  <br />
+                  <em className="font-accent text-clay" style={{ fontStyle: "italic" }}>before you pay for a lawyer.</em>
+                </h1>
+              </Reveal>
+              <Reveal delay={3}>
+                <p className="text-sage-2 text-lg md:text-xl leading-[1.6] max-w-2xl mx-auto lg:mx-0 mt-7">
+                  Attorney-written letters, self-help tools, and a real lawyer you can
+                  actually ask. All free. Start with the problem you&rsquo;re facing.
+                </p>
+              </Reveal>
+              <Reveal delay={4}>
+                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mt-9">
+                  <a href="#offerings" className="btn-clay mag">
+                    Browse letters &amp; tools
+                    <Arrow />
+                  </a>
+                  <a href="#contact" className="btn-soft mag">Ask an attorney — free</a>
+                </div>
+              </Reveal>
+              <Reveal delay={4}>
+                <div className="mt-11 max-w-2xl mx-auto lg:mx-0">
+                  <p className="font-accent italic text-lg text-sage-2 mb-4">jump straight to the letter for your&hellip;</p>
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-2.5">
+                    {disputes.map((d) => (
+                      <Link key={d.slug} href={`/letters/${d.slug}`} className="chip">{d.label}</Link>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
-          <Reveal delay={4}>
-            <div className="mt-11 max-w-2xl mx-auto">
-              <p className="font-accent italic text-lg text-sage-2 mb-4">jump straight to the letter for your&hellip;</p>
-              <div className="flex flex-wrap justify-center gap-2.5">
-                {disputes.map((d) => (
-                  <Link key={d.slug} href={`/letters/${d.slug}`} className="chip">{d.label}</Link>
-                ))}
+
+            {/* Sample-letter preview card — visual, right, reaches toward the edge */}
+            <Reveal delay={3} className="hidden sm:block">
+              <div className="relative">
+                <div
+                  aria-hidden="true"
+                  className="absolute -inset-3 rounded-2xl bg-bg-2 translate-x-2 translate-y-3"
+                />
+                <article
+                  aria-label="Sample dispute letter preview"
+                  className="relative bg-card border border-rule rounded-2xl p-8 md:p-10 leading-relaxed"
+                >
+                  <div className="flex items-center justify-between text-[11px] tracking-[0.18em] uppercase text-sage-2 pb-5 mb-5 border-b border-rule">
+                    <span>Sample &middot; Landlord dispute</span>
+                    <span className="chip !py-0.5 !px-2 text-[10px]">Editable</span>
+                  </div>
+                  <p className="font-disp text-sage text-lg font-semibold">
+                    Re: Return of Security Deposit
+                  </p>
+                  <p className="mt-4 text-sage-2">
+                    Dear <span className="text-clay font-medium">[Landlord Name]</span>,
+                  </p>
+                  <p className="mt-3 text-sage-2">
+                    I am writing regarding the security deposit for my former
+                    residence at <span className="text-clay font-medium">[Property Address]</span>.
+                    As of today it has been <span className="text-clay font-medium">[X]</span> days
+                    since I vacated, and I have not received either the deposit
+                    or an itemized statement of deductions&hellip;
+                  </p>
+                  <p className="mt-5 text-xs uppercase tracking-[0.14em] text-sage-2/70">
+                    Illustrative sample &mdash; every letter is filled in for your
+                    situation and state.
+                  </p>
+                </article>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </section>
 
         {/* ─── Everything IFDO gives you (all five offerings, scannable) ─── */}
