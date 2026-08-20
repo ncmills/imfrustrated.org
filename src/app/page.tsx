@@ -130,7 +130,11 @@ export default function Home() {
                 <span className="eyebrow"><span className="pulse" />Free legal tools, built by volunteer attorneys</span>
               </Reveal>
               <Reveal delay={2}>
-                <h1 className="font-disp font-semibold text-sage text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[4.4rem] leading-[1.03] tracking-[-0.038em] mt-7">
+                {/* 2026-08-20 design review: the sans first line needed true
+                    display treatment. Bricolage at 700 with tighter tracking —
+                    same face, real display weight, against the serif-italic
+                    second line. */}
+                <h1 className="font-disp font-bold text-sage text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[4.4rem] leading-[1.02] tracking-[-0.045em] mt-7">
                   Free legal help&mdash;
                   <br />
                   <em className="font-accent text-clay" style={{ fontStyle: "italic" }}>before you pay for a lawyer.</em>
@@ -148,20 +152,37 @@ export default function Home() {
                     letter library itself. Category chips below already went
                     to /letters/<category>, but there was no generic /letters
                     link anywhere in the hero. Legal-tool voice: the reader's
-                    first move should be the tool, not a scroll past it. The
-                    anchor is kept, demoted to secondary, so a reader who
-                    wants the overview before committing still has it. */}
+                    first move should be the tool, not a scroll past it.
+                    2026-08-20 design review: three equal-weight pills meant no
+                    action read first. Now ONE filled primary + one hairline
+                    ghost. The third pill (Ask an attorney — free) is gone:
+                    that action already lives in the header at every width, in
+                    offering 05, and in the footer — its slot became the proof
+                    strip below. */}
                 <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mt-9">
                   <Link href="/letters" className="btn-clay mag">
                     Browse the {letterCount}-letter library
                     <Arrow />
                   </Link>
-                  <a href="#offerings" className="btn-soft mag">See everything we offer</a>
-                  <a href="#contact" className="btn-soft mag">Ask an attorney — free</a>
+                  <a href="#offerings" className="btn-ghost mag">See everything we offer</a>
                 </div>
               </Reveal>
               <Reveal delay={4}>
-                <div className="mt-11 max-w-2xl mx-auto lg:mx-0">
+                {/* Hairline proof strip — every number DERIVED from the data
+                    layer (same rule as the counts below: hand-typed counts
+                    drifted once already). $0 is the price of everything here. */}
+                <p className="mt-8 pt-4 border-t border-rule inline-flex flex-wrap justify-center lg:justify-start gap-x-2.5 gap-y-1 text-[0.9rem] text-sage-2 tabular-nums tracking-[0.01em]">
+                  <span><strong className="font-semibold text-sage">{letterCount}</strong> letters</span>
+                  <span aria-hidden className="text-rule">&middot;</span>
+                  <span><strong className="font-semibold text-sage">{parkingCityCount}</strong> cities</span>
+                  <span aria-hidden className="text-rule">&middot;</span>
+                  <span><strong className="font-semibold text-sage">{parkingDefenseCount}</strong> parking defenses</span>
+                  <span aria-hidden className="text-rule">&middot;</span>
+                  <span><strong className="font-semibold text-sage">$0</strong>, all of it</span>
+                </p>
+              </Reveal>
+              <Reveal delay={4}>
+                <div className="mt-10 max-w-2xl mx-auto lg:mx-0">
                   <p className="font-accent italic text-lg text-sage-2 mb-4">jump straight to the letter for your&hellip;</p>
                   <div className="flex flex-wrap justify-center lg:justify-start gap-2.5">
                     {disputes.map((d) => (

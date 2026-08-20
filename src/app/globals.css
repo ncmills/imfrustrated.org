@@ -627,21 +627,32 @@ a:focus-visible .wordmark-glyph--header .wm-mouth {
 .amb i:nth-child(2) { width: 460px; height: 460px; background: #f0d8cb; bottom: -200px; left: -130px; opacity: 0.45; }
 .amb i:nth-child(3) { width: 300px; height: 300px; background: #e3ddcb; top: 42%; left: 46%; opacity: 0.4; }
 
-/* ─── Scroll reveal ─── */
+/* ─── Scroll reveal ───
+   The hidden state is gated on `html.js` (set by an inline script in layout.tsx
+   before first paint). Default = fully visible, so SSR, no-JS, crawlers, print
+   and any capture that beats the IntersectionObserver all see finished content.
+   The 2026-08-20 design review caught the old ungated version mid-fade on every
+   surface: fold-2's heading + chips half-faded, the contact form at ~50%, and
+   everything below a direct anchor jump invisible. Reveal is decoration — it
+   must never be the reason a section reads as broken. Transitions shortened
+   (0.9s → 0.55s) for the same reason: less time spent in the half-faded state. */
 .reveal {
-  opacity: 0; transform: translateY(26px);
-  transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: opacity 0.55s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.reveal.in { opacity: 1; transform: none; }
-.reveal.rd1 { transition-delay: 0.08s; }
-.reveal.rd2 { transition-delay: 0.2s; }
-.reveal.rd3 { transition-delay: 0.34s; }
-.reveal.rd4 { transition-delay: 0.48s; }
-/* Print fallback: reveal content is opacity:0 until JS adds `.in` on scroll.
-   Below-fold sections never scrolled into view (or any section when JS is off)
-   would otherwise print blank — force them visible for print. */
+html.js .reveal { opacity: 0; transform: translateY(26px); }
+html.js .reveal.in { opacity: 1; transform: none; }
+.reveal.rd1 { transition-delay: 0.06s; }
+.reveal.rd2 { transition-delay: 0.14s; }
+.reveal.rd3 { transition-delay: 0.24s; }
+.reveal.rd4 { transition-delay: 0.34s; }
+/* Instant reveal — applied when the element was already inside the viewport
+   when first observed (initial paint, anchor jump, programmatic scroll).
+   Animating those reads as a broken half-faded page; entrance animation is
+   reserved for content that scrolls in from below. */
+.reveal.ri { transition: none !important; }
+/* Print: force finished state even mid-scroll with JS on. */
 @media print {
-  .reveal { opacity: 1 !important; transform: none !important; }
+  html.js .reveal { opacity: 1 !important; transform: none !important; }
 }
 
 /* ─── Eyebrow pill ─── */
@@ -680,8 +691,20 @@ a:focus-visible .wordmark-glyph--header .wm-mouth {
   transition: border-color 0.25s, color 0.25s; cursor: pointer; will-change: transform;
 }
 .btn-soft:hover { border-color: var(--color-sage); }
-.btn-clay .ar, .btn-soft .ar { transition: transform 0.25s; }
-.btn-clay:hover .ar, .btn-soft:hover .ar { transform: translateX(4px); }
+/* Ghost secondary — hairline outline on the page ground, so the clay primary
+   is the only filled action in the hero (2026-08-20 design review: three
+   equal-weight pills meant no action read first). */
+.btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.95rem 1.75rem; border-radius: 999px;
+  background: transparent; color: var(--color-sage-2);
+  border: 1px solid var(--color-rule);
+  font-family: var(--font-body); font-weight: 600; font-size: 0.97rem;
+  transition: border-color 0.25s, color 0.25s; cursor: pointer; will-change: transform;
+}
+.btn-ghost:hover { border-color: var(--color-sage); color: var(--color-sage); }
+.btn-clay .ar, .btn-soft .ar, .btn-ghost .ar { transition: transform 0.25s; }
+.btn-clay:hover .ar, .btn-soft:hover .ar, .btn-ghost:hover .ar { transform: translateX(4px); }
 
 /* ─── Dispute chips ─── */
 .chip {
@@ -711,10 +734,11 @@ a:focus-visible .wordmark-glyph--header .wm-mouth {
 /* ─── How-it-works step rings (draw in on reveal) ─── */
 .step-ring circle {
   fill: none; stroke: var(--color-clay-soft); stroke-width: 2;
-  stroke-dasharray: 195; stroke-dashoffset: 195;
+  stroke-dasharray: 195; stroke-dashoffset: 0;
   transition: stroke-dashoffset 1s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.reveal.in .step-ring circle { stroke-dashoffset: 0; }
+/* Undrawn only while JS is present and the reveal hasn't fired — no-JS sees drawn rings. */
+html.js .reveal:not(.in) .step-ring circle { stroke-dashoffset: 195; }
 
 /* ─── Aside logo motion — bubble draws itself, frustrated line settles ─── */
 .logo-aside .la-bubble {
@@ -725,7 +749,7 @@ a:focus-visible .wordmark-glyph--header .wm-mouth {
 a:hover .logo-aside .la-bubble { animation: la-draw 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; }
+  html.js .reveal { opacity: 1; transform: none; }
   .amb i { transition: none; }
   .step-ring circle { stroke-dashoffset: 0; }
   .logo-aside .la-bubble { animation: none; stroke-dashoffset: 0; }

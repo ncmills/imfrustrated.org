@@ -7,22 +7,40 @@ import { NetworkFooter } from "@/components/NetworkFooter";
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [instant, setInstant] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // No observer support → never leave content hidden.
+    if (typeof IntersectionObserver === "undefined") {
+      setInstant(true);
+      setVisible(true);
+      return;
+    }
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // The entrance animation is for content that scrolls in from below.
+          // If the element is ALREADY well inside the viewport when first
+          // observed — initial paint, an anchor jump, any programmatic
+          // scroll — animating it means a beat of half-faded page, which
+          // reads as broken (2026-08-20 design review caught exactly that on
+          // fold 2, the contact form, and the hero CTA). Reveal instantly.
+          if (entry.boundingClientRect.top < window.innerHeight * 0.8) {
+            setInstant(true);
+          }
           setVisible(true);
           obs.disconnect();
         }
       },
-      { threshold }
+      // rootMargin starts the reveal ~15% of a viewport early, so naturally
+      // scrolled-to content is finished by the time it is readable.
+      { threshold: Math.min(threshold, 0.1), rootMargin: "0px 0px 15% 0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, [threshold]);
-  return { ref, visible };
+  return { ref, visible, instant };
 }
 
 /* Site logo: the speech-bubble glyph used in the browser favicon.
@@ -98,7 +116,11 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "header-blur bg-paper/85 border-b border-rule shadow-[0_1px_0_rgba(38,48,43,0.04)]"
+          ? // Fully opaque once scrolled. The old bg-paper/85 translucency let
+            // mid-page content ghost through the bar — over the dark contact
+            // panel it read as a broken duplicate band painting over the form
+            // (2026-08-20 design review, footer-1920).
+            "header-blur bg-bg border-b border-rule shadow-[0_1px_0_rgba(38,48,43,0.04)]"
           : "bg-transparent"
       }`}
     >
@@ -125,9 +147,13 @@ export function Header() {
           </Link>
         </nav>
 
+        {/* Shown at every width — the 390 header used to be logo-only
+            (hidden sm:), leaving mobile with no action in the bar at all
+            (2026-08-20 design review). Compact sizing below sm so it fits
+            beside the wordmark at 390. */}
         <Link
           href="/#contact"
-          className="mag hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-sage text-bg text-[0.88rem] font-semibold rounded-full hover:bg-evergreen transition-colors duration-300"
+          className="mag inline-flex items-center gap-2 px-3.5 py-2 text-[0.8rem] sm:px-5 sm:py-2.5 sm:text-[0.88rem] bg-sage text-bg font-semibold rounded-full hover:bg-evergreen transition-colors duration-300 shrink-0"
         >
           Ask an attorney
         </Link>
@@ -299,11 +325,11 @@ export function Reveal({
   delay?: 1 | 2 | 3 | 4;
   threshold?: number;
 }) {
-  const { ref, visible } = useInView(threshold ?? 0.18);
+  const { ref, visible, instant } = useInView(threshold ?? 0.18);
   return (
     <div
       ref={ref}
-      className={`reveal ${delay ? `rd${delay}` : ""} ${visible ? "in" : ""} ${className}`}
+      className={`reveal ${delay ? `rd${delay}` : ""} ${visible ? "in" : ""} ${instant ? "ri" : ""} ${className}`}
     >
       {children}
     </div>

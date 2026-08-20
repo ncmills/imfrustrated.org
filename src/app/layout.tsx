@@ -81,12 +81,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* No-JS fallback: scroll-reveal content is opacity:0 until the
-            IntersectionObserver adds `.in`. Without JS that never runs, so
-            force revealed content visible. */}
-        <noscript>
-          <style>{`.reveal{opacity:1 !important;transform:none !important;}`}</style>
-        </noscript>
+        {/* Scroll-reveal gate: the hidden pre-reveal state in globals.css only
+            applies under `html.js`, so SSR/no-JS/crawlers/captures see finished
+            content by default (2026-08-20 design review caught half-faded
+            sections on every capture). This must run before first paint —
+            hence a plain inline script in <head>, not an effect. */}
+        <script
+          dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add("js")` }}
+        />
       </head>
       <body
         className={`${bricolage.variable} ${hanken.variable} ${instrument.variable} ${jetbrains.variable}`}
