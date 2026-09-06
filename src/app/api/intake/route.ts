@@ -6,6 +6,18 @@ import { isReservedTestEmail } from "@/lib/email-validation";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/**
+ * True when the caller proved it is automated traffic (smoke harness, e2e probe)
+ * by presenting the shared fleet secret. Secret-gated on purpose: an unsecured
+ * flag would let a visitor mark their own submission as test and vanish from the
+ * intake totals. Absent secret = nothing can claim to be test traffic.
+ */
+function isTestRequest(headersList: Pick<Headers, "get">): boolean {
+  const secret = process.env.SIGNAL_TEST_SECRET?.trim();
+  if (!secret) return false;
+  return headersList.get("x-sn-test-run") === secret;
+}
+
 // In-memory rate limit (sufficient for low-volume contact form):
 // 5 submissions per IP per hour.
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -90,6 +102,11 @@ export async function POST(request: Request) {
 
   console.log("[intake]", JSON.stringify({ email, state, issueType, hasMessage: !!message, ip }));
 
+  // Stamped, never used to SKIP the write: the harness reads its own row back,
+  // so dropping it would break the check that proves this path works. Always
+  // written — a real submission gets `false`, not a missing value.
+  const isTest = isTestRequest(headersList);
+
   if (supabase) {
     try {
       const { error } = await supabase.from("imfrustrated_intake").insert({
@@ -98,6 +115,7 @@ export async function POST(request: Request) {
         issue_type: issueType,
         message,
         ip,
+        is_test: isTest,
       });
       if (error) {
         console.error("[intake] supabase error:", error.message);
@@ -107,7 +125,7 @@ export async function POST(request: Request) {
     }
   }
 
-  if (process.env.RESEND_API_KEY) {
+  if (process.env.RESEND_API_KEY && !isTest) {
     try {
       const resend = new Resend(process.env.RESEND_API_KEY.trim());
       const { data: sent, error: sendErr } = await resend.emails.send({
