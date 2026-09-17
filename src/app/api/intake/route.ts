@@ -76,7 +76,7 @@ export async function POST(request: Request) {
   // Honeypot: bots fill the hidden `website` field. Pretend success, drop the message.
   if (typeof body.website === "string" && body.website.trim().length > 0) {
     console.log("[intake] honeypot triggered — dropped silently", { ip });
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, test: true });
   }
 
   const email = (body.email ?? "").trim().toLowerCase();
@@ -85,11 +85,13 @@ export async function POST(request: Request) {
   }
 
   // Reject RFC 2606/6761 reserved-test and disposable domains. Acknowledge
-  // normally (don't reveal the filter), but skip persistence + notification so
-  // QA/bot noise never lands in the intake table.
+  // success to the submitter, but skip persistence + notification so QA/bot
+  // noise never lands in the intake table. `test: true` tells our own client
+  // the submission was dropped, so it can skip the analytics event too —
+  // without it PostHog counts a conversion nothing else recorded.
   if (isReservedTestEmail(email)) {
     console.log("[intake] reserved/disposable email — dropped silently", { ip });
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, test: true });
   }
 
   const state =
