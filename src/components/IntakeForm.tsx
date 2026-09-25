@@ -43,13 +43,18 @@ export default function IntakeForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, state, issueType, message, website: honeypot }),
       });
+      const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
         throw new Error(data.error || "Submission failed");
       }
-      try {
-        posthog.capture("intake_submitted", { state, issueType });
-      } catch {}
+      // The server answers honeypot/test-domain submissions with `test: true` —
+      // it dropped them before persistence and notification, so they must not
+      // count as a conversion here either.
+      if (!data.test) {
+        try {
+          posthog.capture("intake_submitted", { state, issueType });
+        } catch {}
+      }
       setStatus("success");
     } catch (err) {
       setStatus("error");
