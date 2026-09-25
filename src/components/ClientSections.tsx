@@ -382,6 +382,7 @@ export function SiteFooter() {
                 {[
                   { href: "/how-it-works", label: "How it works" },
                   { href: "/faq", label: "FAQ" },
+                  { href: "/blog", label: "Blog" },
                   { href: "/about", label: "About" },
                 ].map((l) => (
                   <li key={l.href}>

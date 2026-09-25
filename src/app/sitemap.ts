@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllLetters, getAvailableCategories } from "@/data/letters";
 import { getParkingUrls } from "@/data/parking";
+import { getAllPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://imfrustrated.org";
@@ -15,7 +16,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/privacy`, lastModified, changeFrequency: "yearly", priority: 0.3 },
     { url: `${baseUrl}/terms`, lastModified, changeFrequency: "yearly", priority: 0.3 },
     { url: `${baseUrl}/letters`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${baseUrl}/blog`, lastModified, changeFrequency: "weekly", priority: 0.7 },
   ];
+
+  const blogPosts: MetadataRoute.Sitemap = getAllPosts().map((p) => ({
+    url: `${baseUrl}/blog/${p.slug}`,
+    lastModified: p.dateModified ?? p.datePublished,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
 
   const categoryHubs: MetadataRoute.Sitemap = getAvailableCategories().map((c) => ({
     url: `${baseUrl}/letters/${c.slug}`,
@@ -38,5 +47,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...core, ...categoryHubs, ...letterPages, ...parkingPages];
+  return [...core, ...blogPosts, ...categoryHubs, ...letterPages, ...parkingPages];
 }

@@ -18,8 +18,8 @@ const nextConfig: NextConfig = {
       // backlinks/social but they were never built — redirect to closest
       // relevant page so the GSC 404 backlog clears. /privacy + /terms
       // remain 404 intentionally (todo: ship real pages — E-E-A-T baseline).
-      { source: "/blog", destination: "/how-it-works", permanent: true },
-      { source: "/blog/:rest*", destination: "/how-it-works", permanent: true },
+      // /blog and /blog/* redirects removed 2026-09-25: /blog now serves the
+      // content/blog MDX posts (src/app/blog).
       { source: "/contact", destination: "/how-it-works", permanent: true },
       { source: "/services", destination: "/how-it-works", permanent: true },
       { source: "/help", destination: "/faq", permanent: true },
