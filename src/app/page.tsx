@@ -124,8 +124,9 @@ export default function Home() {
         {/* ─── Hero ─── */}
         <section className="relative px-6 sm:px-10 lg:px-20 pt-32 md:pt-40 pb-16">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
-            {/* Headline block — left (stays centered below lg, matches prior layout) */}
-            <div className="text-center lg:text-left">
+            {/* Headline block — left (stays centered below lg, matches prior layout).
+                @container so the h1 below can size off THIS column's width. */}
+            <div className="@container text-center lg:text-left">
               <Reveal delay={1}>
                 <span className="eyebrow"><span className="pulse" />Free legal tools, built by volunteer attorneys</span>
               </Reveal>
@@ -133,8 +134,16 @@ export default function Home() {
                 {/* 2026-08-20 design review: the sans first line needed true
                     display treatment. Bricolage at 700 with tighter tracking —
                     same face, real display weight, against the serif-italic
-                    second line. */}
-                <h1 className="font-disp font-bold text-sage text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[4.4rem] leading-[1.02] tracking-[-0.045em] mt-7">
+                    second line.
+                    2026-10-03: the size was a fixed breakpoint ladder, and its
+                    largest step landed exactly where the grid narrows this
+                    column to ~55% (lg) — "Free legal help—" overflowed/wrapped
+                    badly in the ~1024–1279px band. One clamp() in container
+                    units instead, so it tracks the column, not the viewport. */}
+                <h1
+                  className="font-disp font-bold text-sage leading-[1.02] tracking-[-0.045em] mt-7"
+                  style={{ fontSize: "clamp(2.6rem, 12cqi, 4.4rem)" }}
+                >
                   Free legal help&mdash;
                   <br />
                   <em className="font-accent text-clay" style={{ fontStyle: "italic" }}>before you pay for a lawyer.</em>
