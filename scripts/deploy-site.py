@@ -271,8 +271,11 @@ def canary_reason(project, allow_project):
 # ── opsctl (optional) ────────────────────────────────────────────────────────────────────
 
 def opsctl_path():
+    # Default: the opsctl beside this file. A vendored copy (site repo scripts/) has none there,
+    # so its wrapper exports DEPLOY_SITE_OPSCTL to the installed SN opsctl.
     return os.path.expanduser(
-        os.environ.get("DEPLOY_SITE_OPSCTL") or "~/second-nick/ops/opsctl.py")
+        os.environ.get("DEPLOY_SITE_OPSCTL")
+        or os.path.join(os.path.dirname(os.path.abspath(__file__)), "opsctl.py"))
 
 
 def call_opsctl_evidence(item, domain):
