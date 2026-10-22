@@ -12,15 +12,16 @@ It does not merge or push. Merging to `main` makes Vercel build production. Afte
 2. Refuses a sha that is not on `origin/main`.
 3. Refuses a diff since current production that touches `migrations/`, `supabase/`,
    `prisma/`, `schema`, `.env*` or `vercel.json`. Those changes are deployed by hand.
-4. Records the rollback target in `~/ops/logs/deploy-site/<project>-<time>.json`: the newest
-   READY production deployment of a *different* sha.
+4. Records the rollback target in `~/ops/logs/deploy-site/<project>-<time>.json`: the
+   deployment production serves now (or the newest READY rollback candidate of another sha).
 5. Waits for the production deployment of the sha.
    - Build ERROR: says "production never moved" and does not roll back.
 6. Checks `/` and every `--health` path for HTTP 200 and an `x-vercel-id` header.
    - Any failure: `vercel rollback <backup>`, then checks health again.
 
 Exit codes: 0 deployed, 1 build failed / error, 4 refused, 5 no deployment for the sha,
-6 rolled back.
+6 rolled back, 7 built but not promoted (auto-promotion off: the line gives the promote
+command), 8 rollback failed (the line gives the manual command).
 
 **After a rollback, Vercel stops auto-promoting new production builds** until someone runs
 `vercel promote <url> --scope ncmillsionaire --yes` (or Undo Rollback in the dashboard).

@@ -52,6 +52,8 @@ EXIT_ERROR = 1
 EXIT_REFUSED = 4
 EXIT_TIMEOUT = 5
 EXIT_ROLLED_BACK = 6
+EXIT_NOT_PROMOTED = 7     # READY but STAGED: auto-promotion is off, production did not move
+EXIT_ROLLBACK_FAILED = 8
 
 
 # ── small utilities ─────────────────────────────────────────────────────────────────────
@@ -122,7 +124,19 @@ def extract_deployment(d):
         "sha": meta.get("githubCommitSha"),
         "createdAt": d.get("createdAt") or d.get("created"),
         "state": d.get("state") or d.get("readyState"),
+        # serving production? PROMOTED vs STAGED (after any rollback Vercel stops auto-promoting)
+        "substate": d.get("readySubstate"),
+        "rollback_candidate": bool(d.get("isRollbackCandidate")),
     }
+
+
+def serving(deps):
+    """The deployment production is serving now: the newest READY one marked PROMOTED; when the
+    API gives no substate at all, the newest READY one (older API shape)."""
+    ready = [d for d in deps if d and d.get("state") == "READY"]
+    if any(d.get("substate") for d in ready):
+        return next((d for d in ready if d.get("substate") == "PROMOTED"), None)
+    return ready[0] if ready else None
 
 
 # ── HTTP seam (injected fetch) ───────────────────────────────────────────────────────────
@@ -182,7 +196,10 @@ def sha_on_default_branch(repo_dir, sha):
 def diff_forbidden_paths(repo_dir, prod_sha, sha):
     """Returns the list of changed paths that match the forbidden set, or None if the diff
     itself could not be computed (caller must refuse in that case too)."""
-    rc, out, _ = run_git(repo_dir, ["diff", "--name-only", f"{prod_sha}..{sha}"])
+    # --no-renames: a rename OUT of migrations/ lists both sides; quotePath off: a non-ASCII path
+    # is not C-quoted past the prefix match (R2 M1)
+    rc, out, _ = run_git(repo_dir, ["-c", "core.quotePath=off", "diff", "--no-renames",
+                                    "--name-only", f"{prod_sha}..{sha}"])
     if rc != 0:
         return None
     hits = []
@@ -194,7 +211,7 @@ def diff_forbidden_paths(repo_dir, prod_sha, sha):
         if any(pl.startswith(pref) or f"/{pref}" in pl for pref in FORBIDDEN_DIR_PREFIXES):
             hits.append(p)
             continue
-        if re.search(r"(^|/)schema", pl):
+        if re.search(r"(^|/)schema(\.|/|$)", pl):
             hits.append(p)
             continue
         if base.startswith(".env"):
@@ -306,7 +323,7 @@ def wait_for_deployment(project, sha, interval=None, timeout=None, sleep_fn=time
     start = clock_fn()
     while True:
         resp = vercel_api_get(deployments_path(project))
-        for d in resp.get("deployments", []):
+        for d in resp.get("deployments", []):           # newest first
             meta = d.get("meta") or {}
             if meta.get("githubCommitSha") == sha:
                 state = d.get("state") or d.get("readyState")
@@ -314,7 +331,8 @@ def wait_for_deployment(project, sha, interval=None, timeout=None, sleep_fn=time
                     return "READY", extract_deployment(d)
                 if state in ("ERROR", "CANCELED"):
                     return state, extract_deployment(d)
-                # BUILDING / QUEUED / INITIALIZING -> keep polling
+                break   # the NEWEST build of the sha is still building: an older ERROR of the
+                        # same sha must not decide (R2 M2) -> keep polling
         if clock_fn() - start >= timeout:
             return "TIMEOUT", None
         sleep_fn(interval)
@@ -322,16 +340,25 @@ def wait_for_deployment(project, sha, interval=None, timeout=None, sleep_fn=time
 
 # ── HEALTH (step 4) ──────────────────────────────────────────────────────────────────────
 
-def check_health(domain, paths, timeout=20):
-    """Check `/` plus every extra path on domain. Returns (ok, results)."""
+def check_health(domain, paths, timeout=20, sleep_fn=time.sleep):
+    """Check `/` plus every extra path on domain: HTTP 200 + x-vercel-id, up to
+    DEPLOY_SITE_HEALTH_TRIES attempts per path (one blip on a healthy site must not trigger a
+    rollback). Returns (ok, results)."""
+    tries = int(os.environ.get("DEPLOY_SITE_HEALTH_TRIES", "3"))
+    gap = float(os.environ.get("DEPLOY_SITE_HEALTH_GAP", "10"))
     results = []
     ok = True
     for p in ["/"] + list(paths or []):
         url = f"https://{domain}{p}"
-        status, headers, _ = http_get(url, timeout)
-        header_ok = has_vercel_id_header(headers)
-        good = (status == 200 and header_ok)
-        results.append({"path": p, "status": status, "x_vercel_id": header_ok, "ok": good})
+        for n in range(1, tries + 1):
+            status, headers, _ = http_get(url, timeout)
+            header_ok = has_vercel_id_header(headers)
+            good = (status == 200 and header_ok)
+            if good or n == tries:
+                break
+            sleep_fn(gap)
+        results.append({"path": p, "status": status, "x_vercel_id": header_ok, "ok": good,
+                        "tries": n})
         if not good:
             ok = False
     return ok, results
@@ -415,6 +442,9 @@ def main(argv=None, printer=print):
     if not args.sha:
         return refuse(project, "--sha is required (unless --drill)", printer)
     sha = args.sha
+    if not re.match(r"^[0-9a-f]{40}$", sha):
+        return refuse(project, "--sha must be the full 40-hex commit sha", printer)
+    run_git(repo, ["fetch", "-q", "origin"], timeout=60)     # a just-merged sha must be known
 
     on_branch, branch = sha_on_default_branch(repo, sha)
     if not on_branch:
@@ -426,11 +456,17 @@ def main(argv=None, printer=print):
     except Exception as e:
         return refuse(project, f"could not reach vercel api: {e}", printer)
     deployments = [extract_deployment(d) for d in resp.get("deployments", [])]
-    # The merge has usually ALREADY triggered a production build of `sha`, so the newest
-    # deployment is often the new one. The rollback target is the newest READY production
-    # deployment of a DIFFERENT sha -- never the deployment being verified.
-    backup = next((d for d in deployments
-                   if d and d.get("state") == "READY" and d.get("sha") and d["sha"] != sha), None)
+    # Rollback target = what production SERVES now (PROMOTED), unless that already is the new
+    # sha; then the newest READY rollback candidate of a different sha; never the deployment
+    # under test, never one that was itself rolled back from (R2 M3).
+    live = serving(deployments)
+    if live and live.get("sha") and live["sha"] != sha:
+        backup = live
+    else:
+        others = [d for d in deployments if d and d.get("state") == "READY" and d.get("sha")
+                  and d["sha"] != sha]
+        backup = next((d for d in others if d.get("rollback_candidate")), None) or \
+            next(iter(others), None)
     bpath = backup_path(project)
     write_json(bpath, {"project": project, "backup": backup, "requested_sha": sha,
                         "written_at": utc_ts()})
@@ -461,7 +497,25 @@ def main(argv=None, printer=print):
         report_evidence(args.item, domain, outcome)
         return EXIT_BUILD_FAILED
 
-    # state == READY
+    # state == READY -- but is it SERVING? After any rollback Vercel stops auto-promoting: the
+    # build is READY + STAGED and the domain still serves the old one (R2 C1).
+    if deployment and deployment.get("substate") and deployment["substate"] != "PROMOTED":
+        for _ in range(int(os.environ.get("DEPLOY_SITE_PROMOTE_POLLS", "4"))):
+            time.sleep(poll_interval())
+            fresh = [extract_deployment(d) for d in
+                     vercel_api_get(deployments_path(project)).get("deployments", [])]
+            same = next((d for d in fresh if d and d.get("id") == deployment.get("id")), None)
+            if same and same.get("substate") == "PROMOTED":
+                deployment = same
+                break
+        else:
+            outcome = (f"NOT-PROMOTED {project} {sha7(sha)} {deployment.get('id')} is READY but "
+                       f"{deployment.get('substate')}: production did not move (auto-promotion is "
+                       f"off, usually after a rollback). To ship it: vercel promote "
+                       f"{deployment.get('url')} --scope {SCOPE} --yes")
+            printer(outcome)
+            report_evidence(args.item, domain, outcome)
+            return EXIT_NOT_PROMOTED
     ok, results = check_health(domain, args.health)
     title_info = title_sanity_check(domain, deployment.get("url") if deployment else None)
 
@@ -480,9 +534,18 @@ def main(argv=None, printer=print):
         "project": project, "backup": backup, "forward_health": results,
         "rollback_ok": rb_ok, "rollback_health": rb_results, "title_info": title_info,
     })
+    if not rb_ok:
+        outcome = (f"ROLLBACK-FAILED {project} {sha7(sha)}: vercel rollback to "
+                   f"{backup.get('id') if backup else '?'} failed ({(rb_err or rb_out or '')[:120]}). "
+                   f"Production is serving the unhealthy build. By hand: vercel rollback "
+                   f"{backup_url} --scope {SCOPE} --yes")
+        printer(outcome)
+        report_evidence(args.item, domain, outcome)
+        return EXIT_ROLLBACK_FAILED
     outcome = (f"ROLLED-BACK {project} {sha7(sha)} rolled back to "
                f"{backup.get('id') if backup else '?'} "
-               f"health={'ok' if rb_health_ok else 'failed'}")
+               f"health={'ok' if rb_health_ok else 'failed'}. Auto-promotion is now OFF: the next "
+               f"good build needs vercel promote <url> --scope {SCOPE} --yes")
     printer(outcome)
     report_evidence(args.item, domain, outcome)
     return EXIT_ROLLED_BACK
@@ -495,9 +558,13 @@ def run_drill(project, domain, args, printer):
         return refuse(project, f"could not reach vercel api: {e}", printer)
     deployments = [d for d in (extract_deployment(x) for x in resp.get("deployments", []))
                    if d and d.get("state") == "READY"]
-    if len(deployments) < 2:
-        return refuse(project, "drill needs at least 2 READY production deployments", printer)
-    current, previous = deployments[0], deployments[1]
+    current = serving(deployments)
+    if current is None:
+        return refuse(project, "drill: cannot tell which deployment production serves", printer)
+    rest = [d for d in deployments if d.get("id") != current.get("id")]
+    previous = next((d for d in rest if d.get("rollback_candidate")), None) or next(iter(rest), None)
+    if previous is None:
+        return refuse(project, "drill needs a second READY production deployment", printer)
     bpath = backup_path(project)
     write_json(bpath, {"project": project, "drill": True, "current": current,
                         "previous": previous, "written_at": utc_ts()})
@@ -513,6 +580,9 @@ def run_drill(project, domain, args, printer):
     printer(f"DRILL {project} rollback={t1 - t0:.1f}s promote={t2 - t1:.1f}s "
             f"health_back={'ok' if (back_ok and health_back) else 'fail'} "
             f"health_fwd={'ok' if (fwd_ok and health_fwd) else 'fail'}")
+    if not fwd_ok:
+        printer(f"RECOVER BY HAND: vercel promote {current.get('url')} --scope {SCOPE} --yes "
+                f"(production may still be on {previous.get('id')})")
     if back_ok and health_back and fwd_ok and health_fwd:
         return EXIT_OK
     return EXIT_ERROR
