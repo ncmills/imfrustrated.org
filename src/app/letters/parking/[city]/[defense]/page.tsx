@@ -233,11 +233,10 @@ export default async function ParkingDefensePage({
             </div>
             <CopyLetterButton text={d.body} label="Copy statement" />
             <p className="text-sage-2 text-xs italic leading-relaxed mt-6 max-w-prose">
-              This template is for informational use only. It is not legal advice and does not create an attorney-client relationship. Square-bracketed placeholders must be replaced with your specific facts. Rules and deadlines can change; if your situation is urgent, complicated, or high-stakes, email{" "}
-              <a href="mailto:info@imfrustrated.org" className="text-clay underline decoration-clay/40 decoration-[1.5px] underline-offset-[5px] hover:decoration-clay transition-colors duration-300">
-                info@imfrustrated.org
-              </a>{" "}
-              for a free conversation with a volunteer attorney before you send it.
+              This template is for informational use only. It is not legal advice and does not create an attorney-client relationship. Square-bracketed placeholders must be replaced with your specific facts. Rules and deadlines can change; if a deadline is close or your situation is complicated, contact a licensed attorney, your local legal aid office, or your state bar&rsquo;s lawyer referral service.
+            </p>
+            <p className="text-sage-2 text-xs italic leading-relaxed mt-3 max-w-prose">
+              I&rsquo;m Frustrated dot Org is a nonprofit that publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
             </p>
           </Reveal>
         </section>
@@ -350,16 +349,19 @@ export default async function ParkingDefensePage({
               <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.4rem] tracking-[-0.03em] leading-tight">
                 Nervous about sending it yourself?
               </h2>
-              <p className="font-accent italic text-clay-soft text-2xl md:text-3xl mt-3">we&rsquo;ll read it over with you.</p>
-              <p className="text-[#cdd6cd] text-lg leading-relaxed mt-5 max-w-xl mx-auto mb-9">
-                Email the situation and a volunteer attorney will respond. No commitment, no invoice, no judgment — just an honest second pair of eyes from someone who actually understands the law.
+              <p className="font-accent italic text-clay-soft text-2xl md:text-3xl mt-3">start from a draft.</p>
+              <p className="text-[#cdd6cd] text-lg leading-relaxed mt-5 max-w-xl mx-auto">
+                Not sure this letter fits? Tell us what happened and we&rsquo;ll email you a draft self-help letter to send yourself (legal information, not legal advice).
               </p>
-              <a href="mailto:info@imfrustrated.org" className="btn-clay mag">
-                info@imfrustrated.org
+              <p className="text-[#cdd6cd] text-sm leading-relaxed mt-3 max-w-xl mx-auto mb-9">
+                If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
+              </p>
+              <Link href="/#contact" className="btn-clay mag">
+                Tell us what happened
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
-              </a>
+              </Link>
               <div className="mt-11 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
                 <Link href={`/letters/parking/${c.slug}`} className="hover:text-clay-soft transition-colors duration-300">
                   More {c.city} letters

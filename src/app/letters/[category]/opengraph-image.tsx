@@ -110,7 +110,7 @@ export default async function Image({
               fontWeight: 500,
             }}
           >
-            {count} {count === 1 ? "template" : "templates"} · free · attorney-written
+            {count} {count === 1 ? "template" : "templates"} · free · statute-cited
           </span>
         </div>
 
@@ -150,7 +150,7 @@ export default async function Image({
                   fontWeight: 500,
                 }}
               >
-                Friends who are also lawyers.
+                Free legal information. Not legal advice.
               </span>
             </div>
           </div>
