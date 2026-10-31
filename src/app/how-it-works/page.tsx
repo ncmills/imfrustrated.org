@@ -123,7 +123,7 @@ export default function HowItWorksPage() {
           </Reveal>
           <Reveal delay={4}>
             <p className="text-sage-2 text-lg leading-[1.6] max-w-2xl mx-auto mt-5">
-              That&rsquo;s what I&rsquo;m Frustrated dot Org is: a nonprofit that publishes free legal
+              That&rsquo;s what I&rsquo;m Frustrated dot Org is: free legal
               information, self-help guides, tools, and template letters. It&rsquo;s legal information, not
               legal advice. There&rsquo;s no fee, no account, and no judgment. Here&rsquo;s exactly how it works.
             </p>

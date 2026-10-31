@@ -22,7 +22,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What does I'm Frustrated dot Org actually do?",
     answer:
-      "We're a nonprofit that publishes free legal information and self-help tools: plain-English guides, template letters, and simple tools for everyday legal problems. You find the letter or guide that fits your situation, fill it in with your own facts, and send it yourself. We don't represent anyone, we don't give legal advice, and no one acts as your lawyer.",
+      "We publish free legal information and self-help tools: plain-English guides, template letters, and simple tools for everyday legal problems. You find the letter or guide that fits your situation, fill it in with your own facts, and send it yourself. We don't represent anyone, we don't give legal advice, and no one acts as your lawyer.",
   },
   {
     question: "How much does it cost?",
@@ -57,12 +57,12 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "Can you help me write a will or plan my estate?",
     answer:
-      "If your situation is simple — a basic will leaving things to obvious people, no contested family dynamics, no special-needs beneficiaries, no complicated business interests — we built a free self-help tool at idonthaveawill.com that lets you draft a state-specific will in about ten minutes, entirely in your browser. No account, no fees, no data stored. If your situation is more complicated than that, talk to an estate planning attorney.",
+      "If your situation is simple — a basic will leaving things to obvious people, no contested family dynamics, no special-needs beneficiaries, no complicated business interests — idonthaveawill.com is a free self-help tool (separate from I'm Frustrated dot Org, not owned by us) that lets you draft a state-specific will in about ten minutes, entirely in your browser. No account, no fees, no data stored. If your situation is more complicated than that, talk to an estate planning attorney.",
   },
   {
     question: "I was denied Social Security disability — can you help?",
     answer:
-      "Don't take the denial as the final word — a large share of disability cases that ultimately win are won on appeal. We built a set of free tools at aissdi.com that turn public SSA data into plain answers: estimate the approval odds for a claim like yours, look up the approval rate of the administrative law judge assigned to your hearing, and — if you've already been denied — weigh your appeal options at aissdi.com/appeal-decision, which lays out the Appeals Council's actual remand rates and the top reasons cases get sent back. No account, built for claimants representing themselves and for the attorneys who help them. Appeal deadlines are short, so if one is close, talk to a lawyer or a legal aid office.",
+      "Don't take the denial as the final word — a large share of disability cases that ultimately win are won on appeal. AISSDI (aissdi.com) is a set of free tools, separate from I'm Frustrated dot Org and not owned by us, that turn public SSA data into plain answers: estimate the approval odds for a claim like yours, look up the approval rate of the administrative law judge assigned to your hearing, and — if you've already been denied — weigh your appeal options at aissdi.com/appeal-decision, which lays out the Appeals Council's actual remand rates and the top reasons cases get sent back. No account, built for claimants representing themselves and for the attorneys who help them. Appeal deadlines are short, so if one is close, talk to a lawyer or a legal aid office.",
   },
   {
     question: "What if my deadline is close?",

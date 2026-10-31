@@ -142,7 +142,7 @@ export default async function CategoryHubPage({
                 </svg>
               </Link>
               <p className="text-sage-2 text-xs italic leading-relaxed mt-8 max-w-xl mx-auto">
-                I&rsquo;m Frustrated dot Org is a nonprofit that publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
+                I&rsquo;m Frustrated dot Org publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
               </p>
               <div className="mt-10 flex justify-center gap-6 text-sm flex-wrap text-sage-2">
                 <Link href="/letters" className="hover:text-clay transition-colors duration-300">All letters</Link>

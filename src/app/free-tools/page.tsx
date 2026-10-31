@@ -53,7 +53,7 @@ export default function FreeToolsPage() {
         description:
           "A free self-help tool to draft a simple will in about 10 minutes. Covers all 50 US states and DC. Runs entirely in your browser — no account, no fees, no data stored on a server.",
         provider: {
-          "@type": "NGO",
+          "@type": "Organization",
           name: "I'm Frustrated dot Org",
           url: "https://imfrustrated.org",
         },
@@ -65,7 +65,7 @@ export default function FreeToolsPage() {
         description:
           "A free library of plain-English letter templates that invoke real federal and state statutes — security deposits, billing errors, debt validation, medical records, credit-report disputes, and more.",
         provider: {
-          "@type": "NGO",
+          "@type": "Organization",
           name: "I'm Frustrated dot Org",
           url: "https://imfrustrated.org",
         },
@@ -80,7 +80,7 @@ export default function FreeToolsPage() {
         description:
           "Free Social Security disability decision tools for claimants and their attorneys. Estimate the approval odds for a claim like yours, look up any administrative law judge's approval rate and hearing-office wait times, and weigh your appeal options (Appeals Council remand rates) — all built from public SSA data. No account required.",
         provider: {
-          "@type": "NGO",
+          "@type": "Organization",
           name: "I'm Frustrated dot Org",
           url: "https://imfrustrated.org",
         },
@@ -172,9 +172,12 @@ export default function FreeToolsPage() {
           </Reveal>
           <Reveal delay={3}>
             <p className="text-sage-2 text-lg md:text-xl leading-[1.6] max-w-2xl mx-auto mt-7">
-              I&rsquo;m Frustrated dot Org is a nonprofit that publishes free legal information and
+              I&rsquo;m Frustrated dot Org publishes free legal information and
               self-help tools. Some legal tasks don&rsquo;t need a lawyer — they just need a good tool. So
               we&rsquo;re building those — plus a couple more we trust. Free to use, no fine print.
+            </p>
+            <p className="text-sage-2 text-sm leading-relaxed max-w-2xl mx-auto mt-4">
+              I Don&rsquo;t Have a Will and AISSDI are separate free tools, not owned by I&rsquo;m Frustrated dot Org.
             </p>
           </Reveal>
         </section>
@@ -449,7 +452,7 @@ export default function FreeToolsPage() {
             </p>
             <Link href="/#contact" className="btn-soft mag">Tell us what happened</Link>
             <p className="text-sage-2 text-xs italic leading-relaxed mt-8 max-w-xl mx-auto">
-              I&rsquo;m Frustrated dot Org is a nonprofit that publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
+              I&rsquo;m Frustrated dot Org publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
             </p>
             <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-sage-2">
               <Link href="/how-it-works" className="hover:text-clay transition-colors duration-300">How it works</Link>

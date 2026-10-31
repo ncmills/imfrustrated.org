@@ -126,7 +126,7 @@ export default function Home() {
                 @container so the h1 below can size off THIS column's width. */}
             <div className="@container text-center lg:text-left">
               <Reveal delay={1}>
-                <span className="eyebrow"><span className="pulse" />Free legal information &amp; self-help tools &middot; a nonprofit</span>
+                <span className="eyebrow"><span className="pulse" />Free legal information &amp; self-help tools</span>
               </Reveal>
               <Reveal delay={2}>
                 {/* 2026-08-20 design review: the sans first line needed true

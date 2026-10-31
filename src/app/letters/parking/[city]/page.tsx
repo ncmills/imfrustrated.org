@@ -283,7 +283,7 @@ export default async function ParkingCityPage({
             replaced with your specific facts. Rules and deadlines can change; if a deadline is close or your situation is complicated, contact a licensed attorney, your local legal aid office, or your state bar&rsquo;s lawyer referral service.
           </p>
           <p className="text-sage-2 text-xs italic leading-relaxed mt-3 max-w-prose">
-            I&rsquo;m Frustrated dot Org is a nonprofit that publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
+            I&rsquo;m Frustrated dot Org publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
           </p>
         </section>
 

@@ -6,13 +6,13 @@ import { buildOpenGraph } from "@/lib/og";
 export const metadata: Metadata = {
   title: "About | I'm Frustrated dot Org",
   description:
-    "I'm Frustrated dot Org is a New York nonprofit that publishes free legal information, self-help guides, tools, and template letters. Our mission, our model, and why it's free.",
+    "I'm Frustrated dot Org publishes free legal information, self-help guides, tools, and template letters. Our mission, our model, and why it's free.",
   alternates: { canonical: "https://imfrustrated.org/about" },
   openGraph: buildOpenGraph({
     path: "/about",
     title: "About | I'm Frustrated dot Org",
     description:
-      "I'm Frustrated dot Org is a nonprofit that publishes free legal information, self-help guides, tools, and template letters.",
+      "I'm Frustrated dot Org publishes free legal information, self-help guides, tools, and template letters.",
     // src/app/about/ has no colocated opengraph-image file.
     hasRouteImage: false,
   }),
@@ -23,7 +23,7 @@ const sections = [
     marker: "§ I",
     title: "What we are",
     paragraphs: [
-      "A New York nonprofit that publishes free legal information and self-help tools: plain-English guides, template letters, and simple tools that help you understand where you stand and take the first step yourself. The model is intentionally simple. You find the letter or guide that fits. You fill it in with your facts. You send it yourself. Nothing is billed.",
+      "Free legal information and self-help tools: plain-English guides, template letters, and simple tools that help you understand where you stand and take the first step yourself. The model is intentionally simple. You find the letter or guide that fits. You fill it in with your facts. You send it yourself. Nothing is billed.",
       "We're not a law firm. We're not a legal aid clinic. We're not a lead-gen funnel. We're a thin layer of help between “something is wrong” and “I just signed a five-figure retainer for a problem I didn't fully understand.”",
     ],
   },
@@ -48,11 +48,11 @@ const sections = [
 export default function AboutPage() {
   const orgSchema = {
     "@context": "https://schema.org",
-    "@type": "NGO",
+    "@type": "Organization",
     name: "I'm Frustrated dot Org",
     url: "https://imfrustrated.org",
     description:
-      "New York nonprofit that publishes free legal information, self-help guides, tools, and template letters for people facing everyday legal problems. Not a law firm; does not give legal advice.",
+      "Publishes free legal information, self-help guides, tools, and template letters for people facing everyday legal problems. Not a law firm; does not give legal advice.",
     logo: "https://imfrustrated.org/logo.svg",
     contactPoint: {
       "@type": "ContactPoint",
