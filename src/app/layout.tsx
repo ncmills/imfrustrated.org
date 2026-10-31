@@ -184,7 +184,7 @@ export default function RootLayout({
                     "@type": "Service",
                     "name": "Free Draft Self-Help Letter by Email",
                     "url": "https://imfrustrated.org/#contact",
-                    "description": "Tell us what happened and we'll email you a draft self-help letter you can send yourself. Legal information, not legal advice; no one acts as your lawyer."
+                    "description": "Tell us what happened and we'll try to email you a draft self-help letter you can send yourself. Legal information, not legal advice; no one acts as your lawyer."
                   }
                 },
                 {

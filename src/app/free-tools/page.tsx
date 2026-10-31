@@ -444,7 +444,7 @@ export default function FreeToolsPage() {
         <section className="relative max-w-3xl mx-auto px-6 md:px-8 pb-24 text-center">
           <Reveal>
             <p className="text-sage-2 text-base leading-relaxed mb-6">
-              Not sure which tool fits? Tell us what happened and we&rsquo;ll email you a draft self-help
+              Not sure which tool fits? Tell us what happened and we&rsquo;ll try to email you a draft self-help
               letter to send yourself (legal information, not legal advice).
             </p>
             <Link href="/#contact" className="btn-soft mag">Tell us what happened</Link>

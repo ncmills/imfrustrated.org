@@ -352,7 +352,7 @@ export default function Home() {
                   <p className="text-clay-soft text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-1.5">Free · draft letter by email</p>
                   <h3 className="font-disp font-semibold text-bg text-2xl tracking-[-0.02em]">Get a Draft Letter by Email</h3>
                   <p className="text-[#cdd6cd] mt-2.5 leading-relaxed max-w-2xl">
-                    Not sure a letter fits? Tell us what happened and we&rsquo;ll email you a draft
+                    Not sure a letter fits? Tell us what happened and we&rsquo;ll try to email you a draft
                     self-help letter you can send yourself. Legal information, not legal advice
                     &mdash; no one acts as your lawyer and no attorney-client relationship is formed.
                   </p>
@@ -433,7 +433,7 @@ export default function Home() {
                   Still stuck? <em className="font-accent text-clay-soft" style={{ fontStyle: "italic" }}>Get a draft letter.</em>
                 </h2>
                 <p className="text-[#cdd6cd] mt-4 leading-relaxed">
-                  Tell us what happened and we&rsquo;ll email you a draft self-help letter you can send
+                  Tell us what happened and we&rsquo;ll try to email you a draft self-help letter you can send
                   yourself. This is legal information, not legal advice; no one acts as your lawyer and no
                   attorney-client relationship is formed.
                 </p>

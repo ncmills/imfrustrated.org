@@ -150,7 +150,7 @@ export default async function BlogPostPage({
             <Link href="/#contact" className="text-sage underline decoration-clay/70 underline-offset-[5px]">
               Tell us what happened
             </Link> 
-            and we&rsquo;ll email you a draft self-help letter to send yourself. If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
+            and we&rsquo;ll try to email you a draft self-help letter to send yourself. If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
           </p>
 
           {related.length > 0 && (

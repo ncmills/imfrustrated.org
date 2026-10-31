@@ -382,7 +382,7 @@ export default async function LetterPage({
               </h2>
               <p className="font-accent italic text-clay-soft text-2xl md:text-3xl mt-3">start from a draft.</p>
               <p className="text-[#cdd6cd] text-lg leading-relaxed mt-5 max-w-xl mx-auto">
-                Not sure this letter fits? Tell us what happened and we&rsquo;ll email you a draft self-help letter to send yourself (legal information, not legal advice).
+                Not sure this letter fits? Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
               </p>
               <p className="text-[#cdd6cd] text-sm leading-relaxed mt-3 max-w-xl mx-auto mb-9">
                 If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.

@@ -179,7 +179,7 @@ export default function LettersHubPage() {
             <p className="text-sage-2 text-lg leading-[1.6] mt-5">
               Below is a free library of plain-English templates that invoke real federal and state statutes. Every citation is verified. Take them, customize them, send them. No account, no upsell, no catch.
             </p>
-            <p className="font-accent italic text-xl text-clay mt-7">friends who went to law school, written down.</p>
+            <p className="font-accent italic text-xl text-clay mt-7">plain-English help, written down.</p>
           </Reveal>
         </section>
 
@@ -284,7 +284,7 @@ export default function LettersHubPage() {
                 Start from a draft.
               </h2>
               <p className="text-[#cdd6cd] text-lg leading-relaxed mt-4 max-w-xl mx-auto">
-                Not sure which letter fits? Tell us what happened and we&rsquo;ll email you a draft self-help letter to send yourself (legal information, not legal advice).
+                Not sure which letter fits? Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
               </p>
               <p className="text-[#cdd6cd] text-sm leading-relaxed mt-3 max-w-xl mx-auto mb-9">
                 If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
