@@ -47,7 +47,7 @@ export async function GET() {
     <title>I'm Frustrated dot Org — Letter Templates</title>
     <link>${baseUrl}/letters</link>
     <atom:link href="${baseUrl}/letters/rss.xml" rel="self" type="application/rss+xml" />
-    <description>Free, attorney-written letter templates that invoke real federal and state statutes. New templates added regularly.</description>
+    <description>Free, plain-English letter templates that invoke real federal and state statutes. New templates added regularly.</description>
     <language>en-US</language>
     <copyright>I'm Frustrated dot Org</copyright>
     <lastBuildDate>${lastBuildDate}</lastBuildDate>
