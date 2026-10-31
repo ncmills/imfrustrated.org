@@ -423,7 +423,7 @@ export function SiteFooter() {
           </div>
         </div>
         <p className="text-bg/55 text-[0.72rem] leading-relaxed mt-4 max-w-3xl">
-          I&rsquo;m Frustrated dot Org is a nonprofit that publishes free legal information and
+          I&rsquo;m Frustrated dot Org publishes free legal information and
           self-help tools. It is not a law firm and does not give legal advice. Using this site
           does not create an attorney-client relationship. For advice about your situation,
           contact a licensed attorney or your local legal aid office.

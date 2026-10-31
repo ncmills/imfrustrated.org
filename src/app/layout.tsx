@@ -38,7 +38,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "I'm Frustrated dot Org — Free Legal Letters & Self-Help Tools",
   description:
-    "Free legal information and self-help tools from a nonprofit: template letters, plain-English guides, and simple tools you use yourself. Not a law firm; not legal advice.",
+    "Free legal information and self-help tools: template letters, plain-English guides, and simple tools you use yourself. Not a law firm; not legal advice.",
   metadataBase: new URL("https://imfrustrated.org"),
   alternates: {
     canonical: "/",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "I'm Frustrated dot Org — Free Legal Letters & Self-Help Tools",
     description:
-      "Free legal information and self-help tools from a nonprofit: template letters, plain-English guides, and simple tools you use yourself.",
+      "Free legal information and self-help tools: template letters, plain-English guides, and simple tools you use yourself.",
     // src/app/opengraph-image.tsx exists — omit `images` so it merges in.
     hasRouteImage: true,
   }),
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "I'm Frustrated dot Org — Free Legal Letters & Self-Help Tools",
     description:
-      "Free legal information and self-help tools from a nonprofit: template letters, plain-English guides, and simple tools you use yourself.",
+      "Free legal information and self-help tools: template letters, plain-English guides, and simple tools you use yourself.",
   },
 };
 
@@ -106,13 +106,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "NGO",
+            "@type": "Organization",
             "name": "I'm Frustrated dot Org",
-            "description": "New York nonprofit that publishes free legal information, self-help guides, tools, and template letters. Not a law firm; does not give legal advice.",
+            "description": "Publishes free legal information, self-help guides, tools, and template letters. Not a law firm; does not give legal advice.",
             "url": "https://imfrustrated.org",
             "email": "info@imfrustrated.org",
-            "areaServed": "US",
-            "nonprofitStatus": "Nonprofit"
+            "areaServed": "US"
           }) }}
         />
         <script
@@ -126,7 +125,7 @@ export default function RootLayout({
                 "name": "What does I'm Frustrated dot Org do?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "We're a nonprofit that publishes free legal information and self-help tools: template letters, plain-English guides, and simple tools. You find the letter that fits, fill it in with your facts, and send it yourself."
+                  "text": "We publish free legal information and self-help tools: template letters, plain-English guides, and simple tools. You find the letter that fits, fill it in with your facts, and send it yourself."
                 }
               },
               {
@@ -172,8 +171,6 @@ export default function RootLayout({
             "name": "I'm Frustrated dot Org",
             "url": "https://imfrustrated.org",
             "email": "info@imfrustrated.org",
-            "nonprofitStatus": "Nonprofit501c3",
-            "sameAs": ["https://idonthaveawill.com", "https://aissdi.com", "https://doppelwriter.com"],
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
               "name": "Free Legal Resources",

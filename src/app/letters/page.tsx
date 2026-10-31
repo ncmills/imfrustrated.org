@@ -296,7 +296,7 @@ export default function LettersHubPage() {
                 </svg>
               </Link>
               <p className="text-[#cdd6cd] text-xs italic leading-relaxed mt-9 max-w-xl mx-auto">
-                I&rsquo;m Frustrated dot Org is a nonprofit that publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
+                I&rsquo;m Frustrated dot Org publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
               </p>
               <div className="mt-11 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
                 <Link href="/how-it-works" className="hover:text-clay-soft transition-colors duration-300">How it works</Link>
