@@ -136,7 +136,7 @@ export async function POST(request: Request) {
         replyTo: email,
         subject: `New intake: ${issueType || "general"} (${state || "??"})`,
         html: `
-          <h2>New legal aid intake</h2>
+          <h2>New draft-letter request</h2>
           <table style="border-collapse:collapse;font-family:sans-serif;">
             <tr><td style="padding:4px 12px;font-weight:bold;">Email</td><td style="padding:4px 12px;">${email}</td></tr>
             <tr><td style="padding:4px 12px;font-weight:bold;">State</td><td style="padding:4px 12px;">${state || "—"}</td></tr>
