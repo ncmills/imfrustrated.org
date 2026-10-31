@@ -6,7 +6,7 @@ import { buildOpenGraph } from "@/lib/og";
 export const metadata: Metadata = {
   title: "Privacy | I'm Frustrated dot Org",
   description:
-    "What we collect, where it goes, and what we don't do with it. Plain-English privacy practice for the volunteer attorney intake form, letter library, and analytics.",
+    "What we collect, where it goes, and what we don't do with it. Plain-English privacy practice for the draft-letter form, letter library, and analytics.",
   alternates: { canonical: "https://imfrustrated.org/privacy" },
   openGraph: buildOpenGraph({
     path: "/privacy",
@@ -25,7 +25,7 @@ const sections = [
     marker: "§ I",
     title: "What we collect",
     paragraphs: [
-      "When you use the intake form on the homepage, we collect what you give us: your email address, your two-letter US state, the issue category you select, and the free-text message you write (capped at 2,000 characters). We do not ask for a phone number, a date of birth, a Social Security number, a government ID, or any payment information. We have no use for those, and the form does not have fields for them.",
+      "When you use the draft-letter form on the homepage, we collect what you give us: your email address, your two-letter US state, the issue category you select, and the free-text message you write (capped at 2,000 characters). We do not ask for a phone number, a date of birth, a Social Security number, a government ID, or any payment information. We have no use for those, and the form does not have fields for them.",
       "We also briefly capture the IP address your request comes from. It is used in memory to rate-limit submissions (five per hour per address) so the form is not flooded by bots, and it is stored alongside the intake record in our database for the same reason. We do not use it to fingerprint you, follow you across sites, or assemble a behavioral profile.",
       "Across the rest of the site we use two analytics tools: PostHog for product analytics (page views, which letter templates get opened, which buttons get clicked) and Vercel Analytics + Speed Insights for traffic and performance measurement. Both are configured for aggregate measurement, not individual identification.",
     ],
@@ -34,7 +34,7 @@ const sections = [
     marker: "§ II",
     title: "Where it goes",
     paragraphs: [
-      "Intake submissions are written to a Supabase database and emailed to info@imfrustrated.org via Resend, a transactional email provider. From there a volunteer attorney reads your message and writes back. Nothing else happens with it. Your email is not added to a marketing list, not sold, not syndicated to lead-gen partners, not handed to legal-marketing firms. There is no marketing list.",
+      "Intake submissions are written to a Supabase database and emailed to info@imfrustrated.org via Resend, a transactional email provider. From there we use your message to prepare a draft self-help letter and email it to you. The draft is prepared with the help of an AI model provider, which processes your message only to write the draft. Nothing else happens with it. Your email is not added to a marketing list, not sold, not syndicated to lead-gen partners, not handed to legal-marketing firms. There is no marketing list.",
       "PostHog and Vercel each receive the analytics events described above. Both providers have their own privacy disclosures and act as processors for us — we control what is sent and we do not authorize them to sell or share what they collect.",
     ],
   },
@@ -42,7 +42,7 @@ const sections = [
     marker: "§ III",
     title: "What we don't do",
     paragraphs: [
-      "We do not sell your information. We do not run advertising on this site, so there are no ad-network trackers to ride along. We do not embed third-party social media pixels. We do not share intake content with anyone outside the volunteer attorney who responds to you. We do not retain analytics tied to a personal identifier beyond what is necessary to operate the site.",
+      "We do not sell your information. We do not run advertising on this site, so there are no ad-network trackers to ride along. We do not embed third-party social media pixels. We do not share what you send us with anyone except the service providers needed to store it, draft your letter, and email it to you. We do not retain analytics tied to a personal identifier beyond what is necessary to operate the site.",
       "We also do not knowingly collect information from children under 16. The service is built for adults navigating their own legal questions; if you are a minor, please ask a parent or guardian to reach out for you.",
     ],
   },

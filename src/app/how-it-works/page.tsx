@@ -26,7 +26,7 @@ const chapters = [
     title: "Find your letter or tool",
     paragraphs: [
       "Start with the free letters and tools. Each one covers a common, everyday problem — a security deposit that never came back, a bill you don't owe, a denial letter that doesn't make sense, a contract that turned sideways — and explains in plain English what the letter does and when it fits.",
-      "If nothing fits, you can tell us what happened using the form on our home page, and we'll email you a draft self-help letter you can send yourself. This is legal information, not legal advice; no attorney reviews it and no attorney-client relationship is formed.",
+      "If nothing fits, you can tell us what happened using the form on our home page, and we'll email you a draft self-help letter you can send yourself. This is legal information, not legal advice; no one acts as your lawyer and no attorney-client relationship is formed.",
     ],
   },
   {
