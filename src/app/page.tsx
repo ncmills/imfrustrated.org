@@ -149,7 +149,7 @@ export default function Home() {
               </Reveal>
               <Reveal delay={3}>
                 <p className="text-sage-2 text-lg md:text-xl leading-[1.6] max-w-2xl mx-auto lg:mx-0 mt-7">
-                  Attorney-written letters, plain-English guides, and self-help tools you
+                  Statute-cited letters, plain-English guides, and self-help tools you
                   use yourself. All free. Start with the problem you&rsquo;re facing.
                 </p>
               </Reveal>
@@ -268,7 +268,7 @@ export default function Home() {
                   <p className="text-sage-2 mt-3 leading-relaxed">
                     {letterCount} ready-to-send letters that quietly cite real statute &mdash; security
                     deposits, billing errors, HOA fines, delayed flights, and more. Every
-                    citation verified by an attorney. Fill in the blanks and send. No lawyer required.
+                    citation checked against the official source. Fill in the blanks and send. No lawyer required.
                   </p>
                   <Link href="/letters" className="inline-flex items-center gap-2 mt-5 font-semibold text-[0.95rem] text-clay hover:gap-3 transition-all duration-300">
                     Browse all {letterCount} letters
@@ -354,7 +354,7 @@ export default function Home() {
                   <p className="text-[#cdd6cd] mt-2.5 leading-relaxed max-w-2xl">
                     Not sure a letter fits? Tell us what happened and we&rsquo;ll email you a draft
                     self-help letter you can send yourself. Legal information, not legal advice
-                    &mdash; no attorney reviews it and no attorney-client relationship is formed.
+                    &mdash; no one acts as your lawyer and no attorney-client relationship is formed.
                   </p>
                 </div>
                 <span className="inline-flex items-center gap-2 font-semibold text-[0.95rem] text-clay-soft shrink-0">
@@ -434,7 +434,7 @@ export default function Home() {
                 </h2>
                 <p className="text-[#cdd6cd] mt-4 leading-relaxed">
                   Tell us what happened and we&rsquo;ll email you a draft self-help letter you can send
-                  yourself. This is legal information, not legal advice; no attorney reviews it and no
+                  yourself. This is legal information, not legal advice; no one acts as your lawyer and no
                   attorney-client relationship is formed.
                 </p>
               </div>

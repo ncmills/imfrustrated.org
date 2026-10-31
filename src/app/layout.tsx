@@ -158,7 +158,7 @@ export default function RootLayout({
                 "name": "Is this legal advice?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "No. Everything on the site, including any draft letter we email you, is legal information and a self-help tool, not legal advice. No attorney reviews it and no attorney-client relationship is formed."
+                  "text": "No. Everything on the site, including any draft letter we email you, is legal information and a self-help tool, not legal advice. No one acts as your lawyer and no attorney-client relationship is formed."
                 }
               }
             ]
@@ -184,7 +184,7 @@ export default function RootLayout({
                     "@type": "Service",
                     "name": "Free Draft Self-Help Letter by Email",
                     "url": "https://imfrustrated.org/#contact",
-                    "description": "Tell us what happened and we'll email you a draft self-help letter you can send yourself. Legal information, not legal advice; no attorney reviews it."
+                    "description": "Tell us what happened and we'll email you a draft self-help letter you can send yourself. Legal information, not legal advice; no one acts as your lawyer."
                   }
                 },
                 {
