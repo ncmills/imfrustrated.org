@@ -72,7 +72,7 @@ export default function IntakeForm() {
           Dear friend,
         </p>
         <p className="font-serif italic text-ink text-lg md:text-xl leading-[1.55]">
-          Thanks for writing. We&rsquo;ll email you a draft self-help letter you can edit and send yourself. It&rsquo;s legal information, not legal advice; no one acts as your lawyer.
+          Thanks for writing. We&rsquo;ll try to email you a draft self-help letter you can edit and send yourself. If we can&rsquo;t help with your situation, we&rsquo;ll tell you. It&rsquo;s legal information, not legal advice; no one acts as your lawyer.
         </p>
         <p className="script text-[2rem] md:text-[2.25rem] leading-tight mt-7 -rotate-1">
           Talk soon,
@@ -94,7 +94,7 @@ export default function IntakeForm() {
         Dear friend,
       </p>
       <p className="text-muted-warm text-sm mb-7 leading-relaxed">
-        Tell us what happened and we&rsquo;ll email you a draft self-help letter you can send yourself. A few sentences is plenty.
+        Tell us what happened and we&rsquo;ll try to email you a draft self-help letter you can send yourself. A few sentences is plenty.
       </p>
 
       <div className="space-y-5">

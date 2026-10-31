@@ -130,7 +130,7 @@ export default async function CategoryHubPage({
           <Reveal>
             <div className="bg-bg-2 rounded-[32px] px-6 sm:px-10 md:px-14 py-12 md:py-14 text-center">
               <p className="text-sage-2 text-lg leading-relaxed max-w-xl mx-auto">
-                Not sure which letter fits? Tell us what happened and we&rsquo;ll email you a draft self-help letter to send yourself (legal information, not legal advice).
+                Not sure which letter fits? Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
               </p>
               <p className="text-sage-2 text-sm leading-relaxed mt-3 mb-7 max-w-xl mx-auto">
                 If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
