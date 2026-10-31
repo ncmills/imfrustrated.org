@@ -22,7 +22,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What does I'm Frustrated dot Org actually do?",
     answer:
-      "We're a nonprofit that publishes free legal information and self-help tools: plain-English guides, template letters, and simple tools for everyday legal problems. You find the letter or guide that fits your situation, fill it in with your own facts, and send it yourself. We don't represent anyone, we don't give legal advice, and no attorney reviews what you send.",
+      "We're a nonprofit that publishes free legal information and self-help tools: plain-English guides, template letters, and simple tools for everyday legal problems. You find the letter or guide that fits your situation, fill it in with your own facts, and send it yourself. We don't represent anyone, we don't give legal advice, and no one acts as your lawyer.",
   },
   {
     question: "How much does it cost?",
@@ -32,7 +32,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What's the draft-letter request?",
     answer:
-      "If you can't find a letter that fits, you can tell us what happened using the form on our home page, and we'll email you a draft self-help letter you can edit and send yourself. This is legal information, not legal advice; no attorney reviews it and no attorney-client relationship is formed. Read it carefully and change anything that isn't accurate before you send it.",
+      "If you can't find a letter that fits, you can tell us what happened using the form on our home page, and we'll email you a draft self-help letter you can edit and send yourself. This is legal information, not legal advice; no one acts as your lawyer and no attorney-client relationship is formed. Read it carefully and change anything that isn't accurate before you send it.",
   },
   {
     question: "What's the catch?",
