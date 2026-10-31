@@ -63,7 +63,7 @@ export default function FreeToolsPage() {
         name: "Letter Templates",
         url: "https://imfrustrated.org/letters",
         description:
-          "A free, attorney-written library of plain-English letter templates that invoke real federal and state statutes — security deposits, billing errors, debt validation, medical records, credit-report disputes, and more.",
+          "A free library of plain-English letter templates that invoke real federal and state statutes — security deposits, billing errors, debt validation, medical records, credit-report disputes, and more.",
         provider: {
           "@type": "NGO",
           name: "I'm Frustrated dot Org",
@@ -98,7 +98,7 @@ export default function FreeToolsPage() {
 
   const letterFeatures = [
     "Verified statute citations — federal and state",
-    "Written by practicing attorneys, free to use",
+    "Every statute citation verified, free to use",
     "Plain-English explanations of what the law actually says",
     "State-by-state notes where the law varies",
     "No account, no upsell, no catch",
@@ -172,9 +172,9 @@ export default function FreeToolsPage() {
           </Reveal>
           <Reveal delay={3}>
             <p className="text-sage-2 text-lg md:text-xl leading-[1.6] max-w-2xl mx-auto mt-7">
-              I&rsquo;m Frustrated dot Org started as a free conversation with a volunteer attorney.
-              But some legal tasks don&rsquo;t need a conversation — they just need a tool. So we&rsquo;re
-              building those too — plus a couple more we trust. Free to use, no fine print.
+              I&rsquo;m Frustrated dot Org is a nonprofit that publishes free legal information and
+              self-help tools. Some legal tasks don&rsquo;t need a lawyer — they just need a good tool. So
+              we&rsquo;re building those — plus a couple more we trust. Free to use, no fine print.
             </p>
           </Reveal>
         </section>
@@ -262,10 +262,9 @@ export default function FreeToolsPage() {
                   </svg>
                 </span>
                 <p className="text-sage-2/80 text-xs mt-7 leading-relaxed">
-                  Each template is for informational use only — not legal advice. For situations that are
-                  urgent, complicated, or high-stakes, email{" "}
-                  <span className="text-sage">info@imfrustrated.org</span> for a free conversation with a
-                  volunteer attorney before you send.
+                  Each template is for informational use only — not legal advice. If a deadline is close or
+                  your situation is complicated, contact a licensed attorney, your local legal aid office, or
+                  your state bar&rsquo;s lawyer referral service before you send.
                 </p>
               </Link>
             </Reveal>
@@ -306,10 +305,9 @@ export default function FreeToolsPage() {
                 </span>
                 <p className="text-sage-2/80 text-xs mt-7 leading-relaxed">
                   AISSDI provides research and statistics, not legal advice, and using it does not create an
-                  attorney-client relationship. If you&rsquo;ve been denied and want to talk through your
-                  appeal options first, email{" "}
-                  <span className="text-sage">info@imfrustrated.org</span> for a free conversation with a
-                  volunteer attorney.
+                  attorney-client relationship. If you&rsquo;ve been denied and an appeal deadline is
+                  close, contact a disability attorney, your local legal aid office, or your state bar&rsquo;s
+                  lawyer referral service.
                 </p>
               </a>
             </Reveal>
@@ -350,8 +348,7 @@ export default function FreeToolsPage() {
                 <p className="text-sage-2/80 text-xs mt-7 leading-relaxed">
                   DoppelWriter is a separate writing app (free to start, quick signup). It helps you say
                   things in your own words — it isn&rsquo;t legal advice. For anything urgent or high-stakes,
-                  email{" "}
-                  <span className="text-sage">info@imfrustrated.org</span> first.
+                  talk to a licensed attorney or your local legal aid office.
                 </p>
               </a>
             </Reveal>
@@ -447,9 +444,13 @@ export default function FreeToolsPage() {
         <section className="relative max-w-3xl mx-auto px-6 md:px-8 pb-24 text-center">
           <Reveal>
             <p className="text-sage-2 text-base leading-relaxed mb-6">
-              Need to actually talk to an attorney? That&rsquo;s our other thing.
+              Not sure which tool fits? Tell us what happened and we&rsquo;ll email you a draft self-help
+              letter to send yourself (legal information, not legal advice).
             </p>
-            <a href="mailto:info@imfrustrated.org" className="btn-soft mag">info@imfrustrated.org</a>
+            <Link href="/#contact" className="btn-soft mag">Tell us what happened</Link>
+            <p className="text-sage-2 text-xs italic leading-relaxed mt-8 max-w-xl mx-auto">
+              I&rsquo;m Frustrated dot Org is a nonprofit that publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
+            </p>
             <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-sage-2">
               <Link href="/how-it-works" className="hover:text-clay transition-colors duration-300">How it works</Link>
               <Link href="/about" className="hover:text-clay transition-colors duration-300">About us</Link>
