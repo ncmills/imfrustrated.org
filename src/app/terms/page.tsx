@@ -25,7 +25,7 @@ const sections = [
     marker: "§ I",
     title: "What this service is",
     paragraphs: [
-      "I'm Frustrated dot Org is a nonprofit that publishes free legal information and self-help tools: a library of letter templates, guides, and a draft-letter service. The draft-letter service takes what you tell us and emails you a draft self-help letter you can edit and send yourself. None of it is legal advice, no one acts as your lawyer, and using the site does not create an attorney-client relationship with us or with anyone else.",
+      "I'm Frustrated dot Org publishes free legal information and self-help tools: a library of letter templates, guides, and a draft-letter service. The draft-letter service takes what you tell us and emails you a draft self-help letter you can edit and send yourself. None of it is legal advice, no one acts as your lawyer, and using the site does not create an attorney-client relationship with us or with anyone else.",
       "We are not a law firm. We do not represent you, appear in court on your behalf, or send anything in your name: any draft letter is yours to check, change, and send yourself. We do not sign retainer agreements. If your situation needs legal advice, contact a licensed attorney or your local legal aid office.",
     ],
   },
@@ -58,7 +58,7 @@ const sections = [
     marker: "§ V",
     title: "Governing law and changes",
     paragraphs: [
-      "These terms are governed by the laws of the State of New York, where the operating not-for-profit is in formation. Any dispute arising out of these terms or your use of the site will be brought in the state or federal courts located in New York County, New York, and you consent to that forum.",
+      "These terms are governed by the laws of the State of New York. Any dispute arising out of these terms or your use of the site will be brought in the state or federal courts located in New York County, New York, and you consent to that forum.",
       "We will update these terms when the service changes — for example, when the corporate entity is formally incorporated and an EIN issues. Material changes will be noted with an updated date at the top of this page; continued use of the site after a change constitutes acceptance.",
     ],
   },
@@ -66,7 +66,7 @@ const sections = [
     marker: "§ VI",
     title: "Contact",
     paragraphs: [
-      "Questions about these terms go to info@imfrustrated.org. The service operator is I'm Frustrated dot Org, a New York not-for-profit initiative in formation as a 501(c)(3) charitable corporation.",
+      "Questions about these terms go to info@imfrustrated.org. The service operator is I'm Frustrated dot Org.",
     ],
   },
 ];

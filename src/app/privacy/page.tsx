@@ -65,7 +65,7 @@ const sections = [
     marker: "§ VI",
     title: "Contact",
     paragraphs: [
-      "Reach us at info@imfrustrated.org for any privacy question, deletion request, or correction. The service operator is I'm Frustrated dot Org, a New York not-for-profit initiative in formation as a 501(c)(3) charitable corporation; this notice will be updated to reflect the formal entity once the incorporation is filed and the EIN issues.",
+      "Reach us at info@imfrustrated.org for any privacy question, deletion request, or correction. The service operator is I'm Frustrated dot Org.",
     ],
   },
 ];
