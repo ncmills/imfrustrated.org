@@ -155,7 +155,7 @@ export function Header() {
           href="/#contact"
           className="mag inline-flex items-center gap-2 px-3.5 py-2 text-[0.8rem] sm:px-5 sm:py-2.5 sm:text-[0.88rem] bg-sage text-bg font-semibold rounded-full hover:bg-evergreen transition-colors duration-300 shrink-0"
         >
-          Ask an attorney
+          Get a draft letter
         </Link>
       </div>
     </header>
@@ -347,9 +347,9 @@ export function SiteFooter() {
             {/* The brand line and the plain-English one-liner both belong here: the
                 first is the voice, the second is what a stranger who landed on a
                 letter page from Google actually needs told. */}
-            <p className="font-accent italic text-bg/70 text-sm mt-3">Friends who are also lawyers.</p>
+            <p className="font-accent italic text-bg/70 text-sm mt-3">Free self-help for everyday legal problems.</p>
             <p className="text-bg/60 text-sm mt-1 max-w-xs leading-relaxed">
-              Free dispute letters and a real attorney to talk to first. We are not a law firm.
+              Free dispute letters, guides, and self-help tools. We are not a law firm.
             </p>
           </div>
           {/* Two named groups instead of one undifferentiated row: what you can USE,
@@ -363,7 +363,7 @@ export function SiteFooter() {
                   { href: "/letters", label: "The Letter Library" },
                   { href: "/letters/parking", label: "Parking ticket defenses" },
                   { href: "/free-tools", label: "Free tools" },
-                  { href: "/#contact", label: "Ask an attorney" },
+                  { href: "/#contact", label: "Get a draft letter" },
                 ].map((l) => (
                   <li key={l.href}>
                     <Link
@@ -423,10 +423,10 @@ export function SiteFooter() {
           </div>
         </div>
         <p className="text-bg/55 text-[0.72rem] leading-relaxed mt-4 max-w-3xl">
-          I&rsquo;m Frustrated<span className="text-clay-soft mx-0.5">.org</span>
-          is not a law firm and does not provide legal representation. Everything here is
-          information, not legal advice, and using it forms no attorney-client relationship.
-          For representation, consult a licensed attorney in your jurisdiction.
+          I&rsquo;m Frustrated dot Org is a nonprofit that publishes free legal information and
+          self-help tools. It is not a law firm and does not give legal advice. Using this site
+          does not create an attorney-client relationship. For advice about your situation,
+          contact a licensed attorney or your local legal aid office.
         </p>
       </div>
     </footer>
