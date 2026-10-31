@@ -32,7 +32,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What's the draft-letter request?",
     answer:
-      "If you can't find a letter that fits, you can tell us what happened using the form on our home page, and we'll email you a draft self-help letter you can edit and send yourself. This is legal information, not legal advice; no one acts as your lawyer and no attorney-client relationship is formed. Read it carefully and change anything that isn't accurate before you send it.",
+      "If you can't find a letter that fits, you can tell us what happened using the form on our home page, and we'll try to email you a draft self-help letter you can edit and send yourself. If we can't help with your situation, we'll tell you. This is legal information, not legal advice; no one acts as your lawyer and no attorney-client relationship is formed. Read it carefully and change anything that isn't accurate before you send it.",
   },
   {
     question: "What's the catch?",

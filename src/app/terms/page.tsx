@@ -42,7 +42,7 @@ const sections = [
     marker: "§ III",
     title: "The draft-letter service",
     paragraphs: [
-      "When you submit the draft-letter form, we prepare a draft self-help letter from the facts you give us and the statutes in our library, and email it to you. The draft is legal information, not legal advice. No one acts as your lawyer, and no attorney-client relationship is formed. You decide whether to use it, and you are responsible for checking it against your facts before you send it.",
+      "When you submit the draft-letter form, we prepare a draft self-help letter from the facts you give us and the laws we look up from official sources, and email it to you. The draft is legal information, not legal advice. No one acts as your lawyer, and no attorney-client relationship is formed. You decide whether to use it, and you are responsible for checking it against your facts before you send it.",
       "Anything you tell us in the form should be assumed to be a non-privileged communication. Do not send us anything you would not be willing to repeat under oath, and do not send us anything that needs to stay sealed for an active matter. If you are already represented in a matter, talk to your existing lawyer instead — we will not step on that relationship.",
     ],
   },
