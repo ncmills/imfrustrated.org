@@ -34,6 +34,15 @@ export interface ChatStore {
   updateCase(id: string, patch: Partial<CaseRow>): Promise<void>;
   insertJob(job: { case_id: string; kind: "letter" | "followup" | "rerun"; is_test: boolean }): Promise<void>;
   latestJob(caseId: string): Promise<JobInfo | null>;
+  review(r: ReviewIn): Promise<void>;
+}
+
+export interface ReviewIn {
+  case_id: string;
+  letter_version: number;
+  review: "ok" | "rerun" | "close";
+  rerun_reason: string | null;
+  note: string | null;
 }
 
 export function supabaseStore(db: SupabaseClient): ChatStore {
@@ -64,6 +73,12 @@ export function supabaseStore(db: SupabaseClient): ChatStore {
       const r = await db.from("imf_chat_jobs").select("status, created_at, kind")
         .eq("case_id", caseId).order("created_at", { ascending: false }).limit(1).maybeSingle();
       return must(r, "latest job") as JobInfo | null;
+    },
+    async review(x) {
+      must(await db.rpc("imf_chat_review", {
+        p_case_id: x.case_id, p_letter_version: x.letter_version, p_review: x.review,
+        p_rerun_reason: x.rerun_reason, p_note: x.note,
+      }), "imf_chat_review");
     },
   };
 }
