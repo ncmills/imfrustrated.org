@@ -56,7 +56,7 @@ export function ipKey(ip: string, env: Env): string | null {
   return salt ? createHmac("sha256", salt).update(ip).digest("hex") : null;
 }
 
-function secretEq(a: string | null | undefined, b: string | null | undefined): boolean {
+export function secretEq(a: string | null | undefined, b: string | null | undefined): boolean {
   if (!a || !b) return false;
   const x = Buffer.from(a), y = Buffer.from(b);
   return x.length === y.length && timingSafeEqual(x, y);
@@ -66,11 +66,11 @@ export function isTestReq(req: ApiIn, env: Env): boolean {
   return secretEq(req.header("x-sn-test-run"), env.SIGNAL_TEST_SECRET?.trim());
 }
 
-const err = (status: number, error: string): ApiOut => ({ status, body: { error } });
-const log = (event: string, caseId?: string) =>
+export const err = (status: number, error: string): ApiOut => ({ status, body: { error } });
+export const log = (event: string, caseId?: string) =>
   console.log("[imf-chat]", JSON.stringify(caseId ? { event, case: caseId } : { event }));
 
-function gate(req: ApiIn, body: Record<string, unknown>, env: Env): ApiOut | null {
+export function gate(req: ApiIn, body: Record<string, unknown>, env: Env): ApiOut | null {
   if (env.IMF_CHAT_ENABLED?.trim() !== "1") return err(503, "chat_paused");
   if (env.IMF_CHAT_PUBLIC?.trim() === "1") return null;
   const beta = req.header("x-imf-beta") ?? (typeof body.beta === "string" ? body.beta : null);
