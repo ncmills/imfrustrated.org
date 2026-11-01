@@ -11,5 +11,5 @@
     "types": ["node"],
     "rootDir": "../.."
   },
-  "include": ["./*.test.ts", "../../src/lib/imf-chat/**/*.ts", "../../src/lib/imf-chat/*.json"]
+  "include": ["./*.test.ts", "../../src/lib/imf-chat/**/*.ts", "../../src/lib/crisis-terms.json"]
 }

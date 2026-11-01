@@ -49,10 +49,11 @@ const STOP_CARDS: Record<string, string> = {
 const sha256 = (s: string) => createHash("sha256").update(s).digest("hex");
 export const hashToken = sha256;
 
-/** 64-hex key for imf_rl_hit; never the raw IP. HMAC with a server salt when one is set. */
-export function ipKey(ip: string, env: Env): string {
+/** 64-hex key for imf_rl_hit: HMAC-SHA256(IMF_CHAT_IP_SALT, ip). No salt -> null; callers
+ *  fail closed. Never a plain sha256: an unsalted IPv4 hash is reversible by enumeration. */
+export function ipKey(ip: string, env: Env): string | null {
   const salt = env.IMF_CHAT_IP_SALT?.trim();
-  return salt ? createHmac("sha256", salt).update(ip).digest("hex") : sha256(ip);
+  return salt ? createHmac("sha256", salt).update(ip).digest("hex") : null;
 }
 
 function secretEq(a: string | null | undefined, b: string | null | undefined): boolean {
@@ -85,8 +86,12 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
     log("honeypot");
     return { status: 200, body: { ok: true } };
   }
-  const test = isTestReq(req, env);
   const key = ipKey(req.ip, env);
+  if (!key) {
+    log("ip_salt_missing");
+    return err(503, "chat_paused");
+  }
+  const test = isTestReq(req, env);
 
   if (body.action === "create") {
     const dv = body.disclaimer_v;
