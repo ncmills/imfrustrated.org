@@ -1,0 +1,5 @@
+{
+  "_doc": "IFDO-CHATBOX crisis screen, ONE source (spec r4 F5). Site copy src/lib/crisis-terms.json must be byte-identical (sha256 parity contract). Match: normalise (lower; hyphens, underscores, space runs -> one space), then (?i)\\b<term>\\b; a trailing * is a stem: (?i)\\b<stem>\\w*. Tier A stops the case; tier B shows the 911/988 line and continues (F6).",
+  "tier_a": ["kill myself", "suicid*", "self harm", "hurt myself", "end my life", "want to die"],
+  "tier_b": ["overdose", "in danger"]
+}
