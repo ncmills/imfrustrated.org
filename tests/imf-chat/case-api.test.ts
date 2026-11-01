@@ -215,3 +215,23 @@ test("no IMF_CHAT_IP_SALT: fails closed with 503 and writes no row (create and t
   assert.equal(ok.store.cases.size, 1);
   assert.equal((await h.turn(tok, "state", "CA")).status, 503);
 });
+
+test("N8: control fixture header stamps review_fixture; beta token alone does not; 3 fixtures from one IP all queue", async () => {
+  const env = { ...ENV, IMF_REVIEW_FIXTURE_SECRET: "fix-secret" };
+  const plain = harness(env);
+  await plain.create({ "x-imf-review-fixture": "beta-tok" });
+  assert.equal(only(plain).review_fixture, false);
+  const h = harness(env);
+  const fx = { "x-imf-review-fixture": "fix-secret" };
+  for (let i = 0; i < 3; i++) assert.equal((await h.fullCase(fx)).status, 202);
+  assert.ok([...h.store.cases.values()].every((c) => c.review_fixture && !c.is_test));
+  // positive control: the 2nd non-fixture case from one IP in 24 h is limited
+  const p = harness(env);
+  assert.equal((await p.fullCase()).status, 202);
+  assert.equal((await p.fullCase()).status, 429);
+  // is_test and review_fixture are never both true
+  const both = harness(env);
+  await both.create({ ...fx, "x-sn-test-run": "sn-secret" });
+  assert.equal(only(both).is_test, true);
+  assert.equal(only(both).review_fixture, false);
+});

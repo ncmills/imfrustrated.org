@@ -66,6 +66,11 @@ export function isTestReq(req: ApiIn, env: Env): boolean {
   return secretEq(req.header("x-sn-test-run"), env.SIGNAL_TEST_SECRET?.trim());
 }
 
+/** N8: review_fixture is set only by the control-only header, never by the beta token. */
+export function isFixtureReq(req: ApiIn, env: Env): boolean {
+  return secretEq(req.header("x-imf-review-fixture"), env.IMF_REVIEW_FIXTURE_SECRET?.trim());
+}
+
 export const err = (status: number, error: string): ApiOut => ({ status, body: { error } });
 export const log = (event: string, caseId?: string) =>
   console.log("[imf-chat]", JSON.stringify(caseId ? { event, case: caseId } : { event }));
@@ -98,7 +103,8 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
     if (typeof dv !== "string" || !/^[\w.-]{1,32}$/.test(dv)) return err(400, "disclaimer_required");
     if (!(await store.rlHit(key, "turn", 3600, LIMITS.turnsPerHour))) return err(429, "rate_limited");
     const token = randomBytes(32).toString("base64url");
-    const row = await store.insertCase({ token_hash: hashToken(token), disclaimer_v: dv, is_test: test });
+    const fixture = !test && isFixtureReq(req, env);  // is_test and review_fixture are never both true
+    const row = await store.insertCase({ token_hash: hashToken(token), disclaimer_v: dv, is_test: test, review_fixture: fixture });
     log("create", row.id);
     return { status: 201, body: { ok: true, token, next: NEXT.state } };
   }
