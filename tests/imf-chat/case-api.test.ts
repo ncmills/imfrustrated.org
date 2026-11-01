@@ -4,7 +4,7 @@ import { handleCasePost, ipKey, type ApiIn, type Env } from "../../src/lib/imf-c
 import { redact } from "../../src/lib/imf-chat/redact";
 import { fakeStore } from "./fake-store";
 
-const ENV: Env = { IMF_CHAT_ENABLED: "1", IMF_CHAT_BETA_TOKEN: "beta-tok", SIGNAL_TEST_SECRET: "sn-secret" };
+const ENV: Env = { IMF_CHAT_ENABLED: "1", IMF_CHAT_BETA_TOKEN: "beta-tok", SIGNAL_TEST_SECRET: "sn-secret", IMF_CHAT_IP_SALT: "salt-1" };
 const IP = "203.0.113.7";
 
 function harness(env: Env = ENV) {
@@ -169,8 +169,10 @@ test("no raw IP stored: rl keys are 64-hex and no case field holds the IP", asyn
   await h.fullCase();
   for (const k of h.store.rl.keys()) assert.match(k.split("|")[0], /^[0-9a-f]{64}$/);
   assert.ok(!JSON.stringify([...h.store.cases.values()]).includes(IP));
-  assert.match(ipKey(IP, { IMF_CHAT_IP_SALT: "s" }), /^[0-9a-f]{64}$/);
-  assert.notEqual(ipKey(IP, { IMF_CHAT_IP_SALT: "s" }), ipKey(IP, {}));
+  assert.match(ipKey(IP, { IMF_CHAT_IP_SALT: "s" }) ?? "", /^[0-9a-f]{64}$/);
+  assert.equal(ipKey(IP, {}), null);
+  assert.equal(ipKey(IP, { IMF_CHAT_IP_SALT: "  " }), null);
+  assert.notEqual(ipKey(IP, { IMF_CHAT_IP_SALT: "s" }), ipKey(IP, { IMF_CHAT_IP_SALT: "t" }));
 });
 
 test("redaction: SSN, Luhn card, 10-digit account, email, phone, DOB; amount and date survive", () => {
@@ -198,4 +200,18 @@ test("turn and story length limits", async () => {
   assert.equal((await h.turn(t, "story", "x".repeat(2001))).body.error, "turn_length");
   for (let i = 0; i < 3; i++) assert.equal((await h.turn(t, "story", "y".repeat(2000))).status, 200);
   assert.equal((await h.turn(t, "story", "z")).body.error, "story_length");
+});
+
+test("no IMF_CHAT_IP_SALT: fails closed with 503 and writes no row (create and turn)", async () => {
+  const { IMF_CHAT_IP_SALT: _drop, ...noSalt } = ENV;
+  const ok = harness();
+  const tok = await ok.create();
+  const h = harness(noSalt);
+  const r = await h.call({ action: "create", disclaimer_v: "d1" });
+  assert.equal(r.status, 503);
+  assert.equal(h.store.cases.size, 0);
+  assert.equal(h.store.rl.size, 0);
+  // positive control: same request with the salt set succeeds
+  assert.equal(ok.store.cases.size, 1);
+  assert.equal((await h.turn(tok, "state", "CA")).status, 503);
 });

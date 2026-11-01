@@ -1,7 +1,7 @@
 // IFDO-CHATBOX crisis screen (spec §1.4, F5/F6, N3/N4). Deterministic, no model.
 // Runs on the RAW visitor text (before redaction), before anything is queued.
 // The term list is a byte-identical copy of second-nick ops/imf_crisis_terms.json.
-import terms from "./crisis-terms.json";
+import terms from "../crisis-terms.json";
 
 export type CrisisTier = "A" | "B" | null;
 

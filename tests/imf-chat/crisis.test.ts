@@ -7,7 +7,7 @@ import { join } from "node:path";
 import { crisisTier, normaliseCrisisText } from "../../src/lib/imf-chat/crisis";
 
 // Tests run from the compiled outDir, so locate the repo copy by walking from cwd.
-const SITE_COPY = join(process.cwd(), "src/lib/imf-chat/crisis-terms.json");
+const SITE_COPY = join(process.cwd(), "src/lib/crisis-terms.json");
 const SN_CANDIDATES = [
   process.env.IMF_CRISIS_TERMS_SN,
   join(homedir(), "second-nick/ops/imf_crisis_terms.json"),
