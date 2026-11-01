@@ -32,7 +32,7 @@ export interface ChatStore {
   insertCase(row: Partial<CaseRow> & { token_hash: string }): Promise<{ id: string; created_at: string }>;
   getCaseByTokenHash(tokenHash: string): Promise<CaseRow | null>;
   updateCase(id: string, patch: Partial<CaseRow>): Promise<void>;
-  insertJob(job: { case_id: string; kind: "letter"; is_test: boolean }): Promise<void>;
+  insertJob(job: { case_id: string; kind: "letter" | "followup" | "rerun"; is_test: boolean }): Promise<void>;
   latestJob(caseId: string): Promise<JobInfo | null>;
 }
 
