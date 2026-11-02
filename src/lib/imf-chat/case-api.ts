@@ -173,10 +173,12 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
   } else {
     const r = redact(String(raw).trim());
     redacted = r.redacted;
-    if (step === "story") {
-      const used = c.turns.filter((t) => t.step === "story").reduce((n, t) => n + (t.text?.length ?? 0), 0);
-      if (used + r.text.length > STORY_MAX) return err(400, "story_length");
-    }
+    // F4: each text step is kept once (a resend replaces it), and STORY_MAX caps the total of
+    // ALL visitor text turns, so neither repeated steps nor spreading text across steps bypass it.
+    const kept = turns.filter((t) => t.step !== step);
+    const used = kept.filter((t) => TEXT_STEPS.has(t.step)).reduce((n, t) => n + (t.text?.length ?? 0), 0);
+    if (used + r.text.length > STORY_MAX) return err(400, "story_length");
+    turns.splice(0, turns.length, ...kept);
     if (step === "counterparty") patch.counterparty = r.text.slice(0, 200);
     if (step === "amount") {
       const n = Number(r.text.replace(/[$,\s]/g, ""));
