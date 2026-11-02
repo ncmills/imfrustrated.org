@@ -120,3 +120,7 @@ export const SOURCES_TITLE = "Sources we checked";
 export const ASK = "Ask";
 export const ANSWER_PENDING = "Answering...";
 export const startOver = "Start a new letter";
+export const PARKING_HREF = "/letters/parking";
+export const CALL_911 = "Call 911";
+export const CALL_988 = "Call 988";
+export const TEXT_988 = "Text 988";
