@@ -6,7 +6,7 @@ import { crisisTier, crisisTierTurns, normaliseCrisisText } from "../../src/lib/
 const EXPECT_A = ["I want to kill myself", "kill my self", "sui-cide", "sui.cide", "kill​myself", "ｋｉｌｌ ｍｙｓｅｌｆ"];
 const EXPECT_A_TURNS: [string, string] = ["I want to kill", "myself"];
 const EXPECT_B = ["I just want to end it all"];
-const EXPECT_NONE = ["my landlord is killing me with fees", "the skill set they listed", "suitcase deposit"];
+const EXPECT_NONE = ["my landlord is killing me with fees", "the skill set they listed", "suitcase deposit", "skill myself up"];
 
 test("fixture: expect A", () => {
   for (const s of EXPECT_A) assert.equal(crisisTier(s), "A", s);

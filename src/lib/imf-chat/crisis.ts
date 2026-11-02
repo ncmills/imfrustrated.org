@@ -34,20 +34,41 @@ function compileTerm(term: string): Matcher {
   return { spaced, joined: spaced.replace(/ /g, ""), prefix };
 }
 
+interface Joined { text: string; starts: Set<number>; ends: Set<number> }
+
+/** Spaces removed, with the joined indices that were word starts and word ends in `text`. */
+function joinText(text: string): Joined {
+  const starts = new Set<number>();
+  const ends = new Set<number>();
+  let out = "";
+  for (const w of text.split(" ")) {
+    if (!w) continue;
+    starts.add(out.length);
+    out += w;
+    ends.add(out.length);
+  }
+  return { text: out, starts, ends };
+}
+
 /** One matcher for every path (G5). `text` must already be normalised. */
-function matches(text: string, textJoined: string, m: Matcher): boolean {
+function matches(text: string, joined: Joined, m: Matcher): boolean {
   if (!m.spaced) return false;
   const padded = ` ${text} `;
   if (m.prefix ? padded.includes(` ${m.spaced}`) : padded.includes(` ${m.spaced} `)) return true;
-  // Joined form: a prefix stem is a plain substring; a whole term only when >= 8 chars joined.
-  if (m.prefix || m.joined.length >= JOINED_MIN) return textJoined.includes(m.joined);
+  // Joined form (Rev 2): must begin at a word start. A whole term must also be >= 8 chars joined
+  // and end at a word end; a prefix stem needs neither.
+  if (!m.prefix && m.joined.length < JOINED_MIN) return false;
+  for (const start of joined.starts) {
+    if (!joined.text.startsWith(m.joined, start)) continue;
+    if (m.prefix || joined.ends.has(start + m.joined.length)) return true;
+  }
   return false;
 }
 
 /** Exported for tests: does `raw` match `term` under the shared rule? */
 export function crisisMatch(raw: string, term: string): boolean {
   const t = normaliseCrisisText(raw);
-  return matches(t, t.replace(/ /g, ""), compileTerm(term));
+  return matches(t, joinText(t), compileTerm(term));
 }
 
 function compile(list: CrisisTerms) {
@@ -62,7 +83,7 @@ export function crisisTier(raw: string, list?: CrisisTerms): CrisisTier {
   const re = list ? compile(list) : COMPILED;
   const text = normaliseCrisisText(raw);
   if (!text) return null;
-  const joined = text.replace(/ /g, "");
+  const joined = joinText(text);
   if (re.a.some((m) => matches(text, joined, m))) return "A";
   if (re.b.some((m) => matches(text, joined, m))) return "B";
   return null;
