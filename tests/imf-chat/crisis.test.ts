@@ -48,8 +48,9 @@ test("tier A: first-person self-harm stops (e, e2, i)", () => {
 });
 
 test("word boundary: no false hits", () => {
-  // U7: "skill myself up" and "endmylife.com" now hit via the joined rule (by design), so not listed.
-  for (const s of ["skill set", "my landlord kept the deposit", "suitcase", ""])
+  // U7 Rev 2: joined matches begin at a word start, so "skill myself up" stays clean.
+  // "endmylife.com" is left out: it begins at a word start and hits tier A by design.
+  for (const s of ["skill myself up", "skill set", "my landlord kept the deposit", "suitcase", ""])
     assert.equal(crisisTier(s), null, s);
 });
 
