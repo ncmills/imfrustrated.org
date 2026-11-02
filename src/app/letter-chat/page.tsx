@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { PAUSED_LINE } from "./copy";
 import { LetterChat } from "./LetterChat";
 
-// Beta-only, never indexed. Own minimal header on purpose: the shared site header is not used here.
+// Beta-only, never indexed (robots noindex,nofollow). Own minimal header on purpose: the shared site header is not used here.
 export const metadata: Metadata = {
   title: "Letter chat",
   robots: { index: false, follow: false },
