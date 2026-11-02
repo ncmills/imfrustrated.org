@@ -1,7 +1,9 @@
-import type { CaseRow, ChatStore, JobInfo, ReviewIn } from "../../src/lib/imf-chat/store";
+import type { CaseRow, ChatStore, FollowupReviewIn, JobInfo, ReviewIn } from "../../src/lib/imf-chat/store";
 
 export interface Fake extends ChatStore {
-  cases: Map<string, CaseRow & { token_hash: string }>;
+  cases: Map<string, CaseRow & { token_hash: string; cost_usd?: number }>;
+  /** Mirrors imf_write_followup (U7 F1): answers the first open slot, held iff the case is held_for_nick. */
+  writeFollowup(caseId: string, answer: string): number;
   jobs: Array<{ case_id: string; kind: string; is_test: boolean; status: string; created_at: string }>;
   rl: Map<string, number>;
   reviews: ReviewIn[];
@@ -9,7 +11,7 @@ export interface Fake extends ChatStore {
 
 /** In-memory ChatStore mirroring imf_rl_hit (count then compare, returns count <= limit). */
 export function fakeStore(clock: () => number = () => Date.now()): Fake {
-  const cases = new Map<string, CaseRow & { token_hash: string }>();
+  const cases: Fake["cases"] = new Map();
   const jobs: Fake["jobs"] = [];
   const rl = new Map<string, number>();
   const reviews: ReviewIn[] = [];
@@ -21,11 +23,30 @@ export function fakeStore(clock: () => number = () => Date.now()): Fake {
       const c = cases.get(x.case_id);
       if (!c) throw new Error("no such case");
       if (c.letter_version !== x.letter_version) throw new Error("review must target the current letter_version");
+      if (x.review === "rerun" && 2.0 - (c.cost_usd ?? 0) < 0.75) throw new Error("rerun does not fit the $2.00 case cap");
       if (reviews.some((r) => r.case_id === x.case_id && r.letter_version === x.letter_version)) throw new Error("duplicate");
       reviews.push({ ...x });
       c.review = x.review;
       if (x.review === "rerun") jobs.push({ case_id: c.id, kind: "rerun", is_test: c.is_test, status: "queued", created_at: new Date(clock()).toISOString() });
       if (x.review === "close") c.status = "closed";
+    },
+    /** Mirrors imf_chat_review_followup: answered + held + unreviewed slot only; ok | close. */
+    async reviewFollowup(x: FollowupReviewIn) {
+      if (x.review !== "ok" && x.review !== "close") throw new Error("followup verdict must be ok or close");
+      const f = cases.get(x.case_id)?.followups[x.idx];
+      if (!f) throw new Error("no such follow-up");
+      if (f.a == null) throw new Error("not answered yet");
+      if (f.held === false) throw new Error("not held");
+      if (f.review) throw new Error("already reviewed");
+      f.review = x.review;
+    },
+    writeFollowup(caseId, answer) {
+      const c = cases.get(caseId)!;
+      const i = c.followups.findIndex((f) => f.a == null);
+      if (i < 0) throw new Error("case has no unanswered follow-up");
+      const { review: _r, ...rest } = c.followups[i];
+      c.followups[i] = { ...rest, a: answer, status: "ok", held: c.held_for_nick };
+      return i;
     },
     async rlHit(key, scope, win, limit) {
       if (!/^[0-9a-f]{64}$/.test(key)) throw new Error("rl key must be 64-hex");
