@@ -15,7 +15,7 @@ type Followup = { q: string; a: string | null; line?: string };
 type Bubble = { who: "bot" | "me"; text: string };
 type Phase = "gate" | "intake" | "waiting" | "result" | "stopped";
 type Poll = {
-  ok?: boolean; error?: string; status?: string; progress?: string; line?: string; card?: Card;
+  ok?: boolean; error?: string; status?: string; progress?: string; line?: string; paused?: "day_cap"; card?: Card;
   letter?: string; cover?: string | null; sources?: unknown; followups?: Followup[];
   next?: { step: string; prompt: string };
 };
@@ -497,11 +497,9 @@ export function LetterChat({ beta }: { beta: string }) {
           <p className="text-ink-soft">{C.BETA_HOLD_LINE}</p>
           <p role="status" aria-live="polite" className="font-semibold text-ink">
             {poll?.status === "queued"
-              ? poll.line ?? (queuedSince && now - queuedSince > OFFLINE_MS ? C.OFFLINE_LINE : poll.progress ?? C.PROGRESS_DEFAULT)
+              ? poll.paused === "day_cap" ? C.DAY_CAP_LINE : poll.line ?? (queuedSince && now - queuedSince > OFFLINE_MS ? C.OFFLINE_LINE : poll.progress ?? C.PROGRESS_DEFAULT)
               : poll?.line ?? C.PROGRESS_DEFAULT}
           </p>
-          {/* TODO(U6b gap): the poll body (src/lib/imf-chat/poll-api.ts) carries no day-cap
-              indicator, so C.DAY_CAP_LINE is never shown here. Wire it once the poll returns one. */}
           {errorBox}
         </div>
       ) : null}

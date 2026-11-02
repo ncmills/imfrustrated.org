@@ -4,6 +4,7 @@ import { hashToken } from "../../src/lib/imf-chat/case-api";
 import { handleCasePoll } from "../../src/lib/imf-chat/poll-api";
 import type { CaseRow } from "../../src/lib/imf-chat/store";
 import { fakeStore } from "./fake-store";
+import { DAY_CAP_LINE } from "../../src/app/letter-chat/copy";
 
 const TOKEN = "t".repeat(43);
 const LETTER = "Dear Acme Rentals LLC,\n\nUnder [S1] you must return my deposit.";
@@ -85,4 +86,39 @@ test("bad and unknown tokens", async () => {
   const s = fakeStore();
   assert.equal((await handleCasePoll("short", s)).status, 400);
   assert.equal((await handleCasePoll("u".repeat(43), s)).status, 404);
+});
+
+test("U6 gap 1: queued + day pause -> paused: day_cap and DAY_CAP_LINE (outranks offline)", async () => {
+  const t0 = Date.UTC(2026, 10, 1, 12);
+  const s = fakeStore(() => t0);
+  const { id } = await s.insertCase({ token_hash: hashToken(TOKEN) });
+  await s.updateCase(id, { status: "queued" });
+  await s.insertJob({ case_id: id, kind: "letter", is_test: false });
+  s.paused.reason = "day_cap";
+  for (const at of [t0 + 60_000, t0 + 21 * 60_000]) {
+    const r = await handleCasePoll(TOKEN, s, at);
+    assert.equal(r.body.paused, "day_cap");
+    assert.equal(r.body.line, DAY_CAP_LINE);
+  }
+});
+
+test("U6 gap 1: queued, not paused -> no paused field, no day-cap line", async () => {
+  const t0 = Date.UTC(2026, 10, 1, 12);
+  const s = fakeStore(() => t0);
+  const { id } = await s.insertCase({ token_hash: hashToken(TOKEN) });
+  await s.updateCase(id, { status: "queued" });
+  await s.insertJob({ case_id: id, kind: "letter", is_test: false });
+  const r = await handleCasePoll(TOKEN, s, t0 + 60_000);
+  assert.ok(!("paused" in r.body));
+  assert.ok(!("line" in r.body));
+});
+
+test("U6 gap 1: a non-queued status never shows the day-cap line, even when paused", async () => {
+  for (const status of ["intake", "pass", "held", "crisis", "closed"]) {
+    const { s } = await seed({ status, review: "ok", held_for_nick: false, review_fixture: false });
+    s.paused.reason = "day_cap";
+    const r = await handleCasePoll(TOKEN, s);
+    assert.ok(!("paused" in r.body), status);
+    assert.notEqual(r.body.line, DAY_CAP_LINE, status);
+  }
 });
