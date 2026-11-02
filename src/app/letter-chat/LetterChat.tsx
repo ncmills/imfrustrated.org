@@ -32,6 +32,7 @@ const chip = (on: boolean) => `${btn} border ${on ? "border-sage bg-sage text-ca
 const field =
   "w-full rounded-lg border border-rule bg-card px-3 py-2 text-base text-ink " +
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay";
+const tapLink = "inline-flex min-h-[44px] items-center ";
 const link = "underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-clay";
 
 function errorText(code: string | undefined): string {
@@ -92,7 +93,7 @@ function CardView({ card }: { card: Card }) {
         </div>
       ) : card.kind === "urgent" || card.kind === "out" || card.kind === "closed" ? (
         <p className="mt-3">
-          <a href={C.LEGAL_AID_LINK.href} className={link} target="_blank" rel="noopener noreferrer">{C.LEGAL_AID_LINK.label}</a>
+          <a href={C.LEGAL_AID_LINK.href} className={`${tapLink}${link}`} target="_blank" rel="noopener noreferrer">{C.LEGAL_AID_LINK.label}</a>
         </p>
       ) : null}
     </div>
@@ -380,11 +381,11 @@ export function LetterChat({ beta }: { beta: string }) {
 
           {step === "state" ? (
             <div className="flex flex-col gap-2">
-              <label htmlFor="lc-state" className="font-semibold text-ink">{C.STATE_PROMPT}</label>
+              <label htmlFor="lc-state" className="sr-only">{C.STATE_PROMPT}</label>
               <select
                 id="lc-state"
                 ref={(el) => { firstInput.current = el; }}
-                className={`${field} min-h-[44px]`}
+                className={`${field} h-11 min-h-[44px]`}
                 value={stateSel}
                 onChange={(e) => setStateSel(e.target.value)}
               >
@@ -403,7 +404,7 @@ export function LetterChat({ beta }: { beta: string }) {
             </div>
           ) : step === "safety" ? (
             <fieldset className="space-y-3">
-              <legend className="font-semibold text-ink">{C.SAFETY_INTRO}</legend>
+              <legend className="sr-only">{C.SAFETY_INTRO}</legend>
               {C.SAFETY_QUESTIONS.map((q) => (
                 <div key={q.key} role="group" aria-label={q.text} className="space-y-2">
                   <p className="text-ink">{q.text}</p>
@@ -439,7 +440,7 @@ export function LetterChat({ beta }: { beta: string }) {
             </fieldset>
           ) : step === "category" ? (
             <div className="space-y-3">
-              <p className="font-semibold text-ink">{C.CATEGORY_PROMPT}</p>
+              <p className="sr-only">{C.CATEGORY_PROMPT}</p>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {C.CATEGORIES.map((c) => (
                   <button key={c.value} type="button" className={chip(false)} disabled={busy} onClick={() => void turn("category", c.value, c.label)}>
@@ -529,7 +530,7 @@ export function LetterChat({ beta }: { beta: string }) {
               <ul className="mt-2 list-disc space-y-1 pl-5">
                 {normSources(poll.sources).map((s, i) => (
                   <li key={i} className="break-words text-ink">
-                    {s.href ? <a href={s.href} className={link} target="_blank" rel="noopener noreferrer">{s.label}</a> : s.label}
+                    {s.href ? <a href={s.href} className={`${tapLink}${link}`} target="_blank" rel="noopener noreferrer">{s.label}</a> : s.label}
                   </li>
                 ))}
               </ul>
@@ -564,7 +565,7 @@ export function LetterChat({ beta }: { beta: string }) {
               </button>
             </form>
             <p>
-              <a href={C.LEGAL_AID_LINK.href} className={link} target="_blank" rel="noopener noreferrer">{C.LEGAL_AID_LINK.label}</a>
+              <a href={C.LEGAL_AID_LINK.href} className={`${tapLink}${link}`} target="_blank" rel="noopener noreferrer">{C.LEGAL_AID_LINK.label}</a>
             </p>
             {errorBox}
           </div>
