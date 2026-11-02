@@ -213,7 +213,12 @@ async function submit(store: ChatStore, c: CaseRow, key: string, test: boolean):
   if (!test && !(await store.rlHit(sha256("imf-chat-global"), "case_day", 86400, LIMITS.globalCasesPerDay))) {
     return err(429, "day_limit");
   }
-  await store.insertJob({ case_id: c.id, kind: "letter", is_test: test });
+  if (!(await store.insertJob({ case_id: c.id, kind: "letter", is_test: test }))) {
+    // F7: a concurrent submit already queued this case's letter (unique index refused a 2nd job).
+    await store.updateCase(c.id, { status: "queued" });
+    log("already_queued", c.id);
+    return { status: 202, body: { ok: true, status: "queued", already: true } };
+  }
   await store.updateCase(c.id, { status: "queued" });
   log("queued", c.id);
   return { status: 202, body: { ok: true, status: "queued" } };

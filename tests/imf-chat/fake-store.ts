@@ -75,7 +75,10 @@ export function fakeStore(clock: () => number = () => Date.now()): Fake {
       Object.assign(cases.get(id)!, patch);
     },
     async insertJob(job) {
+      // Mirrors imf_chat_jobs_one_active_letter (F7).
+      if (job.kind === "letter" && jobs.some((j) => j.case_id === job.case_id && j.kind === "letter" && (j.status === "queued" || j.status === "claimed"))) return false;
       jobs.push({ ...job, status: "queued", created_at: new Date(clock()).toISOString() });
+      return true;
     },
     async latestJob(caseId): Promise<JobInfo | null> {
       const j = jobs.filter((x) => x.case_id === caseId).at(-1);

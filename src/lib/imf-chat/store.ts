@@ -33,7 +33,8 @@ export interface ChatStore {
   insertCase(row: Partial<CaseRow> & { token_hash: string }): Promise<{ id: string; created_at: string }>;
   getCaseByTokenHash(tokenHash: string): Promise<CaseRow | null>;
   updateCase(id: string, patch: Partial<CaseRow>): Promise<void>;
-  insertJob(job: { case_id: string; kind: "letter" | "followup" | "rerun"; is_test: boolean }): Promise<void>;
+  /** false when a unique index refused it (F7: one active letter job per case). */
+  insertJob(job: { case_id: string; kind: "letter" | "followup" | "rerun"; is_test: boolean }): Promise<boolean>;
   latestJob(caseId: string): Promise<JobInfo | null>;
   review(r: ReviewIn): Promise<void>;
   reviewFollowup(r: FollowupReviewIn): Promise<void>;
@@ -75,7 +76,10 @@ export function supabaseStore(db: SupabaseClient): ChatStore {
       must(await db.from("imf_chat_cases").update(patch).eq("id", id), "update case");
     },
     async insertJob(job) {
-      must(await db.from("imf_chat_jobs").insert(job), "insert job");
+      const r = await db.from("imf_chat_jobs").insert(job);
+      if ((r.error as { code?: string } | null)?.code === "23505") return false;  // unique_violation
+      must(r, "insert job");
+      return true;
     },
     async latestJob(caseId) {
       const r = await db.from("imf_chat_jobs").select("status, created_at, kind")
