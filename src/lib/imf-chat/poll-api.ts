@@ -2,7 +2,7 @@
 // a letter, cover, sources or follow-up answers are returned ONLY for a `pass` case
 // that is not held, or whose CURRENT letter_version has review = ok (the case guard
 // clears review on every version bump, so a stale ok can never unlock a new version).
-import { hashToken, type ApiOut } from "./case-api";
+import { hashToken, nextStepFor, type ApiOut } from "./case-api";
 import { CRISIS_CARD } from "./crisis";
 import type { CaseRow, ChatStore } from "./store";
 
@@ -49,7 +49,7 @@ export async function handleCasePoll(token: string, store: ChatStore, now = Date
   const base = { ok: true, status: c.status, letter_version: c.letter_version };
 
   if (c.status === "crisis") return { status: 200, body: { ...base, card: CRISIS_CARD } };
-  if (c.status === "intake") return { status: 200, body: base };
+  if (c.status === "intake") return { status: 200, body: { ...base, next: nextStepFor(c) } };
   if (c.status === "queued") {
     const j = await store.latestJob(c.id);
     const offline = !!j && j.status === "queued" && now - Date.parse(j.created_at) > OFFLINE_MS;

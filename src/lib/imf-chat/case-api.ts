@@ -40,6 +40,16 @@ const NEXT: Record<string, { step: string; prompt: string }> = {
   tried: { step: "tried", prompt: "What have you already tried?" },
   submit: { step: "submit", prompt: "Ready to write your letter?" },
 };
+const INTAKE_ORDER = ["counterparty", "story", "amount", "dates", "want", "tried"];
+/** U6 resume: the first step this intake case has not answered, by the same rules handleCaseTurn enforces. */
+export function nextStepFor(c: Pick<CaseRow, "state" | "category" | "turns">): { step: string; prompt: string } {
+  if (!c.state) return NEXT.state;
+  const done = new Set((c.turns ?? []).map((t) => t.step));
+  if (!done.has("safety")) return NEXT.safety;
+  if (!c.category) return NEXT.category;
+  const s = INTAKE_ORDER.find((x) => !done.has(x));
+  return s ? NEXT[s] : NEXT.submit;
+}
 const STOP_CARDS: Record<string, string> = {
   urgent: "A deadline this close needs local help now: find free legal aid at LawHelp.org, or call your state bar's lawyer-referral service.",
   lawyer: "Since you already have a lawyer or a court case, talk to your lawyer or the court clerk about this.",
@@ -186,7 +196,7 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
     }
     if (step === "dates") patch.key_dates = { text: r.text };
     turns.push({ step, text: r.text, at });
-    const order = ["counterparty", "story", "amount", "dates", "want", "tried", "submit"];
+    const order = [...INTAKE_ORDER, "submit"];
     next = NEXT[order[order.indexOf(step) + 1]];
   }
   patch.turns = turns;

@@ -15,6 +15,7 @@ export const ACK_SAFETY =
 export const START_BUTTON = "I understand, start.";
 
 export const STATE_PROMPT = "Which state is this in?";
+export const WELCOME_BACK = "Welcome back. Picking up where you left off.";
 
 export const SAFETY_QUESTIONS = [
   { key: "danger", text: "Is anyone in danger right now, or are you thinking of hurting yourself?" },

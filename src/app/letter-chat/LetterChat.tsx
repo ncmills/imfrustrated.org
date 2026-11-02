@@ -17,6 +17,7 @@ type Phase = "gate" | "intake" | "waiting" | "result" | "stopped";
 type Poll = {
   ok?: boolean; error?: string; status?: string; progress?: string; line?: string; card?: Card;
   letter?: string; cover?: string | null; sources?: unknown; followups?: Followup[];
+  next?: { step: string; prompt: string };
 };
 
 const POLL_MS = 10_000;
@@ -122,6 +123,7 @@ export function LetterChat({ beta }: { beta: string }) {
   const [fuCard, setFuCard] = useState<Card | null>(null);
   const [fuNote, setFuNote] = useState<string | null>(null);
   const honeypot = useRef<HTMLInputElement>(null);
+  const resumed = useRef(false);
   const firstInput = useRef<HTMLElement | null>(null);
 
   const applyPoll = useCallback((p: Poll) => {
@@ -140,10 +142,16 @@ export function LetterChat({ beta }: { beta: string }) {
       setCard({ kind: st, text: p.line ?? C.GENERIC_ERROR });
       setPhase("stopped");
     } else if (st === "intake") {
-      // Resumed mid-intake: the poll does not say which step was reached, so restart at state
-      // (the server accepts a re-sent state/safety/category turn while the case is in intake).
+      // Resumed mid-intake from the private link: pick up at the first unanswered step the
+      // server reports, with one welcome-back line (U6). `resumed` makes it fire once per load.
+      if (!resumed.current && p.next) {
+        resumed.current = true;
+        setLog([{ who: "bot", text: C.WELCOME_BACK }, { who: "bot", text: p.next.prompt }]);
+        setNext(p.next);
+      } else {
+        setNext((n) => n ?? p.next ?? { step: "state", prompt: C.STATE_PROMPT });
+      }
       setPhase((ph) => (ph === "gate" ? "intake" : ph));
-      setNext((n) => n ?? { step: "state", prompt: C.STATE_PROMPT });
     } else if (p.letter) {
       setPhase("result");
     } else {
@@ -222,6 +230,7 @@ export function LetterChat({ beta }: { beta: string }) {
       setToken(data.token);
       window.history.replaceState(null, "", `#t=${data.token}`);
       setNext((data.next as Next) ?? { step: "state", prompt: C.STATE_PROMPT });
+      resumed.current = true;  // a new case is not a resume
       setLog([{ who: "bot", text: C.STATE_PROMPT }]);
       setPhase("intake");
     } catch {
@@ -326,7 +335,6 @@ export function LetterChat({ beta }: { beta: string }) {
       <section className="space-y-4">
         <div className="rounded-xl border border-rule bg-card p-4">
           <p className="text-ink">{C.DISCLAIMER}</p>
-          <p className="mt-3 text-ink-soft">{C.ACK_SAFETY}</p>
           <p className="mt-3 flex flex-wrap gap-x-4">
             {C.PAGE_LINKS.map((l) => (
               <a key={l.href} href={l.href} className={`${link} inline-flex min-h-[44px] items-center`}>{l.label}</a>
