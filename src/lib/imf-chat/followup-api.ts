@@ -3,7 +3,7 @@
 // screen on the RAW question (before rate limit, redaction and any queueing) -> limits
 // (5 per case, one unanswered at a time, per-IP turns) -> redaction -> append {q, a: null}
 // + one followup job. The per-case $ cap is enforced by the worker, not here.
-import { CRISIS_CARD, RESOURCES_LINE, crisisTier } from "./crisis";
+import { CRISIS_CARD, RESOURCES_LINE, crisisTierTurns } from "./crisis";
 import { err, gate, hashToken, ipKey, isTestReq, LIMITS, log, type ApiIn, type ApiOut, type Env } from "./case-api";
 import { letterVisible } from "./poll-api";
 import { redact } from "./redact";
@@ -30,7 +30,9 @@ export async function handleFollowupPost(req: ApiIn, store: ChatStore, env: Env)
   if (!letterVisible(c)) return err(409, "no_letter");
 
   // Crisis screen on the raw text, first (N3): the card only, no job, nothing appended.
-  const tier = crisisTier(q);
+  // Current question + the previous visitor turn (last follow-up, else the last intake text turn).
+  const prevQ = (c.followups ?? []).slice(-1)[0]?.q ?? [...c.turns].reverse().find((t) => t.text)?.text;
+  const tier = crisisTierTurns(q, prevQ);
   if (tier === "A") {
     log("followup_crisis", c.id);
     return { status: 200, body: { ok: true, status: "crisis", card: CRISIS_CARD } };

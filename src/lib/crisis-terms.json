@@ -1,5 +1,5 @@
 {
-  "_doc": "IFDO-CHATBOX crisis screen, ONE source (spec r4 F5). Site copy src/lib/crisis-terms.json must be byte-identical (sha256 parity contract). Match: normalise (lower; hyphens, underscores, space runs -> one space), then (?i)\\b<term>\\b; a trailing * is a stem: (?i)\\b<stem>\\w*. Tier A stops the case; tier B shows the 911/988 line and continues (F6).",
-  "tier_a": ["kill myself", "suicid*", "self harm", "hurt myself", "end my life", "want to die"],
-  "tier_b": ["overdose", "in danger"]
+  "_doc": "IFDO-CHATBOX crisis screen, ONE source (spec r4 F5). Site copy src/lib/crisis-terms.json must be byte-identical (sha256 parity contract). Match (U7 normalise spec): NFKC, lower, drop zero-width/soft chars, non [a-z0-9] -> space, collapse; spaced form at word boundaries, or the joined (spaces removed) form as a substring when it is 8+ chars; a trailing * is a prefix (no right boundary; joined form is a plain substring). Screens the current plus the previous visitor turn. Tier A stops the case; tier B shows the 911/988 line and continues (F6).",
+  "tier_a": ["kill myself", "suicid*", "self harm", "hurt myself", "end my life", "want to die", "kill my self"],
+  "tier_b": ["overdose", "in danger", "end it all"]
 }
