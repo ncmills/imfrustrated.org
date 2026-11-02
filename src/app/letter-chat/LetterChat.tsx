@@ -10,7 +10,8 @@ import * as C from "./copy";
 
 type Card = { kind: string; text: string };
 type Next = { step: string; prompt: string };
-type Followup = { q: string; a: string | null };
+// line: a fixed server line for a held (being checked) or closed answer (F1); not pending.
+type Followup = { q: string; a: string | null; line?: string };
 type Bubble = { who: "bot" | "me"; text: string };
 type Phase = "gate" | "intake" | "waiting" | "result" | "stopped";
 type Poll = {
@@ -172,7 +173,7 @@ export function LetterChat({ beta }: { beta: string }) {
   }, [fetchPoll]);
 
   // Poll every 10 s while waiting for the letter, or while a follow-up answer is pending.
-  const pendingFollowup = !!poll?.followups?.some((f) => f.a === null) || fuNote !== null;
+  const pendingFollowup = !!poll?.followups?.some((f) => f.a === null && !f.line) || fuNote !== null;
   const shouldPoll = !!token && (phase === "waiting" || (phase === "result" && pendingFollowup));
   useEffect(() => {
     if (!shouldPoll || !token) return;
@@ -185,7 +186,7 @@ export function LetterChat({ beta }: { beta: string }) {
 
   // Clear the "question sent" note once the server shows every answer.
   useEffect(() => {
-    if (fuNote !== null && poll?.followups?.length && poll.followups.every((f) => f.a !== null)) setFuNote(null);
+    if (fuNote !== null && poll?.followups?.length && poll.followups.every((f) => f.a !== null || !!f.line)) setFuNote(null);
   }, [poll, fuNote]);
 
   useEffect(() => {
@@ -543,7 +544,7 @@ export function LetterChat({ beta }: { beta: string }) {
               <div key={i} className="space-y-2">
                 <p className="ml-auto max-w-[calc(100%-48px)] whitespace-pre-wrap rounded-xl bg-sage px-3 py-2 text-card">{f.q}</p>
                 <p className="max-w-[calc(100%-48px)] whitespace-pre-wrap rounded-xl bg-mist px-3 py-2 text-ink" aria-live="polite">
-                  {f.a ?? C.ANSWER_PENDING}
+                  {f.a ?? f.line ?? C.ANSWER_PENDING}
                 </p>
               </div>
             ))}

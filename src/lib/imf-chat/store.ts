@@ -19,7 +19,8 @@ export interface CaseRow {
   letter: string | null;
   cover: string | null;
   sources: unknown;
-  followups: Array<{ q: string; a: string | null }>;
+  /** held: stored on a held_for_nick case, shown only after review ok (F1). close never shows. */
+  followups: Array<{ q: string; a: string | null; status?: string; held?: boolean; review?: "ok" | "close" }>;
   held_for_nick: boolean;
   letter_version: number;
   review: string | null;
@@ -35,6 +36,13 @@ export interface ChatStore {
   insertJob(job: { case_id: string; kind: "letter" | "followup" | "rerun"; is_test: boolean }): Promise<void>;
   latestJob(caseId: string): Promise<JobInfo | null>;
   review(r: ReviewIn): Promise<void>;
+  reviewFollowup(r: FollowupReviewIn): Promise<void>;
+}
+
+export interface FollowupReviewIn {
+  case_id: string;
+  idx: number;
+  review: "ok" | "close";
 }
 
 export interface ReviewIn {
@@ -79,6 +87,10 @@ export function supabaseStore(db: SupabaseClient): ChatStore {
         p_case_id: x.case_id, p_letter_version: x.letter_version, p_review: x.review,
         p_rerun_reason: x.rerun_reason, p_note: x.note,
       }), "imf_chat_review");
+    },
+    async reviewFollowup(x) {
+      must(await db.rpc("imf_chat_review_followup", { p_case: x.case_id, p_idx: x.idx, p_verdict: x.review }),
+        "imf_chat_review_followup");
     },
   };
 }

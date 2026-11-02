@@ -27,6 +27,21 @@ export function letterVisible(c: CaseRow): boolean {
   return !CASE_CITE.test(`${c.letter}\n${c.cover ?? ""}`);
 }
 
+export const FOLLOWUP_CLOSED_LINE =
+  "We can't answer this one here. LawHelp.org lists free legal aid in every state.";
+
+/** F1 (spec §2 M2): an answer is shown only when it was never held, or a reviewer released it.
+ *  A held, unreviewed answer shows the "being checked" line; a closed one never shows. A row
+ *  with no `held` key fails closed (held). */
+export function visibleFollowups(fs: CaseRow["followups"]) {
+  return (fs ?? []).map((f) => {
+    if (f.a == null) return { q: f.q, a: null };
+    if (f.review === "close") return { q: f.q, a: null, line: FOLLOWUP_CLOSED_LINE };
+    if (f.held === false || f.review === "ok") return { q: f.q, a: f.a };
+    return { q: f.q, a: null, line: STATUS_LINE.held };
+  });
+}
+
 export async function handleCasePoll(token: string, store: ChatStore, now = Date.now()): Promise<ApiOut> {
   if (typeof token !== "string" || token.length < 20 || token.length > 64) return { status: 400, body: { error: "bad_token" } };
   const c = await store.getCaseByTokenHash(hashToken(token));
@@ -51,7 +66,7 @@ export async function handleCasePoll(token: string, store: ChatStore, now = Date
   if (letterVisible(c)) {
     return {
       status: 200,
-      body: { ...base, letter: c.letter, cover: c.cover, sources: c.sources, followups: c.followups },
+      body: { ...base, letter: c.letter, cover: c.cover, sources: c.sources, followups: visibleFollowups(c.followups) },
     };
   }
   // Held, unreviewed, flagged, failed or a stop card: status + fixed line only, never the draft.

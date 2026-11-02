@@ -4,12 +4,15 @@
 // from RERUN_REASONS, and an optional sheet note. Any other key (letter, cover, text...)
 // is refused, so no reviewer text can reach the letter or a model. Logs ids only.
 import { err, log, secretEq, type ApiIn, type ApiOut, type Env } from "./case-api";
-import type { ChatStore, ReviewIn } from "./store";
+import type { ChatStore, FollowupReviewIn, ReviewIn } from "./store";
 
 /** Codes only; the fixed instruction strings live with the pipeline (spec F1). */
 export const RERUN_REASONS = new Set(["wrong_state_law", "missed_fact", "wrong_remedy", "tone", "format"]);
 const REVIEWS = new Set(["ok", "rerun", "close"]);
 const ALLOWED_KEYS = new Set(["case_id", "letter_version", "review", "rerun_reason", "note"]);
+// F1: a follow-up review carries ONLY case_id, followup_idx and review (ok | close); no text.
+const FOLLOWUP_KEYS = new Set(["case_id", "followup_idx", "review"]);
+const FOLLOWUP_REVIEWS = new Set(["ok", "close"]);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export async function handleReviewPost(req: ApiIn, store: ChatStore, env: Env): Promise<ApiOut> {
@@ -18,6 +21,7 @@ export async function handleReviewPost(req: ApiIn, store: ChatStore, env: Env): 
   if (!secretEq(req.header("x-imf-review-secret"), secret)) return err(403, "forbidden");
   const b = (req.body && typeof req.body === "object" && !Array.isArray(req.body) ? req.body : null) as Record<string, unknown> | null;
   if (!b) return err(400, "invalid_json");
+  if ("followup_idx" in b) return reviewFollowup(b, store);
   if (Object.keys(b).some((k) => !ALLOWED_KEYS.has(k))) return err(400, "unknown_field");
   const { case_id, letter_version, review, rerun_reason, note } = b;
   if (typeof case_id !== "string" || !UUID.test(case_id)) return err(400, "bad_case_id");
@@ -32,10 +36,31 @@ export async function handleReviewPost(req: ApiIn, store: ChatStore, env: Env): 
   };
   try {
     await store.review(x);
-  } catch {
+  } catch (e) {
     log("review_rejected", case_id);
+    // F2: the DB refuses a rerun that does not fit the $2.00 case cap; say so (no case data).
+    if (/does not fit the \$2\.00 case cap/.test(String((e as Error)?.message ?? ""))) return err(409, "rerun_over_case_cap");
     return err(409, "review_rejected");
   }
   log(`review_${review}`, case_id);
   return { status: 200, body: { ok: true, review } };
+}
+
+async function reviewFollowup(b: Record<string, unknown>, store: ChatStore): Promise<ApiOut> {
+  if (Object.keys(b).some((k) => !FOLLOWUP_KEYS.has(k))) return err(400, "unknown_field");
+  const { case_id, followup_idx, review } = b;
+  if (typeof case_id !== "string" || !UUID.test(case_id)) return err(400, "bad_case_id");
+  if (typeof followup_idx !== "number" || !Number.isInteger(followup_idx) || followup_idx < 0 || followup_idx > 4) {
+    return err(400, "bad_followup_idx");
+  }
+  if (typeof review !== "string" || !FOLLOWUP_REVIEWS.has(review)) return err(400, "bad_review");
+  const x: FollowupReviewIn = { case_id, idx: followup_idx, review: review as FollowupReviewIn["review"] };
+  try {
+    await store.reviewFollowup(x);
+  } catch {
+    log("followup_review_rejected", case_id);
+    return err(409, "review_rejected");
+  }
+  log(`followup_review_${review}`, case_id);
+  return { status: 200, body: { ok: true, review, followup_idx } };
 }
