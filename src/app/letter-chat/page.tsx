@@ -31,7 +31,7 @@ export default async function LetterChatPage({ searchParams }: Props) {
       </header>
       <main className="mx-auto max-w-2xl px-4 py-8">
         {enabled ? (
-          <LetterChat />
+          <LetterChat beta={beta} />
         ) : (
           <div>
             <p>{PAUSED_LINE}</p>
