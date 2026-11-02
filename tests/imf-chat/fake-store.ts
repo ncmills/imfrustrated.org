@@ -7,6 +7,8 @@ export interface Fake extends ChatStore {
   jobs: Array<{ case_id: string; kind: string; is_test: boolean; status: string; created_at: string }>;
   rl: Map<string, number>;
   reviews: ReviewIn[];
+  /** Mirrors imf_chat_worker_state; dayPaused() returns it (the fake has no UTC-day staleness). */
+  paused: { reason: "day_cap" | null };
 }
 
 /** In-memory ChatStore mirroring imf_rl_hit (count then compare, returns count <= limit). */
@@ -16,8 +18,12 @@ export function fakeStore(clock: () => number = () => Date.now()): Fake {
   const rl = new Map<string, number>();
   const reviews: ReviewIn[] = [];
   let n = 0;
+  const paused: Fake["paused"] = { reason: null };
   return {
-    cases, jobs, rl, reviews,
+    cases, jobs, rl, reviews, paused,
+    async dayPaused() {
+      return paused.reason;
+    },
     /** Mirrors imf_chat_review: current version only, one per version, rerun -> job, close -> closed. */
     async review(x) {
       const c = cases.get(x.case_id);

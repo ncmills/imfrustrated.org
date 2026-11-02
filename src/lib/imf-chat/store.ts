@@ -36,6 +36,8 @@ export interface ChatStore {
   /** false when a unique index refused it (F7: one active letter job per case). */
   insertJob(job: { case_id: string; kind: "letter" | "followup" | "rerun"; is_test: boolean }): Promise<boolean>;
   latestJob(caseId: string): Promise<JobInfo | null>;
+  /** imf_day_paused(): "day_cap" when the worker hit today's spend cap (current UTC day only), else null. */
+  dayPaused(): Promise<"day_cap" | null>;
   review(r: ReviewIn): Promise<void>;
   reviewFollowup(r: FollowupReviewIn): Promise<void>;
 }
@@ -85,6 +87,10 @@ export function supabaseStore(db: SupabaseClient): ChatStore {
       const r = await db.from("imf_chat_jobs").select("status, created_at, kind")
         .eq("case_id", caseId).order("created_at", { ascending: false }).limit(1).maybeSingle();
       return must(r, "latest job") as JobInfo | null;
+    },
+    async dayPaused() {
+      const r = await db.rpc("imf_day_paused");
+      return must(r, "imf_day_paused") === "day_cap" ? "day_cap" : null;
     },
     async review(x) {
       must(await db.rpc("imf_chat_review", {

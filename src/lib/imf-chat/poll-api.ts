@@ -5,6 +5,7 @@
 import { hashToken, nextStepFor, type ApiOut } from "./case-api";
 import { CRISIS_CARD } from "./crisis";
 import type { CaseRow, ChatStore } from "./store";
+import { DAY_CAP_LINE } from "../../app/letter-chat/copy";
 
 const OFFLINE_MS = 20 * 60 * 1000;
 // Extra deterministic check on top of the audit: no case citations are ever displayed.
@@ -54,12 +55,14 @@ export async function handleCasePoll(token: string, store: ChatStore, now = Date
     const j = await store.latestJob(c.id);
     const offline = !!j && j.status === "queued" && now - Date.parse(j.created_at) > OFFLINE_MS;
     const progress = !j || j.status === "queued" ? "Checking your situation" : "Researching your state's law and drafting";
+    // U6 gap 1: the worker records a day-cap refusal; it outranks the offline line (same cause, truer copy).
+    const dayCap = !!j && j.status === "queued" && (await store.dayPaused()) === "day_cap";
     return {
       status: 200,
       body: {
         ...base,
         progress,
-        ...(offline ? { line: "Our letter writer is offline right now. Your case is saved and will run when it's back. Save this private link." } : {}),
+        ...(dayCap ? { paused: "day_cap", line: DAY_CAP_LINE } : offline ? { line: "Our letter writer is offline right now. Your case is saved and will run when it's back. Save this private link." } : {}),
       },
     };
   }
