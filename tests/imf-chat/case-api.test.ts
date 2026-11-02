@@ -198,8 +198,47 @@ test("turn and story length limits", async () => {
   const t = await h.create();
   await h.toStory(t);
   assert.equal((await h.turn(t, "story", "x".repeat(2001))).body.error, "turn_length");
-  for (let i = 0; i < 3; i++) assert.equal((await h.turn(t, "story", "y".repeat(2000))).status, 200);
-  assert.equal((await h.turn(t, "story", "z")).body.error, "story_length");
+  assert.equal((await h.turn(t, "story", "y".repeat(2000))).status, 200);
+});
+
+test("F4: a resent text step replaces, never appends", async () => {
+  const h = harness();
+  const t = await h.create();
+  await h.toStory(t);
+  for (let i = 0; i < 5; i++) assert.equal((await h.turn(t, "story", `v${i} ` + "y".repeat(1990))).status, 200);
+  const c = [...h.store.cases.values()][0];
+  const stories = c.turns.filter((x) => x.step === "story");
+  assert.equal(stories.length, 1);
+  assert.ok(stories[0].text?.startsWith("v4 "));
+});
+
+test("F4: STORY_MAX caps the total across all visitor text turns", async () => {
+  const h = harness();
+  const t = await h.create();
+  await h.toStory(t);
+  const c = [...h.store.cases.values()][0];
+  const base = c.turns.filter((x) => x.text).reduce((n, x) => n + (x.text?.length ?? 0), 0);
+  assert.equal((await h.turn(t, "story", "y".repeat(2000))).status, 200);
+  assert.equal((await h.turn(t, "want", "w".repeat(2000))).status, 200);
+  const room = 6000 - base - 4000;
+  assert.equal((await h.turn(t, "tried", "z".repeat(room + 1))).body.error, "story_length");
+  // positive control: exactly at the cap is accepted
+  assert.equal((await h.turn(t, "tried", "z".repeat(room))).status, 200);
+  // a resend of story is measured against the others, not added to its old self
+  assert.equal((await h.turn(t, "story", "s".repeat(2000))).status, 200);
+  assert.equal([...h.store.cases.values()][0].turns.filter((x) => x.step === "story").length, 1);
+  assert.equal((await h.turn(t, "want", "w".repeat(2000))).status, 200);
+  assert.equal((await h.turn(t, "dates", "d")).body.error, "story_length");
+});
+
+test("F5: a crisis phrase split across two intake turns stops the case", async () => {
+  const h = harness();
+  const t = await h.create();
+  await h.toStory(t);
+  assert.equal((await h.turn(t, "story", "I want to kill")).status, 200);
+  const r = await h.turn(t, "want", "myself");
+  assert.equal(r.body.status, "crisis");
+  assert.equal(h.store.jobs.length, 0);
 });
 
 test("no IMF_CHAT_IP_SALT: fails closed with 503 and writes no row (create and turn)", async () => {
