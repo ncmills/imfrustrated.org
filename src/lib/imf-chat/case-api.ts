@@ -4,7 +4,7 @@
 // store. New-case limits are spent only when a letter is queued (submit), so a case
 // stopped by the crisis screen or a safety chip never counts against the IP (F6).
 import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
-import { CRISIS_CARD, RESOURCES_LINE, crisisTier } from "./crisis";
+import { CRISIS_CARD, RESOURCES_LINE, crisisTierTurns } from "./crisis";
 import { redact } from "./redact";
 import type { CaseRow, ChatStore } from "./store";
 
@@ -130,7 +130,9 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
     if (typeof raw !== "string" && typeof raw !== "number") return err(400, "value_required");
     const text = String(raw);
     if (!text.trim() || text.length > TURN_MAX) return err(400, "turn_length");
-    const tier = crisisTier(text);
+    // Current + previous visitor text turn (a phrase split across two turns still stops).
+    const prev = [...c.turns].reverse().find((t) => TEXT_STEPS.has(t.step) && t.text)?.text;
+    const tier = crisisTierTurns(text, prev);
     if (tier === "A") {
       await store.updateCase(c.id, { status: "crisis", stop_reason: "crisis_screen" });
       log("crisis_stop", c.id);
