@@ -73,3 +73,50 @@ export const ERRORS: Record<string, string> = {
   not_found: "We couldn't find that case. The link may have expired.",
 };
 export const GENERIC_ERROR = "Something went wrong. Please try again.";
+
+// ---- U6b UI labels. Plain interface labels only: no legal claims. Lines marked "§1" are spec-verbatim.
+export const PAGE_LINKS = [
+  { href: "/about", label: "About" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/privacy", label: "Privacy" },
+];
+
+export const STATE_OPTIONS: Array<{ value: string; label: string }> = [
+  ["AL", "Alabama"], ["AK", "Alaska"], ["AZ", "Arizona"], ["AR", "Arkansas"], ["CA", "California"],
+  ["CO", "Colorado"], ["CT", "Connecticut"], ["DE", "Delaware"], ["DC", "District of Columbia"],
+  ["FL", "Florida"], ["GA", "Georgia"], ["HI", "Hawaii"], ["ID", "Idaho"], ["IL", "Illinois"],
+  ["IN", "Indiana"], ["IA", "Iowa"], ["KS", "Kansas"], ["KY", "Kentucky"], ["LA", "Louisiana"],
+  ["ME", "Maine"], ["MD", "Maryland"], ["MA", "Massachusetts"], ["MI", "Michigan"], ["MN", "Minnesota"],
+  ["MS", "Mississippi"], ["MO", "Missouri"], ["MT", "Montana"], ["NE", "Nebraska"], ["NV", "Nevada"],
+  ["NH", "New Hampshire"], ["NJ", "New Jersey"], ["NM", "New Mexico"], ["NY", "New York"],
+  ["NC", "North Carolina"], ["ND", "North Dakota"], ["OH", "Ohio"], ["OK", "Oklahoma"], ["OR", "Oregon"],
+  ["PA", "Pennsylvania"], ["RI", "Rhode Island"], ["SC", "South Carolina"], ["SD", "South Dakota"],
+  ["TN", "Tennessee"], ["TX", "Texas"], ["UT", "Utah"], ["VT", "Vermont"], ["VA", "Virginia"],
+  ["WA", "Washington"], ["WV", "West Virginia"], ["WI", "Wisconsin"], ["WY", "Wyoming"],
+].map(([value, label]) => ({ value, label }));
+export const NON_US = { value: "non_us", label: "Outside the US" };
+export const STATE_PLACEHOLDER = "Choose a state";
+export const CONTINUE = "Continue";
+export const YES = "Yes";
+export const NO = "No";
+export const SAFETY_INTRO = "A few quick safety questions first.";
+export const CATEGORY_PROMPT = "What is this about?";
+export const SEND = "Send";
+export const SUBMIT = "Write my letter";
+export const SUBMIT_PROMPT = "Ready to write your letter?";
+
+// §1.7: the first progress line, used until the server sends its own.
+export const PROGRESS_DEFAULT = "Checking your situation";
+export const COPY_LINK = "Copy link";
+export const COPIED = "Copied";
+
+// §1.8.
+export const LETTER_TITLE = "Your letter";
+export const COPY_LETTER = "Copy";
+export const DOWNLOAD_TXT = "Download .txt";
+export const PRINT = "Print";
+export const COVER_TITLE = "How to finish and send it";
+export const SOURCES_TITLE = "Sources we checked";
+export const ASK = "Ask";
+export const ANSWER_PENDING = "Answering...";
+export const startOver = "Start a new letter";
