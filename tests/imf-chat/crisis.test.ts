@@ -10,16 +10,14 @@ import { crisisTier, normaliseCrisisText } from "../../src/lib/imf-chat/crisis";
 const SITE_COPY = join(process.cwd(), "src/lib/crisis-terms.json");
 const SN_CANDIDATES = [
   process.env.IMF_CRISIS_TERMS_SN,
-  join(homedir(), "second-nick/ops/imf_crisis_terms.json"),
   join(homedir(), "work/.worktrees/sn-ifdo-chatbox/ops/imf_crisis_terms.json"),
+  join(homedir(), "second-nick/ops/imf_crisis_terms.json"),
 ].filter((p): p is string => !!p);
 
 const sha = (b: Buffer) => createHash("sha256").update(b).digest("hex");
 
-// TODO(U7 F5 SN sync): expected to fail until the driver copies src/lib/crisis-terms.json
-// byte-identically to SN ops/imf_crisis_terms.json (U7 added "kill my self" and "end it all").
-// Marked todo so a mismatch is reported but does not fail the suite; drop `todo` once synced.
-test("parity: site copy is byte-identical to the SN source (F5)", { todo: "expected to fail until SN term file sync (U7)" }, (t) => {
+// SN worktree first: the main checkout holds the pre-U7 terms until sn/ifdo-chatbox merges.
+test("parity: site copy is byte-identical to the SN source (F5)", (t) => {
   const sn = SN_CANDIDATES.find((p) => existsSync(p));
   if (!sn) return t.skip("SN crisis-terms source not on this machine");
   assert.equal(sha(readFileSync(SITE_COPY)), sha(readFileSync(sn)));
