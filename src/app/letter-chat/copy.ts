@@ -48,6 +48,12 @@ export const ackLine = (state: string) =>
 export const ACK_LINK_PROMPT = "Keep this page open, or save this private link to come back later:";
 export const ACK_LINK_NOTE = "Anyone with the link can see your case, so keep it to yourself.";
 
+// U8 draft C field (approved CONTROL 2026-11-08), launch only, optional. Constants only: rendering,
+// storing and sending the "your letter is ready" email is U9.
+export const NOTIFY_OPT_IN_LABEL = "Email me when it's ready (optional).";
+export const NOTIFY_OPT_IN_HELP =
+  "We'll send one email with your private link, then delete your address when your case is deleted.";
+
 // §1.7, verbatim.
 export const OFFLINE_LINE =
   "Our letter writer is offline right now. Your case is saved and will run when it's back. Save this private link.";
