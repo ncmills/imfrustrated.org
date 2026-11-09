@@ -67,3 +67,11 @@ test("U8-A: the struck beta-hold line is gone from copy.ts and LetterChat.tsx", 
     assert.doesNotMatch(src, /up to 2 days/, f);
   }
 });
+
+// U8 draft C field (approved CONTROL 2026-11-08). Constants only; the field is rendered in U9.
+test("U8-C: the email opt-in label + help text are the approved text", () => {
+  assert.equal(
+    `${C.NOTIFY_OPT_IN_LABEL} ${C.NOTIFY_OPT_IN_HELP}`,
+    "Email me when it's ready (optional). We'll send one email with your private link, then delete your address when your case is deleted.",
+  );
+});
