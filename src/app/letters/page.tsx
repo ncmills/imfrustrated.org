@@ -13,7 +13,7 @@ import { buildOpenGraph } from "@/lib/og";
 export const metadata: Metadata = {
   title: "Letter Templates That Get You What You're Owed | I'm Frustrated dot Org",
   description:
-    "Free, plain-English letter templates that invoke real statutes — security deposits, billing errors, debt validation, medical records, credit-report disputes. Written by attorneys, free to use.",
+    "Free, plain-English letter templates that invoke real statutes — security deposits, billing errors, debt validation, medical records, credit-report disputes. Free to use, no account.",
   alternates: {
     canonical: "https://imfrustrated.org/letters",
     types: {
@@ -134,7 +134,7 @@ export default function LettersHubPage() {
     name: "Letter Templates by I'm Frustrated dot Org",
     url: "https://imfrustrated.org/letters",
     description:
-      "A free library of plain-English letter templates that invoke real federal and state statutes — written by practicing attorneys, free to use without an account.",
+      "A free library of plain-English letter templates that invoke real federal and state statutes — free to use without an account.",
     isPartOf: { "@type": "WebSite", name: "I'm Frustrated dot Org", url: "https://imfrustrated.org" },
     hasPart: letters.map((l) => ({
       "@type": "Article",
@@ -177,9 +177,9 @@ export default function LettersHubPage() {
           </Reveal>
           <Reveal delay={3}>
             <p className="text-sage-2 text-lg leading-[1.6] mt-5">
-              Below is a free library of plain-English templates that invoke real federal and state statutes. Every citation is verified. Every template was written by an attorney. Take them, customize them, send them. No account, no upsell, no catch.
+              Below is a free library of plain-English templates that invoke real federal and state statutes. Every citation is verified. Take them, customize them, send them. No account, no upsell, no catch.
             </p>
-            <p className="font-accent italic text-xl text-clay mt-7">friends who went to law school, written down.</p>
+            <p className="font-accent italic text-xl text-clay mt-7">plain-English help, written down.</p>
           </Reveal>
         </section>
 
@@ -281,17 +281,23 @@ export default function LettersHubPage() {
             <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16 text-center">
               <p className="font-accent italic text-xl text-clay-soft">if the letter isn&rsquo;t enough</p>
               <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight mt-1.5">
-                We can still talk it out.
+                Start from a draft.
               </h2>
-              <p className="text-[#cdd6cd] text-lg leading-relaxed mt-4 max-w-xl mx-auto mb-9">
-                Send us the situation and a volunteer attorney will write back. No commitment, no invoice, no judgment.
+              <p className="text-[#cdd6cd] text-lg leading-relaxed mt-4 max-w-xl mx-auto">
+                Not sure which letter fits? Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
               </p>
-              <a href="mailto:info@imfrustrated.org" className="btn-clay mag">
-                info@imfrustrated.org
+              <p className="text-[#cdd6cd] text-sm leading-relaxed mt-3 max-w-xl mx-auto mb-9">
+                If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
+              </p>
+              <Link href="/#contact" className="btn-clay mag">
+                Tell us what happened
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
-              </a>
+              </Link>
+              <p className="text-[#cdd6cd] text-xs italic leading-relaxed mt-9 max-w-xl mx-auto">
+                I&rsquo;m Frustrated dot Org publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
+              </p>
               <div className="mt-11 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
                 <Link href="/how-it-works" className="hover:text-clay-soft transition-colors duration-300">How it works</Link>
                 <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>

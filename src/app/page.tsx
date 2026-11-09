@@ -45,7 +45,7 @@ const featuredParkingCities = [...parkingCities]
   .sort((a, b) => b.defenses.length - a.defenses.length || a.city.localeCompare(b.city))
   .slice(0, 8);
 
-/* Self-help tools (sister sites). Letter Library + Ask-an-attorney are handled
+/* Self-help tools (sister sites). Letter Library + the draft-letter request are handled
  * separately below so all five offerings sit in one scannable section. */
 const tools: {
   n: string;
@@ -90,18 +90,16 @@ const steps = [
   },
   {
     n: "3",
-    title: "Still stuck? Ask",
-    body: "A real attorney reads your note and tells you the next step — free, no pressure.",
+    title: "Send it yourself",
+    body: "Mail or email it, keep a copy. If a deadline is close, talk to a lawyer.",
   },
 ];
 
 /* Real, named testimonials — trimmed to the dispute-resolution ones that match
- * what IFDO actually offers (LLC-formation quotes removed as off-message). */
+ * what IFDO actually offers (LLC-formation quotes removed as off-message;
+ * 2026-10-31 self-help ruling: quotes describing attorney help removed). */
 const testimonials = [
-  { name: "Chloe H.", text: "I’m Frustrated dot Org’s attorneys are the epitome of efficient professionals. They are easy to communicate with and quickly come up with solutions. I would not have been able to navigate my landlord situation without them!" },
   { name: "Riley S. & Isabella H.", text: "Thank you so much for your quick and effective help with our landlord-tenant dispute! We are no longer ‘frustrated.’" },
-  { name: "Johnluke L.", text: "I came to the team with a simple but critical family-law issue and needed a solution ASAP. They stepped up, gave excellent advice, and guided me toward resolution quicker than I thought possible!" },
-  { name: "Stella B.", text: "After another professional gave me advice that turned out to be inaccurate, a colleague recommended I reach out. Their guidance has been invaluable — genuine concern for others’ wellbeing. If you need advice on a serious legal matter, I’m confident they’ll do their absolute best to help." },
 ];
 
 /* Small inline arrow used on links + CTAs. */
@@ -128,7 +126,7 @@ export default function Home() {
                 @container so the h1 below can size off THIS column's width. */}
             <div className="@container text-center lg:text-left">
               <Reveal delay={1}>
-                <span className="eyebrow"><span className="pulse" />Free legal tools, built by volunteer attorneys</span>
+                <span className="eyebrow"><span className="pulse" />Free legal information &amp; self-help tools</span>
               </Reveal>
               <Reveal delay={2}>
                 {/* 2026-08-20 design review: the sans first line needed true
@@ -151,8 +149,8 @@ export default function Home() {
               </Reveal>
               <Reveal delay={3}>
                 <p className="text-sage-2 text-lg md:text-xl leading-[1.6] max-w-2xl mx-auto lg:mx-0 mt-7">
-                  Attorney-written letters, self-help tools, and a real lawyer you can
-                  actually ask. All free. Start with the problem you&rsquo;re facing.
+                  Statute-cited letters, plain-English guides, and self-help tools you
+                  use yourself. All free. Start with the problem you&rsquo;re facing.
                 </p>
               </Reveal>
               <Reveal delay={4}>
@@ -164,9 +162,9 @@ export default function Home() {
                     first move should be the tool, not a scroll past it.
                     2026-08-20 design review: three equal-weight pills meant no
                     action read first. Now ONE filled primary + one hairline
-                    ghost. The third pill (Ask an attorney — free) is gone:
-                    that action already lives in the header at every width, in
-                    offering 05, and in the footer — its slot became the proof
+                    ghost. The third pill (the human-contact CTA) is gone:
+                    its replacement (Get a draft letter) lives in the header at
+                    every width and in offering 05 — its slot became the proof
                     strip below. */}
                 <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mt-9">
                   <Link href="/letters" className="btn-clay mag">
@@ -248,8 +246,8 @@ export default function Home() {
               Everything IFDO gives you
             </h2>
             <p className="text-sage-2 mt-4 leading-relaxed">
-              Five free ways to handle a legal headache without a retainer &mdash; send a
-              letter, use a self-help tool, or just ask a volunteer attorney.
+              Five free ways to handle a legal headache yourself &mdash; send a letter, use
+              a self-help tool, or request a draft letter by email.
             </p>
           </Reveal>
 
@@ -270,7 +268,7 @@ export default function Home() {
                   <p className="text-sage-2 mt-3 leading-relaxed">
                     {letterCount} ready-to-send letters that quietly cite real statute &mdash; security
                     deposits, billing errors, HOA fines, delayed flights, and more. Every
-                    citation verified by an attorney. Fill in the blanks and send. No lawyer required.
+                    citation checked against the official source. Fill in the blanks and send. No lawyer required.
                   </p>
                   <Link href="/letters" className="inline-flex items-center gap-2 mt-5 font-semibold text-[0.95rem] text-clay hover:gap-3 transition-all duration-300">
                     Browse all {letterCount} letters
@@ -345,22 +343,22 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Offering 05 — the human option: Ask a Volunteer Attorney */}
+          {/* Offering 05 — the draft-letter request (uses the intake form) */}
           <Reveal delay={2}>
             <a href="#contact" className="group block mt-5 rounded-[24px] bg-sage text-bg p-8 md:p-9 hover:bg-evergreen transition-colors duration-300">
               <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
                 <div className="w-12 h-12 rounded-[14px] bg-clay text-white grid place-items-center font-disp font-bold text-base shrink-0">05</div>
                 <div className="flex-1">
-                  <p className="text-clay-soft text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-1.5">Free · talk to a person</p>
-                  <h3 className="font-disp font-semibold text-bg text-2xl tracking-[-0.02em]">Ask a Volunteer Attorney</h3>
+                  <p className="text-clay-soft text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-1.5">Free · draft letter by email</p>
+                  <h3 className="font-disp font-semibold text-bg text-2xl tracking-[-0.02em]">Get a Draft Letter by Email</h3>
                   <p className="text-[#cdd6cd] mt-2.5 leading-relaxed max-w-2xl">
-                    Not sure a letter or tool fits? Tell us what&rsquo;s going on. A real lawyer
-                    reads every note and tells you your next step &mdash; free, no retainer, no
-                    attorney-client relationship formed.
+                    Not sure a letter fits? Tell us what happened and we&rsquo;ll try to email you a draft
+                    self-help letter you can send yourself. Legal information, not legal advice
+                    &mdash; no one acts as your lawyer and no attorney-client relationship is formed.
                   </p>
                 </div>
                 <span className="inline-flex items-center gap-2 font-semibold text-[0.95rem] text-clay-soft shrink-0">
-                  Ask now
+                  Tell us what happened
                   <Arrow className="group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
               </div>
@@ -432,11 +430,12 @@ export default function Home() {
             <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16">
               <div className="text-center max-w-xl mx-auto mb-10">
                 <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight">
-                  Still stuck? <em className="font-accent text-clay-soft" style={{ fontStyle: "italic" }}>Ask a lawyer.</em>
+                  Still stuck? <em className="font-accent text-clay-soft" style={{ fontStyle: "italic" }}>Get a draft letter.</em>
                 </h2>
                 <p className="text-[#cdd6cd] mt-4 leading-relaxed">
-                  Tell us what&rsquo;s going on. A real attorney reads every note — usually within
-                  a day. No bill, no pressure to hire anyone.
+                  Tell us what happened and we&rsquo;ll try to email you a draft self-help letter you can send
+                  yourself. This is legal information, not legal advice; no one acts as your lawyer and no
+                  attorney-client relationship is formed.
                 </p>
               </div>
               <div className="max-w-2xl mx-auto">
