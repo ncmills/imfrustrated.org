@@ -41,11 +41,12 @@ export const PII_HINT =
 
 export const REDACTED_NOTE = "We removed something that looked like personal details. The letter will leave a blank for it.";
 
-// §1.5, verbatim (the [state] and [link] slots are filled in).
+// §1.5, U8 draft A as approved by Nick (CONTROL 2026-11-08), beta-hold line struck. The [state]
+// slot is filled here; the [link] slot is the link box rendered between ACK_LINK_PROMPT and ACK_LINK_NOTE.
 export const ackLine = (state: string) =>
-  `Got it. We're researching the law for ${state} and drafting your letter. This usually takes 10-20 minutes. Keep this page open or save this private link:`;
-export const BETA_HOLD_LINE =
-  "A person at I'm Frustrated checks every letter before you see it, so it can take up to 2 days.";
+  `Got it. We're looking up the law for ${state} and drafting your letter. This usually takes 10-20 minutes.`;
+export const ACK_LINK_PROMPT = "Keep this page open, or save this private link to come back later:";
+export const ACK_LINK_NOTE = "Anyone with the link can see your case, so keep it to yourself.";
 
 // §1.7, verbatim.
 export const OFFLINE_LINE =
