@@ -52,7 +52,7 @@ export default function IntakeForm() {
       // count as a conversion here either.
       if (!data.test) {
         try {
-          posthog.capture("intake_submitted", { state, issueType });
+          posthog.capture("intake_submitted");
         } catch {}
       }
       setStatus("success");
