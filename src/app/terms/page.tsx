@@ -6,7 +6,7 @@ import { buildOpenGraph } from "@/lib/og";
 export const metadata: Metadata = {
   title: "Terms | I'm Frustrated dot Org",
   description:
-    "Plain-English terms of use for I'm Frustrated dot Org: who we are, what the service does, what it doesn't, and the legal posture around the letter library and volunteer attorney intake.",
+    "Plain-English terms of use for I'm Frustrated dot Org: who we are, what the service does, what it doesn't, and the legal posture around the letter library and the draft-letter service.",
   alternates: { canonical: "https://imfrustrated.org/terms" },
   openGraph: buildOpenGraph({
     path: "/terms",
@@ -25,8 +25,8 @@ const sections = [
     marker: "§ I",
     title: "What this service is",
     paragraphs: [
-      "I'm Frustrated dot Org is a volunteer attorney intake and a library of letter templates. The intake is a single email-based conversation with a practicing attorney who is donating their time. The letters are documents you can copy, edit, and send yourself. Neither is a lawyer-for-hire arrangement, and using the site does not create an attorney-client relationship with us or with any volunteer who responds to you.",
-      "We are not a law firm. We do not appear in court on your behalf. We do not draft documents on your behalf. We do not sign retainer agreements. When the right next step is hiring a lawyer, we will tell you that, and you will hire your own.",
+      "I'm Frustrated dot Org publishes free legal information and self-help tools: a library of letter templates, guides, and a draft-letter service. The draft-letter service takes what you tell us and emails you a draft self-help letter you can edit and send yourself. None of it is legal advice, no one acts as your lawyer, and using the site does not create an attorney-client relationship with us or with anyone else.",
+      "We are not a law firm. We do not represent you, appear in court on your behalf, or send anything in your name: any draft letter is yours to check, change, and send yourself. We do not sign retainer agreements. If your situation needs legal advice, contact a licensed attorney or your local legal aid office.",
     ],
   },
   {
@@ -34,31 +34,31 @@ const sections = [
     title: "The letter templates",
     paragraphs: [
       "Every letter in the library cites real federal or state statutes and reflects the regulatory framework that was in force at the time the template was published or last updated. The cite-verification standard is primary-source: federal cites are verified against Cornell Legal Information Institute or the relevant agency's official .gov publication, and state cites are verified against the official state legislature site or agency .gov. We do not freehand statutes from training data; templates that cannot be verified are not published.",
-      "That said, statutes change. Court decisions reinterpret them. The facts of your situation can flip which statute applies. The templates are informational starting points, not legal advice tailored to your circumstances. If a letter does not resolve your problem, the next move is usually to talk to a lawyer in your state — that is exactly what the intake form is for.",
+      "That said, statutes change. Court decisions reinterpret them. The facts of your situation can flip which statute applies. The templates are informational starting points, not legal advice tailored to your circumstances. If a letter does not resolve your problem, the next move is usually to talk to a licensed attorney in your state or your local legal aid office.",
       "You are welcome to copy, modify, and send any letter in the library for your own non-commercial use. You may not republish the templates as a competing library, white-label them as your own legal product, or sell them as a paid service.",
     ],
   },
   {
     marker: "§ III",
-    title: "The volunteer attorney conversation",
+    title: "The draft-letter service",
     paragraphs: [
-      "When you submit the intake form, a practicing attorney reads your message and writes back. The conversation is informational. The attorney is not representing you, is not in an attorney-client relationship with you, and cannot be held to the duties of one based on the exchange. They are a person who happens to know the area giving you a more informed lens on it.",
-      "Anything you tell us in the intake form should be assumed to be a non-privileged communication. Do not send us anything you would not be willing to repeat under oath, and do not send us anything that needs to stay sealed for an active matter. If you are already represented in a matter, talk to your existing lawyer instead — we will not step on that relationship.",
+      "When you submit the draft-letter form, we prepare a draft self-help letter from the facts you give us and the laws we look up from official sources, and email it to you. The draft is legal information, not legal advice. No one acts as your lawyer, and no attorney-client relationship is formed. You decide whether to use it, and you are responsible for checking it against your facts before you send it.",
+      "Anything you tell us in the form should be assumed to be a non-privileged communication. Do not send us anything you would not be willing to repeat under oath, and do not send us anything that needs to stay sealed for an active matter. If you are already represented in a matter, talk to your existing lawyer instead — we will not step on that relationship.",
     ],
   },
   {
     marker: "§ IV",
     title: "Disclaimers and liability",
     paragraphs: [
-      "The site, the letter library, the intake conversation, and any tools linked from /free-tools are provided on an as-is basis without warranties of any kind, express or implied, including fitness for a particular purpose and non-infringement. We do not warrant that the information is current to the second or applicable to your specific facts.",
-      "To the maximum extent permitted by law, neither I'm Frustrated dot Org nor any volunteer attorney is liable for indirect, incidental, consequential, or punitive damages arising out of your use of the site or reliance on anything you read or receive through it. Where liability cannot be fully disclaimed, total aggregate liability is capped at one hundred US dollars.",
+      "The site, the letter library, the draft-letter service, and any tools linked from /free-tools are provided on an as-is basis without warranties of any kind, express or implied, including fitness for a particular purpose and non-infringement. We do not warrant that the information is current to the second or applicable to your specific facts.",
+      "To the maximum extent permitted by law, I'm Frustrated dot Org is not liable for indirect, incidental, consequential, or punitive damages arising out of your use of the site or reliance on anything you read or receive through it. Where liability cannot be fully disclaimed, total aggregate liability is capped at one hundred US dollars.",
     ],
   },
   {
     marker: "§ V",
     title: "Governing law and changes",
     paragraphs: [
-      "These terms are governed by the laws of the State of New York, where the operating not-for-profit is in formation. Any dispute arising out of these terms or your use of the site will be brought in the state or federal courts located in New York County, New York, and you consent to that forum.",
+      "These terms are governed by the laws of the State of New York. Any dispute arising out of these terms or your use of the site will be brought in the state or federal courts located in New York County, New York, and you consent to that forum.",
       "We will update these terms when the service changes — for example, when the corporate entity is formally incorporated and an EIN issues. Material changes will be noted with an updated date at the top of this page; continued use of the site after a change constitutes acceptance.",
     ],
   },
@@ -66,7 +66,7 @@ const sections = [
     marker: "§ VI",
     title: "Contact",
     paragraphs: [
-      "Questions about these terms go to info@imfrustrated.org. The service operator is I'm Frustrated dot Org, a New York not-for-profit initiative in formation as a 501(c)(3) charitable corporation.",
+      "Questions about these terms go to info@imfrustrated.org. The service operator is I'm Frustrated dot Org.",
     ],
   },
 ];

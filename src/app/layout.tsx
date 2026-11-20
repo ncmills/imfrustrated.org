@@ -36,9 +36,9 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
+  title: "I'm Frustrated dot Org — Free Legal Letters & Self-Help Tools",
   description:
-    "Talk to a real attorney before you hire one. We're the friends who happen to be lawyers — free, honest legal guidance to help you figure out your next step.",
+    "Free legal information and self-help tools: template letters, plain-English guides, and simple tools you use yourself. Not a law firm; not legal advice.",
   metadataBase: new URL("https://imfrustrated.org"),
   alternates: {
     canonical: "/",
@@ -59,17 +59,17 @@ export const metadata: Metadata = {
   openGraph: buildOpenGraph({
     path: "/",
     type: "website",
-    title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
+    title: "I'm Frustrated dot Org — Free Legal Letters & Self-Help Tools",
     description:
-      "Talk to a real attorney before you hire one. Free, honest legal guidance to help you figure out your next step.",
+      "Free legal information and self-help tools: template letters, plain-English guides, and simple tools you use yourself.",
     // src/app/opengraph-image.tsx exists — omit `images` so it merges in.
     hasRouteImage: true,
   }),
   twitter: {
     card: "summary_large_image",
-    title: "I'm Frustrated dot Org — Friends Who Are Also Lawyers",
+    title: "I'm Frustrated dot Org — Free Legal Letters & Self-Help Tools",
     description:
-      "Talk to a real attorney before you hire one. Free, honest legal guidance to help you figure out your next step.",
+      "Free legal information and self-help tools: template letters, plain-English guides, and simple tools you use yourself.",
   },
 };
 
@@ -106,15 +106,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LegalService",
+            "@type": "Organization",
             "name": "I'm Frustrated dot Org",
-            "description": "Free legal guidance and referrals from volunteer attorneys. We help people understand their legal situation before hiring a lawyer.",
+            "description": "Publishes free legal information, self-help guides, tools, and template letters. Not a law firm; does not give legal advice.",
             "url": "https://imfrustrated.org",
             "email": "info@imfrustrated.org",
-            "areaServed": "US",
-            "priceRange": "Free",
-            "serviceType": "Legal Guidance and Referrals",
-            "nonprofitStatus": "Nonprofit"
+            "areaServed": "US"
           }) }}
         />
         <script
@@ -128,7 +125,7 @@ export default function RootLayout({
                 "name": "What does I'm Frustrated dot Org do?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "We're a group of practicing attorneys who volunteer our time to give people a real, informed perspective on their legal situation before they spend a dime on representation. We provide free, honest legal guidance to help you figure out your next step."
+                  "text": "We publish free legal information and self-help tools: template letters, plain-English guides, and simple tools. You find the letter that fits, fill it in with your facts, and send it yourself."
                 }
               },
               {
@@ -136,15 +133,15 @@ export default function RootLayout({
                 "name": "Is I'm Frustrated dot Org a law firm?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "No. I'm Frustrated dot Org is not a law firm and does not provide legal representation. No attorney-client relationship is formed through our service. We provide informational guidance only."
+                  "text": "No. I'm Frustrated dot Org is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office."
                 }
               },
               {
                 "@type": "Question",
-                "name": "How much does it cost to get legal guidance?",
+                "name": "How much do the letters and tools cost?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Our service is completely free. There is no commitment, no invoice, and no judgment — just an honest conversation with someone who understands the law and wants to help."
+                  "text": "Nothing. The letters, guides, and tools are free, with no account and no invoice."
                 }
               },
               {
@@ -152,15 +149,15 @@ export default function RootLayout({
                 "name": "How does the process work?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "It's simple: (1) You tell us what's going on in plain English. (2) We explain where you stand legally, what your options are, and what questions to ask. (3) You decide what's next — whether that's hiring a lawyer or handling it yourself, you'll be informed."
+                  "text": "(1) Find the letter or tool that fits your situation. (2) Fill it in with your own facts. (3) Send it yourself. If a deadline is close or the stakes are high, talk to a licensed attorney or your local legal aid office."
                 }
               },
               {
                 "@type": "Question",
-                "name": "How do I get in touch?",
+                "name": "Is this legal advice?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Email us at info@imfrustrated.org. We'll get back to you and set up a conversation."
+                  "text": "No. Everything on the site, including any draft letter we email you, is legal information and a self-help tool, not legal advice. No one acts as your lawyer and no attorney-client relationship is formed."
                 }
               }
             ]
@@ -174,8 +171,6 @@ export default function RootLayout({
             "name": "I'm Frustrated dot Org",
             "url": "https://imfrustrated.org",
             "email": "info@imfrustrated.org",
-            "nonprofitStatus": "Nonprofit501c3",
-            "sameAs": ["https://idonthaveawill.com", "https://aissdi.com", "https://doppelwriter.com"],
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
               "name": "Free Legal Resources",
@@ -184,9 +179,9 @@ export default function RootLayout({
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
-                    "name": "Free Conversation with a Volunteer Attorney",
-                    "url": "https://imfrustrated.org/how-it-works",
-                    "description": "Email info@imfrustrated.org to talk through your situation with a volunteer attorney. No commitment, no invoice."
+                    "name": "Free Draft Self-Help Letter by Email",
+                    "url": "https://imfrustrated.org/#contact",
+                    "description": "Tell us what happened and we'll try to email you a draft self-help letter you can send yourself. Legal information, not legal advice; no one acts as your lawyer."
                   }
                 },
                 {
