@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { trackLetterOpened, trackLetterCopied } from "@/lib/tracking";
 
 type Props = {
   /** The full letter / statement text to copy. */
   text: string;
   /** Visible label; defaults to "Copy letter". */
   label?: string;
+  /** Public letter category for analytics (e.g. "landlord"); never the slug. */
+  category?: string;
 };
 
 /**
@@ -18,9 +21,13 @@ type Props = {
  * copy half. Uses the async Clipboard API with a textarea/execCommand fallback
  * for older WebViews; reports success/failure inline via aria-live.
  */
-export function CopyLetterButton({ text, label = "Copy letter" }: Props) {
+export function CopyLetterButton({ text, label = "Copy letter", category = "unknown" }: Props) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    trackLetterOpened(category);
+  }, [category]);
 
   useEffect(() => {
     return () => {
@@ -30,6 +37,7 @@ export function CopyLetterButton({ text, label = "Copy letter" }: Props) {
 
   function flash(next: "copied" | "failed") {
     setState(next);
+    trackLetterCopied(category, next);
     if (timer.current) clearTimeout(timer.current);
     timer.current = setTimeout(() => setState("idle"), 2200);
   }
