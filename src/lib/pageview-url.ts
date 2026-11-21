@@ -32,3 +32,45 @@ export function sanitizePageviewUrl(url: string): string {
   const kept = filterQuery(search);
   return base + (kept ? "?" + kept : "") + hash;
 }
+
+// Letter pages name a personal situation in the slug (CAPTURE-GAPS-1121): PostHog gets
+// /letters/<category> only, e.g. /letters/landlord/<slug> -> /letters/landlord and
+// /letters/parking/<city>/<defense> -> /letters/parking. Query and hash are kept.
+export function redactLetterPath(path: string): string {
+  return path.replace(/^(\/letters\/[^/?#]+)\/[^?#]*/, "$1");
+}
+
+/** Redact the letter path of an absolute URL or a bare path; other urls pass through. */
+export function redactLetterUrl(url: string): string {
+  if (typeof url !== "string" || !url) return url;
+  const m = url.match(/^([a-z][a-z0-9+.-]*:\/\/[^/?#]*)(.*)$/i);
+  return m ? m[1] + redactLetterPath(m[2]) : redactLetterPath(url);
+}
+
+/** URL- and path-valued PostHog properties that can carry the page path. */
+export const POSTHOG_URL_PROPS = [
+  "$current_url",
+  "$referrer",
+  "$initial_referrer",
+  "$prev_pageview_url",
+  "$session_entry_url",
+] as const;
+export const POSTHOG_PATH_PROPS = [
+  "$pathname",
+  "$prev_pageview_pathname",
+  "$session_entry_pathname",
+  "$initial_pathname",
+] as const;
+
+/** Apply query allowlist + letter-path redaction to an event's properties, in place. */
+export function sanitizeEventProps(props: Record<string, unknown> | undefined): void {
+  if (!props) return;
+  for (const k of POSTHOG_URL_PROPS) {
+    const v = props[k];
+    if (typeof v === "string") props[k] = redactLetterUrl(sanitizePageviewUrl(v));
+  }
+  for (const k of POSTHOG_PATH_PROPS) {
+    const v = props[k];
+    if (typeof v === "string") props[k] = redactLetterPath(v);
+  }
+}
