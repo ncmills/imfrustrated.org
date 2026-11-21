@@ -4,7 +4,7 @@ import posthog from "posthog-js";
 import { PostHogProvider as PHProvider, usePostHog } from "posthog-js/react";
 import { useEffect, Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { sanitizeEventProps } from "@/lib/pageview-url";
+import { sanitizeEvent } from "@/lib/pageview-url";
 
 function PostHogPageView() {
   const pathname = usePathname();
@@ -41,7 +41,7 @@ export default function PostHogProvider({ children }: { children: React.ReactNod
         // Keep only the acquisition allowlist (utm_*, ref, gclid, fbclid) in the query,
         // and cut letter paths to /letters/<category> (CAPTURE-GAPS-1121).
         before_send: (event) => {
-          if (event?.properties) sanitizeEventProps(event.properties);
+          sanitizeEvent(event as Parameters<typeof sanitizeEvent>[0]);
           return event;
         },
       });
