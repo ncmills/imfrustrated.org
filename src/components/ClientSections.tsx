@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
+import { trackCtaClicked } from "@/lib/tracking";
 import { NetworkFooter } from "@/components/NetworkFooter";
 
 function useInView(threshold = 0.15) {
@@ -130,19 +131,19 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-7 text-[0.92rem] font-medium text-sage-2">
-          <Link href="/free-tools" className="hover:text-sage transition-colors duration-300">
+          <Link href="/free-tools" onClick={() => trackCtaClicked("nav_free_tools")} className="hover:text-sage transition-colors duration-300">
             Free tools
           </Link>
-          <Link href="/letters" className="hover:text-sage transition-colors duration-300">
+          <Link href="/letters" onClick={() => trackCtaClicked("nav_letters")} className="hover:text-sage transition-colors duration-300">
             Letters
           </Link>
-          <Link href="/how-it-works" className="hover:text-sage transition-colors duration-300">
+          <Link href="/how-it-works" onClick={() => trackCtaClicked("nav_how_it_works")} className="hover:text-sage transition-colors duration-300">
             How it works
           </Link>
-          <Link href="/faq" className="hover:text-sage transition-colors duration-300">
+          <Link href="/faq" onClick={() => trackCtaClicked("nav_faq")} className="hover:text-sage transition-colors duration-300">
             FAQ
           </Link>
-          <Link href="/about" className="hover:text-sage transition-colors duration-300">
+          <Link href="/about" onClick={() => trackCtaClicked("nav_about")} className="hover:text-sage transition-colors duration-300">
             About
           </Link>
         </nav>
@@ -153,6 +154,7 @@ export function Header() {
             beside the wordmark at 390. */}
         <Link
           href="/#contact"
+          onClick={() => trackCtaClicked("header_ask_attorney")}
           className="mag inline-flex items-center gap-2 px-3.5 py-2 text-[0.8rem] sm:px-5 sm:py-2.5 sm:text-[0.88rem] bg-sage text-bg font-semibold rounded-full hover:bg-evergreen transition-colors duration-300 shrink-0"
         >
           Ask an attorney

@@ -4,6 +4,7 @@ import posthog from "posthog-js";
 import { PostHogProvider as PHProvider, usePostHog } from "posthog-js/react";
 import { useEffect, Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import { sanitizePageviewUrl } from "@/lib/pageview-url";
 
 function PostHogPageView() {
   const pathname = usePathname();
@@ -37,6 +38,16 @@ export default function PostHogProvider({ children }: { children: React.ReactNod
         autocapture: false,
         disable_session_recording: true,
         person_profiles: "identified_only",
+        // Keep only the acquisition allowlist (utm_*, ref, gclid, fbclid) in the query.
+        before_send: (event) => {
+          if (event?.properties) {
+            for (const k of ["$current_url", "$referrer", "$initial_referrer"]) {
+              const v = event.properties[k];
+              if (typeof v === "string") event.properties[k] = sanitizePageviewUrl(v);
+            }
+          }
+          return event;
+        },
       });
     }
   }, [key]);

@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import posthog from "posthog-js";
 import { Wordmark } from "./ClientSections";
+import { trackIntakeStarted, trackIntakeError } from "@/lib/tracking";
 
 const US_STATES = [
   "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA",
@@ -31,6 +32,12 @@ export default function IntakeForm() {
   const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const started = useRef(false);
+  function markStarted() {
+    if (started.current) return;
+    started.current = true;
+    trackIntakeStarted();
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -45,6 +52,7 @@ export default function IntakeForm() {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
+        trackIntakeError(res.status === 400 || res.status === 422 ? "validation" : "api");
         throw new Error(data.error || "Submission failed");
       }
       // The server answers honeypot/test-domain submissions with `test: true` —
@@ -57,6 +65,7 @@ export default function IntakeForm() {
       }
       setStatus("success");
     } catch (err) {
+      if (err instanceof TypeError) trackIntakeError("network");
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
     }
@@ -86,7 +95,7 @@ export default function IntakeForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="letter-card text-left">
+    <form onSubmit={handleSubmit} onFocusCapture={markStarted} className="letter-card text-left">
       <p
         className="script text-2xl md:text-[1.75rem] mb-1"
         aria-hidden="true"
