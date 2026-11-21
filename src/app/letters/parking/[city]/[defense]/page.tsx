@@ -231,7 +231,7 @@ export default async function ParkingDefensePage({
                 {d.body}
               </pre>
             </div>
-            <CopyLetterButton text={d.body} label="Copy statement" letter={`parking/${city}/${defense}`} />
+            <CopyLetterButton text={d.body} label="Copy statement" category="parking" />
             <p className="text-sage-2 text-xs italic leading-relaxed mt-6 max-w-prose">
               This template is for informational use only. It is not legal advice and does not create an attorney-client relationship. Square-bracketed placeholders must be replaced with your specific facts. Rules and deadlines can change; if your situation is urgent, complicated, or high-stakes, email{" "}
               <a href="mailto:info@imfrustrated.org" className="text-clay underline decoration-clay/40 decoration-[1.5px] underline-offset-[5px] hover:decoration-clay transition-colors duration-300">

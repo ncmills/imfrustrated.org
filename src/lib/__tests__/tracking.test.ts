@@ -14,3 +14,8 @@ test("no sensitive prop names in tracking", () => {
     assert.ok(!new RegExp(`\\{[^}]*\\b${bad.replace(":", "")}\\b`).test(src.replace(/\/\*[\s\S]*?\*\//g, "")), bad);
   }
 });
+test("letter events send category only, never the slug", () => {
+  assert.ok(/letterOpened, \{ category \}/.test(src));
+  assert.ok(/letterCopied, \{ category, outcome \}/.test(src));
+  assert.ok(!/\bslug\b|\bletter\b\s*[,}]/.test(src.replace(/\/\*[\s\S]*?\*\//g, "")));
+});

@@ -229,7 +229,7 @@ export default async function LetterPage({
                 {letter.body}
               </pre>
             </div>
-            <CopyLetterButton text={letter.body} label="Copy letter" letter={`${letter.category}/${letter.slug}`} />
+            <CopyLetterButton text={letter.body} label="Copy letter" category={letter.category} />
             <p className="text-sage-2 text-xs italic leading-relaxed mt-6 max-w-prose">
               This template is for informational use only. It is not legal advice and does not create an attorney-client relationship. Square-bracketed placeholders must be replaced with your specific facts. State law and procedural details vary; if your situation is urgent, complicated, or high-stakes, email{" "}
               <a href="mailto:info@imfrustrated.org" className="text-clay underline decoration-clay/40 decoration-[1.5px] underline-offset-[5px] hover:decoration-clay transition-colors duration-300">

@@ -21,12 +21,12 @@ function capture(event: string, props?: Record<string, unknown>) {
   } catch {}
 }
 
-/** `letter` is the public template id (category/slug), never visitor input. */
-export function trackLetterOpened(letter: string) {
-  capture(EVENT_NAMES.letterOpened, { letter });
+/** `category` is the public letter category (e.g. "landlord"), never the slug: slugs name personal situations (CAPTURE-GAPS-1121). */
+export function trackLetterOpened(category: string) {
+  capture(EVENT_NAMES.letterOpened, { category });
 }
-export function trackLetterCopied(letter: string, outcome: LetterCopyOutcome) {
-  capture(EVENT_NAMES.letterCopied, { letter, outcome });
+export function trackLetterCopied(category: string, outcome: LetterCopyOutcome) {
+  capture(EVENT_NAMES.letterCopied, { category, outcome });
 }
 export function trackIntakeStarted() {
   capture(EVENT_NAMES.intakeStarted, { form: "intake" });
