@@ -49,7 +49,8 @@ const LETTER_CATEGORIES: Record<LetterCategory | "parking", true> = {
 
 function decodeFully(s: string): string {
   let cur = s;
-  for (let i = 0; i < 3; i++) {
+  // Decode until stable (REDACT-FOLLOWUP-1121: %252e%252e etc.); the cap only stops pathological input.
+  for (let i = 0; i < 16; i++) {
     let next: string;
     try { next = decodeURIComponent(cur); } catch { break; }
     if (next === cur) break;
@@ -72,7 +73,12 @@ function normSegments(path: string): string[] {
 /** "/letters/<category>" or "/letters" if `path` (no query/hash) is a letter path, else null. */
 export function letterPathFor(path: string): string | null {
   const segs = normSegments(path);
-  if (segs[0] !== "letters") return null;
+  if (segs[0] !== "letters") {
+    // A path that starts under /letters but escapes it with dot segments (e.g. /letters/%252e%252e/landlord/slug)
+    // is still a letter path: send only /letters (REDACT-FOLLOWUP-1121).
+    const first = decodeFully(path).toLowerCase().replace(/\\/g, "/").split("/").find((x) => x && x !== ".");
+    return first === "letters" ? "/letters" : null;
+  }
   if (segs.length === 1) return "/letters";
   if (segs.length === 2 && segs[1] === "rss.xml") return "/letters/rss.xml";
   return Object.prototype.hasOwnProperty.call(LETTER_CATEGORIES, segs[1]) ? "/letters/" + segs[1] : "/letters";

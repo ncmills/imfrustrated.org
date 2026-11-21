@@ -109,3 +109,14 @@ test("IMF-PATH-REDACT-2: every url/path prop loses its hash", () => {
   assert.deepEqual(p, { $current_url: "https://imfrustrated.org/blog/post?utm_source=g", $pathname: "/blog/post", $referrer: "https://google.com/" });
   assert.equal(stripHash("/a"), "/a");
 });
+test("REDACT-FOLLOWUP-1121: multi-encoded dot segments cannot escape /letters", () => {
+  assert.equal(redactLetterPath("/letters/%252e%252e/landlord/slug"), "/letters");
+  assert.equal(redactLetterPath("/letters/%25252e%25252e/landlord/slug?utm_source=g"), "/letters?utm_source=g");
+  assert.equal(redactLetterPath("/letters/landlord/../../tenant/slug"), "/letters");
+  assert.equal(redactLetterPath("/letters/%2e%2e/%2e%2e/blog/x"), "/letters");
+  assert.equal(redactLetterUrl("https://imfrustrated.org/letters/%252e%252e/landlord/slug#x"), "https://imfrustrated.org/letters");
+  // unchanged behaviour
+  assert.equal(redactLetterPath("/letters/landlord/my-slug"), "/letters/landlord");
+  assert.equal(redactLetterPath("/blog/letters-guide"), "/blog/letters-guide");
+  assert.equal(redactLetterPath("/foo/../letters/landlord/slug"), "/letters/landlord");
+});
