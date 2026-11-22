@@ -1,7 +1,7 @@
 // POST /api/chat/followup logic (spec §1.9, §3 FOLLOWUP_RULES, U5; N3, N4).
 // Order: kill switch -> beta gate -> salt -> token -> letter must be visible -> crisis
 // screen on the RAW question (before rate limit, redaction and any queueing) -> limits
-// (5 per case, one unanswered at a time, per-IP turns) -> redaction -> append {q, a: null}
+// (2 per case, one unanswered at a time, per-IP turns) -> redaction -> append {q, a: null}
 // + one followup job. The per-case $ cap is enforced by the worker, not here.
 import { CRISIS_CARD, RESOURCES_LINE, crisisTierTurns } from "./crisis";
 import { err, gate, hashToken, ipKey, isTestReq, LIMITS, log, type ApiIn, type ApiOut, type Env } from "./case-api";
@@ -9,7 +9,9 @@ import { letterVisible } from "./poll-api";
 import { redact } from "./redact";
 import type { ChatStore } from "./store";
 
-export const FOLLOWUPS_PER_CASE = 5;
+// 2, not the spec's 5: no Nick-approved text states 5 (CONTROL REVIEWS-1121-2030 (2)c). Worker:
+// FOLLOWUPS_PER_CASE in second-nick ops/imf_letter_pipeline.py carries the same number.
+export const FOLLOWUPS_PER_CASE = 2;
 const Q_MAX = 2000;
 
 export async function handleFollowupPost(req: ApiIn, store: ChatStore, env: Env): Promise<ApiOut> {

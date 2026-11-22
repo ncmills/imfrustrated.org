@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { hashToken, type ApiIn, type Env } from "../../src/lib/imf-chat/case-api";
-import { handleFollowupPost } from "../../src/lib/imf-chat/followup-api";
+import { FOLLOWUPS_PER_CASE, handleFollowupPost } from "../../src/lib/imf-chat/followup-api";
 import { CRISIS_CARD, RESOURCES_LINE } from "../../src/lib/imf-chat/crisis";
 import { fakeStore } from "./fake-store";
 
@@ -52,19 +52,22 @@ test("tier B term queues and shows the resources line", async () => {
   assert.equal(s.store.jobs.length, 1);
 });
 
-test("limit: 5 per case, one unanswered at a time", async () => {
+test("limit: FOLLOWUPS_PER_CASE (2) per case, one unanswered at a time", async () => {
+  assert.equal(FOLLOWUPS_PER_CASE, 2);
   const s = await setup();
-  assert.equal((await s.ask("q1 about the letter")).status, 202);
+  const r1 = await s.ask("q1 about the letter");
+  assert.equal(r1.status, 202);
+  assert.equal(r1.body.remaining, 1);
   assert.equal((await s.ask("q2 about the letter")).status, 409);
-  for (let i = 2; i <= 5; i++) {
-    s.row().followups.at(-1)!.a = "answer";
-    assert.equal((await s.ask(`q${i} about the letter`)).status, 202);
-  }
   s.row().followups.at(-1)!.a = "answer";
-  const r = await s.ask("q6 about the letter");
+  const r2 = await s.ask("q2 about the letter");
+  assert.equal(r2.status, 202);
+  assert.equal(r2.body.remaining, 0);
+  s.row().followups.at(-1)!.a = "answer";
+  const r = await s.ask("q3 about the letter");
   assert.equal(r.status, 429);
   assert.equal(r.body.error, "followup_limit");
-  assert.equal(s.store.jobs.length, 5);
+  assert.equal(s.store.jobs.length, 2);
 });
 
 test("kill switch, beta gate, missing salt, no visible letter, held letter, redaction", async () => {

@@ -71,7 +71,7 @@ export const ERRORS: Record<string, string> = {
   rate_limited: "Too many messages in a short time. Please wait a few minutes and try again.",
   case_limit: CASE_LIMIT,
   day_limit: DAY_LIMIT_SUBMIT,
-  followup_limit: "You've used all 5 questions for this letter.",
+  followup_limit: "You've used all your questions for this letter.",
   followup_pending: "We're still answering your last question.",
   chat_paused: PAUSED_LINE,
   beta_only: "This page isn't open yet.",
