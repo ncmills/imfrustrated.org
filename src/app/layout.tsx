@@ -171,6 +171,7 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "I'm Frustrated dot Org",
+            "legalName": "Imfrustrated.org, Inc.",
             "url": "https://imfrustrated.org",
             "email": "info@imfrustrated.org",
             "sameAs": ["https://idonthaveawill.com", "https://aissdi.com", "https://doppelwriter.com"],

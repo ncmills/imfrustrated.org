@@ -3,6 +3,12 @@ import Link from "next/link";
 import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
 import { buildOpenGraph } from "@/lib/og";
 
+const team = [
+  { name: "Nick Mills", title: "President and Director" },
+  { name: "Yosef Schaffel", title: "Director" },
+  { name: "Varsha Bhargava", title: "Director" },
+];
+
 export const metadata: Metadata = {
   title: "About | I'm Frustrated dot Org",
   description:
@@ -124,6 +130,30 @@ export default function AboutPage() {
                 </div>
               </Reveal>
             ))}
+
+            {/* Team and board: names and titles only */}
+            <Reveal>
+              <div className="bg-card border border-rule rounded-2xl p-7 md:p-9">
+                <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.875rem] tracking-[-0.03em] mb-5">
+                  Team and board
+                </h2>
+                <p className="text-sage-2 text-base md:text-lg leading-[1.7] mb-4">
+                  Imfrustrated.org, Inc. is a New York not-for-profit corporation.
+                </p>
+                <ul className="space-y-2">
+                  {team.map((t) => (
+                    <li key={t.name} className="text-sage-2 text-base md:text-lg leading-[1.7]">
+                      <span className="text-sage font-semibold">{t.name}</span>, {t.title}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-sage-2 text-base md:text-lg leading-[1.7] mt-4">
+                  <Link href="/impact" className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300">
+                    Impact
+                  </Link>
+                </p>
+              </div>
+            </Reveal>
 
             {/* Last section — how to reach us (with inline link emphasis) */}
             <Reveal>
