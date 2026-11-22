@@ -7,7 +7,9 @@
     "build": "next build",
     "postbuild": "npx tsx scripts/submit-indexnow.ts || true",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:imf-chat": "rm -rf node_modules/.cache/imf-chat-tests && tsc -p tests/imf-chat --outDir node_modules/.cache/imf-chat-tests && node --test node_modules/.cache/imf-chat-tests/tests/imf-chat/*.test.js",
+    "test:wording": "node --test scripts/*.test.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.103.0",
