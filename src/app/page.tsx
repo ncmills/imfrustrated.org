@@ -7,6 +7,7 @@ import {
   getLettersByCategory,
 } from "@/data/letters";
 import { getAllParkingCities } from "@/data/parking";
+import { testimonials } from "@/data/testimonials";
 
 /* ─── Data ─── */
 
@@ -95,11 +96,6 @@ const steps = [
   },
 ];
 
-/* Real, named testimonials — trimmed to the dispute-resolution ones that match
- * what IFDO actually offers (LLC-formation quotes removed as off-message). */
-const testimonials = [
-  { name: "Riley S. & Isabella H.", text: "Thank you so much for your quick and effective help with our landlord-tenant dispute! We are no longer ‘frustrated.’" },
-];
 
 /* Small inline arrow used on links + CTAs. */
 function Arrow({ className = "" }: { className?: string }) {

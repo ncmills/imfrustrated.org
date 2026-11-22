@@ -148,8 +148,8 @@ export default function AboutPage() {
                   ))}
                 </ul>
                 <p className="text-sage-2 text-base md:text-lg leading-[1.7] mt-4">
-                  <Link href="/donate" className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300">
-                    Donate
+                  <Link href="/impact" className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300">
+                    Impact
                   </Link>
                 </p>
               </div>

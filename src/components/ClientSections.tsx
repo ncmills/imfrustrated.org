@@ -422,7 +422,7 @@ export function SiteFooter() {
           <div className="flex items-center gap-6 text-xs">
             <Link href="/privacy" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Privacy</Link>
             <Link href="/terms" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Terms</Link>
-            <Link href="/donate" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Donate</Link>
+            <Link href="/impact" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Impact</Link>
           </div>
         </div>
         <p className="text-bg/55 text-[0.72rem] leading-relaxed mt-4 max-w-3xl">
