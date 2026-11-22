@@ -57,3 +57,12 @@ test("page.tsx renders privacySections(process.env) with the lead in bold", () =
   assert.match(PAGE, /privacySections\(process\.env\)/);
   assert.ok(PAGE.includes("<strong") && PAGE.includes("{p.lead}"), "lead is rendered in bold");
 });
+
+test("rendered /privacy text names the legal entity in both flag states (SWEEP-1122-1555 (7))", () => {
+  const text = (env: Record<string, string>) =>
+    privacySections(env).flatMap((s) => s.paragraphs.map((p) => (typeof p === "string" ? p : `${p.lead} ${p.text}`))).join("\n");
+  for (const env of [{}, PUBLIC]) {
+    assert.ok(text(env).includes("Imfrustrated.org, Inc."), `legal name missing: ${JSON.stringify(env)}`);
+    assert.ok(!/volunteer attorney|initiative in formation/i.test(text(env)), `old wording: ${JSON.stringify(env)}`);
+  }
+});
