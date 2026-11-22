@@ -6,13 +6,13 @@ import { buildOpenGraph } from "@/lib/og";
 export const metadata: Metadata = {
   title: "About | I'm Frustrated dot Org",
   description:
-    "I'm Frustrated dot Org is a volunteer attorney network providing free, no-pressure legal conversations. Our mission, our model, and why we don't take fees.",
+    "I'm Frustrated dot Org publishes free legal information, self-help guides, tools, and template letters. Our mission, our model, and why we don't take fees.",
   alternates: { canonical: "https://imfrustrated.org/about" },
   openGraph: buildOpenGraph({
     path: "/about",
     title: "About | I'm Frustrated dot Org",
     description:
-      "I'm Frustrated dot Org is a volunteer attorney network providing free, no-pressure legal conversations.",
+      "I'm Frustrated dot Org publishes free legal information, self-help guides, tools, and template letters.",
     // src/app/about/ has no colocated opengraph-image file.
     hasRouteImage: false,
   }),
@@ -23,7 +23,7 @@ const sections = [
     marker: "§ I",
     title: "What we are",
     paragraphs: [
-      "A volunteer network of practicing attorneys who donate time to give people honest, informed perspective on their legal situation before they spend money on representation. The model is intentionally simple. People email us. Lawyers respond. Nothing is billed. No retainer is signed. No relationship is formed beyond a single useful conversation.",
+      "Free legal information and self-help tools: plain-English guides, template letters, and simple tools that help you understand where you stand and take the first step yourself. The model is intentionally simple. You find the letter or guide that fits. You fill it in with your facts. You send it yourself. Nothing is billed.",
       "We're not a law firm. We're not a legal aid clinic. We're not a lead-gen funnel. We're a thin layer of help between “something is wrong” and “I just signed a five-figure retainer for a problem I didn't fully understand.”",
     ],
   },
@@ -39,8 +39,8 @@ const sections = [
     marker: "§ III",
     title: "Why we don't charge",
     paragraphs: [
-      "Because the moment money changes hands, the conversation changes shape. When a lawyer is on the clock, the incentive is to keep the meter running. When a lawyer is donating time, the only incentive is to be useful. We wanted the second kind of conversation to exist for people who needed it.",
-      "Our volunteers are practicing attorneys with their own firms and clients. They aren't doing this for exposure or a referral pipeline. They're doing it because they remember being on the other side of a confusing legal situation themselves, and they know what an hour of clarity is worth when you're scared.",
+      "Because the first step in most everyday legal problems is a clear, well-written letter and a basic sense of your rights, and nobody should have to pay by the hour for that. A demand letter, a dispute letter, a records request: these follow patterns, and the patterns can be shared.",
+      "So we publish them, free, for anyone who needs them. If your problem turns out to be bigger than a letter, you'll at least walk into a lawyer's office knowing what to ask.",
     ],
   },
 ];
@@ -52,7 +52,7 @@ export default function AboutPage() {
     name: "I'm Frustrated dot Org",
     url: "https://imfrustrated.org",
     description:
-      "Volunteer attorney network providing free, no-pressure legal conversations to people facing legal frustration.",
+      "Publishes free legal information, self-help guides, tools, and template letters for people facing everyday legal problems. Not a law firm; does not give legal advice.",
     logo: "https://imfrustrated.org/logo.svg",
     contactPoint: {
       "@type": "ContactPoint",
@@ -96,10 +96,10 @@ export default function AboutPage() {
           </Reveal>
           <Reveal delay={4}>
             <p className="text-sage-2 text-lg leading-[1.7] max-w-2xl">
-              I&rsquo;m Frustrated dot Org exists for one reason: too many people make irreversible legal decisions because they couldn&rsquo;t afford to ask a question first. Lawyers are expensive. Initial consultations vary. Most people facing a legal problem feel like they have two options — pay a stranger by the hour to hear the same story they&rsquo;re afraid to tell, or do nothing and hope it works out. Both are bad.
+              I&rsquo;m Frustrated dot Org exists for one reason: too many people give up on a fair claim, or make an irreversible legal decision, because they didn&rsquo;t know where to start. Lawyers are expensive. Initial consultations vary. Most people facing a legal problem feel like they have two options — pay a stranger by the hour to hear the same story they&rsquo;re afraid to tell, or do nothing and hope it works out. Both are bad.
             </p>
             <p className="font-accent italic text-clay text-2xl md:text-[1.7rem] mt-7">
-              We built the third option.
+              We built the third option: free, self-help.
             </p>
           </Reveal>
         </section>
@@ -140,7 +140,7 @@ export default function AboutPage() {
                   >
                     info@imfrustrated.org
                   </a>
-                  {" "}with whatever&rsquo;s going on. There&rsquo;s no form, no portal, no triage chatbot. Just write to us the way you&rsquo;d write to a friend who happens to be an attorney, and a real person will read it.
+                  {" "}with questions about the site, a broken link, or a letter or guide you wish we had. We can&rsquo;t give legal advice about your situation; for that, contact a licensed attorney or your local legal aid office.
                 </p>
                 <p className="text-sage-2 text-base md:text-lg leading-[1.7]">
                   If you&rsquo;d like to know more about how the conversation actually goes, see{" "}

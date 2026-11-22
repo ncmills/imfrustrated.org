@@ -6,13 +6,13 @@ import { buildOpenGraph } from "@/lib/og";
 export const metadata: Metadata = {
   title: "How It Works | I'm Frustrated dot Org",
   description:
-    "How I'm Frustrated dot Org connects people with volunteer attorneys for a free, no-pressure conversation before hiring a lawyer. The 3-step process explained.",
+    "How I'm Frustrated dot Org's free self-help letters and tools work: find your letter, fill it in with your facts, send it yourself, and when to get a lawyer instead.",
   alternates: { canonical: "https://imfrustrated.org/how-it-works" },
   openGraph: buildOpenGraph({
     path: "/how-it-works",
     title: "How It Works | I'm Frustrated dot Org",
     description:
-      "How I'm Frustrated dot Org connects people with volunteer attorneys for a free, no-pressure conversation before hiring a lawyer.",
+      "How I'm Frustrated dot Org's free self-help letters and tools work: find it, fill it in, send it yourself.",
     // src/app/how-it-works/ has no colocated opengraph-image file.
     hasRouteImage: false,
   }),
@@ -32,21 +32,21 @@ const chapters = [
   {
     numeral: "II",
     n: "2",
-    eyebrow: "we read",
-    title: "We break it down",
+    eyebrow: "you fill it in",
+    title: "Fill it in with your facts",
     paragraphs: [
-      "A volunteer attorney with relevant experience reviews your situation and writes back. We'll explain where you actually stand legally, what your realistic options look like, and what questions you should be asking before you take any next step. If we think you have a strong case, we'll say so. If we think the situation is more complicated than you realize, we'll say that too.",
-      "What we won't do is sugarcoat it or upsell you on services. We're not trying to capture you as a client — we just want you to make your next decision from a place of clarity instead of panic. If your situation is urgent, we'll flag that. If it's not as urgent as you fear, we'll tell you that too.",
+      "Every template has blanks for the details that make it yours: names, dates, amounts, what was promised and what happened. Be specific and stick to facts you can back up. Dates, receipts, photos, and earlier emails make a letter much harder to ignore.",
+      "Read the whole letter before you use it. Remove anything that doesn't apply to you, and check your state's rules on deadlines and notice periods — they vary. The template is a starting point, not a finished answer.",
     ],
   },
   {
     numeral: "III",
     n: "3",
-    eyebrow: "you decide",
-    title: "You decide what's next",
+    eyebrow: "you send it",
+    title: "Send it yourself",
     paragraphs: [
-      "Once you have a clearer picture, the choice is yours. Some people walk away realizing they don't need a lawyer at all — the situation can be handled with a well-written letter, a phone call, or simply waiting it out. Some people walk away realizing they need to hire a specialist immediately, and they're now equipped with the right vocabulary and the right questions to interview attorneys.",
-      "Either way, you're no longer making decisions in the dark. You know what your options are, what the realistic outcomes look like, and what each path will cost you in time and money. That clarity is the whole point.",
+      "You send the letter yourself, by email, mail, or both. For anything important, use a method that proves delivery, like certified mail, and keep a copy of everything you send and every reply you get.",
+      "A lot of everyday problems end here: a clear, calm, well-documented letter is often all it takes. If it doesn't work, you've built a paper trail that will help with whatever comes next.",
     ],
   },
 ];
@@ -55,27 +55,27 @@ export default function HowItWorksPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Get a Free Legal Conversation Before Hiring a Lawyer",
+    name: "How to Use a Free Self-Help Legal Letter",
     description:
-      "Three-step process for getting a free, informed legal perspective from a volunteer attorney through I'm Frustrated dot Org.",
+      "Three steps to using I'm Frustrated dot Org's free self-help letters and tools: find the right one, fill it in with your facts, and send it yourself.",
     step: [
       {
         "@type": "HowToStep",
         position: 1,
-        name: "You Talk, We Listen",
-        text: "Email info@imfrustrated.org with what's going on — plain English, no legalese required. Tell us the situation, what you're worried about, and what outcome would feel like a win.",
+        name: "Find Your Letter or Tool",
+        text: "Browse the free letters and tools and pick the one that fits your situation, or request a draft self-help letter by email.",
       },
       {
         "@type": "HowToStep",
         position: 2,
-        name: "We Break It Down",
-        text: "A volunteer attorney reviews your situation and explains where you stand legally, what your options look like, and what questions you should be asking next.",
+        name: "Fill It In With Your Facts",
+        text: "Add your names, dates, amounts, and what happened. Remove anything that doesn't apply and check your state's deadlines.",
       },
       {
         "@type": "HowToStep",
         position: 3,
-        name: "You Decide What's Next",
-        text: "Walk away informed. Maybe you need to hire a lawyer, maybe you don't. Either way, you'll know what you're dealing with and won't get taken for a ride.",
+        name: "Send It Yourself",
+        text: "Send the letter by a method that proves delivery and keep copies. If a deadline is close or the stakes are high, talk to a lawyer.",
       },
     ],
   };
@@ -116,18 +116,16 @@ export default function HowItWorksPage() {
           </Reveal>
           <Reveal delay={3}>
             <p className="text-sage-2 text-lg md:text-xl leading-[1.6] max-w-2xl mx-auto mt-7">
-              Most legal problems start with one bad assumption: that you need to hire a lawyer to know
-              whether you need to hire a lawyer. You don&rsquo;t. Before you spend a dollar on
-              representation, you should have a clear, honest conversation with someone who actually
-              understands the law and isn&rsquo;t billing you by the minute.
+              Most everyday legal problems start the same way: with a letter. Asking for your deposit back,
+              disputing a charge, appealing a denial. You don&rsquo;t need to pay by the hour to write one.
+              You need to know what to say, what to include, and when a letter isn&rsquo;t enough.
             </p>
           </Reveal>
           <Reveal delay={4}>
             <p className="text-sage-2 text-lg leading-[1.6] max-w-2xl mx-auto mt-5">
-              That&rsquo;s what I&rsquo;m Frustrated dot Org is. We&rsquo;re a group of practicing
-              attorneys who volunteer time to give people a real, informed perspective on their situation —
-              the way a friend who happens to be a lawyer would, over a cup of coffee. There&rsquo;s no
-              fee, no contract, and no judgment. Here&rsquo;s exactly how it works.
+              That&rsquo;s what I&rsquo;m Frustrated dot Org is: free legal
+              information, self-help guides, tools, and template letters. It&rsquo;s legal information, not
+              legal advice. There&rsquo;s no fee, no account, and no judgment. Here&rsquo;s exactly how it works.
             </p>
           </Reveal>
         </section>
@@ -175,6 +173,25 @@ export default function HowItWorksPage() {
                     </article>
                   </Reveal>
                 ))}
+              </div>
+            </div>
+          </Reveal>
+        </section>
+
+        {/* ─── When to get a lawyer ─── */}
+        <section className="relative max-w-3xl mx-auto px-6 md:px-8 pb-12 md:pb-16">
+          <Reveal>
+            <div className="bg-card border border-rule rounded-2xl p-7 md:p-9">
+              <p className="font-accent italic text-clay text-lg mb-2">when a letter isn&rsquo;t enough</p>
+              <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.875rem] tracking-[-0.03em] mb-5">
+                When to get a lawyer instead
+              </h2>
+              <div className="space-y-4">
+                <p className="text-sage-2 text-base md:text-lg leading-[1.7]">
+                  Self-help has limits. Talk to a licensed attorney or your local legal aid office if you&rsquo;ve
+                  been sued or served, if a court date or filing deadline is close, if you&rsquo;re facing eviction,
+                  arrest, or the loss of a job or benefits, or if a lot of money or your safety is at stake.
+                </p>
               </div>
             </div>
           </Reveal>

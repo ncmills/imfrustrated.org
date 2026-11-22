@@ -7,7 +7,7 @@ import { privacySections } from "./sections";
 export const metadata: Metadata = {
   title: "Privacy | I'm Frustrated dot Org",
   description:
-    "What we collect, where it goes, and what we don't do with it. Plain-English privacy practice for the volunteer attorney intake form, letter library, and analytics.",
+    "What we collect, where it goes, and what we don't do with it. Plain-English privacy practice for the draft-letter form, letter library, and analytics.",
   alternates: { canonical: "https://imfrustrated.org/privacy" },
   openGraph: buildOpenGraph({
     path: "/privacy",
