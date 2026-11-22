@@ -25,7 +25,7 @@ const sections = [
     marker: "§ I",
     title: "What this service is",
     paragraphs: [
-      "I'm Frustrated dot Org is a volunteer attorney intake and a library of letter templates. The intake is a single email-based conversation with a practicing attorney who is donating their time. The letters are documents you can copy, edit, and send yourself. Neither is a lawyer-for-hire arrangement, and using the site does not create an attorney-client relationship with us or with any volunteer who responds to you.",
+      "I'm Frustrated dot Org publishes free legal information and self-help tools: a library of letter templates, guides, and a draft-letter service. The draft-letter service takes what you tell us and emails you a draft self-help letter you can edit and send yourself. None of it is legal advice, no one acts as your lawyer, and using the site does not create an attorney-client relationship with us or with anyone else.",
       "We are not a law firm. We do not appear in court on your behalf. We do not draft documents on your behalf. We do not sign retainer agreements. When the right next step is hiring a lawyer, we will tell you that, and you will hire your own.",
     ],
   },
@@ -40,9 +40,9 @@ const sections = [
   },
   {
     marker: "§ III",
-    title: "The volunteer attorney conversation",
+    title: "The draft-letter service",
     paragraphs: [
-      "When you submit the intake form, a practicing attorney reads your message and writes back. The conversation is informational. The attorney is not representing you, is not in an attorney-client relationship with you, and cannot be held to the duties of one based on the exchange. They are a person who happens to know the area giving you a more informed lens on it.",
+      "When you submit the draft-letter form, we prepare a draft self-help letter from the facts you give us and the laws we look up from official sources, and email it to you. The draft is legal information, not legal advice. No one acts as your lawyer, and no attorney-client relationship is formed.",
       "Anything you tell us in the intake form should be assumed to be a non-privileged communication. Do not send us anything you would not be willing to repeat under oath, and do not send us anything that needs to stay sealed for an active matter. If you are already represented in a matter, talk to your existing lawyer instead — we will not step on that relationship.",
     ],
   },
@@ -51,14 +51,14 @@ const sections = [
     title: "Disclaimers and liability",
     paragraphs: [
       "The site, the letter library, the intake conversation, and any tools linked from /free-tools are provided on an as-is basis without warranties of any kind, express or implied, including fitness for a particular purpose and non-infringement. We do not warrant that the information is current to the second or applicable to your specific facts.",
-      "To the maximum extent permitted by law, neither I'm Frustrated dot Org nor any volunteer attorney is liable for indirect, incidental, consequential, or punitive damages arising out of your use of the site or reliance on anything you read or receive through it. Where liability cannot be fully disclaimed, total aggregate liability is capped at one hundred US dollars.",
+      "To the maximum extent permitted by law, I'm Frustrated dot Org is not liable for indirect, incidental, consequential, or punitive damages arising out of your use of the site or reliance on anything you read or receive through it. Where liability cannot be fully disclaimed, total aggregate liability is capped at one hundred US dollars.",
     ],
   },
   {
     marker: "§ V",
     title: "Governing law and changes",
     paragraphs: [
-      "These terms are governed by the laws of the State of New York, where the operating not-for-profit is in formation. Any dispute arising out of these terms or your use of the site will be brought in the state or federal courts located in New York County, New York, and you consent to that forum.",
+      "These terms are governed by the laws of the State of New York. Any dispute arising out of these terms or your use of the site will be brought in the state or federal courts located in New York County, New York, and you consent to that forum.",
       "We will update these terms when the service changes — for example, when the corporate entity is formally incorporated and an EIN issues. Material changes will be noted with an updated date at the top of this page; continued use of the site after a change constitutes acceptance.",
     ],
   },
@@ -66,7 +66,7 @@ const sections = [
     marker: "§ VI",
     title: "Contact",
     paragraphs: [
-      "Questions about these terms go to info@imfrustrated.org. The service operator is I'm Frustrated dot Org, a New York not-for-profit initiative in formation.",
+      "Questions about these terms go to info@imfrustrated.org. The service operator is Imfrustrated.org, Inc., a New York not-for-profit corporation.",
     ],
   },
 ];

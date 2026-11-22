@@ -81,13 +81,13 @@ export default function IntakeForm() {
           Dear friend,
         </p>
         <p className="font-serif italic text-ink text-lg md:text-xl leading-[1.55]">
-          Thanks for writing. We&rsquo;ll read every word and reply within a day or two — no automated nonsense.
+          Thanks for writing. We&rsquo;ll try to email you a draft self-help letter you can edit and send yourself. If we can&rsquo;t help with your situation, we&rsquo;ll tell you. It&rsquo;s legal information, not legal advice; no one acts as your lawyer.
         </p>
         <p className="script text-[2rem] md:text-[2.25rem] leading-tight mt-7 -rotate-1">
           Talk soon,
         </p>
         <p className="text-muted-warm text-sm mt-2">
-          — the volunteer attorneys at I&rsquo;m Frustrated
+          — the team at I&rsquo;m Frustrated
           <span className="font-mono text-amber ml-1">.org</span>
         </p>
       </div>
@@ -203,7 +203,7 @@ export default function IntakeForm() {
       )}
 
       <p className="text-[0.72rem] text-muted-warm/80 text-center mt-6 leading-relaxed">
-        Free. Confidential. Not legal advice — just real human help finding your next step.
+        Free. This is legal information, not legal advice; no one acts as your lawyer and no attorney-client relationship is formed.
       </p>
     </form>
   );
