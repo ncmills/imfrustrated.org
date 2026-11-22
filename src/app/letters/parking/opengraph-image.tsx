@@ -139,7 +139,7 @@ export default async function Image() {
                   fontWeight: 500,
                 }}
               >
-                Friends who are also lawyers.
+                Free legal information. Not legal advice.
               </span>
             </div>
           </div>

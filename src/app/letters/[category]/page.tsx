@@ -28,7 +28,7 @@ export async function generateMetadata({
   if (letters.length === 0) return {};
   return {
     title: `${meta.label} Letter Templates | I'm Frustrated dot Org`,
-    description: `Free ${meta.label.toLowerCase()} letter templates that invoke real statutes — written by attorneys, free to use. ${meta.blurb}`,
+    description: `Free ${meta.label.toLowerCase()} letter templates that invoke real statutes — free to use, no account. ${meta.blurb}`,
     alternates: { canonical: `https://imfrustrated.org/letters/${meta.slug}` },
     openGraph: buildOpenGraph({
       path: `/letters/${meta.slug}`,
@@ -129,15 +129,21 @@ export default async function CategoryHubPage({
         <section className="relative max-w-6xl mx-auto px-6 md:px-8 pb-24">
           <Reveal>
             <div className="bg-bg-2 rounded-[32px] px-6 sm:px-10 md:px-14 py-12 md:py-14 text-center">
-              <p className="text-sage-2 text-lg leading-relaxed mb-7 max-w-xl mx-auto">
-                Need an attorney to look at your specific situation before you send a letter?
+              <p className="text-sage-2 text-lg leading-relaxed max-w-xl mx-auto">
+                Not sure which letter fits? Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
               </p>
-              <a href="mailto:info@imfrustrated.org" className="btn-clay mag">
-                info@imfrustrated.org
+              <p className="text-sage-2 text-sm leading-relaxed mt-3 mb-7 max-w-xl mx-auto">
+                If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
+              </p>
+              <Link href="/#contact" className="btn-clay mag">
+                Tell us what happened
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
-              </a>
+              </Link>
+              <p className="text-sage-2 text-xs italic leading-relaxed mt-8 max-w-xl mx-auto">
+                I&rsquo;m Frustrated dot Org publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
+              </p>
               <div className="mt-10 flex justify-center gap-6 text-sm flex-wrap text-sage-2">
                 <Link href="/letters" className="hover:text-clay transition-colors duration-300">All letters</Link>
                 <Link href="/how-it-works" className="hover:text-clay transition-colors duration-300">How it works</Link>

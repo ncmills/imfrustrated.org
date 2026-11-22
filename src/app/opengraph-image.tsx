@@ -54,7 +54,7 @@ export default async function Image() {
 
         {/* Subtitle */}
         <span style={{ fontSize: 26, color: "#5c6b62", fontFamily: "Hanken Grotesk", fontWeight: 500, marginTop: 22, textAlign: "center", maxWidth: 820 }}>
-          Friends who are also lawyers — plus free tools to resolve it yourself.
+          Free legal information and self-help tools to resolve it yourself. Not legal advice.
         </span>
       </div>
     ),

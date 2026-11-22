@@ -1,8 +1,10 @@
 # I'm Frustrated
 
-> Free guidance for people frustrated with bureaucratic, legal, and administrative systems.
+> Free legal information and self-help tools for people frustrated with bureaucratic, legal, and administrative systems.
 
-I'm Frustrated is a nonprofit resource for people navigating frustrating systems — appeals, denials, complaints, and self-represented advocacy — without an attorney.
+I'm Frustrated is a free resource for people navigating frustrating systems — appeals, denials, complaints, and self-represented advocacy — without an attorney.
+
+It publishes free legal information, guides, template letters, and self-help tools. It is not a law firm and does not give legal advice. Using it does not create an attorney-client relationship.
 
 ## Optional
 - [Sitemap (XML)](https://imfrustrated.org/sitemap.xml)
