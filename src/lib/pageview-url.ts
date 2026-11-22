@@ -20,7 +20,8 @@ export function filterQuery(search: string): string {
   return out.toString();
 }
 
-/** Filter the query of an absolute or relative URL string. Hash is preserved. */
+/** Filter the query of an absolute or relative URL string. Hash is preserved.
+ * Pre-pass only: before_send (sanitizeEvent) chooses the path from the allowlist. */
 export function sanitizePageviewUrl(url: string): string {
   if (typeof url !== "string" || !url) return url;
   const qi = url.indexOf("?");
@@ -33,12 +34,11 @@ export function sanitizePageviewUrl(url: string): string {
   return base + (kept ? "?" + kept : "") + hash;
 }
 
-// Letter pages name a personal situation in the slug (CAPTURE-GAPS-1121, IMF-PATH-REDACT-1121):
-// PostHog gets /letters/<category> only, e.g. /letters/landlord/<slug> -> /letters/landlord and
-// /letters/parking/<city>/<defense> -> /letters/parking. On letter paths the hash is dropped too
-// (it can carry a slug). Odd forms (encoded, uppercase, doubled slashes, dot segments) are
-// normalised first; an unknown category becomes /letters. Non-letter paths pass through.
+// Per-site configuration (imfrustrated). Templates come from src/app routes on origin/main (b263872).
+// A param segment is written ":name"; it matches [a-z0-9-]{1,120} only. Matching is exact.
 import type { LetterCategory } from "../data/letters/types";
+
+export const SAME_SITE_HOSTS: ReadonlySet<string> = new Set(["imfrustrated.org", "www.imfrustrated.org", "localhost"]);
 
 // Record<> makes tsc fail if a LetterCategory is added and not listed here.
 const LETTER_CATEGORIES: Record<LetterCategory | "parking", true> = {
@@ -47,22 +47,65 @@ const LETTER_CATEGORIES: Record<LetterCategory | "parking", true> = {
   consumer: true, parking: true,
 };
 
-function decodeFully(s: string): string {
-  let cur = s;
-  // Decode until stable (REDACT-FOLLOWUP-1121: %252e%252e etc.); the cap only stops pathological input.
-  for (let i = 0; i < 16; i++) {
+const STATIC_ROUTES = [
+  "/",
+  "/about",
+  "/blog",
+  "/faq",
+  "/free-tools",
+  "/how-it-works",
+  "/letters",
+  "/letters/parking",
+  "/letters/rss.xml",
+  "/privacy",
+  "/terms",
+];
+
+// Letter slugs and situations never leave: /letters/<category>/<slug> -> /letters/<category>.
+// parking is excluded here: its children are /letters/parking/:city[/:defense].
+const CATEGORY_ROUTES = (Object.keys(LETTER_CATEGORIES) as string[])
+  .filter((c) => c !== "parking")
+  .flatMap((c) => [
+    { pattern: "/letters/" + c, template: "/letters/" + c },
+    { pattern: "/letters/" + c + "/:slug", template: "/letters/" + c },
+  ]);
+
+export const ROUTE_TEMPLATES: ReadonlyArray<{ pattern: string; template: string }> = [
+  ...STATIC_ROUTES.map((p) => ({ pattern: p, template: p })),
+  ...CATEGORY_ROUTES,
+  { pattern: "/blog/:slug", template: "/blog/:slug" },
+  { pattern: "/letters/parking/:city", template: "/letters/parking/:city" },
+  { pattern: "/letters/parking/:city/:defense", template: "/letters/parking/:city/:defense" },
+];
+
+// ---------------------------------------------------------------------------
+// SHARED REDACT-ALLOWLIST helper: copy verbatim per repo; only ROUTE_TEMPLATES and SAME_SITE_HOSTS differ
+// (REDACT-ALLOWLIST-1121). The path sent to the vendor is CHOSEN from ROUTE_TEMPLATES, never made by
+// cutting pieces out of the raw string. Anything that does not normalise cleanly and match exactly
+// becomes the fixed string "/other". Hash is always dropped; query keeps POSTHOG_QUERY_ALLOWLIST keys
+// only; `title` becomes the template; cross-site referrers keep origin only. Full paths stay
+// first-party (Vercel request logs + Vercel Web Analytics).
+// ---------------------------------------------------------------------------
+
+export const OTHER_PATH = "/other";
+const PARAM_SEGMENT = /^[a-z0-9-]{1,120}$/;
+const MAX_DECODE_ROUNDS = 8;
+// Control chars, any whitespace, ";", a leftover "%", "?" or "#" inside the decoded path part -> /other.
+const FORBIDDEN_IN_PATH = /[\u0000-\u001f\u007f-\u009f\s;%?#]/u;
+
+/** Normalised segments of a bare path, or null when it must become /other. */
+function normalisedSegments(path: string): string[] | null {
+  let cur = path;
+  let stable = false;
+  for (let i = 0; i < MAX_DECODE_ROUNDS; i++) {
     let next: string;
-    try { next = decodeURIComponent(cur); } catch { break; }
-    if (next === cur) break;
+    try { next = decodeURIComponent(cur); } catch { return null; }
+    if (next === cur) { stable = true; break; }
     cur = next;
   }
-  return cur;
-}
-
-/** Normalised path segments (decoded, lowercased, no empty or dot segments). */
-function normSegments(path: string): string[] {
+  if (!stable || FORBIDDEN_IN_PATH.test(cur)) return null;
   const out: string[] = [];
-  for (const seg of decodeFully(path).toLowerCase().replace(/\\/g, "/").split("/")) {
+  for (const seg of cur.toLowerCase().replace(/\\/g, "/").split("/")) {
     if (!seg || seg === ".") continue;
     if (seg === "..") { out.pop(); continue; }
     out.push(seg);
@@ -70,51 +113,75 @@ function normSegments(path: string): string[] {
   return out;
 }
 
-/** "/letters/<category>" or "/letters" if `path` (no query/hash) is a letter path, else null. */
-export function letterPathFor(path: string): string | null {
-  const segs = normSegments(path);
-  if (segs[0] !== "letters") {
-    // A path that starts under /letters but escapes it with dot segments (e.g. /letters/%252e%252e/landlord/slug)
-    // is still a letter path: send only /letters (REDACT-FOLLOWUP-1121).
-    const first = decodeFully(path).toLowerCase().replace(/\\/g, "/").split("/").find((x) => x && x !== ".");
-    return first === "letters" ? "/letters" : null;
+const COMPILED_TEMPLATES = ROUTE_TEMPLATES.map((t) => ({
+  segs: t.pattern.split("/").filter(Boolean),
+  template: t.template,
+}));
+
+/** Always a template string from ROUTE_TEMPLATES, or "/other". Input is a bare path (no query/hash). */
+export function templateForPath(path: string): string {
+  if (typeof path !== "string") return OTHER_PATH;
+  const segs = normalisedSegments(path);
+  if (!segs) return OTHER_PATH;
+  for (const t of COMPILED_TEMPLATES) {
+    if (t.segs.length !== segs.length) continue;
+    let ok = true;
+    for (let i = 0; i < segs.length && ok; i++) {
+      ok = t.segs[i].startsWith(":") ? PARAM_SEGMENT.test(segs[i]) : t.segs[i] === segs[i];
+    }
+    if (ok) return t.template;
   }
-  if (segs.length === 1) return "/letters";
-  if (segs.length === 2 && segs[1] === "rss.xml") return "/letters/rss.xml";
-  return Object.prototype.hasOwnProperty.call(LETTER_CATEGORIES, segs[1]) ? "/letters/" + segs[1] : "/letters";
+  return OTHER_PATH;
 }
 
-/** Bare path with optional query/hash: letter paths are cut and lose their hash. */
-export function redactLetterPath(path: string): string {
-  if (typeof path !== "string" || !path) return path;
-  const qi = path.search(/[?#]/);
-  const p = qi === -1 ? path : path.slice(0, qi);
-  const rest = qi === -1 ? "" : path.slice(qi);
-  const cut = letterPathFor(p);
-  if (cut === null) {
-    // A hash that itself names a letter path (e.g. "#/letters/landlord/slug") is dropped.
-    const hi = rest.indexOf("#");
-    if (hi !== -1 && /letters/i.test(decodeFully(rest.slice(hi)))) return p + rest.slice(0, hi);
-    return path;
-  }
-  const query = rest.startsWith("?") ? rest.split("#")[0] : "";
-  return cut + query;
+/** Split raw "path?query#hash"; hash discarded. */
+function splitPathQuery(s: string): { path: string; query: string } {
+  const hi = s.indexOf("#");
+  const noHash = hi === -1 ? s : s.slice(0, hi);
+  const qi = noHash.indexOf("?");
+  return qi === -1 ? { path: noHash, query: "" } : { path: noHash.slice(0, qi), query: noHash.slice(qi + 1) };
 }
 
-/** Redact the letter path of an absolute URL or a bare path; other urls pass through. */
-export function redactLetterUrl(url: string): string {
+/** Template + allowlisted query for a bare path (optionally carrying query/hash). */
+export function sanitizePath(path: string): string {
+  if (typeof path !== "string") return OTHER_PATH;
+  const { path: p, query } = splitPathQuery(path);
+  const kept = filterQuery(query);
+  return templateForPath(p) + (kept ? "?" + kept : "");
+}
+
+const ABS_URL_RE = /^([a-z][a-z0-9+.-]*):\/\/([^/?#\\]*)(.*)$/i;
+
+function parseAbsolute(url: string): { origin: string; host: string; rest: string } | null {
+  const m = url.match(ABS_URL_RE);
+  if (!m) return null;
+  const scheme = m[1].toLowerCase();
+  const authority = m[2].slice(m[2].lastIndexOf("@") + 1).toLowerCase(); // userinfo never leaves
+  if (!/^[a-z0-9.-]+(:[0-9]{1,5})?$/.test(authority)) return null;
+  return { origin: scheme + "://" + authority, host: authority.split(":")[0], rest: m[3] };
+}
+
+/**
+ * Sanitise an absolute URL or a bare path.
+ * originOnlyIfCrossSite (referrers): a host outside sameSiteHosts keeps scheme+host only.
+ * "$direct" (PostHog's no-referrer marker) passes through; anything unparseable -> "/other".
+ */
+export function sanitizeUrl(
+  url: string,
+  sameSiteHosts: ReadonlySet<string> = SAME_SITE_HOSTS,
+  originOnlyIfCrossSite = false,
+): string {
   if (typeof url !== "string" || !url) return url;
-  const m = url.match(/^([a-z][a-z0-9+.-]*:\/\/[^/?#]*)(.*)$/i);
-  return m ? m[1] + redactLetterPath(m[2]) : redactLetterPath(url);
+  if (url === "$direct") return url;
+  const abs = parseAbsolute(url);
+  if (abs) {
+    if (originOnlyIfCrossSite && !sameSiteHosts.has(abs.host)) return abs.origin;
+    return abs.origin + sanitizePath(abs.rest || "/");
+  }
+  if (url.startsWith("/") && !url.startsWith("//")) return sanitizePath(url);
+  return OTHER_PATH;
 }
 
-/** Hash fragments never reach the vendor on any URL/path prop (IMF-PATH-REDACT-2). */
-export function stripHash(url: string): string {
-  const hi = url.indexOf("#");
-  return hi === -1 ? url : url.slice(0, hi);
-}
-
-/** URL- and path-valued PostHog properties that can carry the page path. */
 export const POSTHOG_URL_PROPS = [
   "$current_url",
   "$referrer",
@@ -123,6 +190,7 @@ export const POSTHOG_URL_PROPS = [
   "$session_entry_url",
   "$initial_current_url",
 ] as const;
+export const POSTHOG_REFERRER_PROPS: ReadonlySet<string> = new Set(["$referrer", "$initial_referrer"]);
 export const POSTHOG_PATH_PROPS = [
   "$pathname",
   "$prev_pageview_pathname",
@@ -130,24 +198,26 @@ export const POSTHOG_PATH_PROPS = [
   "$initial_pathname",
 ] as const;
 
-/** Apply query allowlist + letter-path redaction to an event's properties, in place.
- * posthog-js adds `title` (document.title) to every $pageview; letter titles name the
- * situation, so on a letter page the title becomes the cut path. */
+/** Template of the page an event was captured on (used for `title`). */
+function currentTemplate(props: Record<string, unknown>): string {
+  const cur = [props.$current_url, props.$pathname].find((v) => typeof v === "string") as string | undefined;
+  if (!cur) return OTHER_PATH;
+  const abs = parseAbsolute(cur);
+  if (!abs && !(cur.startsWith("/") && !cur.startsWith("//"))) return OTHER_PATH;
+  return templateForPath(splitPathQuery(abs ? abs.rest || "/" : cur).path);
+}
+
+/** Allowlist every url/path prop and `title`, in place. */
 export function sanitizeEventProps(props: Record<string, unknown> | undefined): void {
   if (!props) return;
-  if (typeof props.title === "string") {
-    const cur = [props.$current_url, props.$pathname].find((v) => typeof v === "string") as string | undefined;
-    const path = cur ? cur.replace(/^[a-z][a-z0-9+.-]*:\/\/[^/?#]*/i, "").split(/[?#]/)[0] : "";
-    const cut = path ? letterPathFor(path) : null;
-    if (cut !== null) props.title = cut;
-  }
+  if ("title" in props) props.title = currentTemplate(props);
   for (const k of POSTHOG_URL_PROPS) {
     const v = props[k];
-    if (typeof v === "string") props[k] = stripHash(redactLetterUrl(sanitizePageviewUrl(v)));
+    if (typeof v === "string") props[k] = sanitizeUrl(v, SAME_SITE_HOSTS, POSTHOG_REFERRER_PROPS.has(k));
   }
   for (const k of POSTHOG_PATH_PROPS) {
     const v = props[k];
-    if (typeof v === "string") props[k] = stripHash(redactLetterPath(v));
+    if (typeof v === "string") props[k] = sanitizePath(v);
   }
 }
 
@@ -157,4 +227,27 @@ export function sanitizeEvent(event: { properties?: Record<string, unknown>; $se
   sanitizeEventProps(event.properties);
   sanitizeEventProps(event.$set);
   sanitizeEventProps(event.$set_once);
+}
+
+// Thin wrappers kept for existing callers.
+/** Bare path (optional query/hash) -> template + allowlisted query. */
+export function redactPath(path: string): string {
+  if (typeof path !== "string" || !path) return path;
+  return sanitizePath(path);
+}
+/** Absolute URL or bare path -> origin + template + allowlisted query. */
+export function redactUrlPath(url: string): string {
+  return sanitizeUrl(url);
+}
+// ---------------------------------------------------------------------------
+// end SHARED REDACT-ALLOWLIST helper
+// ---------------------------------------------------------------------------
+
+// Legacy export names kept for existing callers and tests.
+export const redactLetterPath = redactPath;
+export const redactLetterUrl = redactUrlPath;
+/** Hash fragments never reach the vendor. */
+export function stripHash(url: string): string {
+  const hi = url.indexOf("#");
+  return hi === -1 ? url : url.slice(0, hi);
 }
