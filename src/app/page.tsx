@@ -342,7 +342,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Offering 05 — the human option: Ask a Volunteer Attorney */}
+          {/* Offering 05 — draft letter by email */}
           <Reveal delay={2}>
             <a href="#contact" className="group block mt-5 rounded-[24px] bg-sage text-bg p-8 md:p-9 hover:bg-evergreen transition-colors duration-300">
               <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
