@@ -22,22 +22,22 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What does I'm Frustrated dot Org actually do?",
     answer:
-      "We connect people with volunteer attorneys for a free, no-pressure conversation about a legal situation. We don't represent you. We won't be your lawyers. We'll listen to your situation, explain where you stand legally, walk you through your realistic options, and help you decide what to do next — whether that means hiring an attorney, handling it yourself, or something in between.",
+      "We publish free legal information and self-help tools: plain-English guides, template letters, and simple tools for everyday legal problems. You find the letter or guide that fits your situation, fill it in with your own facts, and send it yourself. We don't represent anyone, we don't give legal advice, and no one acts as your lawyer.",
   },
   {
     question: "How much does it cost?",
     answer:
-      "Nothing. There's no fee, no retainer, no invoice, and no obligation to do anything afterward. The volunteer attorneys donate their time because they believe people shouldn't have to spend money to find out whether they need to spend money on a lawyer.",
+      "Nothing. There's no fee, no account, no invoice, and no obligation to do anything afterward. The letters, guides, and tools are free because the first step in most everyday legal problems shouldn't cost money.",
   },
   {
-    question: "Who are the attorneys?",
+    question: "What if no letter fits?",
     answer:
-      "Practicing lawyers who volunteer their time. Backgrounds vary — some focus on small business and contracts, some on landlord-tenant and housing, some on family law, some on estate planning, some on consumer protection. When you reach out, we route your situation to whoever has relevant experience.",
+      "If you can't find a letter that fits, you can tell us what happened using the form on our home page, and we'll try to email you a draft self-help letter you can edit and send yourself. If we can't help with your situation, we'll tell you. This is legal information, not legal advice.",
   },
   {
     question: "What's the catch?",
     answer:
-      "There isn't one. We're not a lead-generation funnel for a law firm. We don't sell your information. We're not trying to sign you up for anything. The model is simple: experienced attorneys donate a few hours a week to help people who'd otherwise be making big decisions in the dark. The catch, if there is one, is that we can't always respond instantly — we're volunteers, not a 24/7 hotline.",
+      "There isn't one. We're not a lead-generation funnel for a law firm. We don't sell your information. We're not trying to sign you up for anything. The catch, if there is one, is that self-help has limits: a letter is a good first step, but some situations need a lawyer, and our guides say when.",
   },
   {
     question: "Will you represent me in court?",
@@ -47,7 +47,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "Is this legal advice?",
     answer:
-      "Technically, no. We provide informational guidance and a perspective from someone who understands the law. We're upfront about this in our disclaimers because the formal definition of legal advice requires an attorney-client relationship, which we deliberately don't form. In practice, you'll get a much clearer picture of your situation than you would from Google or a friend who watches a lot of legal TV.",
+      "No. Everything on this site, including any draft letter we email you, is general legal information and a self-help tool, not legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.",
   },
   {
     question: "What kinds of problems do you help with?",
@@ -57,12 +57,12 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "Can you help me write a will or plan my estate?",
     answer:
-      "Yes, in two different ways depending on what you need. If your situation is simple — a basic will leaving things to obvious people, no contested family dynamics, no special-needs beneficiaries, no complicated business interests — we built a free self-help tool at idonthaveawill.com that lets you draft a state-specific will in about ten minutes, entirely in your browser. No account, no fees, no data stored. If your situation is more complicated than that, email us and a volunteer attorney with estate planning experience will help you think through what you actually need before you go pay an estate planning specialist.",
+      "If your situation is simple — a basic will leaving things to obvious people, no contested family dynamics, no special-needs beneficiaries, no complicated business interests — idonthaveawill.com is a free self-help tool (separate from I'm Frustrated dot Org, not owned by us) that lets you draft a state-specific will in about ten minutes, entirely in your browser. No account, no fees, no data stored. If your situation is more complicated than that, talk to an estate planning attorney.",
   },
   {
     question: "I was denied Social Security disability — can you help?",
     answer:
-      "Yes, and don't take the denial as the final word — a large share of disability cases that ultimately win are won on appeal. Two ways we can help. First, we built a set of free tools at aissdi.com that turn public SSA data into plain answers: estimate the approval odds for a claim like yours, look up the approval rate of the administrative law judge assigned to your hearing, and — if you've already been denied — weigh your appeal options at aissdi.com/appeal-decision, which lays out the Appeals Council's actual remand rates and the top reasons cases get sent back. No account, built for claimants representing themselves and for the attorneys who help them. Second, if you want to think through those options with a person before you sign with a representative who takes a cut of your back pay, email us and a volunteer attorney can walk you through it.",
+      "Don't take the denial as the final word — a large share of disability cases that ultimately win are won on appeal. AISSDI (aissdi.com) is a set of free tools, separate from I'm Frustrated dot Org and not owned by us, that turn public SSA data into plain answers: estimate the approval odds for a claim like yours, look up the approval rate of the administrative law judge assigned to your hearing, and — if you've already been denied — weigh your appeal options at aissdi.com/appeal-decision, which lays out the Appeals Council's actual remand rates and the top reasons cases get sent back. No account, built for claimants representing themselves and for the attorneys who help them. Appeal deadlines are short, so if one is close, talk to a lawyer or a legal aid office.",
   },
   {
     question: "How fast will I hear back?",
@@ -70,14 +70,14 @@ const FAQS: { question: string; answer: string }[] = [
       "Usually within a few days. Volunteers have day jobs, so we don't promise an immediate response — but we try to get to every email within a week. If your situation is genuinely time-sensitive (a court date, an eviction notice, a contract deadline), say so in your first email and we'll triage accordingly.",
   },
   {
-    question: "Can I share what we discussed?",
+    question: "Can I change the letters?",
     answer:
-      "Yes. There's no NDA. The conversation is for you to use however you want. If you decide to hire an attorney later, feel free to tell them what we discussed — it'll save you time and probably money.",
+      "Yes, and you should. The templates are starting points. Fill them in with your own facts, remove anything that doesn't apply, and keep a copy of whatever you send. If you later hire an attorney, bring your letters and any replies with you.",
   },
   {
     question: "What if I'm in a different state?",
     answer:
-      "Reach out anyway. While individual attorneys are licensed in specific states, the legal frameworks for many common issues are similar across states, and we can usually still give you a meaningful perspective. If your situation is jurisdiction-specific in a way we can't help with, we'll tell you.",
+      "Many everyday legal problems work similarly across states, so most of our letters and guides are written to be useful anywhere. Some rules (deadlines, deposit limits, notice periods) vary by state, so check your state's rules before you send anything, and talk to a lawyer licensed in your state if you're unsure.",
   },
 ];
 
