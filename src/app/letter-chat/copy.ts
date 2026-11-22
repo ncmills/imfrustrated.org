@@ -8,6 +8,11 @@ export const DISCLAIMER_V = "v1";
 export const DISCLAIMER =
   "I'm Frustrated offers free legal information and self-help tools. We help you write your own letter. We are not your lawyers, nothing here is legal advice, and no attorney reviews your letter. You send it yourself.";
 
+// CONTROL REVIEWS-1121-2030 (2)d: always visible on /letter-chat (paused or open), above the chat.
+// Same plain words as the site's other disclaimers ("We are not a law firm", "not legal advice").
+export const PAGE_NOTICE =
+  "This is a self-help tool. I'm Frustrated is not a law firm, and nothing on this page is legal advice.";
+
 // ACK_SAFETY, verbatim from second-nick ops/imf_letter_pipeline.py.
 export const ACK_SAFETY =
   "I'm Frustrated shares free information and letter templates. We aren't your lawyers, and nothing we send is legal advice.";

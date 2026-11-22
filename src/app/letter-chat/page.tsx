@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PAUSED_LINE } from "./copy";
+import { PAGE_NOTICE, PAUSED_LINE } from "./copy";
 import { LetterChat } from "./LetterChat";
 
 // Beta-only, never indexed (robots noindex,nofollow). Own minimal header on purpose: the shared site header is not used here.
@@ -30,6 +30,9 @@ export default async function LetterChatPage({ searchParams }: Props) {
         </Link>
       </header>
       <main className="mx-auto max-w-2xl px-4 py-8">
+        <p className="mb-6 rounded border px-3 py-2 text-sm" role="note" data-testid="letter-chat-notice">
+          {PAGE_NOTICE}
+        </p>
         {enabled ? (
           <LetterChat beta={beta} />
         ) : (

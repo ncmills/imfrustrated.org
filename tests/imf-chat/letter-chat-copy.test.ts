@@ -75,3 +75,20 @@ test("U8-C: the email opt-in label + help text are the approved text", () => {
     "Email me when it's ready (optional). We'll send one email with your private link, then delete your address when your case is deleted.",
   );
 });
+
+// CONTROL REVIEWS-1121-2030 (2)d: /letter-chat visibly says self-help, not legal advice, not a law firm.
+test("(2)d: PAGE_NOTICE says self-help, not a law firm, not legal advice — and passes the banned-words check", () => {
+  assert.match(C.PAGE_NOTICE, /self-help/i);
+  assert.match(C.PAGE_NOTICE, /not a law firm/i);
+  assert.match(C.PAGE_NOTICE, /not legal advice|nothing [^.]* is legal advice/i);
+  assert.equal(banned(C.PAGE_NOTICE), null);
+});
+
+test("(2)d: page.tsx renders PAGE_NOTICE in <main> before the open/paused branch, so both states show it", () => {
+  const page = readFileSync(join(DIR, "page.tsx"), "utf8");
+  const main = page.indexOf("<main");
+  const notice = page.indexOf("{PAGE_NOTICE}");
+  const branch = page.indexOf("{enabled ?");
+  assert.ok(main > 0 && main < notice && notice < branch, "PAGE_NOTICE must render inside <main>, above {enabled ? ...}");
+  assert.equal(page.match(/\{PAGE_NOTICE\}/g)?.length, 1);
+});
