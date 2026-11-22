@@ -5,6 +5,7 @@
 // stopped by the crisis screen or a safety chip never counts against the IP (F6).
 import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { CRISIS_CARD, RESOURCES_LINE, crisisTierTurns } from "./crisis";
+import { chatEnabled, chatIsPublic } from "./flags";
 import { redact } from "./redact";
 import type { CaseRow, ChatStore } from "./store";
 
@@ -86,8 +87,8 @@ export const log = (event: string, caseId?: string) =>
   console.log("[imf-chat]", JSON.stringify(caseId ? { event, case: caseId } : { event }));
 
 export function gate(req: ApiIn, body: Record<string, unknown>, env: Env): ApiOut | null {
-  if (env.IMF_CHAT_ENABLED?.trim() !== "1") return err(503, "chat_paused");
-  if (env.IMF_CHAT_PUBLIC?.trim() === "1") return null;
+  if (!chatEnabled(env)) return err(503, "chat_paused");
+  if (chatIsPublic(env)) return null;
   const beta = req.header("x-imf-beta") ?? (typeof body.beta === "string" ? body.beta : null);
   return secretEq(beta, env.IMF_CHAT_BETA_TOKEN?.trim()) ? null : err(403, "beta_only");
 }
