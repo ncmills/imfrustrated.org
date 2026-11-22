@@ -65,9 +65,16 @@ test("no banned phrases in src/ or public/", () => {
   assert.equal(found.length, 0, "banned wording found:\n" + found.join("\n"));
 });
 
+// The /privacy body lives in src/app/privacy/sections.ts (privacySections()), not page.tsx, so the
+// guard reads every source file that renders the page's text (CONTROL SWEEP-1122-1555 (7)).
+const LEGAL_NAME_SOURCES = {
+  privacy: ["src/app/privacy/page.tsx", "src/app/privacy/sections.ts"],
+  terms: ["src/app/terms/page.tsx"],
+};
+
 test("legal name present in privacy and terms", () => {
-  for (const page of ["privacy", "terms"]) {
-    const src = readFileSync(join(root, "src/app", page, "page.tsx"), "utf8");
+  for (const [page, files] of Object.entries(LEGAL_NAME_SOURCES)) {
+    const src = files.map((f) => readFileSync(join(root, f), "utf8")).join("\n");
     assert.ok(src.includes("Imfrustrated.org, Inc."), `${page} missing legal name`);
   }
 });
