@@ -113,8 +113,7 @@ export default function RootLayout({
             "email": "info@imfrustrated.org",
             "areaServed": "US",
             "priceRange": "Free",
-            "serviceType": "Legal Guidance and Referrals",
-            "nonprofitStatus": "Nonprofit"
+            "serviceType": "Legal Guidance and Referrals"
           }) }}
         />
         <script
@@ -174,7 +173,6 @@ export default function RootLayout({
             "name": "I'm Frustrated dot Org",
             "url": "https://imfrustrated.org",
             "email": "info@imfrustrated.org",
-            "nonprofitStatus": "Nonprofit501c3",
             "sameAs": ["https://idonthaveawill.com", "https://aissdi.com", "https://doppelwriter.com"],
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
