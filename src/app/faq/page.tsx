@@ -67,7 +67,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "How fast will I hear back?",
     answer:
-      "Usually within a few days. Volunteers have day jobs, so we don't promise an immediate response — but we try to get to every email within a week. If your situation is genuinely time-sensitive (a court date, an eviction notice, a contract deadline), say so in your first email and we'll triage accordingly.",
+      "Usually within a few days. We don't promise an immediate response, but we try to answer every email within a week. If your situation is time-sensitive (a court date, an eviction notice, a contract deadline), don't wait on us: contact a licensed attorney or your local legal aid office now.",
   },
   {
     question: "Can I change the letters?",

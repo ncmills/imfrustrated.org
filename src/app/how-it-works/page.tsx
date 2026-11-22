@@ -110,7 +110,7 @@ export default function HowItWorksPage() {
           <Reveal delay={2}>
             <p className="font-accent italic text-xl text-clay">it&rsquo;s simpler than you think</p>
             <h1 className="font-disp font-semibold text-sage text-[2.4rem] sm:text-5xl md:text-6xl leading-[1.04] tracking-[-0.03em] mt-2">
-              The conversation you have
+              The letter you send
               <br className="hidden sm:block" /> before you hire a lawyer.
             </h1>
           </Reveal>
@@ -204,11 +204,11 @@ export default function HowItWorksPage() {
               <div className="max-w-xl mx-auto">
                 <p className="font-accent italic text-xl text-clay-soft">chapter one starts with an email</p>
                 <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight mt-1.5">
-                  Ready to talk it out?
+                  Not sure which letter fits?
                 </h2>
                 <p className="text-[#cdd6cd] text-lg leading-relaxed mt-4 mb-8">
-                  No commitment, no invoice, no judgment. Just an honest conversation with someone who
-                  understands the law and actually wants to help.
+                  Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send
+                  yourself (legal information, not legal advice).
                 </p>
                 <a href="mailto:info@imfrustrated.org" className="btn-clay mag">
                   info@imfrustrated.org

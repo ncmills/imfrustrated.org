@@ -37,8 +37,8 @@ const sections = [
     marker: "§ II",
     title: "What we're not",
     paragraphs: [
-      "We're not your lawyers. We don't take cases. We don't go to court. We don't draft contracts on your behalf. We don't form attorney-client relationships, and the conversation we have with you isn't legal advice in the formal sense. (For the same reason a hospital cafeteria isn't a hospital.)",
-      "We're also not free legal aid. There are excellent organizations that handle legal aid for people who qualify financially, and we'll point you toward them when that's the right fit. What we offer is different — a conversation, not representation.",
+      "We're not your lawyers. We don't take cases. We don't go to court. We don't draft contracts on your behalf. We don't form attorney-client relationships, and nothing here is legal advice. (For the same reason a hospital cafeteria isn't a hospital.)",
+      "We're also not free legal aid. There are excellent organizations that handle legal aid for people who qualify financially, and we'll point you toward them when that's the right fit. What we offer is different — free self-help letters, guides and tools, not representation.",
     ],
   },
   {
@@ -173,7 +173,7 @@ export default function AboutPage() {
                   {" "}with questions about the site, a broken link, or a letter or guide you wish we had. We can&rsquo;t give legal advice about your situation; for that, contact a licensed attorney or your local legal aid office.
                 </p>
                 <p className="text-sage-2 text-base md:text-lg leading-[1.7]">
-                  If you&rsquo;d like to know more about how the conversation actually goes, see{" "}
+                  If you&rsquo;d like to know more about how the letters and tools work, see{" "}
                   <Link href="/how-it-works" className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300">
                     How It Works
                   </Link>
@@ -199,7 +199,7 @@ export default function AboutPage() {
                 Reach out. We read every word.
               </p>
               <p className="text-[#cdd6cd] text-lg leading-relaxed max-w-xl mx-auto mb-8">
-                The first conversation is the most important one, and it&rsquo;s the one we exist for.
+                Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
               </p>
               <a href="mailto:info@imfrustrated.org" className="btn-clay">
                 info@imfrustrated.org

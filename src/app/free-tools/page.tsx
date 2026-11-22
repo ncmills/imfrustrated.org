@@ -305,10 +305,10 @@ export default function FreeToolsPage() {
                 </span>
                 <p className="text-sage-2/80 text-xs mt-7 leading-relaxed">
                   AISSDI provides research and statistics, not legal advice, and using it does not create an
-                  attorney-client relationship. If you&rsquo;ve been denied and want to talk through your
-                  appeal options first, email{" "}
-                  <span className="text-sage">info@imfrustrated.org</span> for a free conversation with a
-                  volunteer attorney.
+                  attorney-client relationship. If you&rsquo;ve been denied and want help with a first
+                  step, email{" "}
+                  <span className="text-sage">info@imfrustrated.org</span> and we&rsquo;ll try to email you a
+                  draft self-help letter to send yourself (legal information, not legal advice).
                 </p>
               </a>
             </Reveal>
