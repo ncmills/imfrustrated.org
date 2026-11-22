@@ -3,19 +3,22 @@
 // store: rows of (path, day, count). No visitor id, IP, user agent, query or referrer is
 // ever stored or logged.
 
-const SLUG = "[a-z0-9][a-z0-9-]{0,119}";
-const STATIC = ["about", "blog", "faq", "free-tools", "how-it-works", "letters", "letters/parking", "privacy", "terms"];
+import published from "@/generated/published-paths.json";
 
-// Real public routes (src/app page.tsx tree). Concrete slugs are counted as-is because the
-// counts never leave our store.
-const ROUTES: ReadonlyArray<RegExp> = [
-  /^\/$/,
-  ...STATIC.map((p) => new RegExp("^/" + p.replace(/[-/]/g, (c) => "\\" + c) + "$")),
-  new RegExp(`^/blog/${SLUG}$`),
-  new RegExp(`^/letters/${SLUG}$`),
-  new RegExp(`^/letters/${SLUG}/${SLUG}$`),
-  new RegExp(`^/letters/parking/${SLUG}/${SLUG}$`),
-];
+// Static public routes (src/app page.tsx tree): a fixed list.
+const STATIC: ReadonlySet<string> = new Set([
+  "/",
+  ...["about", "blog", "faq", "free-tools", "how-it-works", "letters", "letters/parking", "privacy", "terms"].map((p) => "/" + p),
+]);
+
+// Published concrete paths (DRV SWEEP-1121-2115 (2)): only pages the build really publishes, from
+// src/generated/published-paths.json (scripts/gen-published-paths.ts, prebuild). Every template's
+// params are trailing, so "/letters/:category/:slug" + "airline/x" -> "/letters/airline/x".
+const PUBLISHED: ReadonlySet<string> = new Set(
+  Object.entries(published as Record<string, string[]>).flatMap(([tpl, slugs]) =>
+    slugs.map((s) => tpl.slice(0, tpl.indexOf(":")) + s),
+  ),
+);
 
 const MAX_RAW = 512;
 
@@ -34,7 +37,7 @@ function decodeStable(s: string): string | null {
 /**
  * Server-side normaliser. Returns the path to count, or null to count nothing.
  * Drops: non-strings, decode errors, whitespace, control chars, ; % ? # (after decoding),
- * backslashes, and anything that is not one of the site's real routes.
+ * backslashes, and anything that is not exactly a static route or a published concrete path.
  */
 export function pathToCount(raw: unknown): string | null {
   if (typeof raw !== "string" || !raw || raw.length > MAX_RAW || raw[0] !== "/") return null;
@@ -49,7 +52,7 @@ export function pathToCount(raw: unknown): string | null {
     out.push(seg);
   }
   const path = "/" + out.join("/");
-  return ROUTES.some((re) => re.test(path)) ? path : null;
+  return STATIC.has(path) || PUBLISHED.has(path) ? path : null;
 }
 
 /** Today's date (UTC) as YYYY-MM-DD. */
