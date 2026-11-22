@@ -6,7 +6,7 @@ import { buildOpenGraph } from "@/lib/og";
 export const metadata: Metadata = {
   title: "Terms | I'm Frustrated dot Org",
   description:
-    "Plain-English terms of use for I'm Frustrated dot Org: who we are, what the service does, what it doesn't, and the legal posture around the letter library and volunteer attorney intake.",
+    "Plain-English terms of use for I'm Frustrated dot Org: who we are, what the service does, what it doesn't, and the legal posture around the letter library and the draft-letter service.",
   alternates: { canonical: "https://imfrustrated.org/terms" },
   openGraph: buildOpenGraph({
     path: "/terms",
@@ -34,7 +34,7 @@ const sections = [
     title: "The letter templates",
     paragraphs: [
       "Every letter in the library cites real federal or state statutes and reflects the regulatory framework that was in force at the time the template was published or last updated. The cite-verification standard is primary-source: federal cites are verified against Cornell Legal Information Institute or the relevant agency's official .gov publication, and state cites are verified against the official state legislature site or agency .gov. We do not freehand statutes from training data; templates that cannot be verified are not published.",
-      "That said, statutes change. Court decisions reinterpret them. The facts of your situation can flip which statute applies. The templates are informational starting points, not legal advice tailored to your circumstances. If a letter does not resolve your problem, the next move is usually to talk to a lawyer in your state — that is exactly what the intake form is for.",
+      "That said, statutes change. Court decisions reinterpret them. The facts of your situation can flip which statute applies. The templates are informational starting points, not legal advice tailored to your circumstances. If a letter does not resolve your problem, the next move is usually to talk to a licensed attorney or your local legal aid office in your state.",
       "You are welcome to copy, modify, and send any letter in the library for your own non-commercial use. You may not republish the templates as a competing library, white-label them as your own legal product, or sell them as a paid service.",
     ],
   },
@@ -43,7 +43,7 @@ const sections = [
     title: "The draft-letter service",
     paragraphs: [
       "When you submit the draft-letter form, we prepare a draft self-help letter from the facts you give us and the laws we look up from official sources, and email it to you. The draft is legal information, not legal advice. No one acts as your lawyer, and no attorney-client relationship is formed.",
-      "Anything you tell us in the intake form should be assumed to be a non-privileged communication. Do not send us anything you would not be willing to repeat under oath, and do not send us anything that needs to stay sealed for an active matter. If you are already represented in a matter, talk to your existing lawyer instead — we will not step on that relationship.",
+      "Anything you tell us in the draft-letter form should be assumed to be a non-privileged communication. Do not send us anything you would not be willing to repeat under oath, and do not send us anything that needs to stay sealed for an active matter. If you are already represented in a matter, talk to your existing lawyer instead — we will not step on that relationship.",
     ],
   },
   {

@@ -16,13 +16,9 @@ const PHRASES = [
   "tax deductible",
   "tax-deductible",
 ];
-// EXEMPT (2026-11-22, CONTROL ruling SWEEP-1122-1335): these two strings are outside the
-// 58 rows Nick approved. They stay until Nick approves replacement wording (leftovers table),
-// then the entry is removed. Each entry must still match, so a stale exemption fails the test.
-const EXEMPT = [
-  { file: "src/app/free-tools/page.tsx", phrase: "volunteer attorney", contains: "volunteer attorney." }, // line wraps; preceding line: "for a free conversation with a"
-  { file: "src/app/terms/page.tsx", phrase: "volunteer attorney", contains: "volunteer attorney intake" },
-];
+// EXEMPT: empty since the leftovers wording replaced the last two dated exceptions (NICK-ANSWERS-1122-1726).
+// Add an entry only with a ruling; each entry must still match, so a stale exemption fails the test.
+const EXEMPT = [];
 const isExempt = (file, h) => EXEMPT.some((e) => e.file === file && e.phrase === h.phrase && h.full.toLowerCase().includes(e.contains));
 
 const TEXT_EXT = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".json", ".md", ".mdx", ".txt", ".html", ".css", ".xml", ".svg", ".webmanifest"]);
