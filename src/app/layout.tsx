@@ -1,37 +1,49 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Instrument_Serif, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import PostHogProvider from "@/components/PostHogProvider";
 import { buildOpenGraph } from "@/lib/og";
 import "./globals.css";
 
-const bricolage = Bricolage_Grotesque({
+// Self-hosted (src/fonts) so builds never fetch from Google.
+const bricolage = localFont({
+  src: [
+    { path: "../fonts/bricolage-grotesque/bricolage-grotesque-variable.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/bricolage-grotesque/bricolage-grotesque-variable.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/bricolage-grotesque/bricolage-grotesque-variable.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/bricolage-grotesque/bricolage-grotesque-variable.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/bricolage-grotesque/bricolage-grotesque-variable.woff2", weight: "800", style: "normal" },
+  ],
   variable: "--font-bricolage",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const hanken = Hanken_Grotesk({
+const hanken = localFont({
+  src: [
+    { path: "../fonts/hanken-grotesk/hanken-grotesk-variable.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/hanken-grotesk/hanken-grotesk-variable.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/hanken-grotesk/hanken-grotesk-variable.woff2", weight: "600", style: "normal" },
+  ],
   variable: "--font-hanken",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
   display: "swap",
 });
 
-const instrument = Instrument_Serif({
+const instrument = localFont({
+  src: [
+    { path: "../fonts/instrument-serif/instrument-serif-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/instrument-serif/instrument-serif-italic.woff2", weight: "400", style: "italic" },
+  ],
   variable: "--font-instrument",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 
-const jetbrains = JetBrains_Mono({
+const jetbrains = localFont({
+  src: [
+    { path: "../fonts/jetbrains-mono/jetbrains-mono-variable.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/jetbrains-mono/jetbrains-mono-variable.woff2", weight: "500", style: "normal" },
+  ],
   variable: "--font-jetbrains",
-  subsets: ["latin"],
-  weight: ["400", "500"],
   display: "swap",
 });
 
