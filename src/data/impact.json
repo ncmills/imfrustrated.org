@@ -1,0 +1,10 @@
+{
+  "asOf": "2026-11-22",
+  "items": [
+    {
+      "label": "Letters drafted",
+      "value": "8",
+      "source": "Count of case folders in the letter pipeline's working directory that contain a letter.md or reply.txt file, counted on 2026-11-22."
+    }
+  ]
+}

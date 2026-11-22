@@ -422,6 +422,7 @@ export function SiteFooter() {
           <div className="flex items-center gap-6 text-xs">
             <Link href="/privacy" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Privacy</Link>
             <Link href="/terms" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Terms</Link>
+            <Link href="/donate" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Donate</Link>
           </div>
         </div>
         <p className="text-bg/55 text-[0.72rem] leading-relaxed mt-4 max-w-3xl">
@@ -429,6 +430,9 @@ export function SiteFooter() {
           It is not a law firm and does not give legal advice. Using this site does not create
           an attorney-client relationship. For advice about your situation, contact a licensed
           attorney or your local legal aid office.
+        </p>
+        <p className="text-bg/55 text-[0.72rem] leading-relaxed mt-2 max-w-3xl">
+          Imfrustrated.org, Inc. is a New York not-for-profit corporation.
         </p>
       </div>
     </footer>
