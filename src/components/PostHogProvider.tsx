@@ -17,6 +17,8 @@ function PostHogPageView() {
       const search = searchParams.toString();
       if (search) url += "?" + search;
       ph.capture("$pageview", { $current_url: url });
+      // First-party per-page count (path only; no cookies, ids or query). ALLOWLIST-KEEP-DETAIL.
+      try { navigator.sendBeacon?.("/api/pc", JSON.stringify({ path: pathname })); } catch {}
     }
   }, [pathname, searchParams, ph]);
 
