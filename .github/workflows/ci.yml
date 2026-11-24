@@ -25,3 +25,5 @@ jobs:
         run: npm run test:wording
       - name: imf-chat tests
         run: npm run test:imf-chat
+      - name: Log hygiene tests
+        run: npm run test:log-pii
