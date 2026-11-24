@@ -1,8 +1,18 @@
-// Log hygiene for /api/intake. Run: npx tsx --test src/app/api/intake-log-pii.test.ts
+// Log hygiene for /api/intake. Run: npm run test:log-pii (tsc + node --test, no tsx).
 // With the intake table as the record, no console call carries the email, IP or message.
 // With no store (supabase null) the log line is the only record, so that path keeps the full line.
 import test, { afterEach, beforeEach } from "node:test";
 import assert from "node:assert/strict";
+import path from "node:path";
+
+// Compiled by tsc (no path-alias rewrite): resolve "@/x" to the compiled src/x beside this test.
+const ROOT = path.resolve(__dirname, "../..");
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const Module = require("module");
+const origResolve = Module._resolveFilename;
+Module._resolveFilename = function (req: string, ...rest: unknown[]) {
+  return origResolve.call(this, req.startsWith("@/") ? path.join(ROOT, "src", req.slice(2)) : req, ...rest);
+};
 
 const IP = "198.51.100.77";
 const EMAIL = "sentinel_intake_q9@realdomain.com";
@@ -27,12 +37,12 @@ function stub(id: string, exports: unknown) {
   const filename = require.resolve(id);
   require.cache[filename] = { id: filename, filename, loaded: true, exports, children: [], paths: [] } as unknown as NodeJS.Module;
 }
-function load(supabase: unknown): typeof import("./intake/route") {
+function load(supabase: unknown): typeof import("../../src/app/api/intake/route") {
   stub("next/headers", { headers: async () => new Headers({ "x-forwarded-for": IP }) });
   stub("@/lib/supabase", { supabase });
   stub("resend", { Resend: class {} });
-  delete require.cache[require.resolve("./intake/route")]; // fresh in-memory rate limiter
-  return require("./intake/route");
+  delete require.cache[require.resolve("../../src/app/api/intake/route")]; // fresh in-memory rate limiter
+  return require("../../src/app/api/intake/route");
 }
 const post = (body: unknown) =>
   new Request("https://imfrustrated.org/api/intake", { method: "POST", body: JSON.stringify(body) });
