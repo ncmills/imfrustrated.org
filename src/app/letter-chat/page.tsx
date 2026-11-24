@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { chatEnabled, letterChatAccess } from "@/lib/imf-chat/flags";
 import { PAGE_NOTICE, PAUSED_LINE } from "./copy";
 import { LetterChat } from "./LetterChat";
 
-// Beta-only, never indexed (robots noindex,nofollow). Own minimal header on purpose: the shared site header is not used here.
+// Beta token, or anyone once IMF_CHAT_PUBLIC=1 (flags.letterChatAccess). Never indexed (robots noindex,nofollow) until the front-door proposal says otherwise. Own minimal header on purpose: the shared site header is not used here.
 export const metadata: Metadata = {
   title: "Letter chat",
   robots: { index: false, follow: false },
@@ -17,10 +18,10 @@ type Props = { searchParams: Promise<Record<string, string | string[] | undefine
 export default async function LetterChatPage({ searchParams }: Props) {
   const sp = await searchParams;
   const beta = typeof sp.beta === "string" ? sp.beta : "";
-  const token = process.env.IMF_CHAT_BETA_TOKEN ?? "";
-  if (!token || beta !== token) notFound();
+  // Public (ENABLED=1 and PUBLIC=1): anyone. Otherwise the beta token must match, else 404.
+  if (letterChatAccess(process.env, beta) === "none") notFound();
 
-  const enabled = process.env.IMF_CHAT_ENABLED === "1";
+  const enabled = chatEnabled(process.env);
 
   return (
     <div className="min-h-screen">
