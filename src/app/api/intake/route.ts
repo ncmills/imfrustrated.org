@@ -75,7 +75,7 @@ export async function POST(request: Request) {
 
   // Honeypot: bots fill the hidden `website` field. Pretend success, drop the message.
   if (typeof body.website === "string" && body.website.trim().length > 0) {
-    console.log("[intake] honeypot triggered — dropped silently", { ip });
+    console.log("[intake] honeypot triggered — dropped silently");
     return NextResponse.json({ ok: true, test: true });
   }
 
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
   // the submission was dropped, so it can skip the analytics event too —
   // without it PostHog counts a conversion nothing else recorded.
   if (isReservedTestEmail(email)) {
-    console.log("[intake] reserved/disposable email — dropped silently", { ip });
+    console.log("[intake] reserved/disposable email — dropped silently");
     return NextResponse.json({ ok: true, test: true });
   }
 
@@ -102,7 +102,17 @@ export async function POST(request: Request) {
     body.issueType && ALLOWED_ISSUE_TYPES.has(body.issueType) ? body.issueType : null;
   const message = body.message ? String(body.message).slice(0, 2000).trim() : null;
 
-  console.log("[intake]", JSON.stringify({ email, state, issueType, hasMessage: !!message, ip }));
+  // The imfrustrated_intake insert below is the record, so the log line carries
+  // no email or IP. With no store (supabase null) the log is the only record
+  // of the request, so that path alone keeps the full fields.
+  console.log(
+    "[intake]",
+    JSON.stringify(
+      supabase
+        ? { state, issueType, hasMessage: !!message }
+        : { email, state, issueType, hasMessage: !!message, ip },
+    ),
+  );
 
   // Stamped, never used to SKIP the write: the harness reads its own row back,
   // so dropping it would break the check that proves this path works. Always
