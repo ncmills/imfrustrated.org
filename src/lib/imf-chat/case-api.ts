@@ -11,7 +11,7 @@ import type { CaseRow, ChatStore } from "./store";
 
 export type Env = Record<string, string | undefined>;
 export interface ApiIn { body: unknown; ip: string; header(name: string): string | null }
-export interface ApiOut { status: number; body: Record<string, unknown> }
+export interface ApiOut { status: number; body: Record<string, unknown>; headers?: Record<string, string> }
 
 export const STATES = new Set(
   ("AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ " +
@@ -23,6 +23,12 @@ const TURN_MAX = 2000;
 const STORY_MAX = 6000;
 const MIN_FIRST_TURN_MS = 3000;
 export const LIMITS = {
+  // 30 turns per FIXED, epoch-aligned hour per IP (imf_rl_hit floors now() to the window start;
+  // the window is NOT sliding and NOT per case). Which POSTs count: every create, every turn that
+  // reaches the limiter (state/safety/category/each text step/submit) and every accepted follow-up.
+  // Not counted: requests refused earlier (bad body/token/step, crisis screen, too_fast, GET polls).
+  // Consequence, by design of a fixed window: a burst that straddles an hour boundary can pass up to
+  // 2 x 30 = 60 counted calls before the first 429 (an adversarial run saw ~58). Values unchanged.
   turnsPerHour: 30,
   casesPer24h: 1,
   casesPer30d: 3,
@@ -83,8 +89,26 @@ export function isFixtureReq(req: ApiIn, env: Env): boolean {
 }
 
 export const err = (status: number, error: string): ApiOut => ({ status, body: { error } });
+
+/** Seconds left in the epoch-aligned fixed window (the same alignment imf_rl_hit uses); >= 1. */
+export function retryAfterSecs(windowSecs: number, nowMs: number): number {
+  return Math.max(1, windowSecs - (Math.floor(nowMs / 1000) % windowSecs));
+}
+/** A 429 carrying Retry-After (seconds). The JSON body keeps its error code. */
+export function limited(error: string, retryAfter: number): ApiOut {
+  return { status: 429, body: { error }, headers: { "Retry-After": String(Math.max(1, Math.ceil(retryAfter))) } };
+}
 export const log = (event: string, caseId?: string) =>
   console.log("[imf-chat]", JSON.stringify(caseId ? { event, case: caseId } : { event }));
+
+/** IFDO-PASS-2: a "beta test" request carries BOTH a valid beta token and a valid test-run header.
+ *  Only such a request skips the per-IP limits (hourly turns, per-IP case caps). The test header
+ *  alone never does, even when the chat is public. */
+export function isBetaTestReq(req: ApiIn, body: Record<string, unknown>, env: Env): boolean {
+  if (!isTestReq(req, env)) return false;
+  const beta = req.header("x-imf-beta") ?? (typeof body.beta === "string" ? body.beta : null);
+  return secretEq(beta, env.IMF_CHAT_BETA_TOKEN?.trim());
+}
 
 export function gate(req: ApiIn, body: Record<string, unknown>, env: Env): ApiOut | null {
   if (!chatEnabled(env)) return err(503, "chat_paused");
@@ -108,11 +132,12 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
     return err(503, "chat_paused");
   }
   const test = isTestReq(req, env);
+  const bypass = isBetaTestReq(req, body, env);
 
   if (body.action === "create") {
     const dv = body.disclaimer_v;
     if (typeof dv !== "string" || !/^[\w.-]{1,32}$/.test(dv)) return err(400, "disclaimer_required");
-    if (!(await store.rlHit(key, "turn", 3600, LIMITS.turnsPerHour))) return err(429, "rate_limited");
+    if (!bypass && !(await store.rlHit(key, "turn", 3600, LIMITS.turnsPerHour))) return limited("rate_limited", retryAfterSecs(3600, now));
     const token = randomBytes(32).toString("base64url");
     const fixture = !test && isFixtureReq(req, env);  // is_test and review_fixture are never both true
     const row = await store.insertCase({ token_hash: hashToken(token), disclaimer_v: dv, is_test: test, review_fixture: fixture });
@@ -132,7 +157,7 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
   if (step !== "state" && !c.state) return err(400, "state_first");
   if (step !== "state" && step !== "safety" && !done.has("safety")) return err(400, "safety_first");
   if ((TEXT_STEPS.has(step) || step === "submit") && !c.category) return err(400, "category_first");
-  if (step === "state" && now - Date.parse(c.created_at) < MIN_FIRST_TURN_MS) return err(429, "too_fast");
+  if (step === "state" && now - Date.parse(c.created_at) < MIN_FIRST_TURN_MS) return limited("too_fast", Math.ceil((MIN_FIRST_TURN_MS - (now - Date.parse(c.created_at))) / 1000));
 
   // Crisis screen on the raw text, first: a crisis message always gets the card.
   const raw = body.value;
@@ -151,7 +176,7 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
     }
     resources = tier === "B";
   }
-  if (!(await store.rlHit(key, "turn", 3600, LIMITS.turnsPerHour))) return err(429, "rate_limited");
+  if (!bypass && !(await store.rlHit(key, "turn", 3600, LIMITS.turnsPerHour))) return limited("rate_limited", retryAfterSecs(3600, now));
   const at = new Date(now).toISOString();
   const turns = [...c.turns];
   const patch: Partial<CaseRow> = {};
@@ -180,7 +205,7 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
     patch.category = raw;
     next = NEXT.counterparty;
   } else if (step === "submit") {
-    return submit(store, c, key, test);
+    return submit(store, c, key, test, bypass, now);
   } else {
     const r = redact(String(raw).trim());
     redacted = r.redacted;
@@ -215,14 +240,16 @@ async function stop(store: ChatStore, id: string, status: string, reason: string
   return { status: 200, body: { ok: true, status, card: { kind: status, text: STOP_CARDS[status] } } };
 }
 
-async function submit(store: ChatStore, c: CaseRow, key: string, test: boolean): Promise<ApiOut> {
+async function submit(store: ChatStore, c: CaseRow, key: string, test: boolean, bypass: boolean, now: number): Promise<ApiOut> {
   if (!c.counterparty || !c.turns.some((t) => t.step === "story")) return err(400, "intake_incomplete");
-  if (!test && !c.review_fixture) {
-    if (!(await store.rlHit(key, "case_24h", 86400, LIMITS.casesPer24h))) return err(429, "case_limit");
-    if (!(await store.rlHit(key, "case_30d", 2592000, LIMITS.casesPer30d))) return err(429, "case_limit");
+  // Per-IP case caps: skipped only for a beta test request (valid beta token + test header) or a
+  // review fixture. The site-wide letters-per-day cap applies to every request, test or not.
+  if (!bypass && !c.review_fixture) {
+    if (!(await store.rlHit(key, "case_24h", 86400, LIMITS.casesPer24h))) return limited("case_limit", retryAfterSecs(86400, now));
+    if (!(await store.rlHit(key, "case_30d", 2592000, LIMITS.casesPer30d))) return limited("case_limit", retryAfterSecs(2592000, now));
   }
-  if (!test && !(await store.rlHit(sha256("imf-chat-global"), "case_day", 86400, LIMITS.globalCasesPerDay))) {
-    return err(429, "day_limit");
+  if (!(await store.rlHit(sha256("imf-chat-global"), "case_day", 86400, LIMITS.globalCasesPerDay))) {
+    return limited("day_limit", retryAfterSecs(86400, now));
   }
   if (!(await store.insertJob({ case_id: c.id, kind: "letter", is_test: test }))) {
     // F7: a concurrent submit already queued this case's letter (unique index refused a 2nd job).

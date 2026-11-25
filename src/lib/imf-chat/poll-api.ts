@@ -43,7 +43,18 @@ export function visibleFollowups(fs: CaseRow["followups"]) {
   });
 }
 
-export async function handleCasePoll(token: string, store: ChatStore, now = Date.now()): Promise<ApiOut> {
+export async function handleCasePoll(token: string, store: ChatStore, now = Date.now(), betaTest = false): Promise<ApiOut> {
+  const out = await pollCore(token, store, now);
+  if (!betaTest || out.status !== 200) return out;
+  // IFDO-PASS-2 (4): a reviewer scoring a TEST case reads the draft without the database. Only for a
+  // beta test request (valid beta token + test header, checked by the route) on a case stamped
+  // is_test at creation, keyed by the case's own token; held cases included. Never for real cases.
+  const c = await store.getCaseByTokenHash(hashToken(token));
+  if (!c || !c.is_test || !c.letter) return out;
+  return { ...out, body: { ...out.body, test_letter: { letter: c.letter, cover: c.cover, sources: c.sources } } };
+}
+
+async function pollCore(token: string, store: ChatStore, now: number): Promise<ApiOut> {
   if (typeof token !== "string" || token.length < 20 || token.length > 64) return { status: 400, body: { error: "bad_token" } };
   const c = await store.getCaseByTokenHash(hashToken(token));
   if (!c) return { status: 404, body: { error: "not_found" } };

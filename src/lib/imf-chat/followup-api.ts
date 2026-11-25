@@ -4,7 +4,7 @@
 // (2 per case, one unanswered at a time, per-IP turns) -> redaction -> append {q, a: null}
 // + one followup job. The per-case $ cap is enforced by the worker, not here.
 import { CRISIS_CARD, RESOURCES_LINE, crisisTierTurns } from "./crisis";
-import { err, gate, hashToken, ipKey, isTestReq, LIMITS, log, type ApiIn, type ApiOut, type Env } from "./case-api";
+import { err, gate, hashToken, ipKey, isBetaTestReq, isTestReq, LIMITS, limited, log, retryAfterSecs, type ApiIn, type ApiOut, type Env } from "./case-api";
 import { letterVisible } from "./poll-api";
 import { redact } from "./redact";
 import type { ChatStore } from "./store";
@@ -14,7 +14,7 @@ import type { ChatStore } from "./store";
 export const FOLLOWUPS_PER_CASE = 2;
 const Q_MAX = 2000;
 
-export async function handleFollowupPost(req: ApiIn, store: ChatStore, env: Env): Promise<ApiOut> {
+export async function handleFollowupPost(req: ApiIn, store: ChatStore, env: Env, now = Date.now()): Promise<ApiOut> {
   const body = (req.body && typeof req.body === "object" ? req.body : null) as Record<string, unknown> | null;
   if (!body) return err(400, "invalid_json");
   const g = gate(req, body, env);
@@ -40,9 +40,11 @@ export async function handleFollowupPost(req: ApiIn, store: ChatStore, env: Env)
     return { status: 200, body: { ok: true, status: "crisis", card: CRISIS_CARD } };
   }
   const followups = c.followups ?? [];
-  if (followups.length >= FOLLOWUPS_PER_CASE) return err(429, "followup_limit");
+  if (followups.length >= FOLLOWUPS_PER_CASE) return limited("followup_limit", 86400);  // lifetime per-case cap, no window: advisory only
   if (followups.some((f) => f.a === null)) return err(409, "followup_pending");
-  if (!(await store.rlHit(key, "turn", 3600, LIMITS.turnsPerHour))) return err(429, "rate_limited");
+  if (!isBetaTestReq(req, body, env) && !(await store.rlHit(key, "turn", 3600, LIMITS.turnsPerHour))) {
+    return limited("rate_limited", retryAfterSecs(3600, now));
+  }
 
   const r = redact(q.trim());
   await store.updateCase(c.id, { followups: [...followups, { q: r.text, a: null }] });
