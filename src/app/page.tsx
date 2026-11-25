@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { getAllLetters } from "@/data/letters";
 import { getAllParkingCities } from "@/data/parking";
 import { testimonials } from "@/data/testimonials";
@@ -65,10 +66,11 @@ function Arrow({ className = "" }: { className?: string }) {
 }
 
 export default function Home() {
+  const chatOn = chatPublic(process.env);
   return (
     <>
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatOn} />
       <Interactions />
 
       <main id="top" className="relative">
@@ -83,38 +85,40 @@ export default function Home() {
               style={{ fontSize: "clamp(2.2rem, 9vw, 3.75rem)" }}
             >
               Got a problem a letter could fix?
-              <em className="block font-accent text-clay tracking-[-0.02em]" style={{ fontStyle: "italic", fontWeight: 400 }}>Two ways to start.</em>
+              {chatOn && <em className="block font-accent text-clay tracking-[-0.02em]" style={{ fontStyle: "italic", fontWeight: 400 }}>Two ways to start.</em>}
             </h1>
           </Reveal>
           <Reveal delay={3}>
             <p className="text-sage-2 text-lg leading-[1.55] mt-5">
-              Both are free. Either way, you send the letter yourself.
+              {chatOn ? "Both are free. Either way, you send the letter yourself." : "It is free, and you send the letter yourself."}
             </p>
           </Reveal>
 
           <Reveal delay={3}>
-            <div className="mt-8 grid gap-5 md:grid-cols-2">
-              {/* Choice 1 — the chatbot */}
-              <div className="rounded-[20px] bg-sage text-bg p-6 flex flex-col">
-                <p className="text-clay-soft text-[0.7rem] font-bold uppercase tracking-[0.18em]">Choice 1 &middot; Chatbot</p>
-                <h2 className="font-disp font-bold text-[1.45rem] leading-[1.15] tracking-[-0.02em] mt-2">
-                  Use the chatbot to generate your own letter
-                </h2>
-                <p className="text-[#cdd6cd] leading-relaxed mt-3">
-                  Tell it what happened, in plain words. It asks a few questions and writes a
-                  letter for your situation and state. Save the private link to come back to it.
-                </p>
-                <div className="mt-auto pt-5">
-                  <Link href="/letter-chat" className="btn-clay mag">
-                    Start the chat
-                    <Arrow />
-                  </Link>
+            <div className={`mt-8 grid gap-5 ${chatOn ? "md:grid-cols-2" : ""}`}>
+              {/* Choice 1 — the chatbot (only when the chat is public; /letter-chat 404s otherwise) */}
+              {chatOn && (
+                <div className="rounded-[20px] bg-sage text-bg p-6 flex flex-col">
+                  <p className="text-clay-soft text-[0.7rem] font-bold uppercase tracking-[0.18em]">Choice 1 &middot; Chatbot</p>
+                  <h2 className="font-disp font-bold text-[1.45rem] leading-[1.15] tracking-[-0.02em] mt-2">
+                    Use the chatbot to generate your own letter
+                  </h2>
+                  <p className="text-[#cdd6cd] leading-relaxed mt-3">
+                    Tell it what happened, in plain words. It asks a few questions and writes a
+                    letter for your situation and state. Save the private link to come back to it.
+                  </p>
+                  <div className="mt-auto pt-5">
+                    <Link href="/letter-chat" className="btn-clay mag">
+                      Start the chat
+                      <Arrow />
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Choice 2 — the collection */}
               <div className="rounded-[20px] bg-card border border-rule p-6 flex flex-col">
-                <p className="text-clay text-[0.7rem] font-bold uppercase tracking-[0.18em]">Choice 2 &middot; The collection</p>
+                <p className="text-clay text-[0.7rem] font-bold uppercase tracking-[0.18em]">{chatOn ? <>Choice 2 &middot; The collection</> : "The collection"}</p>
                 <h2 className="font-disp font-bold text-sage text-[1.45rem] leading-[1.15] tracking-[-0.02em] mt-2">
                   Browse the collection
                 </h2>
@@ -226,7 +230,7 @@ export default function Home() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatOn} />
     </>
   );
 }

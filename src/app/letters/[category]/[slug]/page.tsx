@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { CopyLetterButton } from "@/components/CopyLetterButton";
 import {
   categoryMeta,
@@ -167,7 +168,7 @@ export default async function LetterPage({
       )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <Interactions />
       <main className="relative">
         {/* Hero */}
@@ -382,7 +383,7 @@ export default async function LetterPage({
                 Nervous about sending it yourself?
               </h2>
               <p className="font-accent italic text-clay-soft text-2xl md:text-3xl mt-3">or let the chatbot write it.</p>
-              <TwoChoiceBox tone="dark" />
+              <TwoChoiceBox chatPublic={chatPublic(process.env)} tone="dark" />
               <div className="mt-11 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
                 <Link href={`/letters/${letter.category}`} className="hover:text-clay-soft transition-colors duration-300">
                   More {meta.label.toLowerCase()} letters
@@ -396,7 +397,7 @@ export default async function LetterPage({
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

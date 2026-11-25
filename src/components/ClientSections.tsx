@@ -105,7 +105,7 @@ export function Wordmark({
   );
 }
 
-export function Header() {
+export function Header({ chatPublic = false }: { chatPublic?: boolean } = {}) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -150,11 +150,11 @@ export function Header() {
             (2026-08-20 design review). Compact sizing below sm so it fits
             beside the wordmark at 390. */}
         <Link
-          href="/letter-chat"
-          onClick={() => trackCtaClicked("header_write_my_letter")}
+          href={chatPublic ? "/letter-chat" : "/letters"}
+          onClick={() => trackCtaClicked(chatPublic ? "header_write_my_letter" : "header_browse_letters")}
           className="mag inline-flex items-center gap-2 px-3.5 py-2 text-[0.8rem] sm:px-5 sm:py-2.5 sm:text-[0.88rem] bg-sage text-bg font-semibold rounded-full hover:bg-evergreen transition-colors duration-300 shrink-0"
         >
-          Write my letter
+          {chatPublic ? "Write my letter" : "Browse letters"}
         </Link>
       </div>
     </header>
@@ -336,7 +336,7 @@ export function Reveal({
 }
 
 /* Shared site footer — evergreen, used on every page for consistency. */
-export function SiteFooter() {
+export function SiteFooter({ chatPublic = false }: { chatPublic?: boolean } = {}) {
   return (
     <footer className="relative bg-evergreen mt-8">
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-14">
@@ -359,7 +359,7 @@ export function SiteFooter() {
               <p className="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-clay-soft">Start here</p>
               <ul className="mt-1 flex flex-col">
                 {[
-                  { href: "/letter-chat", label: "Write my letter (chatbot)" },
+                  ...(chatPublic ? [{ href: "/letter-chat", label: "Write my letter (chatbot)" }] : []),
                   { href: "/letters", label: "Browse the collection" },
                   { href: "/letters/parking", label: "Parking ticket defenses" },
                   { href: "/free-tools", label: "Free tools" },

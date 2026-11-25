@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { buildOpenGraph } from "@/lib/og";
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ const sendTips = [
 ];
 
 export default function HowItWorksPage() {
+  const chatOn = chatPublic(process.env);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -49,7 +51,9 @@ export default function HowItWorksPage() {
         "@type": "HowToStep",
         position: 1,
         name: "Find Your Letter or Tool",
-        text: "Browse the free letters and tools and pick the one that fits your situation, or have the chatbot write a letter for your situation.",
+        text: chatOn
+          ? "Browse the free letters and tools and pick the one that fits your situation, or have the chatbot write a letter for your situation."
+          : "Browse the free letters and tools and pick the one that fits your situation.",
       },
       {
         "@type": "HowToStep",
@@ -80,7 +84,7 @@ export default function HowItWorksPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatOn} />
       <Interactions />
 
       <main className="relative">
@@ -120,10 +124,10 @@ export default function HowItWorksPage() {
         <section className="relative max-w-6xl mx-auto px-6 md:px-8 py-12 md:py-16">
           <Reveal>
             <div className="bg-bg-2 rounded-[32px] px-6 md:px-12 py-12 md:py-14">
-              <div className="grid md:grid-cols-2 gap-8 md:gap-10">
+              <div className={`grid gap-8 md:gap-10 ${chatOn ? "md:grid-cols-2" : "max-w-xl mx-auto"}`}>
                 {[
-                  { key: "chat", eyebrow: "choice 1", title: "Use the chatbot", steps: chatSteps, href: "/letter-chat", cta: "Start the chat" },
-                  { key: "collection", eyebrow: "choice 2", title: "Browse the collection", steps: collectionSteps, href: "/letters", cta: "Browse letters" },
+                  ...(chatOn ? [{ key: "chat", eyebrow: "choice 1", title: "Use the chatbot", steps: chatSteps, href: "/letter-chat", cta: "Start the chat" }] : []),
+                  { key: "collection", eyebrow: chatOn ? "choice 2" : "the collection", title: "Browse the collection", steps: collectionSteps, href: "/letters", cta: "Browse letters" },
                 ].map((p) => (
                   <div key={p.key} className="bg-card border border-rule rounded-2xl p-6 md:p-7">
                     <p className="font-accent italic text-lg text-clay">{p.eyebrow}</p>
@@ -185,7 +189,7 @@ export default function HowItWorksPage() {
               <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight mb-6">
                 Not sure which letter fits?
               </h2>
-              <TwoChoiceBox tone="dark" />
+              <TwoChoiceBox chatPublic={chatOn} tone="dark" />
               <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
                 <Link href="/about" className="hover:text-clay-soft transition-colors duration-300">About us</Link>
                 <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>
@@ -197,7 +201,7 @@ export default function HowItWorksPage() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatOn} />
     </>
   );
 }

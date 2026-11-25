@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import {
   categoryMeta,
   getAvailableCategories,
@@ -71,7 +72,7 @@ export default async function CategoryHubPage({
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <Interactions />
       <main className="relative">
         {/* Hero */}
@@ -130,7 +131,7 @@ export default async function CategoryHubPage({
         <section className="relative max-w-6xl mx-auto px-6 md:px-8 pb-24">
           <Reveal>
             <div className="bg-bg-2 rounded-[32px] px-6 sm:px-10 md:px-14 py-12 md:py-14 text-center">
-              <TwoChoiceBox />
+              <TwoChoiceBox chatPublic={chatPublic(process.env)} />
               <p className="text-sage-2 text-xs italic leading-relaxed mt-8 max-w-xl mx-auto">
                 I&rsquo;m Frustrated dot Org publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
               </p>
@@ -145,7 +146,7 @@ export default async function CategoryHubPage({
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

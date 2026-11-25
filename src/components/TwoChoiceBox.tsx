@@ -9,31 +9,38 @@ import Link from "next/link";
 export function TwoChoiceBox({
   showCollection = true,
   tone = "light",
+  chatPublic = false,
 }: {
   showCollection?: boolean;
+  chatPublic?: boolean;
   tone?: "light" | "dark";
 }) {
   const dark = tone === "dark";
   return (
     <div className="max-w-xl mx-auto">
       <p className={`text-lg leading-relaxed ${dark ? "text-[#cdd6cd]" : "text-sage-2"}`}>
-        No letter fits? Use the chatbot. It asks a few questions and writes a letter for your
-        situation and state. Both ways are free, and you send the letter yourself.
+        {chatPublic
+          ? "No letter fits? Use the chatbot. It asks a few questions and writes a letter for your situation and state. Both ways are free, and you send the letter yourself."
+          : "Browse the collection of ready-made letters. It is free, and you send the letter yourself."}
       </p>
       <p className={`text-sm leading-relaxed mt-3 ${dark ? "text-[#cdd6cd]" : "text-sage-2"}`}>
         If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer
         referral service.
       </p>
+      {(chatPublic || showCollection) && (
       <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3">
-        <Link href="/letter-chat" className="btn-clay mag">
-          Use the chatbot
-        </Link>
+        {chatPublic && (
+          <Link href="/letter-chat" className="btn-clay mag">
+            Use the chatbot
+          </Link>
+        )}
         {showCollection && (
           <Link href="/letters" className={dark ? "btn-ghost mag !text-bg !border-bg/40" : "btn-ghost mag"}>
             Browse the collection
           </Link>
         )}
       </div>
+      )}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { getAllLetters, getAvailableCategories } from "@/data/letters";
 /* DERIVED, never hand-typed — same rule the homepage adopted 2026-08-07 after it
  * advertised "74 letters" against a 75-letter library. This card said "10 cities"
@@ -150,7 +151,7 @@ export default function LettersHubPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <Interactions />
       <main className="relative">
         {/* Hero */}
@@ -284,7 +285,7 @@ export default function LettersHubPage() {
               <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight mt-1.5">
                 Let the chatbot write it.
               </h2>
-              <TwoChoiceBox showCollection={false} tone="dark" />
+              <TwoChoiceBox chatPublic={chatPublic(process.env)} showCollection={false} tone="dark" />
               <p className="text-[#cdd6cd] text-xs italic leading-relaxed mt-9 max-w-xl mx-auto">
                 I&rsquo;m Frustrated dot Org publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
               </p>
@@ -299,7 +300,7 @@ export default function LettersHubPage() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

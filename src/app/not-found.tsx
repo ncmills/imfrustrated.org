@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 
 export default function NotFound() {
   return (
@@ -22,7 +23,7 @@ export default function NotFound() {
         </Link>
       </div>
     </div>
-    <SiteFooter />
+    <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

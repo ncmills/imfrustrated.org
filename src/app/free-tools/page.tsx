@@ -3,6 +3,7 @@ import { buildOpenGraph } from "@/lib/og";
 import Link from "next/link";
 import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 
 export const metadata: Metadata = {
   title: "Free Tools | I'm Frustrated dot Org",
@@ -151,7 +152,7 @@ export default function FreeToolsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <Interactions />
 
       <main className="relative">
@@ -446,7 +447,7 @@ export default function FreeToolsPage() {
         {/* ─── Cross-links ─── */}
         <section className="relative max-w-3xl mx-auto px-6 md:px-8 pb-24 text-center">
           <Reveal>
-            <TwoChoiceBox />
+            <TwoChoiceBox chatPublic={chatPublic(process.env)} />
             <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-sage-2">
               <Link href="/how-it-works" className="hover:text-clay transition-colors duration-300">How it works</Link>
               <Link href="/about" className="hover:text-clay transition-colors duration-300">About us</Link>
@@ -457,7 +458,7 @@ export default function FreeToolsPage() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

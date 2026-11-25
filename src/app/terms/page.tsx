@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { buildOpenGraph } from "@/lib/og";
 
 export const metadata: Metadata = {
@@ -85,7 +86,7 @@ export default function TermsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <main className="relative">
         {/* Hero */}
         <section className="relative max-w-3xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-10 md:pb-14">
@@ -161,7 +162,7 @@ export default function TermsPage() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

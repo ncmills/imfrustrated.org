@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { buildOpenGraph, SITE_URL, SITE_NAME, absoluteUrl } from "@/lib/og";
 import { getPost, getAllSlugs, getRelatedPosts, formatPostDate } from "@/lib/blog";
 import { mdxComponents } from "@/components/blog/mdxComponents";
@@ -99,7 +100,7 @@ export default async function BlogPostPage({
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <main className="relative">
         <section className="relative max-w-3xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-8">
           <Reveal delay={1}>
@@ -147,12 +148,16 @@ export default async function BlogPostPage({
 
           <p className="mt-10 text-sm text-sage-2 leading-relaxed">
             General information, not legal advice. Want a starting point?{" "}
-            <Link href="/letter-chat" className="text-sage underline decoration-clay/70 underline-offset-[5px]">
-              Use the chatbot
-            </Link>{" "}
-            to write a letter for your situation, or{" "}
+            {chatPublic(process.env) && (
+              <>
+                <Link href="/letter-chat" className="text-sage underline decoration-clay/70 underline-offset-[5px]">
+                  Use the chatbot
+                </Link>{" "}
+                to write a letter for your situation, or{" "}
+              </>
+            )}
             <Link href="/letters" className="text-sage underline decoration-clay/70 underline-offset-[5px]">
-              browse the collection
+              {chatPublic(process.env) ? "browse the collection" : "Browse the collection"}
             </Link>
             . You send the letter yourself. If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
           </p>
@@ -173,7 +178,7 @@ export default async function BlogPostPage({
           )}
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }
