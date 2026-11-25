@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       supabaseStore(supabase),
       process.env,
     );
-    return NextResponse.json(out.body, { status: out.status });
+    return NextResponse.json(out.body, { status: out.status, headers: out.headers });
   } catch {
     console.error("[imf-chat] case_post_error");
     return NextResponse.json({ error: "server_error" }, { status: 500 });
