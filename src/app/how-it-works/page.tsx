@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 import { buildOpenGraph } from "@/lib/og";
 
@@ -18,37 +19,22 @@ export const metadata: Metadata = {
   }),
 };
 
-const chapters = [
-  {
-    numeral: "I",
-    n: "1",
-    eyebrow: "you talk",
-    title: "You talk, we listen",
-    paragraphs: [
-      "You start by emailing info@imfrustrated.org and telling us what's going on. Plain English. No legal jargon. Treat it like you're writing to a friend. Tell us what happened, who's involved, what worries you, what you're hoping for, and any deadlines or court dates you're aware of.",
-      "The more honest you are, the more useful we can be. There's no expectation of polish. People come to us mid-crisis — a lease that just blew up, an inheritance fight, a small business contract that turned sideways, a denial letter that doesn't make sense. We've heard it all and we'd rather hear it raw than rehearsed.",
-    ],
-  },
-  {
-    numeral: "II",
-    n: "2",
-    eyebrow: "you fill it in",
-    title: "Fill it in with your facts",
-    paragraphs: [
-      "Every template has blanks for the details that make it yours: names, dates, amounts, what was promised and what happened. Be specific and stick to facts you can back up. Dates, receipts, photos, and earlier emails make a letter much harder to ignore.",
-      "Read the whole letter before you use it. Remove anything that doesn't apply to you, and check your state's rules on deadlines and notice periods — they vary. The template is a starting point, not a finished answer.",
-    ],
-  },
-  {
-    numeral: "III",
-    n: "3",
-    eyebrow: "you send it",
-    title: "Send it yourself",
-    paragraphs: [
-      "You send the letter yourself, by email, mail, or both. For anything important, use a method that proves delivery, like certified mail, and keep a copy of everything you send and every reply you get.",
-      "A lot of everyday problems end here: a clear, calm, well-documented letter is often all it takes. If it doesn't work, you've built a paper trail that will help with whatever comes next.",
-    ],
-  },
+const chatSteps = [
+  { title: "Tell it what happened", body: "Plain English, like you're writing to a friend: who's involved, what worries you, what you're hoping for, and any deadlines or court dates." },
+  { title: "It asks a few questions and writes the letter", body: "The chatbot asks what it needs to know, then writes a letter for your situation and state. Save the private link to come back to it." },
+  { title: "Review it and send it yourself", body: "Read the whole letter, fix anything that's off, and send it yourself." },
+];
+
+const collectionSteps = [
+  { title: "Pick a letter", body: "Browse the collection by situation: landlord, credit card, employer, airline, parking tickets in your city, and more." },
+  { title: "Fill in the blanks", body: "Every template has blanks for names, dates, amounts, and what happened. Stick to facts you can back up, and remove anything that doesn't apply." },
+  { title: "Send it yourself", body: "The statutes are already cited. You send the letter, by email, mail, or both." },
+];
+
+const sendTips = [
+  "You send the letter yourself, by email, mail, or both. For anything important, use a method that proves delivery, like certified mail, and keep a copy of everything you send and every reply you get.",
+  "A lot of everyday problems end here: a clear, calm, well-documented letter is often all it takes. If it doesn't work, you've built a paper trail that will help with whatever comes next.",
+  "Read the whole letter before you use it, and check your state's rules on deadlines and notice periods. They vary. A letter is a starting point, not a finished answer.",
 ];
 
 export default function HowItWorksPage() {
@@ -63,7 +49,7 @@ export default function HowItWorksPage() {
         "@type": "HowToStep",
         position: 1,
         name: "Find Your Letter or Tool",
-        text: "Browse the free letters and tools and pick the one that fits your situation, or request a draft self-help letter by email.",
+        text: "Browse the free letters and tools and pick the one that fits your situation, or have the chatbot write a letter for your situation.",
       },
       {
         "@type": "HowToStep",
@@ -130,50 +116,45 @@ export default function HowItWorksPage() {
           </Reveal>
         </section>
 
-        {/* ─── Chapters ─── */}
+        {/* ─── Two paths, side by side ─── */}
         <section className="relative max-w-6xl mx-auto px-6 md:px-8 py-12 md:py-16">
           <Reveal>
-            <div className="bg-bg-2 rounded-[32px] px-7 md:px-12 py-14 md:py-16">
-              <div className="space-y-14 md:space-y-16">
-                {chapters.map((c) => (
-                  <Reveal key={c.numeral}>
-                    <article className="grid md:grid-cols-[auto,1fr] gap-x-8 md:gap-x-12 gap-y-5 items-start">
-                      <div className="relative w-16 h-16 shrink-0" aria-hidden="true">
-                        <svg viewBox="0 0 64 64" className="step-ring absolute inset-0 w-full h-full">
-                          <circle cx="32" cy="32" r="31" />
-                        </svg>
-                        <span className="absolute inset-0 grid place-items-center font-accent italic text-2xl text-clay">{c.numeral}</span>
-                      </div>
-                      <div>
-                        <p className="font-accent italic text-lg text-clay mb-1">{c.eyebrow}</p>
-                        <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.85rem] tracking-[-0.02em] mb-4">
-                          {c.title}
-                        </h2>
-                        <div className="space-y-4">
-                          {c.paragraphs.map((p, j) => (
-                            <p key={j} className="text-sage-2 text-base md:text-lg leading-[1.65]">
-                              {c.numeral === "I" && j === 0 ? (
-                                <>
-                                  You start by emailing{" "}
-                                  <a href="mailto:info@imfrustrated.org" className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300">
-                                    info@imfrustrated.org
-                                  </a>
-                                  {" "}and telling us what&rsquo;s going on. Plain English. No legal jargon.
-                                  Treat it like you&rsquo;re writing to a friend. Tell us what happened,
-                                  who&rsquo;s involved, what worries you, what you&rsquo;re hoping for, and
-                                  any deadlines or court dates you&rsquo;re aware of.
-                                </>
-                              ) : (
-                                p
-                              )}
-                            </p>
-                          ))}
-                        </div>
-                      </div>
-                    </article>
-                  </Reveal>
+            <div className="bg-bg-2 rounded-[32px] px-6 md:px-12 py-12 md:py-14">
+              <div className="grid md:grid-cols-2 gap-8 md:gap-10">
+                {[
+                  { key: "chat", eyebrow: "choice 1", title: "Use the chatbot", steps: chatSteps, href: "/letter-chat", cta: "Start the chat" },
+                  { key: "collection", eyebrow: "choice 2", title: "Browse the collection", steps: collectionSteps, href: "/letters", cta: "Browse letters" },
+                ].map((p) => (
+                  <div key={p.key} className="bg-card border border-rule rounded-2xl p-6 md:p-7">
+                    <p className="font-accent italic text-lg text-clay">{p.eyebrow}</p>
+                    <h2 className="font-disp font-semibold text-sage text-2xl tracking-[-0.02em] mb-5">{p.title}</h2>
+                    <ol className="space-y-5">
+                      {p.steps.map((st, i) => (
+                        <li key={st.title} className="flex gap-4">
+                          <span className="font-accent italic text-2xl text-clay w-6 shrink-0">{i + 1}</span>
+                          <div>
+                            <h3 className="font-disp font-semibold text-sage text-lg">{st.title}</h3>
+                            <p className="text-sage-2 text-base leading-[1.6] mt-1">{st.body}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                    <Link href={p.href} className="btn-ghost mag mt-6">{p.cta}</Link>
+                  </div>
                 ))}
               </div>
+            </div>
+          </Reveal>
+        </section>
+
+        {/* ─── Send it yourself ─── */}
+        <section className="relative max-w-3xl mx-auto px-6 md:px-8 pb-12 md:pb-16">
+          <Reveal>
+            <div className="space-y-4">
+              <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.85rem] tracking-[-0.02em]">Either way, you send it yourself</h2>
+              {sendTips.map((t) => (
+                <p key={t} className="text-sage-2 text-base md:text-lg leading-[1.65]">{t}</p>
+              ))}
             </div>
           </Reveal>
         </section>
@@ -198,30 +179,18 @@ export default function HowItWorksPage() {
         </section>
 
         {/* ─── CTA ─── */}
-        <section id="contact" className="relative max-w-6xl mx-auto px-6 md:px-8 pb-24">
+        <section className="relative max-w-6xl mx-auto px-6 md:px-8 pb-24">
           <Reveal>
             <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16 text-center">
-              <div className="max-w-xl mx-auto">
-                <p className="font-accent italic text-xl text-clay-soft">chapter one starts with an email</p>
-                <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight mt-1.5">
-                  Not sure which letter fits?
-                </h2>
-                <p className="text-[#cdd6cd] text-lg leading-relaxed mt-4 mb-8">
-                  Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send
-                  yourself (legal information, not legal advice).
-                </p>
-                <a href="mailto:info@imfrustrated.org" className="btn-clay mag">
-                  info@imfrustrated.org
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar" aria-hidden="true">
-                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                  </svg>
-                </a>
-                <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
-                  <Link href="/about" className="hover:text-clay-soft transition-colors duration-300">About us</Link>
-                  <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>
-                  <Link href="/faq" className="hover:text-clay-soft transition-colors duration-300">FAQ</Link>
-                  <Link href="/" className="hover:text-clay-soft transition-colors duration-300">Home</Link>
-                </div>
+              <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight mb-6">
+                Not sure which letter fits?
+              </h2>
+              <TwoChoiceBox tone="dark" />
+              <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
+                <Link href="/about" className="hover:text-clay-soft transition-colors duration-300">About us</Link>
+                <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>
+                <Link href="/faq" className="hover:text-clay-soft transition-colors duration-300">FAQ</Link>
+                <Link href="/" className="hover:text-clay-soft transition-colors duration-300">Home</Link>
               </div>
             </div>
           </Reveal>

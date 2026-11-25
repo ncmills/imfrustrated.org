@@ -131,9 +131,6 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-7 text-[0.92rem] font-medium text-sage-2">
-          <Link href="/free-tools" onClick={() => trackCtaClicked("nav_free_tools")} className="hover:text-sage transition-colors duration-300">
-            Free tools
-          </Link>
           <Link href="/letters" onClick={() => trackCtaClicked("nav_letters")} className="hover:text-sage transition-colors duration-300">
             Letters
           </Link>
@@ -153,11 +150,11 @@ export function Header() {
             (2026-08-20 design review). Compact sizing below sm so it fits
             beside the wordmark at 390. */}
         <Link
-          href="/#contact"
-          onClick={() => trackCtaClicked("header_ask_attorney")}
+          href="/letter-chat"
+          onClick={() => trackCtaClicked("header_write_my_letter")}
           className="mag inline-flex items-center gap-2 px-3.5 py-2 text-[0.8rem] sm:px-5 sm:py-2.5 sm:text-[0.88rem] bg-sage text-bg font-semibold rounded-full hover:bg-evergreen transition-colors duration-300 shrink-0"
         >
-          Get a draft letter
+          Write my letter
         </Link>
       </div>
     </header>
@@ -362,10 +359,10 @@ export function SiteFooter() {
               <p className="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-clay-soft">Start here</p>
               <ul className="mt-1 flex flex-col">
                 {[
-                  { href: "/letters", label: "The Letter Library" },
+                  { href: "/letter-chat", label: "Write my letter (chatbot)" },
+                  { href: "/letters", label: "Browse the collection" },
                   { href: "/letters/parking", label: "Parking ticket defenses" },
                   { href: "/free-tools", label: "Free tools" },
-                  { href: "/#contact", label: "Get a draft letter" },
                 ].map((l) => (
                   <li key={l.href}>
                     <Link
@@ -422,7 +419,6 @@ export function SiteFooter() {
           <div className="flex items-center gap-6 text-xs">
             <Link href="/privacy" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Privacy</Link>
             <Link href="/terms" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Terms</Link>
-            <Link href="/impact" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Impact</Link>
           </div>
         </div>
         <p className="text-bg/55 text-[0.72rem] leading-relaxed mt-4 max-w-3xl">

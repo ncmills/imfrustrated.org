@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildOpenGraph } from "@/lib/og";
 import Link from "next/link";
+import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 
 export const metadata: Metadata = {
@@ -445,10 +446,7 @@ export default function FreeToolsPage() {
         {/* ─── Cross-links ─── */}
         <section className="relative max-w-3xl mx-auto px-6 md:px-8 pb-24 text-center">
           <Reveal>
-            <p className="text-sage-2 text-base leading-relaxed mb-6">
-              Not sure which tool fits? Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
-            </p>
-            <a href="mailto:info@imfrustrated.org" className="btn-soft mag">info@imfrustrated.org</a>
+            <TwoChoiceBox />
             <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-sage-2">
               <Link href="/how-it-works" className="hover:text-clay transition-colors duration-300">How it works</Link>
               <Link href="/about" className="hover:text-clay transition-colors duration-300">About us</Link>

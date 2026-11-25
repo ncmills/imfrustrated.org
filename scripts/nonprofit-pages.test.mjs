@@ -69,10 +69,11 @@ test("testimonials: none mention attorneys, lawyers or advice", () => {
   assert.ok(!/attorney|lawyer|advice/i.test(body));
 });
 
-test("About and footer link to /impact labelled Impact", () => {
+test("About, header and footer no longer link to /impact (front-door PR); sitemap drops it", () => {
   for (const f of ["src/app/about/page.tsx", "src/components/ClientSections.tsx"]) {
-    assert.match(read(f), /href="\/impact"[^>]*>\s*Impact\s*<\/Link>/, f);
+    assert.ok(!/href="\/impact"/.test(read(f)), f);
   }
+  assert.ok(!/\/impact/.test(read("src/app/sitemap.ts")), "sitemap");
 });
 
 test("About lists the three board members with titles", () => {

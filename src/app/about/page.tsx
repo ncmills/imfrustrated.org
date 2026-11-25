@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
 import { buildOpenGraph } from "@/lib/og";
 
@@ -147,11 +148,6 @@ export default function AboutPage() {
                     </li>
                   ))}
                 </ul>
-                <p className="text-sage-2 text-base md:text-lg leading-[1.7] mt-4">
-                  <Link href="/impact" className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300">
-                    Impact
-                  </Link>
-                </p>
               </div>
             </Reveal>
 
@@ -198,12 +194,11 @@ export default function AboutPage() {
               <p className="font-accent italic text-clay-soft text-2xl md:text-[1.7rem] mb-5">
                 Reach out. We read every word.
               </p>
-              <p className="text-[#cdd6cd] text-lg leading-relaxed max-w-xl mx-auto mb-8">
-                Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
+              <TwoChoiceBox tone="dark" />
+              <p className="text-[#cdd6cd] text-sm mt-7">
+                Questions? Email{" "}
+                <a href="mailto:info@imfrustrated.org" className="underline decoration-clay-soft underline-offset-4">info@imfrustrated.org</a>.
               </p>
-              <a href="mailto:info@imfrustrated.org" className="btn-clay">
-                info@imfrustrated.org
-              </a>
               <div className="mt-10 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
                 <Link href="/how-it-works" className="hover:text-clay-soft transition-colors duration-300">How it works</Link>
                 <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>

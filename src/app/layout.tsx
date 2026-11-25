@@ -195,9 +195,9 @@ export default function RootLayout({
                   "@type": "Offer",
                   "itemOffered": {
                     "@type": "Service",
-                    "name": "Free Draft Self-Help Letter by Email",
+                    "name": "Free Self-Help Letters: Chatbot or Collection",
                     "url": "https://imfrustrated.org/how-it-works",
-                    "description": "Tell us what happened and we'll try to email you a draft self-help letter to send yourself (legal information, not legal advice)."
+                    "description": "Use the chatbot to write a letter for your situation, or browse the collection of ready-made letters, then send it yourself (legal information, not legal advice)."
                   }
                 },
                 {

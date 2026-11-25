@@ -32,7 +32,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What if no letter fits?",
     answer:
-      "If you can't find a letter that fits, you can tell us what happened using the form on our home page, and we'll try to email you a draft self-help letter you can edit and send yourself. If we can't help with your situation, we'll tell you. This is legal information, not legal advice.",
+      "If you can't find a letter that fits, use the chatbot on our letter chat page. Tell it what happened and it writes a letter for your situation and state that you can edit and send yourself. If the chatbot can't help with your situation, it will tell you. This is legal information, not legal advice.",
   },
   {
     question: "What's the catch?",
@@ -47,7 +47,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "Is this legal advice?",
     answer:
-      "No. Everything on this site, including any draft letter we email you, is general legal information and a self-help tool, not legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.",
+      "No. Everything on this site, including any letter the chatbot writes for you, is general legal information and a self-help tool, not legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.",
   },
   {
     question: "What kinds of problems do you help with?",
@@ -67,7 +67,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "How fast will I hear back?",
     answer:
-      "Usually within a few days. We don't promise an immediate response, but we try to answer every email within a week. If your situation is time-sensitive (a court date, an eviction notice, a contract deadline), don't wait on us: contact a licensed attorney or your local legal aid office now.",
+      "The chatbot writes your letter in minutes. Emails to info@imfrustrated.org are answered within a week. If your situation is time-sensitive (a court date, an eviction notice, a contract deadline), don't wait on us: contact a licensed attorney or your local legal aid office now.",
   },
   {
     question: "Can I change the letters?",

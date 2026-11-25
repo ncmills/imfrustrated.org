@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 import { getAllParkingCities, getParkingCity } from "@/data/parking";
 import { buildOpenGraph } from "@/lib/og";
@@ -294,19 +295,8 @@ export default async function ParkingCityPage({
               <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.4rem] tracking-[-0.03em] leading-tight">
                 Nervous about sending it yourself?
               </h2>
-              <p className="font-accent italic text-clay-soft text-2xl md:text-3xl mt-3">start from a draft.</p>
-              <p className="text-[#cdd6cd] text-lg leading-relaxed mt-5 max-w-xl mx-auto">
-                Not sure this letter fits? Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
-              </p>
-              <p className="text-[#cdd6cd] text-sm leading-relaxed mt-3 max-w-xl mx-auto mb-9">
-                If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
-              </p>
-              <Link href="/#contact" className="btn-clay mag">
-                Tell us what happened
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar">
-                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                </svg>
-              </Link>
+              <p className="font-accent italic text-clay-soft text-2xl md:text-3xl mt-3">or let the chatbot write it.</p>
+              <TwoChoiceBox tone="dark" />
               <div className="mt-11 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
                 <Link href="/letters/parking" className="hover:text-clay-soft transition-colors duration-300">
                   Other cities
