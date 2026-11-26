@@ -33,6 +33,8 @@ export const LIMITS = {
   casesPer24h: 1,
   casesPer30d: 3,
   globalCasesPerDay: 10,
+  // Hard bound on real-pipeline beta-test letters (both secrets) per fixed day; separate counter.
+  testLettersPerDay: 12,
 };
 
 const NEXT: Record<string, { step: string; prompt: string }> = {
@@ -243,12 +245,19 @@ async function stop(store: ChatStore, id: string, status: string, reason: string
 async function submit(store: ChatStore, c: CaseRow, key: string, test: boolean, bypass: boolean, now: number): Promise<ApiOut> {
   if (!c.counterparty || !c.turns.some((t) => t.step === "story")) return err(400, "intake_incomplete");
   // Per-IP case caps: skipped only for a beta test request (valid beta token + test header) or a
-  // review fixture. The site-wide letters-per-day cap applies to every request, test or not.
+  // review fixture. The public site-wide letters-per-day cap is skipped ONLY for a beta test request
+  // (both secrets); those are bounded instead by their own hard counter (testLettersPerDay), so
+  // test letters neither consume nor are blocked by the public 10-a-day. A review fixture or a plain
+  // is_test request WITHOUT both secrets still takes the public cap.
   if (!bypass && !c.review_fixture) {
     if (!(await store.rlHit(key, "case_24h", 86400, LIMITS.casesPer24h))) return limited("case_limit", retryAfterSecs(86400, now));
     if (!(await store.rlHit(key, "case_30d", 2592000, LIMITS.casesPer30d))) return limited("case_limit", retryAfterSecs(2592000, now));
   }
-  if (!(await store.rlHit(sha256("imf-chat-global"), "case_day", 86400, LIMITS.globalCasesPerDay))) {
+  if (bypass) {
+    if (!(await store.rlHit(sha256("imf-chat-test-global"), "test_case_day", 86400, LIMITS.testLettersPerDay))) {
+      return limited("test_day_limit", retryAfterSecs(86400, now));
+    }
+  } else if (!(await store.rlHit(sha256("imf-chat-global"), "case_day", 86400, LIMITS.globalCasesPerDay))) {
     return limited("day_limit", retryAfterSecs(86400, now));
   }
   if (!(await store.insertJob({ case_id: c.id, kind: "letter", is_test: test }))) {
