@@ -15,7 +15,7 @@ type Followup = { q: string; a: string | null; line?: string };
 type Bubble = { who: "bot" | "me"; text: string };
 type Phase = "gate" | "intake" | "waiting" | "result" | "stopped";
 type Poll = {
-  ok?: boolean; error?: string; status?: string; progress?: string; line?: string; paused?: "day_cap"; card?: Card;
+  ok?: boolean; transient?: boolean; error?: string; status?: string; progress?: string; line?: string; paused?: "day_cap"; card?: Card;
   letter?: string; cover?: string | null; sources?: unknown; followups?: Followup[];
   next?: { step: string; prompt: string };
 };
@@ -127,6 +127,12 @@ export function LetterChat({ beta }: { beta: string }) {
   const firstInput = useRef<HTMLElement | null>(null);
 
   const applyPoll = useCallback((p: Poll) => {
+    if (p.transient) {
+      // Server hit a database blip: keep the letter/phase we already have, show a calm line,
+      // and let the next poll (or the retry below) recover. Cleared by the next good poll.
+      setError(p.line ?? C.GENERIC_ERROR);
+      return;
+    }
     setPoll(p);
     if (p.error) {
       setError(errorText(p.error));
@@ -160,12 +166,16 @@ export function LetterChat({ beta }: { beta: string }) {
   }, []);
 
   const fetchPoll = useCallback(
-    async (t: string) => {
+    async (t: string, retry = 0) => {
       try {
         const r = await fetch(`/api/chat/case/${encodeURIComponent(t)}`, { cache: "no-store" });
-        applyPoll((await r.json()) as Poll);
+        const p = (await r.json()) as Poll;
+        applyPoll(p);
+        // A resume load has no interval running yet: retry with backoff until the server answers.
+        if (p.transient && retry < 5) window.setTimeout(() => void fetchPoll(t, retry + 1), 3000 * 2 ** retry);
       } catch {
         setError(C.GENERIC_ERROR);
+        if (retry < 5) window.setTimeout(() => void fetchPoll(t, retry + 1), 3000 * 2 ** retry);
       }
     },
     [applyPoll],
