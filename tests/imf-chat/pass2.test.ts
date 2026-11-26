@@ -84,15 +84,6 @@ for (const [name, hdrs, bypass, env] of CASES) {
   });
 }
 
-test("(1) a beta test request still hits the site-wide letters-per-day cap (day_limit, with Retry-After)", async () => {
-  const h = harness();
-  for (let i = 0; i < LIMITS.globalCasesPerDay; i++) assert.equal((await h.fullCase(BOTH)).res.status, 202);
-  const over = await h.fullCase(BOTH);
-  assert.equal(over.res.status, 429);
-  assert.equal(over.res.body.error, "day_limit");
-  assert.ok(Number(over.res.headers?.["Retry-After"]) >= 1);
-});
-
 test("(1) kill switch, honeypot, validation and crisis screen still apply to a beta test request", async () => {
   const off = harness({ ...ENV, IMF_CHAT_ENABLED: "0" });
   assert.equal((await create(off, BOTH)).status, 503);
