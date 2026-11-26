@@ -87,3 +87,36 @@ async function pollCore(token: string, store: ChatStore, now: number): Promise<A
   const line = c.status === "pass" ? STATUS_LINE.held : STATUS_LINE[c.status] ?? STATUS_LINE.held;
   return { status: 200, body: { ...base, status: c.status === "pass" ? "held" : c.status, line } };
 }
+
+/** IFDO-DB-FAULT: how long one poll may wait on the database. Well under the function limit, so a
+ *  hung store call becomes a clean answer instead of a platform timeout (empty reply). */
+export const POLL_STORE_TIMEOUT_MS = 8000;
+
+export const POLL_TRANSIENT_LINE = "Still working on it. This page keeps checking, and your private link stays good.";
+
+/** A calm, cacheless body the client already keeps polling on. Never carries the token or case text. */
+export function transientPollBody(): ApiOut {
+  return { status: 200, body: { ok: true, transient: true, line: POLL_TRANSIENT_LINE } };
+}
+
+/** handleCasePoll that can never throw and never hangs: a store error or a call slower than
+ *  `timeoutMs` returns the "still working" body (200). Unknown token (404), bad token (400) and a
+ *  finished letter are untouched. `onError` receives the error CLASS only. */
+export async function safeCasePoll(
+  token: string, store: ChatStore, now: number, betaTest: boolean,
+  opts: { timeoutMs?: number; onError?: (kind: string) => void } = {},
+): Promise<ApiOut> {
+  const ms = opts.timeoutMs ?? POLL_STORE_TIMEOUT_MS;
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<"timeout">((resolve) => { timer = setTimeout(() => resolve("timeout"), ms); });
+  try {
+    const r = await Promise.race([handleCasePoll(token, store, now, betaTest), timeout]);
+    if (r === "timeout") { opts.onError?.("timeout"); return transientPollBody(); }
+    return r;
+  } catch (e) {
+    opts.onError?.(e instanceof Error ? e.name : "unknown");
+    return transientPollBody();
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { isBetaTestReq } from "@/lib/imf-chat/case-api";
-import { handleCasePoll } from "@/lib/imf-chat/poll-api";
+import { safeCasePoll } from "@/lib/imf-chat/poll-api";
 import { supabaseStore } from "@/lib/imf-chat/store";
 
 export const dynamic = "force-dynamic";
@@ -13,16 +13,14 @@ export async function GET(request: Request, ctx: { params: Promise<{ token: stri
     return NextResponse.json({ error: "chat_paused" }, { status: 503 });
   }
   const { token } = await ctx.params;
-  try {
-    const out = await handleCasePoll(
-      token,
-      supabaseStore(supabase),
-      Date.now(),
-      isBetaTestReq({ body: {}, ip: "", header: (n) => request.headers.get(n) }, {}, process.env),
-    );
-    return NextResponse.json(out.body, { status: out.status, headers: { "Cache-Control": "no-store" } });
-  } catch {
-    console.error("[imf-chat] case_poll_error");
-    return NextResponse.json({ error: "server_error" }, { status: 500 });
-  }
+  // A database blip or a slow store call returns a 200 "still working" body (the client keeps
+  // polling), never a 500 or a hang. Only the error class is logged: no token, no case text.
+  const out = await safeCasePoll(
+    token,
+    supabaseStore(supabase),
+    Date.now(),
+    isBetaTestReq({ body: {}, ip: "", header: (n) => request.headers.get(n) }, {}, process.env),
+    { onError: (kind) => console.error(`[imf-chat] case_poll_degraded ${kind}`) },
+  );
+  return NextResponse.json(out.body, { status: out.status, headers: { "Cache-Control": "no-store" } });
 }
