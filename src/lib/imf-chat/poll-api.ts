@@ -4,7 +4,7 @@
 // clears review on every version bump, so a stale ok can never unlock a new version).
 import { hashToken, nextStepFor, type ApiOut } from "./case-api";
 import { CRISIS_CARD } from "./crisis";
-import type { CaseRow, ChatStore } from "./store";
+import type { CaseRow, ChatStore, JobInfo } from "./store";
 import { DAY_CAP_LINE } from "../../app/letter-chat/copy";
 
 const OFFLINE_MS = 20 * 60 * 1000;
@@ -44,26 +44,31 @@ export function visibleFollowups(fs: CaseRow["followups"]) {
 }
 
 export async function handleCasePoll(token: string, store: ChatStore, now = Date.now(), betaTest = false): Promise<ApiOut> {
-  const out = await pollCore(token, store, now);
+  const { out, c } = await pollCore(token, store, now);
   if (!betaTest || out.status !== 200) return out;
   // IFDO-PASS-2 (4): a reviewer scoring a TEST case reads the draft without the database. Only for a
   // beta test request (valid beta token + test header, checked by the route) on a case stamped
   // is_test at creation, keyed by the case's own token; held cases included. Never for real cases.
-  const c = await store.getCaseByTokenHash(hashToken(token));
+  // The case read by the poll itself is reused: no second database call.
   if (!c || !c.is_test || !c.letter) return out;
   return { ...out, body: { ...out.body, test_letter: { letter: c.letter, cover: c.cover, sources: c.sources } } };
 }
 
-async function pollCore(token: string, store: ChatStore, now: number): Promise<ApiOut> {
-  if (typeof token !== "string" || token.length < 20 || token.length > 64) return { status: 400, body: { error: "bad_token" } };
-  const c = await store.getCaseByTokenHash(hashToken(token));
-  if (!c) return { status: 404, body: { error: "not_found" } };
+async function pollCore(token: string, store: ChatStore, now: number): Promise<{ out: ApiOut; c: CaseRow | null }> {
+  if (typeof token !== "string" || token.length < 20 || token.length > 64) return { out: { status: 400, body: { error: "bad_token" } }, c: null };
+  // ONE round trip: the case and its latest job. Only a queued case with a queued job costs a
+  // second call (imf_day_paused, a different table; it changes the answer only there).
+  const got = await store.getCaseWithLatestJob(hashToken(token));
+  if (!got) return { out: { status: 404, body: { error: "not_found" } }, c: null };
+  return { out: await pollBody(got.c, got.job, store, now), c: got.c };
+}
+
+async function pollBody(c: CaseRow, j: JobInfo | null, store: ChatStore, now: number): Promise<ApiOut> {
   const base = { ok: true, status: c.status, letter_version: c.letter_version };
 
   if (c.status === "crisis") return { status: 200, body: { ...base, card: CRISIS_CARD } };
   if (c.status === "intake") return { status: 200, body: { ...base, next: nextStepFor(c) } };
   if (c.status === "queued") {
-    const j = await store.latestJob(c.id);
     const offline = !!j && j.status === "queued" && now - Date.parse(j.created_at) > OFFLINE_MS;
     const progress = !j || j.status === "queued" ? "Checking your situation" : "Researching your state's law and drafting";
     // U6 gap 1: the worker records a day-cap refusal; it outranks the offline line (same cause, truer copy).
