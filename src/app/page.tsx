@@ -119,7 +119,7 @@ export default function Home() {
         {/* ─── Front door: exactly two ways to start (Nick 2026-11-24) ─── */}
         <section className="relative max-w-3xl mx-auto px-6 sm:px-10 pt-28 md:pt-36 pb-14">
           <Reveal delay={1}>
-            <span className="eyebrow"><span className="pulse" />Free legal information & self-help letters</span>
+            <span className="eyebrow"><span className="pulse" />Free legal information & self-help tools</span>
           </Reveal>
           <Reveal delay={2}>
             <h1
@@ -133,6 +133,10 @@ export default function Home() {
           <Reveal delay={3}>
             <p className="text-sage-2 text-lg leading-[1.55] mt-5">
               {chatOn ? "Both are free. Either way, you send the letter yourself." : "It is free, and you send the letter yourself."}
+            </p>
+            <p className="text-sage-2 text-lg leading-[1.55] mt-3">
+              Statute-cited letters, plain-English guides, and self-help tools you use
+              yourself. All free. Start with the problem you&rsquo;re facing.
             </p>
           </Reveal>
 
