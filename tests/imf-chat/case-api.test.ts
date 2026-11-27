@@ -1,19 +1,20 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { handleCasePost, ipKey, type ApiIn, type Env } from "../../src/lib/imf-chat/case-api";
+import { handleCasePost, ipKey, nextStepFor, type ApiIn, type Env } from "../../src/lib/imf-chat/case-api";
+import type { ExtractPass } from "../../src/lib/imf-chat/intake";
 import { redact } from "../../src/lib/imf-chat/redact";
 import { fakeStore } from "./fake-store";
 
 const ENV: Env = { IMF_CHAT_ENABLED: "1", IMF_CHAT_BETA_TOKEN: "beta-tok", SIGNAL_TEST_SECRET: "sn-secret", IMF_CHAT_IP_SALT: "salt-1" };
 const IP = "203.0.113.7";
 
-function harness(env: Env = ENV) {
+function harness(env: Env = ENV, opts: { extract?: ExtractPass } = {}) {
   let now = Date.UTC(2026, 10, 1, 12);
   const store = fakeStore(() => now);
   const call = (body: unknown, hdrs: Record<string, string> = {}, ip = IP) => {
     const h: Record<string, string> = { "x-imf-beta": "beta-tok", ...hdrs };
     const req: ApiIn = { body, ip, header: (n) => h[n.toLowerCase()] ?? null };
-    return handleCasePost(req, store, env, now);
+    return handleCasePost(req, store, env, now, opts);
   };
   const tick = (ms: number) => { now += ms; };
   const create = async (hdrs?: Record<string, string>, ip?: string) => {
@@ -273,4 +274,124 @@ test("N8: control fixture header stamps review_fixture; beta token alone does no
   await both.create({ ...fx, "x-sn-test-run": "sn-secret" });
   assert.equal(only(both).is_test, true);
   assert.equal(only(both).review_fixture, false);
+});
+
+// ---- IFDO-INTAKE-ASK-MISSING Part B: one planner (intake.planNext) drives the turn handler and the
+// resume poll. Replays use SYNTHETIC text shaped like Nick's first real intake.
+type Nx = { step: string; prompt: string; kind?: string };
+async function replay(h: ReturnType<typeof harness>, answers: Record<string, string>, state = "AZ", category = "deposit") {
+  const t = await h.create();
+  assert.equal((await h.turn(t, "state", state)).status, 200);
+  assert.equal((await h.turn(t, "safety", { danger: false, deadline: false, lawyer: false })).status, 200);
+  let next = (await h.turn(t, "category", category)).body.next as Nx;
+  const asked: Nx[] = [];
+  const seen: Array<{ step: string; counterparty: string | null }> = [];
+  for (let i = 0; i < 30 && next.step !== "submit"; i++) {
+    asked.push(next);
+    const a = answers[next.step];
+    assert.ok(a !== undefined, `no scripted answer for ${next.step}`);
+    const r = await h.turn(t, next.step, a);
+    assert.equal(r.status, 200, JSON.stringify(r.body));
+    seen.push({ step: next.step, counterparty: only(h).counterparty });
+    // the resume poll's planner agrees with the turn handler's
+    assert.deepEqual(nextStepFor(only(h)), r.body.next);
+    next = r.body.next as Nx;
+  }
+  return { t, asked, seen, submit: () => h.turn(t, "submit") };
+}
+const NICK = {
+  story: "my landlord wont pay my 3k deposit back, I moved out in october",
+  counterparty: "My landlord wont pay my deposit back",
+  counterparty_more: "Desert Rentals LLC",
+  address: "12 Palm Rd, Tempe, AZ 85281",
+  moveout: "2025",
+  asked: "Emailed and called",
+  asked_more: "November 3, 2025",
+  forwarding: "Yes, by email",
+  deductions: "They never sent a list of deductions.",
+  want: "Pay me",
+  want_more: "Return the full deposit within 14 days",
+  confirm: "yes",
+};
+
+test("F1 replay through handleCasePost: story first, then only what is missing, in plan order", async () => {
+  const h = harness();
+  const { asked, submit } = await replay(h, NICK);
+  assert.deepEqual(asked.map((n) => n.step), [
+    "story", "counterparty", "counterparty_more", "address", "moveout", "asked", "asked_more",
+    "forwarding", "deductions", "want", "want_more", "confirm",
+  ]);
+  assert.ok(asked.every((n) => n.kind === "text" && n.prompt.length > 0));
+  assert.match(asked.find((n) => n.step === "confirm")!.prompt, /^So far: Desert Rentals LLC, Arizona, a \$3,000 deposit, moved out in October 2025/);
+  assert.equal((await submit()).status, 202);
+  assert.equal(h.store.jobs.length, 1);
+});
+
+test("F3 replay: the amount is never asked and amount_usd = 3000 from the story", async () => {
+  const h = harness();
+  const { asked } = await replay(h, NICK);
+  assert.ok(!asked.some((n) => n.step.startsWith("amount")), asked.map((n) => n.step).join(","));
+  assert.equal(only(h).amount_usd, 3000);
+});
+
+test("F2 replay: the counterparty is never a complaint sentence; the name answer fills it", async () => {
+  const h = harness();
+  const { seen } = await replay(h, NICK);
+  const afterSentence = seen.find((s) => s.step === "counterparty")!;
+  assert.equal(afterSentence.counterparty, null);
+  assert.ok(seen.every((s) => !/wont pay/i.test(s.counterparty ?? "")));
+  assert.equal(only(h).counterparty, "Desert Rentals LLC");
+});
+
+test("F4 replay: key_dates is [{what, date, raw, year}] with the year asked for and the raw text kept", async () => {
+  const h = harness();
+  await replay(h, NICK);
+  const kd = only(h).key_dates as Array<{ what: string; date: string; raw: string; year: number | null }>;
+  assert.ok(Array.isArray(kd));
+  const out = kd.find((k) => k.what === "moved out")!;
+  assert.equal(out.year, 2025);
+  assert.match(out.date, /october/i);
+  assert.match(out.raw, /moved out in october/);
+  assert.ok(kd.some((k) => k.what === "asked" && k.year === 2025));
+  for (const k of kd) assert.deepEqual(Object.keys(k).sort(), ["date", "raw", "what", "year"]);
+});
+
+test("F5 replay: each thin answer gets exactly one follow-up; every text turn stores its question as q; last turn is text", async () => {
+  const h = harness();
+  // thin twice: the follow-up is asked once, then the chat moves on
+  const { asked } = await replay(h, { ...NICK, want_more: "Pay" });
+  assert.equal(asked.filter((n) => n.step === "want_more").length, 1);
+  assert.ok(!asked.some((n) => /_more_more/.test(n.step)));
+  const turns = only(h).turns;
+  for (const x of turns.filter((x) => x.text)) assert.ok(typeof x.q === "string" && (x.q as string).length > 0, x.step);
+  assert.equal(turns.find((x) => x.step === "want_more")!.q, asked.find((n) => n.step === "want_more")!.prompt);
+  assert.ok(turns[turns.length - 1].text, "the worker's crisis screen reads the last text turn");
+});
+
+test("F2 seam: an injected extract pass is used for the story, and its counterparty goes through guardFacts", async () => {
+  const calls: string[] = [];
+  const extract: ExtractPass = async (text) => { calls.push(text); return { counterparty: "My landlord wont pay", amount_usd: 777 }; };
+  const h = harness(ENV, { extract });
+  const t = await h.create();
+  await h.turn(t, "state", "AZ");
+  await h.turn(t, "safety", { danger: false, deadline: false, lawyer: false });
+  await h.turn(t, "category", "deposit");
+  const r = await h.turn(t, "story", "They kept it. Account 1234567890.");
+  assert.deepEqual(calls, ["They kept it. Account [REDACTED]."], "the pass sees redacted text only");
+  assert.equal(only(h).counterparty, null);
+  assert.equal(only(h).amount_usd, 777);
+  assert.equal((r.body.next as Nx).step, "counterparty");
+  assert.deepEqual(nextStepFor(only(h)), r.body.next, "the poll replays the stored pass output, no second call");
+  assert.equal(calls.length, 1);
+});
+
+test("F1 generic category: story facts skip the amount step; the old fixed order is gone", async () => {
+  const h = harness();
+  const { asked } = await replay(h, {
+    story: "The store refused my refund of $240 for a broken blender I returned on March 3, 2026.",
+    counterparty: "Blendco", want: "A full refund of $240 within 14 days", tried: "I called them twice in March 2026.",
+    confirm: "looks good",
+  }, "OH", "refund");
+  assert.deepEqual(asked.map((n) => n.step), ["story", "counterparty", "want", "tried", "confirm"]);
+  assert.equal(only(h).amount_usd, 240);
 });
