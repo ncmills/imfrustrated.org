@@ -32,8 +32,7 @@ function mockDb(row: Record<string, unknown> | null, jobs: Job[], paused: string
         limit: (n: number, o?: { referencedTable?: string }) => { if (o?.referencedTable === "imf_chat_jobs") lim = n; return q; },
         maybeSingle: async () => {
           calls.push(`from:${table}`);
-          if (table === "imf_chat_worker_state") return { data: beat ? { beat_at: beat } : null, error: null };
-          if (table !== "imf_chat_cases") throw new Error("poll must only read imf_chat_cases / imf_chat_worker_state");
+          if (table !== "imf_chat_cases") throw new Error("poll must only read imf_chat_cases");
           let js = [...jobs].sort((x, y) => Date.parse(x.created_at) - Date.parse(y.created_at));
           if (desc) js.reverse();
           if (lim != null) js = js.slice(0, lim);
@@ -42,7 +41,7 @@ function mockDb(row: Record<string, unknown> | null, jobs: Job[], paused: string
       };
       return q;
     },
-    rpc: async (name: string) => { calls.push(`rpc:${name}`); return { data: paused, error: null }; },
+    rpc: async (name: string) => { calls.push(`rpc:${name}`); return { data: name === "imf_worker_beat_at" ? beat : paused, error: null }; },
   };
   return { db: db as never, calls };
 }
@@ -152,11 +151,28 @@ test("latest job is the embedded one: an old failed job + a new queued job reads
   assert.equal(r.body.progress, "Checking your situation");
 });
 
-test("workerBeatAt: read failure or missing row is null (unknown), never a throw", async () => {
-  const bad = { from: () => ({ select: () => ({ eq: () => ({ maybeSingle: async () => ({ data: null, error: { message: "permission denied" } }) }) }) }) };
-  assert.equal(await supabaseStore(bad as never).workerBeatAt(), null);
-  const boom = { from: () => { throw new Error("x"); } };
-  assert.equal(await supabaseStore(boom as never).workerBeatAt(), null);
+const rpcDb = (res: unknown) => {
+  const seen: Array<[string, unknown[]]> = [];
+  return { db: { rpc: async (...a: unknown[]) => { seen.push([a[0] as string, a.slice(1)]); return res; } } as never, seen };
+};
+
+test("workerBeatAt: rpc returns ISO string -> that string (rpc imf_worker_beat_at, no args)", async () => {
+  const r = rpcDb({ data: "2026-11-26T12:00:00Z", error: null });
+  assert.equal(await supabaseStore(r.db).workerBeatAt(), "2026-11-26T12:00:00Z");
+  assert.deepEqual(r.seen, [["imf_worker_beat_at", []]]);
   const m = mockDb(null, [], null, "2026-11-26T12:00:00Z");
   assert.equal(await supabaseStore(m.db).workerBeatAt(), "2026-11-26T12:00:00Z");
+});
+
+test("workerBeatAt: rpc error (incl. PGRST202) -> null, even if data is present", async () => {
+  assert.equal(await supabaseStore(rpcDb({ data: null, error: { code: "PGRST202", message: "not found" } }).db).workerBeatAt(), null);
+  assert.equal(await supabaseStore(rpcDb({ data: "2026-11-26T12:00:00Z", error: { message: "boom" } }).db).workerBeatAt(), null);
+});
+
+test("workerBeatAt: rpc null / non-string / unparseable -> null; a throw -> null", async () => {
+  assert.equal(await supabaseStore(rpcDb({ data: null, error: null }).db).workerBeatAt(), null);
+  assert.equal(await supabaseStore(rpcDb({ data: 123, error: null }).db).workerBeatAt(), null);
+  assert.equal(await supabaseStore(rpcDb({ data: "not-a-date", error: null }).db).workerBeatAt(), null);
+  const boom = { rpc: async () => { throw new Error("x"); } };
+  assert.equal(await supabaseStore(boom as never).workerBeatAt(), null);
 });
