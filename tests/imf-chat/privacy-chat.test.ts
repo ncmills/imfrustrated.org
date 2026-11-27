@@ -16,9 +16,9 @@ const plain = (s: unknown) => JSON.parse(JSON.stringify(s));
 const APPROVED: Array<[string, string]> = [
   ["What we store.", "What you type into the letter chat is saved so we can draft your letter, after we automatically remove anything that looks like a Social Security number, card or account number, phone number, email address or date of birth. It is tied to a private link that only you hold. We don't ask for your name or address, and the letter leaves blanks for them."],
   ["Who processes it.", "Your answers are sent from our own server to Anthropic, the AI provider we use, to look up the law that applies and draft your letter. Anthropic processes them only to do that. We also look up laws on official public websites."],
-  ["How long we keep it.", "Your case, including your letter, is deleted 30 days after you started it, or 7 days after you started if you never finish the questions. This happens whether or not a person has checked it. Save or print your letter before then."],
+  ["How long we keep it.", "Your case, including your letter, is deleted 30 days after you started it, or 7 days after you started if you never finish the questions. This happens whether or not it has passed our checks. Save or print your letter before then."],
   ["Your IP address.", "To stop abuse, we keep a scrambled (hashed) form of your IP address for 31 days to count how often the chat is used from one connection. We do not keep the address itself."],
-  ["During our early test.", "While the letter chat is in its early test, a person at I'm Frustrated reads your case before you see the letter. That person is not your lawyer and does not change your letter: they either release it or decide we can't help with this one."],
+  ["During our early test.", "While the letter chat is in its early test, your letter is checked before you see it. That check is not legal advice. It ends with the letter being released or with a decision that we can't help with this one."],
   ["If you ask for an email (when offered).", "If you choose \"email me when it's ready,\" we keep that one address with your case, use it to send you one email with your private link, and delete it when your case is deleted. It is never added to a list or used for anything else."],
 ];
 

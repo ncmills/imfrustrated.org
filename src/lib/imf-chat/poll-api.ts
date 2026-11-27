@@ -25,10 +25,10 @@ export function workerOffline(beatAt: string | null, jobAgeMs: number, now: numb
 const CASE_CITE = /\b[A-Z][\w.'&-]*(?: [A-Z][\w.'&-]*)* v\. [A-Z]/;
 
 const STATUS_LINE: Record<string, string> = {
-  held: "We need a person to look at this; check back within 2 days.",
-  flag: "We couldn't check every citation on this one. A person will look at it.",
-  research_failed: "We couldn't check every citation on this one. A person will look at it.",
-  failed: "We couldn't check every citation on this one. A person will look at it.",
+  held: "This is being checked before we show it. Check back within 2 days.",
+  flag: "We couldn't check every citation in this letter against an official source, so it isn't ready to show. LawHelp.org lists free legal aid in every state.",
+  research_failed: "We couldn't finish this letter and check its citations, so we aren't showing it. LawHelp.org lists free legal aid in every state.",
+  failed: "We couldn't finish this letter and check its citations, so we aren't showing it. LawHelp.org lists free legal aid in every state.",
   urgent: "A deadline this close needs local help now: find free legal aid at LawHelp.org, or call your state bar's lawyer-referral service.",
   lawyer: "Since you already have a lawyer or a court case, talk to your lawyer or the court clerk about this.",
   out: "This is outside what we can help with. LawHelp.org lists free legal aid in every state.",
