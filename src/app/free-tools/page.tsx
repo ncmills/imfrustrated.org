@@ -448,6 +448,7 @@ export default function FreeToolsPage() {
         <section className="relative max-w-3xl mx-auto px-6 md:px-8 pb-24 text-center">
           <Reveal>
             <TwoChoiceBox chatPublic={chatPublic(process.env)} />
+            <a href="mailto:info@imfrustrated.org" className="btn-soft mag mt-6">info@imfrustrated.org</a>
             <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-sage-2">
               <Link href="/how-it-works" className="hover:text-clay transition-colors duration-300">How it works</Link>
               <Link href="/about" className="hover:text-clay transition-colors duration-300">About us</Link>

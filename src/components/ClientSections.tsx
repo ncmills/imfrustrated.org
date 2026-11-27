@@ -131,6 +131,9 @@ export function Header({ chatPublic = false }: { chatPublic?: boolean } = {}) {
         </Link>
 
         <nav className="hidden md:flex items-center gap-7 text-[0.92rem] font-medium text-sage-2">
+          <Link href="/free-tools" onClick={() => trackCtaClicked("nav_free_tools")} className="hover:text-sage transition-colors duration-300">
+            Free tools
+          </Link>
           <Link href="/letters" onClick={() => trackCtaClicked("nav_letters")} className="hover:text-sage transition-colors duration-300">
             Letters
           </Link>
@@ -363,6 +366,7 @@ export function SiteFooter({ chatPublic = false }: { chatPublic?: boolean } = {}
                   { href: "/letters", label: "Browse the collection" },
                   { href: "/letters/parking", label: "Parking ticket defenses" },
                   { href: "/free-tools", label: "Free tools" },
+                  { href: "/#contact", label: "Get a draft letter by email" },
                 ].map((l) => (
                   <li key={l.href}>
                     <Link
@@ -419,6 +423,7 @@ export function SiteFooter({ chatPublic = false }: { chatPublic?: boolean } = {}
           <div className="flex items-center gap-6 text-xs">
             <Link href="/privacy" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Privacy</Link>
             <Link href="/terms" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Terms</Link>
+            <Link href="/impact" className="inline-flex min-h-[44px] items-center text-bg/60 hover:text-clay-soft transition-colors duration-300">Impact</Link>
           </div>
         </div>
         <p className="text-bg/55 text-[0.72rem] leading-relaxed mt-4 max-w-3xl">

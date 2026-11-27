@@ -14,10 +14,35 @@ test("home page links /letter-chat and /letters", () => {
   assert.match(src, /href="\/letters"/);
 });
 
-test("home page does not import or render IntakeForm", () => {
+// Ruling IFDO-RUNS-ITSELF item 8: the two choices lead the page, and NOTHING else on the
+// home page is removed. Each marker below is a section main's homepage had.
+const HOME_SECTIONS = [
+  ["two-choice block (front door)", /Front door: exactly two ways to start/],
+  ["sample-letter preview", /aria-label="Sample dispute letter preview"/],
+  ["three sister-site cards", /const tools:[\s\S]*idonthaveawill\.com[\s\S]*aissdi\.com[\s\S]*doppelwriter\.com[\s\S]*tools\.map\(/],
+  ["email draft-letter form", /import IntakeForm[\s\S]*<IntakeForm \/>/],
+  ["contact section", /<section id="contact"/],
+  ["letter library + category chips", /letterCategories\.map\(/],
+  ["parking cities", /featuredParkingCities\.map\(/],
+  ["how it works", /<section id="how"/],
+  ["testimonials", /<section id="testimonials"/],
+];
+
+test("home page: two-choice block is first, then every section main had", () => {
   const src = read("src/app/page.tsx");
-  assert.ok(!/IntakeForm/.test(src), "IntakeForm still referenced on the home page");
-  assert.ok(!/id="contact"/.test(src), "#contact section is back on the home page");
+  for (const [name, re] of HOME_SECTIONS) assert.ok(re.test(src), `home page lost: ${name}`);
+  const body = src.slice(src.indexOf("<main"));
+  const front = body.indexOf("Front door: exactly two ways to start");
+  assert.ok(front >= 0, "front door block missing");
+  assert.ok(!body.slice(0, front).includes("<section"), "a <section> renders above the front door");
+  for (const needle of ['aria-label="Sample dispute letter preview"', "tools.map(", "<IntakeForm />", '<section id="contact"', "<section id=\"how\"", "<section id=\"testimonials\""]) {
+    assert.ok(body.indexOf(needle) > front, `${needle} must render below the two choices`);
+  }
+});
+
+test("positive control: the section scan fails when a section is deleted", () => {
+  const src = read("src/app/page.tsx").replace("<IntakeForm />", "");
+  assert.ok(!/<IntakeForm \/>/.test(src));
 });
 
 test('header CTA text is "Write my letter" and points at /letter-chat', () => {
@@ -25,13 +50,12 @@ test('header CTA text is "Write my letter" and points at /letter-chat', () => {
   const header = src.slice(src.indexOf("export function Header"), src.indexOf("export function FadeInSection"));
   assert.match(header, /"\/letter-chat"/);
   assert.match(header, /Write my letter/);
-  assert.ok(!/Get a draft letter/.test(src), "old CTA text still present");
+  assert.ok(!/Get a draft letter/.test(header), "old header CTA text still present");
 });
 
-test("no page links to the removed #contact entry point", () => {
-  for (const f of ["src/app/letters/page.tsx", "src/app/faq/page.tsx", "src/components/ClientSections.tsx", "src/app/blog/[slug]/page.tsx"]) {
-    assert.ok(!/#contact/.test(read(f)), f);
-  }
+test("the email draft-letter form stays reachable: footer and TwoChoiceBox link /#contact", () => {
+  assert.match(read("src/components/ClientSections.tsx"), /href: "\/#contact"/);
+  assert.match(read("src/components/TwoChoiceBox.tsx"), /href="\/#contact"/);
 });
 
 // Gate (SN adversarial finding, IFDO-STEP-3): /letter-chat 404s until the chat is public, so no

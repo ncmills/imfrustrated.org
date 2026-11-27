@@ -41,6 +41,10 @@ export function TwoChoiceBox({
         )}
       </div>
       )}
+      <p className={`text-sm leading-relaxed mt-5 ${dark ? "text-[#cdd6cd]" : "text-sage-2"}`}>
+        Prefer email? <Link href="/#contact" className="underline decoration-clay/70 underline-offset-4">Tell us what happened</Link> and
+        we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
+      </p>
     </div>
   );
 }

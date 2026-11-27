@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import IntakeForm from "@/components/IntakeForm";
 import { chatPublic } from "@/lib/imf-chat/flags";
-import { getAllLetters } from "@/data/letters";
+import {
+  getAllLetters,
+  getAvailableCategories,
+  getLettersByCategory,
+} from "@/data/letters";
 import { getAllParkingCities } from "@/data/parking";
 import { testimonials } from "@/data/testimonials";
 
@@ -25,6 +30,11 @@ const disputes: { label: string; slug: string }[] = [
  * drops a template into a category file, and the homepage is the one place a visitor
  * checks the number against nothing. Reading it from the data layer means adding a
  * letter updates the badge, the body copy, the CTA and the chips at once. */
+const letterCategories: { label: string; slug: string; n: number }[] =
+  getAvailableCategories()
+    .map((c) => ({ label: c.label, slug: c.slug, n: getLettersByCategory(c.slug).length }))
+    .sort((a, b) => b.n - a.n || a.label.localeCompare(b.label));
+
 const letterCount = getAllLetters().length;
 
 /* Parking library counts — DERIVED for the same reason the letter counts are.
@@ -37,21 +47,53 @@ const featuredParkingCities = [...parkingCities]
   .sort((a, b) => b.defenses.length - a.defenses.length || a.city.localeCompare(b.city))
   .slice(0, 8);
 
+/* Self-help tools (sister sites). Letter Library + Ask-an-attorney are handled
+ * separately below so all five offerings sit in one scannable section. */
+const tools: {
+  n: string;
+  badge: string;
+  name: string;
+  href: string;
+  desc: string;
+}[] = [
+  {
+    n: "02",
+    badge: "Free will generator",
+    name: "I Don’t Have A Will",
+    href: "https://idonthaveawill.com",
+    desc: "Draft a simple, state-specific will in about ten minutes. Free, no account — and it never leaves your browser.",
+  },
+  {
+    n: "03",
+    badge: "Free disability tools",
+    name: "A.I. SSDI",
+    href: "https://aissdi.com",
+    desc: "Denied Social Security disability? Estimate your approval odds, look up your assigned judge, and weigh your appeal — from public SSA data.",
+  },
+  {
+    n: "04",
+    badge: "Free voice rewriter",
+    name: "DoppelWriter",
+    href: "https://doppelwriter.com",
+    desc: "Make a form letter sound like you. Paste a draft and it rewrites the letter in your own voice — so it reads like a real person, not a template.",
+  },
+];
+
 const steps = [
   {
     n: "1",
-    title: "Pick your way in",
-    body: "Tell the chatbot what happened, or browse the collection for the letter that fits.",
+    title: "Find your situation",
+    body: "Pick the dispute you’re facing. We’ll point you to the right letter or tool.",
   },
   {
     n: "2",
-    title: "Review your letter",
-    body: "Check the facts, fill in the blanks. Plain English, real statute behind it.",
+    title: "Use the letter or tool",
+    body: "Fill in the blanks, follow the steps. Plain English, real statute behind it.",
   },
   {
     n: "3",
-    title: "Send it yourself",
-    body: "You send the letter. If a deadline is close, talk to a licensed attorney or legal aid.",
+    title: "Still stuck? Ask",
+    body: "Tell us what happened and we’ll try to email you a draft self-help letter to send yourself.",
   },
 ];
 
@@ -149,31 +191,210 @@ export default function Home() {
           </Reveal>
         </section>
 
-        {/* ─── Parking chips (kept below the two choices) ─── */}
-        <section id="offerings" className="relative max-w-6xl mx-auto px-6 md:px-8 py-10">
-          <Reveal>
-            <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-              <div className="flex-1">
-                <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-1.5">
-                  {parkingCityCount} cities&nbsp;·&nbsp;{parkingDefenseCount} defenses
+        {/* ─── Kept from the old hero, below the two choices: proof strip, dispute chips, sample letter ─── */}
+        <section className="relative px-6 sm:px-10 lg:px-20 pt-6 pb-16">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+            <div className="@container text-center lg:text-left">
+              <Reveal delay={4}>
+                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mt-9">
+                  <a href="#offerings" className="btn-ghost mag">See everything we offer</a>
+                </div>
+              </Reveal>
+              <Reveal delay={4}>
+                {/* Hairline proof strip — every number DERIVED from the data
+                    layer (same rule as the counts below: hand-typed counts
+                    drifted once already). $0 is the price of everything here. */}
+                <p className="mt-8 pt-4 border-t border-rule inline-flex flex-wrap justify-center lg:justify-start gap-x-2.5 gap-y-1 text-[0.9rem] text-sage-2 tabular-nums tracking-[0.01em]">
+                  <span><strong className="font-semibold text-sage">{letterCount}</strong> letters</span>
+                  <span aria-hidden className="text-rule">&middot;</span>
+                  <span><strong className="font-semibold text-sage">{parkingCityCount}</strong> cities</span>
+                  <span aria-hidden className="text-rule">&middot;</span>
+                  <span><strong className="font-semibold text-sage">{parkingDefenseCount}</strong> parking defenses</span>
+                  <span aria-hidden className="text-rule">&middot;</span>
+                  <span><strong className="font-semibold text-sage">$0</strong>, all of it</span>
                 </p>
-                <h3 className="font-disp font-semibold text-sage text-xl tracking-[-0.02em]">
-                  <Link href="/letters/parking" className="hover:text-clay transition-colors duration-300">
-                    Fight a parking ticket in your city
-                  </Link>
-                </h3>
+              </Reveal>
+              <Reveal delay={4}>
+                <div className="mt-10 max-w-2xl mx-auto lg:mx-0">
+                  <p className="font-accent italic text-lg text-sage-2 mb-4">jump straight to the letter for your&hellip;</p>
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-2.5">
+                    {disputes.map((d) => (
+                      <Link key={d.slug} href={`/letters/${d.slug}`} className="chip">{d.label}</Link>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* Sample-letter preview card — visual, right, reaches toward the edge */}
+            <Reveal delay={3} className="hidden sm:block">
+              <div className="relative">
+                <div
+                  aria-hidden="true"
+                  className="absolute -inset-3 rounded-2xl bg-bg-2 translate-x-2 translate-y-3"
+                />
+                <article
+                  aria-label="Sample dispute letter preview"
+                  className="relative bg-card border border-rule rounded-2xl p-8 md:p-10 leading-relaxed"
+                >
+                  <div className="flex items-center justify-between text-[11px] tracking-[0.18em] uppercase text-sage-2 pb-5 mb-5 border-b border-rule">
+                    <span>Sample &middot; Landlord dispute</span>
+                    <span className="chip !py-0.5 !px-2 text-[10px]">Editable</span>
+                  </div>
+                  <p className="font-disp text-sage text-lg font-semibold">
+                    Re: Return of Security Deposit
+                  </p>
+                  <p className="mt-4 text-sage-2">
+                    Dear <span className="text-clay font-medium">[Landlord Name]</span>,
+                  </p>
+                  <p className="mt-3 text-sage-2">
+                    I am writing regarding the security deposit for my former
+                    residence at <span className="text-clay font-medium">[Property Address]</span>.
+                    As of today it has been <span className="text-clay font-medium">[X]</span> days
+                    since I vacated, and I have not received either the deposit
+                    or an itemized statement of deductions&hellip;
+                  </p>
+                  <p className="mt-5 text-xs uppercase tracking-[0.14em] text-sage-2/70">
+                    Illustrative sample &mdash; every letter is filled in for your
+                    situation and state.
+                  </p>
+                </article>
               </div>
-              <div className="flex flex-wrap gap-2.5 md:justify-end md:max-w-[56%]">
-                {featuredParkingCities.map((c) => (
-                  <Link key={c.slug} href={`/letters/parking/${c.slug}`} className="chip">
-                    {c.city}
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ─── Everything IFDO gives you (all five offerings, scannable) ─── */}
+        <section id="offerings" className="relative max-w-6xl mx-auto px-6 md:px-8 py-16 md:py-20">
+          <Reveal className="text-center max-w-2xl mx-auto mb-12">
+            <p className="font-accent italic text-xl text-clay">everything in one place</p>
+            <h2 className="font-disp font-semibold text-sage text-3xl md:text-[2.75rem] tracking-[-0.03em] mt-1.5">
+              Everything IFDO gives you
+            </h2>
+            <p className="text-sage-2 mt-4 leading-relaxed">
+              Five free ways to handle a legal headache yourself &mdash; send a
+              letter, use a self-help tool, or request a draft letter by email.
+            </p>
+          </Reveal>
+
+          {/* Offering 01 — featured: The Letter Library.
+             Not a single wrapping <Link> — the CTA and each category are their own
+             links, so no invalid nested anchors. */}
+          <Reveal delay={1}>
+            <div className="tool-card group p-8 md:p-10 mb-5">
+              <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-center">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-[14px] bg-clay-soft/30 text-clay grid place-items-center font-disp font-bold text-base">01</div>
+                    <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em]">Free letter library&nbsp;·&nbsp;{letterCount} letters</p>
+                  </div>
+                  <h3 className="font-disp font-semibold text-sage text-[1.7rem] md:text-3xl tracking-[-0.02em]">
+                    <Link href="/letters" className="hover:text-clay transition-colors duration-300">The Letter Library</Link>
+                  </h3>
+                  <p className="text-sage-2 mt-3 leading-relaxed">
+                    {letterCount} ready-to-send letters that quietly cite real statute &mdash; security
+                    deposits, billing errors, HOA fines, delayed flights, and more. Every
+                    citation checked against the official source. Fill in the blanks and send. No lawyer required.
+                  </p>
+                  <Link href="/letters" className="inline-flex items-center gap-2 mt-5 font-semibold text-[0.95rem] text-clay hover:gap-3 transition-all duration-300">
+                    Browse all {letterCount} letters
+                    <Arrow />
                   </Link>
-                ))}
-                <Link href="/letters/parking" className="chip font-semibold text-clay">
-                  All {parkingCityCount} &rarr;
-                </Link>
+                </div>
+                {/* Category quick-links — makes the depth visible at a glance */}
+                <div className="flex flex-wrap gap-2.5 md:justify-end">
+                  {letterCategories.map((c) => (
+                    <Link key={c.slug} href={`/letters/${c.slug}`} className="chip">
+                      {c.label}&nbsp;<span className="text-clay font-semibold">{c.n}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Parking library — the largest content set on the site (137 of 228
+                 sitemap URLs) and, until 2026-08-10, invisible from here: the homepage
+                 did not contain the word "parking" once, and the only way in was a
+                 single card two clicks deep on /letters. Counts derived, never typed. */}
+              <div className="mt-8 pt-7 border-t border-sage/10">
+                <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+                  <div className="flex-1">
+                    <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-1.5">
+                      Also free&nbsp;·&nbsp;{parkingCityCount} cities&nbsp;·&nbsp;{parkingDefenseCount} defenses
+                    </p>
+                    <h4 className="font-disp font-semibold text-sage text-xl tracking-[-0.02em]">
+                      <Link href="/letters/parking" className="hover:text-clay transition-colors duration-300">
+                        Fight a parking ticket in your city
+                      </Link>
+                    </h4>
+                    <p className="text-sage-2 mt-2 leading-relaxed">
+                      City-specific dispute statements checked against each city&rsquo;s own
+                      contest rules and deadlines &mdash; {parkingCityCount} cities so far.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-2.5 md:justify-end md:max-w-[46%]">
+                    {featuredParkingCities.map((c) => (
+                      <Link key={c.slug} href={`/letters/parking/${c.slug}`} className="chip">
+                        {c.city}
+                      </Link>
+                    ))}
+                    <Link href="/letters/parking" className="chip font-semibold text-clay">
+                      All {parkingCityCount} &rarr;
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
+          </Reveal>
+
+          {/* Offerings 02–04 — self-help tools (sister sites) */}
+          <div className="grid md:grid-cols-3 gap-5">
+            {tools.map((t, i) => (
+              <Reveal key={t.name} delay={((i + 2) as 2 | 3 | 4)}>
+                <a
+                  href={t.href}
+                  target="_blank"
+                  rel="noopener"
+                  className="tool-card group block p-8 md:p-9 h-full"
+                >
+                  <div className="w-12 h-12 rounded-[14px] bg-mist text-sage grid place-items-center font-disp font-bold text-base mb-5">{t.n}</div>
+                  <p className="text-clay text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-2">{t.badge}</p>
+                  <h3 className="font-disp font-semibold text-sage text-2xl tracking-[-0.02em]">{t.name}</h3>
+                  <p className="text-sage-2 mt-2.5 leading-relaxed">{t.desc}</p>
+                  <span className="inline-flex items-center gap-2 mt-5 font-semibold text-[0.95rem] text-clay">
+                    Open the tool
+                    <Arrow className="group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Offering 05 — draft letter by email */}
+          <Reveal delay={2}>
+            <a href="#contact" className="group block mt-5 rounded-[24px] bg-sage text-bg p-8 md:p-9 hover:bg-evergreen transition-colors duration-300">
+              <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
+                <div className="w-12 h-12 rounded-[14px] bg-clay text-white grid place-items-center font-disp font-bold text-base shrink-0">05</div>
+                <div className="flex-1">
+                  <p className="text-clay-soft text-[0.72rem] font-semibold uppercase tracking-[0.2em] mb-1.5">Free · draft letter by email</p>
+                  <h3 className="font-disp font-semibold text-bg text-2xl tracking-[-0.02em]">Get a Draft Letter by Email</h3>
+                  <p className="text-[#cdd6cd] mt-2.5 leading-relaxed max-w-2xl">
+                    Not sure which letter fits? Tell us what happened and we&rsquo;ll try to
+                    email you a draft self-help letter to send yourself (legal information,
+                    not legal advice).
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-2 font-semibold text-[0.95rem] text-clay-soft shrink-0">
+                  Ask now
+                  <Arrow className="group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
+              </div>
+            </a>
+          </Reveal>
+
+          <Reveal className="text-center mt-9">
+            <Link href="/free-tools" className="text-sm text-sage-2 hover:text-clay transition-colors duration-300">
+              More about each tool, plus guides &amp; further reading →
+            </Link>
           </Reveal>
         </section>
 
@@ -225,6 +446,27 @@ export default function Home() {
                   <figcaption className="text-clay font-semibold text-xs tracking-[0.08em] uppercase mt-4">{t.name}</figcaption>
                 </figure>
               ))}
+            </div>
+          </Reveal>
+        </section>
+
+        {/* ─── Contact ─── */}
+        <section id="contact" className="relative max-w-6xl mx-auto px-6 md:px-8 pb-24">
+          <Reveal>
+            <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16">
+              <div className="text-center max-w-xl mx-auto mb-10">
+                <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight">
+                  Still stuck? <em className="font-accent text-clay-soft" style={{ fontStyle: "italic" }}>Get a draft letter.</em>
+                </h2>
+                <p className="text-[#cdd6cd] mt-4 leading-relaxed">
+                  Tell us what happened and we&rsquo;ll try to email you a draft self-help letter
+                  you can send yourself. This is legal information, not legal advice; no one acts
+                  as your lawyer and no attorney-client relationship is formed.
+                </p>
+              </div>
+              <div className="max-w-2xl mx-auto">
+                <IntakeForm />
+              </div>
             </div>
           </Reveal>
         </section>

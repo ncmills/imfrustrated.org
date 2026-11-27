@@ -163,6 +163,30 @@ export default function HowItWorksPage() {
           </Reveal>
         </section>
 
+        {/* ─── Or email us (kept from the original chapter I) ─── */}
+        <section className="relative max-w-3xl mx-auto px-6 md:px-8 pb-12 md:pb-16">
+          <Reveal>
+            <div className="space-y-4">
+              <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.85rem] tracking-[-0.02em]">Or start with an email</h2>
+              <p className="text-sage-2 text-base md:text-lg leading-[1.65]">
+                You can also start by emailing{" "}
+                <a href="mailto:info@imfrustrated.org" className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300">
+                  info@imfrustrated.org
+                </a>{" "}
+                and telling us what&rsquo;s going on. Plain English. No legal jargon. Tell us what happened,
+                who&rsquo;s involved, what worries you, what you&rsquo;re hoping for, and any deadlines or court
+                dates you&rsquo;re aware of.
+              </p>
+              <p className="text-sage-2 text-base md:text-lg leading-[1.65]">
+                The more honest you are, the more useful we can be. There&rsquo;s no expectation of polish. People
+                come to us mid-crisis &mdash; a lease that just blew up, an inheritance fight, a small business
+                contract that turned sideways, a denial letter that doesn&rsquo;t make sense. We&rsquo;d rather hear it
+                raw than rehearsed.
+              </p>
+            </div>
+          </Reveal>
+        </section>
+
         {/* ─── When to get a lawyer ─── */}
         <section className="relative max-w-3xl mx-auto px-6 md:px-8 pb-12 md:pb-16">
           <Reveal>
@@ -190,6 +214,7 @@ export default function HowItWorksPage() {
                 Not sure which letter fits?
               </h2>
               <TwoChoiceBox chatPublic={chatOn} tone="dark" />
+              <a href="mailto:info@imfrustrated.org" className="btn-clay mag mt-6">info@imfrustrated.org</a>
               <div className="mt-12 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
                 <Link href="/about" className="hover:text-clay-soft transition-colors duration-300">About us</Link>
                 <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>

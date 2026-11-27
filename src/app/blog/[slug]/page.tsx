@@ -159,7 +159,11 @@ export default async function BlogPostPage({
             <Link href="/letters" className="text-sage underline decoration-clay/70 underline-offset-[5px]">
               {chatPublic(process.env) ? "browse the collection" : "Browse the collection"}
             </Link>
-            . You send the letter yourself. If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
+            , or{" "}
+            <Link href="/#contact" className="text-sage underline decoration-clay/70 underline-offset-[5px]">
+              tell us what happened
+            </Link>{" "}
+            and we&rsquo;ll try to email you a draft self-help letter. You send the letter yourself. If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
           </p>
 
           {related.length > 0 && (
