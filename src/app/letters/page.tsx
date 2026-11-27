@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { getAllLetters, getAvailableCategories } from "@/data/letters";
 /* DERIVED, never hand-typed — same rule the homepage adopted 2026-08-07 after it
  * advertised "74 letters" against a 75-letter library. This card said "10 cities"
@@ -149,7 +151,7 @@ export default function LettersHubPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <Interactions />
       <main className="relative">
         {/* Hero */}
@@ -283,6 +285,7 @@ export default function LettersHubPage() {
               <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight mt-1.5">
                 Start from a draft.
               </h2>
+              <TwoChoiceBox chatPublic={chatPublic(process.env)} showCollection={false} tone="dark" />
               <p className="text-[#cdd6cd] text-lg leading-relaxed mt-4 max-w-xl mx-auto">
                 Not sure which letter fits? Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
               </p>
@@ -309,7 +312,7 @@ export default function LettersHubPage() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

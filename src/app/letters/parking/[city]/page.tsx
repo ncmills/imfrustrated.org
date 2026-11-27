@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { getAllParkingCities, getParkingCity } from "@/data/parking";
 import { buildOpenGraph } from "@/lib/og";
 
@@ -137,7 +139,7 @@ export default async function ParkingCityPage({
       )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <Interactions />
       <main className="relative">
         {/* Hero */}
@@ -295,6 +297,7 @@ export default async function ParkingCityPage({
                 Nervous about sending it yourself?
               </h2>
               <p className="font-accent italic text-clay-soft text-2xl md:text-3xl mt-3">start from a draft.</p>
+              <TwoChoiceBox chatPublic={chatPublic(process.env)} tone="dark" />
               <p className="text-[#cdd6cd] text-lg leading-relaxed mt-5 max-w-xl mx-auto">
                 Not sure this letter fits? Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
               </p>
@@ -320,7 +323,7 @@ export default async function ParkingCityPage({
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
 import IntakeForm from "@/components/IntakeForm";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import {
   getAllLetters,
   getAvailableCategories,
@@ -107,65 +108,99 @@ function Arrow({ className = "" }: { className?: string }) {
 }
 
 export default function Home() {
+  const chatOn = chatPublic(process.env);
   return (
     <>
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatOn} />
       <Interactions />
 
       <main id="top" className="relative">
-        {/* ─── Hero ─── */}
-        <section className="relative px-6 sm:px-10 lg:px-20 pt-32 md:pt-40 pb-16">
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
-            {/* Headline block — left (stays centered below lg, matches prior layout).
-                @container so the h1 below can size off THIS column's width. */}
-            <div className="@container text-center lg:text-left">
-              <Reveal delay={1}>
-                <span className="eyebrow"><span className="pulse" />Free legal information & self-help tools</span>
-              </Reveal>
-              <Reveal delay={2}>
-                {/* 2026-08-20 design review: the sans first line needed true
-                    display treatment. Bricolage at 700 with tighter tracking —
-                    same face, real display weight, against the serif-italic
-                    second line.
-                    2026-10-03: the size was a fixed breakpoint ladder, and its
-                    largest step landed exactly where the grid narrows this
-                    column to ~55% (lg) — "Free legal help—" overflowed/wrapped
-                    badly in the ~1024–1279px band. One clamp() in container
-                    units instead, so it tracks the column, not the viewport. */}
-                <h1
-                  className="font-disp font-bold text-sage leading-[1.02] tracking-[-0.045em] mt-7"
-                  style={{ fontSize: "clamp(2.6rem, 12cqi, 4.4rem)" }}
-                >
-                  Free legal help&mdash;
-                  <br />
-                  <em className="font-accent text-clay" style={{ fontStyle: "italic" }}>before you pay for a lawyer.</em>
-                </h1>
-              </Reveal>
-              <Reveal delay={3}>
-                <p className="text-sage-2 text-lg md:text-xl leading-[1.6] max-w-2xl mx-auto lg:mx-0 mt-7">
-                  Statute-cited letters, plain-English guides, and self-help tools you use
-                  yourself. All free. Start with the problem you&rsquo;re facing.
+        {/* ─── Front door: exactly two ways to start (Nick 2026-11-24) ─── */}
+        <section className="relative max-w-3xl mx-auto px-6 sm:px-10 pt-28 md:pt-36 pb-14">
+          <Reveal delay={1}>
+            <span className="eyebrow"><span className="pulse" />Free legal information & self-help tools</span>
+          </Reveal>
+          <Reveal delay={2}>
+            <h1
+              className="font-disp font-bold text-sage leading-[1.05] tracking-[-0.04em] mt-6"
+              style={{ fontSize: "clamp(2.2rem, 9vw, 3.75rem)" }}
+            >
+              Got a problem a letter could fix?
+              {chatOn && <em className="block font-accent text-clay tracking-[-0.02em]" style={{ fontStyle: "italic", fontWeight: 400 }}>Two ways to start.</em>}
+            </h1>
+          </Reveal>
+          <Reveal delay={3}>
+            <p className="text-sage-2 text-lg leading-[1.55] mt-5">
+              {chatOn ? "Both are free. Either way, you send the letter yourself." : "It is free, and you send the letter yourself."}
+            </p>
+            <p className="text-sage-2 text-lg leading-[1.55] mt-3">
+              Statute-cited letters, plain-English guides, and self-help tools you use
+              yourself. All free. Start with the problem you&rsquo;re facing.
+            </p>
+          </Reveal>
+
+          <Reveal delay={3}>
+            <div className={`mt-8 grid gap-5 ${chatOn ? "md:grid-cols-2" : ""}`}>
+              {/* Choice 1 — the chatbot (only when the chat is public; /letter-chat 404s otherwise) */}
+              {chatOn && (
+                <div className="rounded-[20px] bg-sage text-bg p-6 flex flex-col">
+                  <p className="text-clay-soft text-[0.7rem] font-bold uppercase tracking-[0.18em]">Choice 1 &middot; Chatbot</p>
+                  <h2 className="font-disp font-bold text-[1.45rem] leading-[1.15] tracking-[-0.02em] mt-2">
+                    Use the chatbot to generate your own letter
+                  </h2>
+                  <p className="text-[#cdd6cd] leading-relaxed mt-3">
+                    Tell it what happened, in plain words. It asks a few questions and writes a
+                    letter for your situation and state. Save the private link to come back to it.
+                  </p>
+                  <div className="mt-auto pt-5">
+                    <Link href="/letter-chat" className="btn-clay mag">
+                      Start the chat
+                      <Arrow />
+                    </Link>
+                  </div>
+                </div>
+              )}
+
+              {/* Choice 2 — the collection */}
+              <div className="rounded-[20px] bg-card border border-rule p-6 flex flex-col">
+                <p className="text-clay text-[0.7rem] font-bold uppercase tracking-[0.18em]">{chatOn ? <>Choice 2 &middot; The collection</> : "The collection"}</p>
+                <h2 className="font-disp font-bold text-sage text-[1.45rem] leading-[1.15] tracking-[-0.02em] mt-2">
+                  Browse the collection
+                </h2>
+                <p className="text-sage-2 leading-relaxed mt-3">
+                  {letterCount} ready-made letters with the statutes already cited, plus parking
+                  appeals for {parkingCityCount} cities. Pick one, fill in the blanks.
                 </p>
-              </Reveal>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {disputes.slice(0, 4).map((d) => (
+                    <Link key={d.slug} href={`/letters/${d.slug}`} className="chip">{d.label}</Link>
+                  ))}
+                  <Link href="/letters/parking" className="chip">Parking</Link>
+                  <Link href="/letters" className="chip">All &rsaquo;</Link>
+                </div>
+                <div className="mt-auto pt-5">
+                  <Link href="/letters" className="btn-ghost mag">Browse letters</Link>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={4}>
+            <p className="text-sage-2 text-[0.8rem] leading-relaxed mt-7 pt-4 border-t border-rule">
+              I&rsquo;m Frustrated is not a law firm and nothing here is legal advice. Court date,
+              eviction or deadline in the next 7 days? Contact a licensed attorney or{" "}
+              <a href="https://www.lawhelp.org" rel="noopener" className="underline decoration-clay/70 underline-offset-4">LawHelp.org</a> now.
+            </p>
+          </Reveal>
+        </section>
+
+        {/* ─── Kept from the old hero, below the two choices: proof strip, dispute chips, sample letter ─── */}
+        <section className="relative px-6 sm:px-10 lg:px-20 pt-6 pb-16">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+            <div className="@container text-center lg:text-left">
               <Reveal delay={4}>
-                {/* GTM scoreboard, 2026-08-18: the primary hero CTA was an
-                    #offerings anchor scroll, not a link to /letters — the
-                    letter library itself. Category chips below already went
-                    to /letters/<category>, but there was no generic /letters
-                    link anywhere in the hero. Legal-tool voice: the reader's
-                    first move should be the tool, not a scroll past it.
-                    2026-08-20 design review: three equal-weight pills meant no
-                    action read first. Now ONE filled primary + one hairline
-                    ghost. The third pill (Ask an attorney — free) is gone:
-                    that action already lives in the header at every width, in
-                    offering 05, and in the footer — its slot became the proof
-                    strip below. */}
                 <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mt-9">
-                  <Link href="/letters" className="btn-clay mag">
-                    Browse the {letterCount}-letter library
-                    <Arrow />
-                  </Link>
                   <a href="#offerings" className="btn-ghost mag">See everything we offer</a>
                 </div>
               </Reveal>
@@ -441,7 +476,7 @@ export default function Home() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatOn} />
     </>
   );
 }

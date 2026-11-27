@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { buildOpenGraph, SITE_URL, absoluteUrl } from "@/lib/og";
 import { getAllPosts, formatPostDate } from "@/lib/blog";
 
@@ -42,7 +43,7 @@ export default function BlogIndexPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <main className="relative">
         <section className="relative max-w-3xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-12 md:pb-16">
           <Reveal delay={1}>
@@ -90,7 +91,7 @@ export default function BlogIndexPage() {
           )}
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

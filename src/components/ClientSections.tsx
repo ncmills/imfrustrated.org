@@ -105,7 +105,7 @@ export function Wordmark({
   );
 }
 
-export function Header() {
+export function Header({ chatPublic = false }: { chatPublic?: boolean } = {}) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -152,6 +152,15 @@ export function Header() {
             (hidden sm:), leaving mobile with no action in the bar at all
             (2026-08-20 design review). Compact sizing below sm so it fits
             beside the wordmark at 390. */}
+        {chatPublic && (
+          <Link
+            href="/letter-chat"
+            onClick={() => trackCtaClicked("header_write_my_letter")}
+            className="mag inline-flex items-center gap-2 px-3.5 py-2 text-[0.8rem] sm:px-5 sm:py-2.5 sm:text-[0.88rem] border border-sage/40 text-sage font-semibold rounded-full hover:bg-bg-2 transition-colors duration-300 shrink-0"
+          >
+            Write my letter
+          </Link>
+        )}
         <Link
           href="/#contact"
           onClick={() => trackCtaClicked("header_ask_attorney")}
@@ -339,7 +348,7 @@ export function Reveal({
 }
 
 /* Shared site footer — evergreen, used on every page for consistency. */
-export function SiteFooter() {
+export function SiteFooter({ chatPublic = false }: { chatPublic?: boolean } = {}) {
   return (
     <footer className="relative bg-evergreen mt-8">
       <div className="max-w-6xl mx-auto px-6 md:px-10 py-14">
@@ -362,6 +371,7 @@ export function SiteFooter() {
               <p className="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-clay-soft">Start here</p>
               <ul className="mt-1 flex flex-col">
                 {[
+                  ...(chatPublic ? [{ href: "/letter-chat", label: "Write my letter (chatbot)" }] : []),
                   { href: "/letters", label: "The Letter Library" },
                   { href: "/letters/parking", label: "Parking ticket defenses" },
                   { href: "/free-tools", label: "Free tools" },

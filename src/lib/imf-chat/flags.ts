@@ -16,3 +16,8 @@ export const letterChatAccess = (env: FlagEnv, beta: string): LetterChatAccess =
   const token = env.IMF_CHAT_BETA_TOKEN?.trim() ?? "";
   return token && beta === token ? "beta" : "none";
 };
+
+// Front door (PR #62): every link to /letter-chat outside the chat itself is shown only when the
+// chat is open to the public. Reuses letterChatAccess so the env logic lives in one place; a
+// beta-only config is "beta", not public, so visitors would hit a 404 and must not see the link.
+export const chatPublic = (env: FlagEnv): boolean => letterChatAccess(env, "") !== "none";
