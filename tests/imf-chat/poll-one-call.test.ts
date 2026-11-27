@@ -15,22 +15,33 @@ const T0 = Date.parse("2026-11-26T12:00:00Z");
 const LETTER = "Dear Landlord, please return my deposit.";
 
 type Job = { status: string; created_at: string; kind: string };
-/** A SupabaseClient stand-in that counts every network round trip (one per terminal call / rpc). */
-function mockDb(row: Record<string, unknown> | null, jobs: Job[], paused: string | null) {
+/** A SupabaseClient stand-in that counts every network round trip (one per terminal call / rpc) and
+ *  HONOURS the embedded order/limit (SN F4): without `order created_at desc` + `limit 1` on the
+ *  embedded imf_chat_jobs it returns every job oldest-first, like PostgREST with no ordering. */
+function mockDb(row: Record<string, unknown> | null, jobs: Job[], paused: string | null, beat: string | null = null) {
   const calls: string[] = [];
   const db = {
     from(table: string) {
+      let desc = false; let lim: number | null = null;
       const q = {
-        select: () => q, eq: () => q, order: () => q, limit: () => q,
+        select: () => q, eq: () => q,
+        order: (col: string, o: { ascending?: boolean; referencedTable?: string }) => {
+          if (o?.referencedTable === "imf_chat_jobs" && col === "created_at" && o.ascending === false) desc = true;
+          return q;
+        },
+        limit: (n: number, o?: { referencedTable?: string }) => { if (o?.referencedTable === "imf_chat_jobs") lim = n; return q; },
         maybeSingle: async () => {
           calls.push(`from:${table}`);
           if (table !== "imf_chat_cases") throw new Error("poll must only read imf_chat_cases");
-          return { data: row ? { ...row, imf_chat_jobs: jobs.slice(-1) } : null, error: null };
+          let js = [...jobs].sort((x, y) => Date.parse(x.created_at) - Date.parse(y.created_at));
+          if (desc) js.reverse();
+          if (lim != null) js = js.slice(0, lim);
+          return { data: row ? { ...row, imf_chat_jobs: js } : null, error: null };
         },
       };
       return q;
     },
-    rpc: async (name: string) => { calls.push(`rpc:${name}`); return { data: paused, error: null }; },
+    rpc: async (name: string) => { calls.push(`rpc:${name}`); return { data: name === "imf_worker_beat_at" ? beat : paused, error: null }; },
   };
   return { db: db as never, calls };
 }
@@ -41,7 +52,7 @@ const base = { id: "c1", created_at: new Date(T0).toISOString(), is_test: false,
 const STATES: Array<{ name: string; row: Record<string, unknown> | null; jobs: Job[]; paused: "day_cap" | null; calls: number }> = [
   { name: "unknown token", row: null, jobs: [], paused: null, calls: 1 },
   { name: "intake", row: { ...base, status: "intake" }, jobs: [], paused: null, calls: 1 },
-  { name: "queued, job queued", row: { ...base, status: "queued" }, jobs: [{ status: "queued", created_at: new Date(T0).toISOString(), kind: "letter" }], paused: null, calls: 2 },
+  { name: "queued, job queued", row: { ...base, status: "queued" }, jobs: [{ status: "queued", created_at: new Date(T0).toISOString(), kind: "letter" }], paused: null, calls: 3 },
   { name: "queued, no job", row: { ...base, status: "queued" }, jobs: [], paused: null, calls: 1 },
   { name: "running", row: { ...base, status: "queued" }, jobs: [{ status: "claimed", created_at: new Date(T0).toISOString(), kind: "letter" }], paused: null, calls: 1 },
   { name: "held", row: { ...base, status: "pass", letter: LETTER, held_for_nick: true }, jobs: [{ status: "done", created_at: new Date(T0).toISOString(), kind: "letter" }], paused: null, calls: 1 },
@@ -128,4 +139,40 @@ test("loop: state change resets to 10 s; hidden = no polls; visible = reset + im
   assert.equal(h.polls.at(-1), t2 + 10_000, "back at 10 s after becoming visible");
   h.loop.stop();
   mock.timers.reset();
+});
+
+test("latest job is the embedded one: an old failed job + a new queued job reads as queued (F4)", async () => {
+  const jobs: Job[] = [
+    { status: "queued", created_at: new Date(T0).toISOString(), kind: "letter" },
+    { status: "failed", created_at: new Date(T0 - 3600_000).toISOString(), kind: "letter" },
+  ];
+  const m = mockDb({ ...base, status: "queued" }, jobs, null);
+  const r = await handleCasePoll(TOKEN, supabaseStore(m.db), T0 + 60_000);
+  assert.equal(r.body.progress, "Checking your situation");
+});
+
+const rpcDb = (res: unknown) => {
+  const seen: Array<[string, unknown[]]> = [];
+  return { db: { rpc: async (...a: unknown[]) => { seen.push([a[0] as string, a.slice(1)]); return res; } } as never, seen };
+};
+
+test("workerBeatAt: rpc returns ISO string -> that string (rpc imf_worker_beat_at, no args)", async () => {
+  const r = rpcDb({ data: "2026-11-26T12:00:00Z", error: null });
+  assert.equal(await supabaseStore(r.db).workerBeatAt(), "2026-11-26T12:00:00Z");
+  assert.deepEqual(r.seen, [["imf_worker_beat_at", []]]);
+  const m = mockDb(null, [], null, "2026-11-26T12:00:00Z");
+  assert.equal(await supabaseStore(m.db).workerBeatAt(), "2026-11-26T12:00:00Z");
+});
+
+test("workerBeatAt: rpc error (incl. PGRST202) -> null, even if data is present", async () => {
+  assert.equal(await supabaseStore(rpcDb({ data: null, error: { code: "PGRST202", message: "not found" } }).db).workerBeatAt(), null);
+  assert.equal(await supabaseStore(rpcDb({ data: "2026-11-26T12:00:00Z", error: { message: "boom" } }).db).workerBeatAt(), null);
+});
+
+test("workerBeatAt: rpc null / non-string / unparseable -> null; a throw -> null", async () => {
+  assert.equal(await supabaseStore(rpcDb({ data: null, error: null }).db).workerBeatAt(), null);
+  assert.equal(await supabaseStore(rpcDb({ data: 123, error: null }).db).workerBeatAt(), null);
+  assert.equal(await supabaseStore(rpcDb({ data: "not-a-date", error: null }).db).workerBeatAt(), null);
+  const boom = { rpc: async () => { throw new Error("x"); } };
+  assert.equal(await supabaseStore(boom as never).workerBeatAt(), null);
 });

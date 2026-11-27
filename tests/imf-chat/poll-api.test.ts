@@ -68,7 +68,7 @@ test("no case citations shown: 'Smith v. Jones' blocks display; positive control
   assert.equal((await handleCasePoll(TOKEN, good.s)).body.letter, LETTER);
 });
 
-test("queued: progress line; offline line after 20 min queued; no strategy field", async () => {
+test("queued: progress line; waiting-in-line from 5 min, offline only after 30 min queued; no strategy field", async () => {
   const t0 = Date.UTC(2026, 10, 1, 12);
   const s = fakeStore(() => t0);
   const { id } = await s.insertCase({ token_hash: hashToken(TOKEN) });
@@ -77,7 +77,10 @@ test("queued: progress line; offline line after 20 min queued; no strategy field
   const early = await handleCasePoll(TOKEN, s, t0 + 60_000);
   assert.equal(early.body.progress, "Checking your situation");
   assert.ok(!("line" in early.body));
-  const late = await handleCasePoll(TOKEN, s, t0 + 21 * 60_000);
+  const mid = await handleCasePoll(TOKEN, s, t0 + 29 * 60_000);
+  assert.match(String(mid.body.line), /Waiting in line/);
+  assert.doesNotMatch(String(mid.body.line), /offline/);
+  const late = await handleCasePoll(TOKEN, s, t0 + 31 * 60_000);
   assert.match(String(late.body.line), /offline/);
   assert.ok(!JSON.stringify(late.body).includes("strategy"));
 });
@@ -121,4 +124,39 @@ test("U6 gap 1: a non-queued status never shows the day-cap line, even when paus
     assert.ok(!("paused" in r.body), status);
     assert.notEqual(r.body.line, DAY_CAP_LINE, status);
   }
+});
+
+// IFDO-PASS-7B-2: offline keyed on worker liveness; missing = unknown = the 30-min age rule.
+import { WORKER_STALE_MS, workerOffline } from "../../src/lib/imf-chat/poll-api";
+async function queuedAt(beat: string | null, ageMin: number) {
+  const t0 = Date.UTC(2026, 10, 1, 12);
+  const s = fakeStore(() => t0);
+  const { id } = await s.insertCase({ token_hash: hashToken(TOKEN) });
+  await s.updateCase(id, { status: "queued" });
+  await s.insertJob({ case_id: id, kind: "letter", is_test: false });
+  s.beat.at = beat;
+  return handleCasePoll(TOKEN, s, t0 + ageMin * 60_000);
+}
+const iso = (ms: number) => new Date(Date.UTC(2026, 10, 1, 12) + ms).toISOString();
+test("liveness: fresh beat -> not offline, even at 40 min queued", async () => {
+  const r = await queuedAt(iso(40 * 60_000 - 60_000), 40);
+  assert.doesNotMatch(String(r.body.line), /offline/);
+  assert.match(String(r.body.line), /Waiting in line/);
+});
+test("liveness: stale beat -> offline, even at 2 min queued", async () => {
+  const r = await queuedAt(iso(0), 2 + 3);
+  assert.match(String(r.body.line), /offline/);
+});
+test("liveness: missing row -> age rule (not offline at 29 min, offline at 31)", async () => {
+  assert.doesNotMatch(String((await queuedAt(null, 29)).body.line), /offline/);
+  assert.match(String((await queuedAt(null, 31)).body.line), /offline/);
+  assert.doesNotMatch(String((await queuedAt(null, 2)).body.line ?? ""), /offline/);
+});
+test("workerOffline: constant ~3 min, boundary, unparseable = unknown", () => {
+  assert.equal(WORKER_STALE_MS, 3 * 60_000);
+  const now = Date.UTC(2026, 10, 1, 12);
+  assert.equal(workerOffline(new Date(now - WORKER_STALE_MS).toISOString(), 0, now), false);
+  assert.equal(workerOffline(new Date(now - WORKER_STALE_MS - 1).toISOString(), 0, now), true);
+  assert.equal(workerOffline("garbage", 31 * 60_000, now), true);
+  assert.equal(workerOffline("garbage", 1, now), false);
 });

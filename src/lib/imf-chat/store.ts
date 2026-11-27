@@ -41,6 +41,9 @@ export interface ChatStore {
   getCaseWithLatestJob(tokenHash: string): Promise<{ c: CaseRow; job: JobInfo | null } | null>;
   /** imf_day_paused(): "day_cap" when the worker hit today's spend cap (current UTC day only), else null. */
   dayPaused(): Promise<"day_cap" | null>;
+  /** Worker liveness timestamp via rpc imf_worker_beat_at(), ISO string. Null = unknown: no function/column
+   *  yet, or the call failed. Never throws; read-only. */
+  workerBeatAt(): Promise<string | null>;
   review(r: ReviewIn): Promise<void>;
   reviewFollowup(r: FollowupReviewIn): Promise<void>;
 }
@@ -107,6 +110,17 @@ export function supabaseStore(db: SupabaseClient): ChatStore {
     async dayPaused() {
       const r = await db.rpc("imf_day_paused");
       return must(r, "imf_day_paused") === "day_cap" ? "day_cap" : null;
+    },
+    async workerBeatAt() {
+      try {
+        // service_role has no table grant; SN's imf_worker_beat_at() RPC returns timestamptz or null.
+        // Any error (incl. PGRST202 missing function) or non-string/unparseable value = unknown.
+        const r = await db.rpc("imf_worker_beat_at");
+        const v = r.data as unknown;
+        return r.error || typeof v !== "string" || Number.isNaN(Date.parse(v)) ? null : v;
+      } catch {
+        return null;
+      }
     },
     async review(x) {
       must(await db.rpc("imf_chat_review", {
