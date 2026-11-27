@@ -142,7 +142,7 @@ export default function FaqPage() {
               {" "}and ask.
             </p>
             <p className="font-accent italic text-clay text-2xl md:text-[1.7rem] mt-7">
-              We read every one.
+              Messages go to our inbox.
             </p>
           </Reveal>
         </section>

@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const PROMISE =
-  /a person will|someone will (look|review)|a human will|our team will review|need a person|person to look|a person at I(['’]|&apos;|&rsquo;)m Frustrated|a person has checked/i;
+  /a person will|someone will (look|review)|a human will|our team will review|need a person|person to look|a person at I(['’]|&apos;|&rsquo;)m Frustrated|a person has checked|a real person on our end|we read every (one|word)|we reply within|reply within a day/i;
 
 const walk = (dir) =>
   readdirSync(dir).flatMap((n) => {
@@ -24,6 +24,10 @@ test("positive control: matcher catches the retired lines", () => {
     "Someone will review it.",
     "A human will reply.",
     "Our team will review your letter.",
+    "a real person on our end will do it manually",
+    "We read every one.",
+    "Reach out. We read every word.",
+    "we reply within a day, usually the same one.",
   ]) assert.match(bad, PROMISE);
 });
 
