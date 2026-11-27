@@ -103,7 +103,7 @@ export default function IntakeForm() {
         Dear friend,
       </p>
       <p className="text-muted-warm text-sm mb-7 leading-relaxed">
-        Tell us a little about what&rsquo;s going on. A few sentences is plenty — we read every one.
+        Tell us a little about what&rsquo;s going on. A few sentences is plenty.
       </p>
 
       <div className="space-y-5">
@@ -194,7 +194,7 @@ export default function IntakeForm() {
         </button>
 
         <p className="script text-xl mt-1">
-          we reply within a day, usually the same one.
+          messages go to our inbox.
         </p>
       </div>
 

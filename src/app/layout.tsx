@@ -171,7 +171,7 @@ export default function RootLayout({
                 "name": "How do I get in touch?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Email us at info@imfrustrated.org. We'll get back to you and set up a conversation."
+                  "text": "Email us at info@imfrustrated.org. Messages go to our inbox."
                 }
               }
             ]

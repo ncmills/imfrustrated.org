@@ -36,7 +36,8 @@ test("F1: an unreviewed answer on a held case never appears in the poll body", a
   assert.ok(!JSON.stringify(body).includes("SENTINEL-ANSWER"));
   const f = (body.followups as Array<{ a: unknown; line?: string }>)[0];
   assert.equal(f.a, null);
-  assert.match(String(f.line), /person to look at this/);
+  assert.match(String(f.line), /being checked before we show it/);
+  assert.doesNotMatch(String(f.line), /within \d+ days|within a (few )?(day|week)/i);
 });
 
 test("F1 positive control: a case that is not held shows its answer directly", async () => {

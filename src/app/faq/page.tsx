@@ -68,7 +68,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "How fast will I hear back?",
     answer:
-      "Usually within a few days. We don't promise an immediate response, but we try to answer every email within a week. If your situation is time-sensitive (a court date, an eviction notice, a contract deadline), don't wait on us: contact a licensed attorney or your local legal aid office now.",
+      "Messages go to our inbox, and we don't promise an immediate response. If your situation is time-sensitive (a court date, an eviction notice, a contract deadline), don't wait on us: contact a licensed attorney or your local legal aid office now.",
   },
   {
     question: "Can I change the letters?",
@@ -143,7 +143,7 @@ export default function FaqPage() {
               {" "}and ask.
             </p>
             <p className="font-accent italic text-clay text-2xl md:text-[1.7rem] mt-7">
-              We read every one.
+              Messages go to our inbox.
             </p>
           </Reveal>
         </section>

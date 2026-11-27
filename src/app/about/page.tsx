@@ -198,7 +198,7 @@ export default function AboutPage() {
                 Frustrated?
               </h2>
               <p className="font-accent italic text-clay-soft text-2xl md:text-[1.7rem] mb-5">
-                Reach out. We read every word.
+                Reach out. Messages go to our inbox.
               </p>
               <TwoChoiceBox chatPublic={chatPublic(process.env)} tone="dark" />
               <p className="text-[#cdd6cd] text-lg leading-relaxed max-w-xl mx-auto mb-8">
