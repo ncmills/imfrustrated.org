@@ -107,6 +107,13 @@ export function Wordmark({
 
 export function Header({ chatPublic = false }: { chatPublic?: boolean } = {}) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handler, { passive: true });
@@ -125,9 +132,9 @@ export function Header({ chatPublic = false }: { chatPublic?: boolean } = {}) {
           : "bg-transparent"
       }`}
     >
-      <div className="px-6 sm:px-10 lg:px-20 flex items-center justify-between h-16 md:h-20">
+      <div className="px-4 sm:px-10 lg:px-20 flex items-center justify-between gap-2 h-16 md:h-20">
         <Link href="/" className="shrink-0" aria-label="I'm Frustrated dot Org — home">
-          <Logo />
+          <Logo compact />
         </Link>
 
         <nav className="hidden md:flex items-center gap-7 text-[0.92rem] font-medium text-sage-2">
@@ -148,27 +155,65 @@ export function Header({ chatPublic = false }: { chatPublic?: boolean } = {}) {
           </Link>
         </nav>
 
-        {/* Shown at every width — the 390 header used to be logo-only
-            (hidden sm:), leaving mobile with no action in the bar at all
-            (2026-08-20 design review). Compact sizing below sm so it fits
-            beside the wordmark at 390. */}
-        {chatPublic && (
+        {/* Phone (below sm): logo + ONE action + a menu button. Two pills plus the
+            wordmark did not fit at 390 (logo ran into the chat pill, the draft-letter
+            pill left the viewport; Nick 2026-11-27). sm and up keeps both pills. */}
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          {chatPublic && (
+            <Link
+              href="/letter-chat"
+              onClick={() => trackCtaClicked("header_write_my_letter")}
+              className="mag inline-flex items-center gap-2 px-2.5 py-2 text-[0.7rem] min-[375px]:px-3.5 min-[375px]:text-[0.8rem] sm:px-5 sm:py-2.5 sm:text-[0.88rem] border border-sage/40 text-sage font-semibold rounded-full hover:bg-bg-2 transition-colors duration-300 shrink-0"
+            >
+              <span className="sm:hidden">Letter chat</span>
+              <span className="hidden sm:inline">Write my letter</span>
+            </Link>
+          )}
           <Link
-            href="/letter-chat"
-            onClick={() => trackCtaClicked("header_write_my_letter")}
-            className="mag inline-flex items-center gap-2 px-3.5 py-2 text-[0.8rem] sm:px-5 sm:py-2.5 sm:text-[0.88rem] border border-sage/40 text-sage font-semibold rounded-full hover:bg-bg-2 transition-colors duration-300 shrink-0"
+            href="/#contact"
+            onClick={() => trackCtaClicked("header_ask_attorney")}
+            className={`mag items-center gap-2 px-2.5 py-2 text-[0.7rem] min-[375px]:px-3.5 min-[375px]:text-[0.8rem] sm:px-5 sm:py-2.5 sm:text-[0.88rem] bg-sage text-bg font-semibold rounded-full hover:bg-evergreen transition-colors duration-300 shrink-0 ${
+              chatPublic ? "hidden sm:inline-flex" : "inline-flex"
+            }`}
           >
-            Write my letter
+            Get a draft letter
           </Link>
-        )}
-        <Link
-          href="/#contact"
-          onClick={() => trackCtaClicked("header_ask_attorney")}
-          className="mag inline-flex items-center gap-2 px-3.5 py-2 text-[0.8rem] sm:px-5 sm:py-2.5 sm:text-[0.88rem] bg-sage text-bg font-semibold rounded-full hover:bg-evergreen transition-colors duration-300 shrink-0"
-        >
-          Get a draft letter
-        </Link>
+          <button
+            type="button"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => {
+              if (!menuOpen) trackCtaClicked("nav_mobile_menu");
+              setMenuOpen((o) => !o);
+            }}
+            className="sm:hidden inline-flex items-center justify-center w-9 h-9 min-[375px]:w-10 min-[375px]:h-10 -mr-1 rounded-full text-sage hover:bg-bg-2 transition-colors duration-300 shrink-0"
+          >
+            <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              {menuOpen ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+            </svg>
+          </button>
+        </div>
       </div>
+
+      {menuOpen && (
+        <nav id="mobile-menu" aria-label="Menu" className="sm:hidden bg-bg border-b border-rule shadow-[0_8px_24px_rgba(38,48,43,0.08)] px-4 py-2 flex flex-col text-[1rem] font-medium text-sage">
+          {chatPublic && (
+            <Link href="/#contact" onClick={() => { trackCtaClicked("header_ask_attorney"); setMenuOpen(false); }} className="py-3 border-b border-rule">
+              Get a draft letter
+            </Link>
+          )}
+          <Link href="/how-it-works" onClick={() => { trackCtaClicked("nav_how_it_works"); setMenuOpen(false); }} className="py-3 border-b border-rule">
+            How it works
+          </Link>
+          <Link href="/faq" onClick={() => { trackCtaClicked("nav_faq"); setMenuOpen(false); }} className="py-3 border-b border-rule">
+            FAQ
+          </Link>
+          <Link href="/about" onClick={() => { trackCtaClicked("nav_about"); setMenuOpen(false); }} className="py-3">
+            About
+          </Link>
+        </nav>
+      )}
     </header>
   );
 }
@@ -275,17 +320,20 @@ export function HeroAtmosphere() {
 export function Logo({
   color = "ink",
   className = "",
+  compact = false,
 }: {
   color?: "ink" | "paper";
   className?: string;
+  /** Header on phones: glyph and wordmark scale down below sm so the bar fits at 320. */
+  compact?: boolean;
 }) {
   const bubble = color === "paper" ? "#f6f3ec" : "#33453d";
   const line = color === "paper" ? "#e0a98f" : "#c8775a";
   const text = color === "paper" ? "#f6f3ec" : "#33453d";
 
   return (
-    <span className={`logo-aside inline-flex items-center gap-2.5 ${className}`}>
-      <svg width="38" height="35" viewBox="0 0 44 40" fill="none" aria-hidden="true" className="shrink-0">
+    <span className={`logo-aside inline-flex items-center ${compact ? "gap-1.5 sm:gap-2.5" : "gap-2.5"} ${className}`}>
+      <svg width="38" height="35" viewBox="0 0 44 40" fill="none" aria-hidden="true" className={`shrink-0 ${compact ? "w-[26px] h-auto sm:w-[38px]" : ""}`}>
         <path
           className="la-bubble"
           d="M6 4 H38 a4 4 0 0 1 4 4 V26 a4 4 0 0 1 -4 4 H20 l-8 7 v-7 H6 a4 4 0 0 1 -4 -4 V8 a4 4 0 0 1 4 -4 Z"
@@ -315,7 +363,7 @@ export function Logo({
         </path>
       </svg>
       <span
-        className="font-disp font-bold text-[1.3rem] tracking-[-0.02em] leading-none"
+        className={`font-disp font-bold tracking-[-0.02em] leading-none ${compact ? "text-[clamp(0.8rem,4.4vw,1.3rem)] sm:text-[1.3rem]" : "text-[1.3rem]"}`}
         style={{ color: text }}
       >
         I&rsquo;m&nbsp;Frustrated<span style={{ color: "#c8775a" }}>.org</span>
