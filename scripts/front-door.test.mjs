@@ -45,17 +45,25 @@ test("positive control: the section scan fails when a section is deleted", () =>
   assert.ok(!/<IntakeForm \/>/.test(src));
 });
 
-test('header CTA text is "Write my letter" and points at /letter-chat', () => {
+test('header keeps "Get a draft letter" (-> /#contact) and gains a gated "Write my letter" (-> /letter-chat)', () => {
   const src = read("src/components/ClientSections.tsx");
   const header = src.slice(src.indexOf("export function Header"), src.indexOf("export function FadeInSection"));
   assert.match(header, /"\/letter-chat"/);
   assert.match(header, /Write my letter/);
-  assert.ok(!/Get a draft letter/.test(header), "old header CTA text still present");
+  assert.match(header, /Get a draft letter/, "existing header action must stay");
+  assert.match(header, /href="\/#contact"/);
 });
 
-test("the email draft-letter form stays reachable: footer and TwoChoiceBox link /#contact", () => {
+test('footer keeps "The Letter Library" and "Get a draft letter" and gains a gated chat entry', () => {
+  const src = read("src/components/ClientSections.tsx");
+  const footer = src.slice(src.indexOf("export function SiteFooter"));
+  assert.match(footer, /label: "The Letter Library"/);
+  assert.match(footer, /href: "\/#contact", label: "Get a draft letter"/);
+  assert.match(footer, /Write my letter \(chatbot\)/);
+});
+
+test("the email draft-letter form stays reachable: the existing #contact entries are untouched", () => {
   assert.match(read("src/components/ClientSections.tsx"), /href: "\/#contact"/);
-  assert.match(read("src/components/TwoChoiceBox.tsx"), /href="\/#contact"/);
 });
 
 // Gate (SN adversarial finding, IFDO-STEP-3): /letter-chat 404s until the chat is public, so no

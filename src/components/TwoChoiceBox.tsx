@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 /**
- * The small two-choice box that replaces every old "Get a draft letter" / #contact
- * entry point below the fold (front-door PR, 2026-11-24). Chat first, collection
- * second. On /letters itself the collection is where the visitor already is, so
+ * The small two-choice box ADDED above each existing "Get a draft letter" / #contact
+ * block (front-door PR, additive per CONTROL PR62-ADDITIVE-ONLY 2026-11-26). It never
+ * replaces or removes the existing block. Chat first, collection second. On /letters itself the collection is where the visitor already is, so
  * `showCollection={false}` leaves just the chatbot link.
  */
 export function TwoChoiceBox({
@@ -16,16 +16,13 @@ export function TwoChoiceBox({
   tone?: "light" | "dark";
 }) {
   const dark = tone === "dark";
+  if (!chatPublic && !showCollection) return null;
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="max-w-xl mx-auto mb-8">
       <p className={`text-lg leading-relaxed ${dark ? "text-[#cdd6cd]" : "text-sage-2"}`}>
         {chatPublic
           ? "No letter fits? Use the chatbot. It asks a few questions and writes a letter for your situation and state. Both ways are free, and you send the letter yourself."
           : "Browse the collection of ready-made letters. It is free, and you send the letter yourself."}
-      </p>
-      <p className={`text-sm leading-relaxed mt-3 ${dark ? "text-[#cdd6cd]" : "text-sage-2"}`}>
-        If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer
-        referral service.
       </p>
       {(chatPublic || showCollection) && (
       <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -41,10 +38,6 @@ export function TwoChoiceBox({
         )}
       </div>
       )}
-      <p className={`text-sm leading-relaxed mt-5 ${dark ? "text-[#cdd6cd]" : "text-sage-2"}`}>
-        Prefer email? <Link href="/#contact" className="underline decoration-clay/70 underline-offset-4">Tell us what happened</Link> and
-        we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
-      </p>
     </div>
   );
 }

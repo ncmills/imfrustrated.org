@@ -8,7 +8,7 @@ import { LetterChat } from "./LetterChat";
 
 // Beta token, or anyone once IMF_CHAT_PUBLIC=1 (flags.letterChatAccess). Never indexed (robots noindex,nofollow) until the front-door proposal says otherwise. Uses the normal site header + footer (front-door PR).
 export const metadata: Metadata = {
-  title: "Write your letter with the chatbot",
+  title: "Letter chat",
   robots: { index: false, follow: false },
 };
 
@@ -38,7 +38,7 @@ export default async function LetterChatPage({ searchParams }: Props) {
             <p>{PAUSED_LINE}</p>
             <p className="mt-4">
               <Link href="/letters" className="underline">
-                Browse the collection
+                Browse the letter library
               </Link>
             </p>
           </div>

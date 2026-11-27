@@ -201,10 +201,12 @@ export default function AboutPage() {
                 Reach out. We read every word.
               </p>
               <TwoChoiceBox chatPublic={chatPublic(process.env)} tone="dark" />
-              <p className="text-[#cdd6cd] text-sm mt-7">
-                Questions? Email{" "}
-                <a href="mailto:info@imfrustrated.org" className="underline decoration-clay-soft underline-offset-4">info@imfrustrated.org</a>.
+              <p className="text-[#cdd6cd] text-lg leading-relaxed max-w-xl mx-auto mb-8">
+                Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
               </p>
+              <a href="mailto:info@imfrustrated.org" className="btn-clay">
+                info@imfrustrated.org
+              </a>
               <div className="mt-10 flex justify-center gap-6 text-sm flex-wrap text-[#cdd6cd]">
                 <Link href="/how-it-works" className="hover:text-clay-soft transition-colors duration-300">How it works</Link>
                 <Link href="/free-tools" className="hover:text-clay-soft transition-colors duration-300">Free tools</Link>

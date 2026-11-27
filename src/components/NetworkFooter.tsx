@@ -24,7 +24,7 @@ export function NetworkFooter({ currentDomain }: { currentDomain: string }) {
   return (
     <nav aria-label="Sister sites" className="mt-10 border-t border-bg/12 pt-7">
       <p className="font-mono text-[0.66rem] uppercase tracking-[0.2em] text-clay-soft">
-        More free tools from our network
+        Also free, from the same desk
       </p>
       <ul className="mt-3 flex flex-col gap-x-8 gap-y-0.5 sm:flex-row sm:flex-wrap">
         {sites.map((s) => (

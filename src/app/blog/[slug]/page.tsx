@@ -147,24 +147,22 @@ export default async function BlogPostPage({
           )}
 
           <p className="mt-10 text-sm text-sage-2 leading-relaxed">
-            General information, not legal advice. Want a starting point?{" "}
-            {chatPublic(process.env) && (
-              <>
-                <Link href="/letter-chat" className="text-sage underline decoration-clay/70 underline-offset-[5px]">
-                  Use the chatbot
-                </Link>{" "}
-                to write a letter for your situation, or{" "}
-              </>
-            )}
-            <Link href="/letters" className="text-sage underline decoration-clay/70 underline-offset-[5px]">
-              {chatPublic(process.env) ? "browse the collection" : "Browse the collection"}
-            </Link>
-            , or{" "}
+            General information, not legal advice. Want a starting point? 
             <Link href="/#contact" className="text-sage underline decoration-clay/70 underline-offset-[5px]">
-              tell us what happened
-            </Link>{" "}
-            and we&rsquo;ll try to email you a draft self-help letter. You send the letter yourself. If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
+              Tell us what happened
+            </Link> 
+            and we&rsquo;ll try to email you a draft self-help letter to send yourself. If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
           </p>
+
+          {chatPublic(process.env) && (
+            <p className="mt-4 text-sm text-sage-2 leading-relaxed">
+              Or{" "}
+              <Link href="/letter-chat" className="text-sage underline decoration-clay/70 underline-offset-[5px]">
+                use the chatbot
+              </Link>{" "}
+              to write a letter for your situation.
+            </p>
+          )}
 
           {related.length > 0 && (
             <div className="mt-12 pt-8 border-t border-rule">

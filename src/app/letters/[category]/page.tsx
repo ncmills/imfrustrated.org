@@ -132,6 +132,18 @@ export default async function CategoryHubPage({
           <Reveal>
             <div className="bg-bg-2 rounded-[32px] px-6 sm:px-10 md:px-14 py-12 md:py-14 text-center">
               <TwoChoiceBox chatPublic={chatPublic(process.env)} />
+              <p className="text-sage-2 text-lg leading-relaxed max-w-xl mx-auto">
+                Not sure which letter fits? Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
+              </p>
+              <p className="text-sage-2 text-sm leading-relaxed mt-3 mb-7 max-w-xl mx-auto">
+                If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
+              </p>
+              <Link href="/#contact" className="btn-clay mag">
+                Tell us what happened
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 ar">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+              </Link>
               <p className="text-sage-2 text-xs italic leading-relaxed mt-8 max-w-xl mx-auto">
                 I&rsquo;m Frustrated dot Org publishes free legal information and self-help tools. It is not a law firm and does not give legal advice. Using this site does not create an attorney-client relationship. For advice about your situation, contact a licensed attorney or your local legal aid office.
               </p>

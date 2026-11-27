@@ -152,12 +152,21 @@ export function Header({ chatPublic = false }: { chatPublic?: boolean } = {}) {
             (hidden sm:), leaving mobile with no action in the bar at all
             (2026-08-20 design review). Compact sizing below sm so it fits
             beside the wordmark at 390. */}
+        {chatPublic && (
+          <Link
+            href="/letter-chat"
+            onClick={() => trackCtaClicked("header_write_my_letter")}
+            className="mag inline-flex items-center gap-2 px-3.5 py-2 text-[0.8rem] sm:px-5 sm:py-2.5 sm:text-[0.88rem] border border-sage/40 text-sage font-semibold rounded-full hover:bg-bg-2 transition-colors duration-300 shrink-0"
+          >
+            Write my letter
+          </Link>
+        )}
         <Link
-          href={chatPublic ? "/letter-chat" : "/letters"}
-          onClick={() => trackCtaClicked(chatPublic ? "header_write_my_letter" : "header_browse_letters")}
+          href="/#contact"
+          onClick={() => trackCtaClicked("header_ask_attorney")}
           className="mag inline-flex items-center gap-2 px-3.5 py-2 text-[0.8rem] sm:px-5 sm:py-2.5 sm:text-[0.88rem] bg-sage text-bg font-semibold rounded-full hover:bg-evergreen transition-colors duration-300 shrink-0"
         >
-          {chatPublic ? "Write my letter" : "Browse letters"}
+          Get a draft letter
         </Link>
       </div>
     </header>
@@ -363,10 +372,10 @@ export function SiteFooter({ chatPublic = false }: { chatPublic?: boolean } = {}
               <ul className="mt-1 flex flex-col">
                 {[
                   ...(chatPublic ? [{ href: "/letter-chat", label: "Write my letter (chatbot)" }] : []),
-                  { href: "/letters", label: "Browse the collection" },
+                  { href: "/letters", label: "The Letter Library" },
                   { href: "/letters/parking", label: "Parking ticket defenses" },
                   { href: "/free-tools", label: "Free tools" },
-                  { href: "/#contact", label: "Get a draft letter by email" },
+                  { href: "/#contact", label: "Get a draft letter" },
                 ].map((l) => (
                   <li key={l.href}>
                     <Link
