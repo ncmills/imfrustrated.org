@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import * as C from "./copy";
+import { showWaitingBlock } from "./waiting";
+import { createPollLoop } from "@/lib/imf-chat/poll-schedule";
 
 // /letter-chat client flow (spec §1 steps 1-9). Every visible line comes from ./copy or from
 // the server (cards, prompts, status lines). The token lives in the URL hash (#t=...), so it is
@@ -15,13 +17,11 @@ type Followup = { q: string; a: string | null; line?: string };
 type Bubble = { who: "bot" | "me"; text: string };
 type Phase = "gate" | "intake" | "waiting" | "result" | "stopped";
 type Poll = {
-  ok?: boolean; error?: string; status?: string; progress?: string; line?: string; paused?: "day_cap"; card?: Card;
+  ok?: boolean; letter_version?: number; transient?: boolean; error?: string; status?: string; progress?: string; line?: string; paused?: "day_cap"; card?: Card;
   letter?: string; cover?: string | null; sources?: unknown; followups?: Followup[];
   next?: { step: string; prompt: string };
 };
 
-const POLL_MS = 10_000;
-const OFFLINE_MS = 20 * 60 * 1000;
 const TERMINAL = new Set(["crisis", "out", "urgent", "lawyer", "closed"]);
 const TEXT_STEPS = new Set(["counterparty", "story", "amount", "dates", "want", "tried"]);
 
@@ -127,6 +127,12 @@ export function LetterChat({ beta }: { beta: string }) {
   const firstInput = useRef<HTMLElement | null>(null);
 
   const applyPoll = useCallback((p: Poll) => {
+    if (p.transient) {
+      // Server hit a database blip: keep the letter/phase we already have, show a calm line,
+      // and let the next poll (or the retry below) recover. Cleared by the next good poll.
+      setError(p.line ?? C.GENERIC_ERROR);
+      return;
+    }
     setPoll(p);
     if (p.error) {
       setError(errorText(p.error));
@@ -160,12 +166,16 @@ export function LetterChat({ beta }: { beta: string }) {
   }, []);
 
   const fetchPoll = useCallback(
-    async (t: string) => {
+    async (t: string, retry = 0) => {
       try {
         const r = await fetch(`/api/chat/case/${encodeURIComponent(t)}`, { cache: "no-store" });
-        applyPoll((await r.json()) as Poll);
+        const p = (await r.json()) as Poll;
+        applyPoll(p);
+        // A resume load has no interval running yet: retry with backoff until the server answers.
+        if (p.transient && retry < 5) window.setTimeout(() => void fetchPoll(t, retry + 1), 3000 * 2 ** retry);
       } catch {
         setError(C.GENERIC_ERROR);
+        if (retry < 5) window.setTimeout(() => void fetchPoll(t, retry + 1), 3000 * 2 ** retry);
       }
     },
     [applyPoll],
@@ -180,17 +190,37 @@ export function LetterChat({ beta }: { beta: string }) {
     }
   }, [fetchPoll]);
 
-  // Poll every 10 s while waiting for the letter, or while a follow-up answer is pending.
+  // Poll while waiting for the letter, or while a follow-up answer is pending: every 10 s for the
+  // first minute, then 20 s, 40 s, capped at 60 s (SWEEP-1615: fewer database calls per open tab).
+  // The cadence resets on a state change and when the tab becomes visible again; nothing polls
+  // while the tab is hidden. fetchPoll keeps its own transient retry/backoff.
   const pendingFollowup = !!poll?.followups?.some((f) => f.a === null && !f.line) || fuNote !== null;
   const shouldPoll = !!token && (phase === "waiting" || (phase === "result" && pendingFollowup));
+  const loopRef = useRef<ReturnType<typeof createPollLoop> | null>(null);
   useEffect(() => {
     if (!shouldPoll || !token) return;
-    const id = window.setInterval(() => {
-      setNow(Date.now());
-      void fetchPoll(token);
-    }, POLL_MS);
-    return () => window.clearInterval(id);
+    const loop = createPollLoop({
+      setTimeout: (fn, ms) => window.setTimeout(fn, ms),
+      clearTimeout: (h) => window.clearTimeout(h as number),
+      hidden: () => document.hidden,
+      poll: () => fetchPoll(token),
+      onTick: () => setNow(Date.now()),
+    });
+    loopRef.current = loop;
+    const onVis = () => loop.visibilityChanged();
+    document.addEventListener("visibilitychange", onVis);
+    loop.start();
+    return () => {
+      document.removeEventListener("visibilitychange", onVis);
+      loop.stop();
+      loopRef.current = null;
+    };
   }, [shouldPoll, token, fetchPoll]);
+  // Any state change goes back to the fast cadence.
+  const stateKey = `${poll?.status ?? ""}|${poll?.paused ?? ""}|${poll?.letter_version ?? ""}|${poll?.followups?.filter((f) => f.a !== null || !!f.line).length ?? 0}`;
+  useEffect(() => {
+    loopRef.current?.reset();
+  }, [stateKey]);
 
   // Clear the "question sent" note once the server shows every answer.
   useEffect(() => {
@@ -492,13 +522,15 @@ export function LetterChat({ beta }: { beta: string }) {
       {/* ---- 5 + 7. Acknowledgement and waiting state. */}
       {phase === "waiting" ? (
         <div className="space-y-3 rounded-xl border border-rule bg-card p-4">
-          {stateLabel ? <p className="text-ink">{C.ackLine(stateLabel)}</p> : null}
-          {linkBox ? <p className="text-ink">{C.ACK_LINK_PROMPT}</p> : null}
+          {showWaitingBlock(poll) && stateLabel ? <p className="text-ink">{C.ackLine(stateLabel)}</p> : null}
+          {showWaitingBlock(poll) ? <p className="text-ink">{C.WAIT_TIME_LINE}</p> : null}
+          {showWaitingBlock(poll) && linkBox ? <p className="text-ink">{C.ACK_LINK_PROMPT}</p> : null}
           {linkBox}
           {linkBox ? <p className="text-ink-soft">{C.ACK_LINK_NOTE}</p> : null}
+          {showWaitingBlock(poll) ? <p className="text-ink">{C.WAIT_CLOSE_LINE}</p> : null}
           <p role="status" aria-live="polite" className="font-semibold text-ink">
             {poll?.status === "queued"
-              ? poll.paused === "day_cap" ? C.DAY_CAP_LINE : poll.line ?? (queuedSince && now - queuedSince > OFFLINE_MS ? C.OFFLINE_LINE : poll.progress ?? C.PROGRESS_DEFAULT)
+              ? poll.paused === "day_cap" ? C.DAY_CAP_LINE : poll.line ?? poll.progress ?? C.PROGRESS_DEFAULT
               : poll?.line ?? C.PROGRESS_DEFAULT}
           </p>
           {errorBox}

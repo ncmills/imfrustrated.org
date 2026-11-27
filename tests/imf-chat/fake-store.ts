@@ -9,6 +9,8 @@ export interface Fake extends ChatStore {
   reviews: ReviewIn[];
   /** Mirrors imf_chat_worker_state; dayPaused() returns it (the fake has no UTC-day staleness). */
   paused: { reason: "day_cap" | null };
+  /** Worker liveness timestamp (ISO) or null = unknown; workerBeatAt() returns it. */
+  beat: { at: string | null };
 }
 
 /** In-memory ChatStore mirroring imf_rl_hit (count then compare, returns count <= limit). */
@@ -19,8 +21,12 @@ export function fakeStore(clock: () => number = () => Date.now()): Fake {
   const reviews: ReviewIn[] = [];
   let n = 0;
   const paused: Fake["paused"] = { reason: null };
+  const beat: Fake["beat"] = { at: null };
   return {
-    cases, jobs, rl, reviews, paused,
+    cases, jobs, rl, reviews, paused, beat,
+    async workerBeatAt() {
+      return beat.at;
+    },
     async dayPaused() {
       return paused.reason;
     },
@@ -85,6 +91,10 @@ export function fakeStore(clock: () => number = () => Date.now()): Fake {
       if (job.kind === "letter" && jobs.some((j) => j.case_id === job.case_id && j.kind === "letter" && (j.status === "queued" || j.status === "claimed"))) return false;
       jobs.push({ ...job, status: "queued", created_at: new Date(clock()).toISOString() });
       return true;
+    },
+    async getCaseWithLatestJob(h) {
+      const c = await this.getCaseByTokenHash(h);
+      return c ? { c, job: await this.latestJob(c.id) } : null;
     },
     async latestJob(caseId): Promise<JobInfo | null> {
       const j = jobs.filter((x) => x.case_id === caseId).at(-1);

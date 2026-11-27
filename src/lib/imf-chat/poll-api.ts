@@ -4,10 +4,23 @@
 // clears review on every version bump, so a stale ok can never unlock a new version).
 import { hashToken, nextStepFor, type ApiOut } from "./case-api";
 import { CRISIS_CARD } from "./crisis";
-import type { CaseRow, ChatStore } from "./store";
-import { DAY_CAP_LINE } from "../../app/letter-chat/copy";
+import type { CaseRow, ChatStore, JobInfo } from "./store";
+import { DAY_CAP_LINE, OFFLINE_LINE, WAITING_IN_LINE_LINE } from "../../app/letter-chat/copy";
 
-const OFFLINE_MS = 20 * 60 * 1000;
+// IFDO-PASS-7B-2: "offline" is keyed on worker liveness (imf_chat_worker_state, read by the service
+// role). A liveness timestamp older than WORKER_STALE_MS means the writer is down. No timestamp
+// (no row / column yet, or the read failed) is "unknown": the age of the visitor's own queued job
+// decides, at OFFLINE_MS, so unknown is never "offline" sooner than that.
+const WAITING_MS = 5 * 60 * 1000;
+export const OFFLINE_MS = 30 * 60 * 1000;
+export const WORKER_STALE_MS = 3 * 60 * 1000;
+
+/** Pure: is the letter writer offline for a queued job of this age? `beatAt` null = unknown. */
+export function workerOffline(beatAt: string | null, jobAgeMs: number, now: number): boolean {
+  const beat = beatAt == null ? NaN : Date.parse(beatAt);
+  if (Number.isNaN(beat)) return jobAgeMs > OFFLINE_MS;
+  return now - beat > WORKER_STALE_MS;
+}
 // Extra deterministic check on top of the audit: no case citations are ever displayed.
 const CASE_CITE = /\b[A-Z][\w.'&-]*(?: [A-Z][\w.'&-]*)* v\. [A-Z]/;
 
@@ -43,26 +56,46 @@ export function visibleFollowups(fs: CaseRow["followups"]) {
   });
 }
 
-export async function handleCasePoll(token: string, store: ChatStore, now = Date.now()): Promise<ApiOut> {
-  if (typeof token !== "string" || token.length < 20 || token.length > 64) return { status: 400, body: { error: "bad_token" } };
-  const c = await store.getCaseByTokenHash(hashToken(token));
-  if (!c) return { status: 404, body: { error: "not_found" } };
+export async function handleCasePoll(token: string, store: ChatStore, now = Date.now(), betaTest = false): Promise<ApiOut> {
+  const { out, c } = await pollCore(token, store, now);
+  if (!betaTest || out.status !== 200) return out;
+  // IFDO-PASS-2 (4): a reviewer scoring a TEST case reads the draft without the database. Only for a
+  // beta test request (valid beta token + test header, checked by the route) on a case stamped
+  // is_test at creation, keyed by the case's own token; held cases included. Never for real cases.
+  // The case read by the poll itself is reused: no second database call.
+  if (!c || !c.is_test || !c.letter) return out;
+  return { ...out, body: { ...out.body, test_letter: { letter: c.letter, cover: c.cover, sources: c.sources } } };
+}
+
+async function pollCore(token: string, store: ChatStore, now: number): Promise<{ out: ApiOut; c: CaseRow | null }> {
+  if (typeof token !== "string" || token.length < 20 || token.length > 64) return { out: { status: 400, body: { error: "bad_token" } }, c: null };
+  // ONE round trip: the case and its latest job. Only a queued case with a queued job costs a
+  // second call (imf_day_paused, a different table; it changes the answer only there).
+  const got = await store.getCaseWithLatestJob(hashToken(token));
+  if (!got) return { out: { status: 404, body: { error: "not_found" } }, c: null };
+  return { out: await pollBody(got.c, got.job, store, now), c: got.c };
+}
+
+async function pollBody(c: CaseRow, j: JobInfo | null, store: ChatStore, now: number): Promise<ApiOut> {
   const base = { ok: true, status: c.status, letter_version: c.letter_version };
 
   if (c.status === "crisis") return { status: 200, body: { ...base, card: CRISIS_CARD } };
   if (c.status === "intake") return { status: 200, body: { ...base, next: nextStepFor(c) } };
   if (c.status === "queued") {
-    const j = await store.latestJob(c.id);
-    const offline = !!j && j.status === "queued" && now - Date.parse(j.created_at) > OFFLINE_MS;
+    const queuedJob = !!j && j.status === "queued";
+    const age = queuedJob ? now - Date.parse(j.created_at) : 0;
     const progress = !j || j.status === "queued" ? "Checking your situation" : "Researching your state's law and drafting";
     // U6 gap 1: the worker records a day-cap refusal; it outranks the offline line (same cause, truer copy).
-    const dayCap = !!j && j.status === "queued" && (await store.dayPaused()) === "day_cap";
+    const dayCap = queuedJob && (await store.dayPaused()) === "day_cap";
+    // At most one liveness read, only for a queued job that is not day-paused.
+    const offline = queuedJob && !dayCap && workerOffline(await store.workerBeatAt(), age, now);
+    const inLine = queuedJob && !dayCap && !offline && age > WAITING_MS;
     return {
       status: 200,
       body: {
         ...base,
         progress,
-        ...(dayCap ? { paused: "day_cap", line: DAY_CAP_LINE } : offline ? { line: "Our letter writer is offline right now. Your case is saved and will run when it's back. Save this private link." } : {}),
+        ...(dayCap ? { paused: "day_cap", line: DAY_CAP_LINE } : offline ? { line: OFFLINE_LINE } : inLine ? { line: WAITING_IN_LINE_LINE } : {}),
       },
     };
   }
@@ -75,4 +108,37 @@ export async function handleCasePoll(token: string, store: ChatStore, now = Date
   // Held, unreviewed, flagged, failed or a stop card: status + fixed line only, never the draft.
   const line = c.status === "pass" ? STATUS_LINE.held : STATUS_LINE[c.status] ?? STATUS_LINE.held;
   return { status: 200, body: { ...base, status: c.status === "pass" ? "held" : c.status, line } };
+}
+
+/** IFDO-DB-FAULT: how long one poll may wait on the database. Well under the function limit, so a
+ *  hung store call becomes a clean answer instead of a platform timeout (empty reply). */
+export const POLL_STORE_TIMEOUT_MS = 8000;
+
+export const POLL_TRANSIENT_LINE = "Still working on it. This page keeps checking, and your private link stays good.";
+
+/** A calm, cacheless body the client already keeps polling on. Never carries the token or case text. */
+export function transientPollBody(): ApiOut {
+  return { status: 200, body: { ok: true, transient: true, line: POLL_TRANSIENT_LINE } };
+}
+
+/** handleCasePoll that can never throw and never hangs: a store error or a call slower than
+ *  `timeoutMs` returns the "still working" body (200). Unknown token (404), bad token (400) and a
+ *  finished letter are untouched. `onError` receives the error CLASS only. */
+export async function safeCasePoll(
+  token: string, store: ChatStore, now: number, betaTest: boolean,
+  opts: { timeoutMs?: number; onError?: (kind: string) => void } = {},
+): Promise<ApiOut> {
+  const ms = opts.timeoutMs ?? POLL_STORE_TIMEOUT_MS;
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<"timeout">((resolve) => { timer = setTimeout(() => resolve("timeout"), ms); });
+  try {
+    const r = await Promise.race([handleCasePoll(token, store, now, betaTest), timeout]);
+    if (r === "timeout") { opts.onError?.("timeout"); return transientPollBody(); }
+    return r;
+  } catch (e) {
+    opts.onError?.(e instanceof Error ? e.name : "unknown");
+    return transientPollBody();
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
 }
