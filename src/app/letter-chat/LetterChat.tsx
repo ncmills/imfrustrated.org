@@ -21,7 +21,7 @@ type Poll = {
   next?: { step: string; prompt: string };
 };
 
-const OFFLINE_MS = 20 * 60 * 1000;
+const OFFLINE_MS = 30 * 60 * 1000; // keep equal to poll-api.ts; the server line wins when present
 const TERMINAL = new Set(["crisis", "out", "urgent", "lawyer", "closed"]);
 const TEXT_STEPS = new Set(["counterparty", "story", "amount", "dates", "want", "tried"]);
 
@@ -523,9 +523,12 @@ export function LetterChat({ beta }: { beta: string }) {
       {phase === "waiting" ? (
         <div className="space-y-3 rounded-xl border border-rule bg-card p-4">
           {stateLabel ? <p className="text-ink">{C.ackLine(stateLabel)}</p> : null}
-          {linkBox ? <p className="text-ink">{C.ACK_LINK_PROMPT}</p> : null}
+          <p className="text-ink">{C.WAIT_TIME_LINE}</p>
+          <p className="text-ink">{C.ACK_LINK_PROMPT}</p>
           {linkBox}
           {linkBox ? <p className="text-ink-soft">{C.ACK_LINK_NOTE}</p> : null}
+          <p className="text-ink">{C.WAIT_CLOSE_LINE}</p>
+          
           <p role="status" aria-live="polite" className="font-semibold text-ink">
             {poll?.status === "queued"
               ? poll.paused === "day_cap" ? C.DAY_CAP_LINE : poll.line ?? (queuedSince && now - queuedSince > OFFLINE_MS ? C.OFFLINE_LINE : poll.progress ?? C.PROGRESS_DEFAULT)

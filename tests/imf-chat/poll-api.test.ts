@@ -68,7 +68,7 @@ test("no case citations shown: 'Smith v. Jones' blocks display; positive control
   assert.equal((await handleCasePoll(TOKEN, good.s)).body.letter, LETTER);
 });
 
-test("queued: progress line; offline line after 20 min queued; no strategy field", async () => {
+test("queued: progress line; waiting-in-line from 5 min, offline only after 30 min queued; no strategy field", async () => {
   const t0 = Date.UTC(2026, 10, 1, 12);
   const s = fakeStore(() => t0);
   const { id } = await s.insertCase({ token_hash: hashToken(TOKEN) });
@@ -77,7 +77,10 @@ test("queued: progress line; offline line after 20 min queued; no strategy field
   const early = await handleCasePoll(TOKEN, s, t0 + 60_000);
   assert.equal(early.body.progress, "Checking your situation");
   assert.ok(!("line" in early.body));
-  const late = await handleCasePoll(TOKEN, s, t0 + 21 * 60_000);
+  const mid = await handleCasePoll(TOKEN, s, t0 + 29 * 60_000);
+  assert.match(String(mid.body.line), /Waiting in line/);
+  assert.doesNotMatch(String(mid.body.line), /offline/);
+  const late = await handleCasePoll(TOKEN, s, t0 + 31 * 60_000);
   assert.match(String(late.body.line), /offline/);
   assert.ok(!JSON.stringify(late.body).includes("strategy"));
 });

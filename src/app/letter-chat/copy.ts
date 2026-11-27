@@ -49,8 +49,12 @@ export const REDACTED_NOTE = "We removed something that looked like personal det
 // §1.5, U8 draft A as approved by Nick (CONTROL 2026-11-08), beta-hold line struck. The [state]
 // slot is filled here; the [link] slot is the link box rendered between ACK_LINK_PROMPT and ACK_LINK_NOTE.
 export const ackLine = (state: string) =>
-  `Got it. We're looking up the law for ${state} and drafting your letter. This usually takes 10-20 minutes.`;
-export const ACK_LINK_PROMPT = "Keep this page open, or save this private link to come back later:";
+  `Got it. We're looking up the law for ${state} and drafting your letter.`;
+// IFDO-PASS-7B (3): the waiting page tells the truth, in queued AND running states. No speed promises.
+export const WAIT_TIME_LINE = "A letter can take up to about 20 minutes.";
+export const ACK_LINK_PROMPT = "Your private link keeps working. Bookmark it or copy it here, and come back any time:";
+export const WAIT_CLOSE_LINE = "You don't need to keep this page open.";
+export const WAITING_IN_LINE_LINE = "Waiting in line. Your letter starts when the ones ahead of it are done.";
 export const ACK_LINK_NOTE = "Anyone with the link can see your case, so keep it to yourself.";
 
 // U8 draft C field (approved CONTROL 2026-11-08), launch only, optional. Constants only: rendering,

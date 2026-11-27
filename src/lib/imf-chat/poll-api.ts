@@ -5,9 +5,13 @@
 import { hashToken, nextStepFor, type ApiOut } from "./case-api";
 import { CRISIS_CARD } from "./crisis";
 import type { CaseRow, ChatStore, JobInfo } from "./store";
-import { DAY_CAP_LINE } from "../../app/letter-chat/copy";
+import { DAY_CAP_LINE, OFFLINE_LINE, WAITING_IN_LINE_LINE } from "../../app/letter-chat/copy";
 
-const OFFLINE_MS = 20 * 60 * 1000;
+// IFDO-PASS-7B (3): worker liveness is not readable from this poll (the worker heartbeat is a local
+// file; the only database heartbeat is per claimed job). See SQL-NEEDED.md. Until it is, age is the
+// proxy, raised so a visitor queued behind other letters reads "waiting in line", not "offline".
+const WAITING_MS = 5 * 60 * 1000;
+const OFFLINE_MS = 30 * 60 * 1000;
 // Extra deterministic check on top of the audit: no case citations are ever displayed.
 const CASE_CITE = /\b[A-Z][\w.'&-]*(?: [A-Z][\w.'&-]*)* v\. [A-Z]/;
 
@@ -69,7 +73,9 @@ async function pollBody(c: CaseRow, j: JobInfo | null, store: ChatStore, now: nu
   if (c.status === "crisis") return { status: 200, body: { ...base, card: CRISIS_CARD } };
   if (c.status === "intake") return { status: 200, body: { ...base, next: nextStepFor(c) } };
   if (c.status === "queued") {
-    const offline = !!j && j.status === "queued" && now - Date.parse(j.created_at) > OFFLINE_MS;
+    const age = !!j && j.status === "queued" ? now - Date.parse(j.created_at) : 0;
+    const offline = age > OFFLINE_MS;
+    const inLine = !offline && age > WAITING_MS;
     const progress = !j || j.status === "queued" ? "Checking your situation" : "Researching your state's law and drafting";
     // U6 gap 1: the worker records a day-cap refusal; it outranks the offline line (same cause, truer copy).
     const dayCap = !!j && j.status === "queued" && (await store.dayPaused()) === "day_cap";
@@ -78,7 +84,7 @@ async function pollBody(c: CaseRow, j: JobInfo | null, store: ChatStore, now: nu
       body: {
         ...base,
         progress,
-        ...(dayCap ? { paused: "day_cap", line: DAY_CAP_LINE } : offline ? { line: "Our letter writer is offline right now. Your case is saved and will run when it's back. Save this private link." } : {}),
+        ...(dayCap ? { paused: "day_cap", line: DAY_CAP_LINE } : offline ? { line: OFFLINE_LINE } : inLine ? { line: WAITING_IN_LINE_LINE } : {}),
       },
     };
   }
