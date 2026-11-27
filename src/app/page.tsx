@@ -117,13 +117,13 @@ export default function Home() {
 
       <main id="top" className="relative">
         {/* ─── Front door: exactly two ways to start (Nick 2026-11-24) ─── */}
-        <section className="relative max-w-3xl mx-auto px-6 sm:px-10 pt-28 md:pt-36 pb-14">
+        <section className="relative max-w-3xl mx-auto px-6 sm:px-10 pt-24 md:pt-36 pb-14">
           <Reveal delay={1}>
             <span className="eyebrow"><span className="pulse" />Free legal information & self-help tools</span>
           </Reveal>
           <Reveal delay={2}>
             <h1
-              className="font-disp font-bold text-sage leading-[1.05] tracking-[-0.04em] mt-6"
+              className="font-disp font-bold text-sage leading-[1.05] tracking-[-0.04em] mt-4 sm:mt-6"
               style={{ fontSize: "clamp(2.2rem, 9vw, 3.75rem)" }}
             >
               Got a problem a letter could fix?
@@ -131,17 +131,13 @@ export default function Home() {
             </h1>
           </Reveal>
           <Reveal delay={3}>
-            <p className="text-sage-2 text-lg leading-[1.55] mt-5">
+            <p className="text-sage-2 text-base sm:text-lg leading-[1.55] mt-3 sm:mt-5">
               {chatOn ? "Both are free. Either way, you send the letter yourself." : "It is free, and you send the letter yourself."}
-            </p>
-            <p className="text-sage-2 text-lg leading-[1.55] mt-3">
-              Statute-cited letters, plain-English guides, and self-help tools you use
-              yourself. All free. Start with the problem you&rsquo;re facing.
             </p>
           </Reveal>
 
           <Reveal delay={3}>
-            <div className={`mt-8 grid gap-5 ${chatOn ? "md:grid-cols-2" : ""}`}>
+            <div className={`mt-6 sm:mt-8 grid gap-5 ${chatOn ? "md:grid-cols-2" : ""}`}>
               {/* Choice 1 — the chatbot (only when the chat is public; /letter-chat 404s otherwise) */}
               {chatOn && (
                 <div className="rounded-[20px] bg-sage text-bg p-6 flex flex-col">
@@ -184,6 +180,13 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </Reveal>
+
+          <Reveal delay={4}>
+            <p className="text-sage-2 text-lg leading-[1.55] mt-7">
+              Statute-cited letters, plain-English guides, and self-help tools you use
+              yourself. All free. Start with the problem you&rsquo;re facing.
+            </p>
           </Reveal>
 
           <Reveal delay={4}>
