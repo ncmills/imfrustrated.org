@@ -51,8 +51,8 @@ test("U8-A: the ack is the approved text, in order, with the link between prompt
   const ack = `${C.ackLine("Ohio")}\n${C.WAIT_TIME_LINE}\n\n${C.ACK_LINK_PROMPT} [link]\n${C.ACK_LINK_NOTE}`;
   assert.equal(
     ack,
-    "Got it. We're looking up the law for Ohio and drafting your letter.\nA letter can take up to about 20 minutes.\n\n" +
-      "Your private link keeps working. Bookmark it or copy it here, and come back any time: [link]\n" +
+    "Got it. We're looking up the law for Ohio and drafting your letter.\nWriting a letter takes up to about 20 minutes once it starts. If others are ahead of yours, it can take longer.\n\n" +
+      "Your private link keeps working for 30 days. Bookmark it or copy it here: [link]\n" +
       "Anyone with the link can see your case, so keep it to yourself.",
   );
   const ui = readFileSync(join(DIR, "LetterChat.tsx"), "utf8");
@@ -93,20 +93,32 @@ test("(2)d: page.tsx renders PAGE_NOTICE in <main> before the open/paused branch
   assert.equal(page.match(/\{PAGE_NOTICE\}/g)?.length, 1);
 });
 
-// IFDO-PASS-7B (3): the three waiting-page truths, in queued AND running states, plain words.
-test("waiting page: three truths render in the waiting block (queued and running share it); no ETA/speed words", () => {
-  const ui = readFileSync(join(DIR, "LetterChat.tsx"), "utf8");
-  const block = ui.slice(ui.indexOf('{phase === "waiting" ? ('), ui.indexOf("8-9. Letter"));
-  for (const k of ["WAIT_TIME_LINE", "ACK_LINK_PROMPT", "WAIT_CLOSE_LINE"]) {
-    assert.match(block, new RegExp(`\\{C\\.${k}\\}`), `${k} not in waiting block`);
-  }
-  // Not gated on poll status: shown for queued and for running alike.
-  assert.doesNotMatch(block.slice(0, block.indexOf("role=\"status\"")), /poll\?\.status/);
-  assert.match(C.WAIT_TIME_LINE, /up to about 20 minutes/);
-  assert.match(C.ACK_LINK_PROMPT, /private link keeps working/);
-  assert.match(C.ACK_LINK_PROMPT, /bookmark/i);
+// IFDO-PASS-7B-2: the waiting block shows only while queued or being written.
+import { showWaitingBlock } from "../../src/app/letter-chat/waiting";
+test("waiting block: shown for queued/running and first moments; hidden on held, flag, failed, done, day-paused", () => {
+  assert.equal(showWaitingBlock(null), true);
+  assert.equal(showWaitingBlock({ status: "queued" }), true);
+});
+for (const st of ["held", "flag", "failed", "research_failed", "pass"]) {
+  test(`waiting block hidden when status is ${st}`, () => {
+    assert.equal(showWaitingBlock({ status: st }), false);
+  });
+}
+test("waiting block hidden when day-paused", () => {
+  assert.equal(showWaitingBlock({ status: "queued", paused: "day_cap" }), false);
+});
+test("waiting copy truths: once-it-starts wording, 30-day retention, no 'any time', no speed words; UI gates every element", () => {
+  assert.match(C.WAIT_TIME_LINE, /up to about 20 minutes once it starts/);
+  assert.match(C.WAIT_TIME_LINE, /others are ahead.*longer/);
+  assert.match(C.ACK_LINK_PROMPT, /private link keeps working for 30 days/);
+  assert.doesNotMatch(C.ACK_LINK_PROMPT, /any time/i);
   assert.match(C.WAIT_CLOSE_LINE, /don't need to keep this page open/);
   for (const t of [C.WAIT_TIME_LINE, C.ACK_LINK_PROMPT, C.WAIT_CLOSE_LINE, C.WAITING_IN_LINE_LINE, C.ackLine("Ohio")]) {
     assert.doesNotMatch(t, /!|few minutes|seconds|quick|fast|soon|shortly/i, t);
   }
+  const ui = readFileSync(join(DIR, "LetterChat.tsx"), "utf8");
+  for (const k of ["WAIT_TIME_LINE", "WAIT_CLOSE_LINE", "ACK_LINK_PROMPT", "ackLine"]) {
+    assert.match(ui, new RegExp(`showWaitingBlock\\(poll\\)[^\\n]*C\\.${k}`), `${k} not gated`);
+  }
+  assert.doesNotMatch(ui, /OFFLINE_MS/, "no client-side age rule contradicting the server");
 });

@@ -51,8 +51,8 @@ export const REDACTED_NOTE = "We removed something that looked like personal det
 export const ackLine = (state: string) =>
   `Got it. We're looking up the law for ${state} and drafting your letter.`;
 // IFDO-PASS-7B (3): the waiting page tells the truth, in queued AND running states. No speed promises.
-export const WAIT_TIME_LINE = "A letter can take up to about 20 minutes.";
-export const ACK_LINK_PROMPT = "Your private link keeps working. Bookmark it or copy it here, and come back any time:";
+export const WAIT_TIME_LINE = "Writing a letter takes up to about 20 minutes once it starts. If others are ahead of yours, it can take longer.";
+export const ACK_LINK_PROMPT = "Your private link keeps working for 30 days. Bookmark it or copy it here:";
 export const WAIT_CLOSE_LINE = "You don't need to keep this page open.";
 export const WAITING_IN_LINE_LINE = "Waiting in line. Your letter starts when the ones ahead of it are done.";
 export const ACK_LINK_NOTE = "Anyone with the link can see your case, so keep it to yourself.";

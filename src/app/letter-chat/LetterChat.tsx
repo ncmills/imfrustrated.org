@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import * as C from "./copy";
+import { showWaitingBlock } from "./waiting";
 import { createPollLoop } from "@/lib/imf-chat/poll-schedule";
 
 // /letter-chat client flow (spec §1 steps 1-9). Every visible line comes from ./copy or from
@@ -21,7 +22,6 @@ type Poll = {
   next?: { step: string; prompt: string };
 };
 
-const OFFLINE_MS = 30 * 60 * 1000; // keep equal to poll-api.ts; the server line wins when present
 const TERMINAL = new Set(["crisis", "out", "urgent", "lawyer", "closed"]);
 const TEXT_STEPS = new Set(["counterparty", "story", "amount", "dates", "want", "tried"]);
 
@@ -522,16 +522,15 @@ export function LetterChat({ beta }: { beta: string }) {
       {/* ---- 5 + 7. Acknowledgement and waiting state. */}
       {phase === "waiting" ? (
         <div className="space-y-3 rounded-xl border border-rule bg-card p-4">
-          {stateLabel ? <p className="text-ink">{C.ackLine(stateLabel)}</p> : null}
-          <p className="text-ink">{C.WAIT_TIME_LINE}</p>
-          <p className="text-ink">{C.ACK_LINK_PROMPT}</p>
+          {showWaitingBlock(poll) && stateLabel ? <p className="text-ink">{C.ackLine(stateLabel)}</p> : null}
+          {showWaitingBlock(poll) ? <p className="text-ink">{C.WAIT_TIME_LINE}</p> : null}
+          {showWaitingBlock(poll) && linkBox ? <p className="text-ink">{C.ACK_LINK_PROMPT}</p> : null}
           {linkBox}
           {linkBox ? <p className="text-ink-soft">{C.ACK_LINK_NOTE}</p> : null}
-          <p className="text-ink">{C.WAIT_CLOSE_LINE}</p>
-          
+          {showWaitingBlock(poll) ? <p className="text-ink">{C.WAIT_CLOSE_LINE}</p> : null}
           <p role="status" aria-live="polite" className="font-semibold text-ink">
             {poll?.status === "queued"
-              ? poll.paused === "day_cap" ? C.DAY_CAP_LINE : poll.line ?? (queuedSince && now - queuedSince > OFFLINE_MS ? C.OFFLINE_LINE : poll.progress ?? C.PROGRESS_DEFAULT)
+              ? poll.paused === "day_cap" ? C.DAY_CAP_LINE : poll.line ?? poll.progress ?? C.PROGRESS_DEFAULT
               : poll?.line ?? C.PROGRESS_DEFAULT}
           </p>
           {errorBox}

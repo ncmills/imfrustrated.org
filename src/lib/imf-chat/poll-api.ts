@@ -7,11 +7,20 @@ import { CRISIS_CARD } from "./crisis";
 import type { CaseRow, ChatStore, JobInfo } from "./store";
 import { DAY_CAP_LINE, OFFLINE_LINE, WAITING_IN_LINE_LINE } from "../../app/letter-chat/copy";
 
-// IFDO-PASS-7B (3): worker liveness is not readable from this poll (the worker heartbeat is a local
-// file; the only database heartbeat is per claimed job). See SQL-NEEDED.md. Until it is, age is the
-// proxy, raised so a visitor queued behind other letters reads "waiting in line", not "offline".
+// IFDO-PASS-7B-2: "offline" is keyed on worker liveness (imf_chat_worker_state, read by the service
+// role). A liveness timestamp older than WORKER_STALE_MS means the writer is down. No timestamp
+// (no row / column yet, or the read failed) is "unknown": the age of the visitor's own queued job
+// decides, at OFFLINE_MS, so unknown is never "offline" sooner than that.
 const WAITING_MS = 5 * 60 * 1000;
-const OFFLINE_MS = 30 * 60 * 1000;
+export const OFFLINE_MS = 30 * 60 * 1000;
+export const WORKER_STALE_MS = 3 * 60 * 1000;
+
+/** Pure: is the letter writer offline for a queued job of this age? `beatAt` null = unknown. */
+export function workerOffline(beatAt: string | null, jobAgeMs: number, now: number): boolean {
+  const beat = beatAt == null ? NaN : Date.parse(beatAt);
+  if (Number.isNaN(beat)) return jobAgeMs > OFFLINE_MS;
+  return now - beat > WORKER_STALE_MS;
+}
 // Extra deterministic check on top of the audit: no case citations are ever displayed.
 const CASE_CITE = /\b[A-Z][\w.'&-]*(?: [A-Z][\w.'&-]*)* v\. [A-Z]/;
 
@@ -73,12 +82,14 @@ async function pollBody(c: CaseRow, j: JobInfo | null, store: ChatStore, now: nu
   if (c.status === "crisis") return { status: 200, body: { ...base, card: CRISIS_CARD } };
   if (c.status === "intake") return { status: 200, body: { ...base, next: nextStepFor(c) } };
   if (c.status === "queued") {
-    const age = !!j && j.status === "queued" ? now - Date.parse(j.created_at) : 0;
-    const offline = age > OFFLINE_MS;
-    const inLine = !offline && age > WAITING_MS;
+    const queuedJob = !!j && j.status === "queued";
+    const age = queuedJob ? now - Date.parse(j.created_at) : 0;
     const progress = !j || j.status === "queued" ? "Checking your situation" : "Researching your state's law and drafting";
     // U6 gap 1: the worker records a day-cap refusal; it outranks the offline line (same cause, truer copy).
-    const dayCap = !!j && j.status === "queued" && (await store.dayPaused()) === "day_cap";
+    const dayCap = queuedJob && (await store.dayPaused()) === "day_cap";
+    // At most one liveness read, only for a queued job that is not day-paused.
+    const offline = queuedJob && !dayCap && workerOffline(await store.workerBeatAt(), age, now);
+    const inLine = queuedJob && !dayCap && !offline && age > WAITING_MS;
     return {
       status: 200,
       body: {
