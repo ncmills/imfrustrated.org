@@ -86,6 +86,10 @@ export function fakeStore(clock: () => number = () => Date.now()): Fake {
       jobs.push({ ...job, status: "queued", created_at: new Date(clock()).toISOString() });
       return true;
     },
+    async getCaseWithLatestJob(h) {
+      const c = await this.getCaseByTokenHash(h);
+      return c ? { c, job: await this.latestJob(c.id) } : null;
+    },
     async latestJob(caseId): Promise<JobInfo | null> {
       const j = jobs.filter((x) => x.case_id === caseId).at(-1);
       return j ? { status: j.status, created_at: j.created_at, kind: j.kind } : null;

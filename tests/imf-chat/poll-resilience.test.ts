@@ -10,7 +10,7 @@ const STILL = { ok: true, transient: true, line: POLL_TRANSIENT_LINE };
 
 test("store throws -> 200 still-working, error class only", async () => {
   const s = fakeStore();
-  s.getCaseByTokenHash = async () => { throw new Error("stmt_timeout for token " + TOKEN); };
+  s.getCaseWithLatestJob = async () => { throw new Error("stmt_timeout for token " + TOKEN); };
   const seen: string[] = [];
   const r = await safeCasePoll(TOKEN, s, Date.now(), false, { onError: (k) => seen.push(k) });
   assert.equal(r.status, 200);
@@ -21,7 +21,7 @@ test("store throws -> 200 still-working, error class only", async () => {
 
 test("store hangs -> still-working within the bound", async () => {
   const s = fakeStore();
-  s.getCaseByTokenHash = () => new Promise(() => {});
+  s.getCaseWithLatestJob = () => new Promise(() => {});
   const t0 = Date.now();
   const seen: string[] = [];
   const r = await safeCasePoll(TOKEN, s, Date.now(), false, { timeoutMs: 50, onError: (k) => seen.push(k) });
@@ -31,11 +31,12 @@ test("store hangs -> still-working within the bound", async () => {
   assert.deepEqual(seen, ["timeout"]);
 });
 
-test("a later call (latestJob) failing is also contained", async () => {
+test("a later call (dayPaused) failing is also contained", async () => {
   const s = fakeStore();
   const { id } = await s.insertCase({ token_hash: hashToken(TOKEN) });
   await s.updateCase(id, { status: "queued" });
-  s.latestJob = async () => { throw new Error("conn_limit"); };
+  await s.insertJob({ case_id: id, kind: "letter", is_test: false });
+  s.dayPaused = async () => { throw new Error("conn_limit"); };
   assert.deepEqual((await safeCasePoll(TOKEN, s, Date.now(), false)).body, STILL);
 });
 

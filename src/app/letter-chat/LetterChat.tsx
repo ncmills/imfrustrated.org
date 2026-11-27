@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import * as C from "./copy";
+import { createPollLoop } from "@/lib/imf-chat/poll-schedule";
 
 // /letter-chat client flow (spec §1 steps 1-9). Every visible line comes from ./copy or from
 // the server (cards, prompts, status lines). The token lives in the URL hash (#t=...), so it is
@@ -15,12 +16,11 @@ type Followup = { q: string; a: string | null; line?: string };
 type Bubble = { who: "bot" | "me"; text: string };
 type Phase = "gate" | "intake" | "waiting" | "result" | "stopped";
 type Poll = {
-  ok?: boolean; transient?: boolean; error?: string; status?: string; progress?: string; line?: string; paused?: "day_cap"; card?: Card;
+  ok?: boolean; letter_version?: number; transient?: boolean; error?: string; status?: string; progress?: string; line?: string; paused?: "day_cap"; card?: Card;
   letter?: string; cover?: string | null; sources?: unknown; followups?: Followup[];
   next?: { step: string; prompt: string };
 };
 
-const POLL_MS = 10_000;
 const OFFLINE_MS = 20 * 60 * 1000;
 const TERMINAL = new Set(["crisis", "out", "urgent", "lawyer", "closed"]);
 const TEXT_STEPS = new Set(["counterparty", "story", "amount", "dates", "want", "tried"]);
@@ -190,17 +190,37 @@ export function LetterChat({ beta }: { beta: string }) {
     }
   }, [fetchPoll]);
 
-  // Poll every 10 s while waiting for the letter, or while a follow-up answer is pending.
+  // Poll while waiting for the letter, or while a follow-up answer is pending: every 10 s for the
+  // first minute, then 20 s, 40 s, capped at 60 s (SWEEP-1615: fewer database calls per open tab).
+  // The cadence resets on a state change and when the tab becomes visible again; nothing polls
+  // while the tab is hidden. fetchPoll keeps its own transient retry/backoff.
   const pendingFollowup = !!poll?.followups?.some((f) => f.a === null && !f.line) || fuNote !== null;
   const shouldPoll = !!token && (phase === "waiting" || (phase === "result" && pendingFollowup));
+  const loopRef = useRef<ReturnType<typeof createPollLoop> | null>(null);
   useEffect(() => {
     if (!shouldPoll || !token) return;
-    const id = window.setInterval(() => {
-      setNow(Date.now());
-      void fetchPoll(token);
-    }, POLL_MS);
-    return () => window.clearInterval(id);
+    const loop = createPollLoop({
+      setTimeout: (fn, ms) => window.setTimeout(fn, ms),
+      clearTimeout: (h) => window.clearTimeout(h as number),
+      hidden: () => document.hidden,
+      poll: () => fetchPoll(token),
+      onTick: () => setNow(Date.now()),
+    });
+    loopRef.current = loop;
+    const onVis = () => loop.visibilityChanged();
+    document.addEventListener("visibilitychange", onVis);
+    loop.start();
+    return () => {
+      document.removeEventListener("visibilitychange", onVis);
+      loop.stop();
+      loopRef.current = null;
+    };
   }, [shouldPoll, token, fetchPoll]);
+  // Any state change goes back to the fast cadence.
+  const stateKey = `${poll?.status ?? ""}|${poll?.paused ?? ""}|${poll?.letter_version ?? ""}|${poll?.followups?.filter((f) => f.a !== null || !!f.line).length ?? 0}`;
+  useEffect(() => {
+    loopRef.current?.reset();
+  }, [stateKey]);
 
   // Clear the "question sent" note once the server shows every answer.
   useEffect(() => {

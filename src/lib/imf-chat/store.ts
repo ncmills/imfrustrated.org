@@ -36,6 +36,9 @@ export interface ChatStore {
   /** false when a unique index refused it (F7: one active letter job per case). */
   insertJob(job: { case_id: string; kind: "letter" | "followup" | "rerun"; is_test: boolean }): Promise<boolean>;
   latestJob(caseId: string): Promise<JobInfo | null>;
+  /** The poll's read: the case AND its latest job in ONE round trip (embedded select on the
+   *  imf_chat_jobs.case_id FK). Null when no case has that token hash. */
+  getCaseWithLatestJob(tokenHash: string): Promise<{ c: CaseRow; job: JobInfo | null } | null>;
   /** imf_day_paused(): "day_cap" when the worker hit today's spend cap (current UTC day only), else null. */
   dayPaused(): Promise<"day_cap" | null>;
   review(r: ReviewIn): Promise<void>;
@@ -87,6 +90,19 @@ export function supabaseStore(db: SupabaseClient): ChatStore {
       const r = await db.from("imf_chat_jobs").select("status, created_at, kind")
         .eq("case_id", caseId).order("created_at", { ascending: false }).limit(1).maybeSingle();
       return must(r, "latest job") as JobInfo | null;
+    },
+    async getCaseWithLatestJob(tokenHash) {
+      // One PostgREST request: the case plus its newest job (embedded via the case_id FK, ordered
+      // and limited on the embedded table only). Replaces getCaseByTokenHash + latestJob per poll.
+      const r = await db.from("imf_chat_cases").select("*, imf_chat_jobs(status, created_at, kind)")
+        .eq("token_hash", tokenHash)
+        .order("created_at", { ascending: false, referencedTable: "imf_chat_jobs" })
+        .limit(1, { referencedTable: "imf_chat_jobs" })
+        .maybeSingle();
+      const row = must(r, "get case") as (CaseRow & { imf_chat_jobs?: JobInfo[] | null }) | null;
+      if (!row) return null;
+      const { imf_chat_jobs, ...c } = row;
+      return { c: c as CaseRow, job: imf_chat_jobs?.[0] ?? null };
     },
     async dayPaused() {
       const r = await db.rpc("imf_day_paused");
