@@ -38,7 +38,7 @@ const BASE: Section[] = [
     title: "Your rights",
     paragraphs: [
       "If you want a copy of what we have on you, or you want it deleted, email info@imfrustrated.org from the address you submitted with and we will handle it. There is no portal and no form; requests are handled manually. We will respond within thirty days.",
-      "If you are a resident of California, the EEA, the UK, or another jurisdiction with statutory data-subject rights, those rights apply here as well. Same email, same person, same response.",
+      "If you are a resident of California, the EEA, the UK, or another jurisdiction with statutory data-subject rights, those rights apply here as well. Same email, same process, same response.",
     ],
   },
   {
