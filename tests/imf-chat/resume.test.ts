@@ -25,12 +25,17 @@ test("resume: poll on an intake case reports the first unanswered step", async (
     [{}, "state"],
     [{ state: "OH" }, "safety"],
     [{ state: "OH", turns: [T("safety")] }, "category"],
-    [{ state: "OH", category: "deposit", turns: [T("safety")] }, "counterparty"],
-    [{ state: "OH", category: "deposit", turns: [T("safety"), T("counterparty", "Acme"), T("story", "x")] }, "amount"],
+    // IFDO-INTAKE-ASK-MISSING Part C (updated on purpose): the planner now asks the story first,
+    // then only what the story left missing. The old fixed order (counterparty, story, amount...) is gone.
+    [{ state: "OH", category: "deposit", turns: [T("safety")] }, "story"],
+    [{ state: "OH", category: "refund",
+       turns: [T("safety"), T("story", "The store refused my refund of $240 for a blender I returned on March 3, 2026.")] }, "counterparty"],
     // a skipped-over step is found even when a later one was answered
-    [{ state: "OH", category: "deposit", turns: [T("safety"), T("counterparty", "Acme"), T("amount", "500")] }, "story"],
-    [{ state: "OH", category: "deposit",
-       turns: [T("safety"), ...["counterparty", "story", "amount", "dates", "want", "tried"].map((s) => T(s, "x"))] }, "submit"],
+    [{ state: "OH", category: "refund", turns: [T("safety"), T("counterparty", "Blendco")] }, "story"],
+    [{ state: "OH", category: "refund",
+       turns: [T("safety"), T("story", "The store refused my refund of $240 for a blender I returned on March 3, 2026."),
+               T("counterparty", "Blendco"), T("want", "A full refund of $240 within 14 days"),
+               T("tried", "I called them twice in March 2026."), T("confirm", "looks good")] }, "submit"],
   ];
   for (const [patch, want] of cases) {
     const r = await handleCasePoll(TOKEN, await intake(patch));

@@ -11,7 +11,7 @@ import { createPollLoop } from "@/lib/imf-chat/poll-schedule";
 // POST body or the GET path.
 
 type Card = { kind: string; text: string };
-type Next = { step: string; prompt: string };
+type Next = { step: string; prompt: string; kind?: string };
 // line: a fixed server line for a held (being checked) or closed answer (F1); not pending.
 type Followup = { q: string; a: string | null; line?: string };
 type Bubble = { who: "bot" | "me"; text: string };
@@ -493,7 +493,7 @@ export function LetterChat({ beta }: { beta: string }) {
             <button type="button" className={`${primary} w-full`} disabled={busy} onClick={() => void turn("submit", null, C.SUBMIT)}>
               {C.SUBMIT}
             </button>
-          ) : TEXT_STEPS.has(step) ? (
+          ) : TEXT_STEPS.has(step) || next?.kind === "text" ? (
             <form
               className="space-y-2"
               onSubmit={(e) => {

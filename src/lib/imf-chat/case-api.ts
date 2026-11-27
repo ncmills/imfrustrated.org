@@ -7,6 +7,10 @@ import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypt
 import { CRISIS_CARD, RESOURCES_LINE, crisisTierTurns } from "./crisis";
 import { chatEnabled, chatIsPublic } from "./flags";
 import { redact } from "./redact";
+import {
+  applyAnswer, confirmLine, guardFacts, mergeFacts, planNext, rulesExtract, stepsFor,
+  type Answers, type ExtractPass, type Facts,
+} from "./intake";
 import type { CaseRow, ChatStore } from "./store";
 
 export type Env = Record<string, string | undefined>;
@@ -18,7 +22,10 @@ export const STATES = new Set(
    "NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY").split(" "),
 );
 export const CATEGORIES = new Set(["deposit", "refund", "wages", "credit", "repair", "insurance", "other"]);
-const TEXT_STEPS = new Set(["counterparty", "story", "amount", "dates", "want", "tried"]);
+// IFDO-INTAKE-ASK-MISSING: every step the planner (intake.planNext) can ask, plus its one follow-up.
+const PLAN_STEPS = ["story", "counterparty", "address", "moveout", "amount", "asked", "forwarding", "deductions", "want", "dates", "tried"];
+const TEXT_STEPS = new Set([...PLAN_STEPS, ...PLAN_STEPS.map((s) => s + "_more"), "confirm", "confirm_more"]);
+const CONTROL_STEPS = new Set(["state", "safety", "category", "submit"]);
 const TURN_MAX = 2000;
 const STORY_MAX = 6000;
 const MIN_FIRST_TURN_MS = 3000;
@@ -37,7 +44,8 @@ export const LIMITS = {
   testLettersPerDay: 12,
 };
 
-const NEXT: Record<string, { step: string; prompt: string }> = {
+export type Next = { step: string; prompt: string; kind?: string };
+const NEXT: Record<string, Next> = {
   state: { step: "state", prompt: "Which state is this in?" },
   safety: { step: "safety", prompt: "A few quick safety questions first." },
   category: { step: "category", prompt: "What is this about?" },
@@ -49,15 +57,44 @@ const NEXT: Record<string, { step: string; prompt: string }> = {
   tried: { step: "tried", prompt: "What have you already tried?" },
   submit: { step: "submit", prompt: "Ready to write your letter?" },
 };
-const INTAKE_ORDER = ["counterparty", "story", "amount", "dates", "want", "tried"];
-/** U6 resume: the first step this intake case has not answered, by the same rules handleCaseTurn enforces. */
-export function nextStepFor(c: Pick<CaseRow, "state" | "category" | "turns">): { step: string; prompt: string } {
+/** Facts so far: the stored story-pass output plus each later answer, folded in turn order. */
+export function factsFrom(c: Pick<CaseRow, "state" | "category" | "turns">, skip?: string): Facts {
+  const ctx = { state: c.state, category: c.category };
+  let f: Facts = { state: c.state, category: c.category };
+  for (const t of c.turns ?? []) {
+    if (!t.text || t.step === skip || !TEXT_STEPS.has(t.step)) continue;
+    if (t.step === "story") f = mergeFacts(f, guardFacts((t.facts as Facts | undefined) ?? rulesExtract(t.text, ctx)));
+    else f = applyAnswer(f, t.step, t.text);
+  }
+  return guardFacts(f);
+}
+function answersFrom(turns: CaseRow["turns"]): Answers {
+  const a: Answers = {};
+  for (const t of turns ?? []) if (t.text && TEXT_STEPS.has(t.step)) a[t.step] = t.text;
+  return a;
+}
+function planned(facts: Facts, answers: Answers, category: string | null): Next {
+  const n = planNext(facts, answers, category);
+  if (n === "submit") return NEXT.submit;
+  if (n === "confirm") return { step: "confirm", prompt: confirmLine(facts), kind: "text" };
+  return n;
+}
+/** The question a text step asks, given the facts known before it was answered (stored as q). */
+function promptFor(step: string, f: Facts, category: string | null): string {
+  if (step === "confirm") return confirmLine(f);
+  if (step === "confirm_more") return "Thanks, noted. Anything else to fix?";
+  const base = step.replace(/_more$/, "");
+  const def = stepsFor(category).find((s) => s.id === base);
+  if (!def) return step;
+  return base === step ? def.prompt(f) : def.more(f);
+}
+/** U6 resume: the planner's next step for this intake case, by the same rules handleCaseTurn uses. */
+export function nextStepFor(c: Pick<CaseRow, "state" | "category" | "turns">): Next {
   if (!c.state) return NEXT.state;
   const done = new Set((c.turns ?? []).map((t) => t.step));
   if (!done.has("safety")) return NEXT.safety;
   if (!c.category) return NEXT.category;
-  const s = INTAKE_ORDER.find((x) => !done.has(x));
-  return s ? NEXT[s] : NEXT.submit;
+  return planned(factsFrom(c), answersFrom(c.turns), c.category);
 }
 const STOP_CARDS: Record<string, string> = {
   urgent: "A deadline this close needs local help now: find free legal aid at LawHelp.org, or call your state bar's lawyer-referral service.",
@@ -119,7 +156,9 @@ export function gate(req: ApiIn, body: Record<string, unknown>, env: Env): ApiOu
   return secretEq(beta, env.IMF_CHAT_BETA_TOKEN?.trim()) ? null : err(403, "beta_only");
 }
 
-export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now = Date.now()): Promise<ApiOut> {
+export async function handleCasePost(
+  req: ApiIn, store: ChatStore, env: Env, now = Date.now(), opts: { extract?: ExtractPass } = {},
+): Promise<ApiOut> {
   const body = (req.body && typeof req.body === "object" ? req.body : null) as Record<string, unknown> | null;
   if (!body) return err(400, "invalid_json");
   const g = gate(req, body, env);
@@ -154,7 +193,7 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
   if (!c.disclaimer_v) return err(400, "disclaimer_required");
   if (c.status !== "intake") return err(409, "case_closed");
   const step = body.step;
-  if (typeof step !== "string" || !(step in NEXT)) return err(400, "bad_step");
+  if (typeof step !== "string" || !(CONTROL_STEPS.has(step) || TEXT_STEPS.has(step))) return err(400, "bad_step");
   const done = new Set(c.turns.map((t) => t.step));
   if (step !== "state" && !c.state) return err(400, "state_first");
   if (step !== "state" && step !== "safety" && !done.has("safety")) return err(400, "safety_first");
@@ -182,7 +221,7 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
   const at = new Date(now).toISOString();
   const turns = [...c.turns];
   const patch: Partial<CaseRow> = {};
-  let next = NEXT.submit;
+  let next: Next = NEXT.submit;
   let redacted = false;
 
   if (step === "state") {
@@ -205,7 +244,7 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
   } else if (step === "category") {
     if (typeof raw !== "string" || !CATEGORIES.has(raw)) return err(400, "bad_category");
     patch.category = raw;
-    next = NEXT.counterparty;
+    next = planned({ state: c.state, category: raw }, {}, raw);
   } else if (step === "submit") {
     return submit(store, c, key, test, bypass, now);
   } else {
@@ -217,15 +256,26 @@ export async function handleCasePost(req: ApiIn, store: ChatStore, env: Env, now
     const used = kept.filter((t) => TEXT_STEPS.has(t.step)).reduce((n, t) => n + (t.text?.length ?? 0), 0);
     if (used + r.text.length > STORY_MAX) return err(400, "story_length");
     turns.splice(0, turns.length, ...kept);
-    if (step === "counterparty") patch.counterparty = r.text.slice(0, 200);
-    if (step === "amount") {
-      const n = Number(r.text.replace(/[$,\s]/g, ""));
-      if (Number.isFinite(n) && n >= 0 && n < 1e10) patch.amount_usd = Math.round(n * 100) / 100;
+    const ctx = { state: c.state, category: c.category };
+    const before = factsFrom({ ...c, turns: kept });
+    const turn: CaseRow["turns"][number] = { step, text: r.text, at, q: promptFor(step, before, c.category) };
+    if (step === "story") {
+      // One extract pass per story, on redacted text only; its output is stored so the poll replays it.
+      let facts: Facts;
+      try {
+        facts = guardFacts(await (opts.extract ?? rulesExtract)(r.text, ctx));
+      } catch {
+        facts = guardFacts(rulesExtract(r.text, ctx));
+      }
+      turn.facts = facts;
     }
-    if (step === "dates") patch.key_dates = { text: r.text };
-    turns.push({ step, text: r.text, at });
-    const order = [...INTAKE_ORDER, "submit"];
-    next = NEXT[order[order.indexOf(step) + 1]];
+    turns.push(turn);
+    const view = { ...c, turns };
+    const facts = factsFrom(view);
+    patch.counterparty = facts.counterparty ?? null;
+    patch.amount_usd = facts.amount_usd ?? null;
+    patch.key_dates = facts.key_dates?.length ? facts.key_dates : null;
+    next = planned(facts, answersFrom(turns), c.category);
   }
   patch.turns = turns;
   await store.updateCase(c.id, patch);
@@ -243,7 +293,8 @@ async function stop(store: ChatStore, id: string, status: string, reason: string
 }
 
 async function submit(store: ChatStore, c: CaseRow, key: string, test: boolean, bypass: boolean, now: number): Promise<ApiOut> {
-  if (!c.counterparty || !c.turns.some((t) => t.step === "story")) return err(400, "intake_incomplete");
+  const named = !!c.counterparty || c.turns.some((t) => (t.step === "counterparty" || t.step === "counterparty_more") && t.text);
+  if (!named || !c.turns.some((t) => t.step === "story")) return err(400, "intake_incomplete");
   // Per-IP case caps: skipped only for a beta test request (valid beta token + test header) or a
   // review fixture. The public site-wide letters-per-day cap is skipped ONLY for a beta test request
   // (both secrets); those are bounded instead by their own hard counter (testLettersPerDay), so
