@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { buildOpenGraph } from "@/lib/og";
 
 export const metadata: Metadata = {
@@ -94,7 +96,7 @@ export default function HowItWorksPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <Interactions />
 
       <main className="relative">
@@ -178,6 +180,21 @@ export default function HowItWorksPage() {
           </Reveal>
         </section>
 
+        {/* ─── Chatbot (added; every chapter above stays as it was) ─── */}
+        {chatPublic(process.env) && (
+          <section className="relative max-w-3xl mx-auto px-6 md:px-8 pb-12 md:pb-16">
+            <Reveal>
+              <div className="space-y-4">
+                <h2 className="font-disp font-semibold text-sage text-2xl md:text-[1.85rem] tracking-[-0.02em]">Or let the chatbot write it</h2>
+                <p className="text-sage-2 text-base md:text-lg leading-[1.65]">
+                  Tell the chatbot what happened in plain words. It asks a few questions and writes a letter for your situation and state. You review it and send it yourself.{" "}
+                  <Link href="/letter-chat" className="text-sage underline decoration-clay/70 decoration-[1.5px] underline-offset-[5px] hover:text-clay transition-colors duration-300">Start the chat</Link>.
+                </p>
+              </div>
+            </Reveal>
+          </section>
+        )}
+
         {/* ─── When to get a lawyer ─── */}
         <section className="relative max-w-3xl mx-auto px-6 md:px-8 pb-12 md:pb-16">
           <Reveal>
@@ -202,6 +219,7 @@ export default function HowItWorksPage() {
           <Reveal>
             <div className="bg-sage rounded-[32px] px-6 sm:px-10 md:px-14 py-14 md:py-16 text-center">
               <div className="max-w-xl mx-auto">
+                <TwoChoiceBox chatPublic={chatPublic(process.env)} tone="dark" />
                 <p className="font-accent italic text-xl text-clay-soft">chapter one starts with an email</p>
                 <h2 className="font-disp font-semibold text-bg text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-tight mt-1.5">
                   Not sure which letter fits?
@@ -228,7 +246,7 @@ export default function HowItWorksPage() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

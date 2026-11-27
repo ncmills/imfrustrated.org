@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { buildOpenGraph } from "@/lib/og";
 
 const team = [
@@ -81,7 +83,7 @@ export default function AboutPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <main className="relative">
         {/* Hero */}
         <section className="relative max-w-3xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-12 md:pb-16">
@@ -198,6 +200,7 @@ export default function AboutPage() {
               <p className="font-accent italic text-clay-soft text-2xl md:text-[1.7rem] mb-5">
                 Reach out. We read every word.
               </p>
+              <TwoChoiceBox chatPublic={chatPublic(process.env)} tone="dark" />
               <p className="text-[#cdd6cd] text-lg leading-relaxed max-w-xl mx-auto mb-8">
                 Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
               </p>
@@ -215,7 +218,7 @@ export default function AboutPage() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

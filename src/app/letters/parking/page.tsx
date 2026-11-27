@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { getAllParkingCities } from "@/data/parking";
 import { buildOpenGraph } from "@/lib/og";
 
@@ -23,7 +24,7 @@ export default function ParkingIndexPage() {
   return (
     <>
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <Interactions />
       <main className="relative">
         <section className="relative max-w-4xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-10">
@@ -78,7 +79,7 @@ export default function ParkingIndexPage() {
           </Reveal>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

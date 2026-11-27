@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { Header, Reveal, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import { buildOpenGraph, SITE_URL, SITE_NAME, absoluteUrl } from "@/lib/og";
 import { getPost, getAllSlugs, getRelatedPosts, formatPostDate } from "@/lib/blog";
 import { mdxComponents } from "@/components/blog/mdxComponents";
@@ -99,7 +100,7 @@ export default async function BlogPostPage({
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <main className="relative">
         <section className="relative max-w-3xl mx-auto px-6 md:px-8 pt-32 md:pt-40 pb-8">
           <Reveal delay={1}>
@@ -153,6 +154,16 @@ export default async function BlogPostPage({
             and we&rsquo;ll try to email you a draft self-help letter to send yourself. If a deadline is close, contact your local legal aid office or your state bar&rsquo;s lawyer referral service.
           </p>
 
+          {chatPublic(process.env) && (
+            <p className="mt-4 text-sm text-sage-2 leading-relaxed">
+              Or{" "}
+              <Link href="/letter-chat" className="text-sage underline decoration-clay/70 underline-offset-[5px]">
+                use the chatbot
+              </Link>{" "}
+              to write a letter for your situation.
+            </p>
+          )}
+
           {related.length > 0 && (
             <div className="mt-12 pt-8 border-t border-rule">
               <h2 className="font-disp font-semibold text-sage text-2xl tracking-[-0.03em] mb-5">Keep reading</h2>
@@ -169,7 +180,7 @@ export default async function BlogPostPage({
           )}
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }

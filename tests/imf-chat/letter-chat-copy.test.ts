@@ -38,12 +38,12 @@ test("positive control: matcher catches planted bad strings, spares allowed ones
   assert.equal(banned("No attorney reviews your letter; this is not legal advice."), null);
 });
 
-test("page.tsx is noindex and avoids the shared Header/SiteFooter", () => {
+test("page.tsx is noindex and uses the shared Header/SiteFooter (front-door PR)", () => {
   const src = readFileSync(join(DIR, "page.tsx"), "utf8");
   assert.ok(src.includes("noindex"), "page.tsx must mention noindex");
   assert.match(src, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/);
-  assert.doesNotMatch(src, /import[^;]*\bHeader\b/);
-  assert.doesNotMatch(src, /SiteFooter/);
+  assert.match(src, /import[^;]*\bHeader\b[^;]*from "@\/components\/ClientSections"/);
+  assert.match(src, /<SiteFooter \/>/);
 });
 
 // U8 draft A (approved CONTROL 2026-11-08, beta-hold line struck), character-for-character.

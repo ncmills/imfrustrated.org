@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { TwoChoiceBox } from "@/components/TwoChoiceBox";
 import { Header, Reveal, Interactions, SiteFooter } from "@/components/ClientSections";
+import { chatPublic } from "@/lib/imf-chat/flags";
 import {
   categoryMeta,
   getAvailableCategories,
@@ -70,7 +72,7 @@ export default async function CategoryHubPage({
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <div className="amb" aria-hidden="true"><i></i><i></i><i></i></div>
-      <Header />
+      <Header chatPublic={chatPublic(process.env)} />
       <Interactions />
       <main className="relative">
         {/* Hero */}
@@ -129,6 +131,7 @@ export default async function CategoryHubPage({
         <section className="relative max-w-6xl mx-auto px-6 md:px-8 pb-24">
           <Reveal>
             <div className="bg-bg-2 rounded-[32px] px-6 sm:px-10 md:px-14 py-12 md:py-14 text-center">
+              <TwoChoiceBox chatPublic={chatPublic(process.env)} />
               <p className="text-sage-2 text-lg leading-relaxed max-w-xl mx-auto">
                 Not sure which letter fits? Tell us what happened and we&rsquo;ll try to email you a draft self-help letter to send yourself (legal information, not legal advice).
               </p>
@@ -155,7 +158,7 @@ export default async function CategoryHubPage({
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter chatPublic={chatPublic(process.env)} />
     </>
   );
 }
