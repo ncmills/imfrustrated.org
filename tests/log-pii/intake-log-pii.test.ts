@@ -1,6 +1,6 @@
 // Log hygiene for /api/intake. Run: npm run test:log-pii (tsc + node --test, no tsx).
 // With the intake table as the record, no console call carries the email, IP or message.
-// With no store (supabase null) the log line is the only record, so that path keeps the full line.
+// With no store (supabase null) the request now fails loudly (503), so no path logs email or IP.
 import test, { afterEach, beforeEach } from "node:test";
 import assert from "node:assert/strict";
 import path from "node:path";
@@ -69,11 +69,12 @@ test("honeypot and reserved-email drops: prefixed line remains, no IP or email",
   assert.ok(calls.some((c) => String(c[1]).startsWith("[intake] reserved/disposable email")));
 });
 
-test("store unavailable (supabase null): log is the only record, keeps email + IP, never the message", async () => {
+test("store unavailable (supabase null): 503, no console call carries email, IP or message", async () => {
   const { POST } = load(null);
-  assert.equal((await POST(post(good))).status, 200);
+  assert.equal((await POST(post(good))).status, 503);
+  const all = logged();
+  for (const s of [EMAIL, IP, MSG]) assert.ok(!all.includes(s.toLowerCase()), `leaked ${s}`);
   const line = calls.find((c) => c[1] === "[intake]");
   assert.ok(line);
-  assert.deepEqual(JSON.parse(line[2] as string), { email: EMAIL, state: "CA", issueType: "housing", hasMessage: true, ip: IP });
-  assert.ok(!logged().includes(MSG.toLowerCase()));
+  assert.deepEqual(JSON.parse(line[2] as string), { state: "CA", issueType: "housing", hasMessage: true });
 });

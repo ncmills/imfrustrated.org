@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import posthog from "posthog-js";
 import { Wordmark } from "./ClientSections";
 import { trackIntakeStarted, trackIntakeError } from "@/lib/tracking";
+import { readIntakeResponse } from "@/lib/intake-outcome";
 
 const US_STATES = [
   "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA",
@@ -51,14 +52,17 @@ export default function IntakeForm() {
         body: JSON.stringify({ email, state, issueType, message, website: honeypot }),
       });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        trackIntakeError(res.status === 400 || res.status === 422 ? "validation" : "api");
-        throw new Error(data.error || "Submission failed");
+      const outcome = readIntakeResponse(res.status, data);
+      if (outcome.kind === "error") {
+        // e.g. 503 "We couldn't save your message…": the row was not saved, so
+        // the visitor sees that message, never the success letter.
+        trackIntakeError(outcome.reason);
+        throw new Error(outcome.message);
       }
       // The server answers honeypot/test-domain submissions with `test: true` —
       // it dropped them before persistence and notification, so they must not
       // count as a conversion here either.
-      if (!data.test) {
+      if (!outcome.test) {
         try {
           posthog.capture("intake_submitted");
         } catch {}
