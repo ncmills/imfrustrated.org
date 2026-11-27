@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { Resend } from "resend";
 import { supabase } from "@/lib/supabase";
 import { isReservedTestEmail } from "@/lib/email-validation";
+import { INTAKE_INSERT_FAILED_TAG, INTAKE_SAVE_FAILED_MESSAGE } from "@/lib/intake-outcome";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -55,6 +56,22 @@ interface IntakeBody {
   website?: string; // honeypot — must be empty for humans
 }
 
+/**
+ * One console.error line starting with the fixed tag, carrying only the error
+ * code and message (never the email or IP), then a 503 with ok:false.
+ */
+function intakeInsertFailed(code: string, detail: string, email: string, ip: string) {
+  const clean = String(detail ?? "")
+    .split(email)
+    .join("[email]")
+    .split(ip)
+    .join("[ip]")
+    .replace(/\s+/g, " ")
+    .slice(0, 300);
+  console.error(`${INTAKE_INSERT_FAILED_TAG} code=${code} message=${clean}`);
+  return NextResponse.json({ ok: false, error: INTAKE_SAVE_FAILED_MESSAGE }, { status: 503 });
+}
+
 export async function POST(request: Request) {
   const headersList = await headers();
   const ip =
@@ -103,38 +120,36 @@ export async function POST(request: Request) {
   const message = body.message ? String(body.message).slice(0, 2000).trim() : null;
 
   // The imfrustrated_intake insert below is the record, so the log line carries
-  // no email or IP. With no store (supabase null) the log is the only record
-  // of the request, so that path alone keeps the full fields.
-  console.log(
-    "[intake]",
-    JSON.stringify(
-      supabase
-        ? { state, issueType, hasMessage: !!message }
-        : { email, state, issueType, hasMessage: !!message, ip },
-    ),
-  );
+  // no email or IP.
+  console.log("[intake]", JSON.stringify({ state, issueType, hasMessage: !!message }));
 
   // Stamped, never used to SKIP the write: the harness reads its own row back,
   // so dropping it would break the check that proves this path works. Always
   // written — a real submission gets `false`, not a missing value.
   const isTest = isTestRequest(headersList);
 
-  if (supabase) {
-    try {
-      const { error } = await supabase.from("imfrustrated_intake").insert({
-        email,
-        state,
-        issue_type: issueType,
-        message,
-        ip,
-        is_test: isTest,
-      });
-      if (error) {
-        console.error("[intake] supabase error:", error.message);
-      }
-    } catch (err) {
-      console.error("[intake] supabase exception:", err);
+  // The row is the record. If it cannot be written (no store configured, an
+  // insert error, or an exception) the visitor is told plainly and no
+  // notification email goes out: answering ok:true here lost the request.
+  // No store is not a dev convenience path; it means production has lost its
+  // config, so it fails the same way.
+  if (!supabase) {
+    return intakeInsertFailed("NO_STORE", "supabase client not configured", email, ip);
+  }
+  try {
+    const { error } = await supabase.from("imfrustrated_intake").insert({
+      email,
+      state,
+      issue_type: issueType,
+      message,
+      ip,
+      is_test: isTest,
+    });
+    if (error) {
+      return intakeInsertFailed(error.code || "INSERT_ERROR", error.message, email, ip);
     }
+  } catch (err) {
+    return intakeInsertFailed("EXCEPTION", err instanceof Error ? err.message : String(err), email, ip);
   }
 
   if (process.env.RESEND_API_KEY && !isTest) {
